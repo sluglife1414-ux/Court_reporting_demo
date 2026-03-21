@@ -1,0 +1,14 @@
+# Raw source file (large binary-ish RTF — keep out of git if desired)
+# Comment out the line below if you want the raw RTF tracked
+031326yellowrock-ROUGH_T_1.rtf
+
+# Intermediate extraction files (reproducible from RTF + scripts)
+extracted_text.txt
+extracted_qa.txt
+
+# Claude internal session data
+.claude/
+
+# Windows
+Thumbs.db
+desktop.ini

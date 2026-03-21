@@ -1,0 +1,189 @@
+================================================================================
+QA FLAGS — REPORTER ACTION REQUIRED
+Case: Yellow Rock, LLC, et al. v. Westlake US 2 LLC, et al.
+Docket No.: 202-001594 | Witness: Thomas L. Easley | Date: March 13, 2026
+================================================================================
+
+FORMAT: [PAGE ##, LINE ##] FLAG TYPE — Description
+(Page and line numbers are approximate based on processing. Verify against
+final formatted pages in FINAL_TRANSCRIPT.)
+
+NOTE: Because this is a rough draft with significant steno artifacts, many
+flags require audio review. Items marked [AUDIO REVIEW] cannot be resolved
+without the recording.
+
+================================================================================
+RECORD / PROCEDURAL FLAGS
+================================================================================
+
+[PAGE 1, approx.] [REVIEW: LOCATION DISCREPANCY]
+    Caption page lists: "THE HOUSTONIAN / 909 Post Oak Street / Houston, Texas 70112"
+    Videographer's opening states: "111 North Post Oak Lane, Houston, Texas 77024"
+    These do not match. Reporter must verify against audio and correct the
+    caption page before finalizing. Also note: zip code 70112 appears to be
+    a New Orleans zip code inadvertently carried over from appearance pages.
+
+[PAGE 1, approx.] [REVIEW: ZIP CODE ERROR]
+    Caption page shows zip code 70112 for Houston, Texas location.
+    70112 is a New Orleans, Louisiana zip code. Houston address should be
+    77024 per videographer's statement. Correct before finalizing.
+
+[STIPULATION PAGE] [FLAG: SWORN STATEMENT — VERIFY PLACEMENT]
+    The stipulation section states: "Marybeth E. Muir, Certified Court Reporter
+    in and for the State of Louisiana and Registered Professional Reporter,
+    officiated in administering the oath to the witness." Confirm this language
+    adequately satisfies Louisiana's sworn statement requirement in the final
+    formatted transcript, or add a separate oath/swearing-in line.
+
+[PAGE ~7 per index] [EXHIBIT FLAG: DUPLICATE EXHIBIT 142]
+    Exhibit No. 142 appears TWICE on the index page. Reporter must determine
+    whether this is a scrivener's error (same document listed twice) or two
+    separate documents bearing the same exhibit number, and correct the index
+    accordingly.
+
+================================================================================
+STENO ARTIFACT / AUDIO REVIEW FLAGS
+================================================================================
+
+[EARLY EXAMINATION, approx. page 8]
+    [CORRECTED: depth] — "We depth have to go through every one" corrected
+    to "We don't have to go through every one." Reporter verify against audio.
+
+[BACKGROUND TESTIMONY, approx. page 10–12]
+    [REVIEW: UNIVERSITY NAME] — Witness stated "Charleston State University."
+    Likely "Charleston Southern University" or possibly another institution.
+    Reporter to verify against audio. AUDIO REVIEW REQUIRED.
+
+[BACKGROUND TESTIMONY, approx. page 12]
+    [CORRECTED: stand forward] — "stand forward" corrected to "Stanford."
+    Context: "I did a bit of postgraduate work at [Stanford]." Reporter verify.
+
+[TESTIMONY re: DEPOSITION RULES, approx. page 14]
+    [CORRECTED] — "get picked up bathe transcript" corrected to "get picked
+    up by the transcript." AUDIO REVIEW REQUIRED.
+
+[EARLY EXAMINATION re: CAREER, approx. page 15]
+    [AUDIO REVIEW] — Witness reference to "coastal Bermuda hey" appears to
+    be "coastal Bermuda hay" (type of forage grass). Correct if confirmed.
+
+[FINANCIAL INTEREST TESTIMONY]
+    [REVIEW: ENTITY NAME] — Witness referenced his financial interest as
+    being in "REV rent signal" / "energy signal" / "Reverent Signal Energy"
+    joint venture. The actual entity name is unclear across multiple rough
+    steno passages. AUDIO REVIEW REQUIRED to confirm correct entity name.
+    Possibilities include: "Revenant Signal Energy" or similar.
+
+[EXHIBIT 131 DISCUSSION]
+    [REVIEW: DOCUMENT REFERENCE] — Exhibit 131 described as an email from
+    Robin French, June 18, 2021, subject "White Top Energy Reorganization."
+    Witness references it being "appended to this or actually attached" —
+    unclear whether there is an attachment to this exhibit. Reporter to
+    confirm completeness of exhibit as produced.
+
+[EXHIBIT 135 DISCUSSION]
+    [REVIEW: COMPANY NAME] — "Oliver resin mar sol" / "Alvarez and Marsol"
+    — likely "Alvarez & Marsal" (major financial advisory firm). Reporter
+    to verify and correct. AUDIO REVIEW RECOMMENDED.
+
+[EXHIBIT 136 DISCUSSION, approx. page 65–68]
+    [AUDIO REVIEW] — "ghee sciences team" — almost certainly "geoscience team."
+    Appears multiple times in rough. Correct throughout. Confirm via audio.
+
+[EXHIBIT 148 DISCUSSION]
+    [REVIEW: BATES NUMBER] — Exhibit 148 noted as "YR_37094" — may be
+    incomplete (missing leading digit). Reporter to verify Bates stamp
+    from original exhibit. Possible correct Bates: YR-370940 or similar.
+
+[EXHIBIT 140 DISCUSSION]
+    [CHECK: LOUISIANA RULE / INSTRUCTION NOT TO ANSWER] — Thomas J. Madigan
+    instructed the witness not to answer questions about the identities of
+    investor entities that converted debt to LLC membership interests. If
+    this question is later ruled upon, or if a motion to compel is filed,
+    this exchange will need to be accurately located and confirmed.
+
+[EXAMINATION re: DRILLING MANAGER]
+    [AUDIO REVIEW: PROPER NAME] — Witness referred to the fired drilling
+    manager as "Done linen gee, done difficulties letter" — this is clearly
+    a steno mistranslation of a proper name. AUDIO REVIEW REQUIRED. Reporter
+    must supply the correct name before certification.
+
+[EXAMINATION re: COMPANIES]
+    [REVIEW: COMPANY NAME] — "blacktop" appears in several passages and
+    appears to be a steno artifact for "White Top." Review each instance
+    and correct to "White Top" where audio confirms. One passage: "the
+    blacktop and Sunny Solar restructuring had been agreed to in August" —
+    clearly White Top.
+
+[EXAMINATION re: SEISMIC DATA]
+    [CORRECTED: brat spot / brat spots] — corrected to "bright spot / bright
+    spots" throughout. Bright spot is a standard seismic interpretation term
+    indicating possible hydrocarbon accumulation. Reporter verify against audio.
+
+[EXAMINATION re: OPERATIONS]
+    [REVIEW: COMPANY NAME] — "Jill Latchman" — context suggests this is
+    likely an individual associated with "In-Depth" seismic processing.
+    May also be a steno artifact for a different name. AUDIO REVIEW REQUIRED.
+
+[EXAMINATION re: OPERATIONS]
+    [AUDIO REVIEW] — "the 1028... Sidetrack" — witness appears to discuss
+    sidetracking Well 1028 due to stuck pipe. Confirm usage of term
+    "sidetrack" (capitalization not needed unless proper name) vs. "side track"
+    (two words). Industry standard: "sidetrack" as one word is acceptable.
+
+[EXAMINATION re: PERMITTING]
+    [REVIEW: REGULATORY CITATION] — Witness refers repeatedly to "DNR" and
+    "LDNR" interchangeably. Louisiana Department of Natural Resources is
+    "DNR" per Louisiana usage. Witness confirmed his own usage. Consistent
+    with Louisiana practice — no correction needed, but confirm capitalization
+    is "DNR" throughout.
+
+[EXAMINATION re: CAVERN DATA]
+    [REVIEW: SOFTWARE NAME] — "Voxler" — 3D visualization software referenced
+    by witness (per Todd Bertelot/Boardwalk). This is a known commercial
+    software product (Golden Software Voxler). Correct spelling confirmed.
+    No correction needed.
+
+[EXAMINATION re: OPERATOR]
+    [REVIEW: ENTITY NAME] — "Burlington" — referenced as a stakeholder in
+    the Sulphur Mines Field who received proposed drilling location
+    notifications from Yellow Rock. Context suggests Burlington Resources
+    or a successor. AUDIO REVIEW to confirm full entity name.
+
+[EXAMINATION re: RIGHTS OFFERING]
+    [REVIEW: DATE REFERENCE] — "Cut Off at noon today" referenced in
+    Exhibit 139 — this E-mail is dated January 25, 2023. The "cut off"
+    refers to the rights offering response deadline, not a geographic
+    reference. Confirm no formatting change needed.
+
+[CLOSING — REPORTER CHECK FLAG]
+    [FLAG: REPORTER CHECK HERE] — In the raw transcript, the reporter
+    inserted "*REPORTER CHECK HERE*" during testimony about relevance of
+    investor claims. Reporter must review audio and supply the missing
+    or unclear language before certification.
+
+================================================================================
+CERTIFICATION FLAG
+================================================================================
+
+[CERTIFICATION PAGE]
+    [FLAG: LOUISIANA CERTIFICATION INCOMPLETE]
+    The certification page in the clean transcript currently has a blank
+    for the CCR (Certified Court Reporter) license number.
+    Louisiana requires the reporter's license number on the certification page.
+    Per LAC Title 46, Part LXI (LAPELS rules for certified reporters):
+    MARYBETH E. MUIR, CCR, RPR must add her CCR license number before
+    the certification is complete and the transcript may be delivered.
+
+================================================================================
+TOTAL FLAGS SUMMARY
+================================================================================
+  Procedural/Record flags:         4
+  Steno artifact / audio review:  23
+  Certification flags:             1
+  ─────────────────────────────────
+  TOTAL FLAGS:                     28
+
+  Flags requiring audio review:   ~18
+  Flags auto-corrected (tagged):   4  (depth, stand forward, brat spot, bathe)
+  Flags requiring reporter decision: 10
+================================================================================
