@@ -19,7 +19,7 @@ OUTPUT_FILE = 'FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt'
 
 # --- Configuration ---
 LINES_PER_PAGE = 25
-LINE_WIDTH = 56   # match real depo ~50-56 chars per line
+LINE_WIDTH = 60   # LA spec: ~60 chars at 12pt Courier in 6.375" column
 
 # --- Case metadata (Easley depo) ---
 WITNESS_NAME = "THOMAS L. EASLEY"
@@ -492,8 +492,8 @@ def format_testimony(raw_lines):
     labeled = merged
 
     # Step 3: Format into output lines
-    # Real transcript format: NO blank lines between Q/A blocks.
-    # Blank line before BY lines and colloquy transitions only.
+    # LA spec: NO blank numbered lines on body/testimony pages.
+    # All transitions run continuously — no blank line separators.
     formatted = []
     prev_kind = None
 
@@ -501,17 +501,7 @@ def format_testimony(raw_lines):
         if kind == 'blank':
             continue
 
-        # Add blank line before section transitions
-        if kind in ('by', 'header', 'witness_info') and formatted:
-            formatted.append('')
-
-        # Add blank line before colloquy if previous was Q or A
-        if kind == 'colloquy' and prev_kind in ('Q', 'A') and formatted:
-            formatted.append('')
-
-        # Add blank line when switching from colloquy back to Q/A
-        if kind in ('Q', 'A') and prev_kind == 'colloquy' and formatted:
-            formatted.append('')
+        # No blank lines inserted anywhere in testimony (LA rule)
 
         if kind == 'header':
             formatted.append(center(text))
