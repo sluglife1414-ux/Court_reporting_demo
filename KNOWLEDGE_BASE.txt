@@ -1,0 +1,382 @@
+================================================================================
+KNOWLEDGE BASE — LOUISIANA DEPOSITION ENGINE
+Feeds into: MASTER_DEPOSITION_ENGINE_v4.md (read at Layer 1, before all processing)
+Purpose: Accumulated lessons from real test runs. Each entry is a validated
+         correction to engine behavior. Overrides engine defaults where noted.
+================================================================================
+INSTRUCTION TO ENGINE: Read this file in full before processing any transcript.
+Every rule here reflects a confirmed error from a scored run. Apply these rules
+with the same authority as the state module.
+================================================================================
+
+════════════════════════════════════════════════════════════════════════════════
+LEARNED FROM: Run L3-001 | Level 3 | Dataset: LA_raw_01 | Date: 2026-03-21
+Score: 78% (B) | Key file: LA_raw_01_key.json
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+KB-001 | OBJECTION FORMAT — LOUISIANA CORRECTION
+Priority: HIGH | Overrides: State module default objection normalization
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: State module instructed engine to normalize all objections to
+"Objection, form." This is WRONG. The engine changed "Objection form." to
+"Objection, form." when the correct answer is "Objection to form."
+
+RULE: In Louisiana depositions, the standard objection to form is:
+  CORRECT:   "Objection to form."
+  CORRECT:   "Objection to form; vague."  (semicolon between bases)
+  INCORRECT: "Objection, form."            ← do NOT use this format
+
+When an objection has multiple bases, separate with a semicolon, not a comma.
+  Example: "Objection to form; vague."
+  Example: "Objection; mischaracterizes the document."
+
+DO NOT collapse "Objection to form, vague." to "Objection, form." or any
+shorter form. Preserve the attorney's stated objection bases.
+
+WHAT TO CORRECT: Only correct obvious transcription errors in objections
+(e.g., missing period, clear typo in attorney name). Do not normalize wording.
+
+CONFIRMED IN: LA_raw_01_key.json — objections category, score 0/1 this run.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-002 | EXHIBIT PARENTHETICALS — DOCUMENT DESCRIPTION REQUIRED
+Priority: HIGH | Category: exhibits
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine preserved "(Exhibit 3 marked.)" verbatim and did not flag
+the missing document description. The planted error was the absence of the
+document description inside the parenthetical.
+
+RULE: When an exhibit is marked, the parenthetical should identify the document.
+  PREFERRED: "(Exhibit 3, Daily Drilling Report dated March 10, 2021, marked.)"
+  ACCEPTABLE: "(Exhibit 3 marked.)" — ONLY if document is identified in
+              the immediately following Q&A testimony.
+
+ACTION: If "(Exhibit X marked.)" appears with no document description in
+the parenthetical AND no document description in the immediately following
+lines of testimony, FLAG IT:
+  [FLAG: EXHIBIT PARENTHETICAL — document description missing. Confirm
+   document identity for the record.]
+
+If the document is identified in testimony within 3 lines of the marking,
+note the description in the EXHIBIT_INDEX but do not flag the transcript.
+
+CONFIRMED IN: LA_raw_01_key.json — exhibits category, score 0/1 this run.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-003 | CERTIFICATION PAGE — FULL CHECKLIST (EXPANDED)
+Priority: HIGH | Category: certification, formatting
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine flagged missing license number in cert block (correct) but
+did NOT flag missing required language elements. The cert also lacked:
+  - "Certified Court Reporter in and for the State of Louisiana" line
+  - Explicit method of reporting statement (e.g., "reported in stenotype")
+  - Non-interest statement completeness
+
+LOUISIANA CERTIFICATION MUST CONTAIN ALL OF THE FOLLOWING:
+  1. Reporter's full name
+  2. Title: "Certified Court Reporter"
+  3. "in and for the State of Louisiana"  ← often missing, must be present
+  4. Statement that testimony was taken in person
+  5. Method of reporting: "reported by me in stenotype" (or other method)
+  6. Statement that it was transcribed by reporter
+  7. Truth and correctness statement
+  8. Non-relation statement (not related to counsel or parties)
+  9. Non-interest statement (not interested in outcome)
+ 10. Location and date: "Baton Rouge, Louisiana, this ___ day of ___, 20__."
+ 11. Signature line
+ 12. Reporter name printed below signature
+ 13. CCR designation: "CCR" or "CERTIFIED COURT REPORTER"
+ 14. License number: "LOUISIANA CERTIFIED COURT REPORTER NO. XXXX"
+
+FLAG any missing element individually. Do not collapse to a single flag.
+
+CONFIRMED IN: LA_raw_01_key.json — formatting category, score 1.5/2 this run.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-004 | CAPITALIZATION — "STATE OF LOUISIANA"
+Priority: MEDIUM | Category: capitalization
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine correctly capitalized "louisiana" → "Louisiana" but likely
+missed "state" → "State" in the phrase "state of louisiana."
+
+RULE: In legal and governmental context, "State of Louisiana" is a proper
+noun. Both words capitalize:
+  CORRECT:   "State of Louisiana"
+  INCORRECT: "state of Louisiana"
+  INCORRECT: "state of louisiana"
+
+This applies in all contexts: testimony, certification, appearances block,
+caption. When scanning for "louisiana" capitalization errors, also check
+whether "state" immediately before it is capitalized.
+
+CONFIRMED IN: LA_raw_01_key.json — capitalization category, score 1.5/2 this run.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-005 | DO NOT HYPHENATE — "ONSITE"
+Priority: MEDIUM | Category: hyphenation / overcorrection prevention
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine changed "onsite" → "on-site." This is an overcorrection.
+In petroleum engineering and oilfield operations context, "onsite" is
+accepted as a single unhyphenated word.
+
+RULE: "onsite" — keep as one word. Do NOT change to "on-site."
+
+Similarly accepted as single words in oilfield/engineering context:
+  onsite      (not on-site)
+  offsite     (not off-site)
+  offshore    (not off-shore)
+  onshore     (not on-shore)
+  downhole    (not down-hole)
+  wellbore    (not well-bore)
+  wellhead    (not well-head)
+
+These are compound nouns, not compound modifiers — do not hyphenate.
+
+CONFIRMED IN: Run L3-001 — overcorrection, not in answer key as an error.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-006 | CASING PHYSICS — DOMAIN KNOWLEDGE RULE
+Priority: HIGH | Category: super_rare_domain | Flag type: CRITICAL DOMAIN FLAG
+────────────────────────────────────────────────────────────────────────────────
+NOTE: This rule is valid domain knowledge even though the scoring of this
+specific item in L3-001 is disputed (key may contain an error — see SCORES_LOG).
+
+RULE: In oil and gas well construction, casing strings must decrease in
+diameter from the outermost to the innermost. The required order from
+LARGEST to SMALLEST is:
+
+  Conductor casing  (largest — set at shallowest depth, e.g., ~100 ft)
+  Surface casing    (e.g., 13-3/8", set at ~2,500 ft)
+  Intermediate casing  (e.g., 11-3/4", set at ~9,800 ft)
+  Production casing    (e.g., 9-5/8", set at total depth)
+
+If any transcript lists casing sizes out of this physical order
+(e.g., intermediate smaller than production, or production larger than
+surface), FLAG IMMEDIATELY:
+  [FLAG: CRITICAL — CASING SIZE PHYSICALLY IMPOSSIBLE. Intermediate casing
+   (X") cannot be smaller than production casing (Y"). Verify testimony
+   and exhibits. Possible transcription error in size or casing type.]
+
+WHY THIS MATTERS: If a witness misstates a casing size, it goes undetected
+by ordinary proofreading. This is a domain-knowledge trap that only catches
+if the engine knows the physics.
+
+CONFIRMED AS RULE: Yes. Confirmed as valid petroleum engineering physics.
+Confirmed as planted test target: Disputed — see SCORES_LOG L3-001 KEY ISSUE.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-007 | CONFIRMED PETROLEUM ENGINEERING TERMS — DO NOT CORRECT
+Priority: HIGH | Category: technical_terms, glossary
+────────────────────────────────────────────────────────────────────────────────
+The following terms were validated in Run L3-001 as correct petroleum
+engineering usage. Do not alter, flag, or second-guess these terms:
+
+  prognosed       — valid petroleum engineering verb meaning "forecast" or
+                    "predicted" (e.g., "the formation top was prognosed at
+                    X depth"). Rare in general corpus but accepted industry usage.
+  pre-spud        — hyphenated compound; refers to activities before spudding
+                    (drilling start). Standard industry term.
+  frac gradient   — accepted shorthand for "fracture gradient." Do NOT expand
+                    to "fracture gradient" — that would alter testimony (Rule R1).
+  CBL             — Cement Bond Log. Standard oilfield acronym. Do not expand.
+  VDL             — Variable Density Log. Standard oilfield acronym. Do not expand.
+  BOP             — Blowout Preventer. Standard oilfield acronym. Do not expand.
+  MD              — Measured Depth. Standard oilfield abbreviation. Do not expand.
+  TVD             — True Vertical Depth. Standard oilfield abbreviation.
+  ppg             — pounds per gallon (mud weight unit). Do not expand.
+  psi             — pounds per square inch. Standard unit abbreviation.
+  API             — American Petroleum Institute. Do not expand unless full
+                    name appears elsewhere in transcript.
+  LAPELS          — Louisiana Professional Engineering and Land Surveying Board.
+  TD              — Total Depth. Standard oilfield abbreviation. Do not expand.
+  squeeze job     — remedial cementing operation. Hyphen not used. Keep as two words.
+  leak-off test   — hyphenated compound. Validated in L3-001.
+  follow-up       — hyphenated compound. Validated in L3-001.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-008 | CASING SIZE NOTATION — HOUSE STYLE (PENDING CONFIRMATION)
+Priority: MEDIUM | Category: numerical, formatting | Status: UNRESOLVED
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Run L3-001 Edge Case 3 — Engine applied "13-3/8-inch" notation with
+full hyphenation. Expected output uses "13 3/8-inch" (space between whole
+number and fraction, hyphen only before "inch").
+
+TWO STYLES EXIST IN INDUSTRY:
+  Style A (engine applied):   13-3/8-inch, 9-5/8-inch, 11-3/4-inch
+  Style B (expected output):  13 3/8-inch, 9 5/8-inch, 11 3/4-inch
+
+STATUS: Unresolved — reporter house style must confirm.
+INTERIM RULE: Use Style B (space + hyphen before "inch") until house style
+is confirmed and added to this knowledge base.
+
+When "inch" is not stated by the witness, do NOT add it (Rule R1 — never
+invent testimony). Format only the numbers and fractions as spoken.
+  Spoken: "nine and five-eighths production casing"
+  Written: "9-5/8 production casing"  (no "inch" added unless spoken)
+
+────────────────────────────────────────────────────────────────────────────────
+KB-009 | AGENT SELF-SCORE IS UNRELIABLE — USE SCORES_LOG ONLY
+Priority: INFO | Category: system note
+────────────────────────────────────────────────────────────────────────────────
+In Run L3-001 the agent reported overall_readiness: 0.95 (95%).
+The actual weighted score against the answer key was 0.78 (78%).
+Gap: 17 percentage points.
+
+The agent's self-score reflects what it did with confidence.
+It does not reflect what it should have done or what it missed.
+The SCORES_LOG is the only valid measurement of engine performance.
+Agent confidence scores are supplemental information only.
+
+════════════════════════════════════════════════════════════════════════════════
+LEARNED FROM: Run L1-001 | Level 1 | Dataset: level1.txt | Date: 2026-03-22
+Score: REJECTED — 1% standards | Auditor: 30-year veteran review
+Key failure: Agent corrected witness's spoken word (verbatim violation)
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+KB-010 | VERBATIM RULE — DO NOT CORRECT WITNESS'S SPOKEN ERRORS
+Priority: CRITICAL | Overrides: Layer 7 Terminology Engine for witness speech
+────────────────────────────────────────────────────────────────────────────────
+FAILURE: Agent changed "Intercoastal" → "Intracoastal" in witness testimony.
+The witness SAID "Intercoastal." That is the sworn record. The agent applied
+the Layer 7 terminology engine (geographic term, HIGH confidence → correct
+silently) to the witness's own spoken word. This is a verbatim violation.
+
+THE FUNDAMENTAL DISTINCTION:
+  Steno/transcription error  → The machine got it wrong. FIX IT.
+                               Example: "thier" → "their"
+  Witness spoke it wrong     → That IS the record. DO NOT TOUCH IT.
+                               Example: Witness says "Intercoastal" → transcribe
+                               "Intercoastal" exactly as spoken.
+
+RULE: Layer 7 (Terminology Engine) applies ONLY to clear steno transcription
+errors — where the stenographer's machine or fingers produced the wrong word.
+It does NOT apply to words the witness actually spoke, even if those words
+are factually incorrect, geographically wrong, or imprecise.
+
+WHY THIS MATTERS: In litigation, a witness's misstatement of a location, term,
+or fact is itself evidence. Counsel may use it in cross-examination to challenge
+the witness's knowledge or credibility. A reporter who "fixes" that word has
+altered sworn testimony and potentially protected or harmed a party.
+
+CORRECT ACTION when witness uses a wrong/imprecise geographic or factual term:
+  WRONG:   Change "Intercoastal" → "Intracoastal" (alters the record)
+  CORRECT: Transcribe "Intercoastal" exactly as spoken.
+  OPTIONAL: If flagging adds value → [REVIEW: witness stated "Intercoastal" —
+            possible reference to Intracoastal Waterway. Transcribed verbatim.]
+            But DO NOT alter the word itself.
+
+CONFIRMED IN: L1-001 audit — "smoking gun" failure per veteran auditor.
+"By fixing it, the reporter accidentally protected the witness and
+overstepped their role." — Auditor verdict.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-011 | ABRUPT TRANSCRIPT ENDINGS — PROCEDURAL PARENTHETICAL REQUIRED
+Priority: HIGH | Category: formatting, record transitions
+────────────────────────────────────────────────────────────────────────────────
+FAILURE: Agent correctly flagged that transcript ended mid-examination but
+did not insert a procedural parenthetical to close the record.
+
+RULE: When a transcript ends without a closing colloquy, a procedural
+parenthetical must be inserted at the point of cutoff IN ADDITION to any
+meta-flag. Choose the appropriate form based on context:
+
+  Examination interrupted, off-record discussion likely:
+    (Discussion held off the record.)
+
+  Proceedings ended or adjourned:
+    (Whereupon, the proceedings were adjourned.)
+
+  Context unclear:
+    (Whereupon, the proceedings were concluded.)
+
+The meta-flag [FLAG: TRANSCRIPT ENDS MID-EXAMINATION] tells the reviewer
+something is missing. The parenthetical tells THE RECORD what happened.
+Both are required. One does not replace the other.
+
+CORRECT FORMAT (at point of cutoff):
+  Q.  Thank you.  Now, regarding the habendum clause in Paragraph 4 —
+  (Whereupon, the proceedings were adjourned.)
+  [FLAG: TRANSCRIPT ENDS MID-EXAMINATION — ...]
+
+CONFIRMED IN: L1-001 audit — "a vet would expect a parenthetical note
+rather than just a meta-flag." — Auditor verdict.
+
+════════════════════════════════════════════════════════════════════════════════
+LEARNED FROM: PROD-RUN-001 | Production Run | Dataset: 031326yellowrock-ROUGH_T_1.rtf
+Date: 2026-03-22 | Easley deposition, Yellow Rock v. Westlake | ~191,566 chars
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+LA-KB-012 | LARGE TRANSCRIPT TWO-PASS ARCHITECTURE — TOKEN LIMIT RULE
+Priority: HIGH | Category: system_architecture, processing
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Agent hit 32,000 output token ceiling on ~191K character transcript.
+Read phase completed. Write phase never started. Zero delivery files produced.
+
+CAUSE: Single agent call doing both read (large input) and write 8 delivery files
+(large output). Combined exceeds output ceiling for transcripts above ~100K chars.
+
+RULE — TWO-PASS ARCHITECTURE (see Layer 2, Steps F and G in engine spec):
+  THRESHOLD: > 100,000 characters → two-pass required.
+  Pass 1: Read all chunks → write PROCESSING_NOTES.txt only. STOP.
+  Pass 2a: Read source + notes → write FINAL_TRANSCRIPT only. STOP.
+  Pass 2b: Read notes only → write all other 7 delivery files. STOP.
+
+CONFIRMED IN: PROD-RUN-001 — two-pass fix produced all 8 files successfully.
+
+────────────────────────────────────────────────────────────────────────────────
+LA-KB-013 | STENO TILDE ARTIFACT — REMOVE ~
+Priority: HIGH | Category: steno_artifacts, formatting
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: CAT tilde attached to numbers/times: "9:07~a.m." / "13~years"
+RULE: Remove all ~. Steno artifact, not content.
+NOW HANDLED BY: steno_cleanup.py Step 1 — no engine action required.
+
+────────────────────────────────────────────────────────────────────────────────
+LA-KB-014 | UNDERSCORE IN DOCKET NUMBERS — CORRECT TO HYPHEN
+Priority: MEDIUM | Category: formatting, steno_artifacts
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: "202-001594" rendered as "202_001594" by steno CAT software.
+RULE: digit_digit in docket context → digit-digit.
+Distinguish from company name underscores — those need human verification.
+NOW HANDLED BY: steno_cleanup.py Step 3 — no engine action required.
+
+================================================================================
+KNOWLEDGE BASE STATUS:
+  Entries:          14
+  From Level 3:     9   (KB-001 through KB-009)
+  From Level 1:     2   (KB-010, KB-011 — learned from L1-001 audit)
+  From PROD-RUN-001: 3  (LA-KB-012, LA-KB-013, LA-KB-014 — 2026-03-22)
+  From HOUSE_STYLE:  1  (KB-015 — E-mail house style, 2026-03-23)
+  Last updated:     2026-03-23
+================================================================================
+
+════════════════════════════════════════════════════════════════════════════════
+LEARNED FROM: HOUSE_STYLE_MODULE_muir.md | Source: 030626yellowrock-FINAL (Cox)
+Date: 2026-03-23 | Reporter: Marybeth E. Muir, CCR, RPR
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+KB-015 | E-MAIL SPELLING — MUIR HOUSE STYLE
+Priority: HIGH | Category: formatting, terminology
+Overrides: steno_cleanup.py compound_fixes (was converting to "email")
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: steno_cleanup.py was converting E_mail → "email" (all lowercase, no
+hyphen). Marybeth Muir's finalized transcripts use "E-mail" throughout.
+Confirmed in Cox deposition (030626yellowrock-FINAL) pages 2, 3, 68, 69, 178.
+
+RULE: In Marybeth Muir's transcripts, E-mail is ALWAYS written:
+  CORRECT:   E-mail   (capital E, hyphen)
+  INCORRECT: email    (no hyphen, lowercase)
+  INCORRECT: e-mail   (lowercase e)
+  INCORRECT: E_mail   (steno artifact — cleaned by steno_cleanup.py → E-mail)
+
+FIX APPLIED: steno_cleanup.py compound_fixes list updated:
+  ('E_mail', 'E-mail')  — was 'email'
+  ('e_mail', 'E-mail')  — was 'email'
+
+================================================================================
+END OF KNOWLEDGE BASE
+================================================================================

@@ -1,0 +1,318 @@
+================================================================================
+        CONDENSED DEPOSITION SUMMARY — THOMAS L. EASLEY
+        Yellow Rock, LLC, et al. v. Westlake US 2 LLC, et al.
+        Docket No. 202-001594 | 14th JDC, Parish of Calcasieu, Louisiana
+        Deposition Date: Friday, March 13, 2026
+        Examining Counsel: Walker Hobby (Susman Godfrey LLP, for Defendant Westlake)
+        Witness Counsel: MS. CURTIS and Sher Garner team (for Plaintiffs)
+        Reporter: Marybeth E. Muir, CCR, RPR | ROUGH DRAFT
+================================================================================
+
+NOTE: This condensed summary organizes the substance of testimony by topic.
+It is not verbatim. For verbatim record, see EASLEY_YellowRock_FINAL_TRANSCRIPT.txt.
+All steno corrections from the final transcript apply here as well.
+
+================================================================================
+TOPIC 1: WITNESS BACKGROUND — EDUCATION, CAREER, DEPOSITION HISTORY
+================================================================================
+
+- Thomas L. Easley; resides at 1501 County Road 446, De Leon, Texas 76444
+  (roughly 3 years in De Leon; family in the Woodlands made Houston trip manageable)
+- Currently a farmer; grows coastal Bermuda hay
+- Education: B.S. in general business, Charleston State University; MBA, Texas A&M;
+  some postgraduate work at Stanford
+- No degree or certification in petroleum engineering or geology
+- Career: 13 years as a partner in a Big Eight CPA firm (majority of clients in energy
+  sector); left public accounting November 1981; subsequent oil and gas career in
+  acquisition and development, pure E&P (publicly traded company), offshore contract
+  drilling ventures
+- Has been deposed 25–30 times over career; primarily oil and gas disputes;
+  most recent deposition approximately 6–7 years ago
+- Has testified at trial roughly 3 to 5 times ("half a dozen" by own count)
+- None of prior depositions involved the Sulphur Mines salt dome
+
+================================================================================
+TOPIC 2: WHITE TOP ENERGY / YELLOW ROCK STRUCTURE AND ROLES
+================================================================================
+
+- North Summit Energy LLC was the starting entity (2015–2016); evolved into White Top
+  Oil and Gas and then White Top Energy
+- White Top Oil and Gas formed specifically to conduct 3D seismic survey at Sulphur Mines
+- White Top Energy is the parent company; owns 100% of Yellow Rock LLC
+  (as of Easley's departure, and believed still)
+- Yellow Rock LLC's sole business purpose: drilling for oil and gas at Sulphur Mines Field
+- Easley's role: Senior Vice President and Manager at both White Top Energy and Yellow Rock LLC
+- Robin French (L.R. French, III) was Easley's boss and co-manager; they worked side by side
+- Easley's responsibilities: legal, administrative, land activities, oversight of 3D seismic
+  survey shoot, dealing with drilling contractors, engineering and production oversight
+- Involved in decisions about which wells to drill; reviewed recommendations from
+  geologists, geophysicists, and engineers
+- Reviewed/prepared materials sent to investors and potential investors
+- Communicated with DNR (Louisiana Dept. of Natural Resources) about permitting,
+  through the company's regulatory consultant
+- Had email addresses at Yellow Rock, White Top, North Summit, and North Wind LLC domains
+- North Wind LLC: earlier company (out of business ~8–10 years); French and Easley
+  involved; business purpose was raising capital to drill salt domes in South Louisiana
+  (particularly Plaquemines Parish)
+- Typical manager activities per company operating agreement: any and all company activities
+
+================================================================================
+TOPIC 3: TIMELINE — INVOLVEMENT AND DEPARTURE
+================================================================================
+
+- Late 2015: North Summit began reviewing salt dome development opportunities in South Louisiana
+- 2016: intensified focus; from mid-2016 onward, 100% of Easley's time on Sulphur Mines Field
+- 2017: further intensification
+- Summer 2021: Easley and French replaced as White Top managers by Jonathan Barrett
+  - Reason: Sunny Solar (senior secured lender), overseen by Barrett, became uncomfortable
+    with the loan and determined that if they bore the financial risk going forward, they
+    needed to be in control
+- Fall 2021: Easley's full-time involvement ended
+- ~Fall 2022: Easley completed approximately one additional year of transition/support work
+  for Yellow Rock and White Top Energy
+- After transition: Easley became a farmer
+
+Post-departure: Easley remained on the Board of Yellow Rock and White Top Energy
+after leaving the manager role.
+
+================================================================================
+TOPIC 4: SULPHUR MINES FIELD — DRILLING PROGRAM
+================================================================================
+
+- Sulphur Mines Field: the exclusive focus of Yellow Rock/White Top
+- Drilling program involved both straight-hole vertical wells and directional drilling
+- Well locations determined by X and Y coordinates with input from geoscience team
+- The first five wells identified as critical: Fee 1024, Fee 953, Fee 954, and Fee 961
+  (note: source lists four well numbers in a "first five" context; reporter to verify)
+- Drilling order labeled A through V (not "A through very" — steno error corrected)
+- Directional drilling required accounting for the angle (not "ankle") of the drill,
+  including how sharply the drill can be directed and where the drill starts
+- Anti-collision software (steno: "anti conflict") required for wellbore planning;
+  FLAG: reporter to verify exact industry term used
+- Drill pipe getting stuck in salt formations is a known hazard; adds to costs
+- Easley concerned about penetrating the caprock (steno: "CAP bra")
+- IMD (Injection and Mining Division) approval required as a first step
+- Call with IMD Mines and Minerals documented in record
+
+================================================================================
+TOPIC 5: SEISMIC SURVEY AND IN-DEPTH GEOPHYSICS
+================================================================================
+
+- 3D seismic survey was the initial major work product; White Top Oil and Gas formed
+  specifically for this purpose
+- In-Depth Geophysics (steno: "In_Depth") was the geophysics contractor
+  - Joel Latchman (steno: "Jill Latchman") was with In-Depth
+  - Easley was concerned In-Depth was fishing for White Top's approval to access the
+    parameters In-Depth had used in reprocessing the seismic data
+  - Did not want to create an open-ended situation; wanted to stop it at the beginning
+  - Characterized their proposed additional work as requiring "extensive, lengthy, costly
+    additional reprocessing"
+  - They used a "bright spot" approach to identifying anomalies (steno: "brat spot")
+  - FLAG: Three *REPORTER CHECK HERE* placeholders in this section of testimony;
+    all three unresolved — reporter must review audio before certification
+
+- Seismic interpretation involved triangles marking potential drilling locations,
+  some labeled with letters; Easley provided a general sense description
+  [FLAG: REPORTER AUDIO CHECK REQUIRED at that specific line]
+
+- Going back to Union Texas days, geoscience team (steno: "ghee sciences team")
+  was a long-established discipline in Easley's professional history
+
+================================================================================
+TOPIC 6: INVESTORS, CAPITAL STRUCTURE, SUNNY SOLAR, LUMINUS
+================================================================================
+
+- White Top and Yellow Rock raised capital from LLC members and outside investors
+- Sunny Solar: senior secured lender; eventually took control through Barrett
+- Luminus Energy: investor/party; distribution of communications went to Luminus
+  - Source garbles Luminus contact name throughout ("bunker sod with humid in us");
+    FLAG: reporter to identify correct name from source documents
+- Rights offering: White Top rights offering distributed to Sunny Solar;
+  "some had declined, some accepted" (steno: "Sod accepted" corrected)
+- Revenant Signal Energy: LLC member / joint venture participant
+  (steno renders as "REV rent signal—energy signal" early in deposition,
+  more consistently as "Revenant Signal Energy" later; FLAG: reporter to verify)
+- Donelynn Energy [tentative]: drilling manager's company; MS. Curtis clarified
+  "Space between done and Lynn" on record; garbled throughout as "Donelon energy,"
+  "Done linen gee," etc.; FLAG: reporter to verify entity name
+- Had debt capital but no equity capital (steno: "depth capital") at certain points
+
+================================================================================
+TOPIC 7: EXHIBITS — KEY PASSAGES
+================================================================================
+
+Exhibit 127: Notice of Deposition (identified; witness confirmed he had seen it)
+
+Exhibit 129: Document with Bates YR-341521 (steno: "why are 341521")
+  - MS. Curtis objection at line 3344-3348 that document doesn't use the word
+    "significant" — reporter to note this objection accurately in context
+
+Exhibit 135: Bates YR-323003 (steno: "YR_ 3230 on three" — corrected)
+
+Exhibit 136: Geoscience team list ("from you list in Exhibit No. 36" corrected to
+  Exhibit No. 136 per context)
+  - Brad Brandl (steno: "Brad bran DAL") took over at some point
+  - Going all the way back to Union Texas days
+
+Exhibit 154: Ms. Borrego's email (steno: "Ms. Break owes email")
+  - Eva Borrego confirmed as correct name throughout transcript
+
+Exhibit No. 142: Appears TWICE in exhibit index — FLAG: reporter to verify
+
+Bates prefix note: Throughout deposition, steno renders "YR-" as "why are" phonetically.
+All instances corrected to "YR-" in final transcript. Spot-check recommended.
+Key Bates numbers appearing in testimony include:
+  YR-341521, YR-351388, YR-360803, YR-288594, YR-323003, YR-415920 (approx.),
+  YR-435045 (steno: "YR_4350 45")
+
+================================================================================
+TOPIC 8: COVID-19, PRODUCTION, SBA, CAPEX
+================================================================================
+
+- COVID-19 pandemic affected Yellow Rock's operations
+- 28-day period (steno: "28 today period") February 23 – March 24, 2020: 409 bbl/day
+  production (verbatim testimony — 409 barrels/day is witness testimony, not corrected)
+- In less than a year, production had dropped ("unless than a year" — corrected)
+- Company wanted to get ahead of any issues ("weep want" — corrected)
+- Applied for disaster relief and SBA, et cetera
+- Funding, drilling, CAPEX budget constraints discussed
+  [FLAG: "standing" at line 5629 may be "constraints" or witness's own word — MEDIUM confidence]
+
+================================================================================
+TOPIC 9: HURRICANE DAMAGE — SULPHUR MINES FIELD
+================================================================================
+
+- Named hurricane was Hurricane Laura (2020) (steno: "lawyer a" — corrected)
+- Hurricane damage with up to $70,000 in repairs still outstanding
+  (steno: "hurricane war damage up 70,000" — corrected; dollar sign added per context)
+- FLAG: source also references "signature named tropical storm" — MEDIUM confidence
+  correction to "significant" or "second" named tropical storm; reporter to verify
+
+================================================================================
+TOPIC 10: ALVAREZ AND MARSAL
+================================================================================
+
+- Witness was responding to questions from Alvarez and Marsal
+  (steno renders as "Oliver resin mar sol," "Oliver an mar sol" — corrected throughout)
+- Alvarez and Marsal is an evaluation firm
+- Communications confirmed at line 5463
+
+================================================================================
+TOPIC 11: TECHNICAL DISPUTES AND THIRD-PARTY PERSONNEL
+================================================================================
+
+- Burt Bowen (steno: "B bone") and John Miller: persons identified in letter authorship
+  context; Burt Bowen's name spelled out on record as B-o-w-e-n
+- Thomas Metcalf (steno: "Thomas met calf" throughout): geotechnician; reporter to confirm
+  spelling (Metcalf or Metcalfe); associated email address heavily garbled
+- Steve Derby (steno: "Stephen Derby" at one instance): identified person; reporter to
+  apply consistent spelling throughout
+- MS. Tran: Easley confirmed sending a slide to her (steno: "accept this slide" corrected)
+
+================================================================================
+TOPIC 12: INVESTOR IDENTITY DISPUTE / COLLOQUY
+================================================================================
+
+- Significant on-record colloquy at approximately lines 7601–7611:
+  TJ Madigan (Sher Garner, for Plaintiff) instructed witness not to answer and
+  addressed Hobby directly: "Stop it, Walker."
+- Extended dispute over investor identity protections
+- FLAG: Sensitive passage; accurately captured per reporter; flagged for reporter review
+
+================================================================================
+TOPIC 13: PROCEDURAL MATTERS ON RECORD
+================================================================================
+
+- Audio break: ~9:17–9:18 a.m.; Mr. Guillot reported audio breaking up;
+  brief off-record period
+- Off record at 12:06 p.m. (steno: "12 '06 p.m." — corrected)
+- Return to record at 9:58 a.m. (steno: "'9:58 a.m." — leading apostrophe corrected)
+- Court reporter's computer went down at ~4:05 p.m.; brief recess 4:05–4:08 p.m.
+  FLAG: Reporter to verify no testimony gap in this section
+- Court reporter speaks on record at lines 3422-3424 to direct witness where to put
+  documents (common; noted for transcript purposes)
+- Court reporter reads back a question on record at line ~2017: "Found it. I can read
+  it back." FLAG: Readback event — flag for formatting in final transcript
+- Zoom participant: "(Court Reporter clarification.)" at line ~6069; reporter to
+  confirm content of clarification for certified copy
+
+================================================================================
+TOPIC 14: STIPULATIONS AT OPEN
+================================================================================
+
+- Darren Guillot (Starr Indemnity & Liability) placed the following on record before
+  testimony began:
+  1. All objections reserved except form of questions and responsiveness of answers
+  2. One objection is good for all present unless someone opts out
+  3. Starr Indemnity reserves all rights, including right to re-depose witness,
+     pending opportunity for meaningful discovery
+- MR. HOBBY: No objection from Westlake
+- MS. CURTIS: None from Plaintiffs
+
+================================================================================
+TOPIC 15: CLOSE OF DEPOSITION
+================================================================================
+
+- Deposition suspended at 5:00 p.m.
+- MS. CURTIS: "We have gone for eight hours with a few breaks. And Mr. Easley and
+  the rest of us are tired and we're not going any longer."
+- THE WITNESS: "My spider bite hurts."
+- MR. HOBBY: Westlake was prepared to continue; placed on record that witness and
+  opposing counsel made the decision not to continue
+- THE VIDEOGRAPHER: five hours and 33 minutes on record
+- Rough draft requested by MS. CURTIS; confirmed at 5:01
+- Deposition is NOT concluded; continuing examination anticipated; Westlake stated
+  readiness to continue same day
+
+================================================================================
+FLAGS SUMMARY (all items requiring reporter action before certification)
+================================================================================
+
+1. Caption location: "909 Post Oak Street, Houston, Texas 70112" — should be
+   "909 Post Oak Lane, Houston, Texas 77024." Reporter to confirm.
+
+2. Exhibit No. 142 appears TWICE in exhibit index. Reporter to verify.
+
+3. Kelly Hart & Hallman suite number blank in appearances block.
+
+4. "kenndyslaw.com" — possible typo; reporter to verify against Kennedys Law LLP.
+
+5. Videographer name: "Brian" vs. "Bryan" Smith. Confirm with Lexitas.
+
+6. MS. HANDY appears in record but not in formal appearances block. Reporter to identify.
+
+7. Unidentified Zoom participant "Nathaniel" (~line 3071). Reporter to identify.
+
+8. Drilling manager company name: "Donelynn Energy" [tentative]. Verify against discovery.
+
+9. "Revenant Signal Energy": rendered inconsistently; reporter to verify throughout.
+
+10. Thomas Metcalf email address garbled: reporter to verify from source documents.
+
+11. REPORTER AUDIO CHECK REQUIRED — line ~7452 (*REPORTER CHECK HERE* placeholder)
+
+12. REPORTER AUDIO CHECK REQUIRED — line ~11344 (*REPORTER CHECK HERE* placeholder)
+
+13. REPORTER AUDIO CHECK REQUIRED — line ~11557 (*REPORTER CHECK HERE* placeholder)
+
+14. Reporter's computer went down ~4:05 p.m. (lines ~10258-10264); verify no gap.
+
+15. YR- Bates prefix corrected throughout from steno "why are." Spot-check all Bates
+    numbers against exhibit stamps.
+
+16. "Anti-conflict software" (line ~10934): likely "anti-collision software" —
+    reporter to verify correct industry term.
+
+17. "Nathaniel on Zoom" at ~line 3071 — not in appearances; reporter to identify.
+
+18. Semi-annual vs. "Sam I annual" (~line 10352) — MEDIUM confidence; reporter
+    to verify "semi-annual" or "at least annual."
+
+19. Signature/second/significant named tropical storm (~line 8463) — MEDIUM confidence.
+
+20. "And, process." (~line 5574) — isolated fragment; may be "And prices." or truncated
+    answer; reporter to review audio.
+
+================================================================================
+                       * * * END OF CONDENSED SUMMARY * * *
+================================================================================

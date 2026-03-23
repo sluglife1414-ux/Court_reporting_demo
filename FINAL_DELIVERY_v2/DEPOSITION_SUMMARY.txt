@@ -1,0 +1,282 @@
+================================================================================
+                         DEPOSITION SUMMARY
+================================================================================
+
+WITNESS:   Thomas L. Easley ("Tom Easley")
+CASE:      Yellow Rock, LLC, et al. v. Westlake US 2 LLC f/k/a Eagle US 2
+           LLC, et al.
+DOCKET:    202-001594, Division "H," 14th Judicial District, Parish of
+           Calcasieu, State of Louisiana
+DATE:      Friday, March 13, 2026
+LOCATION:  The Houstonian, 909 Post Oak Lane, Houston, Texas 77024
+TIME:      9:09 a.m. to 5:00 p.m. (5 hours 33 minutes on the record)
+REPORTER:  Marybeth E. Muir, CCR, RPR
+EXAMINER:  Walker Hobby, Susman Godfrey LLP (for Defendants, Westlake US 2
+           LLC, Westlake Corporation, and Westlake Chlor-Vinyls Corporation)
+VIDEOGRAPHER: Bryan Smith, Lexitas
+
+================================================================================
+I.   CASE OVERVIEW
+================================================================================
+
+This is a complex oil and gas litigation arising out of operations at and
+around the Sulphur Mines salt dome in Calcasieu Parish, Louisiana.  Plaintiffs
+-- Yellow Rock, LLC and related entities -- allege that Westlake's mismanage-
+ment of its salt cavern operations caused a pressure loss event (reported loss
+of pressure in Westlake's Cavern 6 or 7, beginning in or around December 2021),
+which in turn triggered a DNR moratorium on drilling and recompletion permits
+throughout the Sulphur Mines Field.  Plaintiffs allege they have suffered
+significant damages from their inability to develop the field.
+
+Multiple defendants are insurance companies named as excess or CGL carriers for
+various operators.  Lonquist & Company and Lonquist Field Service are also
+defendants.
+
+================================================================================
+II.  WITNESS BACKGROUND
+================================================================================
+
+Thomas L. Easley is a CPA by training (formerly a partner at one of the "Big
+Eight" CPA firms), holding a B.S. in general business from Charleston State
+University, an MBA from Texas A&M, and postgraduate coursework at Stanford.
+He has no degrees or certifications in petroleum engineering, geology, or
+related technical disciplines.
+
+Mr. Easley left public accounting in November 1981 and spent his career
+thereafter in oil and gas acquisition/development, a publicly traded E&P
+company, and offshore contract drilling.  He is currently retired and operates
+a Coastal Bermuda hay farm in De Leon, Texas (where he has lived for slightly
+over three years).
+
+Mr. Easley has been deposed approximately 25 to 30 times, mostly in oil and
+gas matters, with the most recent prior deposition being approximately six or
+seven years ago.
+
+================================================================================
+III. WITNESS'S ROLE IN THE LITIGATION
+================================================================================
+
+Mr. Easley served as Senior Vice President and Manager of White Top Energy LLC
+and of Yellow Rock, LLC.  He and L.R. "Robin" French (III) were the two
+managers of White Top Energy.  French was his superior.  Easley oversaw legal,
+administrative, land, seismic survey, drilling contractor, engineering, and
+production activities.
+
+He was heavily involved in:
+  - Conducting due diligence before the 2018 acquisition of Yellow Rock
+  - Overseeing the 3D seismic survey (shot via White Top Oil and Gas LLC)
+  - Communications with DNR regulatory consultants
+  - Drilling contractor selection and oversight
+  - Investor/lender relations
+  - Financial operations including cash flow reporting to Luminus/Sunny Solar
+
+Easley and French were replaced as managers by Jonathan Barrett (through Sunny
+Solar) in approximately August 2021 via a negotiated restructuring.  Easley
+remained on the boards of Yellow Rock and White Top Energy.  He provided one
+additional transition/advisory year and departed active involvement in late
+2022.  He retains a seat on the board with minimal current involvement and
+a small (diminimus, handshake-only) financial interest via L.R. French's REV
+Energy Signal Joint Venture.
+
+================================================================================
+IV.  CORPORATE STRUCTURE
+================================================================================
+
+North Summit Energy LLC (predecessor, 2015-2016)
+     |
+White Top Energy LLC (parent; formed to acquire Yellow Rock)
+     |-- White Top Oil and Gas LLC (formed for 3D seismic survey only)
+     |-- Yellow Rock, LLC (100% subsidiary; the field operating company)
+
+Sunny Solar (senior secured lender 2018-2021; majority owner from Aug. 2021)
+     |-- Controlled/overseen by Luminus Management
+          |-- Jonathan Barrett (key individual)
+
+Prior to the August 2021 restructuring, White Top had approximately 6-10 LLC
+members (equity holders).  Post-restructuring, Sunny Solar acquired
+approximately 87% equity.  Ten Series A-2 members remained as minority holders.
+
+================================================================================
+V.   THE SULPHUR MINES FIELD
+================================================================================
+
+Located in Calcasieu Parish, Louisiana.  A heavily developed oil and gas field
+around a major salt dome.  Over one thousand wells have been drilled in the
+field historically.  Yellow Rock's lease acreage covered approximately 5,000
+acres around the dome in all directions.
+
+White Top and Yellow Rock identified 71 ranked drilling prospects plus 22
+additional geoscience potential locations (A through V) throughout the field.
+All quadrants of the dome were represented.
+
+White Top drilled four new wells and performed several recompletions of legacy
+wells during Easley's management tenure.
+
+The new management team (post-August 2021) drilled approximately one well
+(Fee 1031, completed as a commercial wet well with modest production) and
+performed some recompletions before the DNR permit moratorium halted all
+development in late 2022/early 2023.
+
+================================================================================
+VI.  KEY TESTIMONY SUBJECTS
+================================================================================
+
+A. The Pressure Loss Event
+   - Easley was not involved in day-to-day operations at the time (was on the
+     farm).  First informed by Jonathan Love in approximately Q1 2023.
+   - His layman's understanding: a massive leak in a cavern requiring
+     injection of salt water to offset pressure losses.
+   - He disputes that the timing was specifically December 2021 as a start
+     date; he says he does not know when the occurrence began.
+   - In his personal view, the event appears to have had a permanent impact on
+     the field's developability; a six-foot-tall levee was built around the
+     field and no foreseeable permits are being issued.
+
+B. Theories as to Cause
+   - Theory 1 (SWD wells): Yellow Rock's S4 and S7 salt water disposal wells
+     injected too much water near the salt, possibly dissolving it from outside.
+     Easley says this theory was, in his view, put to rest after the December
+     2019 DNR meeting with Commissioner Ieyoub.
+   - Theory 2 (Drilling too close): A directional oil and gas well may have
+     been drilled too close to the salt or penetrated it.
+   - Easley's personal opinion: he believes Yellow Rock's operations had no
+     impact on the pressure loss event.
+
+C. DNR Regulatory History
+   - Yellow Rock used Jo Beth Taylor of KJ Consulting (Lafayette) as its
+     regulatory consultant for direct interface with DNR.
+   - Stephen Lee was the manager/department head of DNR's Mines & Minerals
+     Division overseeing all Louisiana salt dome cavern operations.
+   - December 2019: Formal meeting in Baton Rouge attended by Westlake and
+     others, including Commissioner Ieyoub.  Issues: S4 and S7 SWD wells;
+     DNR threatened public notice to require plug and abandonment.  Yellow Rock
+     voluntarily curtailed injection volumes; regulatory action placed on hold.
+   - February 2019: Lee informally told Yellow Rock the 1316 well was "too
+     close to the edge of the dome" for SWD conversion.  1,320-foot minimum
+     setback from dome edge -- informal policy, not in written rules.
+   - Westlake itself had a permit request pending with DNR for approximately
+     three years as of April 2019 (as noted by Easley in an e-mail -- Easley
+     characterizes the DNR as taking longer than typical for oil and gas wells
+     near the salt dome structure).
+
+D. Financial History
+   - Production declined from ~409 barrels/day (March 2020) to ~140 BOE/day
+     (January 2021) to ~70 barrels/day (December 2021) -- dramatically
+     impacted by Hurricane Laura (August 2020), Hurricane Delta, and tropical
+     storms, which shut in the field and destroyed two power stations.
+   - Loan from Sunny Solar matured January 29, 2021; White Top could not repay.
+   - January 2021: generating ~$20,000/month positive cash flow before debt
+     service and principal repayment.
+   - Required $6 million in capital investment to reach 1,000 BOE/day.
+   - Payroll taxes withheld from employees but not paid to government as of
+     December 2021 (hundreds of thousands of dollars).
+   - No LLC member had recouped their investment as of December 2021 or as of
+     the date of this deposition.
+
+E. August 2021 Restructuring
+   - White Top explored Chapter 11 bankruptcy (hired Dick Fuqua, bankruptcy
+     attorney) but ultimately executed a negotiated restructuring with Sunny
+     Solar rather than filing.
+   - Sunny Solar took majority control; Easley and French replaced as managers.
+   - Jonathan Barrett became chief executive; Jonathan Love became COO.
+   - Matt Steele brought in to assemble and oversee new technical team.
+
+F. Criticism by Matt Steele
+   - Matt Steele (chemical engineer retained by Barrett) characterized
+     Easley's team's record-keeping as "amateurish" and used the word
+     "ineptitude."
+   - Easley disputes these characterizations.  He attributes shortcomings to
+     limited resources, constrained budget, and operating in a difficult
+     environment (COVID, hurricanes, capital drought).
+   - He acknowledges the new team was "much more intense and rigorous" and had
+     more resources, but he does not consider his team's work product the
+     result of ineptitude.  As a CPA, he notes he was more qualified than
+     Steele in financial/accounting matters; Steele was more qualified as a
+     chemical engineer.
+
+G. Cavern Proximity and Drilling Safety
+   - Yellow Rock established a practice of circulating proposed well
+     coordinates to Boardwalk and Westlake to coordinate and obtain their
+     concurrence before drilling.  Obtained concurrence in all instances.
+   - Todd Bertelot of Boardwalk (Vonco) provided Yellow Rock with 3D cavern
+     visualization data (Voxler software) showing subsurface cavern locations
+     relative to proposed drill sites.
+   - Bertelot's April 2019 assessment: drilling with a southerly directional
+     component from the 1014 location, the BLM No. 4 cavern was "a nothing
+     burger."
+   - Easley testified he was aware proximity to the salt dome edge was a known
+     risk factor for drilling (increased risk of stuck pipe, cost overruns).
+   - Yellow Rock produced a revised drill schedule (Exhibit 155) listing 71
+     ranked prospects and 22 additional geoscience locations distributed in all
+     quadrants of the dome.
+
+H. Seismic Data
+   - White Top conducted a 3D seismic survey via White Top Oil and Gas LLC.
+   - Data was offered/pitch to investors as a quality differentiator.
+   - Seismic data was later reprocessed by new management team.
+   - Dorothea Faw (geophysicist with Indepth Geophysical) and Richard Lofton
+     were retained for bright spot analysis; Easley was concerned they were
+     attempting to expand scope to a more extensive costly reprocessing
+     engagement.
+
+I. Investor/Fiduciary Issues
+   - Easley denies hiding any material information from investors or lenders.
+   - He understands fiduciary duty as obligation to fair dealings, honesty, and
+     disclosure to LLC members and lenders.
+   - He states that materiality and permanence matter for disclosure
+     obligations; the pressure loss event, in his current view, appears
+     permanent given the ensuing DNR moratorium.
+   - He does not know whether the pressure loss event was formally disclosed
+     to investors before the lawsuit was filed.
+
+================================================================================
+VII. DEPOSITION STATUS / CONTINUING EXAMINATION
+================================================================================
+
+The deposition was suspended at 5:00 p.m. at the insistence of plaintiffs'
+counsel (Ms. Curtis) due to fatigue (Mr. Easley mentioned a spider bite was
+causing him pain).  Westlake's counsel, Mr. Hobby, stated on the record that
+Westlake was prepared to continue and objected to the early conclusion.  The
+deposition ran 5 hours and 33 minutes on the record.  A continuing session is
+anticipated.
+
+Testimony was incomplete.  Subjects not yet reached include Exhibits 157 (e-
+mail chain on seismic data) and other remaining topics.
+
+================================================================================
+VIII. KEY INDIVIDUALS REFERENCED
+================================================================================
+
+Jonathan Barrett          -- CEO of Sunny Solar/Luminus; took over White Top
+                             management August 2021
+Todd Bertelot             -- Vonco/Boardwalk representative; provided 3D cavern
+                             data to Yellow Rock; also principal of Sulphur Dome
+                             LLC (surface lessor)
+Eva Borrego               -- Senior geotech for Yellow Rock; furloughed 2020;
+                             recalled briefly by Easley in June 2022
+Brad Brandl               -- Development engineer; remained throughout both
+                             management periods
+L.R. "Robin" French (III) -- Co-manager of White Top Energy; Easley's boss;
+                             replaced by Barrett in August 2021
+Dick Fuqua                -- Bankruptcy counsel consulted by White Top in 2021
+William Green             -- Senior geophysicist; furloughed mid-2020
+Clint Hipke               -- Senior geologist; furloughed mid-2020
+Commissioner Ieyoub       -- DNR Commissioner of Natural Resources; attended
+                             December 2019 Baton Rouge meeting
+Jonathan Love             -- COO/land and operations under new management
+Stephen Lee               -- Head, DNR Mines & Minerals Division
+John Miller               -- Board member; introduced Steve Derby as investor
+Mickey McGhee             -- Geophysicist; brought in by new management
+Jennifer Saltsman         -- Reservoir engineer; brought in by new management
+Matt Steele               -- Technical manager/adviser; retained by Barrett;
+                             criticized Easley team's work product
+Steve Derby               -- White Top LLC investor; expressed frustration
+Jo Beth Taylor            -- KJ Consulting, Lafayette; Yellow Rock's regulatory
+                             consultant for DNR interface
+Theresa Tran              -- Luminus/Barrett's secretary; now deceased
+Steve Wipple              -- Geophysicist/geologist; member of Yellow Rock
+                             technical team; let go after ownership change
+
+================================================================================
+                              END OF SUMMARY
+================================================================================

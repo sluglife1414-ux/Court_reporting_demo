@@ -1,0 +1,345 @@
+================================================================================
+                              EXHIBIT INDEX
+================================================================================
+
+DEPOSITION OF THOMAS L. EASLEY
+CASE:    Yellow Rock, LLC, et al. v. Westlake US 2 LLC f/k/a Eagle US 2 LLC,
+         et al., Docket No. 202-001594, Division "H"
+DATE:    March 13, 2026
+REPORTER: Marybeth E. Muir, CCR, RPR
+
+--------------------------------------------------------------------------------
+NOTE: Exhibits 127 through 158 were marked at this deposition.
+      Exhibits 139, 144, and 150 were marked but not specifically described
+      in the testimony captured in the transcript.
+      ** QA FLAG: Exhibit 142 appears TWICE in the raw transcript index.
+         See QA_FLAGS.txt for details.
+--------------------------------------------------------------------------------
+
+EX.    BATES / IDENTIFIER                  DESCRIPTION
+----   --------------------------------    ------------------------------------
+127    [No Bates noted]                    Notice of Deposition.  Confirmed
+                                            by witness.  Previously seen.
+
+128    [No separate Bates; referenced      E-mail, Brad Brandl to Thomas
+       also as Exhibit 113 in prior        Easley and geoscience team,
+       proceedings]                        dated September 10, 2018.
+                                           Subject: "Candidate selection for
+                                           request re: Petrophysics analysis."
+                                           Identifies five critical wells:
+                                           Burlington 20-1, Fee 1024, Fee 953,
+                                           Fee 954, Fee 961.
+                                           Also previously marked Exhibit 113.
+
+129    YR-264305                           White Top Board of Directors Meeting
+                                           Minutes, October 22, 2019.
+                                           Topics: methodology for G&G/
+                                           engineering approach; subsurface
+                                           faulting complexities; drilling
+                                           prospects 829A, 786, 871 (none
+                                           drilled); cost overruns on wells
+                                           1028, 1027, 1029; strategy on
+                                           well location selection and risk
+                                           management -- emphasis on "lower
+                                           complexity well locations" and
+                                           "rigid cost controls."
+
+130    YR-341521                           Letter, White Top Energy LLC to
+                                           Sunny Solar, January 26, 2021.
+                                           States White Top "will not be in
+                                           a position to repay this
+                                           indebtedness on or before the
+                                           January 29, 2021, maturity date."
+                                           Attributes to COVID-19 pandemic and
+                                           oil price drop.  Requests one-year
+                                           extension.  Offers 250 company units
+                                           at $1,800/unit (10% of face value).
+
+131    YR-351388                           E-mail, Robin French, dated
+                                           June 18, 2021.  Subject: White Top
+                                           Energy Reorganization.  Discusses
+                                           "reorganization Chapter 11 plan for
+                                           White Top Energy LLC."  Witness
+                                           characterizes as exploration of a
+                                           potential alternative, not a formal
+                                           plan.  Some items redacted.
+
+132    YR-360803                           Memorandum, August 24, 2021, from
+                                           Thomas Easley and Robin French to
+                                           White Top Energy LLC employees and
+                                           consultants.  Title: "White Top
+                                           Energy LLC Ownership and Management
+                                           Transition."  Announces Sunny Solar
+                                           majority/controlling interest.
+                                           States "this restructuring plan is
+                                           now being implemented."
+
+133    YR-352461                           White Top Energy LLC, Sulphur Mines
+                                           Field Operations and Financial
+                                           Update, March 27, 2020.  Documents
+                                           moratorium on capital investment in
+                                           new drilling activity; reduction in
+                                           engineering, geological, and
+                                           geophysical expenses; reduction in
+                                           administrative/consulting personnel
+                                           expenses; COVID-19/oil price
+                                           rationale.  Field production ~409
+                                           barrels/day (Feb. 23 to Mar. 24,
+                                           2020).
+
+134    YR-362589                           E-mail chain, October 2020.  Top
+                                           e-mail from Jonathan Barrett to
+                                           Thomas Easley.  Subject: Confidential
+                                           White Top Energy LLC Cash Forecast
+                                           Update, October 1 - December 31,
+                                           2020.  Monthly expenses ~$213,000;
+                                           monthly income ~$175,000;
+                                           ~$30-40,000/month deficit.  Relies
+                                           on disaster relief/SBA funding.
+
+135    YR-323003                           E-mail, Thomas Easley, January 22,
+                                           2021.  Response to questions from
+                                           Alvarez & Marsal financial services
+                                           (on behalf of Luminus).  Field
+                                           production ~140 barrels equivalent/
+                                           day.  Positive cash flow ~$20,000/
+                                           month before debt service/principal.
+                                           Required $6 million to reach 1,000
+                                           BOE/day.  Main obstacle: funding.
+
+136    YR-41592                            E-mail, Thomas Easley, June 15,
+                                           2021, to Matt Steele, copying
+                                           Jonathan Barrett and Shawn Singh.
+                                           Reports curtailment in development
+                                           activity over prior 12 months and
+                                           furlough of geoscience team:
+                                           William Green (senior geophysicist),
+                                           Clint Hipke (senior geologist),
+                                           Eva Borrego (senior geotech).
+
+137    YR-288594                           Sulphur Mines Field Operations
+                                           Update, December 31, 2021.
+                                           Moratorium still in effect through
+                                           November 30, 2021.  Production:
+                                           ~70 barrels/day.  Workovers/
+                                           completions deferred pending 2022
+                                           funding.  ~$70,000 in hurricane
+                                           repair work still outstanding.
+
+138    YR-361983                           E-mail, Jonathan Barrett,
+                                           December 22, 2021, to Steve Derby,
+                                           copying Thomas Easley, Robin French,
+                                           and others.  Subject: Settlement
+                                           Proposal.  Point 2 confirms that
+                                           "hundreds of thousands of taxes have
+                                           been withheld -- NOT BEEN PAID --
+                                           over to the authorities."  Involves
+                                           dispute among existing LLC members
+                                           (Revenant Signal Energy vs. Derby)
+                                           over allocation.
+
+139    [Not specifically described         [Marked; not identified in detail
+       in testimony]                       in captured testimony]
+
+140    [No Bates noted -- investor         Capital raise/rights offering
+       presentation document]             presentation, approximately
+                                           January 2023.  Shows Sunny Solar
+                                           at ~87% equity.  10 Series A-2
+                                           members.  Only 3 of 10 elected
+                                           to participate.  $11 million raise:
+                                           $7.5M to pay down Sunny Solar debt;
+                                           $1.8M for 746 ST-1 offset well;
+                                           $1.8M for undesignated second well.
+                                           Use-of-funds table present.
+
+141    YR-355864                           E-mail, Jonathan Barrett,
+                                           December 12, 2022, to Thomas
+                                           Easley and board members.  Subject:
+                                           White Top Energy Investor PP_Final
+                                           (investor PowerPoint).  Item 5:
+                                           requests Easley add "a page or two
+                                           up front reminding the investors
+                                           about what this opportunity was
+                                           originally thought to be."
+                                           Also requests "all the good and the
+                                           bad needs to be laid out."
+
+142    YR-357637                           E-mail, Thomas Easley,
+                                           December 13, 2022, to Theresa Tran
+                                           at Luminus (Jonathan Barrett's
+                                           secretary/assistant, now deceased),
+                                           copying Jonathan Barrett.  States:
+                                           "I boiled it down to one added
+                                           slide to go at the front of the
+                                           slide deck.  Please clean it up as
+                                           necessary."  Response to Barrett's
+                                           request in Exhibit 141.
+                                           ** QA FLAG: Listed TWICE in raw
+                                           index -- see QA_FLAGS.txt.
+
+143    YR-357638 [Highly Confidential]     Slide prepared by Thomas Easley.
+                                           Attachment to the e-mail in
+                                           Exhibit 142.  Single slide added
+                                           to investor presentation explaining
+                                           what happened to the company.
+
+144    [Not specifically described         E-mail chain approximately
+       in testimony; references Todd       December 2018/January 2019
+       Bertelot / Boardwalk /Vonco]        involving Todd Bertelot of
+                                           Boardwalk (Vonco) re: Cavern 7.
+                                           [Details not fully captured in
+                                           transcript.]
+
+145    YR-067176 [Highly Confidential]     3D cavern imaging documents,
+                                           Voxler software.  Depicts 3D
+                                           renderings of caverns and salt dome.
+                                           Shows caverns relative to edge of
+                                           salt (yellow line on final page).
+                                           One page depicts caverns relative
+                                           to Yellow Rock's 1012 well.
+                                           Attachment to Exhibit 144 e-mail
+                                           (1012-Cavern 7.PDF).
+
+146    YR-435045                           E-mail chain, April 2, 2019.
+       (also Exhibit 106 in prior          Thomas Easley to Todd Bertelot,
+       proceedings)                        copying John Cox, Steve Wipple,
+                                           Robin French.  Subject: Boardwalk
+                                           caverns/wells subsurface 3D
+                                           interpretive software.  Requests
+                                           vendor information for Voxler
+                                           software.  Discusses 1014 well pad
+                                           site review.  Bertelot responds:
+                                           "If you are drilling with a
+                                           southerly directional component from
+                                           the 1014, the BLM No. 4 cavern is
+                                           a nothing burger."
+
+147    YR-447627                           Meeting notes, John Miller,
+                                           January 30, 2019.  Sent to Robin
+                                           French; copies to Easley, Brad
+                                           Brandl, Steve Wipple.  Covers
+                                           evaluation of three drilling
+                                           prospects in area C.  Paragraph 3
+                                           (prospect CC-A): "this prospect was
+                                           considered higher risk due to being
+                                           directly up against the salt edge."
+
+148    YR-37094                            E-mail chain, February 2019.
+                                           Stephen Lee (DNR Mines & Minerals
+                                           Division head) responds to Brad
+                                           Brandl proposal to convert Fee 1016
+                                           to SWD well:  "We have looked at
+                                           the proposal well, and it is too
+                                           close to the edge of the dome."
+                                           Lee: "We generally will not consider
+                                           siting an SWD any closer than 1,320
+                                           feet from the edge of the dome.
+                                           Depending on the circumstances,
+                                           sometimes that is considered too
+                                           close."
+
+149    YR-293430                           E-mail, Thomas Easley, April 29,
+                                           2019.  Follow-up correspondence
+                                           approximately two months after
+                                           Exhibit 148.  [Referenced in
+                                           testimony; details of substance
+                                           not fully captured.]
+
+150    [Not specifically described         [Marked; not identified in detail
+       in testimony]                       in captured testimony]
+
+151    YR-180231                           E-mail, Thomas Easley to Todd
+                                           Bertelot, May 20 and May 24, 2021;
+                                           with forward to Brad Brandl, Steve
+                                           Wipple, Eva Borrego.  Transmits map
+                                           with "proposed drill locations over
+                                           base lease for the 3 to 5 years."
+                                           Context: surface lease modification
+                                           for Sulphur Dome LLC solar farm
+                                           project.  Notes "known distance
+                                           limitations" for directional
+                                           drilling angles.  Bertelot
+                                           responds with counterproposal map.
+
+152    YR-477049                           Map of proposed drill locations
+                                           sent to Todd Bertelot.  Attachment
+                                           to Exhibit 151.  Yellow triangles
+                                           show potential locations.  Red
+                                           boundary lines show Yellow Rock
+                                           lease acreage.  Well locations
+                                           distributed throughout the dome.
+
+153    YR-180233 [Highly Confidential]     Map, Todd Bertelot counterproposal
+                                           (Sulphur Dome LLC response).
+                                           Circles show reach radius from
+                                           proposed central drill pad locations.
+
+154    YR-429774                           E-mail, Eva Borrego to Thomas
+                                           Easley, June 28, 2022.  Subject:
+                                           Yellow Rock Potential Locations -
+                                           Internal Map.  Updated internal maps
+                                           including existing anomalies inside
+                                           and outside acreage, additional
+                                           well pads, potential locations.
+                                           Two attachments: (1) internal map;
+                                           (2) copy of revised drill schedule
+                                           5/18/21 (= Exhibit 155).
+
+155    YR-429778 [Highly Confidential]     Spreadsheet, revised drill schedule,
+                                           dated 5/18/21, prepared by Brad
+                                           Brandl.  Lists 71 ranked drilling
+                                           prospects identified with location on
+                                           dome, potential recoverable reserves,
+                                           proposed drilling order.  Plus 22
+                                           additional geoscience potential
+                                           locations (labeled A through V).
+                                           Prospects distributed in all
+                                           quadrants around the dome.
+
+156    YR-429776                           Map attachment (color map).
+                                           Attachment to Exhibit 154 e-mail.
+                                           Shows potential drill location
+                                           triangles with letters/numbers
+                                           keyed to spreadsheet.  Witness
+                                           needed magnifying glass to study
+                                           in detail.
+
+157    YR-454139                           E-mail chain (seismic data
+                                           discussion).  [Referenced; details
+                                           not fully captured before close of
+                                           day.]
+
+158    YR-434633                           E-mail chain, October 9, 2020.
+                                           Bottom e-mail from Dorothea Faw to
+                                           Joel Latchman at Indepth
+                                           Geophysical; forwarded by Brad
+                                           Brandl to Easley and geoscience
+                                           team.  Involves bright spot analysis
+                                           of Sulphur Mines dataset.  Easley
+                                           wrote to Brandl: "Thanks for
+                                           covering us, Brad.  I would have
+                                           gone into cardiac arrest without
+                                           your preface comments. TE"  Brandl
+                                           replied: "I got it, I'm not going to
+                                           let them get off the reservation."
+                                           Concern: Faw/Latchman were setting
+                                           up for extensive costly reprocessing
+                                           beyond their narrow bright-spot
+                                           scope of work.
+
+================================================================================
+                       TOTAL EXHIBITS MARKED: 32 (Nos. 127-158)
+================================================================================
+
+** QA FLAG: Exhibit 142 appears twice in raw transcript index. First listing
+   is correct (YR-357637). Duplicate in index flagged for reporter follow-up.
+   See QA_FLAGS.txt for full notation.
+
+** REPORTER NOTE: Exhibits 139, 144, and 150 were listed in the index and
+   marked at this deposition but were not discussed in detail in the captured
+   testimony. Descriptions above are based on context clues from surrounding
+   testimony. Verify against originals.
+
+================================================================================
+                              END OF EXHIBIT INDEX
+================================================================================

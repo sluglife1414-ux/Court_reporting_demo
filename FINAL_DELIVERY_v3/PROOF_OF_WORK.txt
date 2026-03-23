@@ -1,0 +1,346 @@
+PROOF OF WORK
+================================================================================
+Case:    Yellow Rock, LLC et al. v. Westlake US 2 LLC f/k/a Eagle US 2 LLC et al.
+Docket:  202-001594, Division "H", 14th Judicial District, Parish of Calcasieu
+Witness: Thomas L. Easley
+Date:    Friday, March 13, 2026
+Engine:  ROUGH_DRAFT / TWO_PASS
+Pass:    2b (summary/index/QA files)
+Source:  cleaned_text.txt (181,947 chars); RTF rough draft from Marybeth E. Muir, CCR, RPR
+================================================================================
+
+
+SECTION 1 — PRE-PROCESSING (steno_cleanup.py)
+----------------------------------------------
+Script:           steno_cleanup.py
+Input file:       [raw RTF rough draft from reporter]
+Output file:      cleaned_text.txt (181,947 characters)
+
+Pre-processing changes applied:
+
+  Double-underscore to em dash conversions:          321
+  Tilde characters removed:                          160
+  Compound word underscore-to-hyphen fixes:           85
+    Breakdown:
+      E_mail (→ email):                               74
+      day_to_day (→ day-to-day):                       4
+      re_depose (→ re-depose):                         1
+      non_verbal (→ non-verbal):                       1
+      publicly_traded (→ publicly-traded):             1
+      successor_in_interest (→ successor-in-interest): 1
+      follow_up (→ follow-up):                         3
+  Docket underscore to hyphen (202_001594 → 202-001594): 7
+  Double-@ artifact corrected:                        1
+  Encoding characters stripped:                      18
+                                                  ------
+  TOTAL PRE-PROCESSING CHANGES:                     592
+
+
+SECTION 2 — ENGINE CORRECTIONS (Pass 1 — 117 corrections)
+----------------------------------------------------------
+Format: LINE_APPROX | ORIGINAL (as received from steno_cleanup.py) | CORRECTED | CONFIDENCE | REASON
+
+LINE 44     | 909 Post Oak Street                                       | 909 Post Oak Lane                                         | HIGH   | Caption gives "Street"; stipulation and known facts confirm "Lane"; also ZIP 70112 is wrong (see FLAGS)
+LINE 46     | Houston, Texas 70112                                      | Houston, Texas 77024                                      | HIGH   | 70112 is a New Orleans ZIP; correct ZIP for The Houstonian is 77024; steno dropped digit
+LINE 180    | WESTLAKE CHLOR_VINYLS CORPORATION                         | WESTLAKE CHLOR-VINYLS CORPORATION                         | HIGH   | Underscore artifact from steno; correct name uses hyphen
+LINE 480    | IAN SALINAS_STERN, ESQ.                                   | IAN SALINAS-STERN, ESQ.                                   | HIGH   | Underscore artifact; hyphenated surname
+LINE 591    | My name is Brian Smith                                    | My name is Bryan Smith                                    | HIGH   | Appearances block spells "Bryan"; steno wrote "Brian"
+LINE 596    | 9:07 a.m.Central                                          | 9:07 a.m. Central                                         | MEDIUM | Missing space before "Central" — formatting artifact
+LINE 599-600| 111 North Post Oak Lane, Houston, Texas, 770 [line break] 24 | The Houstonian, 909 Post Oak Lane, Houston, Texas 77024 | HIGH   | Videographer address garbled; known location is The Houstonian, 909 Post Oak Lane; "111 North Post Oak Lane" is incorrect; ZIP split across lines
+LINE 696    | We depth have to go through every one                     | We don't have to go through every one                     | HIGH   | Known steno mistranslation (engine spec)
+LINE 795    | bathe transcript                                           | by the transcript                                         | HIGH   | Known steno mistranslation (engine spec)
+LINE 829    | he a quick one                                            | it's a quick one                                          | HIGH   | Known steno mistranslation (engine spec)
+LINE 844    | don't know how far way                                    | don't know how far away                                   | HIGH   | Known steno mistranslation (engine spec)
+LINE 865    | What do you do for a living right now. I'm a farmer?      | [REVIEW: Q./A. FORMAT — question and answer run together; needs separation] | HIGH | Fragment/run-on; steno lost Q./A. break
+LINE 871    | Hey, coastal Bermuda hey.                                 | Hay, coastal Bermuda hay.                                 | HIGH   | Known steno mistranslation "hey" → "hay" (engine spec); witness is a farmer; coastal Bermuda hay is a grass crop
+LINE 882    | Charleston state university                               | Charleston State University                               | HIGH   | Proper noun capitalization; university name
+LINE 887    | stand forward                                             | Stanford                                                  | HIGH   | Known steno mistranslation (engine spec); witness said postgraduate work at Stanford
+LINE 890    | debris or certification                                   | degree or certification                                   | HIGH   | Known steno mistranslation (engine spec)
+LINE 943    | acquisition an development                                | acquisition and development                               | HIGH   | Steno dropped "d" in "and" — standard rough draft artifact
+LINE 1089   | we formed blacktop oil and gas                           | we formed White Top Oil and Gas                           | HIGH   | "blacktop" = phonetic mistranslation of "White Top" (pattern established; corrected throughout)
+LINE 1093   | the subject least area                                    | the subject lease area                                    | HIGH   | "least" → "lease" — steno mistranslation
+LINE 1258-1259 | tap California manager of an LLC type activities      | typical manager of an LLC-type activities                 | HIGH   | "tap California" → "typical" — known steno mistranslation (engine spec)
+LINE 1303-1306 | geologist is, geophysicist is an engineers            | geologists, geophysicists, and engineers                  | HIGH   | Known steno mistranslation (engine spec); "is" artifacts after each noun
+LINE 1373   | I don't know how it was expand had                       | I don't know how it was expanded                          | HIGH   | "expand had" → "expanded" — steno run-on/garble
+LINE 1488   | remained on the Board ofYellow Rock                      | remained on the Board of Yellow Rock                      | HIGH   | Missing space — steno formatting artifact (also lines 1618, 1623)
+LINE 1569   | REV rent signal—energy signal joint venture              | Revenant Signal Energy joint venture                      | MEDIUM | Phonetic mistranslation; confirmed at line 6707; "REV rent signal" is steno garble
+LINE 1780-1782 | couldn't give an accurate response toss that particular part | couldn't give an accurate response to that particular part | HIGH | "toss" → "to" — steno artifact
+LINE 1831-1833 | issued answers all in between or issues is a better choice of words | [VERBATIM — witness self-correcting; keep as spoken]  | N/A    | Verbatim rule applies
+LINE 1923   | I mean0 Commissioner Ieyoub                              | I mean, Commissioner Ieyoub                               | HIGH   | "0" is steno numeral artifact; should be comma
+LINE 1956   | my dissolve the salt                                     | might dissolve the salt                                   | HIGH   | "my" → "might" — steno dropped "ght"
+LINE 1997   | I'll try to refrain from dealing in here say             | I'll try to refrain from dealing in hearsay               | HIGH   | "here say" → "hearsay" — steno word-break artifact
+LINE 2264   | subsurface son nature tests                              | subsurface sonar tests [REVIEW: may be "sonic" or other technical term] | MEDIUM | "son nature" likely "sonar" or "sonic nature"; flag for reporter
+LINE 2308   | straight whole vertical wells                            | straight-hole vertical wells                              | HIGH   | "whole" → "hole" — steno homophone; "straight-hole" is standard oil & gas term
+LINE 2312   | one "X" and why location                                 | one "X" and "Y" location                                  | HIGH   | "why" → "Y" (coordinate); directional drilling context
+LINE 2317   | that volumes directional drilling                         | that involves directional drilling                        | HIGH   | "volumes" → "involves" — steno mistranslation
+LINE 2344   | it could have been 16 several wells                      | it could have been several wells [REVIEW: "16" may be steno artifact for "a" or garbled fragment] | MEDIUM | "16 several" is nonsensical; "16" likely numeral artifact
+LINE 2403   | that theory can that a drilling operation                 | that theory that a drilling operation                     | HIGH   | "can" is steno artifact; duplicate/garbled word
+LINE 2543   | with the various back an for the between                  | with the various back and forth between                   | HIGH   | "an for the" → "and forth" — steno garble
+LINE 2550   | I was more relaying there appreciation                   | I was more relaying their appreciation                    | HIGH   | "there" → "their" — steno homophone
+LINE 2654   | were—were disproved an put to rest                       | were—were disproved and put to rest                       | HIGH   | "an" → "and" — steno dropped letter
+LINE 3058   | take a look at that for a moment financed if you can look up | take a look at that for a moment and if you can look up | HIGH | "financed" is steno artifact intruding into text; likely "and" or filler word
+LINE 3070-3074 | National national pardon me this is Nathanial on Zoom | [SPEAKER ID NEEDED] Pardon me — this is Nathaniel [surname] on Zoom | MEDIUM | "National national" = steno garble for "Nathaniel"; unidentified Zoom participant
+LINE 3099   | B bone, John Miller                                      | Burt Bowen, John Miller                                   | HIGH   | "B bone" = steno garble for "Burt Bowen" (confirmed at line 3125 where witness spells B-o-w-e-n)
+LINE 3101-3103 | Thomas met calf and an M carat QI petro fix I can.com | Thomas Metcalf and MCar@QIPetroFix.com [REVIEW: email/name garbled] | MEDIUM | "met calf" → "Metcalf"; email and company name garbled; flag for reporter
+LINE 3153-3155 | Thomas met calf was a geotech...Car was—petro files is was | Thomas Metcalf was a geotech...Car[l?] was—PetroFiles was | MEDIUM | Consistent garble of "Metcalf"; "petro files" → "PetroFiles"
+LINE 3193-3194 | these first five wheels are critical                  | these first five wells are critical                       | HIGH   | "wheels" → "wells" — steno homophone
+LINE 3213-3215 | the fee 1024, the fee '953, the fee '954 and the fee 961 | the Fee 1024, the Fee 953, the Fee 954, and the Fee 961 | HIGH | Apostrophes/steno artifacts before well numbers; Oxford comma applied per ROUGH_DRAFT rules
+LINE 3254-3255 | Board ofDescribe the ores meeting                    | Board of Directors meeting                                | HIGH   | Severe steno garble; "ofDescribe the ores" → "of Directors"; confirmed by context
+LINE 3372-3374 | Donelon energy did on in L why in                    | Donelson Energy [REVIEW: company name unclear]            | MEDIUM | Steno garble; MS. Curtis clarifies "Space between done and Lynn" at line 3376 — flag for reporter
+LINE 3509   | Yellow Rock why are 341521                              | Yellow Rock YR-341521                                     | HIGH   | "why are" = steno phonetic for Bates prefix "YR"; applied throughout
+LINE 3530-3531 | Who wrote this letter mar minister if you know       | [OBJECTION LINE GARBLED] Who wrote this letter? [Counsel interjection unclear] | HIGH | "mar minister" = steno garble of objection or interjection; needs reporter review
+LINE 3592   | the COVID_19 pandemic                                   | the COVID-19 pandemic                                     | HIGH   | Underscore artifact → hyphen
+LINE 3621   | YR_351388                                               | YR-351388                                                 | MEDIUM | Underscore vs. hyphen in Bates numbers — style applied consistently; flag for house style
+LINE 3690-3691 | subject line to the E_mail                          | subject line to the email                                 | HIGH   | "E_mail" → "email" — steno artifact
+LINE 3756-3757 | you AI called him his last name. It's Dick Fuqua    | you asked me his last name. It's Dick Fuqua               | HIGH   | "you AI called him" → "you asked me" — steno garble
+LINE 3843-3844 | Bates stamped why are 360803                        | Bates stamped YR-360803                                   | HIGH   | Recurring "why are" → "YR" steno phonetic error
+LINE 3883   | ie it announces                                         | it announces                                              | HIGH   | "ie" is steno artifact; not an abbreviation
+LINE 3915   | early to mid_August timeframe                          | early- to mid-August timeframe                            | HIGH   | Underscore artifact; standard hyphenation applied
+LINE 3939   | I think I would view it _ _                            | I think I would view it—                                  | HIGH   | "_ _" = steno artifact for em dash; em dash rule applied
+LINE 3993   | Okay U?                                                 | Okay.                                                     | HIGH   | "U?" is steno artifact (also line 5572); corrected to "Okay."
+LINE 4009   | 12 '06 p.m.                                            | 12:06 p.m.                                                | HIGH   | Apostrophe artifact → colon for time
+LINE 4039   | that right? . Okay.                                    | that right? Okay.                                         | HIGH   | Rogue period after question mark — steno artifact
+LINE 4474   | The time is '9:58 a.m.                                 | The time is 9:58 a.m.                                     | HIGH   | Leading apostrophe before time — steno artifact
+LINE 4561-4563 | Done linen gee, done difficulties letter            | Donelynn [or similar] [REVIEW]                            | HIGH   | Recurring steno garble of drilling manager's company name; flag for reporter
+LINE 4601   | dish er because he used the wrong mud program           | [the drilling manager] because he used the wrong mud program | HIGH | "dish er" = steno garble for driller's name or pronoun; needs review
+LINE 4671   | described your Teams record_keeping                    | described your team's record-keeping                      | HIGH   | Underscore artifact → hyphen; "Teams" lowercased as possessive "team's"
+LINE 4700-4701 | Do you think your work product was the result of ineptitude | [Q./A. FORMAT — line boundaries unclear in this exchange] | MEDIUM | Q. and A. attribution unclear; reporter to verify
+LINE 5020-5022 | they have depth capital but no equity capital       | they have debt capital but no equity capital              | HIGH   | "depth" → "debt" — recurring steno mistranslation (same pattern as line 696)
+LINE 5252   | 28 today period                                         | 28-day period                                             | HIGH   | "28 today period" → "28-day period"; steno garble of "day"
+LINE 5335   | disaster relief and SBA,, et cetera                    | disaster relief and SBA, et cetera                        | HIGH   | Double comma — steno artifact
+LINE 5354   | weep want to get ahead of any issues                   | we want to get ahead of any issues                        | HIGH   | "weep" → "we" — steno homophone/artifact
+LINE 5419-5421 | Exhibit No 135, which is YR_ 3230 on three         | Exhibit No. 135, which is YR-323003                       | HIGH   | "3230 on three" = steno garble of Bates number; period after "No" added
+LINE 5449-5455 | responding to questions of Oliver resin mar sol / bunker sod with humid in us | responding to questions from Alvarez and Marsal / [Luminus contact — name garbled] | HIGH | "Oliver resin mar sol" → "Alvarez and Marsal" (confirmed at line 5463)
+LINE 5471-5472 | Oliver an mar sol is an evaluation firm              | Alvarez and Marsal is an evaluation firm                  | HIGH   | Recurring mistranslation; confirmed correct name at line 5463
+LINE 5526-5527 | second bold had paragraph in the space had out text | second bold-headed paragraph in the spaced-out text [REVIEW] | MEDIUM | Steno garble of formatting description
+LINE 5548   | So unless than a year production had dropped            | So in less than a year production had dropped             | HIGH   | "unless than" → "in less than" — steno garble
+LINE 5572   | Okay U?                                                 | Okay.                                                     | HIGH   | Recurring steno artifact (see line 3993)
+LINE 5574   | And, process.                                           | [REVIEW: steno artifact; likely "And prices." — flag for reporter] | MEDIUM | Isolated fragment; context unclear
+LINE 5629   | funding, drilling, CAPEX budget standing?              | funding, drilling, CAPEX budget [REVIEW: "standing" may be verbatim] | MEDIUM | Last word unclear; may be verbatim witness usage
+LINE 5703-5705 | Exhibit 136, YR_ 41592                              | Exhibit 136, YR-41592 [REVIEW: may be YR-415920 or similar] | MEDIUM | Bates number may be truncated
+LINE 5839-5841 | ghee sciences team / the ghee sciences team         | the geoscience team                                       | HIGH   | "ghee sciences" = steno phonetic error for "geoscience"; appears twice
+LINE 5855   | going all the way become to the Union Texas days        | going all the way back to the Union Texas days            | HIGH   | "become" → "back" — steno substitution
+LINE 5866   | from you list in Exhibit No. 36                         | [REVIEW: should be Exhibit No. 136 — steno dropped "1"]   | HIGH   | Exhibit 136 is under discussion throughout this section
+LINE 6007   | Brad bran DAL took over                                 | Brad Brandl took over                                     | HIGH   | "bran DAL" = steno garble of "Brandl"; inconsistent cap artifact
+LINE 6074-6075 | why are 2885 '94 this is                            | YR-288594 [REVIEW: verify number] this is                 | HIGH   | Recurring "why are" → "YR"; number garbled with apostrophe artifact
+LINE 6096   | Collect check.                                          | Correct.                                                  | HIGH   | "Collect check" → "Correct" — steno phonetic error
+LINE 6115-6116 | would it have geneos to all those same parties      | would it have gone to all those same parties              | HIGH   | "geneos" → "gone" — steno garble (also line 6220)
+LINE 6220-6221 | they would have geneos to the blacktop minority LLC members | they would have gone to the White Top minority LLC members | HIGH | "geneos" → "gone"; "blacktop" → "White Top" (recurring)
+LINE 6231   | They would have done to Luminus                         | They would have gone to Luminus                           | HIGH   | "done" → "gone" — steno substitution
+LINE 6335   | Sulphur Mines feels drilling location identification inventory | Sulphur Mines Field's drilling location identification inventory | HIGH | "feels" → "Field's" — steno phonetic error
+LINE 6362   | the moratorium assets described                         | the moratorium as described                               | HIGH   | "assets" → "as" — steno substitution
+LINE 6416-6417 | hurricane war damage up 70,000 in repairs still outstanding | hurricane damage, up to $70,000 in repairs still outstanding | HIGH | "war damage up" → "damage, up to"; dollar sign missing
+LINE 6507   | It wasn't Nestor production                             | It wasn't necessary for production [REVIEW]               | MEDIUM | "Nestor" = steno garble; context is repair priorities vs. production necessity
+LINE 6532   | Well, we couldn't afford say eye we didn't have the capital | Well, we couldn't—I would say we didn't have the capital | HIGH | "say eye we" → "—I would say we" — steno garble of self-correction
+LINE 6676   | T he settlement proposal                                | the settlement proposal                                   | HIGH   | Erroneous space and capital in "T he"
+LINE 6703-6705 | Revenant Signal Energy, one of the LLC members      | Revenant Signal Energy [REVIEW: confirm entity name — also "REV rent signal" at line 1569] | MEDIUM | Name appears most consistently here; use pending reporter verification
+LINE 6728-6729 | hundreds of thousands of taxes have been withheld "—and all caps—NOT BEEN PAID over to the authorities | hundreds of thousands [of dollars] of [payroll] taxes have been withheld [and—all caps—]NOT BEEN PAID over to the authorities | MEDIUM | Steno annotation "(all caps)" inserted mid-quote; needs cleanup
+LINE 6993   | Stephen Derby                                           | Steve Derby [NOTE: "Stephen" appears only here; "Steve" used consistently elsewhere] | LOW | Consistency check; likely same person
+LINE 7065   | White Top writes offering status as of Cut Off          | White Top rights offering status as of cutoff             | HIGH   | "writes offering" → "rights offering"; "Cut Off" → "cutoff"
+LINE 7141   | It was distributed Todd Sunny Solar                     | It was distributed to Sunny Solar                         | HIGH   | "Todd" = steno artifact intruding; "to" dropped
+LINE 7187   | Some had declined. Sod accepted                         | Some had declined. Some accepted                          | HIGH   | "Sod" → "Some" — steno substitution
+LINE 7452   | to begin with *REPORTER CHECK HERE*                    | [FLAG: reporter check placeholder — unresolved in source] | —      | Pre-existing placeholder; must be resolved before final delivery
+LINE 7557-7558 | at this snapshot in time when I handed off the ball on this and moved to—became a farmer | [VERBATIM — witness's voice; keep idiom]           | N/A    | Verbatim rule; witness speaking colloquially
+LINE 7704-7705 | Did Yellow Rock or blacktop know what that was      | Did Yellow Rock or White Top know what that was           | HIGH   | Recurring "blacktop" → "White Top"
+LINE 7824   | You asked me that. .                                    | You asked me that.                                        | HIGH   | Double period — steno artifact
+LINE 7859   | MR. HOBBY: I'll the ask same question                  | MR. HOBBY: I'll ask the same question                     | HIGH   | Word-order transposition — steno artifact
+LINE 8101   | but I'm not a lawyer                                   | [VERBATIM — witness's voice]                              | N/A    | Keep verbatim
+LINE 8142   | I don't know personal                                   | I don't know personally                                   | HIGH   | "personal" → "personally" — dropped syllable
+LINE 8147   | 55_minute breaks_ish                                    | 55-minute breaks-ish [REVIEW: may be "55-minute break-ish"] | MEDIUM | Underscore artifacts; verbatim-style colloquial; format hyphens
+LINE 8206-8207 | White Top Energy Investor P P_Final                 | White Top Energy Investor PP_Final [or PowerPoint Final]  | MEDIUM | Attachment filename; "P P_Final" likely "PP" = PowerPoint; keep as-is for exhibit reference
+LINE 8463-8464 | signature named tropical storm                       | a significant named tropical storm [REVIEW: may be "second"] | MEDIUM | "signature" → "significant" or "second"; steno phonetic error
+LINE 8468-8469 | The named hurricane would have been lawyer a         | The named hurricane would have been Laura                 | HIGH   | "lawyer a" → "Laura" — steno phonetic error; Hurricane Laura (2020) confirmed by context
+LINE 8629   | you accept this slide to Ms. Tran                      | you sent this slide to Ms. Tran                           | HIGH   | "accept" → "sent" — steno substitution
+LINE 8683   | I addressed—a dressed what I knew                      | I addressed what I knew                                   | HIGH   | "a dressed" = steno-split artifact; "addressed" split incorrectly
+LINE 8787-8788 | check silver mines salt dome                        | Sulphur Mines salt dome                                   | HIGH   | "check silver mines" → "Sulphur Mines" — steno phonetic/garble
+LINE 8907   | based odd this exhibit                                  | based on this exhibit                                     | HIGH   | "odd" → "on" — steno substitution
+LINE 8999   | YR_4350 45                                              | YR-435045                                                 | HIGH   | Bates number split across lines with space artifact
+LINE 9005   | in my mine the relationship                             | in my mind the relationship                               | HIGH   | "mine" → "mind" — steno homophone
+LINE 9053-9054 | Boardwalk cavern s/wells                            | Boardwalk caverns/wells                                   | HIGH   | "cavern s" → "caverns" — steno split
+LINE 9293   | drilling write_up to the salt itself                   | drilling right up to the salt itself                      | HIGH   | "write_up" → "right up" — steno phonetic error + underscore artifact
+LINE 9302   | Become in the day in other salt domes                  | Back in the day in other salt domes                       | HIGH   | "Become" → "Back" — steno substitution
+LINE 9380-9381 | the BLM No. 4 cavern is a nothing burger            | [VERBATIM — Bertelot's quoted words; keep]                | N/A    | Verbatim quoted language
+LINE 9612-9614 | you get your oil pipe stuck in salt formation an it adds to the costs more times | you get your drill pipe stuck in salt formations and it adds to the costs more times | HIGH | "oil pipe" → "drill pipe"; "an" → "and"; "formation" → "formations"
+LINE 9956   | First Getty M.D. approval                              | First get IMD approval                                    | HIGH   | "Getty M.D." → "get IMD" — steno garble; IMD = Injection and Mining Division
+LINE 10011  | the call with the—the IM D mines an minerals           | the call with the IMD mines and minerals                  | HIGH   | "IM D" → "IMD" spacing artifact; "an" → "and"
+LINE 10047  | vis_ _vis                                               | vis-à-vis                                                 | HIGH   | Steno artifact for "vis-à-vis"
+LINE 10201-10207 | I didn't want to penetrate the—the CAP—the CAP bra | I didn't want to penetrate the—the caprock—the caprock | HIGH   | "CAP bra" → "caprock" — steno garble; caprock is the relevant geological term
+LINE 10352  | the longer—later than Sam I annual                     | the longer—later than semi-annual [REVIEW]                | MEDIUM | "Sam I annual" → "semi-annual" — steno phonetic error
+LINE 10490-10491 | Sulphur Dome—Sulphur Mines. Excuse me. Sulphur Mines Field | [VERBATIM — witness self-correcting; keep as spoken] | N/A | Verbatim rule
+LINE 10655-10656 | took into account the ankle of directional drilling | took into account the angle of directional drilling     | HIGH   | "ankle" → "angle" — steno homophone; appears multiple times in this section
+LINE 10669  | how sharp you can direct the ankle of the drill         | how sharp you can direct the angle of the drill           | HIGH   | Recurring "ankle" → "angle"
+LINE 10924  | a function of the ankle and where you start             | a function of the angle and where you start               | HIGH   | Recurring "ankle" → "angle"
+LINE 10934  | you have to run anti conflict software                  | you have to run anti-conflict software [REVIEW: likely "anti-collision"] | MEDIUM | Industry term; "anti-collision" is standard directional drilling software; flag for reporter
+LINE 11116  | identified all of the potential areas of interest that had been identified | [VERBATIM — possible verbal repetition; keep unless clearly steno garble] | LOW | Keep verbatim; no change made
+LINE 11315  | drilling order A through very                           | drilling order A through V                                | HIGH   | "very" → "V" (the letter); confirmed at lines 11310 and 11321
+LINE 11321  | labeled A through very                                  | labeled A through V                                       | HIGH   | Recurring "very" → "V" (letter)
+LINE 11336  | Exhibit No. 154, which is Ms. Break owes email         | Exhibit No. 154, which is Ms. Borrego's email             | HIGH   | "Break owes" → "Borrego's" — steno phonetic garble; "Eva Borrego" confirmed throughout
+LINE 11344  | *REPORTER CHECK HERE* 5/18/21                          | [FLAG: second reporter check placeholder — unresolved]    | —      | Must be resolved before final delivery
+LINE 11398-11400 | these try angels, the potential location try angels, some have letters | these triangles, the potential location triangles, some have letters | HIGH | "try angels" → "triangles" — steno phonetic error; appears twice
+LINE 11490  | using large vibrate ores                                | using large vibrators                                     | HIGH   | "vibrate ores" → "vibrators" — steno split error
+LINE 11557  | A generals sense description *REPORTER CHECK HERE*     | A general sense description [FLAG: third reporter check placeholder] | — | Must be resolved before final delivery
+LINE 11687-11688 | using brat spot approach to identifying anomalies  | using bright spot approach to identifying anomalies       | HIGH   | "brat spot" → "bright spot" — steno phonetic error; "bright spot" is standard seismic term
+LINE 11698  | looking for brat spots                                 | looking for bright spots                                  | HIGH   | Recurring "brat spot" → "bright spot"
+LINE 11783-11784 | they would need to go extensive, lengthy, costly additional reprocessing or looking for information to try to identify brat spots | [same bright spot correction]                  | HIGH   | Recurring error
+LINE 11803-11804 | I was concerned that they were setting up this Jill Latchman was with In_Depth | I was concerned that they were setting up this—Joel Latchman was with In-Depth | HIGH | "Jill" → "Joel" (confirmed at line 11651); "In_Depth" → "In-Depth" — underscore artifact
+LINE 11873-11874 | THE COURT REPORTER: Do you went a rough draft     | THE COURT REPORTER: Do you want a rough draft             | HIGH   | "went" → "want" — steno substitution; final line of deposition
+
+TOTAL ENGINE CORRECTIONS: 117
+
+
+SECTION 3 — FLAGS RAISED
+-------------------------
+Total flags raised: 47
+See QA_FLAGS.txt for full detail with priority ordering.
+
+Summary by priority:
+  Critical (must resolve before certification): 6
+  High priority:                               29
+  Medium priority:                              3
+  Informational:                                5 (plus sub-items)
+
+
+SECTION 4 — EXHIBITS INDEXED
+-----------------------------
+Total exhibits indexed: 32
+Exhibit number range: 127 through 158 (consecutive, no gaps except Exhibit 142 duplicate flag)
+See EXHIBIT_INDEX.txt for full detail.
+
+Note: Exhibit 142 is flagged as a duplicate in the raw index. Two separate entries appear
+at source lines 110 and 112. Reporter must resolve before certification.
+
+Note: Exhibit 157 status is uncertain. Questions may not have been completed before
+deposition was suspended. Flag for reporter and continuing session.
+
+
+SECTION 5 — NEW PATTERNS DISCOVERED THIS RUN
+---------------------------------------------
+The following steno phonetic/substitution patterns were identified during this run that
+are NOT pre-loaded in the engine spec. Document for future dictionary updates:
+
+  blacktop         = White Top (phonetic; steno renders "White Top" as "blacktop" throughout)
+  why are [number] = YR-[number] (Bates prefix; "why are" is steno phonetic for "YR")
+  ankle            = angle (directional drilling context; homophone)
+  brat spot        = bright spot (seismic/geophysical context; phonetic)
+  geneos           = gone (garble; appears throughout late sections of transcript)
+
+
+SECTION 6 — WHAT WAS NOT CHANGED (VERBATIM PRESERVATIONS AND JUDGMENT CALLS DEFERRED)
+---------------------------------------------------------------------------------------
+The following items were explicitly preserved verbatim or deferred to reporter judgment:
+
+1. LINE 751-757: Witness says "3 to 5" times, then "Half a dozen times." Verbatim per KB-010.
+   This is witness's voice, not a steno error. No change made.
+
+2. LINE 1831-1833: Witness self-correcting mid-sentence ("issued answers all in between or
+   issues is a better choice of words"). Verbatim rule applied. No change made.
+
+3. LINE 7557-7558: "...when I handed off the ball on this and moved to—became a farmer."
+   Colloquial idiom; witness's voice. Verbatim rule applied. No change made.
+
+4. LINE 8101: "but I'm not a lawyer." Verbatim; witness's voice. No change made.
+
+5. LINE 9380-9381: "the BLM No. 4 cavern is a nothing burger." Bertelot's quoted words;
+   colloquial language. Verbatim rule applied. No change made.
+
+6. LINE 10490-10491: "Sulphur Dome—Sulphur Mines. Excuse me. Sulphur Mines Field."
+   Witness self-correcting. Verbatim rule applied. No change made.
+
+7. LINE 11116: "identified all of the potential areas of interest that had been identified."
+   Possible verbal repetition by witness; may be steno garble. Judgment call deferred
+   to reporter (kept verbatim; no change made; LOW flag raised).
+
+8. LINE 5252 (production figure): "409 barrels per day" — verbatim testimony; only the
+   "28 today period" framing was corrected to "28-day period."
+
+9. LINE 8147: "55-minute breaks-ish" — colloquial verbatim; hyphens formatted but word
+   choice preserved.
+
+10. LINE 6993: "Stephen Derby" vs. "Steve Derby" — inconsistency flagged but not corrected
+    by engine; deferred to reporter judgment for consistency review.
+
+11. All extended speaking objections (e.g., MS. Curtis's "National Enquirer" objection at
+    lines 1876-1882) — preserved verbatim; reporter discretion as to formatting.
+
+
+SECTION 7 — REPORTER ACTION REQUIRED CHECKLIST
+-----------------------------------------------
+The following items require action by Marybeth E. Muir, CCR, RPR before certification:
+
+[ ] Resolve *REPORTER CHECK HERE* placeholder at line 7452 (review audio)
+[ ] Resolve *REPORTER CHECK HERE* placeholder at line ~11344 (review audio)
+[ ] Resolve *REPORTER CHECK HERE* placeholder at line ~11557 (review audio)
+[ ] Confirm/add license number to certification page
+[ ] Resolve Exhibit 142 duplicate (verify against originals)
+[ ] Verify "Revenant Signal Energy" entity name against case documents; apply consistently
+[ ] Verify "Sunny Solar" legal entity name against case documents
+[ ] Identify and confirm "MS. HANDY" — add to appearances or note in transcript
+[ ] Add Walker Hobby to Susman Godfrey appearances block entry
+[ ] Identify Zoom participant "Nathaniel" (line ~3071) — add to appearances or note
+[ ] Confirm correct spelling of videographer: "Bryan" or "Brian" Smith
+[ ] Verify Kennedys Law LLP email domain ("kenndyslaw.com" — possible typo)
+[ ] Verify Cosmich, Simmons & Brown email domain (cs_law.com — underscore artifact)
+[ ] Confirm Kelly Hart & Hallman suite number for Aimee Hebert (missing from appearances)
+[ ] Verify drilling manager's company name ("Donelynn Energy" or similar) against records
+[ ] Verify Thomas Metcalf spelling (Metcalf or Metcalfe) against case documents
+[ ] Resolve court reporter computer glitch gap at ~4:05 p.m. (lines 10258-10264)
+[ ] Verify truncated Bates numbers: YR-41592 (Exhibit 136), YR-37094 (Exhibit 148)
+[ ] Confirm correct Bates: YR-264305 (Exhibit 129), YR-362589 (Exhibit 134), YR-323003 (Exhibit 135), YR-288594 (Exhibit 137)
+[ ] Append reporter's certificate and witness certificate pages (not in source file)
+[ ] Verify "anti conflict software" = "anti-collision software" (line 10934)
+[ ] Verify "subsurface sonar tests" = sonic or other technical term (line 2264)
+[ ] Confirm "Stephen Derby" = "Steve Derby" for consistency (line 6993)
+[ ] Verify "Exhibit No. 36" = "Exhibit No. 136" at line 5866
+[ ] Confirm Exhibit 157 questions status before Part 2 deposition
+[ ] Review audio at lines 1762-1763 and 2562-2563 for missing words (steno gaps marked "_ _")
+[ ] Review audio at line 983 ("Do you want going to off the record?") for correct language
+[ ] Confirm steno "(all caps)" annotation in Exhibit 138 quotation (lines 6728-6730) — handle per certified copy standards
+
+
+SECTION 8 — CONFIDENCE SCORES
+------------------------------
+technical_confidence:      0.88
+  (oil & gas terminology, well names, geological terms — high confidence with noted exceptions)
+
+speaker_confidence:        0.92
+  (speaker attribution generally reliable; flagged exceptions: MS. HANDY, Nathaniel on Zoom,
+   M. Curtis first name unknown, LMD at mmpfirm.com not present)
+
+punctuation_confidence:    0.75
+  (ROUGH DRAFT mode — punctuation judgment layer was skipped; sentence structure and Q./A.
+   boundaries not fully adjudicated; multiple Q./A. format flags raised)
+
+overall_readiness:         0.87
+  (transcript is a high-quality rough draft suitable for attorney review; NOT ready for
+   certification without reporter review of all 47 flags and 3 reporter check placeholders)
+
+
+SECTION 9 — PROCESSING STATISTICS
+-----------------------------------
+Pre-processing:     steno_cleanup.py — 592 changes applied to raw RTF rough draft
+Source file:        cleaned_text.txt — 181,947 characters
+Total lines read:   11,876
+Engine mode:        ROUGH_DRAFT / TWO_PASS
+
+Pass 1 results:
+  Corrections made:   117
+  Flags raised:        47
+  Exhibits indexed:    32
+
+Pass 2b results (this pass):
+  Files produced (2b):  6
+    1. EXHIBIT_INDEX.txt
+    2. DEPOSITION_SUMMARY.txt
+    3. QA_FLAGS.txt
+    4. PROOF_OF_WORK.txt
+    5. DELIVERY_CHECKLIST.txt
+    6. CASE_INFO_EXTRACTED.txt
+
+Architecture:       Two-pass engine; Pass 2a = transcript output; Pass 2b = summary/index/QA
+Total files produced (all passes):  8
+  (Transcript [Pass 2a], EXHIBIT_INDEX.txt, DEPOSITION_SUMMARY.txt, QA_FLAGS.txt,
+   PROOF_OF_WORK.txt, DELIVERY_CHECKLIST.txt, CASE_INFO_EXTRACTED.txt, PROCESSING_NOTES.txt)
+
+================================================================================
+End of Proof of Work
+================================================================================

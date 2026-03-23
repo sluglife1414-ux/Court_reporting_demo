@@ -1,0 +1,1197 @@
+================================================================================
+GREGG_STYLE_MODULE.txt
+Authority: The Gregg Reference Manual, 10th Edition — William A. Sabin
+Authority Level: LAYER 1 — Universal Base Standard
+================================================================================
+
+LAYER HIERARCHY (Conflict Resolution Order):
+  Layer 3 — CR Personal Style (overrides ALL)
+  Layer 2 — Margie Wakeman Wells (overrides Gregg where they conflict)
+  Layer 1 — Gregg Reference Manual, 10th Ed. (this document — baseline)
+
+SCOPE: Legal transcripts and depositions ONLY.
+  This module does NOT address letters, memos, emails, manuscripts, or general
+  business writing. Every rule herein is filtered for deposition transcript use.
+
+EXCLUSIONS (handled by other KB modules):
+  - Verbatim vs. corrected transcription decisions → KB-010
+  - Underscore artifacts from steno software → KB (steno artifact module)
+
+FLAGS USED IN THIS MODULE:
+  [CR-CRITICAL]  = Especially important for court reporting accuracy
+  [SEEN IN TEST] = Pattern observed in test deposition files
+
+HOW TO USE THIS MODULE:
+  1. Identify the punctuation, capitalization, or grammar question.
+  2. Locate the relevant category below.
+  3. Apply the stated rule. When Gregg conflicts with Margie Wakeman Wells or
+     CR Personal Style, those higher layers win.
+  4. Paragraph references (e.g., §813) point to specific Gregg sections for
+     deeper authority.
+
+================================================================================
+CATEGORY 1: PERIODS AND TERMINAL PUNCTUATION
+================================================================================
+
+RULE 1.1 — Period after a complete declarative or imperative sentence
+  A complete statement ends with a period.
+  §101
+  EXAMPLE:
+    The witness identified the document.
+  NOTE: In deposition Q&A, each answer that is a complete sentence ends with
+  a period. Fragments that are complete thoughts also end with periods (§101b).
+
+RULE 1.2 — Period after an elliptical (incomplete) sentence
+  A sentence that is grammatically incomplete but expresses a complete thought
+  takes a period, not a comma or nothing.
+  §101b
+  EXAMPLES:
+    Q. Did you sign the contract?
+    A. Yes.    [NOT: Yes,]
+    A. Possibly.
+    A. No. Not at all.
+
+RULE 1.3 — Period with abbreviations in deposition context
+  Standard abbreviations (Mr., Dr., Inc., etc.) take periods per Gregg §103.
+  In deposition testimony, spell out titles on first use per court convention,
+  but follow standard period rules when abbreviations appear.
+  §103
+
+RULE 1.4 — Decimal points
+  Use a period as a decimal point in numbers.
+  §107
+  EXAMPLE:
+    The fracture gradient was 12.5 ppg.
+    The interest rate was 6.25 percent.
+
+RULE 1.5 — No period after Q and A speaker labels [CR-CRITICAL]
+  In the Q&A format of depositions, the speaker label (Q., A.) is followed by
+  a space and then the spoken text. The label itself uses a period, but no
+  additional terminal period is needed for the label — it IS a period. The
+  answer text that follows then ends with its own terminal punctuation.
+  §199e, §270
+  EXAMPLE:
+    Q. Did you attend the meeting on March 5th?
+    A. Yes, I did.
+
+================================================================================
+CATEGORY 2: COMMAS
+================================================================================
+
+RULE 2.1 — Comma before coordinating conjunction in compound sentence [CR-CRITICAL]
+  Use a comma before and, but, or, nor, for, yet, so when they join two
+  independent clauses.
+  §133
+  EXAMPLE:
+    We reviewed the documents, and the attorney confirmed the dates.
+    The deponent answered each question, but she could not recall the date.
+  EXCEPTION: If both independent clauses are very short (four words or fewer
+  each), the comma may be omitted.
+
+RULE 2.2 — Comma after introductory dependent clause
+  A dependent clause that introduces a main clause is followed by a comma.
+  §135
+  EXAMPLE:
+    After the deposition concluded, the attorneys conferred.
+    Because the witness was unavailable, the deposition was rescheduled.
+
+RULE 2.3 — Comma after introductory phrase (five or more words)
+  A long introductory phrase (five or more words) is followed by a comma.
+  §138
+  EXAMPLE:
+    At the conclusion of the drilling operation, the well was cemented.
+    In the years following the accident, the company changed its procedures.
+  NOTE: Short introductory prepositional phrases (fewer than five words) do
+  not require a comma unless needed for clarity.
+
+RULE 2.4 — Comma with nonessential (nonrestrictive) clauses and phrases [CR-CRITICAL]
+  Set off with commas any clause or phrase that can be removed without
+  changing the essential meaning of the sentence.
+  §141
+  EXAMPLES:
+    The engineer, who had worked on the project for ten years, testified first.
+    The report, dated March 15th, was entered as Exhibit 3.
+  CONTRAST (essential — no commas):
+    The engineer who designed the system testified that it was safe.
+    [The "who" clause identifies WHICH engineer — it is essential.]
+
+RULE 2.5 — Comma in a series of three or more [CR-CRITICAL]
+  Use a comma after each item in a series of three or more, including before
+  the final "and" or "or" (serial/Oxford comma).
+  §132
+  EXAMPLE:
+    The witness reviewed the drawings, the specifications, and the safety manual.
+
+RULE 2.6 — Comma between coordinate adjectives
+  When two or more adjectives each independently modify the noun, separate
+  them with commas.
+  §151
+  TEST: If "and" fits naturally between the adjectives, use a comma.
+  EXAMPLE:
+    It was a thorough, well-organized deposition.
+    [thorough AND well-organized → comma]
+  NO COMMA when the first adjective modifies the combined second-adjective+noun:
+    She wore a bright red dress. [bright modifies "red dress" as a unit → no comma]
+
+RULE 2.7 — Comma with parenthetical and transitional expressions
+  Words and phrases that interrupt the flow of a sentence are set off by commas.
+  §139
+  EXAMPLES:
+    The deponent, in my opinion, was evasive on that point.
+    We will, of course, produce all requested documents.
+    This practice, however, did not comply with industry standards.
+
+RULE 2.8 — Comma with appositives
+  An appositive (a noun or noun phrase that renames another noun) is set off
+  by commas when it is nonessential.
+  §142
+  EXAMPLE:
+    Mr. Johnson, the project manager, supervised the operation.
+    Exhibit 12, the drilling log, was admitted into evidence.
+  ESSENTIAL appositive (no commas):
+    My colleague Scott reviewed the file. [identifies which colleague]
+
+RULE 2.9 — Comma in direct address
+  When the speaker directly addresses a person by name or title, set off with
+  commas.
+  §129
+  EXAMPLE:
+    Q. Mr. Smith, can you describe what happened?
+    A. Yes, Counsel, I can.
+
+RULE 2.10 — No comma between subject and verb
+  Do not place a comma between a subject and its verb, no matter how long
+  the subject.
+  §163
+  WRONG:  The manager who oversaw the entire drilling project, signed the report.
+  RIGHT:  The manager who oversaw the entire drilling project signed the report.
+
+================================================================================
+CATEGORY 3: SEMICOLONS
+================================================================================
+
+RULE 3.1 — Semicolon between independent clauses without a conjunction
+  When two independent clauses are closely related and no coordinating
+  conjunction joins them, use a semicolon.
+  §176
+  EXAMPLE:
+    The witness confirmed the date; the records supported her recollection.
+
+RULE 3.2 — Semicolon with transitional expressions between clauses [CR-CRITICAL]
+  When a transitional expression (however, therefore, moreover, consequently,
+  in addition, etc.) joins two independent clauses, use a semicolon before the
+  transitional expression and a comma after it.
+  §178
+  EXAMPLE:
+    The company followed standard procedures; however, the outcome was not as expected.
+    The deponent could not recall the date; therefore, the exhibit was used to refresh her memory.
+  [CR-CRITICAL]: This semicolon+transitional pattern appears in complex Q&A
+  answers and must be correctly punctuated, not replaced with a comma.
+
+RULE 3.3 — Semicolon in a series when items contain internal commas [CR-CRITICAL]
+  When items in a series already contain commas, use semicolons to separate
+  the items.
+  §181
+  EXAMPLE:
+    The project involved engineers from Houston, Texas; New Orleans, Louisiana; and
+    Denver, Colorado.
+    The parties include Johnson & Associates, Inc.; Meridian Energy, LLC; and the
+    State of Louisiana.
+
+RULE 3.4 — Semicolon before a coordinating conjunction joining long clauses
+  A semicolon may be used before and, but, or, nor when the clauses being
+  joined are long or contain internal commas.
+  §179
+
+================================================================================
+CATEGORY 4: COLONS
+================================================================================
+
+RULE 4.1 — Colon before a list or enumeration
+  Use a colon after a complete clause that introduces a list or series.
+  §187
+  EXAMPLE:
+    The witness identified three problems: inadequate training, improper equipment,
+    and lack of supervision.
+  NOTE: Do NOT use a colon when the list flows directly from a verb or
+  preposition (the list is the object of the verb).
+  WRONG:  The three problems were: training, equipment, and supervision.
+  RIGHT:  The three problems were training, equipment, and supervision.
+
+RULE 4.2 — Colon before an explanatory or amplifying clause
+  Use a colon when the second clause explains or amplifies the first.
+  §188
+  EXAMPLE:
+    The reason was simple: no one had followed the established protocol.
+
+RULE 4.3 — Colon in time expressions
+  Use a colon between hours and minutes.
+  §193
+  EXAMPLE:
+    The meeting began at 9:30 a.m.
+    The deposition was recessed at 11:45 a.m.
+
+RULE 4.4 — Capitalization after a colon
+  Capitalize the first word after a colon when it begins a complete sentence
+  that stands independently (especially a formal rule or statement). When
+  the matter following the colon is not a complete sentence, do not capitalize
+  unless it is a proper noun.
+  §197
+  EXAMPLES:
+    The rule is clear: No employee may alter the logs.   [Complete sentence → cap]
+    He listed three items: a map, a compass, and a notebook.   [Not a sentence → no cap]
+
+RULE 4.5 — Colon in Q&A transcript format [CR-CRITICAL]
+  In deposition transcripts, the speaker label is followed by a colon (or a
+  period, per court convention), not a comma or dash. The first word of the
+  spoken text is capitalized.
+  §199e
+  EXAMPLE:
+    Q.  Did you review the document?
+    A.  Yes, I reviewed it.
+  [CR-CRITICAL]: Q and A are always capitalized in the Q&A label. See also
+  Category 10, Rule 10.8.
+
+================================================================================
+CATEGORY 5: QUESTION MARKS AND EXCLAMATION POINTS
+================================================================================
+
+RULE 5.1 — Question mark after a direct question
+  A direct question ends with a question mark.
+  §110
+  EXAMPLE:
+    Q. Did you sign the document?
+    Can you explain how the accident occurred?
+
+RULE 5.2 — Period (not question mark) after indirect question
+  An indirect question is a declarative statement and ends with a period.
+  §112
+  EXAMPLE:
+    Counsel asked whether the witness had signed the document.   [NOT a question mark]
+    He wanted to know who had authorized the change.
+
+RULE 5.3 — Independent question within a sentence takes a question mark [CR-CRITICAL]
+  When a question is embedded within a sentence and stands as an independent
+  question, it may take a question mark and begin with a capital letter.
+  §111, §301d
+  EXAMPLE:
+    The attorney asked the central question: Who authorized the change?
+    The issue before the court was, Did the company know of the hazard?
+
+RULE 5.4 — Question mark with tag questions
+  A question that ends with a tag (isn't it? didn't you? right?) takes a
+  question mark.
+  §110
+  EXAMPLE:
+    A. You were there that day, weren't you?
+    A. That's what the report says, isn't it?
+
+RULE 5.5 — Exclamation points — rare in deposition transcripts
+  Exclamation points are rarely appropriate in deposition transcripts.
+  Testimony is transcribed neutrally. An exclamation point may appear only
+  if a witness's utterance was clearly exclamatory in character.
+  §121
+
+================================================================================
+CATEGORY 6: DASHES — EM DASH AND EN DASH
+================================================================================
+
+[CR-CRITICAL — entire category]
+
+RULE 6.1 — Em dash for abrupt break or interruption in speech [SEEN IN TEST] [CR-CRITICAL]
+  Use an em dash (—) when a speaker is interrupted mid-sentence. This is the
+  MOST COMMON em dash use in deposition transcripts.
+  §207
+  FORMAT: No space before or after the em dash (§216).
+  EXAMPLE:
+    A. We were following the standard pro—
+    Q. Let me stop you there.
+
+    A. The valve was—
+    Q. Objection. Move on.
+  [SEEN IN TEST]: Raw steno often produces double hyphens (__) or (--) for
+  the em dash. These MUST be converted to a true em dash (—) with no
+  surrounding spaces.
+  CORRECTION PATTERN: __ → —   or   -- → —
+
+RULE 6.2 — Em dash for trailing off (unfinished thought) [SEEN IN TEST]
+  Use an em dash when a speaker trails off without completing a sentence.
+  Some reporters distinguish trailing-off (em dash) from deliberate pause
+  (ellipsis); follow Layer 2/Layer 3 preference when specified.
+  §207
+  EXAMPLE:
+    A. I'm not sure if I—
+    [deponent pauses and does not complete the sentence]
+
+RULE 6.3 — Em dash replacing comma/semicolon for emphasis
+  An em dash may replace a comma, semicolon, or colon to give stronger
+  emphasis or create a more abrupt effect.
+  §201, §202, §203
+  EXAMPLES:
+    The cause of the blowout—improper casing—was never disclosed.
+    He had one goal—to finish the deposition before noon.
+
+RULE 6.4 — Em dash with parenthetical elements [CR-CRITICAL]
+  A pair of em dashes sets off a parenthetical element with more emphasis
+  than commas or parentheses.
+  §204
+  EXAMPLE:
+    The engineer—who had been on site for only two days—denied seeing the leak.
+  NOTE: If the parenthetical element itself contains a comma, em dashes are
+  preferred over commas to avoid confusion.
+
+RULE 6.5 — No spaces around em dash [CR-CRITICAL]
+  Em dashes are typed with NO space before and NO space after.
+  §216
+  CORRECT:   The valve failed—without warning—and the well kicked.
+  WRONG:     The valve failed — without warning — and the well kicked.
+  [SEEN IN TEST]: Space-dash-space ( - ) or space-em-dash-space ( — ) is
+  incorrect. Remove surrounding spaces.
+
+RULE 6.6 — En dash for ranges
+  Use an en dash (–) between numbers to indicate a range (pages, dates,
+  times). The en dash is shorter than an em dash but longer than a hyphen.
+  §217
+  EXAMPLES:
+    pages 14–22
+    the 2019–2021 contract period
+    the 9:00–10:30 a.m. session
+  NOTE: In deposition transcripts, line/page references use an en dash for
+  ranges. This is distinct from the em dash used for interruptions.
+
+RULE 6.7 — Em dash vs. en dash vs. hyphen — summary [CR-CRITICAL]
+  Hyphen (-):   Joins parts of a compound word or compound modifier.
+                  Example: well-control procedures, re-depose
+  En dash (–):  Indicates a range or "through."
+                  Example: pages 5–10, Exhibit 3–A
+  Em dash (—):  Marks interruption, break, or strong parenthetical.
+                  Example: The witness—who was clearly agitated—refused to answer.
+  [SEEN IN TEST]: Do NOT substitute a hyphen for an em dash in interruption
+  contexts, and do not add spaces around the em dash.
+
+================================================================================
+CATEGORY 7: PARENTHESES AND BRACKETS
+================================================================================
+
+RULE 7.1 — Parentheses for explanatory or supplementary material
+  Use parentheses to enclose material that is supplementary or explanatory
+  but not essential enough to require dashes or commas.
+  §218
+  EXAMPLE:
+    The blowout preventer (BOP) failed during the test.
+    The well was spudded on April 14 (see Exhibit 7).
+
+RULE 7.2 — Parentheses for first-use abbreviation definitions [SEEN IN TEST]
+  In legal and technical deposition transcripts, a term's abbreviation is
+  often introduced in parentheses on first use.
+  §218
+  EXAMPLE:
+    The blowout preventer (BOP) was tested on March 3rd.
+    The negative pressure test (NPT) showed anomalous results.
+
+RULE 7.3 — Parentheses for enumerated items within text
+  When listing items within a sentence using numbers or letters, enclose the
+  numbers/letters in parentheses.
+  §222
+  EXAMPLE:
+    Counsel identified three issues: (1) safety protocols, (2) documentation,
+    and (3) equipment maintenance.
+
+RULE 7.4 — Punctuation placement with parentheses
+  If the parenthetical is at the end of a sentence, place the final
+  punctuation OUTSIDE the closing parenthesis (unless the entire sentence is
+  within the parentheses).
+  §225
+  EXAMPLES:
+    The test was performed on March 3 (see Exhibit 7).   [period OUTSIDE]
+    (The test results are attached as Exhibit 7.)         [period INSIDE — full sentence]
+
+RULE 7.5 — Brackets for editorial insertions in quoted testimony [CR-CRITICAL]
+  Use brackets [ ] to enclose editorial clarifications inserted within
+  quoted or transcribed material — material added by the reporter or editor,
+  not spoken by the witness.
+  §227 (general context), §270
+  EXAMPLE:
+    A. We put it [the valve] back in place.
+    A. He [Mr. Johnson] was the one who approved it.
+  [CR-CRITICAL]: In deposition transcripts, brackets mark reporter-added
+  clarifications. Do NOT use parentheses for this purpose.
+
+================================================================================
+CATEGORY 8: QUOTATION MARKS
+================================================================================
+
+RULE 8.1 — Court testimony: no quotation marks needed when speaker is identified [CR-CRITICAL]
+  In question-and-answer format, when the speaker is identified by a label
+  (Q., A., or a speaker name), quotation marks are NOT used around the
+  spoken text.
+  §270
+  EXAMPLE:
+    Q.  What did the supervisor say?
+    A.  He said the valve was defective.   [NOT: He said "the valve was defective."]
+  EXCEPTION: Quotation marks ARE used when a witness quotes another person's
+  exact words within their own testimony.
+  EXAMPLE:
+    A. He told me, "Don't touch that valve."
+
+RULE 8.2 — Quotation marks for exact words of another person
+  When a witness quotes exactly what someone else said, enclose those words
+  in quotation marks.
+  §255
+  EXAMPLE:
+    A. The supervisor said, "Stop the job immediately."
+    A. The report stated, "No anomalies detected."
+
+RULE 8.3 — Periods and commas always inside closing quotation marks [CR-CRITICAL]
+  In American usage, periods and commas are ALWAYS placed inside the closing
+  quotation mark, regardless of logic.
+  §260
+  EXAMPLE:
+    He referred to the "standard protocol," but no protocol existed.
+    The document was labeled "confidential."
+  [CR-CRITICAL]: This is a common error. The comma or period goes inside
+  the quote mark even when it was not part of the original quotation.
+
+RULE 8.4 — Semicolons and colons always outside closing quotation marks
+  Semicolons and colons are placed OUTSIDE the closing quotation mark.
+  §261
+  EXAMPLE:
+    She identified it as the "primary valve"; the secondary valve was not mentioned.
+
+RULE 8.5 — Question marks and exclamation points: inside or outside
+  Place inside when the question mark/exclamation is part of the quotation.
+  Place outside when it punctuates the overall sentence, not the quoted matter.
+  §262
+  EXAMPLES:
+    The witness asked, "Was the BOP tested?"   [? inside — the quotation is the question]
+    Did the supervisor say "Stop the job"?       [? outside — the question is the sentence]
+
+RULE 8.6 — Interrupted quotation
+  When a quotation is interrupted by a tag phrase (he said, she testified),
+  use commas and lowercase to resume the quotation if the second part is a
+  continuation of the sentence. Use a period and capital letter if the second
+  part begins a new sentence.
+  §263
+  EXAMPLES:
+    "We followed the protocol," the witness testified, "and there were no problems."
+    "We followed the protocol," the witness testified. "The team did everything right."
+
+================================================================================
+CATEGORY 9: ELLIPSIS
+================================================================================
+
+RULE 9.1 — Ellipsis for omission in quoted material
+  Use three spaced periods (. . .) to indicate an omission from quoted material.
+  §275
+  EXAMPLE:
+    The report stated: "The valve was tested . . . and passed all criteria."
+  NOTE: Do NOT use an ellipsis for omissions from testimony in real-time
+  transcription (use em dash for interruptions instead — see Category 6).
+
+RULE 9.2 — Ellipsis with terminal punctuation
+  When an omission occurs at the end of a sentence, use four periods: the
+  terminal period of the sentence plus the three ellipsis periods.
+  §277
+  EXAMPLE:
+    The manual stated: "Operators must verify pressure readings. . . ."
+  NOTE: The four-dot sequence = period + space + three ellipsis dots.
+
+RULE 9.3 — Ellipsis for trailing-off speech [SEEN IN TEST]
+  Some reporters use an ellipsis (...) to indicate that a speaker's voice
+  trailed off without being interrupted. This differs from the em dash used
+  for an abrupt interruption.
+  §291
+  EXAMPLE (trailing off — speaker's own thought fades):
+    A. I suppose we could have done it differently . . .
+  EXAMPLE (interruption by another speaker — use em dash):
+    A. We could have done it differ—
+    Q. Move on.
+  [SEEN IN TEST]: Follow Layer 2 (Margie Wakeman Wells) and Layer 3
+  (CR Personal Style) conventions when the two symbols conflict; Gregg
+  permits both uses but does not govern deposition-specific practice.
+
+================================================================================
+CATEGORY 10: CAPITALIZATION
+================================================================================
+
+RULE 10.1 — Capitalize first word of every sentence
+  The first word of every sentence is capitalized.
+  §301
+  EXAMPLE:
+    The deponent identified the document.
+    Yes. That is correct.
+
+RULE 10.2 — Capitalize first word after terminal punctuation
+  In testimony, each new sentence begins with a capital letter, including
+  sentences that follow a period within an answer.
+  §301
+
+RULE 10.3 — Capitalize proper nouns and proper adjectives
+  Names of specific persons, places, companies, organizations, and
+  governmental bodies are always capitalized.
+  §303, §305, §312
+  EXAMPLES:
+    BP Exploration, Louisiana Department of Natural Resources, Gulf of Mexico
+    the Macondo well, the Mississippi River, Bourbon Street
+
+RULE 10.4 — Capitalize formal titles before a name [CR-CRITICAL]
+  Capitalize a title when it immediately precedes a person's name. Do NOT
+  capitalize a title used alone or following a name.
+  §312
+  EXAMPLES:
+    Director Johnson approved the plan.           [title before name → cap]
+    The director approved the plan.               [title alone → lowercase]
+    Frank Johnson, the director, testified.        [title after name → lowercase]
+  [CR-CRITICAL]: In deposition transcripts, witness roles (the drilling
+  superintendent, the company man, the toolpusher) are NOT capitalized when
+  used as common nouns.
+
+RULE 10.5 — Capitalize COVID-19 [SEEN IN TEST] [CR-CRITICAL]
+  The disease designation COVID-19 is always written in all capitals with
+  the hyphenated numeral. This is a proper noun derived from an acronym
+  (Coronavirus Disease 2019).
+  EXAMPLE:
+    The deposition was delayed due to COVID-19 restrictions.
+    She testified that COVID-19 protocols were in place.
+  [SEEN IN TEST]: Errors include "covid-19," "Covid-19," or "COVID 19"
+  (without hyphen). The correct form is COVID-19.
+
+RULE 10.6 — Do not capitalize common nouns used in place of proper names
+  Generic references (the company, the well, the project) are not capitalized
+  unless they substitute directly for an official proper name.
+  §303
+  EXAMPLES:
+    the company [generic] vs. Halliburton [proper name]
+    the well [generic] vs. the Macondo well [proper name with identifier]
+
+RULE 10.7 — Capitalize first word of independent question within a sentence
+  When a question within a sentence stands independently as a question, its
+  first word is capitalized.
+  §301d
+  EXAMPLE:
+    The key question was, Did the company know about the hazard before the accident?
+    Counsel raised one issue: Who authorized the final cement job?
+
+RULE 10.8 — Capitalize Q and A in Q&A transcript format [CR-CRITICAL]
+  In deposition transcripts, the speaker identifiers Q (question) and A (answer)
+  are always capitalized. They function as proper speaker labels.
+  §199e
+  EXAMPLE:
+    Q.  Did you review Exhibit 7?
+    A.  Yes, I reviewed it.
+  [CR-CRITICAL]: Lowercase "q." or "a." is incorrect in deposition format.
+
+RULE 10.9 — Geographic and directional terms
+  Capitalize names of specific geographic regions (the Gulf Coast, the South,
+  the Pacific Northwest) when used as proper nouns. Do NOT capitalize general
+  directional terms.
+  §306
+  EXAMPLES:
+    The well was located in the Gulf of Mexico.      [specific region → cap]
+    The platform was 50 miles south of Grand Isle.   [directional → no cap]
+    She grew up in the South.                         [proper region → cap]
+
+RULE 10.10 — Capitalize exhibit labels
+  Exhibit labels (Exhibit 1, Exhibit A, Plaintiff's Exhibit 12) are capitalized
+  as proper titles.
+  EXAMPLE:
+    Q. I am showing you what has been marked as Exhibit 7.
+
+================================================================================
+CATEGORY 11: COMPOUND WORDS AND HYPHENATION
+================================================================================
+
+[CR-CRITICAL — one of the most error-prone categories in deposition transcripts]
+
+RULE 11.1 — Compound adjective before a noun: hyphenate [CR-CRITICAL] [SEEN IN TEST]
+  When two or more words combine to form a single modifier BEFORE a noun,
+  hyphenate the compound.
+  §813, §814
+  EXAMPLES:
+    well-control procedures          [compound adjective before "procedures"]
+    high-pressure environment
+    full-time employee
+    long-term contract
+    step-by-step instructions
+    oil-based mud
+  [SEEN IN TEST]: Common deposition compound modifiers include:
+    frac-gradient test, well-control event, blowout-preventer test,
+    full-scale investigation, deep-water drilling, long-term effects
+
+RULE 11.2 — Compound adjective in predicate position: no hyphen
+  When the same compound adjective follows a linking verb (is, was, were,
+  seems, etc.) and is NOT before a noun, the hyphen is generally dropped.
+  §815
+  EXAMPLES:
+    The employee works full time.          [predicate → no hyphen]
+    The procedures were well known.        [predicate → no hyphen]
+    The contract was long term.            [predicate → no hyphen]
+  CONTRAST:
+    The full-time employee testified.      [before noun → hyphen]
+    The well-known procedure was followed. [before noun → hyphen]
+  EXCEPTION (§824b): well + adjective compounds formed with a past participle
+  that have established dictionary entries (well-rounded, well-read) may
+  retain the hyphen even in predicate position.
+
+RULE 11.3 — Adverb ending in -ly + adjective: NO hyphen [CR-CRITICAL]
+  When the first element of a compound modifier is an adverb ending in -ly,
+  do NOT hyphenate.
+  §824a
+  EXAMPLES:
+    a highly regarded expert          [NOT: highly-regarded expert]
+    a newly installed valve           [NOT: newly-installed valve]
+    a rapidly changing situation
+    a thoroughly tested component
+  [CR-CRITICAL]: This is a common over-hyphenation error. The -ly adverb
+  already signals modification; no hyphen is needed.
+
+RULE 11.4 — well- compounds [SEEN IN TEST] [CR-CRITICAL]
+  Hyphenate well- compounds BEFORE a noun. Do not hyphenate in predicate.
+  §824b
+  EXAMPLES:
+    a well-documented report           [before noun → hyphenate]
+    The report was well documented.    [predicate → no hyphen]
+    well-control procedures            [before noun → hyphenate]
+    well-known industry practices      [before noun → hyphenate]
+  SPECIAL: well-control as a technical industry term (as a noun phrase or
+  compound modifier) typically retains the hyphen in all positions in
+  technical/legal writing because it is an established term of art.
+
+RULE 11.5 — Number + unit/noun compounds before a noun
+  Hyphenate a number + unit-of-measure modifier before a noun.
+  §817
+  EXAMPLES:
+    a 14.2-ppg mud weight
+    a 30-day notice period
+    a 12-inch casing
+    a 10-year contract
+    a 500-page deposition
+  NOT hyphenated when not before a noun:
+    The contract was for 10 years.
+    The notice period is 30 days.
+
+RULE 11.6 — Noun + adjective compounds: always hyphenated [CR-CRITICAL]
+  Certain compound adjectives with a noun as the first element are always
+  hyphenated regardless of position.
+  §820
+  EXAMPLES:
+    industry-standard practice
+    safety-critical system
+    tax-exempt status
+
+RULE 11.7 — Noun + participle compounds: always hyphenated [CR-CRITICAL]
+  Compound modifiers formed with a noun + past or present participle are
+  always hyphenated.
+  §821
+  EXAMPLES:
+    oil-based mud
+    computer-generated report
+    custom-designed equipment
+    court-ordered inspection
+
+RULE 11.8 — Suspending hyphens in parallel compound modifiers
+  When two or more parallel compound modifiers share a common base word,
+  use a suspending hyphen after each modifier element.
+  §832
+  EXAMPLE:
+    short- and long-term contracts    [NOT: short and long-term contracts]
+    two- and three-day sessions
+    pre- and post-accident records
+  [SEEN IN TEST]: The suspending hyphen before a space is a mark of careful
+  professional writing. In deposition transcripts involving technical or
+  legal compound terms, this matters.
+
+RULE 11.9 — Prefix re- hyphenation rule [SEEN IN TEST]
+  Hyphenate re- when (1) the word following re- begins with the letter e, or
+  (2) when the unhyphenated form would be confused with another word.
+  §837
+  EXAMPLES:
+    re-examine   [re + examine beginning with e → hyphenate]
+    re-enter     [re + enter beginning with e → hyphenate]
+    re-depose    [re + depose — avoids confusion, deposition context]
+    re-cross     [cross-examination follow-up]
+    reopen       [no ambiguity → no hyphen]
+    restate      [no ambiguity → no hyphen]
+  [SEEN IN TEST]: "re-depose," "re-examine," and "re-cross" appear in
+  deposition proceedings. All are hyphenated per this rule.
+
+RULE 11.10 — Prefix self- always hyphenated
+  Compounds with self- as a prefix are always hyphenated.
+  §836
+  EXAMPLES:
+    self-incrimination
+    self-employed
+    self-described expert
+
+RULE 11.11 — Prefix ex- (meaning "former") always hyphenated
+  The prefix ex- meaning "former" is always hyphenated.
+  §808b
+  EXAMPLES:
+    ex-employee
+    ex-partner
+    ex-CEO
+
+RULE 11.12 — COVID-19 hyphenation [SEEN IN TEST]
+  COVID-19 retains its hyphen in ALL uses — as a noun, modifier, or when
+  starting a sentence. See also Rule 10.5.
+  EXAMPLE:
+    COVID-19 restrictions affected the deposition schedule.
+    The COVID-19 pandemic began in early 2020.
+
+RULE 11.13 — Technical compound nouns in drilling/energy depositions [SEEN IN TEST]
+  Many technical terms used in oil and gas depositions are compound nouns
+  or compound modifiers. Key correctly-hyphenated terms:
+    blowout preventer (noun — two words, no hyphen)
+    blowout-preventer test (compound modifier before noun — hyphenated)
+    casing shoe (noun — two words, no hyphen)
+    kill line (noun — two words, no hyphen)
+    mud weight (noun — two words, no hyphen)
+    frac gradient (noun — two words, no hyphen as standalone noun)
+    frac-gradient test (compound modifier before noun — hyphenated)
+    wellbore (one word — standard industry usage)
+    drillpipe (one word — standard industry usage, or drill pipe two words)
+    subsea (one word — standard industry usage)
+  NOTE: Consult Layer 2 (Margie Wakeman Wells) and Layer 3 (CR Personal Style)
+  for deposition-specific technical compound form preferences.
+
+================================================================================
+CATEGORY 12: NUMBERS (LEGAL CONTEXT)
+================================================================================
+
+RULE 12.1 — Spell out numbers one through ten; use figures for 11 and above
+  The standard Gregg rule: spell out numbers one through ten in most text;
+  use figures for 11 and above.
+  §401
+  EXAMPLES:
+    The witness identified three documents.
+    There were 14 workers on the rig that day.
+  EXCEPTION in legal/technical context: when numbers are used with units of
+  measure, technical specifications, or precise legal quantities, use figures
+  regardless of size (see Rule 12.3).
+
+RULE 12.2 — Consistency in a series of numbers
+  When a series includes numbers both below and above ten, use figures
+  for all numbers in the series for consistency.
+  §404
+  EXAMPLE:
+    The project required 3, 7, and 14 additional workers.   [NOT: three, seven, and 14]
+
+RULE 12.3 — Figures for numbers with units of measure [CR-CRITICAL]
+  Always use figures when a number accompanies a unit of measurement,
+  technical specification, or percentage.
+  §401c
+  EXAMPLES:
+    14.2 ppg mud weight
+    9⅝-inch casing
+    6,000 psi
+    12.5 ppg fracture gradient
+    Section 1.3 of the report
+    Page 14 of Exhibit 3
+
+RULE 12.4 — Figures for dates in depositions [CR-CRITICAL]
+  Use figures for specific dates. Do not use ordinal suffixes (st, nd, rd, th)
+  after the day number in standard text, but they are common in speech and
+  testimony.
+  §411
+  EXAMPLES:
+    on March 5, 2010   [standard — no ordinal]
+    on March 5th       [acceptable in transcribed speech — speaker said "fifth"]
+    in April 2010      [month and year — no comma needed]
+
+RULE 12.5 — Figures for money amounts
+  Use figures for money amounts. Spell out the word "dollars" in narrative
+  text when the amount is part of speech; use $ symbol in records/exhibits.
+  §401
+  EXAMPLES:
+    The settlement was $2.5 million.
+    He testified the damages exceeded $500,000.
+
+RULE 12.6 — Express large round numbers in combination
+  Express round numbers in millions or billions using a combination of figures
+  and words.
+  §408
+  EXAMPLES:
+    $3.5 million
+    2 billion barrels
+    1.2 million barrels of oil
+
+RULE 12.7 — Time expressions
+  Use figures with a.m. and p.m. Spell out hours when used alone without
+  minutes. Use a colon between hours and minutes.
+  §427
+  EXAMPLES:
+    The deposition began at 9:00 a.m.
+    The witness left at 11:45 a.m.
+    The meeting was scheduled for two o'clock.   [round hour, no a.m./p.m. → words]
+
+RULE 12.8 — Fractions
+  Spell out simple fractions used alone. Use figures with a unit of measure
+  or in technical contexts.
+  §420
+  EXAMPLES:
+    approximately one-half of the crew     [fraction alone → spell out]
+    a ½-inch opening                        [fraction with unit → figure]
+    9⅝-inch casing                          [technical specification → figure]
+
+RULE 12.9 — Percentages in depositions
+  Use figures with the word "percent" (not the % symbol) in testimony text
+  unless working from an exhibit where the symbol appears.
+  §424
+  EXAMPLES:
+    The load increased by 20 percent.
+    He testified the failure rate was less than 5 percent.
+
+================================================================================
+CATEGORY 13: COMMONLY CONFUSED WORDS
+================================================================================
+
+RULE 13.1 — affect vs. effect [SEEN IN TEST] [CR-CRITICAL]
+  affect (verb): to influence, change, or act upon.
+  effect (noun): a result, outcome, or consequence.
+  effect (verb, rare): to bring about, to cause.
+  §[Section 11 — Affect-Effect]
+  EXAMPLES:
+    The ruling will affect [verb — change] the legal precedent.   [NOT: effect]
+    The effect [noun — result] of the ruling was significant.     [NOT: affect]
+    The company sought to effect [verb — bring about] a settlement.
+  [SEEN IN TEST]: "affect" as a verb is far more common in testimony than
+  "effect" as a verb. If in doubt, check the part of speech:
+    verb position → almost always "affect"
+    noun position → almost always "effect"
+
+RULE 13.2 — than vs. then [SEEN IN TEST] [CR-CRITICAL]
+  than: conjunction used in comparisons.
+  then: adverb meaning "at that time" or "next in sequence."
+  §[Section 11 — Than-Then]
+  EXAMPLES:
+    The pressure was higher than the limit allowed.   [comparison → than]
+    The valve failed, and then the well kicked.        [sequence → then]
+    They then testified that the reading was incorrect. [sequence → then]
+  MEMORY AID: then = time; than = comparison (neither starts with "t-h-e-n"
+  when confused — check if "at that time" fits; if yes, use "then").
+  [SEEN IN TEST]: Confusion between than/then is common in phonetic
+  transcription and in rushed steno. Always verify by context.
+
+RULE 13.3 — their vs. there vs. they're [SEEN IN TEST] [CR-CRITICAL]
+  their:   possessive pronoun (belonging to them)
+  there:   adverb of place, or existential "there is/are"
+  they're: contraction of "they are"
+  EXAMPLES:
+    The engineers submitted their [possessive] report on time.
+    The documents are over there [place] on the table.
+    They're [they are] the ones responsible for the decision.
+  [SEEN IN TEST]: In phonetic transcription and steno output, these words
+  sound identical. Context is the only guide.
+    Test for "their": can you substitute "belonging to them"?
+    Test for "there": can you substitute a location or "there is/are"?
+    Test for "they're": can you substitute "they are"?
+
+RULE 13.4 — ensure vs. insure vs. assure
+  ensure:  to make certain (that something will happen).
+  insure:  to protect against financial loss (insurance).
+  assure:  to give someone confidence; object must be a person.
+  §[Section 11 — Ensure-Insure-Assure]
+  EXAMPLES:
+    The company failed to ensure [make certain] safe working conditions.
+    The equipment was insured [covered by insurance] for $2 million.
+    Counsel assured [gave confidence to] the witness that the process was straightforward.
+
+RULE 13.5 — imply vs. infer
+  imply:  to suggest something indirectly (the speaker/writer implies).
+  infer:  to deduce or conclude from evidence (the listener/reader infers).
+  §[Section 11 — Imply-Infer]
+  EXAMPLES:
+    The report implied [suggested] that the test results were falsified.
+    From the testimony, the jury could infer [conclude] that he was aware of the risk.
+
+RULE 13.6 — farther vs. further
+  farther: physical/measurable distance.
+  further: figurative distance; additional degree or extent; additionally.
+  §[Section 11 — Farther-Further]
+  EXAMPLES:
+    The platform was farther [physical distance] from shore than expected.
+    Counsel had nothing further [additional] to ask.
+    The matter requires further [additional] investigation.
+
+RULE 13.7 — fewer vs. less [SEEN IN TEST]
+  fewer:  refers to countable items (number).
+  less:   refers to uncountable amounts (degree, bulk, or quantity).
+  §[Section 11 — Fewer-Less]
+  EXAMPLES:
+    Fewer [countable] workers were present on that shift.
+    Less [uncountable] time was spent on safety training that year.
+    less than 20 percent   [percentage → use "less than"]
+    fewer than 10 people   [countable people → "fewer than"]
+  NOTE: "Less than" precedes time periods, distances, money, and
+  percentages even though they technically involve countable units:
+    less than ten years ago
+    less than $500,000
+
+RULE 13.8 — principal vs. principle
+  principal (noun/adj): the most important person or thing; head of a school;
+    invested sum; most important. ("The principal reason...")
+  principle (noun only): a fundamental rule or standard.
+  §[Section 11 — Principle-Principal]
+  EXAMPLES:
+    The principal [most important] cause of the blowout was cement failure.
+    The attorney introduced the principal [lead partner] of the firm.
+    The company violated basic safety principles [rules/standards].
+
+RULE 13.9 — adverse vs. averse
+  adverse:  unfavorable, harmful, hostile.
+  averse:   personally opposed to, having distaste for.
+  §[Section 11 — Adverse-Averse]
+  EXAMPLES:
+    The adverse [unfavorable] weather conditions delayed operations.
+    The witness was not averse [opposed] to answering the question.
+
+RULE 13.10 — disinterested vs. uninterested
+  disinterested:  impartial, unbiased (NOT the same as uninterested).
+  uninterested:   not interested, indifferent.
+  §[Section 11 — Disinterested-Uninterested]
+  EXAMPLES:
+    An expert witness must be disinterested [impartial].
+    The deponent seemed uninterested [not engaged] in the proceedings.
+  [CR-CRITICAL]: In legal contexts, the word "disinterested" specifically
+  conveys impartiality (as in a disinterested witness or disinterested party).
+  Do NOT substitute "uninterested" in legal contexts where impartiality
+  is the intended meaning.
+
+RULE 13.11 — complement vs. compliment
+  complement: something that completes or goes with something else.
+  compliment: praise, or to praise.
+  §[Section 11 — Complement-Compliment]
+  EXAMPLES:
+    The safety system complemented [completed/paired with] existing procedures.
+    Counsel complimented [praised] the witness on the clarity of the answer.
+
+RULE 13.12 — comprise vs. compose
+  comprise: to contain, consist of (the whole comprises the parts).
+  compose:  to make up (the parts compose the whole).
+  DO NOT use "comprised of" — use "composed of."
+  §[Section 11 — Comprise-Compose]
+  EXAMPLES:
+    The investigation comprises [contains] three phases.
+    Three phases compose [make up] the investigation.
+    The team is composed of [NOT: comprised of] engineers and attorneys.
+
+RULE 13.13 — lay vs. lie
+  lay (verb): to place or put (requires an object). Principal parts: lay, laid, laid, laying.
+  lie (verb): to recline or rest (no object). Principal parts: lie, lay, lain, lying.
+  §[Section 11 — Lay-Lie]
+  EXAMPLES:
+    He laid [placed] the document on the table.
+    The pipe lay [rested] on the seafloor.
+    The records have lain [rested] untouched for years.
+  COMMON CONFUSION: past tense of "lie" is "lay":
+    Yesterday, the pipe lay on the seafloor.   [past tense of lie = lay]
+    He laid the pipe on the seafloor.          [past tense of lay = laid]
+
+RULE 13.14 — its vs. it's [CR-CRITICAL]
+  its:   possessive pronoun — belonging to it. NO apostrophe.
+  it's:  contraction of "it is" or "it has." HAS an apostrophe.
+  §[Section 11, §1056e]
+  EXAMPLES:
+    The company failed to follow its [possessive — the company's] own policy.
+    It's [it is] clear that the valve was defective.
+  [CR-CRITICAL]: Possessive pronouns (its, hers, his, theirs, ours, yours)
+  NEVER have apostrophes. Apostrophes in pronouns always indicate contractions.
+
+RULE 13.15 — a vs. an before abbreviations and acronyms
+  The choice of a or an depends on SOUND, not spelling.
+  Use "an" before a vowel SOUND; use "a" before a consonant SOUND.
+  §[Section 11 — A-An]
+  EXAMPLES:
+    an FBI agent   [F sounds like "eff" — vowel sound → an]
+    a BOP test     [B sounds like "bee" — consonant sound → a]
+    an NPT result  [N sounds like "en" — vowel sound → an]
+    a RICO investigation [R sounds like "ar" but RICO is pronounced as a word → a]
+  [SEEN IN TEST]: Technical depositions use many initialisms (BOP, NPT,
+  MMS, API). Apply the sound rule, not the letter rule.
+
+RULE 13.16 — amount vs. number
+  amount: used for things measured in bulk or degree (uncountable).
+  number: used for countable individual items.
+  §[Section 11 — Amount-Number]
+  EXAMPLES:
+    A large number of [countable] workers were present.   [NOT: amount of workers]
+    A large amount of [uncountable] pressure built up.
+
+================================================================================
+CATEGORY 14: GRAMMAR RULES
+================================================================================
+
+RULE 14.1 — Subject-verb agreement: basic rule [CR-CRITICAL]
+  A verb must agree with its subject in number (singular or plural).
+  §1001
+  EXAMPLES:
+    The drilling report confirms the sequence of events.   [singular subject → singular verb]
+    The engineers confirm the sequence.                    [plural subject → plural verb]
+
+RULE 14.2 — Subject-verb agreement: subjects joined by "and"
+  Subjects joined by "and" take a plural verb.
+  §1002
+  EXAMPLE:
+    The driller and the toolpusher were both present.
+    The investigation and the report confirm our findings.
+
+RULE 14.3 — Subject-verb agreement: subjects joined by "or/nor" [CR-CRITICAL]
+  When subjects are joined by "or" or "nor," the verb agrees with the
+  subject CLOSEST to the verb.
+  §1003
+  EXAMPLES:
+    Neither the supervisor nor the workers were notified.
+        [workers = plural → were]
+    Neither the workers nor the supervisor was notified.
+        [supervisor = singular → was]
+    Either the engineer or the driller has the document.
+        [driller = singular → has]
+
+RULE 14.4 — Subject-verb agreement: intervening phrases [CR-CRITICAL]
+  An intervening phrase (including prepositional phrases, appositive phrases)
+  between subject and verb does NOT change the number of the verb.
+  §1006, §1007
+  EXAMPLES:
+    The report, along with all supporting documents, was submitted on March 5.
+        [subject = report (singular) → was, not were]
+    The engineers, together with the project manager, were deposed last week.
+        [subject = engineers (plural) → were]
+    The results of the test confirm the anomaly.
+        [subject = results (plural) → confirm]
+    The purpose of the meetings was to establish a timeline.
+        [subject = purpose (singular) → was]
+
+RULE 14.5 — Subject-verb agreement: collective nouns
+  Collective nouns (team, crew, committee, jury, company, staff) take a
+  singular verb when acting as a unit, and a plural verb when acting
+  individually.
+  §1019
+  EXAMPLES:
+    The crew was on the rig that day.    [acting as a unit → singular]
+    The jury have reached different conclusions.   [acting individually → plural, rare]
+  NOTE: In American English, the singular is far more common for collective
+  nouns. Use plural only when there is a clear reason to individualize.
+
+RULE 14.6 — Subject-verb agreement: expressions of time, money, measurement
+  Expressions of time, money, or measurement used as a single unit take
+  a singular verb.
+  §1024
+  EXAMPLES:
+    Ten years has passed since the accident.   [a span of time → singular]
+    Five million dollars was awarded in damages.   [a sum → singular]
+    Twenty feet of pipe was missing.   [a measurement → singular]
+
+RULE 14.7 — Pronoun agreement with antecedent [CR-CRITICAL]
+  A pronoun must agree with its antecedent (the noun it refers to) in number
+  and gender.
+  §1049
+  EXAMPLES:
+    Each engineer submitted his or her report.    [singular antecedent]
+    The engineers submitted their reports.        [plural antecedent]
+    The company changed its procedures after the accident.   [singular → its]
+  NOTE: Avoid "their" as a singular pronoun in formal/legal writing even
+  though it is common in speech. Use "his or her" or restructure the sentence.
+
+RULE 14.8 — Pronoun agreement: indefinite pronouns [CR-CRITICAL]
+  The following indefinite pronouns are SINGULAR and take singular verbs
+  and singular pronouns:
+    each, every, either, neither, one, anyone, anyone, everyone, someone,
+    nobody, no one, somebody, everybody, anybody
+  §1049, §1050
+  EXAMPLES:
+    Each of the witnesses was asked to review his or her notes.
+    Everyone on the rig knew the pressure was increasing.   [NOT: knew... their]
+    Neither of the reports was accurate.   [NOT: were]
+
+RULE 14.9 — Pronoun case: who vs. whom [CR-CRITICAL]
+  Use "who" as a subject (does the action). Use "whom" as an object (receives
+  the action or follows a preposition).
+  §1061
+  TEST: Substitute "he/she" (who) or "him/her" (whom).
+  EXAMPLES:
+    Who signed the document?   [He signed → who ✓]
+    Whom did the supervisor call?   [He called him → whom ✓]
+    The witness, who was present that day, confirmed the timeline.
+    The attorney to whom the question was addressed objected.
+  [CR-CRITICAL]: "Who" vs. "whom" errors occur frequently in deposition
+  questions and answers. Transcribe exactly as spoken; note that attorneys
+  and witnesses may use "who" colloquially where "whom" is correct.
+
+RULE 14.10 — Pronoun case: objective after prepositions
+  Use the objective form of a pronoun after a preposition.
+  §1055b
+  EXAMPLES:
+    between you and me   [NOT: between you and I]
+    for him and her
+    Counsel directed the question to him and the co-defendant.
+  [CR-CRITICAL]: "Between you and I" is a common error in speech. It is
+  grammatically incorrect; the correct form is "between you and me."
+
+RULE 14.11 — Double negatives — do not use [CR-CRITICAL]
+  In standard English, two negatives in the same clause create a positive
+  or an illogical statement.
+  §1072
+  EXAMPLES:
+    I could hardly expect him to cooperate.   [NOT: I couldn't hardly]
+    I didn't recognize anyone.               [NOT: I didn't recognize no one]
+    There was scarcely any time left.         [NOT: There wasn't scarcely any time]
+  NOTE: "Hardly" and "scarcely" are themselves negative in meaning; do not
+  pair them with "not" or "n't."
+
+RULE 14.12 — Placement of "only" [SEEN IN TEST]
+  Place "only" immediately before the word or phrase it modifies to avoid
+  ambiguity.
+  §1072
+  EXAMPLES:
+    He reviewed only the first section.     [only the first — not others]
+    Only he reviewed the section.           [only he — no one else did]
+    He only reviewed — did not edit — the section.
+  [SEEN IN TEST]: Misplaced "only" in deposition questions can affect
+  meaning. Transcribe as spoken, but be aware of potential ambiguity.
+
+RULE 14.13 — Comparisons: use "than" with comparative adjectives [CR-CRITICAL]
+  Use "than" (not "then") after comparative adjectives (higher, lower,
+  more, less, better, worse, etc.).
+  §1057, §[Section 11 — Than-Then]
+  EXAMPLES:
+    The pressure was higher than the rated limit.
+    More documents were produced than the court required.
+    The settlement was less than the original demand.
+  [CR-CRITICAL]: See also Rule 13.2 (than vs. then).
+
+RULE 14.14 — Pronoun case after "than" and "as" in comparisons
+  After "than" or "as" in a comparison, the correct pronoun case depends on
+  the implied verb.
+  §1057
+  EXAMPLES:
+    The other attorney was more prepared than she [was prepared].   [subject → she]
+    Counsel questioned him as thoroughly as her [as thoroughly as counsel questioned her].
+    The company paid them more than us [more than the company paid us].
+
+RULE 14.15 — Consistency of tense in testimony
+  Witness testimony is typically in the past tense (describing what happened).
+  Maintain tense consistency within a sequence of events.
+  EXAMPLES:
+    A. We were on the rig, and the supervisor came over and told us to stop.
+    [All past tense — consistent ✓]
+    NOT: We were on the rig, and the supervisor comes over and tells us to stop.
+    [Mixed tense — inconsistent; transcribe as spoken]
+  NOTE: If a witness uses present tense for past events (historical present),
+  transcribe as spoken; do not correct tense when transcribing verbatim.
+
+RULE 14.16 — "good" vs. "well" in testimony
+  Good is an adjective (modifies a noun). Well is typically an adverb
+  (modifies a verb). "Well" as an adjective means "in good health."
+  §[Section 11 — Good-Well]
+  EXAMPLES:
+    The procedures were good [adjective].
+    The crew performed well [adverb].
+    He did not feel well [adjective — health] on the day of the incident.
+  NOTE: When transcribing testimony, preserve the speaker's usage.
+
+================================================================================
+END OF GREGG_STYLE_MODULE.txt
+Authority Level: LAYER 1 — Universal Base Standard
+Source: The Gregg Reference Manual, 10th Edition, William A. Sabin
+Last Updated: 2026-03-22
+================================================================================

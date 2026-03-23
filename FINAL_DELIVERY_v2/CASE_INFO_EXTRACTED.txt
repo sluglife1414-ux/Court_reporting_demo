@@ -1,0 +1,361 @@
+================================================================================
+                       CASE INFORMATION -- EXTRACTED METADATA
+================================================================================
+
+DEPOSITION OF THOMAS L. EASLEY
+SOURCE: extracted_text.txt (rough draft transcript)
+PROCESSED BY: MB Demo Engine v4
+
+================================================================================
+I.   CASE IDENTIFICATION
+================================================================================
+
+Full Case Name:    Yellow Rock, LLC, et al. v. Westlake US 2 LLC f/k/a Eagle
+                   US 2 LLC, et al.
+
+Docket Number:     202-001594
+                   [Raw transcript had "202_001594" -- corrected to hyphen]
+
+Division:          "H"
+
+Court:             14th Judicial District Court
+                   Parish of Calcasieu
+                   State of Louisiana
+
+Type of Action:    Civil -- Oil and Gas Litigation
+
+Subject Matter:    Alleged mismanagement of salt cavern operations at/near
+                   Sulphur Mines salt dome (Calcasieu Parish, Louisiana) by
+                   Defendant Westlake; resulting pressure loss event (December
+                   2021 or earlier); DNR moratorium on drilling/recompletion
+                   permits; damages to Plaintiffs' oil and gas operations.
+
+================================================================================
+II.  DEPOSITION DETAILS
+================================================================================
+
+Witness:           Thomas L. Easley (also referred to as "Tom Easley")
+Witness Address:   1501 County Road 446, De Leon, Texas 76444
+Witness Email:     metres@aol.com (stated on record at start of examination)
+
+Date:              Friday, March 13, 2026
+Start Time:        9:09 a.m. (Central)
+Video Start:       9:07 a.m. (per videographer opening)
+End Time:          5:00 p.m.
+On-Record Time:    5 hours 33 minutes (per videographer at close)
+
+Location:          The Houstonian
+                   909 Post Oak Lane
+                   Houston, Texas 77024
+                   [Raw had "909 Post Oak Street" and zip 70112 -- both
+                   corrected; videographer stated "111 North Post Oak Lane"
+                   verbatim on record]
+
+Reporter:          Marybeth E. Muir, CCR, RPR
+                   Certified Court Reporter, State of Louisiana
+                   Registered Professional Reporter
+
+Videographer:      Bryan Smith
+                   Lexitas
+                   [Raw transcript rendered videographer's self-identification
+                   as "Brian Smith"; correct per Appearances block: "Bryan
+                   Smith"]
+
+Also Present:      Jonathan Love
+                   Leslie Partida, Paralegal
+                   Bryan Smith, Videographer
+
+Method:            In-person deposition with Zoom participants
+                   Zoom participants: Leah Engelhardt (Endurance);
+                   Stephen J. Eckholdt (Swiss Re/Galloway Johnson);
+                   Nathanial [no last name stated] (document technician)
+
+Deposition Status: INCOMPLETE -- suspended at 5:00 p.m.; continuing session
+                   anticipated.
+
+Stipulations:      (1) All objections reserved except form/responsiveness.
+                   (2) One objection is good for all present unless opted out.
+                   (3) Witness waives right to read and sign.
+                   (4) Original delivered to Walker Hobby, Esq., for filing.
+                   (5) Starr Indemnity reserves right to re-depose witness.
+
+================================================================================
+III. PARTIES
+================================================================================
+
+PLAINTIFFS:
+  Yellow Rock, LLC
+  [et al. -- additional plaintiffs not individually named in transcript]
+
+  Counsel:    Sher Garner Cahill Richter Klein & Hilbert, L.L.C.
+              909 Poydras Street, Suite 2800
+              New Orleans, Louisiana 70112
+              504.299.2100
+              Attorneys: Thomas J. Madigan, Esq.
+                         Jeff Kessler, Esq.
+                         James Garner, Esq.
+              Email contacts: mcurtis@shergarner.com (M. Curtis -- lead in
+              deposition); khandy@shergarner.com; tmadigan@shergarner.com;
+              jkessler@shergarner.com; jgarner@shergarner.com
+
+              NOTE: MS. CURTIS (M. Curtis) appeared as primary plaintiffs'
+              counsel during examination.  MS. HANDY (K. Handy) also appeared.
+
+DEFENDANTS:
+  Westlake US 2 LLC f/k/a Eagle US 2 LLC
+  Westlake Corporation
+  Westlake Chlor-Vinyls Corporation
+    Counsel: Susman Godfrey LLP
+             1000 Louisiana Street, Suite 5100
+             Houston, Texas 77002-5096
+             713.651.9366
+             By: J. Hoke (Trey) Peacock, III, Esq.
+             tpeacock@susmangodfrey.com
+             NOTE: Walker Hobby, Susman Godfrey LLP, conducted examination
+             (not listed in raw Appearances but identified throughout
+             examination).
+
+  PPG [Industries, Inc.]
+    Counsel: Jones Walker
+             445 North Boulevard, Suite 800
+             Baton Rouge, Louisiana 70802
+             225.248.2056
+             By: Jay M. O'Brien, Esq.
+             jobrien@joneswalker.com
+
+  Lonquist & Company; Lonquist Field Service
+    Counsel: Kelly Hart & Hallman
+             400 Poydras Street, Suite [not in record]
+             New Orleans, Louisiana 70130
+             504.522.1812
+             By: Aimee W. Hebert, Esq.
+             aimee.hebert@kellyhart.com
+
+  All State Insurance Company, as successor-in-interest to Northbrook Excess
+  and Surplus Insurance Company, formerly Northbrook Insurance Company
+    Counsel: Windels Marx
+             180 Park Avenue
+             Florham Park, New Jersey 07932-1054
+             973.966.3207
+             By: Anthony F. Sirianni, Jr., Esq.
+             asirianni@windelsmarx.com
+
+  National Casualty Company
+    Counsel: Phelps Dunbar
+             365 Canal Street, Suite 2000
+             New Orleans, Louisiana 70130-6534
+             504.679.5686
+             By: Tucker T. Bohren, Esq.
+             tucker.bohren@phelps.com
+
+  Certain Underwriters at Lloyd's, London; Berkshire Hathaway Specialty
+  Insurance Company; The Continental Insurance Company; Government Employees
+  Insurance Company; Columbia Casualty Company; CNA; GEICO; Stonewall
+  Insurance Company; General Reinsurance Corporation
+    Counsel: Taylor, Wellons, Politz & Duhe, LLC
+             1555 Poydras Street, Suite 2000
+             New Orleans, Louisiana 70112
+             504.525.9888
+             By: Samuel M. Rosamond, III, Esq.
+             srosamond@twpdlaw.com
+
+  Starr Indemnity and Liability Company
+    Counsel: Treadaway Bollinger, LLC
+             406 North Florida Street, Suite 2
+             Covington, Louisiana 70433
+             504.833.7300
+             By: Darren M. Guillot, Esq.
+             darren@ztalaw.com
+             NOTE: Guillot appeared in deposition and put Starr's reservation
+             of rights on the record.
+
+  Gemini Insurance Company
+    Counsel: Phelps Dunbar
+             365 Canal Street, Suite 2000
+             New Orleans, Louisiana 70130-6534
+             504.679.5685
+             By: Bennett Matson, Esq.
+             bennett.matson@phelps.com
+
+  Allstate Insurance Company
+    Counsel: Musgrave, McLachlan & Penn, LLC
+             1555 Poydras Street, Suite 2100
+             New Orleans, Louisiana 70112
+             504.799.4300
+             By: [No attorney named -- NOT PRESENT]
+             lmd@mmpfirm.com
+
+  AIG Entities
+    Counsel: McDowell Hetherington
+             1001 Fannin Street, Suite 2400
+             Houston, Texas 77002
+             By: Benton Surrett, Esq.
+             benton.surrett@mhllp.com
+
+  Great American Insurance Company
+    Counsel: Duplass, APLC
+             433 Metairie Road, Suite 600
+             Metairie, Louisiana 70005
+             504.832.3700
+             By: Aidan P. Gallaugher, Esq.
+             agallaugher@duplass.com
+
+  Old Republic Insurance Company
+    Counsel: Kennedys Law LLP
+             400 Connell Drive, Suite 700
+             Berkeley Heights, New Jersey 07922
+             564.224.9104
+             By: Sally Clements, Esq.
+             sally.clements@kennedyslaw.com
+
+  TIG [Insurance Company]
+    Counsel: Mouledoux, Bland, Legrand & Brackett
+             701 Poydras Street, Suite 600
+             New Orleans, Louisiana 70139
+             504.522.2121
+             By: [No attorney named -- NOT PRESENT]
+             jlonero@mblb.com
+
+  Liberty Surplus Insurance Corporation
+    Counsel: Barrasso Usdin Kupperman Freeman & Sarver
+             909 Poydras Street, Suite 2350
+             New Orleans, Louisiana 70112
+             504.589.9762
+             By: Morgan L. Pilcher, Esq.
+             mpilcher@barrassousdin.com
+
+  Hamilton Insurance Designated Activity Company
+    Counsel: Cosmich, Simmons & Brown
+             650 Poydras Street, Suite 2215
+             New Orleans, Louisiana 70130
+             601.863.2100
+             By: Kenan S. Rand, Jr., Esq.
+             kenan.rand@cs-law.com
+
+  Zurich Reinsurance Ltd f/k/a Zurich International (Bermuda) Ltd
+    Counsel: Skarzynski Marick & Black
+             500 West Madison Street, Suite 3600
+             Chicago, Illinois 60661
+             312.946.4239
+             By: [No attorney named -- NOT PRESENT]
+             acandela@skarzynski.com
+
+  Travelers Casualty & Surety Co.
+    Counsel: Lugenbuhl Wheaton Peck Rankin & Hubbard
+             601 Poydras Street, Suite 2775
+             New Orleans, Louisiana
+             504.568.1990
+             By: Kevin McGlone, Esq.
+             kmcglone@lawla.com
+
+  Zurich [as alleged insurer of PPG]
+    Counsel: Salley Hite Mercer and Resor
+             One Canal Place, 365 Canal Street, Suite 1710
+             New Orleans, Louisiana 70130
+             504.566.8815
+             By: Ian Salinas-Stern, Esq.
+             istern@shmrlaw.com
+
+  Endurance American Insurance Company
+    Counsel: Chaffe McCall LLP
+             1100 Poydras Street, Suite 2300
+             New Orleans, Louisiana 70163
+             504.585.7081
+             By: Leah Engelhardt, Esq. (via Zoom)
+             engelhardt@chaffe.com
+
+  Swiss Re Corporate Solutions America Insurance Corporation f/k/a Puritan
+  Insurance Company
+    Counsel: Galloway Johnson
+             One Shell Square, 701 Poydras Street, Suite 4040
+             New Orleans, Louisiana 70139
+             504.525.6802
+             By: Stephen J. Eckholdt, Esq. (via Zoom)
+             seckholdt@gallowayjohnson.com
+
+  RLI Insurance Company [named as excess insurer of PPG Industries, Inc.]
+    Counsel: Lugenbuhl Wheaton Peck Rankin & Hubbard
+             601 Poydras Street, Suite 2775
+             New Orleans, Louisiana
+             504.568.1990
+             By: Zachary T. Lamachio, Esq.
+             zlamachio@lawla.com
+
+================================================================================
+IV.  KEY CASE FACTS (AS STATED IN TRANSCRIPT)
+================================================================================
+
+Field/Location:    Sulphur Mines Field, Sulphur Mines salt dome,
+                   Calcasieu Parish, Louisiana
+
+Yellow Rock Acreage: Approximately 5,000 acres around the salt dome in
+                   all directions
+
+Wells in field:    Over 1,000 wells drilled historically in Sulphur Mines
+                   Field
+
+Yellow Rock's wells drilled (White Top/Easley management era):
+                   4 new wells (including wells 1027, 1028, 1029; one
+                   additional)
+                   Multiple legacy well recompletions
+                   NOTE: Well 1028 required sidetrack; well 1027 had stuck pipe
+                   (lost downhole equipment; partial insurance recovery).
+
+New management well drilled: Fee 1031 (completed as commercial wet well;
+                   production not strong).  DNR halted further permits
+                   late 2022/early 2023.
+
+Key Events:
+  November 2018:   White Top Energy LLC acquires Yellow Rock, LLC for
+                   approximately $9-10 million (funded by Sunny Solar loan).
+  March 2020:      Production ~409 barrels/day. Moratorium on new drilling
+                   implemented due to COVID-19 and low oil prices.
+  August 2020:     Hurricane Laura makes direct strike on Sulphur/Sulphur
+                   Mines Field. Power stations destroyed. Field shut in.
+  January 2021:    Sunny Solar loan matures; White Top cannot repay.
+                   Production ~140 BOE/day.
+  June 2021:       Chapter 11 restructuring discussed; bankruptcy counsel
+                   (Dick Fuqua) retained.
+  August 2021:     Negotiated restructuring with Sunny Solar. French and
+                   Easley replaced as managers by Jonathan Barrett.
+  December 2021:   Production ~70 barrels/day. Westlake Cavern 6 or 7 pressure
+                   loss event begins (per Hobby's definition). Hundreds of
+                   thousands in unpaid payroll taxes.
+  Q1 2023:         Easley first informed of pressure loss event (by Jonathan
+                   Love).
+  December 2022:   DNR stops issuing drilling/recompletion permits.
+  January 2023:    Capital raise -- $11 million; Sunny Solar at ~87% equity.
+
+DNR Contacts:      Stephen Lee (Mines & Minerals Division head);
+                   Commissioner Ieyoub (DNR Commissioner of Natural Resources);
+                   Corey Shircliff (Injections and Mining Division).
+
+Yellow Rock Regulatory Consultant: Jo Beth Taylor, KJ Consulting, Lafayette,
+                   Louisiana.
+
+Sulphur Dome LLC: Entity formed by Todd Bertelot's family members holding
+                   surface ownership of land; Bertelot stepped into Burlington's
+                   position as surface lessor.
+
+Surface Lessor History: Burlington Resources (predecessor lessor); succeeded by
+                   Todd Bertelot / Sulphur Dome LLC.
+
+Boardwalk Pipelines:  Also an operator with caverns in Sulphur Mines area.
+                   Bertelot appears to have been Vonco representative for
+                   Boardwalk.
+
+================================================================================
+V.   EXHIBIT COUNT
+================================================================================
+
+Total exhibits marked:           32 (Nos. 127-158)
+Duplicate in index:               1 (Exhibit 142 listed twice)
+Previously marked in prior
+  proceedings (dual designation): 2 (Exhibit 128 = prior Ex. 113;
+                                     Exhibit 146 = prior Ex. 106)
+Highly Confidential:              4 (Exs. 143, 145, 153, 155)
+Not described in detail:          3 (Exs. 139, 144, 150)
+
+================================================================================
+                         END OF CASE INFO EXTRACTED
+================================================================================

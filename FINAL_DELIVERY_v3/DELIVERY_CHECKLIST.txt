@@ -1,0 +1,178 @@
+DELIVERY CHECKLIST
+================================================================================
+Case:    Yellow Rock, LLC et al. v. Westlake US 2 LLC f/k/a Eagle US 2 LLC et al.
+Docket:  202-001594, Division "H", 14th Judicial District, Parish of Calcasieu
+Witness: Thomas L. Easley
+Date:    Friday, March 13, 2026
+Reporter: Marybeth E. Muir, CCR, RPR
+Prepared by: Deposition Engine v4, Pass 2b — For reporter completion
+================================================================================
+
+REPORTER PRE-CERTIFICATION CHECKLIST
+
+CRITICAL — MUST COMPLETE BEFORE ANY COPY IS DELIVERED:
+
+[ ] Transcript reviewed by reporter (Marybeth E. Muir, CCR, RPR)
+
+[ ] *REPORTER CHECK HERE* passages resolved — 3 passages total:
+      Line ~7452:  MS. Curtis objection passage re: investor identities
+      Line ~11344: Geotech/seismic section passage (5/18/21 reference)
+      Line ~11557: "A general sense description" passage
+      NOTE: Audit source file for any additional placeholder occurrences
+            (engine logged a potential fourth at line 11452 — verify)
+
+[ ] Certification page completed — license number entered
+      (Certification pages were NOT present in cleaned_text.txt source file;
+       reporter must append reporter's certificate and witness certificate pages
+       before producing certified copy)
+
+[ ] Exhibit 142 duplicate resolved against originals
+      (Exhibit 142 appears TWICE in the raw exhibit index at source lines 110 and 112;
+       determine whether two separate documents were both marked 142 or whether the
+       index contains a duplicate entry; correct before certification)
+
+[ ] Exhibit 157 status confirmed
+      (Questions on Exhibit 157 may not have been completed before deposition was
+       suspended; verify whether questions were asked before close of Day 1;
+       note status in file for Part 2 session)
+
+
+APPEARANCES AND COUNSEL:
+
+[ ] Walker Hobby added to appearances block
+      (Hobby is Susman Godfrey's examining counsel; only Peacock is listed in the
+       Susman Godfrey entry in the appearances block; Hobby must be added for
+       certified copy)
+
+[ ] "MS. HANDY" identity resolved
+      (Speaks on record at lines 3848 and 3998; not in formal appearances block;
+       reporter to identify full name, firm, and party; add to appearances or
+       note in transcript as required)
+
+[ ] Zoom participant "Nathaniel" identified
+      (Speaks on record at approximately line 3071; full name and firm unknown;
+       reporter to identify and add to appearances or note in transcript)
+
+[ ] Videographer name confirmed — Bryan or Brian Smith
+      (Appearances block: "Bryan Smith"; videographer's own statement: "Brian Smith";
+       confirm correct spelling with court reporter or Lexitas)
+
+[ ] Kennedys Law LLP email domain verified
+      ("sally.clements@kenndyslaw.com" in source — possible typo; "kenndys" vs.
+       "kennedys"; verify before certified copy)
+
+[ ] Cosmich, Simmons & Brown email domain verified
+      ("kenan.rand@cs_law.com" — underscore artifact; likely "cs-law.com" or
+       "cslaw.com"; verify before certified copy)
+
+[ ] Kelly Hart & Hallman suite number for Aimee Hebert obtained
+      (Suite number blank in appearances block; obtain correct suite)
+
+[ ] Ian Salinas-Stern surname spelling confirmed
+      (Corrected from "SALINAS_STERN" to "SALINAS-STERN"; confirm hyphenated form
+       is correct)
+
+
+TRANSCRIPT CONTENT:
+
+[ ] Company name underscores verified and corrected
+      (WESTLAKE CHLOR_VINYLS → WESTLAKE CHLOR-VINYLS; cs_law.com; In_Depth → In-Depth;
+       COVID_19 → COVID-19; Teams record_keeping → team's record-keeping; all instances
+       of underscore in proper names and hyphenated terms reviewed)
+
+[ ] "Sunny Solar" entity name verified against exhibits
+      (Referenced throughout as majority controlling interest holder in White Top Energy;
+       verify correct legal name)
+
+[ ] "Revenant Signal Energy" entity name verified against case documents
+      (Rendered inconsistently in source as "REV rent signal," "energy signal joint
+       venture," "Revenant Signal Energy"; most consistent form appears at line 6707;
+       verify and apply uniformly throughout)
+
+[ ] "REV Energy Signal Joint Venture" — full legal name confirmed
+      (Related to above; verify whether this is the same entity as "Revenant Signal Energy"
+       and confirm correct full legal name)
+
+[ ] Donelynn Energy (or similar) company name verified
+      (Drilling manager's company name garbled throughout; MS. Curtis at line 3376
+       says "Space between done and Lynn"; verify against discovery/business records)
+
+[ ] Thomas Metcalf spelling confirmed (Metcalf or Metcalfe)
+      (Name garbled throughout as "met calf"; verify correct spelling against case documents)
+
+[ ] "Stephen Derby" vs. "Steve Derby" consistency resolved
+      ("Stephen" appears once at line 6993; "Steve" used consistently elsewhere;
+       confirm correct form and apply uniformly)
+
+[ ] "Exhibit No. 36" at line 5866 verified — likely should be "Exhibit No. 136"
+      (Steno appears to have dropped the leading "1"; confirm against transcript context)
+
+[ ] Bates numbers verified for exhibits with truncation/garbling flags:
+      YR-41592      (Exhibit 136 — may be YR-415920 or similar)
+      YR-37094      (Exhibit 148 — may be YR-370940 or similar)
+      YR-264305     (Exhibit 129 — "Yellow Rock 2643 05" in transcript)
+      YR-323003     (Exhibit 135 — "YR_ 3230 on three" in transcript)
+      YR-362589     (Exhibit 134 — Hobby gives "36259" at line 5274)
+      YR-288594     (Exhibit 137 — "why are 2885 '94" in transcript)
+
+[ ] Technical terms verified with reporter:
+      "subsurface sonar tests" (line 2264) — may be "sonic" or other technical term
+      "anti-collision software" (line 10934) — corrected from "anti conflict software";
+        confirm correct industry term (anti-collision software for directional drilling)
+
+
+TRANSCRIPT CONTINUITY:
+
+[ ] Court reporter computer glitch gap reviewed
+      (Computer went down at approximately 4:05 p.m.; recess 4:05–4:08 p.m. on record
+       at approximately lines 10258-10264; verify no testimony gap)
+
+[ ] Audio gaps reviewed (steno "_ _" artifacts):
+      Lines 1762-1763: MS. Curtis clarification passage — words likely missing
+      Lines 2562-2563: "raised _ _ passed on the concerns" — words missing
+      (Review audio at both locations and fill in missing text)
+
+[ ] Readback event confirmed (line ~2017)
+      (Reporter reads back a question on record; confirm readback is properly
+       formatted in final transcript)
+
+[ ] Reporter's speaking lines confirmed (lines 3422-3424 and 6069)
+      (Reporter speaks on record at these locations; confirm text is accurately captured)
+
+[ ] Off-record periods verified
+      (Audio break/off record at ~lines 962-975, 9:17–9:18 a.m.;
+       recess at ~lines 10258-10264, 4:05–4:08 p.m.;
+       confirm no testimony gap at either location)
+
+
+FINAL DELIVERY:
+
+[ ] All 47 QA flags reviewed and resolved (see QA_FLAGS.txt)
+
+[ ] Headers and page numbers verified throughout
+
+[ ] Exhibits confirmed against originals and indexed (127-158, 32 total)
+
+[ ] Condensed transcript reviewed (if applicable)
+
+[ ] Invoice sent
+
+[ ] Delivered to: _______________________________________
+                  (Per ordering party instructions)
+
+
+================================================================================
+IMPORTANT NOTICE — DEPOSITION IS ONGOING:
+
+This is Day 1 of a deposition that was suspended at 5:00 p.m. Westlake stated
+readiness to continue. Part 2 session is anticipated.
+
+When Part 2 rough draft is received:
+  - Load this PROCESSING_NOTES.txt as prior session notes for the engine
+  - Carry forward all unresolved flags
+  - Confirm Exhibit 157 questions were or were not completed in Day 1
+  - Note any new exhibits will continue from No. 159 (or as marked)
+  - Walker Hobby's examination is continuing; no cross or other examination
+    has yet occurred
+
+================================================================================

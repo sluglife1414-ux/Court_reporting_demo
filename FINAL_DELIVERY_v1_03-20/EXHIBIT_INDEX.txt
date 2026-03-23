@@ -1,0 +1,285 @@
+================================================================================
+EXHIBIT INDEX
+Case: Yellow Rock, LLC, et al. v. Westlake US 2 LLC, et al.
+Docket No.: 202-001594, Division "H", 14th JDC, Parish of Calcasieu, Louisiana
+Witness: Thomas L. Easley
+Deposition Date: March 13, 2026
+================================================================================
+
+FORMAT:  Exhibit No. | Bates / Description | Status | Notes
+--------------------------------------------------------------------------------
+
+Exhibit No. 127 | Notice of Deposition — Thomas L. Easley
+                 Status: Introduced / Witnessed confirmed recognition
+                 Notes: Witness confirmed he had seen this document.
+
+Exhibit No. 128 | [Description not stated in testimony]
+                 Status: Listed on index; not discussed on record
+                 Notes: [FLAG: EXHIBIT REFERENCED — NOT DESCRIBED IN TESTIMONY]
+
+Exhibit No. 129 | [Description not stated in testimony]
+                 Status: Listed on index; not discussed on record
+                 Notes: [FLAG: EXHIBIT REFERENCED — NOT DESCRIBED IN TESTIMONY]
+
+Exhibit No. 130 | White Top Energy letter to Sunny Solar, dated January 26, 2021
+                 Bates: YR-341521
+                 Status: Marked for Identification / Discussed
+                 Notes: Letter from White Top (Easley/French) to Sunny Solar
+                        stating White Top "will not be in a position to repay
+                        this indebtedness on or before the January 29, 2021,
+                        maturity date." Attributes inability to pay to
+                        COVID-19 and oil price drop. Requests one-year
+                        extension in exchange for 250 company units at $1,800/unit.
+
+Exhibit No. 131 | Email from Robin French, dated June 18, 2021
+                 Bates: YR-351388
+                 Status: Marked for Identification / Discussed
+                 Notes: Subject: "White Top Energy Reorganization." Witness
+                        states this was exploratory, not a formal bankruptcy
+                        plan. References possible Chapter 11 restructuring.
+                        Witness copied as recipient. Recipient(s) redacted.
+
+Exhibit No. 132 | Memo from Easley and Robin French, dated August 24, 2021
+                 Bates: YR-360803
+                 Status: Marked for Identification / Discussed
+                 Notes: Addressed to White Top Energy LLC employees and
+                        consultants. Announces that Sunny Solar would hold
+                        majority and controlling interest. States restructuring
+                        plan is "now being implemented." Introduces Jonathan
+                        Barrett as incoming senior executive.
+
+Exhibit No. 133 | White Top Energy LLC Sulphur Mines Field Operations and
+                 Financial Update, dated March 27, 2020
+                 Bates: YR-352461
+                 Status: Marked for Identification / Discussed
+                 Notes: Prepared by Easley. Announces moratorium on new
+                        drilling capital investment. References reduction in
+                        engineering, geological, and geophysical expenses.
+                        Administrative/consulting staff cuts. Field producing
+                        approximately 409 barrels of oil per day for the
+                        period February 23 to March 24, 2020.
+
+Exhibit No. 134 | Email chain, top email from Jonathan Barrett, October 2020
+                 Bates: YR-362589
+                 Status: Marked for Identification / Discussed
+                 Notes: Subject: "Confidential White Top Energy LLC Cash
+                        Forecast Update, October 1, 2020 to December 31, 2020."
+                        Monthly expenses ~$213,000; monthly income ~$175,000;
+                        deficit ~$30,000-$40,000/month. Funding described as
+                        "very dependent on disaster relief and SBA." Barrett
+                        asks about fund-raising status.
+
+Exhibit No. 135 | Email from Easley, dated January 22, 2021
+                 Bates: YR-323003
+                 Status: Marked for Identification / Discussed
+                 Notes: Easley responding to Luminus (Alvarez & Marsal /
+                        Oliver resin [REVIEW: Alvarez & Marsal]) financial
+                        services questions. Reports field producing ~140 barrels
+                        of oil equivalent per day (down from 409/day in
+                        March 2020). Positive monthly cash flow of ~$20,000
+                        ($240,000/year). States $6 million needed to increase
+                        production to 1,000 BOE/day. Confirms inability to
+                        service debt without additional capital.
+
+Exhibit No. 136 | Email from Easley to Matt Steele, dated June 15, 2021
+                 Bates: YR-41592
+                 Status: Marked for Identification / Discussed
+                 Notes: Copies Jonathan Barrett and Shawn Singh. Reports
+                        curtailment of development activity over prior
+                        12 months and furlough of geoscience team. Furloughed
+                        members listed: William Green (Senior Geophysicist),
+                        Clint Hipke (Senior Geologist), Eva Borrego (Senior
+                        Geotech). Steve Wipple retained on reduced capacity.
+
+Exhibit No. 137 | Sulphur Mines Field Operations Update, dated December 31, 2021
+                 Bates: YR-288594
+                 Status: Marked for Identification / Discussed
+                 Notes: Same format as Exhibit 133. Production: 70 barrels
+                        of oil per day as of December 2021. Notes moratorium
+                        still in effect through November 30, 2021. Workovers/
+                        completions deferred pending resolution of funding
+                        for capital projects in 2022. $70,000 hurricane repair
+                        costs (from August 2020) still outstanding.
+
+Exhibit No. 138 | Email from Jonathan Barrett to Steve Derby, dated December 22, 2021
+                 Bates: YR-361983
+                 Status: Marked for Identification / Discussed
+                 Notes: Subject: "RE: Settlement Proposal." Copies Easley,
+                        Robin French, and others. Confirms ~$500,000 in
+                        unpaid payroll tax withholdings. Notes company does
+                        not have Directors' and Officers' (D&O) Insurance.
+                        Proposes motion to suspend distributions until taxes
+                        are paid. Characterizes company as "DEEP in the
+                        throes of insolvency." Threatens "involuntary
+                        insolvency" if dispute among LLC members not resolved
+                        by end of week.
+
+Exhibit No. 139 | Email from Easley to Jonathan Barrett, Carlos Tresman, and
+                 Rick Halprin, dated January 25, 2023
+                 Bates: YR-359997
+                 Status: Marked for Identification / Discussed
+                 Notes: Subject: "White Top Rights Offering Status as of
+                        Cut Off at Noon Today." References attached
+                        spreadsheet (rights offering response status).
+                        Notes first deadline has passed; second round of
+                        offers to be drafted for unsubscribed units.
+
+Exhibit No. 140 | Rights Offering Response Status Spreadsheet, dated January 25, 2023
+                 Bates: YR-359998 (Native file — Bates stamped in ordinary course)
+                 Status: Marked for Identification / Discussed
+                 Confidentiality: Highly Confidential (noted on record)
+                 Notes: Prepared by Easley. Shows Sunny Solar held ~87% of
+                        equity. Ten Series A-2 members total. Only three of
+                        ten elected to participate in rights offering as of
+                        January 25, 2023. Use of funds: $7.5M to pay down
+                        Sunny Solar loans; $1.8M to 746 S T-1 offset well;
+                        $1.8M to undesignated second well. Total raise:
+                        $11 million. Some response-column entries redacted.
+
+Exhibit No. 141 | Email from Jonathan Barrett to board members, dated December 12, 2022
+                 Bates: YR-355864
+                 Status: Marked for Identification / Discussed
+                 Notes: Subject: "White Top Energy Investor PP_Final."
+                        Barrett circulates investor PowerPoint for upcoming
+                        rights offering. Item No. 5: asks Easley to add
+                        "a page or two up front reminding the investors about
+                        what this opportunity was originally thought to be."
+                        Barrett writes: "This needs to be balanced. All the
+                        good and the bad needs to be laid out."
+
+Exhibit No. 142 | Email from Easley to Theresa Tran, copying Jonathan Barrett,
+                 dated December 13, 2022
+                 Bates: YR-357637
+                 Status: Marked for Identification / Discussed
+                 Notes: Easley writes "I boiled it down to one added slide to
+                        go at the front of the slide deck. Please clean it
+                        up as necessary." Sent to Theresa Tran (Barrett's
+                        assistant, now deceased) who was designated PowerPoint
+                        editor for the investor deck.
+
+                 [EXHIBIT FLAG: Exhibit No. 142 appears TWICE on the index
+                  page of the deposition. Possible duplicate numbering — check
+                  record to confirm whether two separate exhibits share this
+                  number or whether this is a scrivener's error.]
+
+Exhibit No. 143 | [Description not fully captured in record as read]
+                 Status: Listed on index; testimony regarding this exhibit
+                        not captured in reviewed portion
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 144 | [Description not fully captured in record as read]
+                 Status: Listed on index; testimony regarding this exhibit
+                        not captured in reviewed portion
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 145 | [Description not fully captured in record as read]
+                 Status: Listed on index; testimony regarding this exhibit
+                        not captured in reviewed portion
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 146 | Email chain beginning April 2, 2019 (Easley / Todd Bertelot)
+                 Bates: YR-435045
+                 Status: Marked for Identification / Discussed
+                 Notes: Also referenced as "Exhibit No. 106" in prior
+                        depositions (per MR. HOBBY's introduction). Approximately
+                        four months after "Cavern 7 screenshots." Easley
+                        to Bertelot regarding 3D subsurface cavern visualization
+                        software ("Voxler") used by Boardwalk for mapping
+                        cavern locations at Sulphur Mines. Easley seeks vendor
+                        information. Goal: to review proposed drilling pad
+                        for Well 1014 against cavern locations subsurface.
+                        Bertelot advises that "the BLM No. 4 cavern is a
+                        nothing burger" if drilling southerly from pad 1014.
+
+Exhibit No. 147 | Meeting notes by John Miller, transmitted by email, dated January 30, 2019
+                 Bates: YR-447627
+                 Status: Marked for Identification / Discussed
+                 Notes: Sent to Robin French, copies to Easley, Brad Brandl,
+                        Steve Wipple. Covers evaluation of three drilling
+                        prospects in Area C. Paragraph 3 regarding prospect
+                        "CCA" states: "Additionally this prospect was
+                        considered higher risk due to being directly up against
+                        the salt edge."
+
+Exhibit No. 148 | Email chain, February 2019, including DNR/Stephen Lee correspondence
+                 Bates: YR-37094 [REVIEW: Bates number appears to be missing
+                        leading digit — may be YR-370940 or similar]
+                 Status: Marked for Identification / Discussed
+                 Notes: Stephen Lee (DNR Mines & Minerals Division) responds
+                        to Brad Brandl's proposal to convert idle Fee 1016 to
+                        salt water disposal (SWD) well. Lee states: "We have
+                        looked at the proposal well, and it is too close to the
+                        edge of the dome." Lee writes: "We generally will not
+                        consider siting an SWD any closer than 1,320 feet
+                        from the edge of the dome. Depending on the
+                        circumstances, sometimes that is considered too close."
+
+Exhibit No. 149 | Email from Easley to Brad Brandl and others, dated April 29, 2019
+                 Bates: YR-293430
+                 Status: Marked for Identification / Discussed
+                 Notes: Approximately two months after Exhibit 148. Easley
+                        writes: "We have confirmed that the DNR operatively
+                        will not issue a drilling permit around the Sulphur
+                        Mines Field salt dome area without sign-off [from]
+                        injection and mining division [IMD] or Steve Lee and
+                        his folks in Baton Rouge." Further states: "In turn,
+                        IMD will not sign-off without making certain there are
+                        no technical objections from Boardwalk or Westlake."
+                        Context: permitting for fee 1028 well.
+
+Exhibit No. 150 | [Description not fully captured in record as read]
+                 Status: Listed on index; testimony regarding this exhibit
+                        not fully captured
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 151 | [Description not fully captured in record as read]
+                 Status: Listed on index
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 152 | [Description not fully captured in record as read]
+                 Status: Listed on index
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 153 | [Description not fully captured in record as read]
+                 Status: Listed on index
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 154 | [Description not fully captured in record as read]
+                 Status: Listed on index
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 155 | [Description not fully captured in record as read]
+                 Status: Listed on index
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 156 | [Description not fully captured in record as read]
+                 Status: Listed on index
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 157 | [Description not fully captured in record as read]
+                 Status: Listed on index
+                 Notes: [FLAG: EXHIBIT REFERENCED — full description not recorded]
+
+Exhibit No. 158 | Email chain involving Easley, Brad Brandl, Dorothea Faw, and
+                 Richard Lofton (geophysicists); October 2020 communications
+                 Status: Discussed in last portion of testimony
+                 Notes: Faw and Lofton retained on low-budget basis to perform
+                        "bright spot" [CORRECTED: brat spot] analysis of seismic
+                        data to identify subsurface anomalies/hydrocarbon areas.
+                        Easley concerned Faw/Lofton were proposing to expand
+                        scope beyond original mission into costly reprocessing.
+                        Easley email to Brandl: "Thanks for covering us, Brad.
+                        I would have gone into cardiac arrest without your
+                        preface comments. TE" This was the final exhibit
+                        discussed before deposition was terminated by
+                        plaintiff's counsel.
+
+--------------------------------------------------------------------------------
+TOTAL EXHIBITS ON INDEX:   32 (Nos. 127–158, with one duplicate 142)
+TOTAL EXHIBITS FORMALLY INTRODUCED AND DISCUSSED:  Approximately 21 (per
+    testimony reviewed)
+TOTAL EXHIBITS LISTED BUT NOT DISCUSSED ON RECORD:  Approximately 11
+EXHIBIT FLAG:  Duplicate listing of Exhibit No. 142 on index page — reporter
+    to verify whether this is a scrivener's error or two separate exhibits
+    bearing the same number.
+--------------------------------------------------------------------------------

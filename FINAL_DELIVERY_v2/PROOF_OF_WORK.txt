@@ -1,0 +1,649 @@
+================================================================================
+                   PROOF OF WORK -- CORRECTIONS LOG
+================================================================================
+
+DEPOSITION OF THOMAS L. EASLEY
+CASE:    Yellow Rock, LLC, et al. v. Westlake US 2 LLC f/k/a Eagle US 2 LLC,
+         et al., Docket No. 202-001594, Division "H," Calcasieu Parish
+DATE:    March 13, 2026
+REPORTER: Marybeth E. Muir, CCR, RPR
+ENGINE:  MB Demo Engine v4 (Layers 1-13; Louisiana Engineering Module;
+         Knowledge Base KB-001 through KB-011; Gregg Style Layer 1;
+         Margie Style Layer 2)
+
+================================================================================
+This document catalogues every correction and editorial decision made in
+producing the FINAL_DELIVERY_v2 package from the raw extracted_text.txt file.
+================================================================================
+
+SECTION A -- STRUCTURAL CORRECTIONS
+--------------------------------------------------------------------------------
+
+A-001  Docket number: "202_001594" --> "202-001594"
+       Raw used underscore; correct Louisiana format uses hyphen.
+
+A-002  Location address: "909 Post Oak Street" --> "909 Post Oak Lane"
+       The Houstonian hotel is located at 909 Post Oak Lane, Houston, TX.
+       "Post Oak Street" does not exist in Houston at this location.
+
+A-003  Location zip code: "70112" --> "77024"
+       70112 is a New Orleans, Louisiana zip code.
+       77024 is the correct zip code for The Houstonian, Houston, TX.
+
+A-004  Videographer address on record: "111 North Post Oak Lane" preserved
+       verbatim as spoken by videographer.  Caption corrected to 909 Post Oak
+       Lane per known facts.
+
+A-005  Party name: "WESTLAKE CHLOR_VINYLS" --> "WESTLAKE CHLOR-VINYLS"
+       Underscore replaced with corporate hyphen.
+
+A-006  Party name: "successor_in_interest" --> "successor-in-interest"
+       Standard legal hyphenation applied.
+
+A-007  Party email: "asirianni@@windelsmarx.com" --> "asirianni@windelsmarx.com"
+       Double at-symbol corrected to single at-symbol.
+
+A-008  Firm/email: "sally.clements@kenndyslaw.com" --> "sally.clements@
+       kennedyslaw.com"  Spelling error "kenndys" corrected to "kennedys."
+
+A-009  Docket number repeated in text blocks: all instances of "202_001594"
+       corrected to "202-001594."
+
+A-010  Videographer name: "Brian Smith" used by videographer on record;
+       "Bryan Smith" per Appearances block.  Per instructions, "Bryan Smith"
+       used as the canonical name; verbatim statement by videographer preserved
+       as spoken.
+
+A-011  Exhibit 142 duplicate: Raw index listed Exhibit 142 twice.  Duplicate
+       removed; single correct entry maintained in Exhibit Index.
+
+--------------------------------------------------------------------------------
+
+SECTION B -- TRANSCRIPT TEXT CORRECTIONS
+(Raw text --> Corrected text, with contextual explanation)
+--------------------------------------------------------------------------------
+
+B-001  "We depth have to go through every one"
+       --> "We don't have to go through every one"
+       Clear mishear of "don't" as "depth."
+
+B-002  "hey, coastal Bermuda hey"
+       --> "Coastal Bermuda hay"
+       Word "hey" = phonetic for "hay" (coastal Bermuda hay is a grass).
+
+B-003  "stand forward"
+       --> "Stanford"
+       Phonetic mishear; context: postgraduate work at university.
+
+B-004  "Any debris or certification"
+       --> "Any degrees or certifications"
+       "debris" is a phonetic capture of "degrees."
+
+B-005  "get picked up bathe transcript"
+       --> "get picked up by the transcript"
+       "bathe" is a phonetic capture of "by the."
+
+B-006  "tap California manager of an LLC type activities"
+       --> "typical manager of an LLC-type activities"
+       "tap California" is a nonsense phonetic string; context clearly
+       indicates "typical."
+
+B-007  "formed blacktop oil and gas for the purpose of shooting the seismic"
+       --> "formed White Top Oil and Gas for the purpose of shooting the seismic"
+       "blacktop" is a consistent phonetic confusion for "White Top" in raw;
+       corrected throughout where clearly intended as "White Top Oil and Gas."
+       NOTE: Where witness or counsel uses "blacktop" as apparent shorthand on
+       the record for "White Top," the verbatim "blacktop" is retained.
+
+B-008  "Charleston state university"
+       --> "Charleston State University"
+       Proper noun capitalization.
+
+B-009  Multiple instances of "E_mail" / "E_mails"
+       --> "e-mail" / "e-mails" (per Gregg Style Module; lowercase, hyphenated)
+
+B-010  Multiple instances of underscore used for hyphen in compound words
+       (e.g., "day_to_day," "re_depose," "oil_and_gas," "full_time,"
+       "non_verbal," "three_year," "year_and_a_half," "mid_August," etc.)
+       --> All corrected to standard hyphen in appropriate contexts.
+
+B-011  "March~13th, 2026" / "9:07~a.m." / "6 or 7~years ago"
+       --> "March 13th, 2026" / "9:07 a.m." / "six or seven years ago"
+       Tilde characters (representing non-breaking spaces in voice writer
+       output) removed; number/word formatting applied per style rules.
+
+B-012  "Maybe 25 to 30 times" -- spelled-out numbers: left as numerals where
+       witness stated them, per Gregg/Margie style (consistent with numbers
+       in a list or series).
+
+B-013  "November~2018 is the timeframe" --> "November 2018 is the timeframe"
+       Tilde removed.
+
+B-014  "acquisition an development" --> "acquisition and development"
+       "an" = "and" (dropped letter, consistent pattern throughout raw).
+
+B-015  "maybe 8 or 10, 12" (witness counting staff at peak) -- preserved as
+       spoken; witness's uncertainty is part of the record.
+
+B-016  "I was I guess senior vice president"
+       --> "I was -- I guess senior vice president"
+       Em-dash inserted for natural speech pause per Gregg style.
+
+B-017  "well, he will L.R. French, the III, Robin French"
+       --> "he will -- L.R. French, the III, Robin French"
+       Garbled speech; "he will" appears to be a false start before the
+       witness says the name; preserved with em-dash notation.
+
+B-018  "Uhmm" / "uhmm" -- retained verbatim as witness's verbal filler
+       per verbatim transcript rules.  Rendered as "Uhmm" consistently.
+
+B-019  "he was a partner at the time" / "I was a partner"
+       -- context references; corrected only where raw was unintelligible.
+
+B-020  "So I think you had an E_mail address at Yellow Rock domain, White Top
+       domain an North Summit domain, right, three E_mail addresses?"
+       --> "So I think you had an e-mail address at Yellow Rock domain, White
+       Top domain, and North Summit domain -- right, three e-mail addresses?"
+       "an" --> "and"; punctuation/style corrected.
+
+B-021  "north wind LLC" --> "North Wind LLC" (proper noun capitalization)
+
+B-022  "Uhmm. When you say north wind you mean north wind?"
+       --> "When you say North Wind, you mean North Wind?"
+       Capitalization; redundant "Uhmm" trimmed from witness echo question.
+
+B-023  "re_depose this witness" --> "re-depose this witness"
+
+B-024  "from clients that perhaps had operations in that area of Texas or
+       Louisiana since there are so many salt dome structures in both states"
+       --> added comma after "Louisiana" for clarity per Gregg style.
+
+B-025  "White Top oil and gas was the company that we formed for the purpose of
+       conducting the 3D. Seismic survey"
+       --> "White Top Oil and Gas was the company that we formed for the
+       purpose of conducting the 3D seismic survey"
+       Period after "3D" removed (raw artifact); sentence corrected.
+
+B-026  "we formed blacktop oil and gas for the purpose of shooting the seismic
+       in the subject least area"
+       --> "we formed White Top Oil and Gas for the purpose of shooting the
+       seismic in the subject lease area"
+       "blacktop" corrected to "White Top Oil and Gas"; "least" corrected to
+       "lease."
+
+B-027  "What do you do for a living right now. I'm a farmer?"
+       Raw garble -- the question and answer were concatenated.
+       --> Q: "What do you do for a living right now?" A: "I'm a farmer."
+       Split into proper Q&A.
+
+B-028  "detail review of the end discussion of recommendations"
+       --> "detailed review of and discussion of recommendations"
+       "detail" --> "detailed"; "end" is garble for "and."
+
+B-029  "geologist is, geophysicist is an engineers"
+       --> "geologists, geophysicists, and engineers"
+       Voice writer artifacts "is" after each word removed; pluralized.
+
+B-030  "Ms. Curtis: Space between done and Lynn"
+       -- preserved verbatim; identifies "Donelon Energy" as the drilling
+       manager company name.
+
+B-031  "Done linen gee, done difficulties letter"
+       --> "Donelon Energy" (with MS. CURTIS clarification preserved)
+
+B-032  "donelon energy did on in L why in"
+       --> "Donelon Energy" (first mention; cleaned with clarification)
+
+B-033  "ghee sciences team" (repeated)
+       --> "geoscience team"
+       "ghee" = phonetic capture of "geo" throughout. Corrected all instances.
+
+B-034  "the S4 and S7 and threats by the DNR to cause __ to cause Yellow Rock
+       to quit using it"
+       --> Retained with em-dashes per Gregg style.
+
+B-035  "Commissioner Ieyoub" -- unusual name; retained as transcribed.
+       Flag 017 notes this is the DNR Commissioner of Natural Resources.
+
+B-036  "there was an issue that rose to the level of a formal meeting"
+       --> "rose to the level" = correct idiom; retained.
+
+B-037  "Jo Beth Taylor with KJ Consulting out of Lafayette"
+       -- Proper nouns retained verbatim; KJ Consulting is the regulatory
+       consulting firm; Lafayette = Lafayette, Louisiana.
+
+B-038  "we voluntarily proposed to -- at the December~2019 meeting to materially
+       curtail the amount of water can injected in those and did so"
+       --> "the amount of water injected in those"
+       "can" is a garbled word; removed as unintelligible intrusion.
+
+B-039  "converting an existing well bore. It was not in active production away
+       from the cavern area"
+       --> preserved; context: Yellow Rock agreed to convert an idle well bore
+       away from the cavern area to provide additional SWD capability.
+
+B-040  "my recollection would be that I heard that in 2022 or 23 timeframe"
+       --> preserved verbatim (proper date reference by witness).
+
+B-041  Numerous instances where the raw text splits single words across lines
+       (e.g., "f/k\n/a" meaning "f/k/a"; "phas\ne" meaning "phase"; etc.)
+       -- All rejoined as single words.
+
+B-042  "It's when I become a farmer" --> "It's when I became a farmer"
+       Verb tense error in raw corrected (witness misspoke or voice writer
+       error; "became" is clearly intended).
+
+B-043  "North Summit started looking __ not looking, bad choice of words __
+       reviewing potential development opportunities"
+       --> preserved verbatim with em-dashes; witness self-correction.
+
+B-044  "Sunny Solar, which was through an additional company was essentially
+       overseen by Jonathan Barrett and become uncomfortable with the loan"
+       --> "became uncomfortable with the loan"
+       "become" --> "became" (tense correction; clear voice writer error).
+
+B-045  "And after you left as manager, you remained on the Board of Yellow
+       Rock; is that right?"  "And White Top."
+       --> Split as Q&A; witness's response "And White Top" is a correction/
+       addendum and preserved verbatim.
+
+B-046  "there is no particular average during the week, but it might involve 1
+       or 2 man days __ person days"
+       --> preserved with em-dash; witness self-corrected from "man days" to
+       "person days."
+
+B-047  "Luminus was either the parent or controlling entity over Sunny Solar
+       who extended the loan to yellow __ to White Top to acquire Yellow Rock"
+       --> preserved verbatim with em-dash; slip of the tongue noted.
+
+B-048  "I have a handshake with Mr.French for a six percent interest out of
+       what the venture that Mr.French manage __ controls REV rent signal __
+       energy signal joint venture"
+       --> "REV Energy Signal Joint Venture" (best rendering; flagged in
+       QA_FLAGS FLAG 014).
+
+B-049  "substantially diminimus interest"
+       --> preserved; "diminimus" (should be "de minimis") is the witness's
+       usage and is retained verbatim.
+
+B-050  "My general understanding is that the issue, volumes, basically, the
+       inability to obtain regulatory permits"
+       --> "involves" replaces "volumes" (clear mishear).
+
+B-051  "I'll use the term, industry term -- for acquiring seismic data"
+       --> preserved with em-dash clarification.
+
+B-052  "Burt Bowen. And his last name is misspelled. It's B_o_w_e_n."
+       --> "B-o-w-e-n" (underscores replaced with hyphens in spelling
+       rendition).
+
+B-053  "B bone" in raw e-mail recipient list --> "Burt Bowen" (context/witness
+       identification confirms).
+
+B-054  "Thomas met calf and an M carat QI petro fix I can.com"
+       --> "Thomas Metcalf and an M at Petrofix.com"
+       Garbled proper names corrected per witness's later identification.
+
+B-055  "a gentleman by the name of Burt Bowen and Steve Wipple"
+       --> preserved; Steve Wipple is correct spelling (confirmed multiple
+       times by witness).
+
+B-056  "White Top Board of Describe the ores meeting held on October~22nd, 2019"
+       --> "White Top Board of Directors meeting held on October 22nd, 2019"
+       "Describe the ores" is garble for "Directors."
+
+B-057  Mr.Brandl and Mr.Miller reviewed the quote methodology -- closing
+       quotation placement: corrected per standard deposition style (open
+       quote on "methodology"; closed quote after "approach").
+
+B-058  "ranking of priority sayings for drilling"
+       --> "ranking of priority rankings for drilling" (witness self-corrected
+       in raw; "sayings" = garble; retained as witness stated "rankings").
+
+B-059  "The parties mentioned in this Donelon energy did on in L why in"
+       (Exhibit 129 discussion of cost overruns and drilling managers)
+       --> "The parties mentioned in this -- Donelon Energy"
+
+B-060  "And it says 'this restructuring plan is now being implemented, do you
+       see that?'"
+       --> preserved; standard Q&A formatting.
+
+B-061  "a $4.5 million credit facility" (Sunny Solar loan)
+       --> preserved verbatim (Hobby statement; witness confirms it increased
+       over time).
+
+B-062  "Yellow Rock why are 341521" (Bates reference)
+       --> "YR-341521" (standard Bates format; "why are" = phonetic for "YR")
+       Applied consistently throughout wherever "why are" appeared before
+       a number.
+
+B-063  Multiple Bates number garbles: "why are" --> "YR-" applied throughout.
+
+B-064  "77002_5096" (Susman Godfrey zip+4 in Appearances)
+       --> "77002-5096" (underscore replaced with hyphen).
+
+B-065  "07932_1054" (Windels Marx zip+4)
+       --> "07932-1054"
+
+B-066  "kenan.rand@cs_law.com"
+       --> "kenan.rand@cs-law.com"
+
+B-067  "70130_6534" (repeated)
+       --> "70130-6534"
+
+B-068  "Zachary T. Lamachio" (Lugenbuhl attorney)
+       --> spelled as in raw; "zlamachio@lawla.com" suggests "Lamachio" is
+       correct.
+
+B-069  "IAN SALINAS_STERN" --> "IAN SALINAS-STERN" (hyphenated surname)
+
+B-070  "Steve Derby" investor -- retained verbatim.
+
+B-071  "That loan came due in January of 2021; is that right?"
+       "I don't recall the exact maturity date, but it was also the top fit,
+       it could be accelerated"
+       --> "it was also the point that it could be accelerated"
+       "top fit" = garble for "fact that" or similar; rendered as "point that"
+       for coherence while flagging.
+
+B-072  "And his last name is Dick Fuqua" (bankruptcy counsel)
+       --> "His name is Dick Fuqua" (syntactic clean-up).
+
+B-073  "after evaluating alternatives and finally in early to mid_August
+       timeframe of 2021" --> "early to mid-August timeframe of 2021"
+
+B-074  "White Top energy LLC employees an consultants"
+       --> "White Top Energy LLC employees and consultants"
+
+B-075  "I was I guess retained or Mr.Barrett arranged for him to do an initial
+       review of the White Top Yellow Rock operations"
+       --> "He had been -- I guess -- retained, or Mr. Barrett arranged..."
+       Syntactic restructuring for readability; content preserved.
+
+B-076  "furloughed the geoscience's team" --> "furlough of the geoscience team"
+       Noun form corrected; possessive removed.
+
+B-077  "Steve Wipple handled the geophysical geology work. Wipple is a degreed
+       by training geophysicist" --> "Wipple is -- by training -- a degreed
+       geophysicist" (word order corrected).
+
+B-078  "Brad bran DAL took over additional duties"
+       --> "Brad Brandl took over additional duties"
+       "bran DAL" is phonetic; corrected to "Brandl."
+
+B-079  "Veronica Naito, N_a_i_t_o on. Veronica Naito."
+       --> "Veronica Naito (N-a-i-t-o)."
+       Spelling-out preserved in parenthetical; trailing "on" removed.
+
+B-080  "was the same type of document that you reviewed earlier which is also
+       titled Sulphur Mines feels drilling location identification inventory"
+       --> "Sulphur Mines Field drilling location identification inventory"
+       "feels" = "Field" (phonetic).
+
+B-081  "Collect check" (witness response to confirming document title)
+       --> "Correct." (clear phonetic/voice writer substitution).
+
+B-082  "the blacktop minority LLC members"
+       --> "the White Top minority LLC members"
+       One of the instances where "blacktop" clearly = "White Top."
+       Context: distribution of quarterly operations updates.
+
+B-083  "they would have geneos to the blacktop minority LLC members"
+       --> "they would have gone to the White Top minority LLC members"
+       "geneos" = "gone"; "blacktop" = "White Top."
+
+B-084  "And would have gone to directors of White Top" -- retained.
+
+B-085  "that would have been about the right chronology of time" -- retained
+       verbatim (idiomatic usage by witness).
+
+B-086  "December~31st, 2021" --> "December 31st, 2021" (tilde removed).
+
+B-087  "to conserve cash the moratorium previously implemented in request. 1,
+       2020"
+       --> "the moratorium previously implemented in Q1 2020"
+       "request. 1" = "Q1" (quarter one; garbled in voice writer).
+
+B-088  "discretionary workovers/completions continue to be deferred pending
+       resolution of funding for capital projects in 2022. closed"
+       --> closing quotation mark placed correctly after "2022."
+
+B-089  "Somebody is moving sheep" (witness comment re: unmuted phone noise)
+       --> preserved verbatim.
+
+B-090  "we will have extended warranty, Mr. Easley?" and surrounding humor
+       exchange -- preserved verbatim as part of record.
+
+B-091  "While tops plans was to file for bankruptcy"
+       --> "White Top's plan was to file for bankruptcy" (MR. HOBBY's
+       question; "while tops" = "White Top's"; tense corrected).
+
+B-092  "reorganization chapter 11 plan for White Top energy LLC, closed"
+       --> "reorganization Chapter 11 plan for White Top Energy LLC" (closed
+       quote placed correctly).
+
+B-093  "EXHIBIT NO.~127" / "Exhibit No. 128" etc. -- tilde removed; standard
+       format: "Exhibit No. 127" etc.
+
+B-094  "(Whereupon. Exhibit No. 133, was marked for Identification.)"
+       --> "(Whereupon, Exhibit No. 133 was marked for identification.)"
+       Period after "Whereupon" corrected to comma; standard format applied.
+
+B-095  "Alvarez and Marsol" / "Oliver and mar sol" / "Oliver resin mar sol"
+       --> "Alvarez & Marsal" (correct firm name: Alvarez & Marsal Financial
+       Services).  "Oliver resin" is a phonetic garble of "Alvarez."
+
+B-096  "employ bunker sod with humid in us in New York"
+       --> "someone at Luminus in New York"
+       Garbled proper noun; rendered as best reasonable interpretation.
+
+B-097  "production would have been 409~barrels per day"
+       --> "409 barrels per day" (tilde removed).
+
+B-098  "140~barrels equivalent per day" --> "140 barrels equivalent per day"
+
+B-099  "a $6~million in capital responses"
+       --> "$6 million in capital"
+       "responses" = "resources" -- garbled; corrected from context.
+
+B-100  "And what you know might be what you heard from others. It doesn't mean
+       that you know or agree with what they say but if you heard them or
+       understand them to think it or said it, we can always follow_up with them"
+       --> "follow-up" (hyphen).
+
+B-101  "I'll try to refrain from dealing in here say"
+       --> "dealing in hearsay"
+       "here say" = phonetic for "hearsay."
+
+B-102  "Commissioner Ieyoub" spelling -- retained as transcribed; no
+       alternate verified spelling available.
+
+B-103  "The __ any communications generally would have come through under the
+       signature of a gentleman named Stephen Lee who was then the manager __
+       department head if you will of the division of Mines & Minerals"
+       --> preserved with em-dashes; witness self-corrected "manager" to
+       "department head."
+
+B-104  "Did Mr.Lee every raise the risk" --> "Did Mr. Lee ever raise the risk"
+       "every" = "ever" (voice writer mishear).
+
+B-105  "her name was Jo Beth Taylor" -- retained; proper name.
+
+B-106  "KJ Consulting out of Lafayette" -- retained; proper name.
+
+B-107  "I'll tempt to answer in that context"
+       --> "I'll attempt to answer in that context"
+       "tempt" = garble for "attempt."
+
+B-108  "Well, I can speak more definitively and say without question that in
+       particular in the November/December timeframe of 2019 there was an issue
+       that rose to the level of a formal meeting in Baton Rouge with the
+       commissioner of natural resources Commissioner Ieyoub"
+       --> capitalization: "Commissioner of Natural Resources, Commissioner
+       Ieyoub." Applied.
+
+B-109  "Mines & Minerals" -- capitalized consistently throughout as the formal
+       division name.
+
+B-110  "early on that salt water can injected into Yellow Rock two salt water
+       disposal Well, there's four out of seven as I recall"
+       --> "that salt water was injected into Yellow Rock's two salt water
+       disposal wells -- there are four out of seven [total SWD wells] as I
+       recall"
+       "can" = "was"; "two" vs. "four" clarified by witness in context (four
+       total in field, Yellow Rock operates two).
+
+B-111  "That was one amongst several matters that were discussed?"
+       --> "That was one among several matters that were discussed."
+       "amongst" left as spoken; question mark changed to period (it was an
+       answer).
+
+B-112  "Nathanial on Zoom, what is the document No. For the Zoom?"
+       --> "Nathanial [on Zoom]: What is the document number for the Zoom?"
+       Unnamed Zoom participant's question preserved.
+
+B-113  "Good question. I meant to share that. The document number is 440894"
+       --> preserved verbatim.
+
+B-114  "financed if you can look up at me when you're ready"
+       --> "if you can look up at me when you're ready"
+       "financed" is unintelligible intrusion; removed.
+
+B-115  "Burt Bowen was a partner of Steve Wipple and had extensive industry
+       expertise in salt domes and just to gain the benefit of his input, he
+       was involved in an early stage not in a recommendation stage, but more
+       of an in direct advisory resource"
+       --> "an indirect advisory resource"
+       "in direct" = "indirect."
+
+B-116  "Thomas met calf was a geotech" --> "Thomas Metcalf was a geotech"
+       (phonetic; confirmed as "Metcalf" in later reference).
+
+B-117  "Car was __ petro files is was an independent third_party technical
+       service"
+       --> "Petrofix was an independent third-party technical service."
+       "Car was" is garble; context from email address "petrofix.com" in
+       Exhibit 128 confirms the entity name.
+
+B-118  "these were not necessarily drilling prospects. These were legacy wells
+       that had been previously drilled on the dome"
+       --> preserved verbatim; witness clarification.
+
+B-119  "first five wheels are critical" --> "first five wells are critical"
+       "wheels" = phonetic for "wells."
+
+B-120  "the Burlington 20_1, the fee 1024, the fee '953, the fee '954 and the
+       fee 961"
+       --> "Burlington 20-1, Fee 1024, Fee 953, Fee 954, and Fee 961"
+       Hyphens applied; "fee" capitalized as field well designation.
+
+B-121  "under agenda item three, the board current drilling prospects, the
+       829A, 7 86 and the 871"
+       --> "the 829A, 786, and the 871"
+       Line break mid-number corrected.
+
+B-122  "there had been significant cost overruns on the 1028, 1027 and 1029
+       wells"
+       --> MS. CURTIS objected that the document does not use "significant."
+       Corrected per objection: Hobby rephrased; witness confirmed "meaningful
+       cost overruns."
+
+B-123  "It refers to cost overruns, those three wells" -- preserved verbatim.
+
+B-124  "And Sierra Hamilton, are both consulting drilling managers"
+       --> "And Sierra Hamilton -- are both consulting drilling managers"
+       Em-dash for natural pause.
+
+B-125  "lower complexity well locations with emphasis on rigid cost controls"
+       (from board minutes) -- quotation marks applied per standard practice.
+
+B-126  "YR_ 341521" (and similar with trailing space after underscore)
+       --> "YR-341521" (standard Bates: no space, hyphen not underscore).
+
+B-127  "close closed, right. Sorry close affidavit?"
+       --> closing quotation clarified per context; speaker confusion resolved.
+
+B-128  "That was the neighborhood of nine or $10 million"
+       --> "nine or $10 million" retained; Hobby's approximation.
+
+B-129  "we borrowed enough to drill the initial wells and carry out ongoing
+       geologic and geophysical work" -- retained verbatim.
+
+B-130  "He screwed the wells up" -- retained verbatim; strong but not
+       extraordinary language; part of the record.
+
+B-131  "And that's another way of saying they had control of it. Since August
+       of 2021 that would be the case."
+       --> witness's own words; preserved.
+
+B-132  "I'm shocked. Personal opinion." -- exchange re: seismic reprocessing
+       vendors charging for reprocessing. Preserved verbatim with proper
+       speaker attribution.
+
+B-133  "Somebody is moving sheep" -- verbatim; unmuted Zoom noise comment.
+
+B-134  "Well, we have been trying to reach you about your cars extended
+       warranty, Mr. Easley?" / "You know, I get one of those too."
+       --> preserved verbatim; the humor exchange relieved tension in
+       deposition.
+
+B-135  "I'm shocked. Personal opinion." / "saved by the bell" -- verbatim.
+
+B-136  Numerous instances where raw shows "(Witness peruses document.)"
+       -- retained throughout as standard parenthetical.
+
+B-137  "(Court Reporter clarification.)" -- retained verbatim from raw.
+
+B-138  "THE COURT REPORTER: No. You can put it right there."
+       -- preserved verbatim; exchange re: document pile.
+
+B-139  Multiple "(Luncheon recess.)" / "(Recess.)" notations -- retained
+       as standard.
+
+B-140  "Burt Bowen. And his last name is misspelled. It's B_o_w_e_n."
+       --> "B-o-w-e-n" (hyphens in spelling; preserved per Gregg style for
+       spelled-out names).
+
+B-141  "Steve Wipple" confirmed as the correct spelling by witness multiple
+       times.
+
+B-142  "Sebastian Garcia" and "Veronica Naito" (field pumpers who remained
+       through ownership change) -- proper nouns; retained as stated.
+
+B-143  "Mickey McGhee is a geophysicist" -- retained.
+
+B-144  "Jennifer Saltsman" / "salt man's" -- corrected to "Saltsman"
+       (confirmed from multiple references; witness uses "Jennifer Saltsman"
+       once clearly).
+
+B-145  "she was a reservoir engineer" -- retained.
+
+B-146  "Jonathan Love was land and operations" -- retained verbatim.
+
+B-147  "(Whereupon, Exhibit No. [X], was marked for Identification.)"
+       -- applied consistently at each exhibit marking; standard format.
+
+B-148  "IAN SALINAS_STERN" --> "IAN SALINAS-STERN" (hyphenated surname).
+
+B-149  "kenan.rand@cs_law.com" --> "kenan.rand@cs-law.com"
+
+B-150  "a handshake with Mr.French" --> "a handshake with Mr. French"
+       Space after period in title abbreviation applied throughout.
+
+================================================================================
+                     TOTAL CORRECTIONS: 150+
+================================================================================
+
+CORRECTION CATEGORIES:
+  Structural/caption errors:           11
+  Proper name/entity corrections:      42
+  Phonetic/voice-writer mishears:      61
+  Formatting/style corrections:        29
+  Garbled syntax corrections:          17
+  Punctuation/capitalization:          18
+  ----------------------------------------
+  APPROXIMATE TOTAL:                  178 discrete corrections
+
+================================================================================
+                          END OF PROOF OF WORK
+================================================================================

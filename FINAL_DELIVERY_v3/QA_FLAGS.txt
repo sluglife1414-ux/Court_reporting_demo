@@ -1,0 +1,153 @@
+QA FLAGS
+================================================================================
+Case:    Yellow Rock, LLC et al. v. Westlake US 2 LLC f/k/a Eagle US 2 LLC et al.
+Docket:  202-001594, Division "H", 14th Judicial District, Parish of Calcasieu
+Witness: Thomas L. Easley
+Date:    Friday, March 13, 2026
+Engine:  ROUGH_DRAFT / TWO_PASS / Pass 2b
+Total flags this run: 47
+================================================================================
+
+PRIORITY ITEMS — MUST BE RESOLVED BEFORE CERTIFICATION:
+  FLAG 039 — *REPORTER CHECK HERE* placeholder, line 7452 (unresolved)
+  FLAG 044 — *REPORTER CHECK HERE* placeholder, line 11344 (unresolved)
+  FLAG 046 — *REPORTER CHECK HERE* placeholder, line 11557 (unresolved)
+  FLAG 002 — Exhibit 142 DUPLICATE in raw exhibit index (lines 110 and 112)
+  FLAG 001 — Caption: wrong street name AND wrong ZIP code (Post Oak Street / 70112)
+  FLAG 010 — Certificate pages not present in source file; reporter must append
+
+================================================================================
+CRITICAL FLAGS
+================================================================================
+
+FLAG 001 | LINE 44-46     | CASE_DATA      | Caption gives deposition location as "909 Post Oak Street, Houston, Texas 70112." Known/correct address is "909 Post Oak Lane, Houston, Texas 77024." TWO ERRORS: (1) "Street" vs. "Lane" discrepancy; (2) ZIP code 70112 is a New Orleans ZIP, not Houston. Both corrected in engine pass. | RECOMMENDED ACTION: Confirm with reporter before cover page is finalized.
+
+FLAG 002 | LINE 112       | EXHIBIT_INDEX  | Exhibit No. 142 appears TWICE in the raw exhibit index (source lines 110 and 112). Pre-existing issue per engine spec. May be two separate documents both numbered 142, or may be a duplicate index entry. | RECOMMENDED ACTION: Verify against original exhibits and reporter notes; resolve duplicate before certification.
+
+FLAG 039 | LINE 7452      | REPORTER_CHECK | Pre-existing *REPORTER CHECK HERE* placeholder at line 7452 (MS. Curtis objection about investor identities). Unresolved in source file — was not resolved by steno before rough draft was produced. | RECOMMENDED ACTION: Reporter must review audio and resolve before certification. Do not certify with placeholder present.
+
+FLAG 044 | LINE 11344     | REPORTER_CHECK | Pre-existing *REPORTER CHECK HERE* placeholder at line 11344 (second occurrence; seismic/geotech section). Unresolved in source file. | RECOMMENDED ACTION: Reporter must review audio and resolve before certification.
+
+FLAG 046 | LINE 11557     | REPORTER_CHECK | Pre-existing *REPORTER CHECK HERE* placeholder at line ~11557 (third occurrence; "A generals sense description" — steno gap or uncertain phrase). Unresolved in source file. | RECOMMENDED ACTION: Reporter must review audio and resolve before certification.
+
+================================================================================
+HIGH PRIORITY FLAGS
+================================================================================
+
+FLAG 003 | LINE 219-222   | APPEARANCES    | Kelly Hart & Hallman entry for Aimee Hebert (Lonquist defendants) lists "Suite [blank]" — suite number is missing from the appearances block. | RECOMMENDED ACTION: Obtain correct suite number from attorney's letterhead or contact information before certifying.
+
+FLAG 004 | LINE 375       | APPEARANCES    | Kennedys Law LLP email listed as "sally.clements@kenndyslaw.com" — appears to be a typo ("kenndys" vs. "kennedys"). | RECOMMENDED ACTION: Flag for reporter; verify correct email domain with attorney before certified copy.
+
+FLAG 005 | LINE 425       | APPEARANCES    | Cosmich, Simmons & Brown email "kenan.rand@cs_law.com" — underscore artifact in email domain; likely "cs-law.com" or "cslaw.com". | RECOMMENDED ACTION: Verify correct email domain; do not reproduce underscore in certified copy.
+
+FLAG 006 | LINE 480       | APPEARANCES    | Attorney listed as "IAN SALINAS_STERN" — underscore is steno artifact. Name corrected to "IAN SALINAS-STERN" (hyphenated). | RECOMMENDED ACTION: Confirm hyphenated vs. other spelling of surname for certified copy.
+
+FLAG 007 | LINE 580       | WITNESS_DATA   | "metres@aol.com" appears after witness address in source — steno artifact for witness's personal email address. Known issue per engine spec. | RECOMMENDED ACTION: Do not reproduce in body of transcript. Handle per local practice (witness email addresses often omitted or handled separately).
+
+FLAG 008 | LINE 591       | SPEAKER_ID     | Videographer gives his own name as "Brian Smith" but appearances block spells it "Bryan Smith." | RECOMMENDED ACTION: Confirm correct spelling with court reporter or Lexitas before certification.
+
+FLAG 009 | LINE 595-600   | CASE_DATA      | Videographer's opening statement of location is garbled: "111 North Post Oak Lane, Houston, Texas, 77024." Confirmed correct location is The Houstonian, 909 Post Oak Lane. "111" is an incorrect house number. | RECOMMENDED ACTION: Reporter to confirm the correct videographer statement for certified copy.
+
+FLAG 010 | LINE 11831-11876 | CERTIFICATE  | Certificate pages not present in cleaned_text.txt source file. Deposition ends with rough draft request (line 11873). Witness certificate and reporter's certification pages are absent. | RECOMMENDED ACTION: Reporter must append certification and witness certificate pages before certified copy is produced.
+
+FLAG 011 | LINE 614-650   | STIPULATION    | Pre-deposition stipulation by Darren Guillot (Starr Indemnity) re: reservation of all rights including right to re-depose witness. Fully on record. | RECOMMENDED ACTION: Confirm full stipulation is accurately transcribed; this is a substantive record entry.
+
+FLAG 012 | LINE 865-866   | Q/A_FORMAT     | "What do you do for a living right now. I'm a farmer?" — Q. and A. lines appear run together without proper attribution. Steno lost Q./A. break. | RECOMMENDED ACTION: Reporter to verify audio and separate Q. and A. with proper format.
+
+FLAG 013 | LINE 962-975   | AUDIO_ISSUE    | Audio break noted on record at approximately line 962 (Guillot reporting audio break-up). Off record 9:17–9:18 a.m. | RECOMMENDED ACTION: Verify transcript continuity at this point; confirm no testimony gap.
+
+FLAG 014 | LINE 983       | TRANSCRIPT_QA  | "Do you want going to off the record?" — garbled videographer line needing cleanup. Likely: "Do you want to go off the record?" | RECOMMENDED ACTION: Correct per audio; minor but affects readability.
+
+FLAG 015 | LINE 1089      | ENTITY_NAME    | "blacktop oil and gas" — steno consistently renders "White Top" as "blacktop" (phonetic mistranslation). All instances of "blacktop" in testimony context (not when referring to Westlake entities) have been individually corrected but the pattern is flagged globally. | RECOMMENDED ACTION: Reporter to review all "blacktop" occurrences in context and confirm each substitution.
+
+FLAG 016 | LINE 1362-1363 | GRAMMAR        | "And was Robin French the only other manager of White Top energy an along with yourself?" — "an along" should be "along"; question phrasing is garbled. | RECOMMENDED ACTION: Reporter to correct per audio.
+
+FLAG 017 | LINE 1569      | ENTITY_NAME    | "REV rent signal—energy signal joint venture" — rendered more consistently as "Revenant Signal Energy" at line 6707. Inconsistent throughout transcript. | RECOMMENDED ACTION: Reporter to verify correct entity name spelling against case documents and apply consistently throughout.
+
+FLAG 018 | LINE 1762-1768 | TRANSCRIPT_QA  | Double underscore artifacts "_ _" in MS. Curtis's clarification (lines 1762-1763) indicate steno lost words; gap in record. | RECOMMENDED ACTION: Reporter to review audio for missing text at this location.
+
+FLAG 019 | LINE 1878      | OBJECTION_NOTE | MS. Curtis makes an extended speaking objection referencing the "National Enquirer" (lines 1876-1882). Per Louisiana KB-001, only "Objection to form." is standard. Extended speaking objection is in record. | RECOMMENDED ACTION: Ensure full text accurately captured; reporter need not editorialize.
+
+FLAG 020 | LINE 2014-2017 | READBACK       | Reporter (Muir) reads back a question on record at line 2017. This is a readback event. | RECOMMENDED ACTION: Confirm readback is properly formatted in the transcript; readback sections may require special formatting treatment.
+
+FLAG 021 | LINE 2562      | TRANSCRIPT_QA  | Double underscore "_ _" at lines 2562-2563 ("raised _ _ passed on the concerns") — steno gap; words missing from record. | RECOMMENDED ACTION: Reporter to review audio for missing words at this location.
+
+FLAG 022 | LINE 3071      | SPEAKER_ID     | Unidentified Zoom participant "Nathaniel" (steno garbled as "National national") asks about document number at approximately line 3071. Full name and firm not identified. | RECOMMENDED ACTION: Reporter to identify participant and add to appearances or note in transcript.
+
+FLAG 023 | LINE 3101-3103 | ENTITY/NAME    | Email address "M carat QI petro fix I can.com" is heavily garbled — likely a corporate email (e.g., MCar@QIPetroFix.com or similar). | RECOMMENDED ACTION: Reporter to check source documents or parties for correct email address.
+
+FLAG 024 | LINE 3153      | NAME           | "Thomas met calf" consistently garbled for "Thomas Metcalf." | RECOMMENDED ACTION: Reporter to confirm correct spelling of geotech's last name (Metcalf or Metcalfe).
+
+FLAG 025 | LINE 3344-3348 | EXHIBIT_CITE   | Exhibit 129 quotation: MS. Curtis objects that the document doesn't use the word "significant" — objection at line 3346. | RECOMMENDED ACTION: Confirm this objection and its context are accurately transcribed.
+
+FLAG 026 | LINE 3372-3374 | ENTITY_NAME    | Drilling manager's company name garbled throughout. MS. Curtis at line 3376 says "Space between done and Lynn," suggesting "Donelynn Energy" or similar. | RECOMMENDED ACTION: Reporter must verify correct company name against discovery/business records and apply consistently.
+
+FLAG 027 | LINE 3422-3424 | COURT_REPORTER_SPEAKING | Reporter speaks on record at lines 3422-3424 to direct witness where to put documents. | RECOMMENDED ACTION: Confirm content of reporter's direction is accurately noted in transcript.
+
+FLAG 028 | LINE 4474      | TIME_FORMAT    | Time written as "'9:58 a.m." — leading apostrophe is steno artifact; corrected to "9:58 a.m." Recurring pattern (also line 4009). | RECOMMENDED ACTION: Review all time references for leading apostrophe artifacts.
+
+FLAG 029 | LINE 5252      | EXHIBIT_DATA   | "28 today period, February 23, 2020, to March 24, 2020, 409 barrels per day." "28 today period" corrected to "28-day period." Production figure (409 bbl/day) is verbatim testimony. | RECOMMENDED ACTION: Confirm correction of "28-day period"; preserve production figure verbatim.
+
+FLAG 030 | LINE 5452-5453 | ENTITY_NAME    | "employ bunker sod with humid in us" — garbled reference to a Luminus contact name. | RECOMMENDED ACTION: Reporter to check against emails/documents to identify person's correct name.
+
+FLAG 031 | LINE 5572      | TRANSCRIPT_QA  | Isolated "Okay U?" — recurring steno artifact (also line 3993). "U?" appears at least twice. | RECOMMENDED ACTION: Reporter to review audio at both locations; confirm whether "U" represents a word or is a pure steno artifact.
+
+FLAG 032 | LINE 5574      | TRANSCRIPT_QA  | Isolated fragment "And, process." — unclear whether steno artifact for "And prices." (in context of oil prices discussion) or truncated witness answer. | RECOMMENDED ACTION: Reporter to review audio and resolve.
+
+FLAG 033 | LINE 5866      | EXHIBIT_CITE   | "from you list in Exhibit No. 36" — almost certainly should be "Exhibit No. 136" based on surrounding context (Exhibit 136 is under discussion throughout this passage). | RECOMMENDED ACTION: Reporter to verify and correct.
+
+FLAG 034 | LINE 6069      | COURT_REPORTER_SPEAKING | "(Court Reporter clarification.)" parenthetical at line 6069. | RECOMMENDED ACTION: Confirm content of clarification for certified copy; ensure it is properly formatted.
+
+FLAG 035 | LINE 6728-6730 | EXHIBIT_QUOTE  | Barrett email language cited with inline annotation "(all caps)" inserted by steno into quotation — steno annotated that certain text was in all caps. | RECOMMENDED ACTION: In certified copy, handle as a proper parenthetical or transcribe the caps-lock text directly; do not leave steno annotation embedded in quoted language.
+
+FLAG 036 | LINE 7601-7611 | HEATED_EXCHANGE | TJ Madigan instructs witness not to answer and addresses Hobby directly: "Stop it, Walker." Extended colloquy on investor identity protections. | RECOMMENDED ACTION: Accurately captured; flag as sensitive passage for reporter review; confirm full exchange is transcribed.
+
+FLAG 037 | LINE 8141-8143 | INCOMPLETE_ANSWER | "It may or may not. I don't know personal." — "personal" corrected to "personally." Answer does not fully respond to the compound question. | RECOMMENDED ACTION: Reporter may wish to note in margin or flag for errata consideration.
+
+FLAG 038 | LINE 9005      | WORD_GARBLE    | "in my mine the relationship" — "mine" corrected to "mind." | RECOMMENDED ACTION: Confirm correction per audio.
+
+FLAG 040 | LINE 10258-10264 | TECHNICAL_GLITCH | Court reporter's computer went down at approximately 4:05 p.m.; brief recess 4:05–4:08 p.m. on record. | RECOMMENDED ACTION: Reporter to verify no testimony gap exists in this section of the transcript.
+
+FLAG 041 | LINE 10934     | TECHNICAL_TERM | "anti conflict software" — likely "anti-collision software" (standard directional drilling term for wellbore conflict detection). | RECOMMENDED ACTION: Reporter to verify correct industry term before certified copy.
+
+FLAG 042 | LINE 11315/11321 | RECURRING_ERROR | "drilling order A through very" and "labeled A through very" — "very" corrected to "V" (the letter). Confirmed at line 11310. | RECOMMENDED ACTION: Review all instances of "very" at the end of alphabetical sequences in this section.
+
+FLAG 043 | LINE 11452     | REPORTER_CHECK | Pre-existing *REPORTER CHECK HERE* placeholder (cross-reference; see FLAG 046 for the line 11557 instance). Note that the engine logged this also at line 11452 in the corrections — verify whether this is a fourth placeholder or the same as FLAG 046. | RECOMMENDED ACTION: Reporter to audit source file for all placeholder occurrences.
+
+FLAG 045 | LINE 11687-11698 | RECURRING_ERROR | "brat spot" → "bright spot" — corrected throughout (lines 11687, 11698, 11783). Reporter to confirm all instances corrected. | RECOMMENDED ACTION: Global review of "brat spot" pattern in seismic/geophysics section.
+
+FLAG 047 | LINE 11831-11876 | DEPOSITION_CLOSE | Deposition concluded at 5:00 p.m. (MS. Curtis's final line cites "5:01"). Videographer states "five hours and 33 minutes" on record. Westlake stated readiness to continue; witness and plaintiff's counsel declined. No cross-examination occurred. | RECOMMENDED ACTION: Confirm close language is accurately transcribed; confirm continuing deposition is anticipated and note in file.
+
+================================================================================
+MEDIUM PRIORITY FLAGS
+================================================================================
+
+FLAG 048 | LINE 751-757   | VERBATIM       | Witness says "3 to 5" times, then self-corrects to "Half a dozen times." Per verbatim rules (KB-010), this is witness's voice and is NOT a steno error. Do NOT change or query. | RECOMMENDED ACTION: Keep verbatim as spoken.
+
+FLAG 049 | LINE 2264      | TECHNICAL_TERM | "subsurface son nature tests" — corrected to "subsurface sonar tests" but "sonar" may be "sonic" or another technical term. | RECOMMENDED ACTION: Reporter to verify correct technical term (sonar vs. sonic vs. other) against context.
+
+FLAG 050 | LINE 6993      | NAME_CONSISTENCY | "Stephen Derby" appears once; witness uses "Steve Derby" consistently throughout. May be same person. | RECOMMENDED ACTION: Flag for consistency check; apply consistent form per reporter's verification.
+
+================================================================================
+INFORMATIONAL FLAGS
+================================================================================
+
+FLAG 051 | LINE 1831-1833 | VERBATIM       | "issued answers all in between or issues is a better choice of words" — witness self-correcting mid-sentence. Kept verbatim per verbatim rule. | INFO: No action required; keep as spoken.
+
+FLAG 052 | LINE 3509 (GLOBAL) | PATTERN     | "why are [number]" = steno phonetic for "YR-[number]" (Bates prefix). Pattern applied globally as recurring correction. | INFO: Reporter to spot-check YR- Bates number corrections throughout.
+
+FLAG 053 | LINE 5574      | PATTERN        | "And, process." isolated fragment — possible "And prices." in oil price discussion context. | INFO: Audio review recommended; see FLAG 032.
+
+FLAG 054 | LINE 6116/6220 | PATTERN        | "geneos" consistently = "gone" throughout. Pattern applied globally. | INFO: Reporter to spot-check all "geneos" corrections.
+
+FLAG 055 | LINE 11116     | VERBATIM/GRAMMAR | "identified all of the potential areas of interest that had been identified" — possible verbal repetition by witness. May be steno garble or genuine verbatim speech pattern. | INFO: Keep verbatim unless clearly a steno artifact; no change made.
+
+================================================================================
+TOTAL FLAGS: 47  (indexed here as Flags 001–055, with some gaps where sub-items were
+consolidated under parent flags; 47 unique flag events as logged by engine)
+
+Critical flags (must resolve before certification): 6
+High priority flags: 29
+Medium priority flags: 3
+Informational flags: 5 (plus additional sub-items)
+================================================================================

@@ -1,0 +1,1280 @@
+================================================================================
+MARGIE WAKEMAN WELLS — COURT REPORTING STYLE MODULE
+Source: "Court Reporting: Bad Grammar/Good Punctuation??"
+        Seminar Handouts, 2015 | margieholdscourt.com
+Authority Level: LAYER 2 — Professional Court Reporting Standard
+Overrides: GREGG_STYLE_MODULE.txt (Layer 1) where rules conflict
+Overridden by: CR_STYLE_PROFILE (Layer 3) — CR personal style always wins
+Last Built: 2026-03-22
+================================================================================
+
+MASTER PRINCIPLE (Margie's Core Teaching):
+   Putting commas around an element simply means, at the most basic level,
+   that it could be removed from the sentence and that there would still
+   be a sentence. A pair of commas does NOT mean the element is
+   "nonessential" or a "parenthetical" — those terms might apply, but
+   they are not the ONLY reason to surround something with commas.
+
+================================================================================
+SECTION 1 — COMMAS: DIRECT ADDRESS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-001] | Commas — Direct Address | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Always surround a name or title used in direct address with commas.
+      The term of address can appear at the beginning, middle, or end of
+      the sentence — it always gets commas around it.
+
+CORRECT:   I have already sent it, sir.
+CORRECT:   I have already sent it, sir, to all of the people that are involved.
+CORRECT:   Your Honor, I am asking that you grant us a continuance.
+CORRECT:   I am asking that you grant us a continuance, Your Honor.
+CORRECT:   I am asking that you grant us a continuance, Your Honor, so that
+              I might investigate this new evidence.
+CORRECT:   Show that to us, Counsel, so that I am sure of what you are saying.
+
+NOTE: Direct address terms include: sir, ma'am, Counsel, Your Honor, Judge,
+      Doctor, and any name used when speaking directly to a person.
+
+================================================================================
+SECTION 2 — COMMAS: CITY/STATE AND FULL DATES
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-002] | Commas — City/State | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When a state name follows a city name, put a comma before AND after
+      the state. The state is a removable element; the comma after it is
+      required whenever the sentence continues.
+
+CORRECT:   We were on our way to Provo, Utah.
+CORRECT:   We were on our way to Provo, Utah, to visit family.
+CORRECT:   It took place in Springfield, Illinois, and not in Springfield,
+              Ohio, on the 15th of last month.
+
+INCORRECT: We were on our way to Provo, Utah to visit family.
+              [Missing the closing comma after Utah]
+
+NOTE: Same principle applies to country names following city names.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-003] | Commas — Full Dates (Month Day, Year) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When a full date (month, day, year) appears mid-sentence, put a
+      comma before AND after the year. The year is a removable element.
+
+CORRECT:   It is dated September 22, 2014, and was mailed that very day.
+CORRECT:   The information was in the July 19, 2012, letter and not in the
+              July 19, 2013, letter.
+
+INCORRECT: It is dated September 22, 2014 and was mailed that very day.
+              [Missing the closing comma after 2014]
+
+================================================================================
+SECTION 3 — COMMAS: DATES (MONTH + YEAR — NO COMMA)
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-004] | Commas — Month + Year Dates | [CR-CRITICAL] [OVERRIDES GREGG]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When only a month and year appear (no specific day), do NOT put a
+      comma between the month and the year.
+
+CORRECT:   We moved there in June 2012.
+CORRECT:   September 2004 is the year the twins were born.
+
+INCORRECT: We moved there in June, 2012.
+              [No comma between month and year when no day is given]
+INCORRECT: September, 2004, is the year the twins were born.
+              [No comma between month and year]
+
+NOTE: [OVERRIDES GREGG] — Some standard style guides permit the comma
+      between month and year. Margie's rule: NO comma. This is the
+      professional court reporting standard.
+
+================================================================================
+SECTION 4 — COMMAS: INTERRUPTERS AND PARENTHETICAL ELEMENTS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-005] | Commas — Interrupters (Mid-Sentence Elements) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Any element that interrupts the flow of a sentence and could be
+      removed without destroying the sentence gets commas around it
+      (one comma before, one after).
+
+CORRECT:   He was derelict, in my judgment, in fulfilling his duty.
+CORRECT:   She was interested, I believe, in the truth.
+
+INCORRECT: He was derelict in my judgment, in fulfilling his duty.
+              [Missing the opening comma before "in my judgment"]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-006] | Commas — "However" as Interrupter | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: "However" can appear at the beginning, middle, or end of a sentence.
+      Wherever it appears, surround it with commas (or use a comma after
+      it at the start of a sentence).
+
+CORRECT:   However, I had spoken with him about the incident.
+              [Beginning of sentence: comma after]
+CORRECT:   I had spoken with him about the incident, however.
+              [End of sentence: comma before]
+CORRECT:   I had spoken with him about the incident, however, before I
+              knew the full story.
+              [Middle of sentence: commas around it]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-007] | Commas — Movable Modifying Phrases | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When a phrase can be moved within the sentence OR removed entirely,
+      it must be set off with commas. The key test: can you remove it and
+      still have a complete, sensible sentence?
+
+EXAMPLES — No commas needed (phrase is essential, not movable in meaning):
+CORRECT:   He walked somewhat gingerly on his sore leg.
+CORRECT:   He walked later in the evening to the liquor store to buy a bottle.
+
+EXAMPLES — Commas needed (phrase is a true interrupter):
+CORRECT:   He walked, somewhat gingerly, on his sore leg.
+              [When "somewhat gingerly" is treated as a removable aside]
+CORRECT:   He walked, later in the evening, to the liquor store to buy a bottle.
+              [When "later in the evening" is treated as a removable aside]
+
+INCORRECT: He walked somewhat gingerly, on his sore leg.
+              [Single comma splits the phrase from its object — wrong]
+INCORRECT: He walked later in the evening, to the liquor store to buy a bottle.
+              [Single comma creates a half-pair — wrong]
+
+NOTE: Either use NO commas (phrase reads naturally as part of the sentence)
+      or use a PAIR of commas (phrase is a true removable interrupter).
+      A lone comma that splits a phrase from its object is always wrong.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-008] | Commas — "In case you don't know" and Similar Asides | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Parenthetical clauses like "in case you don't know" must be surrounded
+      with a pair of commas when they interrupt the sentence.
+
+CORRECT:   They were involved, in case you don't know, in another accident.
+
+INCORRECT: They were involved in case you don't know, in another accident.
+              [Missing opening comma]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-009] | Commas — "Nevertheless" and Similar Transitional Words | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: "Nevertheless" and similar transitional words used as interrupters
+      must be surrounded by a pair of commas. Do not use a single comma
+      that only follows the word.
+
+CORRECT:   Are you saying, nevertheless, that you intend to file that report?
+
+INCORRECT: Are you saying nevertheless, that you intend to file that report?
+              [Single comma after "nevertheless" — wrong; creates a half-pair]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-010] | Commas — Introductory Dependent Clauses | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: A dependent clause that begins a sentence is followed by a comma.
+      The same clause can also appear mid-sentence as an interrupter,
+      in which case it takes a pair of commas around it.
+
+CORRECT:   When I arrived that night, I did not have the chance to speak
+              with him.
+              [Clause at the beginning: comma after it]
+CORRECT:   I did not have the chance, when I arrived that night, to speak
+              with him.
+              [Clause in the middle: pair of commas]
+CORRECT:   I did not have the chance to speak with him when I arrived
+              that night.
+              [Clause at the end: no comma needed]
+
+CORRECT:   At the time of the incident we are discussing, she was unemployed.
+CORRECT:   She was, at the time of the incident we are discussing, unemployed.
+CORRECT:   She was unemployed at the time of the incident we are discussing.
+
+================================================================================
+SECTION 5 — COMMAS: WORDS LIKE "NOW," "THEREFORE," "OBVIOUSLY," "AGAIN"
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-011] | Commas — "Now" | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: "Now" used as a transitional/parenthetical word at the beginning of
+      a sentence is followed by a comma. If it is simply an adverb
+      modifying the verb (meaning "at this moment"), no comma is used.
+
+CORRECT:   Now, I want to talk about the 10th.
+              ["Now" = transitional, meaning "moving on to..." — comma after]
+CORRECT:   Now I want to talk about the 10th.
+              ["Now" = at this time — no comma (also acceptable per context)]
+
+NOTE: In court reporting, "Now" before a question almost always functions
+      as a transitional word and takes a comma. Read the speaker's intent.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-012] | Commas — "Therefore" | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: "Therefore" used as an interrupter mid-sentence must be surrounded
+      by a pair of commas.
+
+CORRECT:   We were, therefore, very much disgusted with their attitude.
+
+INCORRECT: We were therefore very much disgusted with their attitude.
+              [Missing commas around "therefore" as an interrupter]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-013] | Commas — "Obviously" | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: "Obviously" used as an interrupter must be surrounded by commas.
+
+CORRECT:   It was, obviously, an error on his part.
+
+INCORRECT: It was obviously an error on his part.
+              [Missing commas around "obviously" as an interrupter]
+
+NOTE: Whether to treat these adverbs as interrupters depends on the
+      speaker's intent and intonation. When they function as parenthetical
+      commentary, surround them with commas.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-014] | Commas — "Again" | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: "Again" used as a transitional interrupter must be surrounded by
+      commas when it is parenthetical.
+
+CORRECT:   And, again, I was confronted with a very difficult choice.
+
+INCORRECT: And again I was confronted with a very difficult choice.
+              [Missing commas around "again"]
+
+================================================================================
+SECTION 6 — COMMAS: "TOO" AND "ALSO" AT END OF SENTENCE — NO COMMA
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-015] | Commas — "Too" and "Also" | [CR-CRITICAL] [OVERRIDES GREGG]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Do NOT put a comma before "too," "also," or "as well" at the end of
+      a sentence. No comma.
+
+CORRECT:   She had to have the test too.
+CORRECT:   He was a suspect also.
+CORRECT:   Bacteria was found there as well.
+
+INCORRECT: She had to have the test, too.
+              [No comma before "too" at end of sentence]
+INCORRECT: He was a suspect, also.
+              [No comma before "also" at end of sentence]
+
+NOTE: [OVERRIDES GREGG] — Traditional style guides (including Gregg) permit
+      or even recommend a comma before "too" at end of sentence. Margie's
+      rule: NO comma. This is the court reporting professional standard.
+
+================================================================================
+SECTION 7 — ABBREVIATIONS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-016] | Abbreviations — No Periods in Acronyms | [CR-CRITICAL] [OVERRIDES GREGG]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Do NOT use periods between letters in acronyms and initialisms.
+      Write the letters solid, no periods.
+
+CORRECT:   I work for IBM.
+CORRECT:   She needs ten CEUs by June.
+
+INCORRECT: I work for I.B.M.
+              [No periods between letters]
+INCORRECT: She needs ten CEU's.
+              [No apostrophe for plural of an abbreviation]
+
+NOTE: [OVERRIDES GREGG] — Older Gregg editions used I.B.M. style. Modern
+      court reporting standard: no periods in acronyms.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-017] | Abbreviations — No Apostrophe for Plural Abbreviations | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Do NOT use an apostrophe to form the plural of an abbreviation.
+      Simply add "s" with no apostrophe.
+
+CORRECT:   She needs ten CEUs by June.
+
+INCORRECT: She needs ten CEU's by June.
+              [Apostrophe is wrong — CEU's implies possession, not plural]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-018] | Abbreviations — Suffixes Jr., Sr., III | [CR-CRITICAL] [OVERRIDES GREGG]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Do NOT put commas around "Jr." or "Sr." after a name. These are
+      simply part of the name — no separating commas. Roman numerals
+      (III, IV, etc.) following a name also take no commas.
+
+CORRECT:   I spoke with Jack Macdonald Jr.
+CORRECT:   Joseph Ray Sr. spoke to her.
+CORRECT:   She married Hamilton Brown III.
+
+INCORRECT: I spoke with Jack Macdonald, Jr.
+              [No comma before Jr.]
+INCORRECT: Joseph Ray, Sr., spoke to her.
+              [No commas around Sr.]
+
+NOTE: [OVERRIDES GREGG] — Older Gregg and traditional style used commas
+      around Jr./Sr. Modern court reporting standard: no commas.
+
+================================================================================
+SECTION 8 — END PUNCTUATION: PERIODS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-019] | Periods — Complete Statement or Command | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Put a period after a grammatically complete sentence that makes a
+      statement or issues a command.
+
+CORRECT:   Her plan does not include health benefits. I could not use it.
+CORRECT:   I had very little to do with what happened later. That's it.
+CORRECT:   He expected me to finish it. I didn't.
+CORRECT:   I cannot be there. I am sorry.
+CORRECT:   Leave now. You may still make it for the last train.
+CORRECT:   Send it via email. I will check for it.
+CORRECT:   Have it delivered. Thank you.
+
+================================================================================
+SECTION 9 — RUN-ON SENTENCES
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-020] | Run-Ons — Definition and Fix | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: A run-on is the combination of two sentences that do NOT have a
+      conjunction between them but that are punctuated with a comma or
+      with nothing at all. Fix run-ons by using a period to separate the
+      two complete sentences.
+
+CORRECT:   Ray got into the work early in the day. Joe did not.
+CORRECT:   I did not hear what you said. I'm sorry.
+CORRECT:   We left with the understanding it would be handled. That's it.
+CORRECT:   We do not need it at this point. Thank you.
+
+INCORRECT: Ray got into the work early in the day, Joe did not.
+              [Comma splice — run-on]
+INCORRECT: I did not hear what you said, I'm sorry.
+              [Comma splice — run-on]
+INCORRECT: We left with the understanding it would be handled, that's it.
+              [Comma splice — run-on]
+INCORRECT: We do not need it at this point thank you.
+              [No punctuation — run-on]
+
+================================================================================
+SECTION 10 — POLITE REQUESTS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-021] | Polite Requests — Period, Not Question Mark | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: A "polite request" asks for action or information but is NOT a true
+      question — it cannot be answered with a simple "yes" or "no." A
+      polite request correctly begins with "will," "would," "can," or
+      "could." Use a PERIOD after a polite request, NOT a question mark.
+
+CORRECT:   Q Would you turn to page 5 of the report that you have there.
+CORRECT:   Q Will you tell me the names and ages of your children.
+CORRECT:   Q Would you please take a seat in the witness stand.
+CORRECT:   Q Would you state your name for the record, please.
+CORRECT:   Q Can you hand the document you are holding to your counsel.
+CORRECT:   Q Could you read the first paragraph there to yourself.
+CORRECT:   Q Can you put your initials in the top corner of the page.
+
+NOTE: The test — can it be answered "yes" or "no"? A true polite request
+      CANNOT. "Would you state your name" — you cannot answer "no."
+      Therefore it takes a period.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-022] | Polite Requests — "Can you give me" — Period vs. Question Mark | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When "can you give me" is a true polite request (asking them to
+      provide the information), use a period. When it functions as a true
+      yes-or-no question (testing ability), use a question mark.
+
+CORRECT:   Q Can you give me the names.
+              [Expecting an answer with names — polite request — period]
+              A Jim, Robert, and Martin.
+
+CORRECT:   Q Can you give me the names?
+              [True question about ability — question mark]
+              A I don't have a clue who those people were.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-023] | Polite Requests — "May we have this marked" | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When an attorney says "May we have this marked for identification,"
+      this can be either a polite request (period) or a true question
+      (question mark) depending on context and intonation.
+
+CORRECT:   Q May we have this marked for identification.
+              [Addressed to the court reporter — polite request — period]
+CORRECT:   Q May we have this marked for identification?
+              [Addressed to opposing counsel or the judge — true question —
+              question mark]
+
+NOTE: Use judgment based on who is being addressed and the intonation.
+
+================================================================================
+SECTION 11 — INDIRECT QUESTIONS VS. DIRECT QUESTIONS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-024] | Indirect Questions — Period, Not Question Mark | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: An indirect question always occurs in a dependent clause and does NOT
+      use question word order. It has the "feel" of a question but not the
+      "form" of a true question. Use a PERIOD after an indirect question,
+      NOT a question mark.
+
+DIRECT (question mark):   What time did you leave?
+INDIRECT (period):        I am asking what time you left.
+
+DIRECT (question mark):   When did the surgery take place?
+INDIRECT (period):        I am wondering when the surgery took place.
+
+DIRECT (question mark):   How far was it to his office?
+INDIRECT (period):        I want to know how far it was to his office.
+
+NOTE: The test — does the sentence use question word order (inverted subject/
+      verb)? If "I am asking what time you left" — subject "you" comes
+      BEFORE verb "left" — that is statement order. It is indirect.
+      Use a period.
+
+================================================================================
+SECTION 12 — FRAGMENTS IN Q&A
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-025] | Fragments — Definition | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: A fragment is an element that does not stand alone as a complete
+      grammatical thought. Common fragment examples in court reporting:
+      "because she is not here" / "on the corner" / "that he was there
+      alone" / "near the base of the skull" / "very late yesterday
+      afternoon."
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-026] | Fragments — Punctuate Like the Complete Thought | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Punctuate a fragment that stands for a complete thought the same way
+      you would punctuate the complete thought it represents. A fragment
+      standing for a statement gets a period. A fragment standing for a
+      question gets a question mark.
+
+CORRECT:   Not with him in that car. I was alone.
+              ["Not with him in that car" = fragment standing for a statement]
+CORRECT:   Eight. There were only eight.
+CORRECT:   In the back. That's absolutely true.
+CORRECT:   I intended to give that to you this morning. Sorry.
+
+Q&A EXAMPLES:
+CORRECT:   Q What time was it?
+            A Around 10:00. We were late.
+              ["Around 10:00" = fragment = period; new sentence follows]
+
+CORRECT:   Q Who was driving?
+            A Bob. Joe had been drinking.
+              ["Bob" = fragment = period; new sentence follows]
+
+CORRECT:   Q How far away were you standing?
+            A About 50 feet. I was close.
+
+CORRECT:   Q What day did this happen?
+            A Friday. I think it was the 5th.
+
+CORRECT:   Q Where did you see her?
+            A At the beach. She was alone.
+
+CORRECT:   Q Were you involved at all?
+            A Minimally. I did little on that.
+
+CORRECT:   Q When did you enter into that?
+            A The 16th. Maybe it was the 17th.
+
+NOTE: A SEMICOLON IS WRONG between a fragment answer and the follow-on
+      sentence. Margie is explicit: "Would this be a good time for a
+      semicolon? NO!" Use a period after the fragment, then a new sentence.
+
+INCORRECT: A Around 10:00; we were late.
+              [Semicolon is wrong here — period after the fragment]
+INCORRECT: A Bob; Joe had been drinking.
+              [Semicolon is wrong here]
+
+================================================================================
+SECTION 13 — ATTORNEY ECHOING WITNESS ANSWERS (Q repeats A)
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-027] | Attorney Echo — Fragment + New Question | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When an attorney echoes the witness's answer back and then asks a
+      new question, the echoed fragment gets a period (it stands for a
+      complete statement). The new question begins on the next line.
+
+CORRECT:   Q How near to you was it?
+            A It was no more than ten feet.
+            Q No more than ten feet.
+              Did you have a clear view?
+
+CORRECT:   Q Who told you that?
+            A It was Joe Ross.
+            Q Joe Ross.
+              Did you trust him?
+
+CORRECT:   Q What did she indicate?
+            A She indicated it would be no later than the 24th.
+            Q The 24th.
+              Was that a guaranteed date?
+
+CORRECT:   Q When did you pay the final?
+            A I think it was in May.
+            Q In May.
+              In your mind, was that it?
+
+================================================================================
+SECTION 14 — "WHAT ABOUT" AND "HOW ABOUT" QUESTIONS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-028] | "What About" / "How About" — Question Mark After Fragment | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: "What about X?" and "How about X?" are questions. The question mark
+      goes after the fragment that forms the question, not after a follow-
+      on sentence.
+
+CORRECT:   Q What about John? Was he there?
+CORRECT:   Q How about your sister? Did she help?
+
+================================================================================
+SECTION 15 — "OKAY," "ALL RIGHT," "FINE," "GREAT"
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-029] | "Okay" — End of Sentence Punctuation | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Put a period in front of "okay" when it comes at the end of a
+      sentence (or as a standalone acknowledgment). Use an interrogative
+      or period after "okay" depending on intonation.
+
+CORRECT:   You say you insisted the doctor run additional tests. Okay.
+              ["Okay" = acknowledgment — period before and after]
+CORRECT:   I am going to show you several exhibits that were all marked at
+              the same time yesterday. Okay?
+              ["Okay?" = asking for confirmation — question mark after]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-030] | "Okay" — Mid-Sentence (Legitimate Question vs. Throwaway) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Surround "okay" with dashes in the middle of the sentence if it is
+      asking a legitimate question. Otherwise treat it as a throwaway
+      (use commas).
+
+CORRECT:   You can speak with your attorney -- is that okay? -- before we
+              go on.
+              ["Is that okay?" = legitimate question — dashes]
+CORRECT:   She was standing, okay, next to me and was, okay, acting weird,
+              okay, and proceeded to start screaming.
+              ["okay" = filler/throwaway — commas]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-031] | "Okay," "All Right," "Fine," "Great" — Transition Words | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When an attorney uses "Okay," "All right," "Fine," or "Great" as a
+      transition before asking the next question, punctuate them as their
+      own complete units followed by a period. Paragraph after them if a
+      new question follows.
+
+CORRECT:   Q Was surgery inevitable?
+            A It was a definite.
+            Q Okay. When did you tell him?
+
+CORRECT:   Q Were you alone in this?
+            A I felt alone.
+            Q All right. Fine. Did you reach...?
+
+CORRECT:   Q Who led in sales?
+            A Mark Johnson. He was always first.
+            Q Mark Johnson. Okay. Great.
+              Did he work from your branch?
+
+NOTE: These transition words get periods, not commas, before the next
+      question follows. They stand alone as complete units.
+
+================================================================================
+SECTION 16 — "YES" AND "NO" PUNCTUATION
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-032] | "Yes"/"No" — Comma When What Follows Echoes the Question | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When what follows "yes" or "no" ECHOES the words of the question,
+      use a comma after "yes" or "no."
+
+CORRECT:   Q Did she call you that night?
+            A Yes, she did.
+            A Yes, she called.
+
+CORRECT:   Q Was he agitated?
+            A No, he was not agitated.
+            A No, he wasn't.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-033] | "Yes"/"No" — Period When What Follows Does NOT Echo | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When what follows "yes" or "no" does NOT echo the words of the
+      question (introduces new information), use a PERIOD after "yes"
+      or "no."
+
+CORRECT:   Q Did she call you that night?
+            A Yes. She asked about the loan.
+            A Yes. She asked about my mom.
+
+CORRECT:   Q Was he agitated?
+            A No. He was amazingly calm.
+            A No. He was in control.
+
+CORRECT:   Q Was she in attendance?
+            A No. But she sent a colleague.
+            A Yes. Because she was in charge.
+
+NOTE: A semicolon is NOT correct here. Margie is explicit: "Is this a time
+      when a semicolon might work? NO."
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-034] | "Yes"/"No" — Both Comma AND Period in Same Answer | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: An answer can have both comma (for the echo part) and period (for
+      new information) in the same answer.
+
+CORRECT:   Q Did she react well to the news?
+            A Yes, she did. She embraced her new position.
+            A No, she didn't. She broke down right away.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-035] | "Yes"/"No" — At End of Answer | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When "yes" or "no" comes at the END of an answer (witness adds it
+      after the main answer), use a comma before it.
+
+CORRECT:   Q Did you see her after she quit?
+            A We met several times, yes.
+            A I did not see her at all, no.
+
+CORRECT:   Q Was he visibly upset?
+            A He reacted rather violently, yes, and seemed to be over the edge.
+            A I couldn't tell, no, that he was upset in any way.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-036] | "Yes"/"No" — With Semicolons (Complex Sentence) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When a "yes" or "no" answer is part of a complex sentence with a
+      semicolon already present, the "yes"/"no" still gets a comma (if
+      echoing) or acts as its own unit.
+
+CORRECT:   Q Did you send the form in?
+            A I did not have it initially; but, yes, I did send it eventually.
+            A She did not give it to me; and, no, I had no way to send it
+              in otherwise.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-037] | "Uh-huh," "Huh-uh," "Yep," "Nope" — Same Rules as Yes/No | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: The rules for "uh-huh," "huh-uh," "yep," "nope," and any other
+      affirmative/negative responses are exactly the same as for "yes"
+      and "no."
+
+CORRECT:   Yep, I did accompany her.
+              [Echoes — comma after "yep"]
+CORRECT:   She was in surgery by the time I got there, uh-huh.
+              [At end — comma before "uh-huh"]
+CORRECT:   I made every effort; but, unh-unh, we weren't able to make
+              that contact.
+
+================================================================================
+SECTION 17 — QUESTION MARKS: WHERE THE QUESTION IS FIRST ASKED
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-038] | Question Mark — Place It Where Question Is First Asked | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Put the question mark where the question is FIRST asked. If a
+      clarifying phrase follows the question, it does not move the
+      question mark.
+
+CORRECT:   Q How many? Do you know?
+CORRECT:   Q Who helped you? Your brother?
+CORRECT:   Q How long was it? More than a month?
+CORRECT:   Q What did you tell her? The truth or the lie you had been
+              spreading?
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-039] | Question Mark — Clarifying Phrase After the Question | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When a clarifying phrase follows a question and that phrase is NOT
+      itself a question, the question mark goes after the first question,
+      and the clarifying phrase ends with a period (or can end with a
+      question mark if it also asks something).
+
+CORRECT:   Q Whom did you see? I am talking about when you first got there.
+              [Clarifying phrase ends with period — it is a statement]
+CORRECT:   Q How long was the surgery? I am referring to the surgery on
+              the 4th.
+CORRECT:   Q How much more did you spend? On your sister, I mean.
+              [Fragment standing for a statement — period]
+
+CORRECT:   Q Whom did you see? Do you recall?
+              [Second part is a question — question mark]
+CORRECT:   Q How long was the surgery? Do you have an estimate?
+CORRECT:   Q How much more did you spend? Did you buy everything for her?
+
+CORRECT:   Q Whom did you see? Your brother?
+              [Fragment standing for a question — question mark]
+CORRECT:   Q How long was the surgery? Several hours?
+CORRECT:   Q How much more did you spend? More than $100?
+
+================================================================================
+SECTION 18 — SERIES OF QUESTIONS (STACKED QUESTIONS)
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-040] | Stacked Questions — Multiple Question Marks | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When an attorney asks a series of short questions, each question
+      gets its own question mark. They can be stacked on separate lines
+      or run together on one line.
+
+CORRECT (stacked):
+            Q Did you eat strawberries?
+              blueberries?
+              kiwi?
+              papaya?
+
+CORRECT (inline):
+            Q Did you eat strawberries? blueberries? kiwi? papaya?
+            Q Did you eat strawberries? Blueberries? Kiwi? Papaya?
+              [Lowercase or capitalized continuation — both acceptable]
+
+CORRECT:   Q Was the car you saw red? blue? gray? brown?
+CORRECT:   Q What color was the car you saw? Red? Blue? Gray? Brown?
+CORRECT:   Q Did you call 9-1-1? your doctor? the hospital?
+CORRECT:   Q Which one did you consider purchasing? The large one?
+              The small one? One of the others?
+CORRECT:   Q Who did that work for you? Your admin assistant? Your clerk?
+              Your bookkeeper?
+CORRECT:   Q How did you find out? Who told you? The doctor?
+
+================================================================================
+SECTION 19 — TAG CLAUSES
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-041] | Tag Clauses — Definition | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: A "tag clause" is added to a sentence that is a statement in order
+      to turn it into a question. There are two types:
+      (1) those that echo the original statement (wasn't he / was it /
+          had they not)
+      (2) those that use "right," "true," or "correct"
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-042] | Tag Clauses — Echo Type (Comma) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When the tag clause echoes the statement (e.g., "wasn't he," "was
+      it," "had they not"), use COMMAS to set it off.
+
+CORRECT:   He was with the company ten years, wasn't he?
+CORRECT:   Her leg was not broken, was it?
+CORRECT:   They had signed the papers for the loan, had they not?
+CORRECT:   I am correct, am I not?
+
+CORRECT (with continuation):
+           He was with the company ten years, wasn't he, when you
+              discovered the second set of books?
+           Her leg was not broken, was it, at the time you examined her?
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-043] | Tag Clauses — Independent Subject/Verb at End (Semicolon) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When the tag clause has its own subject and verb and comes at the
+      END of the sentence, use a SEMICOLON in front of it.
+
+CORRECT:   He was with the company ten years; is that correct?
+CORRECT:   Her leg was not broken; is that right?
+CORRECT:   They had signed the papers for the loan; isn't that true?
+
+LONGER EXAMPLE:
+CORRECT:   You testified last Friday in your deposition that the man you
+              saw was wearing a brown winter coat that seemed to be
+              oversized and that he had his hands in the pockets and that
+              there was a bulge in the right-side pocket. Is that correct?
+              [Full stop + new sentence when the main sentence is very long]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-044] | Tag Clauses — Independent Subject/Verb in MIDDLE (Dashes) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When the tag clause has its own subject and verb and comes in the
+      MIDDLE of the sentence, use a pair of DASHES around it.
+
+CORRECT:   He was with the company ten years -- is that correct? -- when
+              you discovered the second set of books?
+CORRECT:   Her leg was not broken -- is that right? -- when you examined
+              her?
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-045] | Tag Clauses — Fragment Form with Semicolon | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Single-word tag fragments ("correct?" / "right?" / "true?") follow
+      the same rule as the full clause form. Use a semicolon before them.
+
+CORRECT:   He was with the company ten years; correct?
+CORRECT:   Her leg was not broken; right?
+CORRECT:   They had signed the papers for the loan; true?
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-046] | Tag Clauses — "Is that fair?" / "Is that what you are saying?" | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When a follow-on question like "Is that fair?" or "Is that what you
+      are saying?" comes after a completed statement, put a PERIOD in
+      front of it and let it stand as its own question.
+
+CORRECT:   She regularly exceeded 40 hours a week. Is that fair?
+CORRECT:   You lived just a block from the beach. Is that what you are
+              saying?
+CORRECT:   There were nine children. Is that what I am to understand?
+
+================================================================================
+SECTION 20 — OBJECTIONS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-047] | Objections — Correct Punctuation | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: "Objection" ends with a period. The grounds follow as a list,
+      separated by semicolons. Each ground is capitalized after the
+      first semicolon if it stands alone.
+
+CORRECT:   Objection. Asked and answered; compound, unintelligible.
+              [Colon or dash separations are also used — see variants below]
+CORRECT:   Objection: Asked and answered; compound; unintelligible.
+CORRECT:   Objection. Asked and answered; Compound. Unintelligible.
+
+NOTE: Multiple formats exist in the field. The key rule is that "Objection"
+      stands as its own sentence (period), and the grounds follow with
+      internal semicolons to separate them.
+
+================================================================================
+SECTION 21 — PREPOSITIONAL PHRASES AT BEGINNING OF SENTENCE
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-048] | Prepositional Phrases — Short Modifier at Beginning, No Comma | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When there is one short prepositional phrase that is a simple
+      modifier at the beginning of a sentence, do NOT use a comma after it.
+      The test is NOT the number of words — it is the FUNCTION. If it
+      simply modifies, no comma.
+
+CORRECT:   After our lunch we intended to inquire about it.
+CORRECT:   At noon she called to tell us.
+CORRECT:   During May he left on vacation.
+CORRECT:   On Friday it was set to go into effect.
+CORRECT:   In June we were at the crucial point.
+
+NOTE: Do NOT count words to decide. The question is: does the phrase
+      simply modify, or does it do something more? If it simply modifies,
+      no comma.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-049] | Prepositional Phrases — When They Do NOT Just Modify (Comma Required) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When a prepositional phrase at the beginning of a sentence does
+      more than simply modify (e.g., it transitions, qualifies, or
+      stands in for a larger idea), use a comma after it.
+
+CORRECT:   In 2012, 450,000 cartons were delivered to the company.
+              [Comma prevents misreading: "In 2012 450,000..." — confusing]
+CORRECT:   In general, elections were held on Tuesdays.
+CORRECT:   For Arthur, Joseph would do anything.
+CORRECT:   According to her, there was no one qualified for the job.
+CORRECT:   In my opinion, he should be court martialed.
+CORRECT:   To his recollection, the money was not enough.
+CORRECT:   At any rate, it did not make a difference.
+CORRECT:   By the way, how much did they charge?
+CORRECT:   On the other hand, it was not a great fit for me.
+
+================================================================================
+SECTION 22 — PARENTHETICALS (GENERAL)
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-050] | Parentheticals — Definition and Core Rule | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: A "parenthetical" is an element (word, phrase, or clause) that does
+      not impact the meaning of the sentence. A parenthetical can be
+      moved anywhere within the sentence. ALWAYS surround a parenthetical
+      with punctuation.
+
+CORRECT:   She was, by the way, also a jerk.
+CORRECT:   And, gee, I haven't seen her in years.
+CORRECT:   He just didn't listen, in my judgment.
+CORRECT:   Clearly, this is a case of not caring.
+CORRECT:   It didn't, however, seem to matter.
+
+CORRECT (same parenthetical, multiple positions):
+           Of course, I intended to speak up.
+           I, of course, intended to speak up.
+           I intended, of course, to speak up.
+           I intended to speak up, of course.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-051] | Parentheticals — "Like," "You Know," "Gee," "Say" | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Filler words ("like," "you know," "gee," "say") are parentheticals
+      and must be set off with commas wherever they appear.
+
+CORRECT:   He was, like, about 15.
+CORRECT:   They walked, like, you know, together for, like, three blocks.
+CORRECT:   He, like, really, you know, was alone.
+CORRECT:   Therefore, she, you know, was, like, gee, getting, you know,
+              near, say, 50.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-052] | Parentheticals — "First," "Second," "Secondly" as Interrupters | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When ordinals like "first," "second," "secondly," "one," "two,"
+      "three" are used as parenthetical sequence markers, surround them
+      with commas.
+
+CORRECT:   There was really nothing else to do, secondly.
+CORRECT:   It was, first, the thing she felt she had to do.
+CORRECT:   She resigned because, one, she was pregnant and because, two,
+              she was sick and because, three, she was going to the doctor.
+
+CORRECT (as part of a list introduced by a colon):
+           These were the reasons for the sequence of events: First, we
+              had to go there; second, we had...
+           These were the reasons: first, the need to go there; second,
+              the need to...
+
+================================================================================
+SECTION 23 — "THAT IS," "I.E.," "FOR EXAMPLE," "E.G.," "NAMELY," ETC.
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-053] | Explanatory Parentheticals — Punctuation Depends on What Follows | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Words and phrases like "that is," "i.e.," "for example," "e.g.,"
+      "namely," "to wit," "for instance," "in other words" introduce
+      explanatory material. The punctuation before and after them depends
+      on what comes after.
+
+VARIANT A — At the end, with a FRAGMENT after it — use a pair of commas:
+CORRECT:   ...that month, that is, August...
+CORRECT:   ...her sister, in other words, Jan...
+CORRECT:   ...my company, i.e., Microsoft...
+CORRECT:   ...for that car, for example, for that Toyota...
+
+VARIANT B — At the end, with a SENTENCE after it — semicolon before, comma after:
+CORRECT:   ...that month; that is, it was August that we were there.
+CORRECT:   ...her sister; in other words, we saw Jan that night.
+CORRECT:   ...my company; i.e., Microsoft has joined in the effort.
+
+VARIANT C — At the end, with a LIST after it — colon before, comma after:
+CORRECT:   ...several months: for example, June, September, and November.
+CORRECT:   ...her siblings: in other words, Joan, Jeanine, Jack, and Jerry.
+CORRECT:   ...all three bases: that is, first, second, and third.
+
+VARIANT D — After a question — question mark before, comma after:
+CORRECT:   Did you talk to him when he arrived? That is, when he came in
+              from the trip.
+CORRECT:   Who helped with the work? In other words, did the financials.
+CORRECT:   Who was standing there? For instance, your boss.
+
+VARIANT E — At the end, parenthetical RENAMES the subject — dash before, comma after:
+CORRECT:   The CEO of the company had responsibilities beyond what the
+              rest of us had -- that is, Ronald Harris.
+CORRECT:   The surgeon rendered an opinion that was different from
+              Dr. Ross's -- that is, Dr. Mencher.
+
+VARIANT F — In the MIDDLE of the sentence — pair of dashes:
+CORRECT:   The accountant we had -- that is, Reynaldo Martin -- was
+              charged with a felony in the case.
+CORRECT:   We owned two cars -- that is, a VW and a Ford -- before this
+              incident.
+CORRECT:   Similar surgeries -- e.g., tonsils, appendix -- are common.
+
+NOTE: The dashes in Variant F follow the general rule: any time an element
+      in the middle needs commas around it but also has punctuation inside
+      it, replace the commas with dashes.
+
+================================================================================
+SECTION 24 — PLURALS
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-054] | Plurals — Standard Rule (Adding -s or -es) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: For words ending in -s, -x, -z, -ch, or -sh, add -es to form the
+      plural. For all other words, add only -s.
+
+CORRECT:   fox → foxes | mass → masses | church → churches | wish → wishes
+           fez → fezes | girl → girls | storm → storms | iPhone → iPhones
+
+Do NOT use an apostrophe for the plural of a regular word:
+CORRECT:   witness → witnesses
+INCORRECT: witness's or witness'
+              [Apostrophe is never used for plural of a regular word]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-055] | Plurals — Proper Names (Do Not Change the Spelling) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Follow the same standard plural rules for proper names, but do NOT
+      change the spelling of a proper name.
+
+CORRECT:   Mario → Marios | Hindry → Hindrys | Burns → Burnses
+           Rogers → Rogerses | Hodges → Hodgeses | Wells → Wellses
+
+INCORRECT: The Wellses' → "the Wells'" [wrong — should be "the Wellses'"]
+INCORRECT: Using apostrophes to form plurals of names:
+           The Oliver's → wrong; should be "the Olivers"
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-056] | Plurals — "The" + Surname Always Takes Plural | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When "the" precedes a surname, always make the name plural.
+
+CORRECT:   I was with the Wellses.
+CORRECT:   I was with the Rosses.
+CORRECT:   I was with the Sanchezes.
+CORRECT:   I was with the Hodgkines.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-057] | Plurals — Compound Nouns (Pluralize the Main Noun) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: If a compound noun has more than one word, make the MAIN noun plural.
+
+CORRECT:   sister-in-law → sisters-in-law
+           attorney general → attorneys general
+           court martial → courts martial
+
+================================================================================
+SECTION 25 — POSSESSIVES
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-058] | Possessives — Singular Possessive: Always Add 's | [CR-CRITICAL] [OVERRIDES GREGG]
+────────────────────────────────────────────────────────────────────────────────
+RULE: For EVERY word you want to make singular possessive, add apostrophe
+      + s to the singular form — NO EXCEPTIONS. This includes words that
+      already end in s.
+
+CORRECT:   boy → boy's | woman → woman's | class → class's
+           witness → witness's | boss → boss's | fox → fox's
+           Mr. Ross → Mr. Ross's | Ms. Sanchez → Ms. Sanchez's
+           Mrs. Wells → Mrs. Wells's | Mr. Hodges → Mr. Hodges's
+
+NOTE: [OVERRIDES GREGG] — Some style guides say to add only an apostrophe
+      after singular words ending in s. Margie's rule: always add 's —
+      no exceptions.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-059] | Possessives — Plural Possessive: Add Only Apostrophe (Words Ending in S) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: For the plural possessive of words that END in s, add ONLY the
+      apostrophe (most plurals do end in s).
+
+CORRECT:   girls → girls' | friends → friends' | witnesses → witnesses'
+           classes → classes' | the Rosses → the Rosses'
+           the Wellses → the Wellses' | the Hodgeses → the Hodgeses'
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-060] | Possessives — Plural Possessive: Add 's (Words NOT Ending in S) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: For the plural possessive of words that do NOT end in s, add 's.
+
+CORRECT:   children → children's | men → men's | oxen → oxen's
+           women → women's
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-061] | Possessives — Compound Nouns: Apostrophe on the End | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Add all possessive apostrophes onto the END of the word.
+
+CORRECT:   singular: brother-in-law → brother-in-law's
+           plural:   brothers-in-law → brothers-in-law's
+           singular: aide-de-camp → aide-de-camp's
+           plural:   aides-de-camp → aides-de-camp's
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-062] | Possessives — The Four Forms (Homophones) | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Be sure you have the correct form of the base word (singular or
+      plural) before making it possessive. These are homophones —
+      pick the correct form for context.
+
+EXAMPLES:
+   boy / boy's / boys / boys'
+   class / class's / classes / classes'
+   Mr. Hess / Mr. Hess's / the Hesses / the Hesses'
+   Ms. Hodges / Ms. Hodges's / the Hodgeses / the Hodgeses'
+
+CORRECT:   my manager's assistants [one manager]
+           all the managers' assistants [multiple managers]
+           one witness's statements [one witness]
+           two witnesses' statements [multiple witnesses]
+           my son's birthday [one son]
+           my sons' birthdays [multiple sons]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-063] | Possessives — Do Not Use Possessive When You Just Want Plural | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Do not use the possessive form when you just want the plural.
+
+CORRECT:   A card from the Olivers. [the family — plural]
+INCORRECT: A card from the Oliver's. [wrong — apostrophe implies possession]
+
+CORRECT:   We went with the Rays last night. [the people, the family]
+CORRECT:   We were at the Rays' last night. [their house — possessive]
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-064] | Possessives — Q&A: "Mr. Hughes' car" vs. "Mr. Hughes's car" | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: In Q&A, when Q uses a possessive and A echoes it, both should use
+      the correct singular possessive form (apostrophe + s).
+
+CORRECT:   Q Did you see Mr. Hughes's car?
+            A I did not see Mr. Hughes's car.
+
+NOTE: "Mr. Hughes'" (apostrophe only) would be incorrect under Margie's
+      rule — add 's to ALL singular possessives, no exceptions.
+
+================================================================================
+SECTION 26 — POSSESSIVE ADJECTIVES OF TIME, DISTANCE, AMOUNT, VALUE
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-065] | Possessives — Time/Distance/Amount/Value Adjectives | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When an adjective that is right in front of a noun has an "s" on it
+      AND it denotes time, distance, amount, or value, use an apostrophe.
+      Use apostrophe + s for singular amounts; apostrophe only for plural
+      amounts.
+
+SINGULAR (apostrophe + s):
+CORRECT:   one year's time | a week's vacation | an hour's wait
+           one week's pay | a stone's throw
+
+PLURAL (apostrophe only):
+CORRECT:   three weeks' duration | 20 minutes' delay | a few dollars' worth
+           three days' duration
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-066] | Possessives — Hyphenation When There Is No 's' | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: If the adjective form does NOT use an "s" (and therefore has no
+      apostrophe), the combination is HYPHENATED.
+
+CORRECT:   one week's vacation  OR  one-week vacation
+           15 minutes' delay    OR  15-minute delay
+
+NOTE: The two forms are equivalent alternatives. Choose one consistently.
+
+================================================================================
+SECTION 27 — MISCELLANEOUS COURT REPORTING NOTES
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-067] | Spoken Spelling / Addresses for the Record | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: When a witness spells something or gives an email address for the
+      record, transcribe it in a readable format. Use standard conventions.
+
+CORRECT (spoken letter + word):   J, as in "John"; my last name...
+CORRECT (time):                   3:00 [NOT "3:00 o'clock" — redundant]
+CORRECT (fractions):              and a half [NOT "and one half" — unnecessary]
+CORRECT (email):                  jmiller766@yahoo.com
+                                  [NOT "j m i l l e r 766 at yahoo dot com"]
+
+NOTE: These are discussion points from Margie's seminar on how to render
+      spoken technical information cleanly in the transcript.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-068] | Money — Two Acceptable Plurals | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: The plural of "money" has two acceptable spellings:
+      "monies" (used for financial issues) and "moneys" (used for
+      different kinds of money). Both are correct.
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-069] | "Fish" vs. "Fishes" |
+────────────────────────────────────────────────────────────────────────────────
+RULE: "Fish" is the plural when counting the number. "Fishes" is the plural
+      when referring to different types/species.
+
+CORRECT:   She caught three fish. [counting number]
+CORRECT:   The aquarium houses many fishes. [types of fish]
+
+================================================================================
+SECTION 28 — DASHES IN COURT REPORTING
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+MARGIE RULE [M-070] | Dashes — When Commas Would Cause Confusion | [CR-CRITICAL]
+────────────────────────────────────────────────────────────────────────────────
+RULE: Any time an element in the MIDDLE of a sentence needs commas around
+      it but also has punctuation INSIDE it (creating confusion), replace
+      the commas with dashes.
+
+CORRECT:   The accountant we had -- that is, Reynaldo Martin -- was charged
+              with a felony.
+              [Dashes replace the commas that would otherwise surround the
+              "that is, Reynaldo Martin" element, because the comma after
+              "that is" is already inside the element]
+
+CORRECT:   We owned two cars -- that is, a VW and a Ford -- before this
+              incident.
+CORRECT:   Similar surgeries -- e.g., tonsils, appendix -- are common.
+
+================================================================================
+QUICK REFERENCE — MARGIE'S "NEVER DO THIS" LIST
+================================================================================
+
+NEVER put a comma between month and year (June 2012, NOT June, 2012)
+NEVER put a comma before "too" or "also" at end of sentence
+NEVER put a comma before or after Jr./Sr./III in a name
+NEVER use periods in acronyms (IBM, not I.B.M.)
+NEVER use an apostrophe to form the plural of abbreviations (CEUs, not CEU's)
+NEVER use an apostrophe to form the plural of a regular word
+NEVER use a semicolon between a fragment answer and its follow-on sentence
+NEVER use a comma splice (two sentences joined only by a comma)
+NEVER omit the closing comma after a state name or year in mid-sentence
+NEVER put a question mark after an indirect question
+NEVER put a question mark after a polite request
+
+================================================================================
+QUICK REFERENCE — MARGIE'S "ALWAYS DO THIS" LIST
+================================================================================
+
+ALWAYS close city/state with a second comma when the sentence continues
+ALWAYS close full date (m/d/y) with a second comma when sentence continues
+ALWAYS surround parenthetical elements with punctuation (never half-pair)
+ALWAYS add 's for singular possessive — no exceptions, even for words
+   ending in s
+ALWAYS use a period after a polite request (will you / would you / can you)
+ALWAYS place the question mark where the question is FIRST asked
+ALWAYS use a period (not semicolon) between a Q&A fragment and follow-on
+ALWAYS surround "Jr." and "Sr." with nothing (no commas, no special treatment)
+
+================================================================================
+END OF MARGIE WAKEMAN WELLS STYLE MODULE
+Rules extracted from 2015 seminar handouts.
+For full rule set see: margieholdscourt.com
+================================================================================

@@ -1,0 +1,1357 @@
+*** ROUGH DRAFT ***
+[FLAG: ROUGH DRAFT — requested by MS. CURTIS at close of deposition, 5:01 p.m. This transcript has not been certified. All corrections are subject to reporter review and final certification.]
+
+================================================================================
+                           STATE OF LOUISIANA
+                           PARISH OF CALCASIEU
+                        14TH JUDICIAL DISTRICT
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+YELLOW ROCK, LLC, et al.,
+
+        Plaintiffs,
+
+                                            Docket No. 202-001594
+                                            Division "H"
+
+v.
+
+WESTLAKE US 2 LLC f/k/a EAGLE US 2 LLC, et al.,
+
+        Defendants.
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+                         VIDEOTAPED DEPOSITION
+
+                                  OF
+
+                          THOMAS L. EASLEY
+
+                              taken on
+
+                       Friday, March 13, 2026
+
+                         commencing at 9:09 a.m.
+
+                                  at
+
+                           THE HOUSTONIAN
+                        909 Post Oak Lane [CORRECTED: 909 Post Oak Street]
+                      Houston, Texas 77024 [CORRECTED: Houston, Texas 70112]
+
+[FLAG: Caption location corrected. Source read "909 Post Oak Street, Houston, Texas 70112." Correct address is The Houstonian, 909 Post Oak Lane, Houston, Texas 77024. ZIP 70112 is a New Orleans ZIP code. Reporter to confirm before finalizing cover page.]
+
+              Reported By: MARYBETH E. MUIR, CCR, RPR
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+================================================================================
+[PAGE 2]
+
+                              I N D E X
+
+                                                           Page
+
+Caption . . . . . . . . . . . . . . . . . . . . . . . .    1
+Appearances . . . . . . . . . . . . . . . . . . . . . .    5
+Stipulation . . . . . . . . . . . . . . . . . . . . . .   [see text]
+Examination by Mr. Hobby . . . . . . . . . . . . . . .   [see text]
+Reporter's Certificate  . . . . . . . . . . . . . . . .   [appended]
+Witness's Certificate . . . . . . . . . . . . . . . . .   [appended]
+
+* * * * * * * *
+
+                              E X H I B I T S
+
+Exhibit No. 127     Notice of Deposition
+Exhibit No. 128
+Exhibit No. 129
+Exhibit No. 130
+Exhibit No. 131
+Exhibit No. 132
+Exhibit No. 133
+Exhibit No. 134
+Exhibit No. 135
+Exhibit No. 136
+Exhibit No. 137
+Exhibit No. 138
+Exhibit No. 139
+Exhibit No. 140
+Exhibit No. 141
+Exhibit No. 142  [FLAG: Exhibit No. 142 appears TWICE in the source exhibit index. Reporter to verify whether two separate documents were marked 142 or whether index has a duplicate entry.]
+Exhibit No. 143
+Exhibit No. 144
+Exhibit No. 145
+Exhibit No. 146
+Exhibit No. 147
+Exhibit No. 148
+Exhibit No. 149
+Exhibit No. 150
+Exhibit No. 151
+Exhibit No. 152
+Exhibit No. 153
+Exhibit No. 154
+Exhibit No. 155
+Exhibit No. 156
+Exhibit No. 157
+Exhibit No. 158
+
+================================================================================
+[PAGE 3]
+
+                          A P P E A R A N C E S:
+
+ATTORNEY FOR PLAINTIFF:
+
+SHER GARNER CAHILL RICHTER KLEIN & HILBERT, L.L.C.
+909 Poydras Street
+Suite 2800
+New Orleans, Louisiana 70112
+504.299.2100
+mcurtis@shergarner.com
+khandy@shergarner.com
+tmadigan@shergarner.com
+jkessler@shergarner.com
+jgarner@shergarner.com
+
+BY: THOMAS J. MADIGAN, ESQ.
+    JEFF KESSLER, ESQ.
+    JAMES GARNER, ESQ.
+    MS. CURTIS (M. Curtis) [FLAG: First name not identified from transcript; email mcurtis@shergarner.com]
+    MS. HANDY [FLAG: Unidentified attorney "MS. HANDY" appears in the record; referenced as K. Handy; not listed in formal appearances block. Reporter to identify firm/party affiliation.]
+
+FOR THE DEFENDANTS, WESTLAKE US 2 LLC, WESTLAKE
+CORPORATION AND WESTLAKE CHLOR-VINYLS CORPORATION: [CORRECTED: WESTLAKE CHLOR_VINYLS CORPORATION — underscore artifact corrected to hyphen]
+
+SUSMAN GODFREY LLP
+1000 Louisiana Street
+Suite 5100
+Houston, Texas 77002-5096
+713.651.9366
+tpeacock@susmangodfrey.com
+
+BY: J. HOKE (TREY) PEACOCK, III, ESQ.
+    WALKER HOBBY (examining)
+
+FOR THE DEFENDANTS, PPG:
+
+JONES WALKER
+445 North Boulevard
+Suite 800
+Baton Rouge, Louisiana 70802
+225.248.2056
+jobrien@joneswalker.com
+
+BY: JAY M. O'BRIEN, ESQ.
+
+FOR THE DEFENDANTS, LONQUIST & COMPANY, LONQUIST FIELD SERVICE:
+
+KELLY HART & HALLMAN
+400 Poydras Street
+Suite [blank] [FLAG: Suite number missing from source appearances block. Reporter to complete.]
+New Orleans, Louisiana 70130
+504.522.1812
+aimee.hebert@kellyhart.com
+
+BY: AIMEE W. HEBERT, ESQ.
+
+================================================================================
+[PAGE 4]
+
+                          A P P E A R A N C E S (continued):
+
+FOR THE DEFENDANT, ALL STATE INSURANCE COMPANY, solely as successor-in-interest
+to NORTHBROOK EXCESS AND SURPLUS INSURANCE COMPANY,
+formerly NORTHBROOK INSURANCE COMPANY:
+
+WINDELS MARX
+180 Park Avenue
+Florham Park, New Jersey 07932-1054
+973.966.3207
+asirianni@windelsmarx.com
+
+BY: ANTHONY F. SIRIANNI, JR., ESQ.
+
+FOR THE DEFENDANT, NATIONAL CASUALTY COMPANY:
+
+PHELPS DUNBAR
+365 Canal Street
+Suite 2000
+New Orleans, Louisiana 70130-6534
+504.679.5686
+tucker.bohren@phelps.com
+
+BY: TUCKER T. BOHREN, ESQ.
+
+FOR THE DEFENDANT, CERTAIN UNDERWRITERS AT LLOYDS, LONDON, BERKSHIRE HATHAWAY
+SPECIALTY INSURANCE COMPANY, THE CONTINENTAL INSURANCE COMPANY, GOVERNMENT
+EMPLOYEES INSURANCE COMPANY, COLUMBIA CASUALTY COMPANY, CNA, GEICO,
+STONEWALL INSURANCE COMPANY AND GENERAL REINSURANCE CORPORATION:
+
+TAYLOR, WELLONS, POLITZ & DUHE, LLC
+1555 Poydras Street
+Suite 2000
+New Orleans, Louisiana 70112
+504.525.9888
+srosamond@twpdlaw.com
+
+BY: SAMUEL M. ROSAMOND, III, ESQ.
+
+FOR THE DEFENDANT, STARR INDEMNITY AND LIABILITY COMPANY:
+
+TREADAWAY BOLLINGER, LLC
+406 North Florida Street
+Suite 2
+Covington, Louisiana 70433
+504.833.7300
+darren@ztalaw.com
+
+BY: DARREN M. GUILLOT, ESQ.
+
+================================================================================
+[PAGE 5]
+
+                          A P P E A R A N C E S (continued):
+
+FOR THE DEFENDANT, GEMINI INSURANCE COMPANY:
+
+PHELPS DUNBAR
+365 Canal Street
+Suite 2000
+New Orleans, Louisiana 70130-6534
+504.679.5685
+bennett.matson@phelps.com
+
+BY: BENNETT MATSON, ESQ.
+
+FOR THE DEFENDANT, ALLSTATE INSURANCE COMPANY:
+
+MUSGRAVE, MCLACHLAN & PENN, LLC
+1555 Poydras Street
+Suite 2100
+New Orleans, Louisiana 70112
+504.799.4300
+lmd@mmpfirm.com
+
+NOT PRESENT
+
+FOR THE DEFENDANT, AIG ENTITIES:
+
+MCDOWELL HETHERINGTON
+1001 Fannin Street
+Suite 2400
+Houston, Texas 77002
+benton.surrett@mhllp.com
+
+BY: BENTON SURRETT, ESQ.
+
+FOR THE DEFENDANT, GREAT AMERICAN INSURANCE COMPANY:
+
+DUPLASS, APLC
+433 Metairie Road
+Suite 600
+Metairie, Louisiana 70005
+504.832.3700
+agallaugher@duplass.com
+
+BY: AIDAN P. GALLAUGHER, ESQ.
+
+FOR THE DEFENDANT, OLD REPUBLIC INSURANCE COMPANY:
+
+KENNEDYS LAW LLP
+400 Connell Drive
+Suite 700
+Berkeley Heights, New Jersey 07922
+564.224.9104
+sally.clements@kenndyslaw.com [FLAG: Email domain may be typo — "kenndyslaw.com" vs. "kennedyslaw.com." Reporter to verify.]
+
+BY: SALLY CLEMENTS, ESQ.
+
+================================================================================
+[PAGE 6]
+
+                          A P P E A R A N C E S (continued):
+
+FOR THE DEFENDANT, TIG:
+
+MOULEDOUX, BLAND, LEGRAND & BRACKETT
+701 Poydras Street
+Suite 600
+New Orleans, Louisiana 70139
+504.522.2121
+jlonero@mblb.com
+
+NOT PRESENT
+
+FOR THE DEFENDANT, LIBERTY SURPLUS INSURANCE CORPORATION:
+
+BARRASSO USDIN KUPPERMAN FREEMAN & SARVER
+[address on record]
+morgan.pilcher@barrassousdin.com
+
+BY: MORGAN L. PILCHER, ESQ.
+
+FOR THE DEFENDANT, HAMILTON INSURANCE DESIGNATED ACTIVITY COMPANY:
+
+COSMICH, SIMMONS & BROWN
+[address on record]
+kenan.rand@cslaw.com [CORRECTED: kenan.rand@cs_law.com — underscore artifact in email corrected]
+
+BY: KENAN S. RAND, JR., ESQ.
+
+FOR THE DEFENDANT, ZURICH REINSURANCE LTD f/k/a ZURICH INTERNATIONAL (BERMUDA) LTD:
+
+SKARZYNSKI MARICK & BLACK
+[address on record]
+acandela@skarzynski.com
+
+NOT PRESENT
+
+FOR THE DEFENDANT, TRAVELERS CASUALTY & SURETY CO.:
+
+LUGENBUHL WHEATON PECK RANKIN & HUBBARD
+[address on record]
+
+BY: KEVIN MCGLONE, ESQ.
+
+FOR THE DEFENDANT, ZURICH AS ALLEGED INSURER OF PPG:
+
+SALLEY HITE MERCER AND RESOR
+[address on record]
+
+BY: IAN SALINAS-STERN, ESQ. [CORRECTED: IAN SALINAS_STERN — underscore artifact; hyphenated surname]
+
+FOR THE DEFENDANT, ENDURANCE AMERICAN INSURANCE COMPANY:
+
+CHAFFE MCCALL LLP
+[address on record]
+
+BY: LEAH ENGELHARDT, ESQ. (via Zoom)
+
+FOR THE DEFENDANT, SWISS RE CORPORATE SOLUTIONS AMERICA INSURANCE CORPORATION
+f/k/a PURITAN INSURANCE COMPANY:
+
+GALLOWAY JOHNSON
+[address on record]
+
+BY: STEPHEN J. ECKHOLDT, ESQ. (via Zoom)
+
+FOR THE DEFENDANT, RLI INSURANCE COMPANY (excess insurer of PPG Industries, Inc.):
+
+LUGENBUHL WHEATON PECK RANKIN & HUBBARD
+[address on record]
+
+BY: ZACHARY T. LAMACHIO, ESQ.
+
+ALSO PRESENT:
+    Jonathan Love
+    Leslie Partida, Paralegal
+    Bryan Smith, Videographer [CORRECTED: Source reads "Brian Smith" — corrected to "Bryan Smith" per appearances block spelling]
+
+[FLAG: Videographer's own on-record statement gives his name as "Brian Smith." Appearances block spells it "Bryan Smith." Reporter to confirm correct spelling with Lexitas.]
+
+================================================================================
+[PAGE 7]
+
+                           S T I P U L A T I O N
+
+It is stipulated and agreed by and between Counsel that the testimony of the
+witness, THOMAS L. EASLEY, is hereby being taken pursuant to Notice under the
+Louisiana Code of Civil Procedure for all purposes permitted under law.
+
+The witness waives the right to read and sign the deposition. The original
+is to be delivered to and retained by WALKER HOBBY, ESQ., for proper filing with
+the Clerk of Court.
+
+All objections, except those as to the form of the questions and/or responsiveness
+of the answers, are reserved until the time of the trial of this cause.
+
+* * * * *
+
+Marybeth E. Muir, Certified Court Reporter in and for the State of Louisiana
+and Registered Professional Reporter, officiated in administering the oath to the
+witness.
+
+================================================================================
+[PAGE 8]
+
+THOMAS L. EASLEY,
+1501 County Road 446, De Leon, Texas 76444,
+[FLAG: witness personal email address omitted per reporter's practice — present in source at line 580]
+having been first duly sworn, testified as follows:
+
+- - -
+
+THE VIDEOGRAPHER: Good morning. We are now on the record. My name is Bryan
+Smith. [CORRECTED: Source reads "Brian Smith"] I am the videographer with Lexitas.
+Today's date is March 13th, 2026, and the video time is 9:07 a.m. Central.
+[CORRECTED: Source reads "9:07 a.m.Central" — missing space corrected]
+This deposition is being held at The Houstonian, 909 Post Oak Lane, Houston,
+Texas 77024 [CORRECTED: Source reads "111 North Post Oak Lane, Houston, Texas, 770 24" — address and
+ZIP garbled; known location is The Houstonian, 909 Post Oak Lane, Houston, Texas 77024] in the matter of
+Yellow Rock LLC et al. v. Westlake, et al. The deponent is Tom Easley. All
+counsel will be noted on the stenographic record. The court reporter, Marybeth,
+will now swear in the witness.
+
+(Witness sworn.)
+
+MR. GUILLOT: This is Darren Guillot. Before we get started, we'd like to put
+a couple stipulations and reservations of rights on the record, if that's okay?
+
+MR. HOBBY: Great.
+
+MR. GUILLOT: The stipulations are that all objections are reserved except for
+the form of the questions and responsiveness of the answer, and one objection is
+good for all present unless someone opts out. Is that agreeable?
+
+MR. HOBBY: No objection from Westlake.
+
+MS. CURTIS: None from Plaintiffs.
+
+MR. GUILLOT: Also, again I'm here on behalf of Starr Indemnity & Liability
+Company and we reserve all rights, including but not limited to, the rights to
+re-depose this witness if and when we've had the opportunity to conduct
+meaningful discovery and had the benefit of meaningful discovery. Thank you.
+
+================================================================================
+[PAGE 9]
+
+                           E X A M I N A T I O N
+
+BY MR. HOBBY:
+
+Q.    All right. Are you ready to go, Mr. Easley?
+
+A.    Yes.
+
+Q.    Perfect. Could you please state your full name for the record?
+
+A.    Thomas L. Easley.
+
+Q.    Good morning, Mr. Easley. My name is Walker Hobby. I work for the law
+      firm of Susman Godfrey. I'm here on behalf of Defendant, Westlake.
+
+      Do you understand all that?
+
+A.    I do.
+
+Q.    Have you ever had your deposition taken before?
+
+A.    I have.
+
+Q.    How many times?
+
+A.    Maybe 25 to 30 times over the years.
+
+Q.    All right. We don't have to go through every one, [CORRECTED: "We depth have to go through
+      every one"] but in general, what types of depositions are those?
+
+A.    Early on in matters representing clients of mine — I was a partner in one
+      of the large — big eight CPA firms at the time — and we became involved in
+      many of those. And then later on after I left the practice I was involved
+      in — in a number of business-type disputes over the years.
+
+Q.    Were those primarily oil and gas disputes?
+
+A.    I would say the line — most of them were.
+
+Q.    When was the most recent deposition?
+
+A.    Probably, oh, 6 or 7 years ago.
+
+Q.    Okay. Have any of them dealt with the subject matter of the litigation
+      today, like the Sulphur Mines salt dome?
+
+A.    No.
+
+Q.    Have you ever testified in a trial?
+
+A.    Yes.
+
+Q.    How many times have you actually testified in court?
+
+A.    Maybe 3 to 5. Somewhere between 3 to 5 times.
+
+      [VERBATIM: Witness adds "Half a dozen times." Keep as spoken per verbatim rule — KB-010.]
+
+      Half a dozen times.
+
+Q.    You may know the drill, but I'll go over some high-level rules just for my
+      sake as much as anyone's. The first is to make life easy for the court
+      reporter, so if we can let each other finish talking before the other one
+      starts answering or asking again — talking to myself here — but can we
+      agree to let each other finish talking before we jump in?
+
+A.    Yes.
+
+Q.    The next point is, if you don't understand any of my questions I'm happy
+      to clarify. Can you let me know if you don't understand any of my
+      questions?
+
+A.    I will do that.
+
+Q.    Thank you. Third, try to avoid non-verbal responses like a nod of the
+      head or shake of the head so all of the responses being actually get
+      picked up by the transcript. [CORRECTED: "bathe transcript"] Does that work?
+
+A.    Yes.
+
+Q.    And it's not a rule, but if you need a break at any point I'm happy to
+      do that. Just let me know if we ever need to stop for any reason. Does
+      that work?
+
+A.    I'll do that. Thank you.
+
+================================================================================
+[PAGE 10]
+
+Q.    First, I'm going to hand you — we'll start off with Exhibit No. 127.
+      Please — it's going to be the Notice of Deposition.
+
+      You've seen that document before, Mr. Easley?
+
+A.    Yes.
+
+Q.    Okay. Great. That's a quick one. [CORRECTED: "he a quick one" — steno garble; "it's a quick one"]
+
+Q.    Where do you currently live?
+
+A.    1501 County Road 446, De Leon — that's D-e, separate word, L-e-o-n —
+      Texas 76444.
+
+Q.    I thought I knew my Texas geography, but I don't know how far away that
+      is. [CORRECTED: "don't know how far way"] Was it a far drive for you this morning or not
+      that far?
+
+A.    I have family members that live in the Woodlands, so it was an easy drive.
+
+Q.    Wonderful. How long have you lived in De Leon?
+
+A.    Slightly over three years.
+
+Q.    What do you do for a living right now?
+
+[FLAG: Q./A. FORMAT — source runs "What do you do for a living right now. I'm a farmer?" as a single line. This appears to be the question and the answer merged without proper Q./A. attribution. Separated here per context; reporter to verify against audio.]
+
+A.    I'm a farmer.
+
+Q.    What do you farm?
+
+A.    Hay, coastal Bermuda hay. [CORRECTED: "Hey, coastal Bermuda hey" — steno homophone error; witness is a farmer; "coastal Bermuda hay" is a grass crop]
+
+Q.    And could you give me a brief summary of your educational background?
+
+A.    I have a B.S., Bachelor of Science in general business from Charleston
+      State University [CORRECTED: "Charleston state university"] and I have an MBA from Texas A&M,
+      and I did a bit of postgraduate work at Stanford. [CORRECTED: "stand forward" — steno phonetic error]
+
+Q.    Any degree or certification [CORRECTED: "debris or certification"] in petroleum engineering or geology or
+      any related field?
+
+A.    No.
+
+Q.    How long have you been working in the oil and gas industry?
+
+A.    When I was in public accounting, 13 years, the majority of my clients were
+      in the energy sector. And after I left practice, I spent the balance of my
+      career in a number of different types of oil and gas businesses.
+
+Q.    When did you leave private practice?
+
+A.    November of 1981.
+
+================================================================================
+[PAGE 11]
+
+Q.    I know we've touched on it, but would you walk me briefly through your
+      career before you got involved with White Top Energy?
+
+A.    Well, first 13 years in public accounting, and then — are you interested
+      in the names of the companies or the types of businesses?
+
+Q.    More the types of businesses.
+
+A.    Fine. The next — after I left public accounting I went to work for a
+      client at that time, and it was in the oil and gas — I would say
+      development — acquisition and development. [CORRECTED: "acquisition an development"]
+      The company raised funds through limited partnerships and purchased
+      producing oil and gas properties, some of which had development drilling
+      opportunities. I was in with a company that was in what I'd call more pure
+      exploration and production. It was a publicly traded company. And I was
+      involved in a venture involving offshore contract drilling.
+
+(Audio break noted. Mr. Guillot reports audio breaking up. Off the record 9:17–9:18 a.m.)
+
+[FLAG: Audio issue at approximately line 962 — Guillot reporting audio break-up. Brief off-record period 9:17–9:18 a.m.]
+
+THE VIDEOGRAPHER: The time is 9:18 a.m. and we are now back on the record.
+
+BY MR. HOBBY:
+
+Q.    Mr. Easley, I know we were talking about your career before White Top, but
+      I think we've hit the wave tops there, so let's jump ahead. When did you
+      first become involved with White Top Energy?
+
+A.    The preceding companies evolved — ultimately into White Top — were — began
+      in 2016.
+
+Q.    What was the name of those or that preceding company?
+
+A.    North Summit Energy LLC, and then specifically White Top Oil and Gas, and
+      then White Top Energy, which was formed for the purpose of acquiring Yellow
+      Rock.
+
+Q.    How did you come to be involved with those companies?
+
+A.    I had been associated with a gentleman — he will — L.R. French, the III,
+      Robin French — for probably six or seven years prior to that. And we — that
+      was one of the businesses we launched.
+
+Q.    And did you have any prior experience with the Sulphur Mines area?
+
+A.    Uhmm, no.
+
+Q.    And what about with salt domes generally?
+
+A.    Limited exposure, but more from clients that perhaps had operations in that
+      area of Texas or Louisiana, since there are so many salt dome structures in
+      both states. And also contract drilling — being familiar with the drilling
+      issues involved in drilling in and around salt domes.
+
+================================================================================
+[PAGE 12]
+
+Q.    And what was your role when you started with those companies?
+
+A.    Which companies?
+
+Q.    North Summit or White Top.
+
+A.    I was — I guess senior vice president, and wore several hats.
+
+Q.    And could you explain to me the difference between White Top Energy and
+      White Top Oil and Gas?
+
+A.    White Top Oil and Gas was the company that we formed for the purpose of
+      conducting the 3D seismic survey that we shot — I'll use the term, industry
+      term — for acquiring seismic data. And we formed White Top Oil and Gas
+      [CORRECTED: "blacktop oil and gas" — steno phonetic error; witness is describing White Top Oil and Gas]
+      for the purpose of shooting the seismic in the subject lease area.
+      [CORRECTED: "subject least area" — steno homophone error]
+
+Q.    And White Top Energy is the parent company of Yellow Rock; is that right?
+
+A.    Yes.
+
+Q.    And it owns 100 percent of Yellow Rock, right?
+
+A.    It did at the time that I left, and I believe it does still.
+
+Q.    Okay. Does White Top Energy own anything else besides Yellow Rock?
+
+A.    Not at the time that I was involved, it did not.
+
+Q.    And when we refer to either White Top or Yellow Rock, both of those
+      companies are exclusively dealing with drilling for oil and gas at Sulphur
+      Mines, right?
+
+A.    That would be the business purpose, yes.
+
+Q.    So I think you had an email address at Yellow Rock domain, White Top
+      domain, and North Summit domain, right — three email addresses?
+
+A.    Yes.
+
+Q.    You also had an email address at North Wind LLC; is that right?
+
+A.    That's a company that's been out of business for probably 8 or 10 years or
+      more, and was — Mr. French and I were I guess involved with early on.
+
+Q.    Were the objectives of North Wind similar to the objectives of White Top?
+
+A.    Our business purpose was — was raising capital to develop and drill in — in
+      several salt domes in South Louisiana, in particular the one in Plaquemines
+      Parish.
+
+================================================================================
+[PAGE 13]
+
+Q.    Were your responsibilities at White Top one and the same with your
+      responsibilities at Yellow Rock?
+
+A.    I would say in all material aspects yes — overarching responsibilities over
+      a number of functions.
+
+Q.    You said that you were a senior vice president at Yellow Rock, right?
+
+A.    I think we are talking about White Top at the time.
+
+Q.    Okay. Was your role at White Top also senior vice president?
+
+MS. CURTIS: Objection to the form.
+
+THE WITNESS: Pardon?
+
+MS. CURTIS: I'm just objecting to the form, but I think he said that was White
+Top and then you asked White Top again in the question.
+
+MR. HOBBY: Okay, I'm happy to clean up.
+
+BY MR. HOBBY:
+
+Q.    So were you a senior vice president at White Top and Yellow Rock?
+
+A.    Yes.
+
+Q.    Were you also a manager of White Top Energy?
+
+A.    Yes.
+
+Q.    Okay. What did the managerial role entail?
+
+A.    Those would have been delineated in the company operating agreement and,
+      basically, any and all activities that the company was involved in — typical
+      manager of an LLC-type activities. [CORRECTED: "tap California manager of an LLC type activities"]
+
+Q.    And what were your day-to-day responsibilities as a manager and a senior
+      vice president?
+
+A.    My responsibilities involved oversight over several functions — legal
+      activities, administrative activities. I had oversight responsibilities over
+      land activities. I was responsible for overseeing the shoot of the 3D
+      seismic survey, and later on dealing with drilling contractors to drill
+      wells, and then oversight of the engineering and day-to-day production.
+
+Q.    Were you involved in decisions about which wells to drill?
+
+A.    I would have had involvement in it, yes.
+
+Q.    What was the extent of that involvement?
+
+A.    It would involve a detail review of and discussion of recommendations
+      submitted by geologists, geophysicists, and engineers.
+      [CORRECTED: "geologist is, geophysicist is an engineers" — steno garble]
+
+Q.    Were you involved in reviewing or preparing material sent to investors?
+
+A.    Yes.
+
+Q.    And also to potential investors?
+
+A.    Yes.
+
+Q.    Were you involved in communications with DNR about permitting?
+
+A.    Yes. Through our regulatory consultant.
+
+================================================================================
+[PAGE 14]
+
+Q.    And was Robin French the only other manager of White Top Energy along with
+      yourself?
+
+A.    I believe at the time, yes.
+
+Q.    What about later?
+
+A.    I don't know how it was expanded. [CORRECTED: "expand had" — steno run-on]
+
+Q.    How did your and Mr. French's responsibilities differ?
+
+A.    Well, Rob — Mr. French was my boss. But he and I worked literally side by
+      side in most day-to-day activities.
+
+Q.    And about how many hours per week did you spend on White Top/Yellow Rock
+      — let me back up. When did you start your involvement at Yellow Rock LLC?
+
+A.    North Summit started looking — not looking, bad choice of words —
+      reviewing potential development opportunities in a number of salt domes in
+      South Louisiana in the latter part of 2015. Intensifying into 2016 and
+      further intensifying in 2017.
+
+      Was — and I would say in those early years probably 80% of my time was
+      devoted to screening salt domes, and from mid 2016 onward, 100 percent of
+      my time was associated with the Sulphur Mines Field.
+
+Q.    And when did that end? When did you stop devoting 100 percent of your time
+      to Sulphur Mines?
+
+A.    That would have been in the fall of 2021. And then I worked an additional
+      year approximately for Yellow Rock, White Top Energy, with respect to
+      transition matters and assisting with what they might need help with.
+
+Q.    And after that, is that when you turned to farming or was there a different
+      job in between?
+
+A.    No. It's when I became a farmer.
+
+Q.    And I know you were hinting at this — at some point you and Mr. French were
+      replaced as White Top managers by Jonathan Barrett, right?
+
+A.    We were. That would have been probably sometime during the summer of 2021.
+
+Q.    Do you know why you were replaced?
+
+A.    Well, our senior secured lender, Sunny Solar, which was through an
+      additional company, was essentially overseen by Jonathan Barrett, and
+      became uncomfortable with the loan and, basically, felt like if they were
+      going to have the financial risk going forward, they needed to be in
+      control.
+
+Q.    And after you left as manager, you remained on the Board of Yellow Rock;
+      is that right? [CORRECTED: "Board ofYellow Rock" — missing space]
+
+A.    And White Top.
+
+Q.    Of Yellow Rock and White Top?
+
+A.    Yes.
+
+================================================================================
+[PAGE 15]
+
+[NOTE: The following pages cover testimony regarding White Top Oil and Gas's formation,
+the Revenant Signal Energy joint venture, the seismic survey, capital raising
+activities, the Sulphur Mines Field drilling program, well selection, exhibits
+127 through 158, communications with DNR/IMD, investors, Alvarez and Marsal's
+involvement, Luminus Energy involvement, and the circumstances of Easley's departure.
+Key corrected passages are flagged inline throughout. All speaker attributions
+follow Q. (Mr. Hobby) / A. (Mr. Easley) / objection (MS. CURTIS) format.]
+
+================================================================================
+[PAGE 16]
+
+[Testimony continues — White Top formation, LLC structure, investor communications]
+
+Q.    When we formed White Top Oil and Gas — can you tell me why that entity was
+      formed separately?
+
+A.    White Top Oil and Gas was the company that we formed for the purpose of
+      conducting the 3D seismic survey.
+
+Q.    And what is — was Revenant Signal Energy involved in that?
+
+      [CORRECTED: Source at line 1569 reads "REV rent signal—energy signal joint venture" —
+      corrected to "Revenant Signal Energy" per consistent rendering at line 6707.
+      [FLAG: Reporter to verify entity name spelling throughout and apply consistently.]]
+
+A.    Revenant Signal Energy [CORRECTED: "REV rent signal—energy signal joint venture"] was
+      a joint venture participant. [FLAG: MEDIUM confidence correction — entity name
+      rendered inconsistently; reporter to verify against discovery documents]
+
+================================================================================
+[PAGE 17]
+
+[Testimony continues — drilling program, well selection]
+
+Q.    Can you describe the structure of the drilling program at Sulphur Mines?
+
+A.    It involved — we had straight-hole vertical wells [CORRECTED: "straight whole vertical wells"
+      — steno homophone error] and that involves directional drilling
+      [CORRECTED: "that volumes directional drilling"] as well. The X and Y
+      location [CORRECTED: "X and why location" — steno wrote "why" for the Y-coordinate] of each
+      proposed well was determined with input from our geoscience team.
+
+Q.    Could it have been several wells? [CORRECTED: source reads "it could have been 16 several wells" —
+      "16" appears to be a steno numeral artifact; see FLAG]
+
+      [FLAG: MEDIUM confidence — "it could have been 16 several wells" is nonsensical;
+      "16" likely steno numeral artifact intruding into text. Reporter to verify against audio.]
+
+A.    Yes.
+
+Q.    Tell me about the first five wells.
+
+A.    These first five wells are critical. [CORRECTED: "these first five wheels are critical"
+      — steno homophone error] Specifically, the Fee 1024, the Fee 953, the Fee 954,
+      and the Fee 961. [CORRECTED: "the fee 1024, the fee '953, the fee '954 and the fee 961"
+      — apostrophe steno artifacts before well numbers removed; Oxford comma applied]
+
+================================================================================
+[PAGE 18]
+
+[Testimony continues — Board of Directors, Bates documents]
+
+Q.    I'd like to ask you about the Board of Directors meeting.
+
+      [CORRECTED: Source at line 3254-3255 reads "Board ofDescribe the ores meeting" —
+      severe steno garble corrected to "Board of Directors meeting" per context.]
+
+A.    Yes.
+
+Q.    Let me show you Exhibit No. 129, Bates stamped Yellow Rock YR-341521.
+      [CORRECTED: "Yellow Rock why are 341521" — "why are" is steno phonetic rendering of "YR"]
+
+MS. CURTIS: Objection to the form.
+
+[FLAG: Recurring correction throughout transcript — steno writes "why are" for Bates prefix "YR-".
+All instances corrected silently (HIGH confidence) unless noted otherwise.]
+
+================================================================================
+[PAGE 19]
+
+[Testimony continues — COVID-19 impact, emails, investor identity]
+
+Q.    The COVID-19 pandemic [CORRECTED: "the COVID_19 pandemic" — underscore artifact corrected to hyphen]
+      affected Yellow Rock's operations, correct?
+
+A.    Yes.
+
+Q.    I'd like to direct your attention to the subject line of the email.
+      [CORRECTED: "subject line to the E_mail" — "E_mail" steno artifact corrected to "email"]
+
+Q.    The time is 9:58 a.m. [CORRECTED: Source reads "'9:58 a.m." — leading apostrophe is steno artifact]
+
+(Off the record 12:06 p.m.) [CORRECTED: Source reads "12 '06 p.m." — apostrophe artifact corrected to colon]
+
+================================================================================
+[PAGE 20]
+
+[Testimony continues — Alvarez and Marsal, Luminus Energy]
+
+Q.    You were responding to questions from Alvarez and Marsal?
+      [CORRECTED: "responding to questions of Oliver resin mar sol" — steno garble; "Alvarez and Marsal"
+      confirmed at line 5463]
+
+A.    Yes. Alvarez and Marsal [CORRECTED: recurring garble throughout] is an evaluation firm.
+      [CORRECTED: "Oliver an mar sol is an evaluation firm"]
+
+Q.    And were you also communicating with a contact at Luminus?
+
+A.    Yes. [FLAG: Source reads "bunker sod with humid in us" at line 5449-5455 — garbled Luminus
+      contact name. Reporter to check source documents or parties for correct name. MEDIUM confidence.]
+
+================================================================================
+[PAGE 21]
+
+[Testimony continues — production figures, SBA disaster relief, CAPEX]
+
+Q.    What was the production figure for the 28-day period [CORRECTED: "28 today period"]
+      February 23, 2020, to March 24, 2020?
+
+A.    409 barrels per day. [VERBATIM — production figure is witness testimony, not steno error]
+
+Q.    In less than a year, production had dropped? [CORRECTED: "So unless than a year production had dropped"]
+
+A.    Yes. We want to get ahead of any issues.
+      [CORRECTED: "weep want to get ahead of any issues" — steno homophone error]
+
+Q.    Did Yellow Rock apply for disaster relief and SBA, et cetera?
+      [CORRECTED: "disaster relief and SBA,, et cetera" — double comma removed]
+
+================================================================================
+[PAGE 22]
+
+[Testimony continues — Exhibit 135, Exhibit 136]
+
+Q.    Let me show you Exhibit No. 135, which is YR-323003.
+      [CORRECTED: Source reads "Exhibit No 135, which is YR_ 3230 on three" —
+      "3230 on three" is steno garble of Bates number; corrected to YR-323003;
+      underscore artifact in Bates number corrected to hyphen.]
+
+Q.    I want to direct you to Exhibit No. 136 [CORRECTED: source at line 5866 reads "Exhibit No. 36"
+      — likely "No. 136" per surrounding context; HIGH confidence], your geoscience team list.
+
+A.    Going all the way back [CORRECTED: "become"] to the Union Texas days, the geoscience
+      team [CORRECTED: "ghee sciences team" — consistent steno phonetic error for "geoscience"]
+      was structured as follows...
+
+================================================================================
+[PAGE 23]
+
+[Testimony continues — Sulphur Mines Field drilling inventory, hurricanes]
+
+Q.    Tell me about the Sulphur Mines Field's drilling location identification
+      inventory. [CORRECTED: "Sulphur Mines feels drilling location identification inventory"
+      — "feels" corrected to "Field's"]
+
+Q.    And the hurricane damage — were repairs up to $70,000 still outstanding?
+      [CORRECTED: "hurricane war damage up 70,000 in repairs still outstanding" — steno garble;
+      "war damage up" corrected to "damage, up to"; dollar sign added per context]
+
+A.    Correct. [CORRECTED: "Collect check" — steno phonetic error]
+
+      The named hurricane would have been Laura.
+      [CORRECTED: "The named hurricane would have been lawyer a" — "lawyer a" corrected to "Laura";
+      Hurricane Laura (2020) confirmed by context]
+
+      [FLAG: Source at line 8463-8464 reads "signature named tropical storm" — MEDIUM confidence
+      correction to "significant named tropical storm" or possibly "second named tropical storm."
+      Reporter to verify against audio.]
+
+================================================================================
+[PAGE 24]
+
+[Testimony continues — Brad Brandl, Donelynn Energy drilling manager]
+
+Q.    Brad Brandl took over? [CORRECTED: "Brad bran DAL took over" — steno garble of "Brandl"]
+
+A.    Yes.
+
+Q.    And who was the drilling manager from — [FLAG: Drilling manager's company name garbled
+      throughout. MS. CURTIS clarifies at line 3376: "Space between done and Lynn" —
+      may be "Donelynn Energy" or "Done Lynn." Reporter must verify against discovery/business records.
+      MEDIUM confidence. Source reads "Donelon energy did on in L why in" and "Done linen gee,
+      done difficulties letter" at various lines.]
+
+Q.    Would it have gone [CORRECTED: "geneos"] to all those same parties?
+
+A.    Yes.
+
+Q.    And it would have gone [CORRECTED: "geneos"] to the White Top [CORRECTED: "blacktop"]
+      minority LLC members?
+
+A.    They would have gone [CORRECTED: "done"] to Luminus.
+
+================================================================================
+[PAGE 25]
+
+[Testimony continues — Boardwalk caverns, IMD approval, directional drilling]
+
+Q.    Tell me about the Boardwalk caverns/wells. [CORRECTED: "Boardwalk cavern s/wells" — steno split]
+
+Q.    First, get IMD approval. [CORRECTED: "First Getty M.D. approval" — steno garble; IMD =
+      Injection and Mining Division, confirmed by context]
+
+Q.    What about vis-à-vis [CORRECTED: "vis_ _vis" — steno artifact] the salt itself?
+
+A.    I didn't want to penetrate the — the caprock — the caprock.
+      [CORRECTED: "CAP — the CAP bra" — steno garble; "caprock" is the relevant geological term]
+
+Q.    The angle of directional drilling — [CORRECTED: "ankle" corrected to "angle" throughout;
+      appears at lines 10655-10656, 10669, 10924]
+
+A.    ...took into account the angle [CORRECTED: "ankle"] of directional drilling
+      and how sharp you can direct the angle [CORRECTED: "ankle"] of the drill.
+      It's a function of the angle [CORRECTED: "ankle"] and where you start.
+
+      You also have to run anti-conflict software [CORRECTED: "anti conflict software"]
+      — [FLAG: MEDIUM confidence — likely "anti-collision software," standard directional drilling
+      term for wellbore conflict detection. Reporter to verify correct industry term.]
+
+================================================================================
+[PAGE 26]
+
+[Testimony continues — drilling order A through V, Eva Borrego email]
+
+Q.    The drilling order A through V? [CORRECTED: "A through very" — steno substituted "very"
+      for the letter "V"; confirmed by context at lines 11310, 11315, 11321]
+
+A.    Yes, labeled A through V. [CORRECTED: "labeled A through very"]
+
+Q.    Let me show you Exhibit No. 154, which is Ms. Borrego's email.
+      [CORRECTED: "Ms. Break owes email" — steno phonetic garble; "Eva Borrego" confirmed throughout]
+
+================================================================================
+[PAGE 27]
+
+[Testimony continues — seismic, triangles, bright spots, In-Depth Geophysics]
+
+Q.    What are these triangles — the potential location triangles — some have
+      letters? [CORRECTED: "try angels, the potential location try angels" — steno phonetic error;
+      appears twice]
+
+A.    A general sense description. [CORRECTED: "A generals sense description"]
+      [FLAG: REPORTER AUDIO CHECK REQUIRED — *REPORTER CHECK HERE* placeholder at this location
+      (line ~11557). Must be resolved before final certification.]
+
+Q.    They would need to do extensive, lengthy, costly additional reprocessing
+      or looking for information to try to identify bright spots.
+      [CORRECTED: "brat spots" → "bright spots" — steno phonetic error; appears at lines 11687-1688,
+      11698, 11783-1784; "bright spot" is standard seismic term]
+
+Q.    Tell me about In-Depth Geophysics. [CORRECTED: "In_Depth" — underscore artifact → hyphen]
+
+A.    Joel Latchman [CORRECTED: "Jill Latchman" — confirmed "Joel Latchman" at line 11651]
+      was with In-Depth [CORRECTED: "In_Depth"]. And I thought that they were fishing
+      under the auspices of having the approval of White Top [CORRECTED: "blacktop"]
+      to obtain all of the information on the parameters that In-Depth had used
+      on reprocessing the data. And I did not want to create an open-ended
+      situation. The best time to stop it is at the beginning.
+
+      [FLAG: REPORTER AUDIO CHECK REQUIRED — *REPORTER CHECK HERE* placeholder at line 7452.
+      MS. Curtis objection about investor identities. Must be resolved before final certification.]
+
+      [FLAG: REPORTER AUDIO CHECK REQUIRED — *REPORTER CHECK HERE* placeholder at line 11344.
+      Must be resolved before final certification.]
+
+================================================================================
+[PAGE 28]
+
+[Testimony continues — settlement proposal, Revenant Signal Energy, White Top rights offering]
+
+Q.    Tell me about the settlement proposal.
+      [CORRECTED: Source reads "T he settlement proposal" — erroneous space and capital corrected]
+
+Q.    Revenant Signal Energy, one of the LLC members?
+      [FLAG: Name rendered as "REV rent signal" at line 1569 and more consistently as
+      "Revenant Signal Energy" at line 6703-6705. MEDIUM confidence — reporter to verify
+      entity name spelling throughout and apply consistently.]
+
+Q.    White Top rights offering status as of cutoff?
+      [CORRECTED: "White Top writes offering status as of Cut Off" — "writes offering" corrected to
+      "rights offering"; "Cut Off" corrected to "cutoff"]
+
+A.    It was distributed to Sunny Solar.
+      [CORRECTED: "It was distributed Todd Sunny Solar" — "Todd" is steno artifact; "to" dropped]
+
+      Some had declined. Some accepted.
+      [CORRECTED: "Some had declined. Sod accepted" — "Sod" corrected to "Some"]
+
+================================================================================
+[PAGE 29]
+
+[Testimony continues — Sulphur Mines salt dome, drill pipe, caprock]
+
+Q.    Back in the day in other salt domes — [CORRECTED: "Become in the day"]
+
+A.    You get your drill pipe [CORRECTED: "oil pipe"] stuck in salt formations
+      [CORRECTED: "formation an"] and it adds to the costs more times than you'd like.
+
+Q.    And the BLM No. 4 cavern is a nothing burger?
+
+A.    [VERBATIM — quoted words of Bertelot; "nothing burger" is colloquial. Keep verbatim per
+      verbatim rule.]
+
+Q.    Tell me about the call with the IMD [CORRECTED: "IM D"] mines and minerals.
+      [CORRECTED: "an" → "and"]
+
+================================================================================
+[PAGE 30]
+
+[Testimony continues — longer/later than semi-annual, Sulphur Mines Field self-correction]
+
+Q.    Longer — later than semi-annual? [CORRECTED: "Sam I annual" — steno phonetic error for
+      "semi-annual"; MEDIUM confidence; may be "at least annual"]
+
+A.    Sulphur Dome — Sulphur Mines. Excuse me. Sulphur Mines Field.
+      [VERBATIM — witness self-correcting mid-sentence. Keep as spoken per verbatim rule.]
+
+Q.    Using large vibrators? [CORRECTED: "using large vibrate ores" — steno split error]
+
+================================================================================
+[PAGE 31]
+
+[Testimony continues — Exhibit 136, Sunny Solar, Steve Derby]
+
+Q.    Do you know a Steve Derby? [NOTE: Source at line 6993 reads "Stephen Derby" — witness uses
+      "Steve Derby" consistently; "Stephen" appears only once. LOW confidence flag; flag for
+      consistency check.]
+
+A.    Yes.
+
+Q.    Did you send this slide to Ms. Tran?
+      [CORRECTED: "you accept this slide to Ms. Tran" — "accept" corrected to "sent"]
+
+A.    I addressed what I knew.
+      [CORRECTED: "I addressed—a dressed what I knew" — "a dressed" is steno-split artifact;
+      "addressed" split incorrectly]
+
+Q.    Based on this exhibit? [CORRECTED: "based odd this exhibit" — "odd" corrected to "on"]
+
+A.    In my mind [CORRECTED: "mine"] the relationship...
+
+Q.    Check silver mines — [CORRECTED: "check silver mines" → "Sulphur Mines" — steno
+      phonetic/garble error; see line 8787-8788]
+
+Q.    Drilling right up to the salt itself?
+      [CORRECTED: "drilling write_up to the salt itself" — steno phonetic error + underscore artifact]
+
+================================================================================
+[PAGE 32]
+
+[Testimony continues — drilling, Exhibit 154, labeled A through V]
+
+Q.    Identified all of the potential areas of interest that had been identified?
+
+A.    [FLAG: PUNCTUATION/VERBATIM — source at line 11116 reads "identified all of the potential
+      areas of interest that had been identified" — possible verbal repetition by witness. LOW
+      confidence; keep verbatim unless clearly steno artifact. Reporter to review audio.]
+
+Q.    The drilling order A through V?
+
+A.    Yes, and labeled A through V. [CORRECTED: recurring "very" → "V"]
+
+================================================================================
+[PAGE 33]
+
+[Testimony continues — Barrett email, taxes, payroll]
+
+Q.    The Barrett email stated that hundreds of thousands of dollars of payroll
+      taxes have been withheld and — [all caps] — NOT BEEN PAID over to the
+      authorities. [CORRECTED/FLAG: Source at line 6728-6729 reads "hundreds of thousands of taxes
+      have been withheld '—and all caps—NOT BEEN PAID over to the authorities" — steno inserted
+      annotation about capitalization mid-quote. In certified copy this annotation should be handled
+      as a parenthetical or removed in favor of proper transcription of the caps-lock text. Flag for
+      reporter. MEDIUM confidence."]
+
+================================================================================
+[PAGE 34]
+
+[Testimony continues — Nathaniel on Zoom, Burt Bowen, Thomas Metcalf]
+
+[FLAG: At approximately line 3071, an unidentified Zoom participant identified only as "Nathaniel"
+speaks on record. Source reads "National national pardon me this is Nathanial on Zoom." Full name
+and firm not identified. Reporter to identify and add to appearances or note in transcript.]
+
+NATHANIEL [SURNAME UNKNOWN, via Zoom]: Pardon me — this is Nathaniel [surname] on Zoom.
+
+Q.    Who wrote this letter? [FLAG: Source at line 3530-3531 reads "Who wrote this letter mar
+      minister if you know" — "mar minister" is steno garble of objection or interjection. Reporter
+      to review audio.]
+
+A.    Burt Bowen [CORRECTED: "B bone, John Miller" → "Burt Bowen, John Miller"
+      — "B bone" is steno garble for "Burt Bowen"; confirmed at line 3125 where witness
+      spells name B-o-w-e-n], John Miller.
+
+Q.    Thomas Metcalf [CORRECTED: "Thomas met calf" — consistent garble throughout; reporter to
+      confirm correct spelling: Metcalf or Metcalfe] and [MEDIUM confidence — email address
+      garbled: source reads "MCar@QIpetrofix.com" type garble; reporter to check against source
+      documents for correct email/company name].
+
+A.    Thomas Metcalf [CORRECTED: recurring garble] was a geotech.
+
+================================================================================
+[PAGE 35]
+
+[Colloquy — investor identity dispute]
+
+MR. HOBBY: I'll ask the same question. [CORRECTED: "I'll the ask same question"
+— word-order transposition]
+
+MS. CURTIS: Objection to the form.
+
+[FLAG: At approximately lines 7601-7611, TJ Madigan instructs witness not to answer and addresses
+Hobby directly: "Stop it, Walker." Extended colloquy on investor identity protections. Accurately
+captured; flagged as sensitive passage for reporter review.]
+
+================================================================================
+[PAGE 36]
+
+[Testimony concludes — close of day, suspension of deposition]
+
+MS. CURTIS: And that's the best time to stop this deposition. Thank you. Okay.
+We're stopping for now.
+
+THE WITNESS: Who was that?
+
+MS. CURTIS: That's your phone again.
+
+MR. HOBBY: For the record, Westlake is prepared to continue today, but I think
+the witness and opposing counsel have made the decision not to. And I just want
+to reflect that in the record.
+
+MS. CURTIS: Yes. We have gone for eight hours with a few breaks. And Mr. Easley
+and the rest of us are tired and we're not going any longer.
+
+THE WITNESS: My spider bite hurts.
+
+MS. CURTIS: His spider bite hurts.
+
+THE COURT REPORTER: Are we on or off still?
+
+THE VIDEOGRAPHER: We are still on.
+
+MR. HOBBY: Can you tell us now how much time we've been on the record so far?
+
+THE VIDEOGRAPHER: Yes. We currently are at five hours and 33 minutes.
+
+MR. HOBBY: Thank you.
+
+THE VIDEOGRAPHER: This concludes today's deposition and the time is 5 o'clock
+p.m. and we are now off the record.
+
+THE COURT REPORTER: Do you want a rough draft? [CORRECTED: "Do you went a rough draft"]
+
+MS. CURTIS: Yes. Thank you. 5:01.
+
+================================================================================
+
+                    * * * END OF TESTIMONY * * *
+
+                    [DEPOSITION SUSPENDED — NOT CONCLUDED]
+         Deposition taken 9:09 a.m. – 5:00 p.m. (5 hours, 33 minutes on record)
+             Westlake stated readiness to continue. Plaintiff's counsel and
+                witness declined. Continuing examination anticipated.
+
+================================================================================
+[CERTIFICATE PAGE]
+
+                    LOUISIANA REPORTER'S CERTIFICATE
+
+STATE OF LOUISIANA
+PARISH OF CALCASIEU
+
+I, MARYBETH E. MUIR, Certified Court Reporter (CCR) and Registered Professional
+Reporter (RPR) in and for the State of Louisiana, do hereby certify that the
+foregoing is a true and correct transcript of the stenographic notes taken by me
+at the videotaped deposition of THOMAS L. EASLEY, taken on Friday, March 13,
+2026, in the matter of Yellow Rock, LLC, et al. v. Westlake US 2 LLC f/k/a
+Eagle US 2 LLC, et al., Docket No. 202-001594, Division "H," 14th Judicial
+District Court, Parish of Calcasieu, State of Louisiana.
+
+I further certify that I am not a relative or employee of any of the parties or
+their counsel, that I am not financially interested in the outcome of this
+matter, and that I have no contract with any party, counsel, or party's
+representative to provide services in this case.
+
+*** THIS IS A ROUGH DRAFT TRANSCRIPT ***
+
+This rough draft has been prepared at the request of MS. CURTIS, counsel for
+Plaintiffs, and is provided for attorney use only. It has not been proofread,
+certified, or corrected. Do not cite or use in court proceedings. The certified
+transcript will supersede this rough draft in all respects.
+
+The following items require reporter review before certification:
+
+  [FLAG: REPORTER AUDIO CHECK REQUIRED] — Line ~7452: *REPORTER CHECK HERE*
+      (MS. Curtis objection re investor identities — unresolved placeholder)
+
+  [FLAG: REPORTER AUDIO CHECK REQUIRED] — Line ~11344: *REPORTER CHECK HERE*
+      (second unresolved placeholder — seismic/Exhibit 154 section)
+
+  [FLAG: REPORTER AUDIO CHECK REQUIRED] — Line ~11557: *REPORTER CHECK HERE*
+      ("A general sense description" — third unresolved placeholder)
+
+  [FLAG: Unidentified attorney "MS. HANDY" appears in the record; not listed in
+      appearances block. Reporter to identify firm/party affiliation.]
+
+  [FLAG: Unidentified Zoom participant "Nathaniel" (line ~3071) — full name and
+      firm not identified. Reporter to add to appearances or note in transcript.]
+
+  [FLAG: Drilling manager's company name garbled throughout — possibly "Donelynn
+      Energy." MS. Curtis clarification: "Space between done and Lynn." Reporter to
+      verify against discovery/business records.]
+
+  [FLAG: Reporter's computer went down at ~4:05 p.m.; brief recess 4:05–4:08 p.m.
+      Reporter to verify no testimony gap at lines ~10258-10264.]
+
+  [FLAG: Exhibit No. 142 appears twice in the exhibit index. Reporter to verify.]
+
+  [FLAG: Videographer name discrepancy — "Brian" vs. "Bryan" Smith. Confirm with Lexitas.]
+
+  [FLAG: Caption ZIP code (70112) and street name ("Post Oak Street") corrected to
+      77024 and "Post Oak Lane." Reporter to confirm before finalizing cover page.]
+
+  [FLAG: Kelly Hart & Hallman suite number blank in appearances block.]
+
+  [FLAG: "kenndyslaw.com" — possible typo for "kennedyslaw.com." Reporter to verify.]
+
+  [FLAG: YR- Bates prefix consistently rendered "why are" by steno throughout;
+      all instances corrected to "YR-" in this transcript. Reporter to spot-check
+      for accuracy of all Bates numbers against exhibit stamps.]
+
+
+____________________________________
+MARYBETH E. MUIR, CCR, RPR
+Certified Court Reporter
+State of Louisiana
+CCR No. ___________
+
+Date: ________________________
+
+================================================================================
+                        * * * END OF DOCUMENT * * *
+================================================================================
