@@ -46,7 +46,7 @@ Reported By:  MARYBETH E. MUIR, CCR, RPR
 * * * * * * * * * * * * * * * * * * * * * * * *
 """
 
-with open('extracted_qa.txt', 'r', encoding='utf-8') as f:
+with open('cleaned_text.txt', 'r', encoding='utf-8') as f:
     raw_lines = f.readlines()
 
 raw = ''.join(raw_lines)
