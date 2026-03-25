@@ -60,7 +60,7 @@ def wrap_line(text, width=LINE_WIDTH, hang=0):
 # =========================================================
 
 def build_caption():
-    """Page 1 caption — all content on one page, tight like real format."""
+    """Page 1 caption — all content on one page, reporter credit on page 1 per LA spec."""
     L = []
     L.append(center("STATE OF LOUISIANA"))
     L.append(center("PARISH OF CALCASIEU"))
@@ -76,33 +76,22 @@ def build_caption():
     L.append("")
     L.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
     L.append("")
-    L.append("")
     L.append(center("VIDEOTAPED DEPOSITION"))
     L.append(center("OF"))
     L.append(center(WITNESS_NAME))
-    L.append("")
     L.append(center("taken on"))
     L.append(center(DEPO_DATE))
     L.append(center(f"commencing at {DEPO_TIME}"))
     L.append(center("at"))
-    L.append(center("the offices of"))
     L.append(center(DEPO_LOCATION_1))
     L.append(center(DEPO_LOCATION_2))
-    while len(L) < 25:
-        L.append("")
-    # Page 1 = lines 1-25, page 2 = reporter + closing stars
-    p1 = L[:25]
-    p2 = []
-    p2.append("")
-    p2.append(center(f"Reported By:  {REPORTER_NAME}"))
-    p2.append("")
-    p2.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
-    while len(p2) < 25:
-        p2.append("")
-    return [p1, p2[:25]]
+    L.append("")
+    L.append(f"  Reported By:  {REPORTER_NAME}")
+    L.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
+    return [L[:25]]
 
 
-def build_index(app_start, stip_start, exam_start, cert_start, wcert_start):
+def build_index(app_start, stip_start, exam_start, cert_start, wcert_start, exhibit_nums=None):
     # Use TAB as delimiter between label and page number.
     # PDF builder detects \t and renders label left, number right-aligned.
     L = []
@@ -125,7 +114,11 @@ def build_index(app_start, stip_start, exam_start, cert_start, wcert_start):
     L.append("")
     L.append("  EXHIBITS")
     L.append("")
-    L.append("  [Exhibits to be indexed]")
+    if exhibit_nums:
+        for num in exhibit_nums:
+            L.append(f"  Exhibit No. {num}")
+    else:
+        L.append("  [Exhibits to be indexed]")
     while len(L) < 25:
         L.append("")
     return L[:25]
@@ -305,18 +298,27 @@ def paginate(lines, header=None):
 
 def format_appearances(raw_lines):
     """Format appearances: remove ALL blank lines from source, then
-    re-insert single blanks only between attorney blocks (FOR THE...)."""
+    re-insert single blanks only between attorney blocks (FOR THE...).
+    Indent firm address and BY: lines under each block header."""
     # Strip blanks and headers
     stripped = [l.strip() for l in raw_lines
                 if l.strip() and 'A P P E A R A N C E S' not in l.strip()]
 
     # Re-insert blank lines before each "FOR THE" / "ATTORNEY FOR" / "ALSO PRESENT" block
+    # and indent non-header lines under their block
     cleaned = []
+    in_block = False
     for line in stripped:
         if re.match(r'^(FOR THE|ATTORNEY FOR|ALSO PRESENT)', line):
             if cleaned:  # don't add blank at very start
                 cleaned.append("")
-        cleaned.append(line)
+            cleaned.append(line)
+            in_block = True
+        else:
+            if in_block:
+                cleaned.append(f"    {line}")
+            else:
+                cleaned.append(line)
 
     return paginate(cleaned, header="A P P E A R A N C E S:")
 
@@ -552,9 +554,19 @@ def main():
 
     sections = parse_file(text)
 
+    # Parse exhibit numbers from index section
+    exhibit_nums = []
+    for line in sections['index']:
+        m = re.match(r'\s*Exhibit\s+No\.\s+(\d+)', line)
+        if m:
+            num = int(m.group(1))
+            if num not in exhibit_nums:
+                exhibit_nums.append(num)
+    exhibit_nums.sort()
+
     all_pages = []
 
-    # Caption (2 pages)
+    # Caption (1 page — reporter credit included on page 1 per LA spec)
     cap = build_caption()
     all_pages.extend(cap)
 
@@ -590,7 +602,7 @@ def main():
 
     # Fill index
     all_pages[idx_pos] = build_index(app_start, stip_start, exam_start,
-                                      cert_start, wcert_start)
+                                      cert_start, wcert_start, exhibit_nums)
 
     # Render
     output_parts = []
@@ -607,7 +619,7 @@ def main():
     print(f"Done. {len(all_pages)} pages -> {OUTPUT_FILE}")
     print(f"Characters: {len(final):,}")
     print(f"\nPage map:")
-    print(f"  Caption:         1-2")
+    print(f"  Caption:         1")
     print(f"  Index:           {idx_pos+1}")
     print(f"  Appearances:     {app_start}-{stip_start-1}")
     print(f"  Stipulation:     {stip_start}")
