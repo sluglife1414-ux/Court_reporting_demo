@@ -11,6 +11,7 @@ Produces:
 """
 import re
 import os
+import json
 from datetime import date
 
 # --- Case constants ---
@@ -254,39 +255,80 @@ Docket No.: {DOCKET} | Witness: {WITNESS} | Date: {DEPO_DATE}
 # PROOF OF WORK
 # =========================================================
 
-# Known corrections applied by steno_cleanup.py
-KNOWN_CORRECTIONS = [
-    ("E_mail / E_mails", "E-mail / E-mails", "Steno artifact — underscore for hyphen", "1.00"),
-    ("day_to_day", "day-to-day", "Steno artifact", "1.00"),
-    ("asirianni@@windelsmarx.com", "asirianni@windelsmarx.com", "Double-@ steno error", "1.00"),
-    ("~ (tilde)", "(removed)", "Steno artifact — tilde used as filler", "1.00"),
-    ("__ (double underscore)", "— (em dash)", "Steno artifact — double underscore for em dash", "0.99"),
-    ("docket underscores (202_001594)", "202-001594", "Docket number formatting", "1.00"),
-]
+CORRECTION_LOG_FILE = 'correction_log.json'
 
-def count_corrections():
-    counts = {}
-    for old, new, _, _ in KNOWN_CORRECTIONS:
-        counts[old] = text.count(new)  # approximate
-    return counts
+def load_correction_log():
+    """Load correction_log.json if it exists. Returns list of correction dicts."""
+    if os.path.exists(CORRECTION_LOG_FILE):
+        with open(CORRECTION_LOG_FILE, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return data.get('corrections', []), data
+    return [], {}
 
 def build_proof_of_work():
-    rows = ""
-    for i, (old, new, reason, conf) in enumerate(KNOWN_CORRECTIONS, 1):
-        rows += f"{i:2d}. \"{old}\" \u2192 \"{new}\"\n"
-        rows += f"    Reason: {reason}  |  Confidence: {conf}\n\n"
+    corrections, log_meta = load_correction_log()
+
+    if corrections:
+        # Build v3-style correction log from ai_engine output
+        # Format: LINE_NNN | original | corrected | CONF | reason
+        COL = 56  # column width for original/corrected text
+        rows = (
+            f"{'Format:':<8} LINE     | {'ORIGINAL':<{COL}} | {'CORRECTED':<{COL}} | CONF   | REASON\n"
+            + "-" * 80 + "\n\n"
+        )
+        high_count   = 0
+        review_count = 0
+        for c in corrections:
+            line_ref  = f"LINE {c.get('line_approx', '?')}"
+            original  = str(c.get('original',  '')).strip()
+            corrected = str(c.get('corrected', '')).strip()
+            conf      = str(c.get('confidence', '')).upper()
+            reason    = str(c.get('reason', '')).strip()
+
+            # Truncate long fields for column alignment
+            orig_disp = (original[:COL-3]  + '...') if len(original)  > COL else original
+            corr_disp = (corrected[:COL-3] + '...') if len(corrected) > COL else corrected
+
+            rows += f"{line_ref:<10} | {orig_disp:<{COL}} | {corr_disp:<{COL}} | {conf:<6} | {reason}\n"
+
+            if conf == 'HIGH':
+                high_count += 1
+            elif conf in ('MEDIUM', 'LOW'):
+                review_count += 1
+
+        total = len(corrections)
+        model = log_meta.get('model', 'claude-sonnet-4-6')
+
+        ai_section = (
+            f"Engine corrections:  {total} total\n"
+            f"  HIGH confidence:   {high_count}\n"
+            f"  Needs review:      {review_count}\n"
+            f"  Model:             {model}\n\n"
+        )
+        review_note = (
+            f"  All [REVIEW: ___] tags in the transcript require reporter audio verification.\n"
+            f"  {review_count} item(s) flagged for review — see QA_FLAGS.txt for full list."
+        )
+    else:
+        # No correction log — ai_engine.py has not been run yet
+        rows = "  [correction_log.json not found — run ai_engine.py to generate AI corrections]\n"
+        ai_section = "  AI correction pass not yet run.\n"
+        review_note = "  Run ai_engine.py and re-run build_deliverables.py to populate this section."
 
     return f"""{header("PROOF OF WORK\nAI Processing Record \u2014 Not a Legal Document")}Case: {CASE_NAME}
 Docket No.: {DOCKET} | Witness: {WITNESS} | Date: {DEPO_DATE}
 Engine: MASTER_DEPOSITION_ENGINE_v4
 Processing Date: {RUN_DATE}
 {HEADER_BAR}
-{section("AUTOMATIC CORRECTIONS APPLIED (HIGH CONFIDENCE)")}
-{rows}
-{section("ITEMS REQUIRING REPORTER REVIEW")}
-  All [CORRECTED: ___] tags in the transcript require audio verification.
-  All [REVIEW: ___] tags require manual review before finalizing.
-  See QA_FLAGS.txt for full list.
+{section("SECTION 1 — PRE-PROCESSING (steno_cleanup.py)")}
+  Mechanical artifact removal — no judgment required.
+  Changes: tilde removal, double-underscore → em dash, docket underscore → hyphen,
+           compound word fixes, double-@ correction, encoding artifact removal.
+  (Run steno_cleanup.py with --verbose for full counts.)
+{section("SECTION 2 — AI CORRECTION PASS (ai_engine.py)")}
+{ai_section}{rows}
+{section("SECTION 3 — ITEMS REQUIRING REPORTER REVIEW")}
+{review_note}
 {HEADER_BAR}
 """
 

@@ -4,11 +4,12 @@ run_pipeline.py — Master runner for mb_demo_engine_v4.
 Runs all steps in order and produces the full 10-file delivery package:
   1. extract_rtf.py          → extracted_text.txt
   2. steno_cleanup.py        → cleaned_text.txt
-  3. format_final.py         → FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt
-  4. build_pdf.py            → FINAL_DELIVERY/Easley_YellowRock_FINAL.pdf
-  5. build_transcript.py     → FINAL_DELIVERY/Easley_YellowRock_FINAL_TRANSCRIPT.txt
-  6. build_condensed.py      → FINAL_DELIVERY/Easley_YellowRock_CONDENSED.txt
-  7. build_deliverables.py   → FINAL_DELIVERY/DELIVERY_CHECKLIST.txt
+  3. ai_engine.py            → corrected_text.txt + correction_log.json
+  4. format_final.py         → FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt
+  5. build_pdf.py            → FINAL_DELIVERY/Easley_YellowRock_FINAL.pdf
+  6. build_transcript.py     → FINAL_DELIVERY/Easley_YellowRock_FINAL_TRANSCRIPT.txt
+  7. build_condensed.py      → FINAL_DELIVERY/Easley_YellowRock_CONDENSED.txt
+  8. build_deliverables.py   → FINAL_DELIVERY/DELIVERY_CHECKLIST.txt
                                FINAL_DELIVERY/DEPOSITION_SUMMARY.txt
                                FINAL_DELIVERY/EXHIBIT_INDEX.txt
                                FINAL_DELIVERY/MEDICAL_TERMS_LOG.txt
@@ -22,6 +23,7 @@ import os
 STEPS = [
     ('extract_rtf.py',       'Extract RTF -> raw text'),
     ('steno_cleanup.py',     'Steno cleanup -> cleaned text'),
+    ('ai_engine.py',         'AI correction pass -> corrected text + correction log'),
     ('format_final.py',      'Format final -> FINAL_FORMATTED.txt'),
     ('build_pdf.py',         'Build PDF -> FINAL.pdf'),
     ('build_transcript.py',  'Build transcript -> FINAL_TRANSCRIPT.txt'),

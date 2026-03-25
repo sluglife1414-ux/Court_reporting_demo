@@ -14,7 +14,8 @@ import re
 import textwrap
 import os
 
-INPUT_FILE = 'cleaned_text.txt'
+# Use AI-corrected text if available, otherwise fall back to steno-cleaned text
+INPUT_FILE = 'corrected_text.txt' if os.path.exists('corrected_text.txt') else 'cleaned_text.txt'
 OUTPUT_FILE = 'FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt'
 
 # --- Configuration ---
