@@ -109,11 +109,15 @@ def draw_page(c, page_data):
     if DRAW_VERT_LINE:
         first_line_y = TEXT_TOP - LINE_SPACING
         last_line_y  = TEXT_TOP - LINE_SPACING - ((LINES_PER_PAGE - 1) * LINE_SPACING)
-        line_x = TEXT_X - 0.08 * inch
+        y_top = first_line_y + (FONT_SIZE * 0.3)
+        y_bot = last_line_y  - (FONT_SIZE * 0.3)
         c.setStrokeColor(colors.black)
-        c.setLineWidth(1.2)
-        c.line(line_x, first_line_y + (FONT_SIZE * 0.3),
-               line_x, last_line_y  - (FONT_SIZE * 0.3))
+        c.setLineWidth(1.0)
+        # Double vertical line — MB format standard
+        line_x1 = TEXT_X - 0.10 * inch
+        line_x2 = TEXT_X - 0.05 * inch
+        c.line(line_x1, y_top, line_x1, y_bot)
+        c.line(line_x2, y_top, line_x2, y_bot)
 
     # --- 25 numbered lines ---
     for i, text in enumerate(lines):
@@ -139,9 +143,22 @@ def draw_page(c, page_data):
             if number:
                 c.drawRightString(TEXT_RIGHT, line_y, number)
         else:
-            # Normal line — truncate to available width (safety)
-            max_chars = int((TEXT_RIGHT - TEXT_X) / (FONT_SIZE * 0.6)) + 5
-            c.drawString(TEXT_X, line_y, text[:max_chars])
+            # Check for Q./A. line — draw label in bold, rest in regular
+            qa_match = re.match(r'^(\s*)(Q\.|A\.)(\s+.*)$', text)
+            if qa_match:
+                prefix = qa_match.group(1)   # leading spaces
+                label  = qa_match.group(2)   # "Q." or "A."
+                rest   = qa_match.group(3)   # "   body text..."
+                char_w = FONT_SIZE * 0.6     # Courier monospace char width
+                x_label = TEXT_X + len(prefix) * char_w
+                c.setFont(FONT_BOLD, FONT_SIZE)
+                c.drawString(x_label, line_y, label)
+                c.setFont(FONT_NAME, FONT_SIZE)
+                c.drawString(x_label + len(label) * char_w, line_y, rest)
+            else:
+                # Normal line — truncate to available width (safety)
+                max_chars = int((TEXT_RIGHT - TEXT_X) / (FONT_SIZE * 0.6)) + 5
+                c.drawString(TEXT_X, line_y, text[:max_chars])
 
 
 def build_pdf(pages):

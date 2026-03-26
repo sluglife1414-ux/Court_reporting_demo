@@ -226,6 +226,21 @@ def build_errata():
 # TEXT PARSERS
 # =========================================================
 
+def strip_review_tags(text):
+    """
+    Remove [REVIEW: ...] and [FLAG: ...] tags from the text before final formatting.
+    These tags are internal review markers for MB_REVIEW.txt — they must NOT
+    appear in the delivered PDF or formatted transcript.
+    Inline tags (mid-sentence) are removed cleanly. Block-only lines are dropped.
+    """
+    # Remove inline [REVIEW: ...] tags — anything in brackets starting with REVIEW or FLAG
+    text = re.sub(r'\s*\[REVIEW:[^\]]*\]', '', text)
+    text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
+    # Clean up any double spaces left behind
+    text = re.sub(r'  +', ' ', text)
+    return text
+
+
 def parse_file(text):
     """Split cleaned_text.txt into raw section chunks."""
     lines = text.split('\n')
@@ -513,24 +528,23 @@ def format_testimony(raw_lines):
         elif kind == 'witness_info':
             formatted.append(text)
         elif kind == 'Q':
-            if not text.startswith('Q.'):
-                text = 'Q.  ' + text
-            body = re.sub(r'^Q\.\s+', '', text)
-            wrapped = wrap_line('Q.  ' + body, width=LINE_WIDTH, hang=4)
+            body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
+            # MB format: Q. indented 5 spaces, text 3 spaces after label
+            # Continuation lines flush left (hang=0) — MB standard
+            wrapped = wrap_line('     Q.   ' + body, width=LINE_WIDTH, hang=0)
             formatted.extend(wrapped)
         elif kind == 'A':
-            if not text.startswith('A.'):
-                text = 'A.  ' + text
-            body = re.sub(r'^A\.\s+', '', text)
-            wrapped = wrap_line('A.  ' + body, width=LINE_WIDTH, hang=4)
+            body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
+            wrapped = wrap_line('     A.   ' + body, width=LINE_WIDTH, hang=0)
             formatted.extend(wrapped)
         elif kind == 'colloquy':
             cm = re.match(r'^((?:MR\.|MS\.|MRS\.)\s+\w+:|THE\s+(?:VIDEOGRAPHER|COURT REPORTER|WITNESS):)\s*(.*)', text)
             if cm:
                 speaker = cm.group(1)
                 rest = cm.group(2)
-                hang = min(len(speaker) + 1, 20)
                 full = f"{speaker} {rest}" if rest else speaker
+                # MB format: colloquy continuation ~14 chars indent
+                hang = min(len(speaker) + 2, 14)
                 wrapped = wrap_line(full, width=LINE_WIDTH, hang=hang)
                 formatted.extend(wrapped)
             else:
@@ -553,6 +567,7 @@ def main():
     with open(INPUT_FILE, 'r', encoding='utf-8') as f:
         text = f.read()
 
+    text = strip_review_tags(text)
     sections = parse_file(text)
 
     # Parse exhibit numbers from index section
