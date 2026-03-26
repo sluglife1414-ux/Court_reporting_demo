@@ -29,13 +29,13 @@ STATES = {
         'font': 'Courier',
         'font_bold': 'Courier-Bold',
         'font_size': 12,
-        'line_spacing': 26.0,        # ~0.36" between baselines (double-spaced 12pt)
-        'margin_top': 0.75 * inch,   # first line starts ~1.0" from top
+        'line_spacing': 26.0,        # 0.360" between baselines — measured from MB's PDF
+        'margin_top': 0.75 * inch,
         'margin_bottom': 0.75 * inch,
-        'margin_left': 1.25 * inch,  # outer left margin
-        'margin_right': 0.75 * inch,
-        'linenum_x': 1.40 * inch,    # line numbers at 1.40" from left
-        'text_x': 1.75 * inch,       # body text starts at 1.75"
+        'margin_left': 1.129 * inch, # measured from MB's PDF
+        'margin_right': 0.91 * inch, # 8.5" - 7.59" right edge = 0.91"
+        'linenum_x': 0.47 * inch,    # right edge at 0.75" — measured from MB's PDF
+        'text_x': 1.129 * inch,      # body text at 1.129" — measured from MB's PDF
         'pagenum_from_top': 0.35 * inch,  # page number 0.35" from top
         'pagenum_align': 'right',    # upper RIGHT
         'q_indent': 5,               # Q. + 5 spaces to text
@@ -43,7 +43,7 @@ STATES = {
         'colloquy_indent': 15,       # speaker ≤15 spaces from left
         'colloquy_carry': 10,
         'blank_lines_body': False,   # NO blank numbered lines on body pages
-        'line_width_chars': 60,      # chars per line for text formatter
+        'line_width_chars': 64,      # 7.59" - 1.129" = 6.461" / 0.1" per char = 64 chars
         'vert_line': True,           # vertical line left of text on testimony pages
     },
 

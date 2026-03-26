@@ -20,7 +20,7 @@ OUTPUT_FILE = 'FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt'
 
 # --- Configuration ---
 LINES_PER_PAGE = 25
-LINE_WIDTH = 60   # LA spec: ~60 chars at 12pt Courier in 6.375" column
+LINE_WIDTH = 64   # measured from MB's PDF: 7.59" - 1.129" = 6.461" / 0.1" per char
 
 # --- Case metadata (Easley depo) ---
 WITNESS_NAME = "THOMAS L. EASLEY"
@@ -67,13 +67,17 @@ def build_caption():
     L.append(center("PARISH OF CALCASIEU"))
     L.append(center("14TH JUDICIAL DISTRICT"))
     L.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
-    # Case style block — plaintiff left, docket right
-    L.append(f"  YELLOW ROCK, LLC, et al,          Docket No. 202-001594")
-    L.append(f"       Plaintiffs,                   Division \"H\"")
-    L.append(f"       v.")
-    L.append(f"  WESTLAKE US 2 LLC f/k/a")
-    L.append(f"  EAGLE US 2 LLC et al.,")
-    L.append(f"       Defendants.")
+    # Case style block — MB format: two-column, parties left / docket right
+    # Each row is padded to LINE_WIDTH with left party text and right docket text
+    def case_row(left, right='', width=LINE_WIDTH):
+        gap = width - len(left) - len(right)
+        return left + ' ' * max(1, gap) + right
+    L.append(case_row("  YELLOW ROCK, LLC, et al,", "Docket No."))
+    L.append(case_row("       Plaintiffs,",          "202-001594"))
+    L.append(case_row("       v.",                   "Division \"H\""))
+    L.append(case_row("  WESTLAKE US 2 LLC f/k/a"))
+    L.append(case_row("  EAGLE US 2 LLC et al.,"))
+    L.append(case_row("       Defendants."))
     L.append("")
     L.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
     L.append("")
@@ -208,18 +212,27 @@ def build_witness_cert():
 
 
 def build_errata():
-    L = []
-    L.append("  DEPOSITION ERRATA SHEET")
-    for _ in range(6):
-        L.append("  Page No._____Line No._____Change to:______________")
-        L.append("  _______________________________________________")
-        L.append("  Reason for change:________________________________")
+    # MB format: 3 lines per entry (Page No., Reason, blank) — no extra underscore line
+    # Two full pages of errata (matching MB's 2-page errata section)
+    def errata_page(include_signature=False):
+        L = []
+        L.append("  DEPOSITION ERRATA SHEET")
         L.append("")
-    L.append("  SIGNATURE:_______________________DATE:___________")
-    L.append(f"  {WITNESS_NAME}")
-    while len(L) < 25:
-        L.append("")
-    return [L[:25]]
+        entries_per_page = 7 if include_signature else 8
+        for _ in range(entries_per_page):
+            L.append("  Page No._____Line No._____Change to:______________")
+            L.append("  Reason for change:________________________________")
+            L.append("")
+        if include_signature:
+            while len(L) < 22:
+                L.append("")
+            L.append("  SIGNATURE:_______________________DATE:___________")
+            L.append(f"  {WITNESS_NAME}")
+        while len(L) < 25:
+            L.append("")
+        return L[:25]
+
+    return [errata_page(include_signature=False), errata_page(include_signature=True)]
 
 
 # =========================================================
@@ -543,9 +556,12 @@ def format_testimony(raw_lines):
                 speaker = cm.group(1)
                 rest = cm.group(2)
                 full = f"{speaker} {rest}" if rest else speaker
-                # MB format: colloquy continuation ~14 chars indent
-                hang = min(len(speaker) + 2, 14)
-                wrapped = wrap_line(full, width=LINE_WIDTH, hang=hang)
+                # MB format: entire colloquy block indented 14 chars from TEXT_X
+                # Speaker label and all continuation lines start at col 14
+                # Measured from MB's PDF: continuation x0=2.499" = TEXT_X + 14*0.1"
+                COLLOQUY_INDENT = 14
+                full_indented = ' ' * COLLOQUY_INDENT + full
+                wrapped = wrap_line(full_indented, width=LINE_WIDTH, hang=COLLOQUY_INDENT)
                 formatted.extend(wrapped)
             else:
                 formatted.append(text)

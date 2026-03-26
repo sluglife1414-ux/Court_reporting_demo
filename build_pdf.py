@@ -105,8 +105,21 @@ def draw_page(c, page_data):
     c.setFont(FONT_NAME, FONT_SIZE)
     c.drawRightString(TEXT_RIGHT, PAGENUM_Y, str(pnum))
 
-    # --- Vertical black line (left of text, standard LA court reporter format) ---
-    if DRAW_VERT_LINE:
+    # --- Vertical black line (all pages EXCEPT front matter) ---
+    # MB format: double bar on testimony, certificates, and errata pages.
+    # Suppressed only on caption/index/appearances/stipulation (front matter).
+    FRONT_MATTER_MARKERS = (
+        'STATE OF LOUISIANA',
+        'I N D E X',
+        'A P P E A R A N C E S',
+        'S T I P U L A T I O N',
+    )
+    is_front_matter = any(
+        any(marker in ln for marker in FRONT_MATTER_MARKERS)
+        for ln in lines
+    )
+    is_testimony = DRAW_VERT_LINE and not is_front_matter
+    if is_testimony:
         first_line_y = TEXT_TOP - LINE_SPACING
         last_line_y  = TEXT_TOP - LINE_SPACING - ((LINES_PER_PAGE - 1) * LINE_SPACING)
         y_top = first_line_y + (FONT_SIZE * 0.3)
@@ -156,9 +169,17 @@ def draw_page(c, page_data):
                 c.setFont(FONT_NAME, FONT_SIZE)
                 c.drawString(x_label + len(label) * char_w, line_y, rest)
             else:
-                # Normal line — truncate to available width (safety)
-                max_chars = int((TEXT_RIGHT - TEXT_X) / (FONT_SIZE * 0.6)) + 5
-                c.drawString(TEXT_X, line_y, text[:max_chars])
+                # Detect pre-centered lines (balanced leading/trailing spaces, ≥8 leading)
+                # and true-center them on the page rather than anchoring at TEXT_X.
+                leading  = len(text) - len(text.lstrip())
+                trailing = len(text) - len(text.rstrip())
+                is_centered = (leading >= 8 and abs(leading - trailing) <= 2)
+                if is_centered:
+                    c.drawCentredString(PAGE_W / 2, line_y, text.strip())
+                else:
+                    # Normal line — truncate to available width (safety)
+                    max_chars = int((TEXT_RIGHT - TEXT_X) / (FONT_SIZE * 0.6)) + 5
+                    c.drawString(TEXT_X, line_y, text[:max_chars])
 
 
 def build_pdf(pages):
