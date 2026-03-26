@@ -12,6 +12,7 @@ import os
 import re
 
 LOG_FILE    = 'correction_log.json'
+LINE_MAP    = 'line_map.json'
 OUTPUT_FILE = 'FINAL_DELIVERY/MB_REVIEW.txt'
 MAX_REASON  = 180   # chars to show for reason before truncating
 
@@ -61,9 +62,26 @@ def wrap(text, width=80, indent='       '):
     return ('\n' + indent).join(lines)
 
 
+def load_line_map():
+    """Load page:line citation map if available."""
+    if os.path.exists(LINE_MAP):
+        with open(LINE_MAP, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
+
+def citation(i, line_map, line_approx):
+    """Return page:line citation if mapped, else fall back to raw line number."""
+    loc = line_map.get(str(i))
+    if loc:
+        return loc
+    return f'line ~{line_approx}'
+
+
 def build_report(corrections, meta):
     applied  = [c for c in corrections if c['confidence'] == 'HIGH']
     review   = [c for c in corrections if c['confidence'] in ('MEDIUM', 'LOW')]
+    line_map = load_line_map()
 
     lines = []
 
@@ -85,13 +103,14 @@ def build_report(corrections, meta):
     lines.append('=' * 80)
     lines.append('')
 
-    for i, c in enumerate(applied, 1):
+    for i, c in enumerate(applied):
         orig = fix_encoding(c.get('original', '')).replace('\n', ' ↵ ')
         corr = fix_encoding(c.get('corrected', '')).replace('\n', ' ↵ ')
         reason = short_reason(c.get('reason', ''))
-        line_num = c.get('line_approx', '?')
+        line_approx = c.get('line_approx', '?')
+        loc = citation(i, line_map, line_approx)
 
-        lines.append(f"  #{i:<4}  LINE {line_num}")
+        lines.append(f"  #{i+1:<4}  {loc}")
         lines.append(f"       BEFORE:  {wrap(orig)}")
         lines.append(f"       AFTER:   {wrap(corr)}")
         lines.append(f"       WHY:     {wrap(reason)}")
@@ -104,14 +123,20 @@ def build_report(corrections, meta):
     lines.append('=' * 80)
     lines.append('')
 
-    for i, c in enumerate(review, 1):
+    # review list indices are offset by len(applied) in the master corrections list
+    applied_count = len(applied)
+    review_indices = [i for i, c in enumerate(corrections) if c['confidence'] in ('MEDIUM', 'LOW')]
+
+    for n, i in enumerate(review_indices):
+        c      = corrections[i]
         orig   = fix_encoding(c.get('original', '')).replace('\n', ' ↵ ')
         corr   = fix_encoding(c.get('corrected', '')).replace('\n', ' ↵ ')
         conf   = confidence_label(c.get('confidence', ''))
         reason = short_reason(c.get('reason', ''))
-        line_num = c.get('line_approx', '?')
+        line_approx = c.get('line_approx', '?')
+        loc = citation(i, line_map, line_approx)
 
-        lines.append(f"  #{i:<4}  LINE {line_num}   [{conf}]")
+        lines.append(f"  #{n+1:<4}  {loc}   [{conf}]")
         lines.append(f"       ORIGINAL:  {wrap(orig)}")
         lines.append(f"       SUGGESTED: {wrap(corr)}")
         lines.append(f"       WHY:       {wrap(reason)}")
