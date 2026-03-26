@@ -1,5 +1,6 @@
 """
 ai_engine.py — AI correction pass for mb_demo_engine_v4.
+Version: 2.0 — Full master engine prompt (all 6 rule files loaded at runtime)
 
 Pipeline position: AFTER steno_cleanup.py, BEFORE format_final.py
 
@@ -10,17 +11,27 @@ Pipeline position: AFTER steno_cleanup.py, BEFORE format_final.py
 
 What this does:
   - Reads cleaned_text.txt (post-steno-cleanup)
+  - Loads FULL engine prompt from all 6 rule files at startup
   - Chunks transcript by paragraph blocks (preserves Q&A integrity)
-  - Calls Claude API on each chunk with court reporter correction prompt
+  - Calls Claude API on each chunk with the complete master engine rules
   - Corrects: phonetic substitutions, homophones, garbles, split words,
     dropped letters, numeral artifacts, punctuation artifacts
-  - Verbatim rule: never "fixes" witness's natural language or colloquial speech
+  - Verbatim rule (KB-010): NEVER corrects witness's actual spoken words
   - Uncertain corrections tagged [REVIEW: ...] for reporter to verify
   - Writes corrected_text.txt and correction_log.json
+  - Prints 5-minute progress updates during long runs
 
-Target:  ~100+ corrections per full depo (v3 PROOF_OF_WORK as reference baseline)
+Engine files loaded at runtime (must be in same directory):
+  1. MASTER_DEPOSITION_ENGINE_v4.md   — Layers 1, 3-11 (full rule set)
+  2. STATE_MODULE_louisiana_engineering.md
+  3. HOUSE_STYLE_MODULE_muir.md
+  4. KNOWLEDGE_BASE.txt               — KB-001 through KB-015
+  5. GREGG_STYLE_MODULE.txt
+  6. MARGIE_STYLE_MODULE.txt
+
+Target:  90%+ match against PROOF_OF_WORK.txt (117 manual corrections)
 Model:   claude-sonnet-4-6
-Cost:    ~$0.50-$1.50 per full Easley-length run (~12,000 lines)
+Cost:    ~$2-4 per full Easley-length run (~12,000 lines, full prompt)
 """
 
 import os
@@ -40,158 +51,96 @@ except ImportError:
 if sys.stdout.encoding != 'utf-8':
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
-INPUT_FILE    = 'cleaned_text.txt'
-OUTPUT_TEXT   = 'corrected_text.txt'
-OUTPUT_LOG    = 'correction_log.json'
-MODEL         = 'claude-sonnet-4-6'
-CHUNK_TARGET  = 3000    # soft char limit per chunk; always breaks at paragraph boundary
-MAX_RETRIES   = 2
-INTER_CHUNK_DELAY = 0.4  # seconds between API calls
+INPUT_FILE         = 'cleaned_text.txt'
+OUTPUT_TEXT        = 'corrected_text.txt'
+OUTPUT_LOG         = 'correction_log.json'
+MODEL              = 'claude-sonnet-4-6'
+CHUNK_TARGET       = 3000    # soft char limit per chunk; always breaks at paragraph boundary
+MAX_RETRIES        = 2
+INTER_CHUNK_DELAY  = 0.4     # seconds between API calls
+PROGRESS_INTERVAL  = 300     # 5 minutes between progress banner prints
+
 
 # ─────────────────────────────────────────────────────────────────────────────
-# SYSTEM PROMPT
+# API MODE OVERRIDE — appended last, supersedes Layers 2, 12, 13 of master engine
 # ─────────────────────────────────────────────────────────────────────────────
 
-SYSTEM_PROMPT = """You are a professional court reporter assistant specializing in correcting steno CAT (Computer-Aided Transcription) rough draft artifacts in legal deposition transcripts.
+API_MODE_OVERRIDE = """
 
-Your job is to correct steno errors while preserving the verbatim record. You apply Margie Wakeman Wells grammar and punctuation standards — the industry standard for court reporters.
+══════════════════════════════════════════════════════════════════════════════
+API CHUNKED MODE — OVERRIDE INSTRUCTIONS (HIGHEST PRIORITY — SUPERSEDES ALL)
+══════════════════════════════════════════════════════════════════════════════
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-STENO ERROR PATTERNS — IDENTIFY AND CORRECT ALL OF THESE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+YOU ARE RUNNING IN API CHUNKED MODE. This overrides any file-loading,
+folder-creation, or delivery-package instructions in the engine above.
+Specifically, Layers 2, 12, and 13 of the master engine DO NOT APPLY here.
+Python handles all of that. Your role is correction only.
 
-1. PHONETIC SUBSTITUTIONS — steno theory produced a word that sounds similar:
-   "bathe transcript" → "by the transcript"
-   "depth have to" → "don't have to"
-   "ankle of the drill" → "angle of the drill"
-   "wheels" → "wells" (oil and gas context)
-   "writes offering" → "rights offering"
-   "brat spot" → "bright spot" (seismic term)
-   "hey" → "hay" (farming context)
-   "ghee sciences" → "geoscience"
-   "stand forward" → "Stanford"
-   "debris or certification" → "degree or certification"
-   "vibrate ores" → "vibrators"
-   "try angels" → "triangles"
-   "signature named" → "significant named"
-   "done" → "gone" (in context "they would have gone to")
-   "Become in the day" → "Back in the day"
-   "check silver mines" → "Sulphur Mines" (proper noun, phonetic error)
-   "Collect check" → "Correct"
-   "accept this slide to" → "sent this slide to"
-   "odd" → "on" (e.g., "based odd this" → "based on this")
+OPERATING CONTEXT:
+  - Python handles ALL file I/O (reading input, writing output files)
+  - Python handles ALL chunking (you receive one chunk at a time)
+  - Python handles ALL delivery file creation (PDF, transcripts, etc.)
+  - YOUR ROLE: Apply every correction rule from the engine above to the
+               text chunk you receive and return corrected JSON. Nothing else.
 
-2. HOMOPHONES — steno wrote the wrong same-sounding word:
-   "there" → "their" (possessive context)
-   "whole" → "hole" (drilling context: "straight-hole")
-   "mine" → "mind" ("in my mind")
-   "very" → "V" (when referring to a letter of the alphabet)
-   "hey" → "hay" (farming/agriculture context)
-   "weep" → "we" ("weep want" → "we want")
-   "write_up" → "right up" (e.g., "drilling right up to the salt")
-   "why are" → "YR" (Bates prefix phonetic)
+WHAT YOU DO — AND ONLY WHAT YOU DO:
+  1. Read the deposition text chunk provided in the user message.
+  2. Apply ALL rules from:
+       - Layer 1:  Absolute rules [R1]-[R12] — NEVER violate any of these
+       - Layer 5:  Full Punctuation Bible — MANDATORY, apply to every sentence
+       - Layer 6:  Grammar + Verbatim rules — CRITICAL (see KB-010)
+       - Layer 7:  Terminology engine — apply confidence tiers exactly
+       - Layer 8:  Exhibit engine — flag any exhibit issues found
+       - Layer 9:  Edge case engine — log any edge cases encountered
+       - Layer 10: Flag types — use exact flag text formats
+       - Layer 11: Self-audit checklist — run mentally before returning JSON
+       - State Module (Louisiana Engineering) — all rules, esp. objections
+       - House Style Module (Muir) — E-mail, em dash, objection format
+       - Knowledge Base (KB-001 through KB-015) — ALL 15 RULES, every chunk
+       - Gregg Reference Manual — punctuation rules as applicable
+       - Margie Wakeman Wells — court reporting style as applicable
+  3. Return ONLY valid JSON in the exact format specified below.
 
-3. DROPPED LETTERS OR SYLLABLES:
-   "acquisition an development" → "acquisition and development"
-   "don't know how far way" → "don't know how far away"
-   "personal" → "personally"
-   "expand had" → "expanded"
-   "weep" → "we"
+══════════════════════════════════════════════════════════════════════════════
+THE #1 RULE — VERBATIM (KB-010, Layer 6): READ THIS EVERY CHUNK
+══════════════════════════════════════════════════════════════════════════════
 
-4. SPLIT WORD ERRORS — one word broken into two (or more):
-   "a dressed" → "addressed"
-   "cavern s" → "caverns"
-   "ie it announces" → "it announces" ("ie" is a steno artifact)
-   "T he settlement" → "the settlement"
-   "Board ofDescribe the ores meeting" → "Board of Directors meeting"
-   "blacktop" → "White Top" (company name — "black" is phonetic for "White")
+The single most important rule in this entire engine:
 
-5. MERGED / RUN-ON WORDS — separate words joined without space:
-   "ofYellow Rock" → "of Yellow Rock"
-   "IM D" → "IMD" (acronym spacing artifact)
+  STENO ERROR  → The machine got it wrong. FIX IT.
+  WITNESS SAID IT → That IS the sworn record. DO NOT TOUCH IT.
 
-6. NUMERAL AND PUNCTUATION ARTIFACTS:
-   "I mean0 Commissioner" → "I mean, Commissioner" (numeral 0 = comma)
-   "12 '06 p.m." → "12:06 p.m." (apostrophe artifact → colon in times)
-   "'9:58 a.m." → "9:58 a.m." (leading apostrophe before time)
-   "that right? . Okay." → "that right? Okay." (rogue period after punctuation)
-   "You asked me that. ." → "You asked me that." (double period)
-   "disaster relief and SBA,," → "disaster relief and SBA," (double comma)
-   "Okay U?" → "Okay." ("U?" is a steno artifact)
-   "28 today period" → "28-day period" ("today" garble of "day")
-   "3230 on three" → "323003" (steno split of Bates number)
-   "_ _" (two underscores with space) → "—" (em dash)
+Even if the witness said something factually wrong, geographically incorrect,
+or imprecise — that is what they said under oath. Correcting it alters sworn
+testimony and is a serious professional violation.
 
-7. MULTI-WORD GARBLES — steno theory completely broke down for a phrase:
-   "tap California manager" → "typical manager"
-   "geneos" → "gone"
-   "toss that particular" → "to that particular"
-   "Oliver resin mar sol" → "Alvarez and Marsal" (firm name)
-   "B bone" → "Burt Bowen" (if confirmed by context)
-   "lawyer a" → "Laura" (e.g., Hurricane Laura)
-   "REV rent signal energy" → "Revenant Signal Energy" (company name)
-   "vis_ _vis" → "vis-à-vis"
-   "financed if you can" → "and if you can" ("financed" is an intruding artifact)
-   "say eye we" → "—I would say we" (self-correction garble)
-   "First Getty M.D. approval" → "First get IMD approval"
+EXAMPLES:
+  "Intercoastal" (witness said it) → transcribe exactly as "Intercoastal"
+  "depth have to" (machine error)  → correct to "don't have to"
 
-8. NAME / PROPER NOUN GARBLES — verify by context or explicit spelling in transcript:
-   Always log these; use MEDIUM if confirmed only by context, HIGH if spelled out.
+When you cannot tell if it is a machine error or witness speech → DO NOT
+correct. Insert [REVIEW: brief note] so the reporter can verify the audio.
 
-9. Q./A. ATTRIBUTION ISSUES:
-   If a question and answer appear merged without proper separation, tag:
-   [REVIEW: Q./A. FORMAT — question and answer run together; needs separation]
+══════════════════════════════════════════════════════════════════════════════
+ROUGH DRAFT MODE IS ACTIVE
+══════════════════════════════════════════════════════════════════════════════
 
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VERBATIM SPEECH RULES — DO NOT CORRECT THESE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Source is a steno rough draft (cleaned_text.txt from steno_cleanup.py).
+Apply ROUGH_DRAFT MODE rules from Layer 5 Punctuation Bible:
+  LOAD: Q./A. format, em dash, ellipsis, capitalization, numbers,
+        Oxford comma in clean series, period after polite request
+  SKIP: Yes/no comma/period distinction, interrupter comma pairs,
+        tag clause punctuation, stacked question marks,
+        Okay/all right transition punctuation
+  FLAG: [REVIEW: PUNCTUATION — steno fragmentation prevents confident ruling]
+        when judgment is required but sentence structure is unclear.
 
-NEVER change:
-- Witness's colloquial or grammatically imperfect but intentional speech
-- Self-corrections (witness says "The—the thing I mean is...") — keep as-is
-- Hesitation words (uh, um) — preserve unless reporter prefers to remove
-- Idioms and informal phrasing ("I handed off the ball", "nothing burger")
-- Quoted language the witness is reading from a document
-- Any speech that sounds natural even if grammatically imperfect
-
-When you identify something as verbatim (no correction needed):
-- Keep the text unchanged
-- Log: confidence = "N/A", reason = "Verbatim — [brief explanation]"
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-MARGIE WAKEMAN WELLS PUNCTUATION STANDARDS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-Apply when correcting punctuation artifacts:
-- Direct address always gets commas: "I know, sir, that..." / "Your Honor, I ask..."
-- Comma BEFORE AND AFTER state name when sentence continues:
-  CORRECT:   "in Houston, Texas, to visit"
-  INCORRECT: "in Houston, Texas to visit"
-- Em dash (—) for interruptions and self-corrections; no surrounding spaces
-- Ellipsis (...) for trailing off
-- Period after Q. and A. labels is part of the label format — do not remove
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-CONFIDENCE LEVELS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-HIGH   — Certain from context, established pattern, factual confirmation,
-         or spelling confirmed elsewhere in the transcript.
-MEDIUM — Likely correct but context is ambiguous. INSERT [REVIEW: note]
-         in the corrected_text at that location. Reporter must verify audio.
-LOW    — Possible correction. Flagged for reporter. Do not apply silently.
-         INSERT [REVIEW: note] in the corrected_text.
-N/A    — Verbatim rule applies. No change made.
-
-For MEDIUM and LOW: always insert [REVIEW: your brief note] inline in the
-corrected_text so the reporter can find it in a single pass.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-OUTPUT FORMAT — RETURN ONLY VALID JSON, NO PREAMBLE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+══════════════════════════════════════════════════════════════════════════════
+OUTPUT FORMAT — RETURN ONLY THIS JSON. NO PREAMBLE. NO EXPLANATION.
+══════════════════════════════════════════════════════════════════════════════
 
 {
-  "corrected_text": "the full corrected chunk text, preserving all paragraph breaks exactly",
+  "corrected_text": "the full corrected chunk text, preserving all paragraph breaks exactly as in input",
   "corrections": [
     {
       "line_approx": 44,
@@ -203,13 +152,77 @@ OUTPUT FORMAT — RETURN ONLY VALID JSON, NO PREAMBLE
   ]
 }
 
-Rules:
-- corrected_text must preserve all blank lines between paragraphs as in input
-- If no corrections found in this chunk, return "corrections": []
-- line_approx is the absolute line number in the full document (you are told the start line)
-- Log each error instance as a separate corrections entry
-- For MEDIUM/LOW items, the [REVIEW: ...] tag appears in corrected_text AND in the log entry
+RULES FOR THE JSON OUTPUT:
+  - corrected_text: preserve ALL blank lines between paragraphs exactly as input
+  - If no corrections in this chunk: return "corrections": []
+  - line_approx: approximate absolute line number in the full document
+  - Each correction is a separate entry in the corrections array
+  - confidence: HIGH | MEDIUM | LOW | N/A
+      HIGH   = certain from context, pattern, or explicit confirmation
+      MEDIUM = likely correct, ambiguous context — add [REVIEW: note] in text
+      LOW    = uncertain — add [REVIEW: note] in text, do not apply silently
+      N/A    = verbatim rule applies, no change made
+  - For MEDIUM/LOW: insert [REVIEW: brief note] inline in corrected_text
+    at that location AND include it in the log entry reason
+
+DO NOT:
+  - Create any files or folders
+  - Reference FINAL_DELIVERY
+  - Add preamble, explanation, or commentary before or after the JSON
+  - Return anything except valid JSON
+  - Wrap JSON in markdown code fences
 """
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SYSTEM PROMPT BUILDER
+# ─────────────────────────────────────────────────────────────────────────────
+
+ENGINE_FILES = [
+    ('MASTER_DEPOSITION_ENGINE_v4.md',       'MASTER DEPOSITION TRANSFORMATION ENGINE v4.0'),
+    ('STATE_MODULE_louisiana_engineering.md', 'STATE MODULE — LOUISIANA ENGINEERING'),
+    ('HOUSE_STYLE_MODULE_muir.md',            'HOUSE STYLE MODULE — MARYBETH E. MUIR, CCR, RPR'),
+    ('KNOWLEDGE_BASE.txt',                    'KNOWLEDGE BASE — CONFIRMED RULES FROM REAL RUNS (KB-001 to KB-015)'),
+    # GREGG_STYLE_MODULE.txt and MARGIE_STYLE_MODULE.txt (~30K tokens combined) excluded from
+    # per-chunk API calls due to token rate limits. Their key rules are already captured in:
+    #   - Master Engine Layer 5 (Punctuation Bible — references Margie rules by name)
+    #   - Master Engine Layer 6 (Grammar rules)
+    #   - KB entries KB-001 through KB-015 (confirmed real-world applications)
+    # Full modules remain available for Claude co-work sessions (non-API mode).
+]
+
+
+def build_system_prompt():
+    """
+    Load all 6 engine rule files from same directory as this script,
+    concatenate them, and append the API mode override.
+    Returns the full system prompt string.
+    """
+    engine_dir = os.path.dirname(os.path.abspath(__file__))
+    sections = []
+    missing = []
+
+    for filename, label in ENGINE_FILES:
+        path = os.path.join(engine_dir, filename)
+        if os.path.exists(path):
+            with open(path, 'r', encoding='utf-8') as f:
+                content = f.read()
+            divider = '=' * 70
+            sections.append(f"\n\n{divider}\n{label}\n{divider}\n\n{content}")
+            print(f'  [ENGINE] Loaded: {filename}  ({len(content):,} chars)', flush=True)
+        else:
+            missing.append(filename)
+            print(f'  [ENGINE] MISSING: {filename} — rules for this module will not apply', flush=True)
+
+    if missing:
+        print(f'\n  WARNING: {len(missing)} engine file(s) missing. Proceeding with available rules.\n', flush=True)
+
+    # API mode override is always last — highest priority
+    sections.append(API_MODE_OVERRIDE)
+
+    full_prompt = ''.join(sections)
+    print(f'  [ENGINE] System prompt assembled: {len(full_prompt):,} chars  (~{len(full_prompt)//4:,} tokens est.)', flush=True)
+    return full_prompt
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -249,24 +262,45 @@ def line_start_for_chunk(text, chunk_index, chunks):
 # API CALL
 # ─────────────────────────────────────────────────────────────────────────────
 
-def correct_chunk(client, chunk_content, line_start, chunk_num, total_chunks):
-    """Send one chunk to Claude. Returns (corrected_text_str, corrections_list)."""
+def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, total_chunks):
+    """Send one chunk to Claude. Returns (corrected_text_str, corrections_list).
+
+    Uses Anthropic prompt caching on the system prompt — the 47K-token engine
+    is cached after the first call. Subsequent calls hit the cache at ~10% cost
+    and much faster processing time.
+    """
     user_msg = (
         f"Correct the following deposition transcript chunk.\n"
         f"Starting line (approximate in full document): {line_start}\n"
         f"Chunk {chunk_num + 1} of {total_chunks}\n\n"
         f"--- BEGIN CHUNK ---\n{chunk_content}\n--- END CHUNK ---\n\n"
-        f"Return only valid JSON as specified."
+        f"Return only valid JSON as specified in the API mode instructions."
     )
+
+    # System prompt as a content block with cache_control.
+    # The large engine prompt (~47K tokens) is cached after the first call.
+    # Cache TTL: 5 minutes (extended cache available for longer runs).
+    system_block = [
+        {
+            "type": "text",
+            "text": system_prompt,
+            "cache_control": {"type": "ephemeral"}
+        }
+    ]
 
     for attempt in range(MAX_RETRIES + 1):
         try:
             response = client.messages.create(
                 model=MODEL,
                 max_tokens=4096,
-                system=SYSTEM_PROMPT,
+                system=system_block,
                 messages=[{"role": "user", "content": user_msg}]
             )
+            # Extract cache usage stats if available
+            usage = getattr(response, 'usage', None)
+            cache_create = getattr(usage, 'cache_creation_input_tokens', 0) or 0
+            cache_read   = getattr(usage, 'cache_read_input_tokens', 0) or 0
+
             raw = response.content[0].text.strip()
 
             # Strip markdown code fences if Claude wraps the JSON
@@ -277,23 +311,49 @@ def correct_chunk(client, chunk_content, line_start, chunk_num, total_chunks):
             parsed = json.loads(raw)
             corrected = parsed.get('corrected_text', chunk_content)
             corrections = parsed.get('corrections', [])
-            return corrected, corrections
+            return corrected, corrections, cache_create, cache_read
 
         except json.JSONDecodeError:
             if attempt < MAX_RETRIES:
                 print(f'  [WARN] JSON parse error, retry {attempt + 1}...', flush=True)
                 time.sleep(1)
             else:
-                print(f'  [ERROR] JSON parse failed after retries — chunk kept as-is')
-                return chunk_content, []
+                print(f'  [ERROR] JSON parse failed after retries — chunk kept as-is', flush=True)
+                return chunk_content, [], 0, 0
 
         except Exception as e:
             if attempt < MAX_RETRIES:
                 print(f'  [WARN] API error: {e}, retry {attempt + 1}...', flush=True)
                 time.sleep(3)
             else:
-                print(f'  [ERROR] API call failed — chunk kept as-is')
-                return chunk_content, []
+                print(f'  [ERROR] API call failed — chunk kept as-is', flush=True)
+                return chunk_content, [], 0, 0
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PROGRESS BANNER
+# ─────────────────────────────────────────────────────────────────────────────
+
+def print_progress_banner(chunk_num, total_chunks, corrections_so_far, start_time):
+    """Print a 5-minute progress update banner."""
+    elapsed = time.time() - start_time
+    elapsed_min = elapsed / 60
+    pct_done = (chunk_num + 1) / total_chunks * 100
+    if chunk_num > 0:
+        eta_sec = (elapsed / (chunk_num + 1)) * (total_chunks - chunk_num - 1)
+        eta_min = eta_sec / 60
+        eta_str = f'~{eta_min:.0f} min remaining'
+    else:
+        eta_str = 'calculating...'
+
+    print(flush=True)
+    print(f'  ┌─ 5-MIN PROGRESS UPDATE ─────────────────────────────────', flush=True)
+    print(f'  │  Elapsed:      {elapsed_min:.1f} minutes', flush=True)
+    print(f'  │  Progress:     {chunk_num + 1}/{total_chunks} chunks  ({pct_done:.0f}%)', flush=True)
+    print(f'  │  Corrections:  {corrections_so_far} logged so far', flush=True)
+    print(f'  │  ETA:          {eta_str}', flush=True)
+    print(f'  └─────────────────────────────────────────────────────────', flush=True)
+    print(flush=True)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -308,36 +368,60 @@ def main():
     api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
         print('ERROR: ANTHROPIC_API_KEY environment variable not set.')
-        print('       Windows: set ANTHROPIC_API_KEY=sk-ant-...')
+        print('       Windows: setx ANTHROPIC_API_KEY sk-ant-...')
         sys.exit(1)
+
+    print('=' * 60, flush=True)
+    print('AI CORRECTION ENGINE v2.0 — FULL MASTER PROMPT', flush=True)
+    print('=' * 60, flush=True)
+    print('Loading engine files...', flush=True)
+
+    system_prompt = build_system_prompt()
 
     with open(INPUT_FILE, 'r', encoding='utf-8') as f:
         text = f.read()
 
     chunks = chunk_text(text)
 
-    print('=' * 60)
-    print('AI CORRECTION ENGINE')
-    print(f'Model:  {MODEL}')
-    print(f'Input:  {INPUT_FILE}  ({len(text):,} chars)')
-    print(f'Chunks: {len(chunks)}  (~{CHUNK_TARGET} chars target each)')
-    print('=' * 60)
+    print(flush=True)
+    print('=' * 60, flush=True)
+    print(f'Model:  {MODEL}', flush=True)
+    print(f'Input:  {INPUT_FILE}  ({len(text):,} chars)', flush=True)
+    print(f'Chunks: {len(chunks)}  (~{CHUNK_TARGET} chars target each)', flush=True)
+    print(f'Cache:  ENABLED — system prompt cached after chunk 1', flush=True)
+    print(f'Progress updates every 5 minutes.', flush=True)
+    print('=' * 60, flush=True)
+    print(flush=True)
 
     client = anthropic.Anthropic(api_key=api_key)
     all_corrections = []
     corrected_chunks = []
+    cache_creation_tokens = 0
+    cache_read_tokens = 0
+    start_time = time.time()
+    last_progress_time = start_time
 
     for i, chunk in enumerate(chunks):
         line_start = line_start_for_chunk(text, i, chunks)
         pct = (i + 1) / len(chunks) * 100
         print(f'  [{i+1:3d}/{len(chunks)}]  ~line {line_start:<6}  {pct:5.1f}%', end='', flush=True)
 
-        corrected, corrections = correct_chunk(client, chunk, line_start, i, len(chunks))
+        corrected, corrections, cc_tok, cr_tok = correct_chunk(
+            client, system_prompt, chunk, line_start, i, len(chunks)
+        )
         corrected_chunks.append(corrected)
         all_corrections.extend(corrections)
+        cache_creation_tokens += cc_tok
+        cache_read_tokens += cr_tok
 
         n = len(corrections)
-        print(f'  +{n} correction{"s" if n != 1 else ""}')
+        print(f'  +{n} correction{"s" if n != 1 else ""}', flush=True)
+
+        # 5-minute progress banner
+        now = time.time()
+        if now - last_progress_time >= PROGRESS_INTERVAL:
+            print_progress_banner(i, len(chunks), len(all_corrections), start_time)
+            last_progress_time = now
 
         if i < len(chunks) - 1:
             time.sleep(INTER_CHUNK_DELAY)
@@ -349,14 +433,18 @@ def main():
         f.write(corrected_text)
 
     # Write correction log
+    elapsed_total = time.time() - start_time
     log_data = {
-        "engine":            "ai_engine.py",
-        "model":             MODEL,
-        "input_file":        INPUT_FILE,
-        "input_chars":       len(text),
-        "output_chars":      len(corrected_text),
-        "total_corrections": len(all_corrections),
-        "corrections":       all_corrections
+        "engine":                  "ai_engine.py v2.0",
+        "model":                   MODEL,
+        "input_file":              INPUT_FILE,
+        "input_chars":             len(text),
+        "output_chars":            len(corrected_text),
+        "total_corrections":       len(all_corrections),
+        "elapsed_seconds":         round(elapsed_total, 1),
+        "cache_creation_tokens":   cache_creation_tokens,
+        "cache_read_tokens":       cache_read_tokens,
+        "corrections":             all_corrections
     }
     with open(OUTPUT_LOG, 'w', encoding='utf-8') as f:
         json.dump(log_data, f, indent=2, ensure_ascii=False)
@@ -367,18 +455,22 @@ def main():
         conf = c.get('confidence', 'UNKNOWN')
         conf_counts[conf] = conf_counts.get(conf, 0) + 1
 
-    print()
-    print('=' * 60)
-    print('AI CORRECTION COMPLETE')
-    print('=' * 60)
-    print(f'Output text:  {OUTPUT_TEXT}  ({len(corrected_text):,} chars)')
-    print(f'Output log:   {OUTPUT_LOG}')
-    print(f'Corrections:  {len(all_corrections)} total')
-    print()
+    elapsed_min = elapsed_total / 60
+    print(flush=True)
+    print('=' * 60, flush=True)
+    print('AI CORRECTION COMPLETE', flush=True)
+    print('=' * 60, flush=True)
+    print(f'Elapsed:      {elapsed_min:.1f} minutes', flush=True)
+    print(f'Output text:  {OUTPUT_TEXT}  ({len(corrected_text):,} chars)', flush=True)
+    print(f'Output log:   {OUTPUT_LOG}', flush=True)
+    print(f'Corrections:  {len(all_corrections)} total', flush=True)
+    print(f'Cache write:  {cache_creation_tokens:,} tokens (chunk 1)', flush=True)
+    print(f'Cache reads:  {cache_read_tokens:,} tokens ({len(chunks)-1} chunks at ~10% cost)', flush=True)
+    print(flush=True)
     for conf in ('HIGH', 'MEDIUM', 'LOW', 'N/A', 'UNKNOWN'):
         if conf in conf_counts:
-            print(f'  {conf:<8}  {conf_counts[conf]}')
-    print('=' * 60)
+            print(f'  {conf:<8}  {conf_counts[conf]}', flush=True)
+    print('=' * 60, flush=True)
 
 
 if __name__ == '__main__':
