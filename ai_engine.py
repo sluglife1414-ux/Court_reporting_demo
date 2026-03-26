@@ -54,6 +54,7 @@ if sys.stdout.encoding != 'utf-8':
 INPUT_FILE         = 'cleaned_text.txt'
 OUTPUT_TEXT        = 'corrected_text.txt'
 OUTPUT_LOG         = 'correction_log.json'
+CHECKPOINT_FILE    = 'ai_engine_checkpoint.json'
 MODEL              = 'claude-sonnet-4-6'
 CHUNK_TARGET       = 3000    # soft char limit per chunk; always breaks at paragraph boundary
 MAX_RETRIES        = 2
@@ -357,6 +358,41 @@ def print_progress_banner(chunk_num, total_chunks, corrections_so_far, start_tim
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# CHECKPOINT / RESUME
+# ─────────────────────────────────────────────────────────────────────────────
+
+def save_checkpoint(chunk_index, corrected_chunks, all_corrections,
+                    cache_creation_tokens, cache_read_tokens, input_file, input_size):
+    """Write checkpoint after every completed chunk so a killed run can resume."""
+    data = {
+        'input_file':            input_file,
+        'input_size':            input_size,
+        'last_completed_chunk':  chunk_index,
+        'corrected_chunks':      corrected_chunks,
+        'corrections':           all_corrections,
+        'cache_creation_tokens': cache_creation_tokens,
+        'cache_read_tokens':     cache_read_tokens,
+    }
+    with open(CHECKPOINT_FILE, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False)
+
+
+def load_checkpoint(input_file, input_size):
+    """Return checkpoint dict if one exists for this exact input, else None."""
+    if not os.path.exists(CHECKPOINT_FILE):
+        return None
+    try:
+        with open(CHECKPOINT_FILE, 'r', encoding='utf-8') as f:
+            cp = json.load(f)
+    except Exception:
+        return None
+    if cp.get('input_file') != input_file or cp.get('input_size') != input_size:
+        print('  [CHECKPOINT] Found checkpoint but input file changed — starting fresh.')
+        return None
+    return cp
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # MAIN
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -394,14 +430,30 @@ def main():
     print(flush=True)
 
     client = anthropic.Anthropic(api_key=api_key)
-    all_corrections = []
-    corrected_chunks = []
-    cache_creation_tokens = 0
-    cache_read_tokens = 0
+
+    # ── Resume from checkpoint if one exists for this input ──────────────────
+    checkpoint = load_checkpoint(INPUT_FILE, len(text))
+    if checkpoint:
+        start_chunk          = checkpoint['last_completed_chunk'] + 1
+        corrected_chunks     = checkpoint['corrected_chunks']
+        all_corrections      = checkpoint['corrections']
+        cache_creation_tokens = checkpoint['cache_creation_tokens']
+        cache_read_tokens    = checkpoint['cache_read_tokens']
+        print(f'  [RESUME] Checkpoint found — resuming from chunk {start_chunk + 1}/{len(chunks)}', flush=True)
+        print(f'  [RESUME] {len(all_corrections)} corrections already logged', flush=True)
+        print(flush=True)
+    else:
+        start_chunk          = 0
+        corrected_chunks     = []
+        all_corrections      = []
+        cache_creation_tokens = 0
+        cache_read_tokens    = 0
+
     start_time = time.time()
     last_progress_time = start_time
 
-    for i, chunk in enumerate(chunks):
+    for i in range(start_chunk, len(chunks)):
+        chunk = chunks[i]
         line_start = line_start_for_chunk(text, i, chunks)
         pct = (i + 1) / len(chunks) * 100
         print(f'  [{i+1:3d}/{len(chunks)}]  ~line {line_start:<6}  {pct:5.1f}%', end='', flush=True)
@@ -416,6 +468,12 @@ def main():
 
         n = len(corrections)
         print(f'  +{n} correction{"s" if n != 1 else ""}', flush=True)
+
+        # Save checkpoint + partial output after every chunk
+        save_checkpoint(i, corrected_chunks, all_corrections,
+                        cache_creation_tokens, cache_read_tokens, INPUT_FILE, len(text))
+        with open(OUTPUT_TEXT, 'w', encoding='utf-8') as f:
+            f.write('\n\n'.join(corrected_chunks))
 
         # 5-minute progress banner
         now = time.time()
@@ -448,6 +506,10 @@ def main():
     }
     with open(OUTPUT_LOG, 'w', encoding='utf-8') as f:
         json.dump(log_data, f, indent=2, ensure_ascii=False)
+
+    # Clean up checkpoint — run completed successfully
+    if os.path.exists(CHECKPOINT_FILE):
+        os.remove(CHECKPOINT_FILE)
 
     # Summary
     conf_counts = {}
