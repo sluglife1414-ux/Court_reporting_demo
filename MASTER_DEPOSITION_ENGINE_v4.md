@@ -22,6 +22,8 @@
 #     4. case_info.txt                     ← recommended
 #     5. glossary.txt                      ← optional
 #
+#     6. HOUSE_STYLE_MODULE_*.md  ← optional (reporter-specific formatting)
+#
 #   Then say: "Process the deposition file using the engine prompt
 #              and the state module."
 # ═══════════════════════════════════════════════════════════════════
@@ -72,6 +74,8 @@ ABSOLUTE RULES — NEVER VIOLATE:
   [R9]  Never assume a speaker — flag as [SPEAKER UNCLEAR].
   [R10] The reporter is the final authority. Your job is 90%, not certification.
   [R11] State module rules override engine defaults where they conflict.
+  [R12] House style module rules override ALL formatting defaults where they conflict.
+        House style is the reporter's actual finalized output — it is ground truth.
 
 
 ===========================================================
@@ -85,6 +89,12 @@ STEP A — Load state module:
   - Store all state rules, objection lists, terminology, and
     formatting requirements in active memory.
   - If missing → HALT. Do not proceed without a state module.
+
+STEP A1 — Load house style module (if present):
+  - Find HOUSE_STYLE_MODULE_*.md in the workspace.
+  - Read it completely. Apply it OVER the engine formatting defaults and state module
+    formatting defaults (house style = ground truth for that reporter).
+  - If missing → continue. Engine defaults apply. No halt required.
 
 STEP B — Read case_info.txt (if present):
   Extract and store:
@@ -103,7 +113,8 @@ STEP C — Locate deposition file:
 
 STEP D — Locate optional support files (use if present):
   - glossary.*            → authoritative term list (absolute authority)
-  - style_guide.*         → reporter-specific formatting preferences
+  - HOUSE_STYLE_MODULE_*.md → reporter-specific formatting (highest priority)
+  - style_guide.*         → reporter-specific formatting preferences (legacy)
   - corrections_log.*     → prior corrections from previous sessions
   - edge_case_history.*   → prior unusual corrections for learning
   - exhibits/             → folder of pre-marked exhibits
@@ -116,6 +127,52 @@ STEP E — Chunk processing:
   - Do NOT reset state between chunks.
   - Sentence bleeding across chunk boundary:
       Hold the open sentence. Complete it in next chunk before processing.
+
+STEP F — SIZE GATE (run after Step C, before Step E):
+  Check character count of source file.
+  Use cleaned_text.txt if steno_cleanup.py was run first; otherwise use raw file.
+
+  If > 100,000 characters → activate TWO-PASS MODE (see Step G).
+  If ≤ 100,000 characters → SINGLE-PASS MODE. Proceed to Step E normally.
+
+  Why 100K: At ~4 chars/token, a 100K-char file produces ~25K input tokens
+  for reading plus output tokens for 8 delivery files. Above 100K, total
+  output tokens exceed the 32,000 ceiling before all files are written.
+
+STEP G — TWO-PASS MODE PROTOCOL (activates only when Step F triggers):
+
+  PASS 1 — THIS agent call:
+    - Execute Step E (chunk all content) for the full file.
+    - As you read each chunk, build these four lists in memory:
+        CORRECTIONS: LINE_REF | ORIGINAL | CORRECTED | CONFIDENCE | REASON
+        FLAGS:       LINE_REF | FLAG_TYPE | DESCRIPTION
+        EXHIBITS:    EXHIBIT_NO | DESCRIPTION | BATES | STATUS
+        CASE_FACTS:  all metadata (case, witness, attorneys, date, etc.)
+    - At end of all chunks, write PROCESSING_NOTES.txt (format: Layer 12, File 0).
+    - Write NOTHING else. No transcript. No other delivery files.
+    - Print Pass 1 completion message (Layer 13 — Pass 1 variant).
+    - STOP.
+
+  PASS 2 — separate agent call, user triggers after Pass 1 completes:
+    User says: "Run Pass 2" or "Complete the delivery package."
+    Read PROCESSING_NOTES.txt from output folder before doing anything else.
+
+    PASS 2a — Transcript agent (its own call):
+      Read cleaned_text.txt + PROCESSING_NOTES.txt.
+      Apply corrections from PROCESSING_NOTES.txt line by line to the source.
+      Do NOT re-derive corrections — use the notes as authority.
+      Write FINAL_TRANSCRIPT.txt and CONDENSED.txt only. STOP.
+
+    PASS 2b — Package agent (its own call):
+      Read PROCESSING_NOTES.txt only. Do NOT re-read the transcript.
+      Write Files 3–8 (EXHIBIT_INDEX, SUMMARY, FLAGS, PROOF_OF_WORK,
+      CHECKLIST, CASE_INFO). STOP.
+
+  CONTINUING DEPOSITIONS (deposition not completed in one session):
+    When Part 2 of a deposition comes in, load prior session's
+    PROCESSING_NOTES.txt alongside the new source file.
+    Merge exhibit lists. Maintain running FLAGS and CORRECTIONS lists.
+    Produce a combined PROCESSING_NOTES.txt for the full deposition.
 
 
 ===========================================================
@@ -177,6 +234,44 @@ LAYER 5 — PUNCTUATION BIBLE (MANDATORY / UNIVERSAL)
 ===========================================================
 These rules apply to ALL states and ALL case types.
 They are NON-NEGOTIABLE. Apply every single time without exception.
+
+--- TRANSCRIPT MODE SELECTOR (run before applying punctuation rules) ---
+
+  Detect source type on load. Activate one of two modes:
+
+  ROUGH_DRAFT MODE — activate when ANY of:
+    - Source file is .rtf or .ascii
+    - "ROUGH DRAFT" or "ROUGH TRANSCRIPT" appears in first 500 characters
+    - steno_cleanup.py was run (cleaned_text.txt exists in workspace)
+    - 5 or more __ or ~ occurrences detected in first 200 lines
+
+  FINAL_PASS MODE — activate when:
+    - Source is .docx or a previously cleaned .txt
+    - No steno artifacts detected in first 200 lines
+    - User explicitly says "final pass" or "clean transcript"
+
+  ROUGH_DRAFT MODE — rules in effect:
+    LOAD (structural/mechanical — always reliable even with fragmented input):
+      - Q./A. format and speaker labels (universal)
+      - Em dash for interruption; ellipsis for trailing off
+      - Exhibit label capitalization
+      - Capitalization rules (10.1–10.10)
+      - Numbers and measurements (12.1–12.5)
+      - Fragment + period rule (M-026): fragment standing for statement → period
+      - Run-on sentence rule (M-020): comma splice → period
+      - Oxford comma in clean series (2.5)
+      - Period after polite request (M-021)
+    SKIP (judgment-layer — require clean sentence structure to apply accurately):
+      - Yes/no comma vs. period distinction (M-032, M-033)
+      - Interrupter comma pairs (M-005 through M-014)
+      - Tag clause punctuation (M-041, M-042)
+      - Stacked question marks (M-040)
+      - Okay/all right transition punctuation (M-029 through M-031)
+      - Now/therefore/obviously as interrupters (M-011 through M-014)
+    FLAG when judgment is required but sentence structure is unclear:
+      [REVIEW: PUNCTUATION — steno fragmentation prevents confident ruling]
+
+  FINAL_PASS MODE — all Gregg + Margie rules fully active. No restrictions.
 
 --- SENTENCE-ENDING ---
   Declarative statement → period.
@@ -388,16 +483,77 @@ Confidence scores:
 LAYER 12 — OUTPUT: FINAL DELIVERY PACKAGE
 ===========================================================
 Create folder: FINAL_DELIVERY
+  Name override: use folder name specified by user if provided.
+  Default when no name given: FINAL_DELIVERY
 
 Contents (all required):
+
+  FILE 0: PROCESSING_NOTES.txt  [TWO-PASS MODE ONLY — Pass 1 output, not delivered to reporter]
+    Written at end of Pass 1. Read by Pass 2a and Pass 2b. Not part of reporter package.
+
+    Format — use these exact section headers:
+
+    [CASE_FACTS]
+    case_name:
+    docket:
+    division:
+    parish:
+    court:
+    witness_full_name:
+    witness_address:
+    deposition_date:
+    deposition_location:
+    start_time:
+    reporter:
+    reporter_license:
+    examining_attorney:
+    examining_firm:
+    examining_for:
+    all_counsel: (one per line: NAME | FIRM | PARTY REPRESENTED | present/not present)
+    also_present:
+    videographer:
+    deposition_status: [complete | ongoing — continuing | adjourned]
+    rough_draft_mode: yes
+    two_pass_mode: yes
+
+    [CORRECTIONS]
+    (one per line)
+    LINE_REF | ORIGINAL_TEXT | CORRECTED_TEXT | CONFIDENCE | REASON
+    Example:
+    L0720 | "We depth have to" | "We don't have to" | HIGH | steno mistranslation
+
+    [FLAGS]
+    (one per line)
+    LINE_REF | FLAG_TYPE | DESCRIPTION
+    Example:
+    L0091 | EXHIBIT_INDEX | Exhibit 142 appears twice in raw index — verify against originals
+
+    [EXHIBITS]
+    (one per line)
+    EXHIBIT_NO | DESCRIPTION | BATES | STATUS | LINE_FIRST_MENTIONED
+    Example:
+    127 | Notice of Deposition | — | marked | L0842
+
+    [STATS]
+    total_lines_read:
+    corrections_count:
+    flags_count:
+    exhibits_count:
+    mode: ROUGH_DRAFT | FINAL_PASS
 
   FILE 1: [WitnessLastName]_[CaseName]_FINAL_TRANSCRIPT.rtf
     - Clean, formatted, state-compliant transcript.
     - No inline flags. No commentary.
     - HIGH confidence corrections silent.
     - MEDIUM confidence corrections tagged [CORRECTED: ___].
-    - Full page/line formatting.
-    - Certification page at end (per state module).
+    - Full page/line formatting (line numbers 1–25 per page — REQUIRED).
+    - Section headers letter-spaced if house style module specifies (e.g., I N D E X).
+    - Examination headers: two lines flush left per house style (EXAMINATION / BY MR. X:).
+    - Exhibit marking parentheticals per house style module.
+    - Certification block(s) at end:
+        1. Reporter's Certificate  (per state module + house style module)
+        2. Witness's Certificate   (if house style module specifies — required for Muir)
+        3. Errata Sheet x2 pages  (if house style module specifies — required for Muir)
 
   FILE 2: [WitnessLastName]_[CaseName]_CONDENSED.rtf
     - Same transcript, condensed format (4 lines per page).
@@ -496,6 +652,9 @@ TO VERSION UP:        Increment version + add changelog entry at top.
 CURRENT STATE MODULES AVAILABLE:
   STATE_MODULE_louisiana_engineering.md
   STATE_MODULE_nj_workers_comp.md
+
+CURRENT HOUSE STYLE MODULES AVAILABLE:
+  HOUSE_STYLE_MODULE_muir.md   (Marybeth E. Muir, CCR, RPR — Louisiana)
 
 NEXT UPGRADE IDEAS (v4a / v5):
   - Auto-glossary builder from first-run corrections

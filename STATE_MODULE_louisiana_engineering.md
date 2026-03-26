@@ -5,8 +5,9 @@
 # State:           Louisiana
 # Case Type:       Engineering Depositions
 # Author:          Scott + Claude
-# Version:         1.0
-# Last Updated:    2026-03-20
+# Version:         1.1
+# Last Updated:    2026-03-22
+# Change v1.0→1.1: Fixed objection format per KB-001 (Objection to form., not Objection, form.)
 # ═══════════════════════════════════════════════════════════════════
 
 
@@ -62,13 +63,21 @@ DATE FORMAT
 ===========================================================
 OBJECTIONS — NORMALIZE TO THESE EXACT FORMS
 ===========================================================
+  ⚠️  KB-001 OVERRIDE: Louisiana standard is "Objection to form." — NOT "Objection, form."
+      The comma-form was v1.0 error. v1.1 corrects it.
+
   Standard:
-    Objection, form.
+    Objection to form.
     Objection, leading.
     Objection, relevance.
     Objection, foundation.
     Objection, hearsay.
     Objection, privilege.
+
+  Multi-basis: separate with semicolon (not comma)
+    Objection to form; vague.
+    Objection; mischaracterizes the document.
+    Objection; assumes facts not in evidence.
 
   Engineering-specific:
     Objection, calls for speculation.
@@ -76,6 +85,9 @@ OBJECTIONS — NORMALIZE TO THESE EXACT FORMS
     Objection, calls for legal conclusion.
     Objection, misstates engineering standard.
     Objection, assumes facts not in evidence.
+
+  DO NOT normalize wording beyond these forms.
+  Preserve exactly what attorney said. Correct only obvious steno errors.
 
 
 ===========================================================
@@ -180,7 +192,7 @@ GLOSSARY TERMS — LOUISIANA ENGINEERING (SEED LIST)
 ===========================================================
 MAINTAINER NOTES
 ===========================================================
-VERSION:      1.0
+VERSION:      1.1
 STATE:        Louisiana
 CASE TYPE:    Engineering
 ENGINE:       Compatible with MASTER_DEPOSITION_ENGINE v4.0+

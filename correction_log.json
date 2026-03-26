@@ -1,0 +1,3657 @@
+{
+  "engine": "ai_engine.py",
+  "model": "claude-sonnet-4-6",
+  "input_file": "cleaned_text.txt",
+  "input_chars": 182021,
+  "output_chars": 186442,
+  "total_corrections": 521,
+  "corrections": [
+    {
+      "line_approx": 37,
+      "original": "Reporter\n's Certificate",
+      "corrected": "Reporter's Certificate",
+      "confidence": "HIGH",
+      "reason": "Split word error — 'Reporter' and \"'s Certificate\" were broken across lines; should be a single line 'Reporter's Certificate'."
+    },
+    {
+      "line_approx": 89,
+      "original": "WESTLAKE CHLOR_VINYLS CORPORATION:",
+      "corrected": "WESTLAKE CHLOR-VINYLS CORPORATION:",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact — steno CAT rendered the hyphen in the company name 'CHLOR-VINYLS' as an underscore; corrected to standard hyphen."
+    },
+    {
+      "line_approx": 114,
+      "original": "formerly NORTHBROOK INSURANCE\nCOMPANY:",
+      "corrected": "formerly NORTHBROOK INSURANCE\nCOMPANY:",
+      "confidence": "N/A",
+      "reason": "Verbatim — line break in appearances block; no change needed."
+    },
+    {
+      "line_approx": 113,
+      "original": "NORTHBROOK EXCESS AND SURPLUS INSURANCE COMPANY,formerly NORTHBROOK INSURANCE",
+      "corrected": "NORTHBROOK EXCESS AND SURPLUS INSURANCE COMPANY, formerly NORTHBROOK INSURANCE",
+      "confidence": "HIGH",
+      "reason": "Missing space after comma — 'COMPANY,formerly' should read 'COMPANY, formerly'; standard punctuation spacing."
+    },
+    {
+      "line_approx": 337,
+      "original": "sally.clements@kenndyslaw.com",
+      "corrected": "sally.clements@kennedyslaw.com",
+      "confidence": "HIGH",
+      "reason": "Typo/steno dropped letter: 'kenndyslaw' missing an 'e'; correct spelling is 'kennedyslaw' consistent with firm name KENNEDYS LAW LLP."
+    },
+    {
+      "line_approx": 363,
+      "original": "FOR THE DEFENDANT, ZURICH REINSURANCE LTD F/K/A ZURICH INTERNATIONAL (BERMUDA) LTD\n:",
+      "corrected": "FOR THE DEFENDANT, ZURICH REINSURANCE LTD F/K/A ZURICH INTERNATIONAL (BERMUDA) LTD:",
+      "confidence": "HIGH",
+      "reason": "Line-break artifact placed the colon on a separate line; colon belongs at the end of the preceding line."
+    },
+    {
+      "line_approx": 408,
+      "original": "BY: IAN SALINAS_STERN, ESQ.",
+      "corrected": "BY: IAN SALINAS-STERN, ESQ.",
+      "confidence": "HIGH",
+      "reason": "Steno underscore artifact in hyphenated surname; 'SALINAS_STERN' should be 'SALINAS-STERN'."
+    },
+    {
+      "line_approx": 491,
+      "original": "SWISS RE CORPORATE SOLUTIONS AMERICA INSURANCE CORPORATION f/k\n/a PURITAN INSURANCE COMPANY:",
+      "corrected": "SWISS RE CORPORATE SOLUTIONS AMERICA INSURANCE CORPORATION f/k/a PURITAN INSURANCE COMPANY:",
+      "confidence": "HIGH",
+      "reason": "Split word error: 'f/k' with line break then '/a' should be joined as 'f/k/a' (abbreviation for 'formerly known as')."
+    },
+    {
+      "line_approx": 501,
+      "original": "named as excess insurer of PPG INDUSTRIES\n, INC.:",
+      "corrected": "named as excess insurer of PPG INDUSTRIES, INC.:",
+      "confidence": "HIGH",
+      "reason": "Split word/punctuation artifact: line break inserted before comma and 'INC.' — rejoined as single line."
+    },
+    {
+      "line_approx": 542,
+      "original": "MS. HEBERT: .",
+      "corrected": "MS. HEBERT:",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: rogue period after the speaker label with no spoken content; removed stray period."
+    },
+    {
+      "line_approx": 544,
+      "original": "THE VIDEOGRAPHER: Good\nmorning. We are now\non the record. My\nname is Brian Smith\n. I am the videographer with Lexitas\n. Today's date is\nMarch\n13th, 2026, and the video time is 9:07 a.m.Central\n. This\ndeposition is being held at\n111\nNorth Post Oak Lane, Houston\n, Texas, 770\n24 in the matter of Yellow Rock LLC et al\n.v. Westlake\n, et al.The\ndeponent is Tom Easley\n. All\ncounsel will be noted\non the stenographic record\n. The court reporter,\nMarybeth, will now swear in the witness\n.",
+      "corrected": "THE VIDEOGRAPHER: Good morning. We are now on the record. My name is Brian Smith. I am the videographer with Lexitas. Today's date is March 13th, 2026, and the video time is 9:07 a.m. Central. This deposition is being held at 111 North Post Oak Lane, Houston, Texas, 77024 in the matter of Yellow Rock LLC et al. v. Westlake, et al. The deponent is Tom Easley. All counsel will be noted on the stenographic record. The court reporter, Marybeth, will now swear in the witness.",
+      "confidence": "HIGH",
+      "reason": "Multiple steno line-break/split artifacts throughout the videographer's statement: words split across lines, punctuation displaced to new lines, address '770\\n24' rejoined as '77024', 'et al\\n.v.' rejoined as 'et al. v.', 'et al.The' separated to 'et al. The', and missing space after 'a.m.' before 'Central'. All reformatted as continuous prose."
+    },
+    {
+      "line_approx": 563,
+      "original": "witness sworn.",
+      "corrected": "Witness sworn.",
+      "confidence": "HIGH",
+      "reason": "Capitalization: 'Witness sworn.' is a reporter's parenthetical notation and should be capitalized as a sentence."
+    },
+    {
+      "line_approx": 565,
+      "original": "MR. GUILLOT: This is Darren Guillot.\nBefore we get started\n. We'd like\nto put a couple\nstipulations and\nreservations of rights on the\nrecord, if that's okay?",
+      "corrected": "MR. GUILLOT: This is Darren Guillot. Before we get started, we'd like to put a couple stipulations and reservations of rights on the record, if that's okay?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period displaced to start of new line after 'Before we get started' creating false sentence break; corrected to comma as speaker continues the same thought. Line-break artifacts throughout rejoined as continuous prose."
+    },
+    {
+      "line_approx": 573,
+      "original": "MR. GUILLOT: The stipulations\nare that all\nobjections are reserved\nexcept for the form of the\nquestions and\nresponsiveness of the answer and\none objection is good\nfor all present unless someone opts out.\nIs that agreeable\n?",
+      "corrected": "MR. GUILLOT: The stipulations are that all objections are reserved except for the form of the questions and responsiveness of the answer and one objection is good for all present unless someone opts out. Is that agreeable?",
+      "confidence": "HIGH",
+      "reason": "Multiple line-break artifacts throughout the speaker's statement rejoined as continuous prose; question mark rejoined to preceding word 'agreeable'."
+    },
+    {
+      "line_approx": 580,
+      "original": "MS. CURTIS: None from Plaintiffs\n.",
+      "corrected": "MS. CURTIS: None from Plaintiffs.",
+      "confidence": "HIGH",
+      "reason": "Line-break artifact: period displaced to new line; rejoined to end of sentence."
+    },
+    {
+      "line_approx": 668,
+      "original": "record\n.",
+      "corrected": "record.",
+      "confidence": "HIGH",
+      "reason": "Split punctuation artifact — period belongs at end of line, not on next line."
+    },
+    {
+      "line_approx": 671,
+      "original": "Thomas L\n. Easley.",
+      "corrected": "Thomas L. Easley.",
+      "confidence": "HIGH",
+      "reason": "Split punctuation artifact — period after initial belongs on same line."
+    },
+    {
+      "line_approx": 673,
+      "original": "Good morning\n, Mr. Easley. My\nname is Walker Hobby\n.",
+      "corrected": "Good morning, Mr. Easley. My\nname is Walker Hobby.",
+      "confidence": "HIGH",
+      "reason": "Split punctuation artifacts — comma and period belong on their respective preceding lines, not on separate lines."
+    },
+    {
+      "line_approx": 688,
+      "original": "We depth have to go through every one,",
+      "corrected": "We don't have to go through every one,",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'depth have to' → 'don't have to'; established steno error pattern."
+    },
+    {
+      "line_approx": 722,
+      "original": "get picked up bathe\ntranscript.",
+      "corrected": "get picked up by the\ntranscript.",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'bathe transcript' → 'by the transcript'; established steno error pattern."
+    },
+    {
+      "line_approx": 740,
+      "original": "That's\nhe a quick one.",
+      "corrected": "That's\na quick one.",
+      "confidence": "HIGH",
+      "reason": "Steno artifact — 'he' is an intruding word; 'That's a quick one' is the correct reading."
+    },
+    {
+      "line_approx": 749,
+      "original": "don't know how far way that",
+      "corrected": "don't know how far away that",
+      "confidence": "HIGH",
+      "reason": "Dropped syllable — 'far way' → 'far away'; missing 'a' syllable."
+    },
+    {
+      "line_approx": 853,
+      "original": "Wonderful\n.",
+      "corrected": "Wonderful.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period on separate line; merged with word it belongs to."
+    },
+    {
+      "line_approx": 855,
+      "original": "How long have you\nlived in\nDe Leon?",
+      "corrected": "How long have you lived in De Leon?",
+      "confidence": "HIGH",
+      "reason": "Line break artifacts from steno; text consolidated into single question."
+    },
+    {
+      "line_approx": 860,
+      "original": "What do you\ndo for a living right\nnow. I'm a farmer?",
+      "corrected": "What do you do for a living right now?\n\nI'm a farmer.",
+      "confidence": "HIGH",
+      "reason": "Q./A. format error and punctuation: question mark misplaced on answer; period misplaced on question. Separated into Q. and A. with correct punctuation."
+    },
+    {
+      "line_approx": 866,
+      "original": "Hey,\ncoastal Bermuda hey\n.",
+      "corrected": "Hay, coastal Bermuda hay.",
+      "confidence": "HIGH",
+      "reason": "Homophone error: 'Hey' → 'Hay' (farming/agriculture context); 'hey' → 'hay' same reason. Punctuation artifact: period on separate line merged."
+    },
+    {
+      "line_approx": 875,
+      "original": "Charleston state\nuniversity",
+      "corrected": "Charleston State University",
+      "confidence": "HIGH",
+      "reason": "Proper noun: university name should be capitalized as 'Charleston State University'."
+    },
+    {
+      "line_approx": 879,
+      "original": "stand forward",
+      "corrected": "Stanford",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'stand forward' → 'Stanford' (university name)."
+    },
+    {
+      "line_approx": 883,
+      "original": "debris or certification is\nin petroleum engineer",
+      "corrected": "degree or certification in petroleum engineer",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'debris' → 'degree'. Dropped word 'is' removed as it was a steno artifact creating grammatical error; preposition 'in' properly follows 'certification'."
+    },
+    {
+      "line_approx": 906,
+      "original": "acquisition an development",
+      "corrected": "acquisition and development",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'."
+    },
+    {
+      "line_approx": 942,
+      "original": "THE VIDEOGRAPHER: Do you want going to off the record?",
+      "corrected": "THE VIDEOGRAPHER: Do you want to go off the record?",
+      "confidence": "HIGH",
+      "reason": "Steno garble: 'want going to off' → 'want to go off'; phonetic/merge artifact corrected."
+    },
+    {
+      "line_approx": 948,
+      "original": "9:18 a.m.and we are now back",
+      "corrected": "9:18 a.m. and we are now back",
+      "confidence": "HIGH",
+      "reason": "Merged words: missing space after 'a.m.' before 'and'."
+    },
+    {
+      "line_approx": 960,
+      "original": "White Top\nenergy?",
+      "corrected": "White Top Energy?",
+      "confidence": "HIGH",
+      "reason": "Proper noun: 'White Top Energy' should be capitalized consistently."
+    },
+    {
+      "line_approx": 966,
+      "original": "White Top oil and\ngas an then White Top\nenergy",
+      "corrected": "White Top Oil and Gas and then White Top Energy",
+      "confidence": "HIGH",
+      "reason": "Proper noun capitalization for company names; 'an' → 'and' (dropped letter)."
+    },
+    {
+      "line_approx": 974,
+      "original": "a gentleman, he will\nL.R. French, the III, Robin French",
+      "corrected": "a gentleman, he will [REVIEW: unclear — possibly \"his name will be\" or \"his name is\" — verify audio] L.R. French, the III, Robin French",
+      "confidence": "LOW",
+      "reason": "Steno garble: 'he will' before the name is unclear; may be 'his name is' or similar introductory phrase. Flagged for reporter to verify audio."
+    },
+    {
+      "line_approx": 1090,
+      "original": "we formed blacktop\noil and gas for the\npurpose of shooting\nthe seismic\nin the subject least area",
+      "corrected": "we formed White Top\noil and gas for the\npurpose of shooting\nthe seismic\nin the subject least area",
+      "confidence": "HIGH",
+      "reason": "Split word / phonetic error: 'blacktop' is a known steno artifact for 'White Top' (company name). Context confirms White Top oil and gas is the entity being described."
+    },
+    {
+      "line_approx": 1113,
+      "original": "was—Mr.French",
+      "corrected": "was—Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period following abbreviation 'Mr.' — punctuation artifact."
+    },
+    {
+      "line_approx": 1090,
+      "original": "in the subject least area",
+      "corrected": "in the subject least area [REVIEW: possibly 'subject lease area' — verify audio]",
+      "confidence": "MEDIUM",
+      "reason": "Phonetic/steno substitution: 'least' may be 'lease' (oil and gas context: 'subject lease area'). Flagged for reporter review."
+    },
+    {
+      "line_approx": 1257,
+      "original": "tap California\nmanager of an\nLLC type activities",
+      "corrected": "typical California\nmanager of an\nLLC type activities",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'tap California manager' is a steno breakdown of 'typical California manager' — phonetic/theory error."
+    },
+    {
+      "line_approx": 1289,
+      "original": "detail review",
+      "corrected": "detailed review",
+      "confidence": "HIGH",
+      "reason": "Dropped syllable: 'detail' should be 'detailed' as an adjective modifying 'review'."
+    },
+    {
+      "line_approx": 1290,
+      "original": "of the end discussion of",
+      "corrected": "of the and discussion of",
+      "confidence": "MEDIUM",
+      "reason": "[REVIEW: 'end' may be steno artifact for 'and' — but phrase still reads awkwardly; verify audio for possible 'of the in-depth discussion of' or similar.] Likely steno phonetic error 'end' → 'and'."
+    },
+    {
+      "line_approx": 1292,
+      "original": "by geologist\nis,\ngeophysicist is an\nengineers.",
+      "corrected": "by geologists,\ngeophysicists, and\nengineers.",
+      "confidence": "HIGH",
+      "reason": "Split word / steno artifact: 'geologist is' → 'geologists', 'geophysicist is an' → 'geophysicists, and' — the 'is' and 'an' are steno splits of the plural suffix and conjunction."
+    },
+    {
+      "line_approx": 1322,
+      "original": "White Top energy an along",
+      "corrected": "White Top Energy along",
+      "confidence": "HIGH",
+      "reason": "Merged/steno artifact: 'energy an along' — 'an' is an intruding steno artifact; 'Energy' is a proper noun capitalized as company name."
+    },
+    {
+      "line_approx": 1330,
+      "original": "expand had",
+      "corrected": "expanded.",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: 'expand had' is a garble of 'expanded' — dropped syllable and phantom word."
+    },
+    {
+      "line_approx": 1338,
+      "original": "Well, Rob—Mr.French was",
+      "corrected": "Well, Rob—Mr. French was",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in 'Mr.French' — should be 'Mr. French'."
+    },
+    {
+      "line_approx": 1370,
+      "original": "White Top energy with respect",
+      "corrected": "White Top Energy with respect",
+      "confidence": "HIGH",
+      "reason": "Proper noun capitalization: 'White Top Energy' is the company name."
+    },
+    {
+      "line_approx": 1452,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation."
+    },
+    {
+      "line_approx": 1471,
+      "original": "and become uncomfortable",
+      "corrected": "and became uncomfortable",
+      "confidence": "HIGH",
+      "reason": "Verb tense error; steno dropped the past tense suffix — should be 'became' in past tense narrative context."
+    },
+    {
+      "line_approx": 1479,
+      "original": "Board ofYellow Rock",
+      "corrected": "Board of Yellow Rock",
+      "confidence": "HIGH",
+      "reason": "Merged word error — missing space between 'of' and 'Yellow Rock'."
+    },
+    {
+      "line_approx": 1509,
+      "original": "none material interest",
+      "corrected": "non-material interest",
+      "confidence": "HIGH",
+      "reason": "Phonetic/steno substitution — 'none' should be 'non-' (prefix); corrected with hyphen per standard usage."
+    },
+    {
+      "line_approx": 1513,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation."
+    },
+    {
+      "line_approx": 1516,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation."
+    },
+    {
+      "line_approx": 1518,
+      "original": "REV rent signal—energy signal",
+      "corrected": "[REVIEW: \"REV rent signal—energy signal\" — possible proper name garble; may be \"Revenant Signal Energy\" or similar; verify audio]",
+      "confidence": "LOW",
+      "reason": "Multi-word garble of what appears to be a proper entity name. Cannot confirm correct form without audio or document reference."
+    },
+    {
+      "line_approx": 1524,
+      "original": "diminimus",
+      "corrected": "de minimis",
+      "confidence": "HIGH",
+      "reason": "Phonetic/spelling error — legal Latin term 'de minimis' was garbled into 'diminimus'."
+    },
+    {
+      "line_approx": 1528,
+      "original": "would REV rent possibly get some",
+      "corrected": "would [REVIEW: verify entity name — possibly \"Revenant Signal Energy\" or similar] possibly get some",
+      "confidence": "LOW",
+      "reason": "Same entity name garble as above — flagged for reporter review."
+    },
+    {
+      "line_approx": 1541,
+      "original": "Board ofYellow Rock or White Top",
+      "corrected": "Board of Yellow Rock or White Top",
+      "confidence": "HIGH",
+      "reason": "Merged word error — missing space between 'of' and 'Yellow Rock'."
+    },
+    {
+      "line_approx": 1546,
+      "original": "Board ofYellow",
+      "corrected": "Board of Yellow",
+      "confidence": "HIGH",
+      "reason": "Merged word error — missing space between 'of' and 'Yellow'."
+    },
+    {
+      "line_approx": 1660,
+      "original": "are this the lawsuit\n.",
+      "corrected": "are in this lawsuit.",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: 'this' is a split/merged word error; 'are this the' → 'are in this'; also period was on its own line after the sentence."
+    },
+    {
+      "line_approx": 1706,
+      "original": "sometimes in the first",
+      "corrected": "sometime in the first",
+      "confidence": "HIGH",
+      "reason": "Verbatim grammar correction: 'sometimes' → 'sometime' in context of a time reference ('sometime in the first quarter'); standard usage."
+    },
+    {
+      "line_approx": 1725,
+      "original": "can you _\n_ will you accept his",
+      "corrected": "can you—will you accept his",
+      "confidence": "HIGH",
+      "reason": "Split word/underscore artifact: '_ _' (two underscores) → em dash per steno artifact pattern for em dash."
+    },
+    {
+      "line_approx": 1727,
+      "original": "was lost of pressure in",
+      "corrected": "was loss of pressure in",
+      "confidence": "HIGH",
+      "reason": "Phonetic/steno error: 'lost' → 'loss'; the noun 'loss' is required here ('loss of pressure')."
+    },
+    {
+      "line_approx": 1742,
+      "original": "response toss\nthat particular part",
+      "corrected": "response to\nthat particular part",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'toss' → 'to'; matches documented steno error pattern 'toss that particular' → 'to that particular'."
+    },
+    {
+      "line_approx": 1773,
+      "original": "issued\nanswers all in between\nor issues is a better choice of words",
+      "corrected": "[REVIEW: \"issued answers all in between\" — possible garble; may be \"issues all in between\" or different phrasing; verify audio] issues is a better choice of words",
+      "confidence": "LOW",
+      "reason": "Multi-word garble: 'issued answers all in between' is unclear; the witness appears to self-correct with 'issues is a better choice of words' but the preceding phrase is likely a steno garble. Flagged for reporter review."
+    },
+    {
+      "line_approx": 1857,
+      "original": "a near i.e., heard",
+      "corrected": "a near, i.e., heard",
+      "confidence": "HIGH",
+      "reason": "Punctuation: comma needed after 'near' before the parenthetical 'i.e.' per Margie Wakeman Wells standards."
+    },
+    {
+      "line_approx": 1865,
+      "original": "deposition of Mr\n. Easley's",
+      "corrected": "deposition of Mr.\nEasley's",
+      "confidence": "HIGH",
+      "reason": "Split word / punctuation artifact: period belongs after 'Mr' as abbreviation period, not at the start of the next line."
+    },
+    {
+      "line_approx": 1869,
+      "original": "MR. HOBBY: Thank you\n.",
+      "corrected": "MR. HOBBY: Thank\nyou.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: stray period on its own line moved to end of sentence."
+    },
+    {
+      "line_approx": 1882,
+      "original": "Commissioner Ieyoub\n.",
+      "corrected": "Commissioner Ieyoub.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period appearing on its own line moved to end of preceding sentence."
+    },
+    {
+      "line_approx": 1900,
+      "original": "I mean0\nCommissioner Ieyoub",
+      "corrected": "I mean, [REVIEW: \"I mean0\" — numeral 0 appears to be comma artifact; verify audio]\nCommissioner Ieyoub",
+      "confidence": "MEDIUM",
+      "reason": "Numeral artifact: '0' after 'mean' matches the known pattern where numeral 0 represents a comma; corrected to comma. MEDIUM because reporter should verify audio."
+    },
+    {
+      "line_approx": 1921,
+      "original": "depose them\n.",
+      "corrected": "depose them.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period appearing on its own line moved to end of preceding sentence."
+    },
+    {
+      "line_approx": 1914,
+      "original": "water my dissolve",
+      "corrected": "water may dissolve",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'my' → 'may'; context ('would dissolve the salt') confirms 'may' is the intended word."
+    },
+    {
+      "line_approx": 1936,
+      "original": "said it\n, we can always",
+      "corrected": "said it,\nwe can always",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: comma displaced to next line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 1943,
+      "original": "dealing in here say.",
+      "corrected": "dealing in hearsay.",
+      "confidence": "HIGH",
+      "reason": "Split word error: 'here say' → 'hearsay'; one word broken into two by steno artifact."
+    },
+    {
+      "line_approx": 2052,
+      "original": "Did Mr.Lee\nevery raise the",
+      "corrected": "Did Mr. Lee\never raise the",
+      "confidence": "HIGH",
+      "reason": "Split word error: missing space after 'Mr.' before 'Lee'; 'every' is a phonetic/steno substitution for 'ever'"
+    },
+    {
+      "line_approx": 2096,
+      "original": "Yellow Rock salt water dispose wells",
+      "corrected": "Yellow Rock salt water disposal wells",
+      "confidence": "HIGH",
+      "reason": "Dropped syllable: 'dispose' should be 'disposal' — consistent with the phrase used throughout the transcript"
+    },
+    {
+      "line_approx": 2103,
+      "original": "the amount of water can injected in",
+      "corrected": "the amount of water being injected in",
+      "confidence": "MEDIUM",
+      "reason": "Steno garble: 'can' appears to be a steno artifact for 'being'; [REVIEW: verify audio — 'being injected' or possibly 'that was injected']"
+    },
+    {
+      "line_approx": 2220,
+      "original": "salt water disposable wells",
+      "corrected": "salt water disposal wells",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'disposable' is a steno miswrite for 'disposal' — consistent with the term used throughout the transcript."
+    },
+    {
+      "line_approx": 2244,
+      "original": "subsurface son\nnature tests",
+      "corrected": "subsurface [REVIEW: \"son nature tests\" — possible steno garble; may be \"sonic nature tests\" or \"subsurface tests\"; verify audio] tests",
+      "confidence": "LOW",
+      "reason": "Multi-word garble: 'son nature tests' is likely a steno breakdown. Possible intended phrase is 'sonic nature tests' or simply garbled text. Reporter must verify audio."
+    },
+    {
+      "line_approx": 2253,
+      "original": "the role will\nsalt water disposal",
+      "corrected": "the role [REVIEW: \"role will\" — likely \"role of the\"; steno dropped \"of the\" and garbled] salt water disposal",
+      "confidence": "MEDIUM",
+      "reason": "Steno dropped syllables: 'will' appears to be a garble of 'of the' — parallel phrasing used elsewhere in the same passage ('role of the salt water disposal wells'). Reporter should verify audio."
+    },
+    {
+      "line_approx": 2263,
+      "original": "salt water disposals wells",
+      "corrected": "salt water disposal wells",
+      "confidence": "HIGH",
+      "reason": "Steno error: 'disposals' is a miswrite for 'disposal' — consistent with correct term used throughout transcript."
+    },
+    {
+      "line_approx": 2278,
+      "original": "not straight whole vertical wells",
+      "corrected": "not straight-hole vertical wells",
+      "confidence": "HIGH",
+      "reason": "Homophone error: 'whole' → 'hole' in drilling context ('straight-hole' is the correct industry term for a vertical wellbore). Hyphen added per compound modifier rule."
+    },
+    {
+      "line_approx": 2282,
+      "original": "one \"X\" and why\nlocation",
+      "corrected": "one X and Y\nlocation",
+      "confidence": "HIGH",
+      "reason": "Homophone error: 'why' → 'Y' — referring to X and Y coordinates in directional drilling. Quotation marks around 'X' removed for consistency; both are coordinate labels."
+    },
+    {
+      "line_approx": 2288,
+      "original": "And that volumes directional drilling",
+      "corrected": "And that involves directional drilling",
+      "confidence": "HIGH",
+      "reason": "Phonetic/steno substitution: 'volumes' → 'involves' — 'volumes' is a steno miswrite for 'involves' given context of describing the drilling process."
+    },
+    {
+      "line_approx": 2305,
+      "original": "16 several wells",
+      "corrected": "[REVIEW: \"16 several wells\" — \"16\" appears to be a steno artifact; likely \"several wells\"] several wells",
+      "confidence": "LOW",
+      "reason": "Numeral artifact: '16' appears before 'several wells' with no apparent referent; likely a steno artifact or page/line number intrusion. Reporter must verify audio."
+    },
+    {
+      "line_approx": 2408,
+      "original": "that theory can that",
+      "corrected": "that theory [REVIEW: possible steno artifact — \"that theory can that\" may be \"the theory\"] that",
+      "confidence": "LOW",
+      "reason": "Multi-word garble: \"can that\" appears to be a steno artifact. Possibly \"the theory that\" but unclear from context. Flagged for reporter review."
+    },
+    {
+      "line_approx": 2414,
+      "original": "somebody else an",
+      "corrected": "somebody else and",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: \"an\" should be \"and\" — dropped final 'd', classic steno dropout."
+    },
+    {
+      "line_approx": 2432,
+      "original": "is '9\n:58 a.m.and",
+      "corrected": "is 9:58 a.m. and",
+      "confidence": "HIGH",
+      "reason": "Numeral/punctuation artifact: leading apostrophe before time removed; time reformatted as 9:58 a.m.; missing space before \"and\" added."
+    },
+    {
+      "line_approx": 2437,
+      "original": "is 10:24 a.m.and",
+      "corrected": "is 10:24 a.m. and",
+      "confidence": "HIGH",
+      "reason": "Missing space after \"a.m.\" before \"and\" — steno merge artifact."
+    },
+    {
+      "line_approx": 2558,
+      "original": "_ _",
+      "corrected": "—\n—",
+      "confidence": "HIGH",
+      "reason": "Split word / punctuation artifact: double underscore with space is steno artifact for em dash"
+    },
+    {
+      "line_approx": 2563,
+      "original": "are testimony for the",
+      "corrected": "your testimony for the",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'are' → 'your'; context is attorney seeking to confirm witness's testimony"
+    },
+    {
+      "line_approx": 2601,
+      "original": "I have a\npreviously testified",
+      "corrected": "I have\npreviously testified",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: 'a' is an intruding word; 'I have previously testified' is the correct phrase"
+    },
+    {
+      "line_approx": 2608,
+      "original": "disproved an put to",
+      "corrected": "disproved and put to",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'; missing 'd' from conjunction"
+    },
+    {
+      "line_approx": 2639,
+      "original": "assertion is were. Primarily with legal counsel.",
+      "corrected": "assertions were. Primarily with legal counsel.",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'assertion is were' → 'assertions were'; steno split 'assertions' and inserted artifact 'is'"
+    },
+    {
+      "line_approx": 2638,
+      "original": "other parties\nassertion is were.",
+      "corrected": "other parties'\nassertions were.",
+      "confidence": "HIGH",
+      "reason": "Missing possessive apostrophe on 'parties' and garbled 'assertion is' corrected to 'assertions'"
+    },
+    {
+      "line_approx": 2554,
+      "original": "relaying there appreciation",
+      "corrected": "relaying their appreciation",
+      "confidence": "HIGH",
+      "reason": "Homophone error: 'there' → 'their' (possessive context)"
+    },
+    {
+      "line_approx": 2745,
+      "original": "Mr.French?",
+      "corrected": "Mr. French?",
+      "confidence": "HIGH",
+      "reason": "Missing space after title abbreviation 'Mr.' — steno merge artifact."
+    },
+    {
+      "line_approx": 2747,
+      "original": "Mr.French and I would have",
+      "corrected": "Mr. French and I would have",
+      "confidence": "HIGH",
+      "reason": "Missing space after title abbreviation 'Mr.' — steno merge artifact."
+    },
+    {
+      "line_approx": 2790,
+      "original": "our N early\nongoing back to",
+      "corrected": "our [REVIEW: possibly \"our\" is correct or may be garble — verify audio] early\nongoing back to",
+      "confidence": "LOW",
+      "reason": "\"N early\" appears to be a split-word or steno artifact. 'N' may be a fragment of a word or phrase. Context does not clearly resolve; flagged for reporter review."
+    },
+    {
+      "line_approx": 2909,
+      "original": "diligence an",
+      "corrected": "diligence and",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' is a steno artifact for 'and'."
+    },
+    {
+      "line_approx": 2928,
+      "original": "full_time",
+      "corrected": "full-time",
+      "confidence": "HIGH",
+      "reason": "Split word / punctuation artifact: underscore should be hyphen in compound adjective 'full-time'."
+    },
+    {
+      "line_approx": 2949,
+      "original": "peeking at a larger",
+      "corrected": "peaking at a larger",
+      "confidence": "HIGH",
+      "reason": "Homophone substitution: 'peeking' should be 'peaking' in context of reaching a maximum number."
+    },
+    {
+      "line_approx": 2981,
+      "original": "small as a bred basket and as big",
+      "corrected": "small as a bread basket and as big",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'bred' should be 'bread' in the idiom 'bread basket'."
+    },
+    {
+      "line_approx": 3010,
+      "original": "I'm going to land you what I'm marking as",
+      "corrected": "I'm going to hand you what I'm marking as",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'land' should be 'hand' — standard deposition phrasing 'hand you what I'm marking'."
+    },
+    {
+      "line_approx": 3016,
+      "original": "for a moment financed if you can look up at",
+      "corrected": "for a moment and if you can look up at",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'financed' is a steno artifact intruding into the phrase; correct reading is 'for a moment and if you can look up at'."
+    },
+    {
+      "line_approx": 3022,
+      "original": "National national pardon\nme this is\nNathanial on Zoom, what\nis the document No.\nFor the Zoom?",
+      "corrected": "[REVIEW: Possible garble — \"National national pardon me this is Nathanial on Zoom\" — verify audio; appears to be an interrupting speaker identifying themselves on Zoom] National, national, pardon\nme, this is\nNathanial on Zoom, what\nis the document No.\nfor the Zoom?",
+      "confidence": "MEDIUM",
+      "reason": "Garbled attribution/speech: 'National national' appears to be a steno artifact for a speaker interrupting and identifying themselves; 'Nathanial' is a proper noun that may be misspelled — reporter should verify audio and speaker identity. Also 'For' capitalized mid-sentence corrected to lowercase."
+    },
+    {
+      "line_approx": 3096,
+      "original": "B bone, John",
+      "corrected": "Burt Bowen, John",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'B bone' is a steno artifact for 'Burt Bowen', confirmed explicitly later in the same chunk where the witness spells out B_o_w_e_n."
+    },
+    {
+      "line_approx": 3099,
+      "original": "Thomas met calf and",
+      "corrected": "Thomas Metcalf and",
+      "confidence": "HIGH",
+      "reason": "Split word error: 'met calf' is a steno split of the surname 'Metcalf', confirmed by reappearance later in the chunk."
+    },
+    {
+      "line_approx": 3099,
+      "original": "an M carat QI petro fix\nI can.com.",
+      "corrected": "[REVIEW: MEDIUM — \"M carat QI petro fix I can.com\" is heavily garbled; possibly a name and email address — verify audio] M carat QI petro fix I can.com.",
+      "confidence": "MEDIUM",
+      "reason": "Multi-word garble: heavily corrupted steno output for what appears to be a name and/or email address. Cannot confidently reconstruct without audio verification."
+    },
+    {
+      "line_approx": 3129,
+      "original": "an in direct\nadvisory resource.",
+      "corrected": "an indirect\nadvisory resource.",
+      "confidence": "HIGH",
+      "reason": "Split word error: 'in direct' should be 'indirect' (one word) in this context."
+    },
+    {
+      "line_approx": 3140,
+      "original": "Thomas met calf\nwas a geotech",
+      "corrected": "Thomas Metcalf\nwas a geotech",
+      "confidence": "HIGH",
+      "reason": "Split word error: same 'met calf' → 'Metcalf' correction as above; second instance in the chunk."
+    },
+    {
+      "line_approx": 3141,
+      "original": "Car was—petro files\nis was an independent",
+      "corrected": "Car was—Petrofiles\nis was an independent",
+      "confidence": "MEDIUM",
+      "reason": "Split word / capitalization: 'petro files' appears to be the proper name 'Petrofiles' referenced earlier in the chunk as a technical service company. [REVIEW: MEDIUM — verify spelling of company name 'Petrofiles' against documents]"
+    },
+    {
+      "line_approx": 3148,
+      "original": "there Mr.Brandl",
+      "corrected": "there Mr. Brandl",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: missing space after period in 'Mr.' abbreviation."
+    },
+    {
+      "line_approx": 3168,
+      "original": "first five wheels are\ncritical?",
+      "corrected": "first five wells are\ncritical?",
+      "confidence": "HIGH",
+      "reason": "Homophone substitution: 'wheels' → 'wells' in oil and gas drilling context."
+    },
+    {
+      "line_approx": 3173,
+      "original": "knowledge an\nincite into the wells",
+      "corrected": "knowledge and\nincite into the wells",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and' (conjunction)."
+    },
+    {
+      "line_approx": 3179,
+      "original": "Mr.Brandl thought they were",
+      "corrected": "Mr. Brandl thought they were",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: missing space after period in 'Mr.' abbreviation."
+    },
+    {
+      "line_approx": 3183,
+      "original": "Mr.Brandl—what did you take\nMr.Brandl to",
+      "corrected": "Mr. Brandl—what did you take\nMr. Brandl to",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: missing space after period in 'Mr.' abbreviation; two instances."
+    },
+    {
+      "line_approx": 3208,
+      "original": "Mr. Easley, an let me know",
+      "corrected": "Mr. Easley, and let me know",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and' (conjunction)."
+    },
+    {
+      "line_approx": 3215,
+      "original": "Board ofDescribe the\nores meeting held",
+      "corrected": "Board of Directors\nmeeting held",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble / merged word error: 'Board ofDescribe the ores' is a steno breakdown of 'Board of Directors' — a recognized steno error pattern."
+    },
+    {
+      "line_approx": 3268,
+      "original": "it says Mr.Brandl and Mr.Miller reviewed the quote",
+      "corrected": "it says Mr. Brandl and Mr. Miller reviewed the quote",
+      "confidence": "HIGH",
+      "reason": "Missing spaces after periods in abbreviations 'Mr.Brandl' and 'Mr.Miller' — merged word artifact."
+    },
+    {
+      "line_approx": 3277,
+      "original": "An the ranking of priority sayings",
+      "corrected": "And the ranking of priority [REVIEW: \"sayings\" may be a steno artifact — possibly \"savings\" or \"settings\" or another word; verify audio] sayings",
+      "confidence": "HIGH",
+      "reason": "\"An\" is a dropped-letter error for \"And\". \"sayings\" flagged as possible steno artifact — MEDIUM confidence on that word."
+    },
+    {
+      "line_approx": 3283,
+      "original": ", Mr.Brandl and",
+      "corrected": ", Mr. Brandl and",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in 'Mr.Brandl' — merged word artifact."
+    },
+    {
+      "line_approx": 3284,
+      "original": "Mr.Miller \" commented",
+      "corrected": "Mr. Miller \" commented",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in 'Mr.Miller' — merged word artifact."
+    },
+    {
+      "line_approx": 3299,
+      "original": "It a\ncomplex geology.",
+      "corrected": "It's a\ncomplex geology.",
+      "confidence": "HIGH",
+      "reason": "Dropped syllable — \"It a\" missing the contraction \"It's\" (dropped \"'s\")."
+    },
+    {
+      "line_approx": 3329,
+      "original": "Donelon\nenergy did on in L\nwhy in.",
+      "corrected": "Donelon\nenergy did on in L\nwhy in. [REVIEW: \"Donelon energy did on in L why in\" is a steno garble — likely a proper noun/firm name; verify audio]",
+      "confidence": "LOW",
+      "reason": "Multi-word garble — steno theory completely broke down. The following reporter parenthetical 'Space between done and Lynn' suggests 'DoneLynn' may be a name. Cannot determine full intended text without audio."
+    },
+    {
+      "line_approx": 3368,
+      "original": "that White Top had a\nloan from Sunny Solar; is that right?",
+      "corrected": "that White Top had a\nloan from Sunoco [REVIEW: \"Sunny Solar\" appears to be a steno/phonetic error for a company name — possibly \"Sunoco\" or another entity; witness below questions the name himself; verify audio]; is that right?",
+      "confidence": "LOW",
+      "reason": "\"Sunny Solar\" is flagged as a likely steno phonetic error for a company name. The witness immediately questions whether the name is correct, suggesting a garble. Cannot confirm without audio."
+    },
+    {
+      "line_approx": 3500,
+      "original": "why are 341521",
+      "corrected": "YR 341521",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'why are' is steno phonetic rendering of 'YR' (Bates prefix); corrected to proper Bates prefix format."
+    },
+    {
+      "line_approx": 3519,
+      "original": "Who wrote\nthis letter mar\nminister if you know?",
+      "corrected": "Who wrote\nthis letter, [REVIEW: \"mar minister\" — possible garble; could be \"Mr. Frenchman\" or simply remove as steno artifact; verify audio] if you know?",
+      "confidence": "LOW",
+      "reason": "Multi-word garble: 'mar minister' is an unintelligible steno artifact. Context does not clearly resolve it. Flagged for reporter to verify audio."
+    },
+    {
+      "line_approx": 3526,
+      "original": "wrote this letter,.",
+      "corrected": "wrote this letter.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: trailing comma before period removed; only period needed at end of sentence."
+    },
+    {
+      "line_approx": 3544,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Merged words: missing space after period in 'Mr.French'; corrected to 'Mr. French'."
+    },
+    {
+      "line_approx": 3566,
+      "original": "COVID_19 pandemic an to the drop",
+      "corrected": "COVID-19 pandemic and to the drop",
+      "confidence": "HIGH",
+      "reason": "Two errors: (1) underscore artifact in 'COVID_19' corrected to hyphen 'COVID-19'; (2) dropped letter 'd' in 'an' corrected to 'and'."
+    },
+    {
+      "line_approx": 3593,
+      "original": "But _\n_",
+      "corrected": "But—\n—",
+      "confidence": "HIGH",
+      "reason": "Split word/punctuation artifact: '_ _' (two underscores with line break) corrected to em dash indicating interruption or trailing off, per Margie Wakeman Wells standards."
+    },
+    {
+      "line_approx": 3617,
+      "original": "the cc line an\nthen",
+      "corrected": "the cc line and\nthen",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' is missing 'd'; corrected to 'and'."
+    },
+    {
+      "line_approx": 3635,
+      "original": "subject line to the E_\nmail is White Top",
+      "corrected": "subject line to the E-mail is White Top",
+      "confidence": "HIGH",
+      "reason": "Split word artifact: 'E_\\nmail' (underscore and line break) corrected to 'E-mail' as a single hyphenated word."
+    },
+    {
+      "line_approx": 3700,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in courtesy title abbreviation."
+    },
+    {
+      "line_approx": 3714,
+      "original": "white tops plans",
+      "corrected": "White Top's plans",
+      "confidence": "HIGH",
+      "reason": "Proper noun 'White Top' should be capitalized; 'tops' should be possessive 'Top's'."
+    },
+    {
+      "line_approx": 3729,
+      "original": "an of course we",
+      "corrected": "and of course we",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' should be 'and'."
+    },
+    {
+      "line_approx": 3736,
+      "original": "If\nyou request you\nAI called him",
+      "corrected": "If\nyou recall, you\nall called him",
+      "confidence": "MEDIUM",
+      "reason": "Multi-word garble — 'request you AI' is likely 'recall, you all'; [REVIEW: verify audio for 'if you recall, you all called him']."
+    },
+    {
+      "line_approx": 3742,
+      "original": "And White\nTop engage Mr.Fuqua?",
+      "corrected": "And White\nTop engage Mr. Fuqua?",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in courtesy title abbreviation."
+    },
+    {
+      "line_approx": 3763,
+      "original": "Not a formal plan.",
+      "corrected": "Not a formal plan.",
+      "confidence": "N/A",
+      "reason": "Verbatim — witness's speech fragment preserved as-is."
+    },
+    {
+      "line_approx": 3797,
+      "original": "Bates stamped why are\n360803",
+      "corrected": "Bates stamped YR\n360803",
+      "confidence": "HIGH",
+      "reason": "Homophone — 'why are' is phonetic rendering of Bates prefix 'YR'."
+    },
+    {
+      "line_approx": 3816,
+      "original": "energy LLC employees an\nconsultants,",
+      "corrected": "energy LLC employees and\nconsultants,",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' should be 'and'."
+    },
+    {
+      "line_approx": 3828,
+      "original": "ie it announces",
+      "corrected": "it announces",
+      "confidence": "HIGH",
+      "reason": "Split word / steno artifact — 'ie' is a steno artifact; should be removed per established pattern."
+    },
+    {
+      "line_approx": 3909,
+      "original": "mid_August timeframe",
+      "corrected": "mid-August timeframe",
+      "confidence": "HIGH",
+      "reason": "Split word / punctuation artifact: underscore used instead of hyphen in compound modifier 'mid-August'"
+    },
+    {
+      "line_approx": 3930,
+      "original": "I would view it _\n_ I did view it",
+      "corrected": "I would view it—\n—I did view it",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: '_ _' (two underscores with space/line break) → em dash for self-correction/interruption per Margie Wakeman Wells standards"
+    },
+    {
+      "line_approx": 3942,
+      "original": "Jonathan Barrett would takeover",
+      "corrected": "Jonathan Barrett would take over",
+      "confidence": "HIGH",
+      "reason": "Split word error: 'takeover' (noun) should be 'take over' (verb phrase) in this context"
+    },
+    {
+      "line_approx": 3963,
+      "original": "Okay U?",
+      "corrected": "Okay.",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: 'U?' is a steno artifact; the intended punctuation is a period closing 'Okay.'"
+    },
+    {
+      "line_approx": 3968,
+      "original": "11:14 a.m.and we are now",
+      "corrected": "11:14 a.m. and we are now",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'a.m.' before 'and'"
+    },
+    {
+      "line_approx": 3974,
+      "original": "12 '06 p.m.and we are now back",
+      "corrected": "12:06 p.m. and we are now back",
+      "confidence": "HIGH",
+      "reason": "Numeral/punctuation artifact: apostrophe → colon in time; also missing space after 'p.m.' before 'and'"
+    },
+    {
+      "line_approx": 3993,
+      "original": "is that right? . Okay\n.",
+      "corrected": "is that right? Okay\n.",
+      "confidence": "HIGH",
+      "reason": "Rogue period after question mark — punctuation artifact; removed stray period"
+    },
+    {
+      "line_approx": 3997,
+      "original": "who become\nthe new ownership",
+      "corrected": "who became\nthe new ownership",
+      "confidence": "HIGH",
+      "reason": "Phonetic/steno substitution: 'become' → 'became' (past tense required by context)"
+    },
+    {
+      "line_approx": 4016,
+      "original": "you and Mr.French had been running",
+      "corrected": "you and Mr. French had been running",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.' before 'French'"
+    },
+    {
+      "line_approx": 4019,
+      "original": "running the company.—the companies",
+      "corrected": "running the company—the companies",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: rogue period before em dash in self-correction; per Margie Wakeman Wells, em dash alone marks the self-correction"
+    },
+    {
+      "line_approx": 4026,
+      "original": "situate arrangements",
+      "corrected": "[REVIEW: \"situate arrangements\" may be \"situational arrangements\" or \"contractual arrangements\" — verify audio] situate arrangements",
+      "confidence": "LOW",
+      "reason": "Multi-word garble: 'situate arrangements' does not read as natural speech; likely a steno breakdown of 'situational arrangements,' 'contractual arrangements,' or similar — flagged for reporter review"
+    },
+    {
+      "line_approx": 4117,
+      "original": "properly credentials\nhad people.",
+      "corrected": "properly credentialed\npeople.",
+      "confidence": "HIGH",
+      "reason": "Steno error: 'credentials had' is a garble of 'credentialed' — dropped syllable and intruding word artifact."
+    },
+    {
+      "line_approx": 4120,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period following honorific 'Mr.' — formatting artifact."
+    },
+    {
+      "line_approx": 4133,
+      "original": "Mr.French?",
+      "corrected": "Mr. French?",
+      "confidence": "HIGH",
+      "reason": "Missing space after period following honorific 'Mr.' — formatting artifact."
+    },
+    {
+      "line_approx": 4149,
+      "original": "So what _\n_\nsorry?",
+      "corrected": "So what—\nsorry?",
+      "confidence": "HIGH",
+      "reason": "Split underscore artifact '_ _' converted to em dash per steno error pattern 6; represents an interrupted/trailing self-correction."
+    },
+    {
+      "line_approx": 4174,
+      "original": "The wall\nof thousand and some_odd change wells",
+      "corrected": "The wall\nof thousand and some-odd change wells",
+      "confidence": "MEDIUM",
+      "reason": "Underscore artifact in 'some_odd' corrected to hyphen for 'some-odd'; 'wall of thousand' and 'change wells' may be further garbles — [REVIEW: 'wall of thousand and some-odd change wells' — verify audio; possible garble of 'upwards of a thousand-some-odd' or similar phrase]."
+    },
+    {
+      "line_approx": 4189,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period following honorific 'Mr.' — formatting artifact."
+    },
+    {
+      "line_approx": 4311,
+      "original": "equity holders an",
+      "corrected": "equity holders and",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' is missing the final 'd' — should be 'and'."
+    },
+    {
+      "line_approx": 4317,
+      "original": "Mr.Barrett",
+      "corrected": "Mr. Barrett",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific 'Mr.' before surname."
+    },
+    {
+      "line_approx": 4321,
+      "original": "Mr.Barrett was",
+      "corrected": "Mr. Barrett was",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific 'Mr.' before surname."
+    },
+    {
+      "line_approx": 4352,
+      "original": "geo physics",
+      "corrected": "geophysics",
+      "confidence": "HIGH",
+      "reason": "Split word error: 'geo physics' should be one word 'geophysics'."
+    },
+    {
+      "line_approx": 4356,
+      "original": "well_thought out",
+      "corrected": "well-thought-out",
+      "confidence": "HIGH",
+      "reason": "Steno underscore artifact and missing hyphen: compound adjective 'well-thought-out' requires hyphens when used as a modifier."
+    },
+    {
+      "line_approx": 4462,
+      "original": "Though I not\nread the transcript",
+      "corrected": "Though I have not\nread the transcript",
+      "confidence": "HIGH",
+      "reason": "Dropped word — 'have' dropped in steno; 'Though I not read' is grammatically incomplete and context requires 'have not read.'"
+    },
+    {
+      "line_approx": 4476,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Merged/split error — missing space between 'Mr.' and 'French.'"
+    },
+    {
+      "line_approx": 4486,
+      "original": "mock since for a\nmile",
+      "corrected": "moccasins for a\nmile",
+      "confidence": "HIGH",
+      "reason": "Phonetic/multi-word garble — 'mock since' is a steno breakdown of 'moccasins' (as in 'walk a mile in someone's moccasins,' the common idiom)."
+    },
+    {
+      "line_approx": 4499,
+      "original": "walled qualified",
+      "corrected": "well qualified",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'walled' is a steno miswrite of 'well' in the phrase 'well qualified.'"
+    },
+    {
+      "line_approx": 4537,
+      "original": "Done\nlinen gee, done\ndifficulties letter.",
+      "corrected": "[REVIEW: NAME GARBLE — \"Done linen gee, done difficulties letter\" appears to be a phonetic/steno breakdown of the drilling manager's name; verify audio for correct name.]",
+      "confidence": "LOW",
+      "reason": "Multi-word/name garble — this appears to be a complete steno breakdown of a proper name. The individual syllables do not resolve to any recognizable name from context. Reporter must verify audio."
+    },
+    {
+      "line_approx": 4549,
+      "original": "Thank\ngoodness we had it\nsubsurface insurance coverage",
+      "corrected": "Thank\ngoodness we had\nsubsurface insurance coverage",
+      "confidence": "HIGH",
+      "reason": "Steno artifact — 'it' is an intruding word; 'we had subsurface insurance coverage' is the correct phrasing grammatically and contextually."
+    },
+    {
+      "line_approx": 4569,
+      "original": "dish er because he used",
+      "corrected": "[REVIEW: NAME/WORD GARBLE — \"dish er\" appears to be a phonetic garble, possibly a person's name or term; verify audio] because he used",
+      "confidence": "LOW",
+      "reason": "Name/word garble — 'dish er' does not resolve to a recognizable word or name from context. May be the drilling manager's name referenced earlier. Reporter must verify audio."
+    },
+    {
+      "line_approx": 4660,
+      "original": "Sure\n.",
+      "corrected": "Sure.",
+      "confidence": "HIGH",
+      "reason": "Split punctuation artifact — period on separate line should be joined to the word."
+    },
+    {
+      "line_approx": 4671,
+      "original": "record_keeping",
+      "corrected": "record-keeping",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact — steno CAT artifact; should be hyphen in 'record-keeping'."
+    },
+    {
+      "line_approx": 4683,
+      "original": "MR. HOBBY: On his comments\n.",
+      "corrected": "MR. HOBBY: On his comments.",
+      "confidence": "HIGH",
+      "reason": "Split punctuation artifact — period on separate line should be joined to the sentence."
+    },
+    {
+      "line_approx": 4727,
+      "original": "record\n_keeping",
+      "corrected": "record-keeping",
+      "confidence": "HIGH",
+      "reason": "Split word and underscore artifact — 'record_keeping' split across lines; should be hyphenated compound word."
+    },
+    {
+      "line_approx": 4736,
+      "original": "fighting offer\nthe wolves",
+      "corrected": "fighting off\nthe wolves",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'offer' is a steno error for 'off'; 'fighting off the wolves' is the correct idiomatic phrase."
+    },
+    {
+      "line_approx": 4762,
+      "original": "you and Mr.French had not",
+      "corrected": "you and Mr. French had not",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.' before surname — merged words artifact."
+    },
+    {
+      "line_approx": 4868,
+      "original": "become the owner?",
+      "corrected": "became the owner?",
+      "confidence": "HIGH",
+      "reason": "Verb tense error; steno dropped the '-d' suffix — 'became' is grammatically correct past tense."
+    },
+    {
+      "line_approx": 4884,
+      "original": "Off the wells",
+      "corrected": "Of the wells",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'Off' should be 'Of' (preposition beginning the question)."
+    },
+    {
+      "line_approx": 4896,
+      "original": "going up whole",
+      "corrected": "going up hole",
+      "confidence": "HIGH",
+      "reason": "Homophone error — 'whole' should be 'hole' (drilling context: going up the wellbore)."
+    },
+    {
+      "line_approx": 4912,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation."
+    },
+    {
+      "line_approx": 4920,
+      "original": "sort of loss count",
+      "corrected": "sort of lost count",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'loss' should be 'lost' (past tense verb)."
+    },
+    {
+      "line_approx": 4928,
+      "original": "the Avenue of the loans",
+      "corrected": "the avenue of the loans",
+      "confidence": "HIGH",
+      "reason": "Spurious capitalization — 'Avenue' should be lowercase 'avenue' in this context."
+    },
+    {
+      "line_approx": 4930,
+      "original": "Mr.Barrett first",
+      "corrected": "Mr. Barrett first",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation."
+    },
+    {
+      "line_approx": 4933,
+      "original": "introduced to Mr.Barrett",
+      "corrected": "introduced to Mr. Barrett",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation."
+    },
+    {
+      "line_approx": 4952,
+      "original": "Mr.Barrett first",
+      "corrected": "Mr. Barrett first",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation."
+    },
+    {
+      "line_approx": 4959,
+      "original": "Was Luminus white tops biggest investor before",
+      "corrected": "Was Luminus White Top's biggest investor before",
+      "confidence": "HIGH",
+      "reason": "Proper noun capitalization corrected ('White Top') and missing possessive apostrophe added ('White Top's')."
+    },
+    {
+      "line_approx": 4968,
+      "original": "No that's",
+      "corrected": "No, that's",
+      "confidence": "HIGH",
+      "reason": "Missing comma after 'No' per Margie Wakeman Wells punctuation standards for direct address/response words."
+    },
+    {
+      "line_approx": 5013,
+      "original": "So they had depth\ncapital but no",
+      "corrected": "So they had debt\ncapital but no",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'depth' → 'debt' (financial context; 'debt capital' is the correct term)"
+    },
+    {
+      "line_approx": 5018,
+      "original": "They were not\nLLC members an\nthat's legal distinction",
+      "corrected": "They were not\nLLC members and\nthat's a legal distinction",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'; also missing article 'a' before 'legal distinction'"
+    },
+    {
+      "line_approx": 5035,
+      "original": "So Mr.Barrett\ninvolvement began in",
+      "corrected": "So Mr. Barrett's\ninvolvement began in",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.' and missing possessive 's' — 'Mr. Barrett's involvement' is grammatically required"
+    },
+    {
+      "line_approx": 5042,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.' — formatting/split word artifact"
+    },
+    {
+      "line_approx": 5031,
+      "original": "Mr.\nBarrett at that time",
+      "corrected": "Mr.\nBarrett at that time",
+      "confidence": "N/A",
+      "reason": "Verbatim — witness's sentence structure is grammatically incomplete but reflects natural deposition speech; no steno artifact present"
+    },
+    {
+      "line_approx": 5199,
+      "original": "a signature reduction",
+      "corrected": "a significant reduction",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'signature' → 'significant'; matches context of discussing expense reductions"
+    },
+    {
+      "line_approx": 5209,
+      "original": "cut itself staff",
+      "corrected": "cut its staff",
+      "confidence": "HIGH",
+      "reason": "Steno error: 'itself' → 'its'; grammatically correct reflexive vs. possessive"
+    },
+    {
+      "line_approx": 5210,
+      "original": "cut itself administrative costs",
+      "corrected": "cut its administrative costs",
+      "confidence": "HIGH",
+      "reason": "Steno error: 'itself' → 'its'; same pattern as above"
+    },
+    {
+      "line_approx": 5214,
+      "original": "Mr.French",
+      "corrected": "Mr. French",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation"
+    },
+    {
+      "line_approx": 5221,
+      "original": "oil pricing an demand",
+      "corrected": "oil pricing and demand",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'"
+    },
+    {
+      "line_approx": 5221,
+      "original": "COVID_19",
+      "corrected": "COVID-19",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: underscore → hyphen in standard compound term"
+    },
+    {
+      "line_approx": 5234,
+      "original": "that discreet",
+      "corrected": "that discrete",
+      "confidence": "HIGH",
+      "reason": "Homophone error: 'discreet' (secretive) → 'discrete' (distinct/separate), correct in context of a distinct time period"
+    },
+    {
+      "line_approx": 5235,
+      "original": "one_month period of time, 28 today\nperiod,",
+      "corrected": "one-month period of time, 28-day\nperiod,",
+      "confidence": "HIGH",
+      "reason": "Two errors: underscore → hyphen in 'one-month'; '28 today period' → '28-day period' (steno garble per known pattern)"
+    },
+    {
+      "line_approx": 5264,
+      "original": "Mr.Barrett writes",
+      "corrected": "Mr. Barrett writes",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation"
+    },
+    {
+      "line_approx": 5282,
+      "original": "Mr.Barrett",
+      "corrected": "Mr. Barrett",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation"
+    },
+    {
+      "line_approx": 5284,
+      "original": "disaster relief and SBA,, et cetera,",
+      "corrected": "disaster relief and SBA, et cetera,",
+      "confidence": "HIGH",
+      "reason": "Double comma artifact: ',,' → ','"
+    },
+    {
+      "line_approx": 5290,
+      "original": "And Mr.Barrett says\"",
+      "corrected": "And Mr. Barrett says\"",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation"
+    },
+    {
+      "line_approx": 5293,
+      "original": "and weep want to",
+      "corrected": "and we want to",
+      "confidence": "HIGH",
+      "reason": "Homophone/steno error: 'weep' → 'we' per known steno error pattern"
+    },
+    {
+      "line_approx": 5295,
+      "original": "issues\nclosed\", right",
+      "corrected": "issues\nclosed\", right",
+      "confidence": "MEDIUM",
+      "reason": "Verbatim — 'closed' may be a steno artifact or witness quoting the word from the e-mail; [REVIEW: verify audio — 'closed' may be 'close' or another word in original e-mail quote]"
+    },
+    {
+      "line_approx": 5300,
+      "original": "fund_raising",
+      "corrected": "fund-raising",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: underscore → hyphen in compound word"
+    },
+    {
+      "line_approx": 5313,
+      "original": "as a—A\nsenior secured lender.",
+      "corrected": "as a—a\nsenior secured lender.",
+      "confidence": "HIGH",
+      "reason": "Capitalization artifact: 'A' after em dash should be lowercase as it continues the sentence"
+    },
+    {
+      "line_approx": 5322,
+      "original": "Mr.Barrett's",
+      "corrected": "Mr. Barrett's",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in honorific abbreviation"
+    },
+    {
+      "line_approx": 5198,
+      "original": "says there a significant",
+      "corrected": "says there a significant",
+      "confidence": "MEDIUM",
+      "reason": "Verbatim — 'there' may be intentional witness/questioner speech or could be 'there's'; [REVIEW: verify audio — possibly 'says there's a significant']"
+    },
+    {
+      "line_approx": 5416,
+      "original": "Exhibit No 135,",
+      "corrected": "Exhibit No. 135,",
+      "confidence": "HIGH",
+      "reason": "Punctuation: 'No' used as abbreviation for 'Number' requires a period."
+    },
+    {
+      "line_approx": 5418,
+      "original": "3230 on\nthree",
+      "corrected": "323003",
+      "confidence": "HIGH",
+      "reason": "Numeral/split word error: Bates number split across lines; '3230 on three' is a steno garble of '323003'."
+    },
+    {
+      "line_approx": 5420,
+      "original": "E-mail",
+      "corrected": "e-mail",
+      "confidence": "HIGH",
+      "reason": "Style: 'e-mail' is the standard lowercase form in court reporting."
+    },
+    {
+      "line_approx": 5422,
+      "original": "is in a right?",
+      "corrected": "is that right?",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'in a' is a garble of 'that'."
+    },
+    {
+      "line_approx": 5425,
+      "original": "Sure?",
+      "corrected": "Sure.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: a simple affirmative response should end with a period, not a question mark."
+    },
+    {
+      "line_approx": 5430,
+      "original": "Of course?",
+      "corrected": "Of course.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: affirmative response should end with a period, not a question mark."
+    },
+    {
+      "line_approx": 5433,
+      "original": "it as quick as I can\n.",
+      "corrected": "it as quick as I can.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period displaced to next line; should follow directly after 'can'."
+    },
+    {
+      "line_approx": 5439,
+      "original": "This is an E-mail",
+      "corrected": "This is an e-mail",
+      "confidence": "HIGH",
+      "reason": "Style: lowercase 'e-mail' is standard."
+    },
+    {
+      "line_approx": 5441,
+      "original": "questions of Oliver\nresin mar sol",
+      "corrected": "questions of Alvarez\nand Marsal",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'Oliver resin mar sol' is a steno garble of 'Alvarez and Marsal', confirmed by multiple uses of the correct name later in the transcript."
+    },
+    {
+      "line_approx": 5444,
+      "original": "was to employ bunker sod with humid\nin us in New York",
+      "corrected": "was to [REVIEW: \"employ bunker sod with humid in us\" — likely a name/entity; verify audio] in New York",
+      "confidence": "LOW",
+      "reason": "Multi-word garble: 'employ bunker sod with humid in us' is unintelligible and likely a personal name or entity name; cannot determine correct form without audio."
+    },
+    {
+      "line_approx": 5446,
+      "original": "liason",
+      "corrected": "liaison",
+      "confidence": "HIGH",
+      "reason": "Spelling error: 'liason' is a misspelling of 'liaison'."
+    },
+    {
+      "line_approx": 5447,
+      "original": "with Oliver resin.",
+      "corrected": "with Alvarez and Marsal.",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'Oliver resin' is a steno garble of 'Alvarez and Marsal', consistent with other corrections in this chunk."
+    },
+    {
+      "line_approx": 5461,
+      "original": "Oliver an\nmar sol is an evaluation firm\n;",
+      "corrected": "Alvarez and\nMarsal is an evaluation firm;",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'Oliver an mar sol' is a steno garble of 'Alvarez and Marsal'; also semicolon should not be on a separate line."
+    },
+    {
+      "line_approx": 5472,
+      "original": "Did Alvarez and Marsol,",
+      "corrected": "Did Alvarez and Marsal,",
+      "confidence": "HIGH",
+      "reason": "Proper noun spelling: 'Marsol' is a steno phonetic error for 'Marsal'."
+    },
+    {
+      "line_approx": 5481,
+      "original": "So in the E-mail\nyou're providing Luminus\n, Oliver and\nmar sol with information",
+      "corrected": "So in the e-mail\nyou're providing Luminus,\nAlvarez and\nMarsal with information",
+      "confidence": "HIGH",
+      "reason": "Multiple errors: 'E-mail' → 'e-mail' (style); misplaced comma; 'Oliver and mar sol' → 'Alvarez and Marsal' (multi-word garble)."
+    },
+    {
+      "line_approx": 5493,
+      "original": "Add\nmodified it if I had",
+      "corrected": "And\nmodified it if I had",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'Add' is a steno error for 'And'."
+    },
+    {
+      "line_approx": 5500,
+      "original": "it to questions posed\nby Oliver\nmar sol.",
+      "corrected": "it to questions posed\nby Alvarez and\nMarsal.",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'Oliver mar sol' → 'Alvarez and Marsal', consistent with other corrections."
+    },
+    {
+      "line_approx": 5504,
+      "original": "bold had paragraph\nin the space had out\ntext.",
+      "corrected": "bold paragraph\nin the spaced-out\ntext.",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: 'had' is an intruding word in 'bold had paragraph'; 'space had out' → 'spaced-out'."
+    },
+    {
+      "line_approx": 5508,
+      "original": "about 140 barrels equivalent per day\n; is that right?",
+      "corrected": "about 140 barrels equivalent per day;\nis that right?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: semicolon displaced to new line; should follow 'day' directly."
+    },
+    {
+      "line_approx": 5521,
+      "original": "So\nunless than a year",
+      "corrected": "So\nless than a year",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'unless' → 'less' (steno dropped word boundary; 'unless' doesn't fit context)."
+    },
+    {
+      "line_approx": 5526,
+      "original": "two_thirds",
+      "corrected": "two-thirds",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: underscore used instead of hyphen in compound fraction."
+    },
+    {
+      "line_approx": 5537,
+      "original": "Okay U?",
+      "corrected": "Okay.",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: 'U?' is a steno artifact following 'Okay'; should be 'Okay.' per established pattern."
+    },
+    {
+      "line_approx": 5539,
+      "original": "And, process.",
+      "corrected": "And, process.",
+      "confidence": "MEDIUM",
+      "reason": "Verbatim — retained as is; 'And, process.' may be a non-sequitur or steno artifact. [REVIEW: 'And, process.' — possible steno garble; verify audio for what was actually said here]"
+    },
+    {
+      "line_approx": 5545,
+      "original": "in capital\nresponses?",
+      "corrected": "in capital\nrequirements?",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'responses' is a steno error for 'requirements' in the context of capital expenditure discussion."
+    },
+    {
+      "line_approx": 5548,
+      "original": "Yes to\ndrill additional wells an\nre complete additional",
+      "corrected": "Yes, to\ndrill additional wells and\nre-complete additional",
+      "confidence": "HIGH",
+      "reason": "Multiple errors: missing comma after 'Yes'; 'an' → 'and' (dropped letter); 're complete' → 're-complete' (hyphen required for prefix)."
+    },
+    {
+      "line_approx": 5554,
+      "original": "or re completed with",
+      "corrected": "or re-completed with",
+      "confidence": "HIGH",
+      "reason": "Hyphenation: 're-completed' requires a hyphen."
+    },
+    {
+      "line_approx": 5559,
+      "original": "to review the—the—some of the referred to material\nin there to get it down exactly\n. Remember",
+      "corrected": "to review the—the—some of the referred to material\nin there to get it down exactly.\nRemember",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period displaced to next line; should follow 'exactly' directly."
+    },
+    {
+      "line_approx": 5619,
+      "original": "for a second\n. I guess it is",
+      "corrected": "for a second. I guess it is",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — steno placed period on new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5630,
+      "original": "obstacle was money\n; is that right?",
+      "corrected": "obstacle was money;\nis that right?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — semicolon placed on new line with leading space; corrected to follow 'money' directly."
+    },
+    {
+      "line_approx": 5634,
+      "original": "additional wells to drill\n. At least our",
+      "corrected": "additional wells to drill. At least our",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period placed on new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5640,
+      "original": "That's correct\n.",
+      "corrected": "That's correct.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period on new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5654,
+      "original": "repay any of the principal\n.",
+      "corrected": "repay any of the principal.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period on new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5656,
+      "original": "I'm sorry\nor repaying the principals\n?",
+      "corrected": "I'm sorry,\nor repaying the principal?",
+      "confidence": "HIGH",
+      "reason": "Two issues: (1) Missing comma after 'sorry' for natural speech pause; (2) 'principals' → 'principal' — witness corrects this in next line, so plural is a steno error."
+    },
+    {
+      "line_approx": 5661,
+      "original": "Fair enough\n.",
+      "corrected": "Fair enough.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period on new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5664,
+      "original": "facing financial difficulties\n?",
+      "corrected": "facing financial difficulties?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — question mark on new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5669,
+      "original": "Exhibit 136, YR\n_ 41592.",
+      "corrected": "Exhibit 136, YR\n41592.",
+      "confidence": "HIGH",
+      "reason": "Split word / punctuation artifact — underscore before Bates number is a steno artifact; removed."
+    },
+    {
+      "line_approx": 5676,
+      "original": "All\nright I'm ready.",
+      "corrected": "All\nright, I'm ready.",
+      "confidence": "HIGH",
+      "reason": "Punctuation — missing comma after 'right' per natural speech and Margie Wakeman Wells standards."
+    },
+    {
+      "line_approx": 5682,
+      "original": "I'm looking at sort of the middle E-mail\nto from block.",
+      "corrected": "I'm looking at sort of the middle E-mail\nto/from block.",
+      "confidence": "MEDIUM",
+      "reason": "Dropped character — 'to from' is likely 'to/from' (referring to email header block). [REVIEW: confirm 'to/from' is intended phrasing]"
+    },
+    {
+      "line_approx": 5699,
+      "original": "MR. HOBBY: So do I\n, yeah.",
+      "corrected": "MR. HOBBY: So do I,\nyeah.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — comma placed at start of new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5710,
+      "original": "or Mr.Barrett\narranged",
+      "corrected": "or Mr. Barrett\narranged",
+      "confidence": "HIGH",
+      "reason": "Merged words — missing space after 'Mr.' before 'Barrett'."
+    },
+    {
+      "line_approx": 5716,
+      "original": "White Top Yellow Rock operations\n. And this",
+      "corrected": "White Top Yellow Rock operations. And this",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period on new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5722,
+      "original": "was being implemented\n.",
+      "corrected": "was being implemented.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period on new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 5729,
+      "original": "of the geoscience's\nteam.",
+      "corrected": "of the geoscience\nteam.",
+      "confidence": "HIGH",
+      "reason": "Steno error — spurious apostrophe-s on 'geoscience's'; 'geoscience team' is an attributive noun, not possessive."
+    },
+    {
+      "line_approx": 5733,
+      "original": "So forth\n12 months before this\nE-mail mid 2020\nto mid 2021\n,",
+      "corrected": "So for the\n12 months before this\nE-mail, mid 2020\nto mid 2021,",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'So forth' → 'So for the'; also punctuation artifact with comma on new line moved inline, and missing comma after 'E-mail'."
+    },
+    {
+      "line_approx": 5793,
+      "original": "mid_August of 2020",
+      "corrected": "mid-August of 2020",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact; should be hyphen in compound modifier 'mid-August'."
+    },
+    {
+      "line_approx": 5806,
+      "original": "on sulphur.",
+      "corrected": "on Sulphur.",
+      "confidence": "HIGH",
+      "reason": "Proper noun — referring to the city of Sulphur, Louisiana; should be capitalized."
+    },
+    {
+      "line_approx": 5821,
+      "original": "destroyed an had to be",
+      "corrected": "destroyed and had to be",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'."
+    },
+    {
+      "line_approx": 5831,
+      "original": "a two or three_ month",
+      "corrected": "a two or three-month",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact; should be hyphen in compound modifier 'three-month'."
+    },
+    {
+      "line_approx": 5844,
+      "original": "ghee sciences",
+      "corrected": "geosciences",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'ghee sciences' → 'geosciences'."
+    },
+    {
+      "line_approx": 5846,
+      "original": "the ghee sciences team",
+      "corrected": "the geosciences team",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'ghee sciences' → 'geosciences' (second instance)."
+    },
+    {
+      "line_approx": 5860,
+      "original": "going all the way become",
+      "corrected": "going all the way back",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'become' → 'back' (phonetic/steno error; 'back in the day' context)."
+    },
+    {
+      "line_approx": 5880,
+      "original": "new _\n_ Well, did anyone",
+      "corrected": "new—\nWell, did anyone",
+      "confidence": "HIGH",
+      "reason": "Split underscore artifact representing em dash for self-interruption/correction."
+    },
+    {
+      "line_approx": 5885,
+      "original": "under the _\n_ I'm sorry.",
+      "corrected": "under the—\nI'm sorry.",
+      "confidence": "HIGH",
+      "reason": "Split underscore artifact representing em dash for self-interruption."
+    },
+    {
+      "line_approx": 5894,
+      "original": "your cars extended warranty",
+      "corrected": "your car's extended warranty",
+      "confidence": "HIGH",
+      "reason": "Missing possessive apostrophe: 'cars' → 'car's'."
+    },
+    {
+      "line_approx": 5898,
+      "original": "get one of those two.",
+      "corrected": "get one of those too.",
+      "confidence": "HIGH",
+      "reason": "Homophone error: 'two' → 'too' (meaning 'also')."
+    },
+    {
+      "line_approx": 5910,
+      "original": "It is 1:01 p.m.and we are",
+      "corrected": "It is 1:01 p.m. and we are",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'p.m.' before 'and'."
+    },
+    {
+      "line_approx": 5916,
+      "original": "time is 1:23 p.m.and we are now back",
+      "corrected": "time is 1:23 p.m. and we are now back",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'p.m.' before 'and'."
+    },
+    {
+      "line_approx": 5998,
+      "original": "bran DAL took",
+      "corrected": "[REVIEW: \"bran DAL\" — appears to be a name garble; possibly \"Brandal\" or similar — verify audio] took",
+      "confidence": "LOW",
+      "reason": "Multi-word garble — \"bran DAL\" appears to be a proper name broken phonetically by steno; cannot confirm correct spelling without audio or context confirmation."
+    },
+    {
+      "line_approx": 6010,
+      "original": "Saltsman an Mickey",
+      "corrected": "Saltsman and Mickey",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — \"an\" is missing the 'd'; should be \"and\"."
+    },
+    {
+      "line_approx": 6019,
+      "original": "Jennifer salt man's",
+      "corrected": "Jennifer Saltsman's",
+      "confidence": "HIGH",
+      "reason": "Split word error — \"salt man's\" should be the surname \"Saltsman's\" as established earlier in the transcript."
+    },
+    {
+      "line_approx": 6040,
+      "original": "why are\n2885 '94",
+      "corrected": "YR\n2885 [REVIEW: \"'94\" — appears to be a Bates number suffix artifact; possibly \"94\" as part of Bates range — verify audio]",
+      "confidence": "MEDIUM",
+      "reason": "Phonetic substitution — \"why are\" is the phonetic rendering of the Bates prefix \"YR\". The \"'94\" following the number may be a Bates suffix or a steno artifact; flagged for reporter verification."
+    },
+    {
+      "line_approx": 6052,
+      "original": "Collect check\n.",
+      "corrected": "Correct.",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble — \"Collect check\" is a known steno artifact for \"Correct\" as documented in error patterns."
+    },
+    {
+      "line_approx": 6065,
+      "original": "have geneos to all",
+      "corrected": "have gone to all",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble — \"geneos\" is a steno garble of \"gone\", as documented in error patterns."
+    },
+    {
+      "line_approx": 6208,
+      "original": "have geneos to the",
+      "corrected": "have gone to the",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'geneos' is a steno artifact for 'gone to' — consistent with surrounding context 'they would have gone to'"
+    },
+    {
+      "line_approx": 6209,
+      "original": "blacktop minority",
+      "corrected": "White Top minority",
+      "confidence": "HIGH",
+      "reason": "Split/phonetic error: 'blacktop' is a known steno garble of 'White Top' (company name confirmed elsewhere in transcript)"
+    },
+    {
+      "line_approx": 6221,
+      "original": "have done to Luminus, Jonathan",
+      "corrected": "have gone to Luminus, Jonathan",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'done' → 'gone'; consistent with surrounding repeated phrase pattern 'would have gone to'"
+    },
+    {
+      "line_approx": 6224,
+      "original": "who we accept them to",
+      "corrected": "who we sent them to",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'accept' is a steno artifact for 'sent' — the intended phrase is 'who we sent them to' in context of distribution"
+    },
+    {
+      "line_approx": 6254,
+      "original": "Sulphur Mines feels",
+      "corrected": "Sulphur Mines [REVIEW: verify proper noun — \"Sulphur Mines\" may be phonetic artifact; confirm against document or audio] fields",
+      "confidence": "MEDIUM",
+      "reason": "Two issues: (1) 'Sulphur Mines' may be a phonetic garble of a proper section name — needs audio/document verification; (2) 'feels' is a phonetic substitution for 'fields' (drilling context)"
+    },
+    {
+      "line_approx": 6341,
+      "original": "implemented in request\n. 1,\n2020",
+      "corrected": "implemented in\nMarch 2020",
+      "confidence": "HIGH",
+      "reason": "Steno garble: 'request . 1,' is a CAT artifact for 'March' (phonetic/numeral artifact); context confirms moratorium was implemented in March 2020 as stated later in the chunk."
+    },
+    {
+      "line_approx": 6347,
+      "original": "geological an",
+      "corrected": "geological and",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and' (steno dropped final 'd')."
+    },
+    {
+      "line_approx": 6349,
+      "original": "an supporting",
+      "corrected": "and supporting",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'."
+    },
+    {
+      "line_approx": 6358,
+      "original": "moratorium assets described",
+      "corrected": "moratorium as described",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'assets' → 'as'; 'moratorium as described' is the correct phrasing in context."
+    },
+    {
+      "line_approx": 6374,
+      "original": "It's _\n_ that's another way",
+      "corrected": "It's—\nthat's another way",
+      "confidence": "HIGH",
+      "reason": "Split word/underscore artifact: '_ _' → em dash (self-correction or trailing-off interrupted speech)."
+    },
+    {
+      "line_approx": 6388,
+      "original": "Okay\n.",
+      "corrected": "Okay.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period on separate line merged with 'Okay'."
+    },
+    {
+      "line_approx": 6395,
+      "original": "hurricane war damage\nup 70,000 in",
+      "corrected": "hurricane [REVIEW: \"war damage\" — possibly \"wind damage\" or \"storm damage\"; verify audio] up 70,000 in",
+      "confidence": "MEDIUM",
+      "reason": "Possible phonetic substitution or mishear: 'war damage' is likely 'wind damage' or 'storm damage' in a hurricane context; flagged for reporter to verify audio."
+    },
+    {
+      "line_approx": 6416,
+      "original": "An the",
+      "corrected": "And the",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'An' → 'And'."
+    },
+    {
+      "line_approx": 6433,
+      "original": "that had Baton Rouge",
+      "corrected": "that had Baton Rouge [REVIEW: \"that had Baton Rouge\" — meaning unclear; possibly \"that had done Baton Rouge\" or similar; verify audio]",
+      "confidence": "LOW",
+      "reason": "Phrase is unclear in context; possibly a steno garble or dropped words; flagged for reporter to verify audio."
+    },
+    {
+      "line_approx": 6446,
+      "original": "There was a scarcity of subcontractors an",
+      "corrected": "There was a scarcity of subcontractors and",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'."
+    },
+    {
+      "line_approx": 6453,
+      "original": "All right\n.",
+      "corrected": "All right.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period on separate line merged with 'All right'."
+    },
+    {
+      "line_approx": 6465,
+      "original": "workovers an",
+      "corrected": "workovers and",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'."
+    },
+    {
+      "line_approx": 6479,
+      "original": "It wasn't Nestor production",
+      "corrected": "It wasn't [REVIEW: \"Nestor production\" — likely \"necessary to production\" or similar; verify audio]",
+      "confidence": "LOW",
+      "reason": "Possible steno garble: 'Nestor production' does not fit context; may be 'necessary to production' or 'essential to production'; flagged for reporter to verify audio."
+    },
+    {
+      "line_approx": 6497,
+      "original": "workovers an",
+      "corrected": "workovers and",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and'."
+    },
+    {
+      "line_approx": 6530,
+      "original": "Well, we couldn't afford\nsay eye we\ndidn't have the capital",
+      "corrected": "Well, we couldn't afford—[REVIEW: garble — \"say eye we\" may be a self-correction artifact; audio review recommended] we\ndidn't have the capital",
+      "confidence": "LOW",
+      "reason": "Multi-word garble: \"say eye we\" is a steno breakdown, likely a self-correction fragment (\"—I would say we\"); flagged for audio review."
+    },
+    {
+      "line_approx": 6533,
+      "original": "wells for carry",
+      "corrected": "wells to carry",
+      "confidence": "HIGH",
+      "reason": "Phonetic/dropped word error: \"for carry\" should be \"to carry\" — standard English phrasing \"to carry out workovers.\""
+    },
+    {
+      "line_approx": 6545,
+      "original": "diagram your sentence\n, which was fairly",
+      "corrected": "diagram your sentence,\nwhich was fairly",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: comma incorrectly placed at start of new line; moved to end of preceding line per standard punctuation."
+    },
+    {
+      "line_approx": 6549,
+      "original": "it in my terms\n. I'm",
+      "corrected": "it in my terms.\nI'm",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period incorrectly placed at start of new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 6576,
+      "original": "them express the",
+      "corrected": "them expressed the",
+      "confidence": "HIGH",
+      "reason": "Dropped syllable: \"express\" should be \"expressed\" — past tense required in context (\"Had any of them expressed\")."
+    },
+    {
+      "line_approx": 6578,
+      "original": "at the State of their",
+      "corrected": "at the state of their",
+      "confidence": "HIGH",
+      "reason": "Capitalization error: \"State\" incorrectly capitalized; \"state\" is used in the general sense, not a proper noun."
+    },
+    {
+      "line_approx": 6587,
+      "original": "I what\nexpression or disappointment\ndid Mr.Derby",
+      "corrected": "What\nexpression of disappointment\ndid Mr. Derby",
+      "confidence": "HIGH",
+      "reason": "Multi-error: \"I what\" is a steno artifact — \"I\" is an intruding artifact, beginning of question should be \"What\"; \"or\" should be \"of\" (phonetic substitution); space missing after \"Mr.\""
+    },
+    {
+      "line_approx": 6597,
+      "original": "made become the\nmoney they vested",
+      "corrected": "made back the\nmoney they invested",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: \"made become the\" → \"made back the\" (phonetic/steno error); \"vested\" → \"invested\" (phonetic substitution — dropped prefix)."
+    },
+    {
+      "line_approx": 6608,
+      "original": "put additional\nN and they wanted",
+      "corrected": "put additional\n[REVIEW: word appears missing after \"additional N\" — likely \"capital\" or similar; audio review recommended] and they wanted",
+      "confidence": "LOW",
+      "reason": "Steno artifact: \"N\" appears to be a fragment of a dropped word (possibly \"capital\" or \"money\"); flagged for audio review."
+    },
+    {
+      "line_approx": 6629,
+      "original": "Yellow Rock dash\n361983 an the technician",
+      "corrected": "Yellow Rock dash\n361983 and the technician",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: \"an\" → \"and\" (steno dropped the final 'd')."
+    },
+    {
+      "line_approx": 6631,
+      "original": "Here's one for you\n. And just",
+      "corrected": "Here's one for you.\nAnd just",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period incorrectly placed at start of new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 6633,
+      "original": "let me know when you're ready\nMr. Easley.",
+      "corrected": "let me know when you're ready,\nMr. Easley.",
+      "confidence": "HIGH",
+      "reason": "Punctuation: direct address requires comma before \"Mr. Easley\" per Margie Wakeman Wells standards."
+    },
+    {
+      "line_approx": 6643,
+      "original": "again, just let me know\n.",
+      "corrected": "again, just let me know.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period incorrectly placed at start of new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 6648,
+      "original": "an E-mail from",
+      "corrected": "an e-mail from",
+      "confidence": "HIGH",
+      "reason": "Capitalization: \"E-mail\" should be lowercase \"e-mail\" per standard court reporting practice."
+    },
+    {
+      "line_approx": 6650,
+      "original": "Robin French\nan others an dated",
+      "corrected": "Robin French\nand others and dated",
+      "confidence": "HIGH",
+      "reason": "Dropped letter (twice): \"an\" → \"and\" in both instances (steno dropped final 'd')."
+    },
+    {
+      "line_approx": 6652,
+      "original": "December 22, 2021\n. Do you see",
+      "corrected": "December 22, 2021.\nDo you see",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period incorrectly placed at start of new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 6658,
+      "original": "line is regarding with\nT he settlement proposal",
+      "corrected": "line is regarding the\nsettlement proposal",
+      "confidence": "HIGH",
+      "reason": "Two errors: \"regarding with\" → \"regarding the\" (phonetic substitution); \"T he\" → \"the\" (split word error — steno artifact)."
+    },
+    {
+      "line_approx": 6666,
+      "original": "MS. CURTIS: Object to the form\n.",
+      "corrected": "MS. CURTIS: Object to the form.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period incorrectly placed at start of new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 6668,
+      "original": "No\n, the blacktop and Sunny",
+      "corrected": "No,\nthe White Top and Sunny",
+      "confidence": "HIGH",
+      "reason": "Two errors: comma artifact moved to end of line; \"blacktop\" → \"White Top\" — split/phonetic proper noun garble (\"black\" is phonetic for \"White\"), consistent with company name used throughout transcript."
+    },
+    {
+      "line_approx": 6674,
+      "original": "That was\ntrying amongst the existing\nmembers of\nLLC—White Top\nLLC's pre restructuring. That\ngroup was given as\na pot percentage",
+      "corrected": "That was\ntrying amongst the existing\nmembers of\nLLC—White Top\nLLC's pre-restructuring. That\ngroup was given a\nset percentage",
+      "confidence": "MEDIUM",
+      "reason": "\"given as a pot percentage\" → \"given a set percentage\" — \"as\" appears to be steno artifact; \"pot\" likely phonetic for \"set\" [REVIEW: \"pot percentage\" may be intentional vernacular — audio review recommended]."
+    },
+    {
+      "line_approx": 6682,
+      "original": "Revenant Signal Energy, one of the LLC members\n, and Steve",
+      "corrected": "Revenant Signal Energy, one of the LLC members,\nand Steve",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: comma incorrectly placed at start of new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 6685,
+      "original": "make that allocation\n. And Jonathan",
+      "corrected": "make that allocation.\nAnd Jonathan",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period incorrectly placed at start of new line; moved to end of preceding line."
+    },
+    {
+      "line_approx": 6717,
+      "original": "Mr.Barrett",
+      "corrected": "Mr. Barrett",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in title abbreviation — formatting artifact."
+    },
+    {
+      "line_approx": 6786,
+      "original": "Did you_all",
+      "corrected": "Did you all",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact joining 'you' and 'all' — should be two separate words."
+    },
+    {
+      "line_approx": 6818,
+      "original": "Directors' an\nd Officers' Insurance",
+      "corrected": "Directors' and\nOfficers' Insurance",
+      "confidence": "HIGH",
+      "reason": "Word 'and' was split across lines as 'an\\nd' — steno line-break artifact; corrected to proper word with line break after 'and'."
+    },
+    {
+      "line_approx": 6832,
+      "original": "Mr.Barrett writes:",
+      "corrected": "Mr. Barrett writes:",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in title abbreviation — formatting artifact."
+    },
+    {
+      "line_approx": 6934,
+      "original": "I see that\n, but I believe that's the same issue",
+      "corrected": "I see that, but I believe that's the same issue",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — comma displaced to start of new line; moved to correct position after 'that'"
+    },
+    {
+      "line_approx": 6936,
+      "original": "that was—Okay.—raised earlier\n.",
+      "corrected": "that was—Okay.—raised earlier.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to separate line; moved to end of sentence"
+    },
+    {
+      "line_approx": 6940,
+      "original": "including accrued interest\n.",
+      "corrected": "including accrued interest.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to separate line; moved to end of sentence"
+    },
+    {
+      "line_approx": 6942,
+      "original": "And Mr.Barrett",
+      "corrected": "And Mr. Barrett",
+      "confidence": "HIGH",
+      "reason": "Merged word artifact — missing space after 'Mr.' abbreviation"
+    },
+    {
+      "line_approx": 6954,
+      "original": "MS. CURTIS: Object to the form\n.",
+      "corrected": "MS. CURTIS: Object to the form.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to separate line; moved to end of sentence"
+    },
+    {
+      "line_approx": 6960,
+      "original": "of being forced into bankruptcy, right\n?",
+      "corrected": "of being forced into bankruptcy, right?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — question mark displaced to separate line; moved to end of sentence"
+    },
+    {
+      "line_approx": 6972,
+      "original": "Reverent\nSignal",
+      "corrected": "Revenant [REVIEW: \"Reverent\" appears to be a steno garble of the company name \"Revenant Signal\" — verify audio]\nSignal",
+      "confidence": "MEDIUM",
+      "reason": "Phonetic substitution — 'Reverent' is likely a steno garble of 'Revenant' (company name used elsewhere in transcript); flagged for reporter verification"
+    },
+    {
+      "line_approx": 6980,
+      "original": "I don't think\nhe was bluffing\n. I",
+      "corrected": "I don't think\nhe was bluffing.\nI",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to separate line; moved to end of sentence"
+    },
+    {
+      "line_approx": 6996,
+      "original": "mark as Exhibit 139\n, which is",
+      "corrected": "mark as Exhibit 139,\nwhich is",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — comma displaced to start of next line; moved to correct position"
+    },
+    {
+      "line_approx": 6999,
+      "original": "the\ntechnician can share that\nplease.",
+      "corrected": "the\ntechnician can share that,\nplease.",
+      "confidence": "HIGH",
+      "reason": "Punctuation — comma needed after 'that' before 'please' per Margie Wakeman Wells standards for direct address/polite request"
+    },
+    {
+      "line_approx": 7012,
+      "original": "January 25th, 2023\n; is that right?",
+      "corrected": "January 25th, 2023;\nis that right?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — semicolon displaced to start of next line; moved to correct position after date"
+    },
+    {
+      "line_approx": 7022,
+      "original": "And the\nsubject line is White Top\nwrites offering status as of Cut Off at\nnoon today, right\n?",
+      "corrected": "And the\nsubject line is White Top\nrights offering status as of Cut Off at\nnoon today, right?",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'writes' → 'rights' (rights offering is the correct legal/financial term); also question mark displaced to separate line, moved to end of sentence"
+    },
+    {
+      "line_approx": 7033,
+      "original": "Uh_huh.",
+      "corrected": "Uh-huh.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — underscore used instead of hyphen in 'Uh-huh'"
+    },
+    {
+      "line_approx": 7037,
+      "original": "rights offering dash\nresponse status\n.",
+      "corrected": "rights offering dash\nresponse status.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to separate line; moved to end of sentence"
+    },
+    {
+      "line_approx": 7044,
+      "original": "I think I'\nm going to show you",
+      "corrected": "I think I'm going to show you",
+      "confidence": "HIGH",
+      "reason": "Split word artifact — 'I'' and 'm' split across lines; merged to 'I'm'"
+    },
+    {
+      "line_approx": 7048,
+      "original": "All right\n. Can I—I'll did he ever then responding until I see\nit.",
+      "corrected": "All right.\nCan I—[REVIEW: \"I'll did he ever then responding until I see it\" — garbled; likely verbatim self-correction or steno breakdown; verify audio]",
+      "confidence": "LOW",
+      "reason": "Multi-word garble — 'I'll did he ever then responding until I see it' is incoherent; likely steno breakdown of a self-correction or spoken aside; flagged for reporter audio review"
+    },
+    {
+      "line_approx": 7060,
+      "original": "declines an unknown",
+      "corrected": "declines and unknown",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' is a steno artifact for 'and'; corrected to 'and' for grammatical sense in list context"
+    },
+    {
+      "line_approx": 7061,
+      "original": "; is that right?",
+      "corrected": ";\nis that right?",
+      "confidence": "HIGH",
+      "reason": "Punctuation placement — semicolon should follow 'unknown' on that line; preserved as-is in corrected_text flow"
+    },
+    {
+      "line_approx": 7124,
+      "original": "All right\n.",
+      "corrected": "All right.",
+      "confidence": "HIGH",
+      "reason": "Steno line-break artifact — period split onto its own line; merged with preceding text."
+    },
+    {
+      "line_approx": 7143,
+      "original": "You right\nin this E-mail",
+      "corrected": "You write\nin this E-mail",
+      "confidence": "HIGH",
+      "reason": "Homophone error — 'right' should be 'write' (referring to writing in an email)."
+    },
+    {
+      "line_approx": 7156,
+      "original": "And so there was\nstill units that",
+      "corrected": "And so there were\nstill units that",
+      "confidence": "HIGH",
+      "reason": "Verbatim grammar — 'there was still units' is likely a steno transcription slip; 'units' is plural requiring 'were'; however this could be verbatim speech. Correcting as likely steno drop of 're'."
+    },
+    {
+      "line_approx": 7166,
+      "original": "Some had declined. Sod\naccepted and some at",
+      "corrected": "Some had declined. Some\naccepted and some at",
+      "confidence": "HIGH",
+      "reason": "Steno phonetic/dropped-letter error — 'Sod' should be 'Some'; 'd' artifact replacing 'me'."
+    },
+    {
+      "line_approx": 7172,
+      "original": "had not responded\n. My recollection is",
+      "corrected": "had not responded.\nMy recollection is",
+      "confidence": "HIGH",
+      "reason": "Steno line-break artifact — period split onto new line; merged with preceding sentence."
+    },
+    {
+      "line_approx": 7174,
+      "original": "Got it\n.",
+      "corrected": "Got it.",
+      "confidence": "HIGH",
+      "reason": "Steno line-break artifact — period split onto its own line."
+    },
+    {
+      "line_approx": 7195,
+      "original": "You will you?",
+      "corrected": "[REVIEW: \"You will you?\" — appears to be a garbled question or steno artifact; verify audio for intended phrasing]",
+      "confidence": "LOW",
+      "reason": "Multi-word garble — 'You will you?' does not make grammatical sense in context; likely steno breakdown of a transitional question or phrase."
+    },
+    {
+      "line_approx": 7197,
+      "original": "Your net period of time Steve Derby changed",
+      "corrected": "Your net period of time Steve Derby changed",
+      "confidence": "N/A",
+      "reason": "Verbatim — 'Your net period of time' may be garbled but kept as-is pending REVIEW; could also be witness's informal phrasing. [REVIEW: 'Your net period of time' — possible steno garble; verify audio]"
+    },
+    {
+      "line_approx": 7208,
+      "original": "it hadn't changed\n.",
+      "corrected": "it hadn't changed.",
+      "confidence": "HIGH",
+      "reason": "Steno line-break artifact — period split onto its own line."
+    },
+    {
+      "line_approx": 7211,
+      "original": "restructuring\n.",
+      "corrected": "restructuring.",
+      "confidence": "HIGH",
+      "reason": "Steno line-break artifact — period split onto its own line."
+    },
+    {
+      "line_approx": 7237,
+      "original": "with the Bates No..\nthis is technically\na native which means\nit's to the Bates\nstamped in the ordinary",
+      "corrected": "with the Bates No..\nthis is technically\na native which means\nit's [REVIEW: \"to the Bates\" — likely \"not Bates\"; verify audio] Bates\nstamped in the ordinary",
+      "confidence": "LOW",
+      "reason": "Possible steno error — 'it's to the Bates stamped' likely should be 'it's not Bates stamped' (describing a native file); flagged for reporter review."
+    },
+    {
+      "line_approx": 7246,
+      "original": "record\n.",
+      "corrected": "record.",
+      "confidence": "HIGH",
+      "reason": "Steno line-break artifact — period split onto its own line."
+    },
+    {
+      "line_approx": 7366,
+      "original": "behind that redaction there/\n?",
+      "corrected": "behind that redaction there?",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: slash before line break and question mark; corrected to single question mark at end of sentence."
+    },
+    {
+      "line_approx": 7393,
+      "original": "by ten none Sunny Solar investors?",
+      "corrected": "by ten non-Sunny Solar investors?",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'none' → 'non-' (hyphenated prefix in 'non-Sunny Solar investors')."
+    },
+    {
+      "line_approx": 7397,
+      "original": "but Derby may",
+      "corrected": "but [REVIEW: \"Derby\" — possible proper name or garble; verify audio] may",
+      "confidence": "MEDIUM",
+      "reason": "Name/proper noun garble: 'Derby' may be a person's name or a steno garble; cannot confirm from context alone. Flagged for reporter review."
+    },
+    {
+      "line_approx": 7421,
+      "original": "to third_party lenders that had",
+      "corrected": "to third-party lenders that had",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact: 'third_party' → 'third-party' (hyphenated compound adjective)."
+    },
+    {
+      "line_approx": 7434,
+      "original": "of investors claims and to begin with *REPORTER CHECK\nHERE*.",
+      "corrected": "of investors claims and to begin with [REVIEW: reporter check — audio needed for remainder of objection].",
+      "confidence": "MEDIUM",
+      "reason": "Reporter placeholder '*REPORTER CHECK HERE*' indicates untranslated or inaudible text; converted to inline REVIEW tag."
+    },
+    {
+      "line_approx": 7443,
+      "original": "were those entities\nnames?",
+      "corrected": "were those entities'\nnames?",
+      "confidence": "HIGH",
+      "reason": "Missing possessive apostrophe: 'entities names' → 'entities' names' (possessive plural)."
+    },
+    {
+      "line_approx": 7475,
+      "original": "field an the management",
+      "corrected": "field and the management",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and' (conjunction, dropped 'd')."
+    },
+    {
+      "line_approx": 7543,
+      "original": "it\n. I can't speak",
+      "corrected": "it.\nI can't speak",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — rogue line break before period; period belongs at end of preceding line."
+    },
+    {
+      "line_approx": 7558,
+      "original": "Uhmm\n. And",
+      "corrected": "Uhmm.\nAnd",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to next line; moved to end of 'Uhmm' where it belongs."
+    },
+    {
+      "line_approx": 7575,
+      "original": "now\n.\nWho is that\n?",
+      "corrected": "now.\nWho is that?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifacts — period displaced to separate line; question mark displaced to separate line. Both moved to end of their respective sentences."
+    },
+    {
+      "line_approx": 7593,
+      "original": "you\n're doing is\nimproper.",
+      "corrected": "you're doing is\nimproper.",
+      "confidence": "HIGH",
+      "reason": "Split word error — 'you' and \"'re\" split across lines; merged to 'you're'."
+    },
+    {
+      "line_approx": 7603,
+      "original": "a year_and_a_half;\nis that right?",
+      "corrected": "a year and a half;\nis that right?",
+      "confidence": "HIGH",
+      "reason": "Underscore artifacts — underscores used in place of spaces in the phrase 'year and a half'; corrected to normal spacing."
+    },
+    {
+      "line_approx": 7608,
+      "original": "form\n.",
+      "corrected": "form.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to next line; moved to end of 'form'."
+    },
+    {
+      "line_approx": 7612,
+      "original": "2021\n? And",
+      "corrected": "2021?\nAnd",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — question mark displaced to next line; moved to end of '2021'."
+    },
+    {
+      "line_approx": 7616,
+      "original": "operations\n. And that's",
+      "corrected": "operations.\nAnd that's",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to next line; moved to end of 'operations'."
+    },
+    {
+      "line_approx": 7619,
+      "original": "case\n.",
+      "corrected": "case.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period displaced to next line; moved to end of 'case'."
+    },
+    {
+      "line_approx": 7637,
+      "original": "746 S\nT dash one offset",
+      "corrected": "746 ST-1 offset",
+      "confidence": "MEDIUM",
+      "reason": "Split word error and steno artifact — 'S T' is a split of 'ST' (well designation), and 'dash' is a steno word for the hyphen character. [REVIEW: verify well name '746 ST-1' against record/documents]"
+    },
+    {
+      "line_approx": 7649,
+      "original": "Did\nYellow Rock or blacktop know\nwhat that was?",
+      "corrected": "Did\nYellow Rock or White Top know\nwhat that was?",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'blacktop' is a steno miswrite of 'White Top' (company name); consistent with established pattern noted in instructions and confirmed by context throughout transcript."
+    },
+    {
+      "line_approx": 7740,
+      "original": "what was while tops\nimplied valuation?",
+      "corrected": "what was White Top's\nimplied valuation?",
+      "confidence": "HIGH",
+      "reason": "Phonetic/homophone error: 'while tops' → 'White Top's'; White Top is the established company name throughout the transcript."
+    },
+    {
+      "line_approx": 7790,
+      "original": "obligation to\nfolks in that position fairly.",
+      "corrected": "obligation to\n[REVIEW: possible dropped word — \"treat\" or similar missing before \"folks\"] folks in that position fairly.",
+      "confidence": "MEDIUM",
+      "reason": "Apparent dropped word: 'obligation to folks in that position fairly' is grammatically incomplete; likely 'obligation to treat folks in that position fairly' or similar. Reporter should verify audio."
+    },
+    {
+      "line_approx": 7811,
+      "original": "me that. .",
+      "corrected": "me that.",
+      "confidence": "HIGH",
+      "reason": "Double period artifact: 'that. .' corrected to 'that.' — steno double-period artifact removed."
+    },
+    {
+      "line_approx": 7855,
+      "original": "MR. HOBBY: I'll the ask same\nquestion.",
+      "corrected": "MR. HOBBY: I'll ask the same\nquestion.",
+      "confidence": "HIGH",
+      "reason": "Word order error/steno artifact: 'I'll the ask same' → 'I'll ask the same' — transposition of 'the' and 'ask'."
+    },
+    {
+      "line_approx": 7876,
+      "original": "stand_alone question",
+      "corrected": "stand-alone question",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact: 'stand_alone' → 'stand-alone' — steno underscore should be hyphen in compound adjective."
+    },
+    {
+      "line_approx": 7953,
+      "original": "processes are but you have",
+      "corrected": "prices are but you have",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'processes' → 'prices' in oil and gas commodity valuation context; 'commodity prices' is the standard phrase"
+    },
+    {
+      "line_approx": 7962,
+      "original": "the long_term",
+      "corrected": "the long-term",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact: steno CAT joined hyphen as underscore; corrected to hyphen for compound adjective 'long-term'"
+    },
+    {
+      "line_approx": 7984,
+      "original": "the AK disclosure requirements",
+      "corrected": "the 8-K disclosure requirements",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'AK' → '8-K'; SEC Form 8-K is the standard current report disclosure form referenced in this securities/corporate context"
+    },
+    {
+      "line_approx": 7993,
+      "original": "In my\npersonal you're asking",
+      "corrected": "In my\npersonal [REVIEW: possible garble — may be \"personal view\" with dropped word] you're asking",
+      "confidence": "MEDIUM",
+      "reason": "Dropped word: 'personal' appears to be missing a following word (likely 'view'); phrase is incomplete as written. Reporter should verify audio."
+    },
+    {
+      "line_approx": 8021,
+      "original": "six_foot tall levee",
+      "corrected": "six-foot tall levee",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact: steno CAT joined hyphen as underscore; corrected to hyphen for compound adjective 'six-foot'"
+    },
+    {
+      "line_approx": 8101,
+      "original": "pre document vast",
+      "corrected": "predominant vast",
+      "confidence": "MEDIUM",
+      "reason": "[REVIEW: 'pre document' appears to be a steno garble — 'predominant' fits context of describing majority equity holder, but verify audio]"
+    },
+    {
+      "line_approx": 8115,
+      "original": "deleted\ndown further",
+      "corrected": "diluted\ndown further",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'deleted' → 'diluted'; financial/equity context makes 'diluted down further' correct"
+    },
+    {
+      "line_approx": 8121,
+      "original": "was down of any",
+      "corrected": "was do you know of any",
+      "confidence": "HIGH",
+      "reason": "Steno garble: 'down' is a dropped/garbled rendering of 'do you know'; restores the repeated question structure"
+    },
+    {
+      "line_approx": 8128,
+      "original": "don't know personal",
+      "corrected": "don't know personally",
+      "confidence": "HIGH",
+      "reason": "Dropped syllable: 'personal' → 'personally'"
+    },
+    {
+      "line_approx": 8132,
+      "original": "55_minute breaks_ish",
+      "corrected": "55-minute breaks-ish",
+      "confidence": "HIGH",
+      "reason": "Underscore steno artifacts replaced with hyphens for proper formatting"
+    },
+    {
+      "line_approx": 8149,
+      "original": "is 2:21 p.m.and",
+      "corrected": "is 2:21 p.m. and",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'p.m.' before 'and'"
+    },
+    {
+      "line_approx": 8154,
+      "original": "is 2:42 p.m.and",
+      "corrected": "is 2:42 p.m. and",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'p.m.' before 'and'"
+    },
+    {
+      "line_approx": 8185,
+      "original": "Okay?",
+      "corrected": "Okay.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: 'Okay?' in context of acknowledging a statement should be 'Okay.' — question mark is a steno artifact"
+    },
+    {
+      "line_approx": 8194,
+      "original": "in Mr.Barrett E_\nmail",
+      "corrected": "in Mr. Barrett's E-\nmail",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.'; possessive 's' dropped (Barrett's email); underscore steno artifact replaced with hyphen in 'E-mail'"
+    },
+    {
+      "line_approx": 8182,
+      "original": "Mr.Barrett\n",
+      "corrected": "Mr. Barrett\n",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.' abbreviation"
+    },
+    {
+      "line_approx": 8208,
+      "original": "So Mr.Barrett is",
+      "corrected": "So Mr. Barrett is",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.' abbreviation"
+    },
+    {
+      "line_approx": 8293,
+      "original": "Mr.Barrett was asking for based on the context",
+      "corrected": "Mr. Barrett was asking for based on the context",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.' — merged word artifact."
+    },
+    {
+      "line_approx": 8298,
+      "original": "have done\ngone down and around",
+      "corrected": "have done\ngone down and around",
+      "confidence": "N/A",
+      "reason": "Verbatim — witness speech; 'have done gone' is colloquial/intentional phrasing, preserved as-is."
+    },
+    {
+      "line_approx": 8330,
+      "original": "go_to person",
+      "corrected": "go-to person",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact replaced with hyphen; 'go-to' is standard hyphenated compound adjective."
+    },
+    {
+      "line_approx": 8338,
+      "original": "Mr.Barrett asked for",
+      "corrected": "Mr. Barrett asked for",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'Mr.' — merged word artifact."
+    },
+    {
+      "line_approx": 8356,
+      "original": "As\nI appreciate it it'\ns my understanding that",
+      "corrected": "As\nI appreciate it, it's\nmy understanding that",
+      "confidence": "HIGH",
+      "reason": "Missing comma after 'it' before 'it's'; also steno split 'it'\\ns' corrected to 'it's'."
+    },
+    {
+      "line_approx": 8365,
+      "original": "of the developing the Sulphur Mines Field",
+      "corrected": "of developing the Sulphur Mines Field",
+      "confidence": "HIGH",
+      "reason": "Duplicate 'the' — steno artifact. 'of the developing' should be 'of developing'."
+    },
+    {
+      "line_approx": 8371,
+      "original": "drilled W_two still producing, right?",
+      "corrected": "drilled, W-two still producing, right?",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact replaced with hyphen for 'W-two'; added comma after 'drilled' for natural reading of the list construction."
+    },
+    {
+      "line_approx": 8462,
+      "original": "signature named tropical storm",
+      "corrected": "significant named tropical storm",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'signature' is a steno error for 'significant' — standard phrase is 'significant named tropical storm'"
+    },
+    {
+      "line_approx": 8467,
+      "original": "would have been lawyer a",
+      "corrected": "would have been Hurricane Laura",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble: 'lawyer a' is a steno garble of 'Hurricane Laura' — consistent with the chunk previously referencing 'lawyer a' as a hurricane name, and Hurricane Laura (2020) matches the August/September 2020 timeline in the text"
+    },
+    {
+      "line_approx": 8494,
+      "original": "This lies a picture",
+      "corrected": "This [REVIEW: \"lies\" may be \"paints\" or other word — verify audio] a picture",
+      "confidence": "LOW",
+      "reason": "The word 'lies' does not make grammatical sense here; possibly 'paints' or 'lays' but context is ambiguous — flagged for reporter to verify audio"
+    },
+    {
+      "line_approx": 8534,
+      "original": "you gloss had over the surface",
+      "corrected": "you glossed over the surface",
+      "confidence": "HIGH",
+      "reason": "Steno split/garble: 'gloss had' is a broken rendering of 'glossed' — 'had' is an artifact of the past-tense ending"
+    },
+    {
+      "line_approx": 8557,
+      "original": "you accept this slide to Ms. Tran",
+      "corrected": "you sent this slide to Ms. Tran",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'accept this' is a steno error for 'sent this' — matches established pattern 'accept this slide to' → 'sent this slide to'"
+    },
+    {
+      "line_approx": 8563,
+      "original": "And your side doesn't mention salt caverns",
+      "corrected": "And your slide doesn't mention salt caverns",
+      "confidence": "HIGH",
+      "reason": "Homophone/dropped letter: 'side' should be 'slide' — consistent with surrounding context referring to the slide document"
+    },
+    {
+      "line_approx": 8567,
+      "original": "An it doesn't mention any",
+      "corrected": "And it doesn't mention any",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'An' is missing the final 'd' — should be 'And'"
+    },
+    {
+      "line_approx": 8576,
+      "original": "Yellow Rock or white tops troubles",
+      "corrected": "Yellow Rock or White Top's troubles",
+      "confidence": "HIGH",
+      "reason": "Capitalization and possessive: 'white tops' should be 'White Top's' — proper noun 'White Top' used throughout transcript, with possessive apostrophe-s required"
+    },
+    {
+      "line_approx": 8681,
+      "original": "I addressed—a dressed what",
+      "corrected": "I addressed—addressed what",
+      "confidence": "HIGH",
+      "reason": "Split word error: 'a dressed' is a steno split of 'addressed'; the em dash self-correction already uses 'addressed' once, so the second instance should also be 'addressed'."
+    },
+    {
+      "line_approx": 8726,
+      "original": "when blacktop bought their interest in Yellow Rock",
+      "corrected": "when White Top bought their interest in Yellow Rock",
+      "confidence": "HIGH",
+      "reason": "Known steno error pattern: 'blacktop' is a phonetic/steno garble for 'White Top' (company name), as documented in error patterns."
+    },
+    {
+      "line_approx": 8750,
+      "original": "been one of the feel a\nwells, one of Yellow",
+      "corrected": "been one of the fee [REVIEW: \"feel a\" appears to be a steno garble — possibly \"fee\" wells or another phrase; verify audio] wells, one of Yellow",
+      "confidence": "LOW",
+      "reason": "'feel a' is likely a steno garble; 'fee wells' is plausible in oil and gas context (fee interest wells), but audio verification needed."
+    },
+    {
+      "line_approx": 8762,
+      "original": "the check silver\nmines salt dome",
+      "corrected": "the Sulphur Mines salt dome",
+      "confidence": "MEDIUM",
+      "reason": "Known steno error pattern: 'check silver mines' is a phonetic garble of 'Sulphur Mines' (proper noun salt dome name in oil and gas context). Reporter should verify audio."
+    },
+    {
+      "line_approx": 8893,
+      "original": "based odd this",
+      "corrected": "based on this",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'odd' → 'on'; standard steno error pattern."
+    },
+    {
+      "line_approx": 8929,
+      "original": "left_hand side",
+      "corrected": "left-hand side",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact: steno CAT joined hyphenated compound with underscore instead of hyphen."
+    },
+    {
+      "line_approx": 8945,
+      "original": "black\nscale",
+      "corrected": "[REVIEW: \"black scale\" — possibly \"actual scale\" or other phrase; verify audio] scale",
+      "confidence": "LOW",
+      "reason": "Possible phonetic/steno garble: 'black scale' is likely an error but intended phrase is unclear from context. Reporter should verify audio."
+    },
+    {
+      "line_approx": 8957,
+      "original": "mine",
+      "corrected": "mind",
+      "confidence": "HIGH",
+      "reason": "Homophone substitution: 'mine' → 'mind'; witness says 'establish in my mind the relationship.'"
+    },
+    {
+      "line_approx": 8958,
+      "original": "E_\nmail",
+      "corrected": "E-mail",
+      "confidence": "HIGH",
+      "reason": "Underscore/split artifact: steno produced underscore instead of hyphen in 'E-mail.'"
+    },
+    {
+      "line_approx": 8988,
+      "original": "Boardwalk cavern\ns/wells",
+      "corrected": "Boardwalk caverns/wells",
+      "confidence": "HIGH",
+      "reason": "Split word error: 'cavern\\ns' is a line-break artifact splitting 'caverns'; rejoined."
+    },
+    {
+      "line_approx": 9118,
+      "original": "carted \"X\" and",
+      "corrected": "[REVIEW: \"carted\" — possibly \"charted\"; verify audio] \"X\" and",
+      "confidence": "MEDIUM",
+      "reason": "Phonetic/steno error: \"carted\" likely \"charted\" in context of mapping subsurface coordinates; reporter should verify audio."
+    },
+    {
+      "line_approx": 9119,
+      "original": "why is at target bottom hole of the well.",
+      "corrected": "Y [REVIEW: \"why is at\" — possibly \"Y is at\"; verify audio] target bottom hole of the well.",
+      "confidence": "MEDIUM",
+      "reason": "Homophone/steno error: \"why\" likely the letter \"Y\" referring to a coordinate axis; \"is at\" may be steno artifact. Reporter should verify audio."
+    },
+    {
+      "line_approx": 9148,
+      "original": "an eye did he of",
+      "corrected": "an idea [REVIEW: \"eye did he\" — likely \"idea\"; verify audio] of",
+      "confidence": "MEDIUM",
+      "reason": "Multi-word garble: \"eye did he\" is a steno breakdown of \"idea\"; reporter should verify audio."
+    },
+    {
+      "line_approx": 9150,
+      "original": "mile—nearly a mile_and_a_half do you know where",
+      "corrected": "mile—nearly a mile-and-a-half [REVIEW: \"do you know where\" — likely \"to know where\"; verify audio]",
+      "confidence": "MEDIUM",
+      "reason": "Two errors: (1) underscore-joined words \"mile_and_a_half\" corrected to hyphenated form; (2) \"do you know where\" is likely a steno garble of \"to know where\" in context, but reporter should verify audio."
+    },
+    {
+      "line_approx": 9159,
+      "original": "An\nd I was asking him",
+      "corrected": "And\nI was asking him",
+      "confidence": "HIGH",
+      "reason": "Split word error: \"An\" followed by line break and \"d\" is a split of \"And\"; merged and corrected."
+    },
+    {
+      "line_approx": 9248,
+      "original": "write_up to the salt",
+      "corrected": "right up to the salt",
+      "confidence": "HIGH",
+      "reason": "Homophone/steno error: 'write_up' should be 'right up' — drilling context confirms directional phrase"
+    },
+    {
+      "line_approx": 9255,
+      "original": "Become in the day in",
+      "corrected": "Back in the day in",
+      "confidence": "HIGH",
+      "reason": "Steno garble: 'Become in the day' is a known steno artifact for 'Back in the day'"
+    },
+    {
+      "line_approx": 9271,
+      "original": "well write_up to the\nsalt?",
+      "corrected": "well right up to the\nsalt?",
+      "confidence": "HIGH",
+      "reason": "Homophone/steno error: 'write_up' should be 'right up' — same error pattern as above"
+    },
+    {
+      "line_approx": 9278,
+      "original": "I believe it would be save",
+      "corrected": "I believe it would be safe",
+      "confidence": "HIGH",
+      "reason": "Steno dropped letter: 'save' should be 'safe' — context is discussing safe drilling practices"
+    },
+    {
+      "line_approx": 9410,
+      "original": "boot strap on counsel's response",
+      "corrected": "bootstrap on counsel's response",
+      "confidence": "HIGH",
+      "reason": "Split word error — 'boot strap' is one word: 'bootstrap'."
+    },
+    {
+      "line_approx": 9435,
+      "original": "But it was\nabout to know where the\ncavern was, right?",
+      "corrected": "But it was\nimportant to know where the\ncavern was, right?",
+      "confidence": "MEDIUM",
+      "reason": "Phonetic/garble error — 'about to know' does not make sense in context; 'important to know' fits the argument being made. [REVIEW: verify audio]"
+    },
+    {
+      "line_approx": 9422,
+      "original": "the time and belief\nnow",
+      "corrected": "the time and [REVIEW: possibly \"my belief\" — verify audio] belief\nnow",
+      "confidence": "LOW",
+      "reason": "Possible dropped word — 'my' may have been dropped before 'belief'; could also be intentional speech pattern. Flagged for review."
+    },
+    {
+      "line_approx": 9466,
+      "original": "an return to it if you",
+      "corrected": "and return to it if you",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' should be 'and'; steno dropped the final 'd'."
+    },
+    {
+      "line_approx": 9480,
+      "original": "sent to Robin\nFrench an copied to you",
+      "corrected": "sent to Robin\nFrench and copied to you",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' should be 'and'; steno dropped the final 'd'."
+    },
+    {
+      "line_approx": 9492,
+      "original": "a contact person that instrumental\nin identifying",
+      "corrected": "a contact person that was instrumental\nin identifying",
+      "confidence": "HIGH",
+      "reason": "Dropped word — 'was' missing before 'instrumental'; grammatically required."
+    },
+    {
+      "line_approx": 9500,
+      "original": "He morphed the\noil business.",
+      "corrected": "He morphed [REVIEW: possibly \"morphed into\" or \"morphed in\" — verify audio] the\noil business.",
+      "confidence": "LOW",
+      "reason": "Possible dropped word or garble — 'morphed the oil business' is grammatically incomplete; likely 'morphed into the oil business' but flagged for audio verification."
+    },
+    {
+      "line_approx": 9513,
+      "original": "of prospect cc a\n, do you see that",
+      "corrected": "of prospect [REVIEW: \"cc a\" may be a steno garble of a prospect name/designation — verify audio] cc a\n, do you see that",
+      "confidence": "LOW",
+      "reason": "Possible name/designation garble — 'cc a' appears to be a steno artifact for a prospect name or alphanumeric designation; flagged for reporter to verify audio."
+    },
+    {
+      "line_approx": 9601,
+      "original": "risk an you",
+      "corrected": "risk and you",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' is a steno artifact for 'and'."
+    },
+    {
+      "line_approx": 9603,
+      "original": "salt formation an it adds",
+      "corrected": "salt formation and it adds",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' is a steno artifact for 'and'."
+    },
+    {
+      "line_approx": 9621,
+      "original": "Do you see _\n_ well, I guess",
+      "corrected": "Do you see—\nwell, I guess",
+      "confidence": "HIGH",
+      "reason": "Split word / punctuation artifact: '_ _' (two underscores) represents an em dash indicating a self-correction or interruption."
+    },
+    {
+      "line_approx": 9622,
+      "original": "there is a few E-mails from",
+      "corrected": "there are a few E-mails from",
+      "confidence": "HIGH",
+      "reason": "Grammar correction: 'there is a few' is not verbatim colloquial speech but a likely steno error; standard usage is 'there are a few.' [REVIEW: if witness actually said 'there is a few,' revert to verbatim]"
+    },
+    {
+      "line_approx": 9630,
+      "original": "And Mr.Lee",
+      "corrected": "And Mr. Lee",
+      "confidence": "HIGH",
+      "reason": "Missing space after period in abbreviation 'Mr.'"
+    },
+    {
+      "line_approx": 9641,
+      "original": "disposal Well, right?",
+      "corrected": "disposal well, right?",
+      "confidence": "HIGH",
+      "reason": "Capitalization artifact: 'Well' should be lowercase in this context (not the proper noun 'Well' as a drilling term being emphasized)."
+    },
+    {
+      "line_approx": 9667,
+      "original": "we can White Top—acquired Yellow Rock.",
+      "corrected": "we [REVIEW: possible garble — \"we can White Top\" may be \"we, White Top,\" or similar; verify audio] White Top—acquired Yellow Rock.",
+      "confidence": "LOW",
+      "reason": "Multi-word garble: 'we can White Top' does not make grammatical sense; likely a steno artifact for 'we, White Top,' or similar phrasing. Reporter must verify audio."
+    },
+    {
+      "line_approx": 9672,
+      "original": "pays of",
+      "corrected": "pace of",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'pays' is a steno artifact for 'pace' (as in 'pace of development')."
+    },
+    {
+      "line_approx": 9774,
+      "original": "Not boil with them",
+      "corrected": "Not boil with them",
+      "confidence": "LOW",
+      "reason": "[REVIEW: 'Not boil with them' — likely a steno garble; possible intended phrase unclear from context. Reporter should verify audio.]"
+    },
+    {
+      "line_approx": 9822,
+      "original": "it would have _\n_ you're correct on your",
+      "corrected": "it would have—you're correct on your",
+      "confidence": "HIGH",
+      "reason": "Split underscore artifact '_ _' with space converted to em dash per steno error pattern for self-correction or interrupted thought."
+    },
+    {
+      "line_approx": 9844,
+      "original": "sign_off injection and",
+      "corrected": "sign-off injection and",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact in 'sign_off' corrected to hyphen; 'sign-off' is the standard hyphenated form."
+    },
+    {
+      "line_approx": 9858,
+      "original": "not sign_off",
+      "corrected": "not sign-off",
+      "confidence": "HIGH",
+      "reason": "Same underscore artifact pattern corrected to hyphen in 'sign-off'."
+    },
+    {
+      "line_approx": 9953,
+      "original": "a two_step process.",
+      "corrected": "a two-step process.",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact — should be hyphen in compound modifier 'two-step'."
+    },
+    {
+      "line_approx": 9954,
+      "original": "First Getty M.D. approval and",
+      "corrected": "First get IMD approval and",
+      "confidence": "HIGH",
+      "reason": "Multi-word garble — 'Getty M.D.' is a steno breakdown of 'get IMD' (an acronym used later in the transcript)."
+    },
+    {
+      "line_approx": 9955,
+      "original": "then get sign_off from",
+      "corrected": "then get sign-off from",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact — should be hyphen in compound noun 'sign-off'."
+    },
+    {
+      "line_approx": 9977,
+      "original": "happens is that sense",
+      "corrected": "happens is that since",
+      "confidence": "HIGH",
+      "reason": "Homophone substitution — 'sense' should be 'since' (subordinating conjunction introducing a causal clause)."
+    },
+    {
+      "line_approx": 9983,
+      "original": "an minerals in",
+      "corrected": "and minerals in",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' should be 'and' (conjunction in 'mines and minerals')."
+    },
+    {
+      "line_approx": 9996,
+      "original": "the call with the—the IM D",
+      "corrected": "the call with the—the IMD",
+      "confidence": "HIGH",
+      "reason": "Split word/spacing artifact — 'IM D' should be 'IMD' (acronym, consistent with usage elsewhere in transcript)."
+    },
+    {
+      "line_approx": 9997,
+      "original": "mines an minerals",
+      "corrected": "mines and minerals",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' should be 'and' (conjunction in 'mines and minerals')."
+    },
+    {
+      "line_approx": 10004,
+      "original": "submitted Todd Boardwalk",
+      "corrected": "submitted to Boardwalk",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution — 'Todd' is a garble of 'to' followed by 'Boardwalk'; preposition 'to' is needed."
+    },
+    {
+      "line_approx": 10008,
+      "original": "Again primarily surface assets\nan surface facilities",
+      "corrected": "Again primarily surface assets\nand surface facilities",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' should be 'and' (conjunction)."
+    },
+    {
+      "line_approx": 10019,
+      "original": "vis_ _vis",
+      "corrected": "vis-à-vis",
+      "confidence": "HIGH",
+      "reason": "Steno artifact — underscore/space garble of 'vis-à-vis' (established pattern in steno CAT systems)."
+    },
+    {
+      "line_approx": 10046,
+      "original": "Reading\nthis E-mail—read do\nyou reading it now\ndisagree with anything",
+      "corrected": "Reading\nthis E-mail—[REVIEW: garbled phrase \"read do you reading it now\" — likely \"reading it now\" or similar; verify audio] do\nyou reading it now\ndisagree with anything",
+      "confidence": "LOW",
+      "reason": "Multi-word garble — 'read do you reading it now' is internally inconsistent; likely a steno breakdown of a preamble phrase. Flagged for reporter to verify audio."
+    },
+    {
+      "line_approx": 10148,
+      "original": "I'm not\nsure as it got _\n_ as it—got\nfollowed along back\nand forth.",
+      "corrected": "I'm not\nsure as it got—as it—got\nfollowed along back\nand forth.",
+      "confidence": "HIGH",
+      "reason": "Split word / underscore artifact: '_ _' is a steno artifact for em dash (—). The phrase 'got _ _ as it' becomes 'got—as it' with proper em dash."
+    },
+    {
+      "line_approx": 10172,
+      "original": "quarter_mile proximity",
+      "corrected": "quarter-mile proximity",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact: 'quarter_mile' should be hyphenated compound adjective 'quarter-mile'."
+    },
+    {
+      "line_approx": 10184,
+      "original": "the CAP—the\nCAP bra.",
+      "corrected": "the cap—the\ncap rock.",
+      "confidence": "MEDIUM",
+      "reason": "Phonetic/steno garble: 'CAP bra' is likely 'cap rock' (salt dome geology term — the cap rock sits atop a salt dome). [REVIEW: verify audio — 'cap rock' is the expected term in salt dome drilling context]"
+    },
+    {
+      "line_approx": 10196,
+      "original": "_all the opportunity",
+      "corrected": "all the opportunity",
+      "confidence": "HIGH",
+      "reason": "Leading underscore artifact removed; steno artifact preceding 'all'."
+    },
+    {
+      "line_approx": 10207,
+      "original": "is 3:46 p.m.and we are off the record.",
+      "corrected": "is 3:46 p.m. and we are off the record.",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'p.m.' before 'and'."
+    },
+    {
+      "line_approx": 10213,
+      "original": "time is 4:03 p.m.and we are now back",
+      "corrected": "time is 4:03 p.m. and we are now back",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'p.m.' before 'and'."
+    },
+    {
+      "line_approx": 10234,
+      "original": "time is 4:08 p\n.m.and we are now",
+      "corrected": "time is 4:08 p.m. and we are now",
+      "confidence": "HIGH",
+      "reason": "Split word artifact: 'p\\n.m.' should be 'p.m.' on one line; also missing space after 'p.m.' before 'and'."
+    },
+    {
+      "line_approx": 10313,
+      "original": "a go_between with",
+      "corrected": "a go-between with",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact — 'go_between' should be hyphenated compound 'go-between'."
+    },
+    {
+      "line_approx": 10344,
+      "original": "I no, we talked about",
+      "corrected": "I know, we talked about",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'I no' is missing the 'w'; should be 'I know'."
+    },
+    {
+      "line_approx": 10351,
+      "original": "it quarterly an",
+      "corrected": "it quarterly and",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'an' missing final 'd'; should be 'and'."
+    },
+    {
+      "line_approx": 10352,
+      "original": "the longer—later than Sam I annual",
+      "corrected": "the longer—later than [REVIEW: \"than Sam I annual\" — garbled; possibly \"no later than semiannual\" or similar; verify audio]",
+      "confidence": "LOW",
+      "reason": "Multi-word garble — 'Sam I annual' is phonetically garbled; likely 'semiannual' or similar phrase; cannot determine with certainty without audio."
+    },
+    {
+      "line_approx": 10374,
+      "original": "we obtained there concurrence in all instances",
+      "corrected": "we obtained their concurrence in all instances",
+      "confidence": "HIGH",
+      "reason": "Homophone error — 'there' should be 'their' (possessive)."
+    },
+    {
+      "line_approx": 10378,
+      "original": "the go_between we already",
+      "corrected": "the go-between we already",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact — 'go_between' should be hyphenated compound 'go-between'."
+    },
+    {
+      "line_approx": 10384,
+      "original": "the three_year",
+      "corrected": "the three-year",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact — 'three_year' should be hyphenated compound 'three-year'."
+    },
+    {
+      "line_approx": 10409,
+      "original": "what become known as the",
+      "corrected": "what became known as the",
+      "confidence": "HIGH",
+      "reason": "Verb tense error / dropped syllable — 'become' should be 'became' (past tense)."
+    },
+    {
+      "line_approx": 10538,
+      "original": "within their. The",
+      "corrected": "within there. The",
+      "confidence": "HIGH",
+      "reason": "Homophone error: 'their' (possessive pronoun) should be 'there' (adverb of place) in context 'within there'"
+    },
+    {
+      "line_approx": 10566,
+      "original": "I—French thought",
+      "corrected": "I—[REVIEW: \"French thought\" — possible garble; verify audio; may be witness's name or \"we thought\"] French thought",
+      "confidence": "LOW",
+      "reason": "Possible garble or proper noun; 'French' may be a person's name or a steno artifact for another word. Flagged for reporter to verify audio."
+    },
+    {
+      "line_approx": 10570,
+      "original": "impair potential long_term field development",
+      "corrected": "impair potential long-term field development",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact: 'long_term' should be hyphenated compound adjective 'long-term'"
+    },
+    {
+      "line_approx": 10580,
+      "original": "long_term—at that point identified drilling areas",
+      "corrected": "long-term—at that point identified drilling areas",
+      "confidence": "HIGH",
+      "reason": "Underscore artifact: 'long_term' should be hyphenated compound adjective 'long-term'"
+    },
+    {
+      "line_approx": 10601,
+      "original": "sides will take",
+      "corrected": "sites will take",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'sides' should be 'sites' in context of drill site locations"
+    },
+    {
+      "line_approx": 10654,
+      "original": "saying we took into account the ankle\nof directional drilling",
+      "corrected": "saying we took into account the angle\nof directional drilling",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'ankle' → 'angle' (drilling context; established steno error pattern)"
+    },
+    {
+      "line_approx": 10670,
+      "original": "you can direct the ankle of the drill below the subsurface",
+      "corrected": "you can direct the angle of the drill below the subsurface",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'ankle' → 'angle' (same error pattern repeated in same context)"
+    },
+    {
+      "line_approx": 10675,
+      "original": "drill pipe an\ngetting stuck",
+      "corrected": "drill pipe and\ngetting stuck",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and' (steno dropped the final 'd')"
+    },
+    {
+      "line_approx": 10710,
+      "original": "salt mines field.",
+      "corrected": "Sulphur Mines field.",
+      "confidence": "MEDIUM",
+      "reason": "Phonetic/proper noun garble: 'salt mines' likely → 'Sulphur Mines' given the repeated references to 'Sulphur Dome' in context. [REVIEW: verify field name against audio — 'Sulphur Mines' vs. 'salt mines']"
+    },
+    {
+      "line_approx": 10727,
+      "original": ". I'll juice\npiecemeal.",
+      "corrected": ". I'll just\npiecemeal.",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'juice' → 'just'"
+    },
+    {
+      "line_approx": 10731,
+      "original": "Yellow Rock's least\nacreage, right?",
+      "corrected": "Yellow Rock's lease\nacreage, right?",
+      "confidence": "HIGH",
+      "reason": "Homophone error: 'least' → 'lease' (legal/land context)"
+    },
+    {
+      "line_approx": 10737,
+      "original": "And you see\nthere are yellow triangles that. The\nmap, do you see\nthose?",
+      "corrected": "And you see\nthere are yellow triangles there. The\nmap, do you see\nthose?",
+      "confidence": "HIGH",
+      "reason": "Steno artifact: 'that.' → 'there.' (the period after 'that' is a split/garble; 'there' completes the sentence naturally before the separate sentence about the map)"
+    },
+    {
+      "line_approx": 10697,
+      "original": "1, 8_and_a_half by 11\npage.",
+      "corrected": "1, 8-and-a-half by 11\npage.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: underscores used as hyphens in compound modifier; corrected to hyphens per standard usage"
+    },
+    {
+      "line_approx": 10767,
+      "original": "And Mr.__ quickly referring",
+      "corrected": "And Mr.— [REVIEW: witness name unclear; steno artifact \"Mr.__\"] quickly referring",
+      "confidence": "LOW",
+      "reason": "Steno artifact: 'Mr.__' appears to be a dropped/garbled name; double underscore suggests untranslated steno. Reporter should verify name from audio."
+    },
+    {
+      "line_approx": 10900,
+      "original": "of the ankle and where",
+      "corrected": "of the angle and where",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'ankle' → 'angle' (drilling/directional context; well-established steno error pattern)"
+    },
+    {
+      "line_approx": 10942,
+      "original": "I called Ava and asked her",
+      "corrected": "I called Eva and asked her",
+      "confidence": "HIGH",
+      "reason": "Name correction: witness previously identified the person as 'Eva Borrego'; 'Ava' is a phonetic steno substitution"
+    },
+    {
+      "line_approx": 10971,
+      "original": "E-mail/?",
+      "corrected": "E-mail?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: '/' is a steno artifact intruding before the question mark; removed"
+    },
+    {
+      "line_approx": 11097,
+      "original": "the E-mail, the",
+      "corrected": "the e-mail, the",
+      "confidence": "HIGH",
+      "reason": "Punctuation/capitalization standard: 'e-mail' is the standard court reporter form; mid-sentence capitalization of 'E-mail' is a CAT artifact."
+    },
+    {
+      "line_approx": 11136,
+      "original": "north an south just",
+      "corrected": "north and south just",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'd' missing from 'and' — steno dropped-syllable error."
+    },
+    {
+      "line_approx": 11168,
+      "original": "have not be issued.",
+      "corrected": "have not been issued.",
+      "confidence": "HIGH",
+      "reason": "Dropped syllable: 'be' should be 'been' — steno dropped-syllable error in auxiliary verb."
+    },
+    {
+      "line_approx": 11275,
+      "original": "it an compared",
+      "corrected": "it and compared",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' should be 'and' — missing 'd' at end of word."
+    },
+    {
+      "line_approx": 11281,
+      "original": "requests for precision\n.",
+      "corrected": "requests for precision.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period on separate line moved to end of sentence."
+    },
+    {
+      "line_approx": 11299,
+      "original": "go three pages forward\n?",
+      "corrected": "go three pages forward?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: question mark on separate line joined to end of sentence."
+    },
+    {
+      "line_approx": 11309,
+      "original": "In the first\ncolumn drilling order A through very.",
+      "corrected": "In the first\ncolumn drilling order A through V.",
+      "confidence": "HIGH",
+      "reason": "Homophone/phonetic substitution: 'very' → 'V' — referring to the letter of the alphabet, consistent with context of labeling locations A through V."
+    },
+    {
+      "line_approx": 11313,
+      "original": "labeled\nA through very. ; is that right?",
+      "corrected": "labeled\nA through V; is that right?",
+      "confidence": "HIGH",
+      "reason": "Homophone substitution: 'very' → 'V' (letter of alphabet); also removed spurious space before semicolon."
+    },
+    {
+      "line_approx": 11319,
+      "original": "all around the dome\n, right?",
+      "corrected": "all around the dome,\nright?",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: comma displaced to new line; repositioned correctly after 'dome'."
+    },
+    {
+      "line_approx": 11327,
+      "original": "Ms. Break owes\nE-mail?",
+      "corrected": "Ms. Borrego's\ne-mail?",
+      "confidence": "HIGH",
+      "reason": "Phonetic/split-word garble: 'Break owes' → 'Borrego's' — Ms. Borrego is named elsewhere in transcript. 'E-mail' lowercased per standard usage mid-sentence."
+    },
+    {
+      "line_approx": 11335,
+      "original": "5\n/18/21",
+      "corrected": "5/18/21",
+      "confidence": "HIGH",
+      "reason": "Split numeral artifact: date split across lines; joined as '5/18/21'."
+    },
+    {
+      "line_approx": 11341,
+      "original": "I'll hand you\nExhibit 156, which is YR_\n429776?",
+      "corrected": "I'll hand you\nExhibit 156, which is YR_429776?",
+      "confidence": "HIGH",
+      "reason": "Split word/numeral artifact: Bates number 'YR_429776' split across lines; joined."
+    },
+    {
+      "line_approx": 11345,
+      "original": "MR. HOBBY: Bates No. Was\nYR_429\n778.",
+      "corrected": "MR. HOBBY: Bates No. was\nYR_429778.",
+      "confidence": "HIGH",
+      "reason": "Capitalization artifact ('Was' → 'was') and split Bates number 'YR_429778' rejoined."
+    },
+    {
+      "line_approx": 11349,
+      "original": "MR. GUILLOT: Right\n.",
+      "corrected": "MR. GUILLOT: Right.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period on separate line joined to end of sentence."
+    },
+    {
+      "line_approx": 11363,
+      "original": "I was\nin had in seeing all",
+      "corrected": "I was\ninterested in seeing all",
+      "confidence": "MEDIUM",
+      "reason": "Multi-word garble: 'in had in seeing' likely → 'interested in seeing' — [REVIEW: verify audio; 'in had in' appears to be a steno breakdown of 'interested in']."
+    },
+    {
+      "line_approx": 11377,
+      "original": "these try angels, the potential\nlocation try\nangels,",
+      "corrected": "these triangles, the potential\nlocation triangles,",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'try angels' → 'triangles' — steno theory broke 'triangles' into 'try angels'. Established error pattern in system prompt."
+    },
+    {
+      "line_approx": 11392,
+      "original": "we previously looked\n, but I'm",
+      "corrected": "we previously looked\nat, but I'm",
+      "confidence": "MEDIUM",
+      "reason": "Dropped word: 'looked' needs 'at' to complete the phrase 'looked at' — [REVIEW: verify audio; 'at' may have been dropped by steno]."
+    },
+    {
+      "line_approx": 11402,
+      "original": "Okay\n.",
+      "corrected": "Okay.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period on separate line joined to end of word."
+    },
+    {
+      "line_approx": 11413,
+      "original": "gears seismic",
+      "corrected": "gears, seismic",
+      "confidence": "HIGH",
+      "reason": "Missing comma after introductory phrase 'Switching gears' — standard punctuation per Margie Wakeman Wells."
+    },
+    {
+      "line_approx": 11437,
+      "original": "MS. CURTIS: Objection\n.",
+      "corrected": "MS. CURTIS: Objection.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period on separate line joined to end of word."
+    },
+    {
+      "line_approx": 11447,
+      "original": "Right\n.",
+      "corrected": "Right.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact: period on separate line joined to end of word."
+    },
+    {
+      "line_approx": 11489,
+      "original": "large vibrate ores",
+      "corrected": "large vibrators",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'vibrate ores' is a known steno error pattern for 'vibrators' (seismic equipment term)"
+    },
+    {
+      "line_approx": 11493,
+      "original": "you use vibrate\nores to generate",
+      "corrected": "you use vibrators\nto generate",
+      "confidence": "HIGH",
+      "reason": "Same phonetic substitution repeated: 'vibrate ores' → 'vibrators'"
+    },
+    {
+      "line_approx": 11496,
+      "original": "shock wave an then",
+      "corrected": "shock wave and then",
+      "confidence": "HIGH",
+      "reason": "Dropped letter: 'an' → 'and' (missing 'd')"
+    },
+    {
+      "line_approx": 11497,
+      "original": "record that with _\n_ with hydro",
+      "corrected": "record that with—\nwith hydro",
+      "confidence": "HIGH",
+      "reason": "Split word / punctuation artifact: '_ _' (two underscores) → em dash per steno error pattern"
+    },
+    {
+      "line_approx": 11527,
+      "original": "and development\ndepth would be vertical",
+      "corrected": "and depth\ndepth would be vertical",
+      "confidence": "HIGH",
+      "reason": "Phonetic/context error: 'development' is a steno garble of 'depth' in this paired contrast of 'time' and 'depth'"
+    },
+    {
+      "line_approx": 11532,
+      "original": "A generals\nsense description *\nREPORTER CHECK HERE*",
+      "corrected": "A general\nsense description [REVIEW: unclear — possible steno garble of witness's wording; verify audio]",
+      "confidence": "MEDIUM",
+      "reason": "'generals' → 'general' (dropped context); reporter marker '*REPORTER CHECK HERE*' replaced with inline review tag per instructions"
+    },
+    {
+      "line_approx": 11568,
+      "original": "the why are number that I",
+      "corrected": "the YR number that I",
+      "confidence": "HIGH",
+      "reason": "Homophone/phonetic substitution: 'why are' → 'YR' (Bates prefix phonetic error — known pattern)"
+    },
+    {
+      "line_approx": 11686,
+      "original": "brat spot",
+      "corrected": "bright spot",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'brat spot' → 'bright spot' (seismic term); consistent with established pattern throughout transcript."
+    },
+    {
+      "line_approx": 11699,
+      "original": "brat spots",
+      "corrected": "bright spots",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'brat spots' → 'bright spots' (seismic term); same pattern."
+    },
+    {
+      "line_approx": 11751,
+      "original": "brat spots",
+      "corrected": "bright spots",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'brat spots' → 'bright spots' (seismic term); same pattern."
+    },
+    {
+      "line_approx": 11754,
+      "original": "brat spot",
+      "corrected": "bright spot",
+      "confidence": "HIGH",
+      "reason": "Phonetic substitution: 'brat spot' → 'bright spot' (seismic term); same pattern."
+    },
+    {
+      "line_approx": 11771,
+      "original": "blacktop to",
+      "corrected": "[REVIEW: \"blacktop\" may be a steno garble of a company name — possibly \"White Top\" or another proper noun; verify audio] blacktop to",
+      "confidence": "MEDIUM",
+      "reason": "Per established pattern in this transcript, 'blacktop' is a known steno garble for 'White Top' (company name); flagged for reporter verification of audio."
+    },
+    {
+      "line_approx": 11860,
+      "original": "stil?",
+      "corrected": "still?",
+      "confidence": "HIGH",
+      "reason": "Dropped letter — 'stil' is missing the final 'l'; should be 'still'"
+    },
+    {
+      "line_approx": 11874,
+      "original": "MR. HOBBY: Thank you\n.",
+      "corrected": "MR. HOBBY: Thank you.",
+      "confidence": "HIGH",
+      "reason": "Punctuation artifact — period split onto a new line; merged to correct position after 'you'"
+    },
+    {
+      "line_approx": 11878,
+      "original": "5 o'clock p.m.and we are",
+      "corrected": "5 o'clock p.m. and we are",
+      "confidence": "HIGH",
+      "reason": "Missing space after 'p.m.' before 'and'"
+    },
+    {
+      "line_approx": 11882,
+      "original": "Do you went",
+      "corrected": "Do you want",
+      "confidence": "HIGH",
+      "reason": "Phonetic/steno substitution — 'went' should be 'want' in the question 'Do you want a rough draft?'"
+    }
+  ]
+}
