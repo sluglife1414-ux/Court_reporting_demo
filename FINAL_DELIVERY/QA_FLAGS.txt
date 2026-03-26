@@ -1,189 +1,230 @@
 ================================================================================
 QA FLAGS — REPORTER ACTION REQUIRED
+================================================================================
 Case: Yellow Rock, LLC, et al. v. Westlake US 2 LLC, et al.
-Docket No.: 202-001594 | Witness: Thomas L. Easley | Date: March 13, 2026
+Docket No.: 202-001594 | Witness: Thomas L. Easley | Date: Friday, March 13, 2026
 ================================================================================
 
-FORMAT: [PAGE ##, LINE ##] FLAG TYPE — Description
-(Page and line numbers are approximate based on processing. Verify against
-final formatted pages in FINAL_TRANSCRIPT.)
+NOTE: Line numbers are approximate (from cleaned_text.txt, not final pages).
+Cross-reference against the final formatted transcript before delivery.
 
-NOTE: Because this is a rough draft with significant steno artifacts, many
-flags require audio review. Items marked [AUDIO REVIEW] cannot be resolved
-without the recording.
+[Line 11344] REPORTER CHECK REQUIRED
+           Placeholder left by engine — content unclear from audio
+           Context: *REPORTER CHECK HERE* 5
 
-================================================================================
-RECORD / PROCEDURAL FLAGS
-================================================================================
+[Line 11558] REPORTER CHECK REQUIRED
+           Placeholder left by engine — content unclear from audio
+           Context: REPORTER CHECK HERE*.
 
-[PAGE 1, approx.] [REVIEW: LOCATION DISCREPANCY]
-    Caption page lists: "THE HOUSTONIAN / 909 Post Oak Street / Houston, Texas 70112"
-    Videographer's opening states: "111 North Post Oak Lane, Houston, Texas 77024"
-    These do not match. Reporter must verify against audio and correct the
-    caption page before finalizing. Also note: zip code 70112 appears to be
-    a New Orleans zip code inadvertently carried over from appearance pages.
+[Line  879] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm I
 
-[PAGE 1, approx.] [REVIEW: ZIP CODE ERROR]
-    Caption page shows zip code 70112 for Houston, Texas location.
-    70112 is a New Orleans, Louisiana zip code. Houston address should be
-    77024 per videographer's statement. Correct before finalizing.
+[Line 1037] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm,
 
-[STIPULATION PAGE] [FLAG: SWORN STATEMENT — VERIFY PLACEMENT]
-    The stipulation section states: "Marybeth E. Muir, Certified Court Reporter
-    in and for the State of Louisiana and Registered Professional Reporter,
-    officiated in administering the oath to the witness." Confirm this language
-    adequately satisfies Louisiana's sworn statement requirement in the final
-    formatted transcript, or add a separate oath/swearing-in line.
+[Line 1167] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm
 
-[PAGE ~7 per index] [EXHIBIT FLAG: DUPLICATE EXHIBIT 142]
-    Exhibit No. 142 appears TWICE on the index page. Reporter must determine
-    whether this is a scrivener's error (same document listed twice) or two
-    separate documents bearing the same exhibit number, and correct the index
-    accordingly.
+[Line 1274] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: uhmm. I had oversight responsibilities over
 
-================================================================================
-STENO ARTIFACT / AUDIO REVIEW FLAGS
-================================================================================
+[Line 1825] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm. I've
 
-[EARLY EXAMINATION, approx. page 8]
-    [CORRECTED: depth] — "We depth have to go through every one" corrected
-    to "We don't have to go through every one." Reporter verify against audio.
+[Line 2418] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: uhmm, that would have been
 
-[BACKGROUND TESTIMONY, approx. page 10–12]
-    [REVIEW: UNIVERSITY NAME] — Witness stated "Charleston State University."
-    Likely "Charleston Southern University" or possibly another institution.
-    Reporter to verify against audio. AUDIO REVIEW REQUIRED.
+[Line 2650] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm, among
 
-[BACKGROUND TESTIMONY, approx. page 12]
-    [CORRECTED: stand forward] — "stand forward" corrected to "Stanford."
-    Context: "I did a bit of postgraduate work at [Stanford]." Reporter verify.
+[Line 2835] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: . Uhmm
 
-[TESTIMONY re: DEPOSITION RULES, approx. page 14]
-    [CORRECTED] — "get picked up bathe transcript" corrected to "get picked
-    up by the transcript." AUDIO REVIEW REQUIRED.
+[Line 2868] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm,
 
-[EARLY EXAMINATION re: CAREER, approx. page 15]
-    [AUDIO REVIEW] — Witness reference to "coastal Bermuda hey" appears to
-    be "coastal Bermuda hay" (type of forage grass). Correct if confirmed.
+[Line 2979] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm.
 
-[FINANCIAL INTEREST TESTIMONY]
-    [REVIEW: ENTITY NAME] — Witness referenced his financial interest as
-    being in "REV rent signal" / "energy signal" / "Reverent Signal Energy"
-    joint venture. The actual entity name is unclear across multiple rough
-    steno passages. AUDIO REVIEW REQUIRED to confirm correct entity name.
-    Possibilities include: "Revenant Signal Energy" or similar.
+[Line 3148] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: . Uhmm.
 
-[EXHIBIT 131 DISCUSSION]
-    [REVIEW: DOCUMENT REFERENCE] — Exhibit 131 described as an email from
-    Robin French, June 18, 2021, subject "White Top Energy Reorganization."
-    Witness references it being "appended to this or actually attached" —
-    unclear whether there is an attachment to this exhibit. Reporter to
-    confirm completeness of exhibit as produced.
+[Line 3612] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm.
 
-[EXHIBIT 135 DISCUSSION]
-    [REVIEW: COMPANY NAME] — "Oliver resin mar sol" / "Alvarez and Marsol"
-    — likely "Alvarez & Marsal" (major financial advisory firm). Reporter
-    to verify and correct. AUDIO REVIEW RECOMMENDED.
+[Line 3741] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm,
 
-[EXHIBIT 136 DISCUSSION, approx. page 65–68]
-    [AUDIO REVIEW] — "ghee sciences team" — almost certainly "geoscience team."
-    Appears multiple times in rough. Correct throughout. Confirm via audio.
+[Line 4104] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: . Uhmm
 
-[EXHIBIT 148 DISCUSSION]
-    [REVIEW: BATES NUMBER] — Exhibit 148 noted as "YR_37094" — may be
-    incomplete (missing leading digit). Reporter to verify Bates stamp
-    from original exhibit. Possible correct Bates: YR-370940 or similar.
+[Line 4142] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm. Brad
 
-[EXHIBIT 140 DISCUSSION]
-    [CHECK: LOUISIANA RULE / INSTRUCTION NOT TO ANSWER] — Thomas J. Madigan
-    instructed the witness not to answer questions about the identities of
-    investor entities that converted debt to LLC membership interests. If
-    this question is later ruled upon, or if a motion to compel is filed,
-    this exchange will need to be accurately located and confirmed.
+[Line 4479] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: he is qualified. Uhmm
 
-[EXAMINATION re: DRILLING MANAGER]
-    [AUDIO REVIEW: PROPER NAME] — Witness referred to the fired drilling
-    manager as "Done linen gee, done difficulties letter" — this is clearly
-    a steno mistranslation of a proper name. AUDIO REVIEW REQUIRED. Reporter
-    must supply the correct name before certification.
+[Line 4499] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: And, uhmm
 
-[EXAMINATION re: COMPANIES]
-    [REVIEW: COMPANY NAME] — "blacktop" appears in several passages and
-    appears to be a steno artifact for "White Top." Review each instance
-    and correct to "White Top" where audio confirms. One passage: "the
-    blacktop and Sunny Solar restructuring had been agreed to in August" —
-    clearly White Top.
+[Line 4630] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm
 
-[EXAMINATION re: SEISMIC DATA]
-    [CORRECTED: brat spot / brat spots] — corrected to "bright spot / bright
-    spots" throughout. Bright spot is a standard seismic interpretation term
-    indicating possible hydrocarbon accumulation. Reporter verify against audio.
+[Line 5288] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm, that's correct
 
-[EXAMINATION re: OPERATIONS]
-    [REVIEW: COMPANY NAME] — "Jill Latchman" — context suggests this is
-    likely an individual associated with "In-Depth" seismic processing.
-    May also be a steno artifact for a different name. AUDIO REVIEW REQUIRED.
+[Line 5318] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm,
 
-[EXAMINATION re: OPERATIONS]
-    [AUDIO REVIEW] — "the 1028... Sidetrack" — witness appears to discuss
-    sidetracking Well 1028 due to stuck pipe. Confirm usage of term
-    "sidetrack" (capitalization not needed unless proper name) vs. "side track"
-    (two words). Industry standard: "sidetrack" as one word is acceptable.
+[Line 5426] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm, yes. May I have
 
-[EXAMINATION re: PERMITTING]
-    [REVIEW: REGULATORY CITATION] — Witness refers repeatedly to "DNR" and
-    "LDNR" interchangeably. Louisiana Department of Natural Resources is
-    "DNR" per Louisiana usage. Witness confirmed his own usage. Consistent
-    with Louisiana practice — no correction needed, but confirm capitalization
-    is "DNR" throughout.
+[Line 5534] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm
 
-[EXAMINATION re: CAVERN DATA]
-    [REVIEW: SOFTWARE NAME] — "Voxler" — 3D visualization software referenced
-    by witness (per Todd Bertelot/Boardwalk). This is a known commercial
-    software product (Golden Software Voxler). Correct spelling confirmed.
-    No correction needed.
+[Line 5545] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm, yes.
 
-[EXAMINATION re: OPERATOR]
-    [REVIEW: ENTITY NAME] — "Burlington" — referenced as a stakeholder in
-    the Sulphur Mines Field who received proposed drilling location
-    notifications from Yellow Rock. Context suggests Burlington Resources
-    or a successor. AUDIO REVIEW to confirm full entity name.
+[Line 5790] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm
 
-[EXAMINATION re: RIGHTS OFFERING]
-    [REVIEW: DATE REFERENCE] — "Cut Off at noon today" referenced in
-    Exhibit 139 — this E-mail is dated January 25, 2023. The "cut off"
-    refers to the rights offering response deadline, not a geographic
-    reference. Confirm no formatting change needed.
+[Line 5846] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: uhmm, geological
 
-[CLOSING — REPORTER CHECK FLAG]
-    [FLAG: REPORTER CHECK HERE] — In the raw transcript, the reporter
-    inserted "*REPORTER CHECK HERE*" during testimony about relevance of
-    investor claims. Reporter must review audio and supply the missing
-    or unclear language before certification.
+[Line 5895] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm, no
 
-================================================================================
-CERTIFICATION FLAG
-================================================================================
+[Line 5982] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm.
 
-[CERTIFICATION PAGE]
-    [FLAG: LOUISIANA CERTIFICATION INCOMPLETE]
-    The certification page in the clean transcript currently has a blank
-    for the CCR (Certified Court Reporter) license number.
-    Louisiana requires the reporter's license number on the certification page.
-    Per LAC Title 46, Part LXI (LAPELS rules for certified reporters):
-    MARYBETH E. MUIR, CCR, RPR must add her CCR license number before
-    the certification is complete and the transcript may be delivered.
+[Line 6028] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm
 
-================================================================================
-TOTAL FLAGS SUMMARY
-================================================================================
-  Procedural/Record flags:         4
-  Steno artifact / audio review:  23
-  Certification flags:             1
-  ─────────────────────────────────
-  TOTAL FLAGS:                     28
+[Line 6031] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: geophysicist. Uhmm
 
-  Flags requiring audio review:   ~18
-  Flags auto-corrected (tagged):   4  (depth, stand forward, brat spot, bathe)
-  Flags requiring reporter decision: 10
+[Line 6056] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: uhmm, Jonathan
+
+[Line 6826] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm,
+
+[Line 6985] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm. And
+
+[Line 7399] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm,
+
+[Line 7576] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: one way or another. Uhmm
+
+[Line 8059] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: uhmm, I would say
+
+[Line 8896] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: this. Uhmm
+
+[Line 9239] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm.
+
+[Line 9633] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm
+
+[Line 9885] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: uhmm, yeah. It
+
+[Line 10539] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm. What
+
+[Line 10692] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: Uhmm, it's starting to.
+
+[Line 10836] STENO ARTIFACT
+           Double underscore — possible em dash not converted
+           Context: And Mr.__ quickly referring
+
+[Line 1089] POSSIBLE MISRECOGNITION
+           "blacktop" may be "White Top" — verify in context
+           Context: we formed blacktop
+
+[Line 6221] POSSIBLE MISRECOGNITION
+           "blacktop" may be "White Top" — verify in context
+           Context: blacktop minority
+
+[Line 6690] POSSIBLE MISRECOGNITION
+           "blacktop" may be "White Top" — verify in context
+           Context: , the blacktop and Sunny
+
+[Line 7699] POSSIBLE MISRECOGNITION
+           "blacktop" may be "White Top" — verify in context
+           Context: Yellow Rock or blacktop know
+
+[Line 8743] POSSIBLE MISRECOGNITION
+           "blacktop" may be "White Top" — verify in context
+           Context: member of Yellow Rock when blacktop bought their interest in Yellow Rock.
+
+[Line 11810] POSSIBLE MISRECOGNITION
+           "blacktop" may be "White Top" — verify in context
+           Context: blacktop to
+
+[Line 11687] POSSIBLE MISRECOGNITION
+           "brat spot" likely "bright spot" (seismic term)
+           Context: using brat spot
+
+[Line 11698] POSSIBLE MISRECOGNITION
+           "brat spot" likely "bright spot" (seismic term)
+           Context: for brat spots
+
+[Line 11783] POSSIBLE MISRECOGNITION
+           "brat spot" likely "bright spot" (seismic term)
+           Context: to identify brat spots
+
+[Line 11787] POSSIBLE MISRECOGNITION
+           "brat spot" likely "bright spot" (seismic term)
+           Context: using the brat spot
+
+
+--------------------------------------------------------------------------------
+Total flags: 54
 ================================================================================
