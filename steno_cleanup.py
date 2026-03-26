@@ -23,8 +23,10 @@ What this does NOT handle (requires judgment — left for engine):
   - Phonetic mistranslations (bathe → by, etc.)
   - Speaker attribution
   - Punctuation rules
+  - Displaced periods: "started\n. We'd like" — left for AI (ambiguous)
+  - Capital-letter continuations — left for AI (could be new sentence or proper noun)
 
-Last updated: 2026-03-22
+Last updated: 2026-03-25
 Logged as:   LA-KB-012 (two-pass architecture), LA-KB-013 (tilde), LA-KB-014 (docket underscore)
 """
 
@@ -158,6 +160,122 @@ content = re.sub(r' \n', '\n', content)             # trailing space before newl
 content = re.sub(r'\n ', '\n', content)             # leading space after newline
 content = re.sub(r'\n{3,}', '\n\n', content)        # 3+ blank lines → 2
 content = content.strip()
+
+# ============================================================================
+# STEP 8 — Mid-sentence line-break rejoining
+#
+# Steno CAT software wraps lines mid-sentence at arbitrary stroke boundaries.
+# This produces fragments like:
+#   "Are you ready          "Are you ready to go, Mr. Easley?"
+#    to go, Mr. Easley?"
+#
+# Rule: if a line does NOT end with sentence-completing punctuation (.?!:;—)
+#       AND the next line starts with a lowercase letter
+#       AND neither line is a protected boundary (speaker label, blank, header)
+#       → rejoin with a single space.
+#
+# Secondary rule: digit + digit with no space (e.g. "770\n24" → "77024")
+#
+# What we deliberately do NOT rejoin (leave for AI):
+#   - Displaced period:   "started\n. We'd like"   (next line starts with .)
+#   - Capital starts:     could be new sentence or proper noun — AI judges
+#   - Across blank lines: paragraph boundaries — always respected
+#   - Speaker labels:     MR./MS./Q./A./BY/THE WITNESS: etc.
+#   - Section headers:    ALL CAPS lines, --- PAGE BREAK ---, * * *
+#   - Parentheticals:     (Whereupon, (Exhibit...
+# ============================================================================
+
+# Patterns that mark a protected line — never rejoin across these
+_SPEAKER_RE = re.compile(
+    r'^('
+    r'Q\.\s|A\.\s'                          # Q./A. labels
+    r'|MR\.\s|MS\.\s|MRS\.\s|DR\.\s'       # attorney labels
+    r'|BY\s+MR\.|BY\s+MS\.|BY\s+MRS\.'     # BY MR./MS. examination headers
+    r'|THE\s+\w+:'                          # THE WITNESS: THE COURT: THE VIDEOGRAPHER:
+    r'|FOR\s+THE\s'                         # FOR THE PLAINTIFF:
+    r'|\('                                  # parentheticals (Whereupon, (Exhibit...
+    r'|---'                                 # --- PAGE BREAK ---
+    r'|\*'                                  # * * * * dividers
+    r')',
+    re.IGNORECASE
+)
+
+_SENTENCE_ENDERS = frozenset('.?!:;')
+
+
+def _is_protected(line: str) -> bool:
+    """Return True if this line is a boundary — never rejoin across it."""
+    s = line.strip()
+    if not s:
+        return True                          # blank line = paragraph boundary
+    if _SPEAKER_RE.match(s):
+        return True
+    # ALL CAPS section headers (e.g. "I N D E X", "A P P E A R A N C E S")
+    letters = [c for c in s if c.isalpha()]
+    if letters and all(c.isupper() for c in letters) and len(s) > 4:
+        return True
+    return False
+
+
+def _ends_sentence(line: str) -> bool:
+    """Return True if line ends with punctuation that closes a sentence."""
+    s = line.rstrip()
+    if not s:
+        return True
+    return s[-1] in _SENTENCE_ENDERS or s[-1] == '\u2014'  # em dash = interrupted, leave
+
+
+def _rejoin_line_breaks(text: str):
+    """
+    Walk lines and greedily rejoin mid-sentence steno fragments.
+    Returns (rejoined_text, join_count).
+    """
+    lines = text.split('\n')
+    result = []
+    join_count = 0
+    digit_join_count = 0
+    i = 0
+
+    while i < len(lines):
+        line = lines[i]
+
+        # ── Lowercase continuation: join while conditions hold ────────────────
+        while (
+            i + 1 < len(lines)
+            and not _is_protected(line)
+            and not _ends_sentence(line)
+            and not _is_protected(lines[i + 1])
+            and lines[i + 1].strip()                      # next line not blank
+            and lines[i + 1].strip()[0].islower()         # next starts lowercase
+        ):
+            line = line.rstrip() + ' ' + lines[i + 1].strip()
+            i += 1
+            join_count += 1
+
+        # ── Digit continuation: "770\n24" → "77024" (zip codes, page numbers) ─
+        while (
+            i + 1 < len(lines)
+            and not _is_protected(line)
+            and line.rstrip()                             # current not blank
+            and line.rstrip()[-1].isdigit()              # current ends with digit
+            and lines[i + 1].strip()                     # next not blank
+            and lines[i + 1].strip()[0].isdigit()        # next starts with digit
+            and not _is_protected(lines[i + 1])
+        ):
+            line = line.rstrip() + lines[i + 1].strip()  # no space between digits
+            i += 1
+            digit_join_count += 1
+
+        result.append(line)
+        i += 1
+
+    return '\n'.join(result), join_count, digit_join_count
+
+
+content, join_count, digit_join_count = _rejoin_line_breaks(content)
+changes.append(f'  Line-break rejoins (lowercase):  {join_count} fragments merged')
+if digit_join_count:
+    changes.append(f'  Line-break rejoins (digit):      {digit_join_count} number fragments merged')
 
 # ============================================================================
 # WRITE OUTPUT
