@@ -1,0 +1,23 @@
+{
+  "witness_name": "THOMAS L. EASLEY",
+  "witness_last": "EASLEY",
+  "case_short": "Easley_Westlake",
+  "depo_date": "Friday, March 13, 2026",
+  "depo_date_short": "March 13, 2026",
+  "depo_time": "9:07 a.m.",
+  "location_1": "111 North Post Oak Lane",
+  "location_2": "Houston, Texas 77024",
+  "examining_atty": "MR. HOBBY",
+  "parish": "PARISH OF CALCASIEU",
+  "court": "14TH JUDICIAL DISTRICT",
+  "plaintiff": "YELLOW ROCK, LLC, et al,",
+  "plaintiff_role": "Plaintiffs,",
+  "defendant": "WESTLAKE US 2 LLC f/k/a EAGLE US 2 LLC et al.,",
+  "defendant_role": "Defendants.",
+  "docket": "202-001594",
+  "division": "H",
+  "reporter_name": "MARYBETH E. MUIR, CCR, RPR",
+  "cert_year": "2026",
+  "_extracted_from": "corrected_text.txt",
+  "_extracted_at": "2026-03-26 21:43"
+}
