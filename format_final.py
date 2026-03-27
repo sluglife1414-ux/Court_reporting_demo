@@ -20,6 +20,9 @@ INPUT_FILE = 'corrected_text.txt' if os.path.exists('corrected_text.txt') else '
 # --- Configuration ---
 LINES_PER_PAGE = 25
 LINE_WIDTH = 64   # measured from MB's PDF: 7.59" - 1.129" = 6.461" / 0.1" per char
+# Q. and A. lines wrap narrower in CaseCATalyst format — Q. content ~40 chars,
+# continuation ~52. Using 52 here (10-char Q/A prefix + 42 chars content ≈ MB's layout).
+QA_LINE_WIDTH = 52
 
 # ═══════════════════════════════════════════════════════════
 # CASE CONFIG — update these for each new depo. Nothing else
@@ -293,7 +296,7 @@ def parse_file(text):
             continue
         # Testimony starts when we see the witness name or videographer after stipulation.
         # Uses WITNESS_NAME from config — no other hardcoding needed.
-        if cur == 'stipulation' and WITNESS_NAME in s:
+        if cur == 'stipulation' and s.startswith(WITNESS_NAME):
             cur = 'testimony'
         if cur == 'stipulation' and s.startswith('THE VIDEOGRAPHER:'):
             cur = 'testimony'
@@ -499,8 +502,8 @@ def format_testimony(raw_lines):
             labeled.append(('colloquy', block))
             continue
 
-        # Witness info line (name, address)
-        if re.match(r'^THOMAS L\. EASLEY', block):
+        # Witness info line (name, address) — use config var, not hardcoded name
+        if WITNESS_NAME in block or WITNESS_LAST in block:
             labeled.append(('witness_info', block))
             continue
 
@@ -544,6 +547,26 @@ def format_testimony(raw_lines):
             merged.append((kind, text))
     labeled = merged
 
+    # Step 2.7: Reorder — move leading witness_info/text blocks to after first
+    # substantive colloquy (THE VIDEOGRAPHER opening). MB's format has VIDEOGRAPHER
+    # statement first, then witness name/address — opposite of raw steno order.
+    first_col_idx = None
+    for i, (kind, text) in enumerate(labeled):
+        if kind == 'colloquy':
+            cm = re.match(
+                r'^((?:MR\.|MS\.|MRS\.)\s+\w+:|THE\s+(?:VIDEOGRAPHER|COURT REPORTER|WITNESS):)\s*(.*)',
+                text)
+            if cm and cm.group(2).strip():  # has actual content
+                first_col_idx = i
+                break
+    if first_col_idx and first_col_idx > 0:
+        pre_info = [(k, t) for k, t in labeled[:first_col_idx]
+                    if k in ('witness_info', 'text')]
+        if pre_info:
+            other_pre = [(k, t) for k, t in labeled[:first_col_idx]
+                         if k not in ('witness_info', 'text')]
+            labeled = other_pre + [labeled[first_col_idx]] + pre_info + labeled[first_col_idx + 1:]
+
     # Step 3: Format into output lines
     # LA spec: NO blank numbered lines on body/testimony pages.
     # All transitions run continuously — no blank line separators.
@@ -565,12 +588,12 @@ def format_testimony(raw_lines):
         elif kind == 'Q':
             body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
             # MB format: Q. indented 5 spaces, text 3 spaces after label
-            # Continuation lines flush left (hang=0) — MB standard
-            wrapped = wrap_line('     Q.   ' + body, width=LINE_WIDTH, hang=0)
+            # QA_LINE_WIDTH (52) matches CaseCATalyst's narrower Q/A column layout
+            wrapped = wrap_line('     Q.   ' + body, width=QA_LINE_WIDTH, hang=0)
             formatted.extend(wrapped)
         elif kind == 'A':
             body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
-            wrapped = wrap_line('     A.   ' + body, width=LINE_WIDTH, hang=0)
+            wrapped = wrap_line('     A.   ' + body, width=QA_LINE_WIDTH, hang=0)
             formatted.extend(wrapped)
         elif kind == 'colloquy':
             cm = re.match(r'^((?:MR\.|MS\.|MRS\.)\s+\w+:|THE\s+(?:VIDEOGRAPHER|COURT REPORTER|WITNESS):)\s*(.*)', text)

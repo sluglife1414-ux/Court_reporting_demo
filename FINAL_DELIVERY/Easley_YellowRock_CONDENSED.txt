@@ -1,0 +1,2469 @@
+================================================================================
+CONDENSED TRANSCRIPT
+Yellow Rock, LLC et al. v. Westlake US 2 LLC et al. | Docket 202-001594
+Witness: Thomas L. Easley | March 13, 2026
+Reporter: Marybeth E. Muir, CCR, RPR
+[CONDENSED FORMAT — 4 transcript pages per page equivalent]
+================================================================================
+
+                    STATE OF LOUISIANA
+
+                    PARISH OF CALCASIEU
+
+                    14TH JUDICIAL DISTRICT
+
+* * * * * * * * * * * * * * * * * * * * * * * *
+
+YELLOW ROCK, LLC, et al.,
+                    Plaintiffs,
+
+Docket No. 202-001594
+Division "H"
+
+               v.
+
+WESTLAKE US 2 LLC f/k/a EAGLE US 2 LLC, et al.,
+                    Defendants.
+
+* * * * * * * * * * * * * * * * * * * * * * * *
+
+                    VIDEOTAPED DEPOSITION
+                    OF
+                    THOMAS L. EASLEY
+
+taken on
+
+Friday, March 13, 2026
+
+commencing at 9:09 a.m.
+
+at
+
+111 North Post Oak Lane
+Houston, Texas  77024
+
+Reported By:  MARYBETH E. MUIR, CCR, RPR
+
+* * * * * * * * * * * * * * * * * * * * * * * *
+
+                   [REVIEW: Caption page lists location as 909 Post Oak Street;
+                    videographer transcript reflects 111 North Post Oak Lane.
+                    Reporter to verify correct location address.]
+
+======================================================================
+                    A P P E A R A N C E S:
+======================================================================
+
+A P P E A R A N C E S:
+
+ATTORNEY FOR PLAINTIFF:
+
+SHER GARNER CAHILL RICHTER KLEIN & HILBERT, L.L.C.
+
+909 Poydras Street
+
+Suite 2800
+
+New Orleans, Louisiana 70112
+
+504.299.2100
+
+mcurtis@shergarner.com
+
+khandy@shergarner.com
+
+tmadigan@shergarner.com
+
+jkessler@shergarner.com
+
+jgarner@shergarner.com
+
+BY: THOMAS J. MADIGAN, ESQ.
+
+JEFF KESSLER, ESQ.
+
+JAMES GARNER, ESQ.
+
+FOR THE DEFENDANTS, WESTLAKE US 2 LLC, WESTLAKE
+
+CORPORATION AND WESTLAKE CHLOR-VINYLS CORPORATION:
+
+SUSMAN GODFREY LLP
+
+1000 Louisiana Street
+
+Suite 5100
+
+Houston, Texas 77002-5096
+
+713.651.9366
+
+tpeacock@susmangodfrey.com
+
+BY: J. HOKE (TREY) PEACOCK, III, ESQ.
+
+FOR THE DEFENDANTS, PPG:
+
+--- [Page 6] ---
+
+JONES WALKER
+
+445 North Boulevard
+
+Suite 800
+
+Baton Rouge, Louisiana 70802
+
+225.248.2056
+
+jobrien@joneswalker.com
+
+BY: JAY M. O'BRIEN, ESQ.
+
+FOR THE DEFENDANTS, LONQUIST & COMPANY, LONQUIST FIELD
+
+SERVICE:
+
+KELLY HART & HALLMAN
+
+400 Poydras Street
+
+Suite
+
+New Orleans, Louisiana 70130
+
+504.522.1812
+
+aimee.hebert@kellyhart.com
+
+BY: AIMEE W. HEBERT, ESQ.
+
+A P P E A R A N C E S:
+
+FOR THE DEFENDANT, ALL STATE INSURANCE COMPANY, solely as successor-in-interest
+to NORTHBROOK EXCESS AND SURPLUS INSURANCE COMPANY,formerly NORTHBROOK INSURANCE
+COMPANY:
+
+WINDELS MARX
+
+180 Park Avenue
+
+Florham Park, New Jersey 07932-1054
+
+973.966.3207
+
+asirianni@windelsmarx.com
+
+--- [Page 7] ---
+
+BY: ANTHONY F. SIRIANNI, JR., ESQ.
+
+FOR THE DEFENDANT, NATIONAL CASUALTY COMPANY:
+
+PHELPS DUNBAR
+
+365 Canal Street
+
+Suite 2000
+
+New Orleans, Louisiana 70130-6534
+
+504.679.5686
+
+tucker.bohren@phelps.com
+
+BY: TUCKER T. BOHREN, ESQ.
+
+FOR THE DEFENDANT, CERTAIN UNDERWRITERS AT LLOYDS, LONDON, BERKSHIRE HATHAWAY SPECIALTY
+INSURANCE COMPANY, THE CONTINENTAL INSURANCE COMPANY, GOVERNMENT EMPLOYEES INSURANCE
+COMPANY, COLUMBIA CASUALTY COMPANY, CNA, GEICO, STONEWALL INSURANCE COMPANY AND
+GENERAL REINSURANCE CORPORATION:
+
+TAYLOR, WELLONS, POLITZ & DUHE, LLC
+
+1555 Poydras Street
+
+Suite 2000
+
+New Orleans, Louisiana 70112
+
+504.525.9888
+
+srosamond@twpdlaw.com
+
+BY: SAMUEL M. ROSAMOND, III, ESQ.
+
+FOR THE DEFENDANT, STARR INDEMNITY AND LIABILITY COMPANY:
+
+TREADAWAY BOLLINGER, LLC
+
+406 North Florida Street
+
+Suite 2
+
+Covington, Louisiana 70433
+
+--- [Page 8] ---
+
+504.833.7300
+
+darren@ztalaw.com
+
+BY: DARREN M. GUILLOT, ESQ.
+
+A P P E A R A N C E S:
+
+FOR THE DEFENDANT, GEMINI INSURANCE COMPANY:
+
+PHELPS DUNBAR
+
+365 Canal Street
+
+Suite 2000
+
+New Orleans, Louisiana 70130-6534
+
+504.679.5685
+
+bennett.matson@phelps.com
+
+BY: BENNETT MATSON, ESQ.
+
+FOR THE DEFENDANT, ALLSTATE INSURANCE COMPANY:
+
+MUSGRAVE, MCLACHLAN & PENN, LLC
+
+1555 Poydras Street
+
+Suite 2100
+
+New Orleans, Louisiana 70112
+
+504.799.4300
+
+lmd@mmpfirm.com
+
+NOT PRESENT
+
+FOR THE DEFENDANT, AIG ENTITIES:
+
+MCDOWELL HETHERINGTON
+
+1001 Fannin Street
+
+Suite 2400
+
+Houston, Texas 77002
+
+--- [Page 9] ---
+
+benton.surrett@mhllp.com
+
+BY: BENTON SURRETT, ESQ.
+
+FOR THE DEFENDANT, GREAT AMERICAN INSURANCE COMPANY:
+
+DUPLASS, APLC
+
+433 Metairie Road
+
+Suite 600
+
+Metairie, Louisiana 70005
+
+504.832.3700
+
+agallaugher@duplass.com
+
+BY: AIDAN P. GALLAUGHER, ESQ.
+
+FOR THE DEFENDANT, OLD REPUBLIC INSURANCE COMPANY:
+
+KENNEDYS LAW LLP
+
+400 Connell Drive
+
+Suite 700
+
+Berkeley Heights, New Jersey 07922
+
+564.224.9104
+
+sally.clements@kenndyslaw.com
+
+BY: SALLY CLEMENTS, ESQ.
+
+A P P E A R A N C E S:
+
+FOR THE DEFENDANT, TIG:
+
+MOULEDOUX, BLAND, LEGRAND & BRACKETT
+
+701 Poydras Street
+
+Suite 600
+
+New Orleans, Louisiana 70139
+
+504.522.2121
+
+--- [Page 10] ---
+
+jlonero@mblb.com
+
+NOT PRESENT
+
+FOR THE DEFENDANT, LIBERTY SURPLUS INSURANCE CORPORATION:
+
+BARRASSO USDIN KUPPERMAN FREEMAN & SARVER
+
+909 Poydras Street
+
+Suite 2350
+
+New Orleans, Louisiana 70112
+
+504.589.9762
+
+mpilcher@barrassousdin.com
+
+BY: MORGAN L. PILCHER, ESQ.
+
+FOR THE DEFENDANT, HAMILTON INSURANCE DESIGNATED ACTIVITY COMPANY:
+
+COSMICH, SIMMONS & BROWN
+
+650 Poydras Street
+
+Suite 2215
+
+New Orleans, Louisiana 70130
+
+601.863.2100
+
+kenan.rand@cs-law.com
+
+BY: KENAN S. RAND, JR., ESQ.
+
+FOR THE DEFENDANT, ZURICH REINSURANCE LTD F/K/A ZURICH INTERNATIONAL (BERMUDA) LTD
+:
+
+SKARZYNSKI MARICK & BLACK
+
+500 West Madison Street
+
+Suite 3600
+
+Chicago, Illinois 60661
+
+312.946.4239
+
+--- [Page 11] ---
+
+acandela@skarzynski.com
+
+NOT PRESENT
+
+FOR THE DEFENDANT, TRAVELERS CASUALTY & SURETY CO.:
+
+LUGENBUHL WHEATON PECK RANKIN & HUBBARD
+
+601 Poydras Street
+
+Suite 2775
+
+New Orleans, Louisiana
+
+504.568.1990
+
+kmcglone@lawla.com
+
+BY: KEVIN MCGLONE, ESQ.
+
+A P P E A R A N C E S:
+
+FOR THE DEFENDANT, ZURICH as alleged insurer of PPG:
+
+SALLEY HITE MERCER AND RESOR
+
+One Canal Place
+
+365 Canal Street
+
+Suite 1710
+
+New Orleans, Louisiana 70130
+
+504.566.8815
+
+istern@shmrlaw.com
+
+BY: IAN SALINAS-STERN, ESQ.
+
+FOR THE DEFENDANT, ENDURANCE AMERICAN INSURANCE COMPANY:
+
+CHAFFE MCCALL LLP
+
+1100 Poydras Street
+
+Suite 2300
+
+New Orleans, Louisiana 70163
+
+--- [Page 12] ---
+
+504.585.7081
+
+engelhardt@chaffe.com
+
+BY: LEAH ENGELHARDT, ESQ. (via Zoom)
+
+FOR THE DEFENDANT, SWISS RE CORPORATE SOLUTIONS AMERICA INSURANCE CORPORATION f/k
+/a PURITAN INSURANCE COMPANY:
+
+GALLOWAY JOHNSON
+
+One Shell Square
+
+701 Poydras Street
+
+Suite 4040
+
+New Orleans, Louisiana 70139
+
+504.525.6802
+
+seckholdt@gallowayjohnson.com
+
+BY: STEPHEN J. ECKHOLDT, ESQ. (via Zoom)
+
+FOR THE DEFENDANT, RLI INSURANCE COMPANY, named as excess insurer of PPG INDUSTRIES
+, INC.:
+
+LUGENBUHL WHEATON PECK RANKIN & HUBBARD
+
+601 Poydras Street
+
+Suite 2775
+
+New Orleans, Louisiana
+
+504.568.1990
+
+zlamachio@lawla.com
+
+BY: ZACHARY T. LAMACHIO, ESQ.
+
+======================================================================
+                              PAGE 13
+======================================================================
+
+A P P E A R A N C E S
+
+ALSO PRESENT:
+
+Jonathan Love
+
+Leslie Partida, Paralegal
+
+Bryan Smith, Videographer
+
+Reported by: Marybeth E. Muir,
+
+Certified Court Reporter
+
+In and for the State of
+
+Louisiana and Registered
+
+Professional Reporter
+
+======================================================================
+                              PAGE 14
+======================================================================
+
+S T I P U L A T I O N
+
+It is stipulated and agreed by and between Counsel that the testimony of the witness, THOMAS L. EASLEY, is hereby being taken pursuant to Notice under the
+Louisiana Code of Civil Procedure for all purposes permitted under law.
+
+The witness waives the right to read and sign the deposition. The original is to be delivered to and retained by WALKER HOBBY, ESQ., for proper filing with the Clerk of Court.
+
+All objections, except those as to the form of the questions and/or responsiveness of the answers, are reserved until the time of the trial of this cause.
+
+* * * * *
+
+Marybeth E. Muir, Certified Court Reporter in and for the State of Louisiana and Registered Professional Reporter, officiated in administering the oath to the witness.
+
+======================================================================
+                              PAGE 15
+======================================================================
+
+THOMAS L. EASLEY,
+
+1501 County Road 446, De Leon, Texas 76444 metres@aol.com.
+
+MR. HOBBY:
+
+MS. CURTIS:
+
+MS. HEBERT: .
+
+THE VIDEOGRAPHER: Good
+morning. We are now on the record. My name is Brian Smith
+. I am the videographer with Lexitas
+. Today's date is
+March
+13th, 2026, and the video time is 9:07 a.m.Central
+. This deposition is being held at
+111
+North Post Oak Lane, Houston
+, Texas, 77024 in the matter of Yellow Rock LLC et al
+.v. Westlake
+, et al.The deponent is Tom Easley
+. All counsel will be noted on the stenographic record
+. The court reporter,
+Marybeth, will now swear in the witness
+.
+
+witness sworn.
+
+MR. GUILLOT: This is Darren Guillot.
+Before we get started
+. We'd like to put a couple stipulations and reservations of rights on the record, if that's okay?
+
+--- [Page 16] ---
+
+MR. HOBBY: Great.
+
+MR. GUILLOT: The stipulations
+are that all objections are reserved except for the form of the questions and responsiveness of the answer and one objection is good for all present unless someone opts out.
+Is that agreeable
+?
+
+MR. HOBBY: No objection from Westlake.
+
+MS. CURTIS: None from Plaintiffs
+.
+
+MR. GUILLOT: Also, again I'm here on behalf of
+Starr Indemnity & Liability Company and we reserve all rights, including but not limited to, the rights to re-depose this witness if and when we've had the opportunity to conduct meaningful discovery and had the benefit of meaningful discovery.
+Thank you.
+
+BY MR. HOBBY:
+
+All right.
+
+Are you ready to go, Mr. Easley?
+
+Yes.
+
+Perfect.
+
+Could you please state your full name for the record
+.
+
+Thomas L
+. Easley.
+
+Good morning
+, Mr. Easley. My name is Walker Hobby
+. I work for the law firm of Susman Godfrey. I'm here on the behalf of
+Defendant, Westlake.
+
+Do you understand all that?
+
+--- [Page 17] ---
+
+I do.
+
+Have you ever had your deposition taken before?
+
+I have.
+
+How many times?
+
+Maybe 25 to 30 times over the years.
+
+All right.
+
+We don't [CORRECTED: depth] have to go through every one, but in general, what types of depositions are those?
+
+Early on in matters representing clients of mine was a partner in one of the large—big eight CPA firms at the time and we became involved in many of those.
+And then later on after I left the practice I was involved in—in a number of business type disputes over the years.
+
+Were those primarily oil and gas disputes?
+
+I would say the line—most of them were.
+
+When was the most recent deposition?
+
+Probably oh,
+6 or 7 years ago.
+
+Okay
+. Have any of them dealt with the subject matter of the litigation today, like the Sulphur Mines salt dome?
+
+No.
+
+Have you ever testified in a trial?
+
+Yes.
+
+How many times have you actually testified in court?
+
+Maybe
+3 to 5. Somewhere between 3 to 5 times.
+
+Okay.
+
+Half a dozen times.
+
+You may know the drill but
+
+--- [Page 18] ---
+
+I'll go over some high level rules just for my sake as much as anyone's. The first is to make life easy for the court reporter so if we can let each other finish talking before the other one starts answering or asking again talking to myself here but can we agree to let each other finish talking before we jump in?
+
+Yes.
+
+The next point is if you don't understand any of my questions I'm happy to clarify. Can you let me know if you don't understand any of my questions?
+
+I will do that
+.
+
+Thank you
+.
+
+Third try to avoid non-verbal responses like a nod of the head or shake of the head so all of the responses being actually get picked up bathe transcript. Does that work?
+
+Yes.
+
+And it's not a rule but if you need a break at any point I'm happy to do that.
+Just let me know if we ever need to stop for any reason
+. Does that work
+?
+
+I'll do that
+, thank you.
+
+First
+I'm going to hand you—we'll start off with Exhibit No. 127
+. Please it's going to be
+Notice of Deposition.
+
+You've seen that document before, Mr. Easley?
+
+Yes.
+
+Okay.
+Great. That's he a quick one.
+
+Where did you currently live?
+
+1501 County Road 446
+
+--- [Page 19] ---
+
+, De Leon
+, that's D-e, separate word,
+L-e-o-n Texas
+76444.
+
+I thought
+I knew my Texas geography but I don't know how far way that is. Was it a far drive for you this morning or not that far?
+
+I have family members that live in the
+Woodlands, so it was an easy drive.
+
+Wonderful
+.
+
+How long have you lived in
+De Leon?
+
+Slightly over three years.
+
+What do you do for a living right now. I'm a farmer?
+
+What do you farm?
+
+Hey, coastal Bermuda hey
+.
+
+And could you give me a brief summary of your educational background.
+
+I have a B.S., Bachelor of Science in general business from
+Charleston state university and I have an MBA from Texas A&M and
+I did a bit of postgraduate work at [CORRECTED: stand forward] Stanford.
+
+Any debris or certification is in petroleum engineer or geology or any related field?
+
+No.
+
+How long have you been working in the oil and gas industry
+?
+
+--- [Page 20] ---
+
+When I was in public accounting
+, 13 years
+, I had the majority of my clients were in the energy sector. And after
+I left practice,
+I spent the balance of my career in a number of different types of oil and gas businesses.
+
+When did you leave private practice?
+
+November of
+
+1981.
+
+I know we've touched on it, but would you walk me briefly through your career before you got involved with
+White Top energy?
+
+Well, first
+13 years in public accounting and then—are you interested in the names of the companies or the types of businesses?
+
+More the types of businesses.
+
+Fine
+. The next—after I left public accounting
+I went to work for a client at that time and it was in the oil and gas—I would say development—acquisition an development
+. The company raised funds through limited partnerships and purchased producing oil and gas properties
+. Some of which had development drilling opportunities
+. I was in with a company that was in what I'd call more pure exploration and production. It was a publicly traded company. And
+I was involved in a venture involving offshore contract drilling.
+
+MR. GUILLOT: This is
+Darren Guillot, the audio seems to be breaking up. I don't know if it's on my end or if everyone is having that problem.
+
+THE WITNESS: I beg your pardon.
+
+MS. CURTIS: He said
+he's having trouble hearing you.
+
+--- [Page 21] ---
+
+MR. HOBBY: I don't know
+if that's yours but maybe you can—THE WITNESS: Can you hear me better? Hello
+?
+
+THE VIDEOGRAPHER: Do you want going to off the record?
+
+MR. HOBBY: Yes.
+THE VIDEOGRAPHER: We are now off
+the record at 9:17 a.m.
+THE VIDEOGRAPHER: The time
+is 9:18 a.m.and we are now back on the record.
+
+BY MR. HOBBY:
+
+Mr. Easley
+, I know we were talking about your career before White Top
+, but I think we've hit the wave tops there, so let's jump ahead.
+When did you first become involved with White Top energy?
+
+The preceding companies evolved ultimately into White Top were—began in 2016
+.
+
+What was the name of those or that preceding company?
+
+North Summit Energy LLC and then specifically
+White Top oil and gas an then White Top energy which was formed
+for the purpose of
+acquiring Yellow Rock.
+
+How did you come to be involved with those companies?
+
+I had been associated with a gentleman, he will
+L.R. French, the III, Robin French, for probably six or seven years prior to that. And we—that was one of the businesses we launched.
+
+And did you have any prior experience with the
+
+--- [Page 22] ---
+
+Sulphur Mines area?
+
+, no.
+
+And what about with salt domes generally?
+
+Limited exposure, but more from clients that perhaps had operations in that area of Texas or Louisiana since there are so many salt dome structures in both states.
+And also contract drilling, being familiar with the drilling issues involved in drilling in and around salt domes.
+
+And what was your role when you started with those companies?
+
+Which companies
+?
+
+North Summit or
+White Top
+.
+
+I was I guess senior vice president and wore several hats
+.
+
+And could you explain to me the different between White Top energy and
+White Top oil and gas
+?
+
+White Top oil and gas was the company that we formed for the purpose of conducting the
+3D. Seismic survey that we shot—I'll use the term, industry term—for acquiring seismic data. And we formed blacktop oil and gas for the purpose of shooting the seismic in the subject least area
+.
+
+And White
+Top energy is the parent company of Yellow Rock
+; is that right?
+
+Yes.
+
+And it owns 100 percent of
+Yellow Rock, right?
+
+--- [Page 23] ---
+
+It did at the time that I left and
+I believe it does still
+.
+
+Okay.
+
+Does White Top energy own anything else besides Yellow Rock
+?
+
+Not at the time that I was involved
+, it did not.
+
+And when we refer to either
+White Top or Yellow
+Rock, both of those companies are exclusively dealing with drilling for oil and gas at Sulphur Mines
+, right?
+
+That would be the business purpose
+, yes.
+Okay.
+
+So I think you had an E-mail address at Yellow Rock domain, White
+Top domain an
+North Summit domain
+, right, three
+E-mail addresses?
+
+Yes.
+
+You also had an E-mail address at north wind LLC; is that right?
+
+That's a company that's been out of business for probably 8 or 10 years or more and was—Mr.French and I were I guess involved with early on.
+
+Were the objectives of north wind similar to the objectives of White Top?
+
+. When you say north wind you mean north wind?
+
+--- [Page 24] ---
+
+LLC.
+
+LLC?
+
+Yes, sir.
+
+Yes. Our business purpose was—was raising capital to develop and drill in—in several salt domes in South Louisiana in particular the one in
+Plaquemines Parish.
+
+That's helpful
+, thank you.
+
+Were your responsibilities at White Top one and the same with your responsibilities at
+Yellow Rock?
+
+I would say in all material aspects yes, over arching responsibilities over a number of functions
+.
+
+You said that you were a senior vice president at Yellow Rock, right
+?
+
+I think we are talking about
+White Top at the time.
+
+Okay.
+
+Was your role at White Top also senior vice president?
+
+MS. CURTIS: Object
+to the form.
+
+THE WITNESS: Pardon?
+
+MS. CURTIS: I'm just objecting
+to the form but I think he said that was
+White Top and then you asked White Top again in the question
+.
+
+MR. HOBBY: Okay, I'm happy to clean up
+
+--- [Page 25] ---
+
+.
+
+BY MR. HOBBY:
+
+So were you a senior vice president at White Top and Yellow Rock
+?
+
+Yes.
+
+Were you also a manager of White Top energy?
+
+Yes.
+
+Okay.
+
+What did the managerial role entail
+?
+
+Those would have been delineated in the company operating agreement and
+, basically, any and all activities that the company was involved in, tap California manager of an
+LLC type activities
+.
+
+And what were your day-to-day responsibilities as a manager and a senior vice president?
+
+My responsibilities involved oversight over several functions, legal activities, administrative activities, I had oversight responsibilities over land activities
+. I was—I was responsible for overseeing and overseeing the shoot of the 3D seismic survey and later on dealing with drilling contractors to drill wells and then oversight of the engineering and day-to-day production.
+
+Were you involved in decisions about which wells to drill
+?
+
+I would have had involvement in it, yes.
+
+What was the extent of that involvement?
+
+It would involve a detail review of the end discussion of recommendations submitted by geologist is, geophysicist is an engineers.
+
+Were you involved in reviewing or preparing material sent to investors?
+
+Yes.
+
+And also to potential investors?
+
+--- [Page 26] ---
+
+To who
+?
+
+To potential investors?
+
+Yes.
+
+Okay.
+
+Were you involved in communications with LD&R about permitting?
+
+The name is what?
+
+So the Louisiana
+Department of Natural Resources, when I say LDNR, do you recognize that?
+
+I do now
+. But combined
+DNR.
+
+Fair enough.
+DNR?
+
+We referred to it as.
+
+I think they
+'ve changed their names a bunch of times
+, so—but I'm happy to call it
+DNR. Were you involved in communications with DNR about permitting?
+
+Yes. Through our regulatory consultant.
+
+And was Robin French the only other manager of White Top energy an along with yourself?
+
+I believe at the time, yes.
+
+What about later?
+
+I don't know how it was expand had
+.
+
+--- [Page 27] ---
+
+Okay.
+
+How did your and
+Mr. French's responsibility
+differ?
+
+Well, Rob—Mr.French was my boss. But he and I worked literally side by side in most day-to-day activities.
+
+And about how many hours per week did you spend on White Top Yellow Rock between—let me back up.
+
+When did you start your involvement at
+Yellow Rock LLC?
+
+North
+Summit started looking—not looking, bad choice of words—reviewing potential development opportunities in a number of salt domes in
+South Louisiana in the latter part of 2015
+. Intensifying into 2016 and further intensifying in
+2017.
+
+Was—And
+I would say in those early years probably 80% of my time was devoted to screening salt domes and from mid
+2016 onward,
+100 percent of my time was associated with the Sulphur Mines Field
+.
+
+And when did that end? When did you stop devoting 100 percent of your time to
+Sulphur Mines?
+
+That would have been in the fall of 2021 and then I worked an additional year approximately for Yellow Rock, White Top energy with respect to transition matters and assisting with what they might need help with.
+
+And after that is that when you turned to farming or was there a different job in between?
+
+No. It' s when I become a farmer.
+
+And I know you were hinting at this, at some point you and Mr.French were replaced as
+White Top managers by Jonathan
+
+--- [Page 28] ---
+
+Barrett, right?
+
+We were.
+That would have been probably sometime during the summer of 2021.
+
+Do you know why you were replaced?
+
+Well, our senior secure lender,
+Sunny Solar
+, which was through an additional company was essentially overseen by
+Jonathan Barrett and become uncomfortable with the loan and
+, basically, felt like if they were going to have the financial risk then and going forward, they needed to be in control.
+
+And after you left as manager, you remained on the Board ofYellow Rock; is that right?
+
+And White
+Top.
+
+Of Yellow Rock and White Top?
+
+Yes.
+
+So at that point after you were no longer a manager but you were on the board, did you continue to receive updates on Yellow Rock drilling program?
+
+Yes.
+
+And you also continued to receive communications about investor relations and capital raises
+?
+
+More so—I would say yes. Yes. Yes.
+And as a board member, not as a manager, how many hours per week would you spend on
+White Top or Yellow Rock matters
+?
+
+There is no particular average during the week, but it might involve 1 or
+2 man days—person days. I believe.
+
+Sure.
+
+--- [Page 29] ---
+
+Are you familiar with
+Luminus management?
+
+Yes.
+
+What is
+Luminus relationship to Yellow Rock or White Top?
+
+As
+I appreciate it,
+Luminus was either the parent or controlling entity over Sunny Solar who extended the loan to yellow—to White Top to acquire
+Yellow Rock.
+
+And Mr. Easley
+Mr. Easley do you
+personally have any financial interest in the outcome of this litigation
+?
+
+I would say no material interest at all
+.
+
+And what about none material interest?
+
+I have a handshake with
+Mr.French for a six percent interest out of what the venture that Mr.French manage—controls
+REV rent signal—energy signal joint venture.
+Might acquire—might receive down the road in distributions after
+. It's fully diluted substantially diminimus interest
+.
+
+So correct me if I'm wrong but just to make sure
+I understand, would REV rent possibly get some portion of the recovery in this lawsuit and you think that you would get a portion of that?
+
+MS. CURTIS: Objection to the
+
+--- [Page 30] ---
+
+form.
+
+Not really.
+
+If you think you understood my question you're welcome to clean it up for me if you think, you know, how to answer.
+
+MS. CURTIS: I think you
+should rephrase it
+.
+
+MR. HOBBY: Happy to.
+
+BY MR. HOBBY:
+
+Is there any arrangement under which you would personally receive any portion of a recovery in this case
+?
+
+No.
+
+Are you still on the Board ofYellow Rock or White Top?
+
+Pardon?
+
+Are you still on the Board ofYellow
+Rock or White Top?
+
+Yes.
+
+And what is your current level of involvement?
+
+Minimal right now.
+
+And Mr.
+Easley, are you familiar with this lawsuit?
+
+I'm generally familiar with it.
+
+Can you explain to me what your understanding of what Yellow Rock's claims are in this case?
+
+I'd feel more comfortable if you would show me the—the pleadings so
+I could take a quick look at that.
+
+Okay.
+
+--- [Page 31] ---
+
+Is that because you don't remember or—I'm just asking what your current level of memory is. It doesn't have to be perfect.
+
+MS. CURTIS: I don't
+see what the relevance is of his personal view of what the claims are this the lawsuit
+.
+
+MR. HOBBY: I understand. The
+question stands.
+
+BY MR. HOBBY:
+
+What is your understanding of what the claims are in this lawsuit?
+
+My general understanding is that the issue, volumes
+, basically, the inability to obtain regulatory permits to either re complete existing wells or drill new wells in the
+Sulphur Dome field and damages that would come out of that as a result of, basically
+, the allegations of Westlake being responsible for mismanagement of their operations in the salt dome.
+
+Mr. Easley,
+are you generally familiar with what's been referred to in this case as the pressure loss event at the
+Sulphur Mine salt dome?
+
+I became aware of it.
+
+What is your understanding of what that pressure loss event was?
+
+My layman's understanding would be that massive amounts of salt water had to be pumped in and injected into the particular cavern in order to offset the pressure losses. Saying it another way, there was a leak.
+
+And when did you first become aware of the pressure loss event
+?
+
+I believe it would have been sometimes in the first quarter of 2023. I was already up at the farm
+.
+
+And how did you learn about it?
+
+I believe as I recall I was briefed informally on it by
+Jonathan Love with—with Yellow Rock.
+
+--- [Page 32] ---
+
+And that followed on with more formal board meeting briefings.
+
+And because we'll probably talk about it again today, when I refer to the pressure loss event during this deposition,
+I'm intending to refer to the reported loss of pressure in
+Westlake cavern
+6 or 7 starting in
+December 2021.
+Do you understand that?
+
+MS. CURTIS: He wants to know if he refers
+to it, can you _
+_ will you accept his definition that it was lost of pressure in
+December 2021 as a shorthand
+for the purpose of the deposition
+.
+
+I'm not sure exactly when the beginning of the loss of pressure occurred.
+
+Okay.
+
+So I couldn't give an accurate response toss that particular part of the question.
+
+Fair enough. I understand
+.
+
+When I use the term pressure loss event can you understand me to mean what happened in
+December 2021; is that fair?
+
+Well, my question is the 2021 date.
+
+Right
+.
+
+I don't know when the occurrence began.
+
+Okay.
+
+--- [Page 33] ---
+
+Thanks.
+
+Do you have any understanding of what may have caused the pressure loss event?
+
+I have heard a number of theories and I'll leave it at that.
+
+What theories have you heard?
+
+I've heard assertions, allegations if you will, that the problem would have been prompted by oil and gas operations being carried out.
+I've heard theories that the cavern in question was developed too close to the edge of the salt and issued answers all in between or issues is a better choice of words
+.
+
+And what sorts of theories have you heard that the oil and gas operations might have precipitated the pressure loss?
+
+Early on that salt water can injected into
+Yellow Rock two salt water disposal
+Well, there's four out of seven as I recall
+. Too much water would have been injected in it and that is one theory that I've heard.
+And then all the way into—to drilling too close to the dome and that would be the general parameters.
+
+Okay.
+
+For the salt water
+disposal is the theory that the salt water can disposed of near the salt would have dissolved it from the outside and I guess cause the breach from the outside in?
+
+MS. CURTIS: I'm going
+to object to the whole line of questioning what difference does it make on a near i.e., heard on the street. I mean he could talk about what he heard from the
+National
+Enquirer too they can they can this is the deposition of Mr
+. Easley's personal knowledge so I'm just going to object to this whole line of question.
+
+MR. HOBBY: Thank you
+.
+
+BY MR. HOBBY:
+
+You can still answer the objection that's been made in the record.
+
+--- [Page 34] ---
+
+Well, I can speak more definitively and say without question that in particular in the
+November/December timeframe of 2019 there was an issue that rose to the level of a formal meeting in Baton Rouge with the commissioner of natural resources
+Commissioner Ieyoub
+. Attended by
+Westlake and others.
+That dealt with the
+S4 and S7 and threats by the
+DNR to cause—to cause Yellow Rock to quit using it and ultimately plug and abandon two salt disposal wells.
+
+What were there concerns with the salt water disposal wells? Sorry, when I say they,
+I mean0
+Commissioner Ieyoub and the regulatory body?
+
+The concern that would have been—that was expressed at the time by Westlake that that would have been an impediment for their attempts unsuccessfully to obtain a permit from the
+Mines & Minerals division of DNR to develop additional cavern or well that they were attempting to do.
+And the—the DNR was essentially having a—had proposed public establishing of the Louisiana public register notification to quit using those two salt water disposal wells and plug and abandon it and that was what
+Yellow Rock's attempt to try and rebut that.
+
+Were
+Commissioner Ieyoub or DNR concerned that the injected water my dissolve the salt?
+
+MS. CURTIS: Objection
+to the form. Again
+I don't know how he can testify about what they were concerned about.
+If you want to depose them, depose them
+. This is about his own personal knowledge and
+I've yet to have one question asking him about what he knew about anything.
+
+BY MR. HOBBY:
+
+I'm only asking about what you know,
+
+--- [Page 35] ---
+
+Mr. Easley.
+
+Well,
+I'll tempt to answer in that context.
+
+And what you know might be what you heard from others. It doesn't mean that you know or agree with what they say but if you heard them or understand them to think it or said it
+, we can always follow-up with them.
+But I'm just talking to you right now.
+
+I'll try to refrain from dealing in here say.
+
+You can let the lawyers worry about hearsay. But if you heard something
+, you can—you can and should certainly say so. I mean we can deal with the evidentiary matters later.
+
+Does that work?
+
+I think so.
+
+So before the objection—can we read that back
+Ms. Muir?
+
+I found it. I can read it back.
+
+Were Commissioner Ieyoub or the
+DNR concerned that the injected water might dissolve the salt?
+
+MS. CURTIS: Same objection
+. Beyond his personal knowledge.
+
+BY MR. HOBBY:
+
+That was one amongst several matters that were discussed?
+
+Was the risk of cavern breach discussed at that meeting?
+
+Maybe in a peripheral sense.
+
+Did Commissioner Ieyoub or DNR raise the risk of cavern breach at any other meetings or any other communications with Yellow Rock?
+
+MS. CURTIS: Object to
+the form. Assumes it was raised in a meeting.
+
+--- [Page 36] ---
+
+THE WITNESS: The—any communications
+generally would have come through under the signature of a gentleman named Stephen Lee who was then the manager—department head if you will of the division of
+Mines & Minerals, which had oversight of all Louisiana cavern salt dome cavern operations and peripheral oil and gas operations.
+
+BY MR. HOBBY:
+
+Did Mr.Lee every raise the risk or the concern of cavern breach brought on by the salt water disposal wells?
+
+That was raised and communicated to me by our regulatory consultant that we used for direct interface with the regulatory group.
+
+Who was that consultant?
+
+Her name was Jo Beth Taylor with
+KJ Consulting out of Lafayette
+.
+
+And when did Jo Beth Taylor raise that with you?
+
+She—we began discussing the potential for that in probably mid 2019.
+
+Did you have more discussions with Taylor about that after mid 2019?
+
+Well, after the December meeting, we felt that we had the matter resolved.
+We...
+
+Apologies if you already said it
+, but when you said the
+December meeting what year was the December meeting?
+
+Excuse me
+. 2019.
+
+Thanks.
+
+Did it come up again after that?
+
+MS. CURTIS: Objection
+, asked and answered
+.
+
+--- [Page 37] ---
+
+Well, with respect to the two
+Yellow Rock salt water dispose wells
+, we voluntarily proposed to—at the
+December 2019 meeting to materially curtail the amount of water can injected in those and did so. And the issuance of the regulation was that I had mentioned earlier was placed on hold and to my knowledge still is. I don't think the wells have specifically been—had to be plugged and
+
+abandoned. And at the same time we received agreement that Yellow Rock would be able to replace the salt water disposal requirement for the field with converting an existing well bore.
+It was not in active production away from the cavern area to provide additional salt water disposal capabilities
+.
+
+After the loss of pressure in the Westlake caverns—Well,
+I'll withdraw that.
+
+When did you first—I'll withdraw that
+.
+
+Who did you hear about the theory of the salt water disposal wells precipitating the pressure loss from?
+
+MS. CURTIS: Object
+to the form.
+
+I'm not sure I understand.
+
+Where did you hear that theory?
+
+MS. CURTIS: Object
+to the form. That theory, he said I don't understand your first question and you just said that theory
+. Please rephrase your question so he knows what you're asking.
+
+Can you be more specific
+?
+
+Sure.
+Where did you learn about the theory that the salt water disposal wells may have played a role in precipitating the pressure loss event?
+
+MS. CURTIS: Object
+to the form.
+
+--- [Page 38] ---
+
+My recollection would be that I heard that in
+2022 or 23 timeframe.
+After the—excuse me—after the—I had, basically, not had an active involvement in the company.
+
+Who did you hear it from?
+
+Who did I hear it from?
+I believe probably it would have been discussed with Jonathan Love with Yellow Rock and that would be the primary source of information.
+
+Did
+Mr. Love mention any likelihood or percentage
+of likelihood that the salt water disposable wells would have actually been the precipitating factor?
+
+Any percentage?
+
+Did he express how likely he thought that was?
+
+Well, my view, personal opinion, would it be it had no impact at all. And
+I believe Mr. Love would have had the same opinion.
+
+What do you base your opinion on?
+
+Well, the two existing salt water disposal wells that Yellow Rock operated had been drilled and completed and operated in full accordance with DNR regulations
+. And had undergone prior to
+White Top acquiring
+Yellow Rock and Yellow Rock's previous ownership had carried out as required subsurface son nature tests and communicated those results to the DNR staff and as part of their normal activity of monitoring operations around salt dome caverns.
+
+Do you know whether the DNR has investigated the role will salt water disposal wells in the pressure loss event?
+
+I do not.
+
+Do you know if
+Yellow Rock has investigated the role of the salt water disposals wells in the pressure loss event?
+
+I don't have full knowledge or even partial knowledge on that.
+
+You also mentioned a theory that potentially drilling too close to the caverns might have precipitated the pressure loss event. Can you explain to me what that theory entails.
+
+That theory would have involved in the drilling of an oil and gas well and the majority of the wells are not straight whole vertical wells in that field. They involve directional drilling to start at one "X" and why location at surface level and target that particular different target zone.
+
+--- [Page 39] ---
+
+And that volumes directional drilling and that would involve drilling too close to the salt dome and penetrating it.
+
+Was there a particular well that was discussed or that you heard discussed as potentially penetrating the salt?
+
+There may have been, but I don't recall what the number would have been.
+
+Okay.
+
+There's over a thousand—over a thousand wells that have been drilled in that field.
+
+And is the idea that it could have been
+16 several wells or do you think—or is what you heard that it was probably one specific well
+, if anything?
+
+MS. CURTIS: Object
+to the form.
+
+I honestly don't recall.
+
+Do you recall when you first heard that theory?
+
+That probably would have been in and around the original discussions with Jo Beth Taylor.
+
+When did those discussions occur?
+
+MS. CURTIS: Objection
+, asked and answered
+.
+
+I would have to refer to my previous testimony on the timeframe.
+
+Okay.
+
+So when you first talked to
+Jo Beth Taylor in the timeframe that you previously testified she raised the risk of a well penetrating the salt and piercing into a cavern; is that right?
+
+MS. CURTIS: Object
+to the form.
+
+It was not
+Jo Beth's personal opinion that that would have been a cause of anything
+
+--- [Page 40] ---
+
+. She was just relaying what she had been told by—by probably
+Stephen Lee with the DNR.
+
+Who else had you heard discuss that theory, that theory can that a drilling operation pierced the salt?
+
+MS. CURTIS: Object
+to the form. I mean that assumes that he heard it from somebody else an that was his theory and it was out there.
+
+Well, without going back and recounting what I had previously testified relative to that, , that would have been in and around all of the general discussions that I had had gone go back to middle part of 2019, running all the way through the—literally last week, this week
+.
+
+Sure.
+
+Who did you discuss it last week with?
+
+MS. CURTIS: Object to the
+extent it impinges on attorney/client privilege. I don't know if it did. If you discussed it with someone last week with or without counsel present or without preparing for your deposition
+.
+
+I have not.
+
+And I think I understand that, but just to make sure
+, are you saying any conversations that you've had about it in the last week or two have only been in the context of with counsel?
+
+That's correct
+.
+
+Okay.
+
+Thanks.
+
+MS. CURTIS: Do you mind
+if we take a break
+?
+
+MR. HOBBY: Sure.
+
+MS. CURTIS: Thank you.
+
+THE VIDEOGRAPHER: The time
+
+--- [Page 41] ---
+
+is '9
+:58 a.m.and we are now off the record.
+
+THE VIDEOGRAPHER: The time
+is 10:24 a.m.and we are now back on the record.
+
+BY MR. HOBBY:
+
+Mr. Easley
+, we were talking about the theory that Yellow Rock's drilling might have brought on the pressure loss event.
+Do you remember us talking about that?
+
+I believe that was among the latter questions that you would have asked.
+
+Apart from counsel, who have you heard raise that theory?
+
+MS. CURTIS: And you define the event as
+happening in
+2021? That's how you define it
+.
+
+MR. HOBBY: That's right.
+
+MS. CURTIS: So this would
+have to be necessarily after 2021.
+
+THE WITNESS: Now I'm
+confused relative to timeframes.
+
+MS. CURTIS: I think he confused you earlier because
+we were talking about
+2019 and if he's talking about 2021
+, that doesn't make any sense, right
+?
+
+Well, I can't get a clear picture of what dates you're talking about.
+
+--- [Page 42] ---
+
+Let's forget dates for a second
+. Who all besides counsel have you heard raise the theory that
+Yellow Rock's drilling program might breach a cavern?
+
+MS. CURTIS: Object to the form
+.
+
+Well, with the various back an for the between the two of you, I would not characterize it then as theories that were being represented or presented as being the professional or personal theories. I was more relaying there appreciation of what concerns would have been raised.
+
+And who relayed those concerns?
+
+Well, I think I previously testified to that as far as the timeframes and who would have raised _
+_ passed on the concerns to me.
+
+I remember us talking about that for the salt water disposal well there
+, I just want to make sure I get are testimony for the drilling theory.
+So it is?
+
+MS. CURTIS: I have an
+objection. I think this is the problem because the earlier testimony sounded like we were doing salt water disposal which was 2019 and now we're talking about the pressure which is
+2021 and it seems very confusing as to what you're asking him about.
+
+MR. HOBBY: I understand. I'll
+just pose questions to
+Mr. Easley.
+
+BY MR. HOBBY:
+
+So did you understand my question,
+Mr. Easley?
+
+I may not have
+.
+
+Okay.
+
+Sorry, did you or didn't you?
+
+--- [Page 43] ---
+
+I want to make sure I understood.
+
+I'm sorry
+. I'm having difficulty understanding if you're talking about a specific event that would have been asserted might or might not have been caused by Yellow Rock or are you talking about the loss of pressure event which I previously have testified how
+I became aware of that.
+
+Right.
+
+Issue.
+
+For now we're not talking about any specific event. I just want to know besides counsel, who all you have heard raise the theory that Yellow Rock
+'s drilling near the salt dome might breach a cavern?
+
+MS. CURTIS: Object
+to the form. Assuming someone has asserted that theory.
+
+Well, I'll attempt to—to revert back to what I think I have a previously testified about the general issues.
+, among which would have been 20—the excess water in the salt water injection wells, which in my mind were—were disproved an put to rest after the hearing in
+December of 2020.
+
+And the question—MS. CURTIS: Just—I'm sorry. I think you said earlier it was 2019
+, December 2019, the meeting.
+
+Excuse me. It was
+2019.
+
+So my question is: Who all besides counsel have you heard raise the theory that
+Yellow Rock's own drilling might breach a cavern?
+
+MS. CURTIS: Objection,
+asked and answered.
+
+Well
+, to be specific, my testimony would be that it was not personal or professional theories that were espoused by it. I was more relaying what other parties assertion is were. Primarily with legal counsel.
+
+And apart from counsel who relayed those concerns or theories?
+
+As I recall, they might—I believe they were mentioned in early on briefings to the board relative to the—the issues and the potentiality of litigation.
+
+--- [Page 44] ---
+
+MS. CURTIS: I'm going to
+stop you there
+. Don't discuss anything about potentiality of litigation that was discussed in board meetings
+.
+
+THE WITNESS: I'm not.
+
+I think it falls under the category of litigation and probably privileged communication
+.
+
+Zooming out, we talked about the salt water disposal theory and I guess the drilling theory we'll call it
+. Have you heard of any other theories as to what might have caused the pressure loss event?
+
+MS. CURTIS: Object to the
+form.
+
+Not that
+I am personally aware of
+.
+
+Okay.
+
+I want to talk a little bit about—I'm going to call it the
+2018 to 2021 era of Yellow Rock, okay?
+
+All right
+.
+
+Can you tell me how you first learned about the
+Sulphur Mines opportunity.
+
+I'm sure
+I mentioned that in earlier testimony relative to
+North Summit becoming aware of the potential of Sulphur Mines opportunities and that would have been in 2016.
+
+Did you learn about it through Mr.French?
+
+--- [Page 45] ---
+
+Mr.French and I would have learned about it at the same time and we—and several years prior to that we had met a group of geophysicists/ geologists in
+Houston that were very experienced in salt dome activity.
+And we met them at a Christmas function hosted by the building management at the office in the building we office d in at Hackberry.
+
+What were the names of those geoscientists or geophysicists?
+
+Well, again, we initially met them in I believe probably would have been February of
+2011 and there were several of them, but the leading group, people
+I'd say would be a gentleman by the name of
+Burt Bowen and
+Steve Wipple.
+
+And when did
+White Top energy purchase
+Yellow Rock LLC?
+
+That would have been in 2018,
+November 2018 is the timeframe.
+
+Did you conduct any due diligence prior to that transaction?
+
+MS. CURTIS: Him personally?
+
+MR. HOBBY: Yes.
+
+Me, personally, yes. Overseeing the group of folks either consultants or employees of
+North Summit Energy going all the way back to
+2016.
+
+What did that due diligence consist of?
+
+Well, initially understanding the developmental history of the
+Sulphur Mines Field
+. , researching what it is drilling activity had been, what the cumulative production would have been.
+A lot of this involved the summary system maintained by the State of Louisiana.
+
+--- [Page 46] ---
+
+As far as production data and well data. That would have been the early information.
+
+And where did the capital come from in the—for White Top to purchase Yellow Rock
+?
+
+When the actual purchase of Yellow Rock occurred, the—it would have been a loan from Sunny Solar.
+
+Did you raise equity capital?
+
+For the purchase
+of Yellow Rock at the time?
+
+Yes.
+, not for that transaction
+. We had put our N early ongoing back to
+2016 and carrying out due diligence and the—conducting the 3D seismic survey which is expensive.
+
+How much money did White Top energy buy Yellow Rock for in 2018?
+
+I think the purchase price—excuse me—was in the neighborhood of nine or
+$10 million. But we borrowed enough to drill the initial wells and carry out ongoing geologic and geophysical work.
+
+And over the entire span of your involvement with White Top energy, or Yellow
+Rock LLC, roughly how much total capital was raised by those entities?
+
+You mean in the form of loans or equity put in?
+
+Let's start with equity
+.
+
+The equity would have been primarily that put in the early due diligence an review and research starting in 2016
+, culminating in the permitting and carrying out of the 3D seismic survey
+.
+
+And how much money did that equity represent?
+
+I'm saying that it was probably in the neighborhood of over $3 million
+. I don't have the precise number down.
+
+--- [Page 47] ---
+
+Who did
+White Top or Yellow Rock hire to run the day-to-day operations of
+Yellow Rock?
+
+Well, Yellow
+Rock had staff—on staff for full-time consulting staff to carry out the engineering work and also the geological and geophysical work. And took over the accounting at the field level or pumpers. There were two employees that Yellow Rock had at the time that
+White Top bought Yellow Rock.
+
+Did—how many people did White Top hire after it bought Yellow Rock to run
+Yellow Rock?
+
+You mean directly or support staff?
+Technical staff
+?
+
+As consultants or employees
+.
+
+Overall?
+
+Yes.
+It would have varied depending on what timeframe
+. Earlier on it would have been less, peeking at a larger number. Directly involved in the
+Sulphur Mines field development. I'm tallying it up in my mind if that's okay?
+
+I've mentioned the two pumpers in the field
+. And technical support probably somewhere 8 or 10
+, 12.
+
+And that was at the peak you said?
+
+That would have been the peak.
+
+When was the peak?
+
+The peak would have been when I was directly associated with it would have been through—through mid 2021.
+
+--- [Page 48] ---
+
+How did
+Yellow Rock go about evaluating drilling prospects at
+Sulphur Mines?
+
+My response to that would probably be, you know, small as a bred basket and as big as a box car.
+Are you speaking in general?
+
+I'm speaking—we'll start at a high level and then maybe we'll drill down so to speak. But at a high level, how did Yellow Rock go about identifying and evaluating drilling prospects at Sulphur Mines?
+
+That would have—I'm going to speak more in functions. That would have been—involved the functional ongoing development of potential drilling prospects. And we usually had
+I think at least
+40 or 50 prospects that had been identified and those would be ranked and the ranking over the process would be modified.
+
+Had those prospects been ranked by
+White Top or did White
+Top inherit those rankings?
+
+These were all White Top and
+Yellow Rock.
+
+Mr. Easley,
+I'm going to land you what I'm marking as
+Exhibit No. 128 and I think this has also appeared as Exhibit No
+. 113 for the record.
+But this will be
+128. So take a look at that for a moment financed if you can look up at me when you're ready
+.
+
+I'll take a moment to review this if I may.
+
+Sure.
+
+(Witness peruses document.)
+National national pardon me this is
+
+--- [Page 49] ---
+
+Nathanial on Zoom, what is the document No.
+For the Zoom?
+
+MR. HOBBY: Good question. I meant to share that. The document number is
+440894 and if the technician could share that please
+.
+
+THE WITNESS: Okay.
+
+BY MR. HOBBY:
+
+This is an E-mail from Brad
+Brandl dated
+September 10th, 2018, and addressed to several people including yourself.
+Do you see that?
+
+I do.
+
+And the other people it's addressed to include Patricia
+Henderson,
+Stephen Wipple,
+B bone, John
+Miller,
+Thomas met calf and an M carat QI petro fix
+I can.com. Who are these people
+? I'm withdraw that so you don't have to give biography for each one.
+
+Were those individuals part of Yellow Rock's geoscience team?
+
+Some were
+, some were not.
+
+Who was not?
+
+Was not part of Yellow Rock's development team?
+
+--- [Page 50] ---
+
+Correct
+.
+
+Burt Bowen. And his last name is misspelled. It's B-o-w-e-n. And he is now deceased
+. So he probably couldn't take issue with that. But Burt Bowen was a partner of Steve Wipple and had extensive industry expertise in salt domes and just to gain the benefit of his input, he was involved in an early stage not in a recommendation stage
+, but more of an in direct advisory resource.
+
+John Miller was involved in obtaining some of the early stage capital for the 3D seismic—at the end of the 3D seismic shoot
+. Steve Wipple was part of the team.
+Patricia Henderson was a consulting geophysicist.
+So she would have been part of the group. Thomas met calf was a geotech that was involved
+. Car was—petro files is was an independent third-party technical service.
+
+And the subject line is candidate selection for request are Petrophysics analysis
+. Do you see that?
+
+I do.
+
+Just below that first paragraph there Mr.Brandl writes: We think these first five wells are critical.
+"
+
+Do you see that?
+
+I do.
+But I would like to point out for clarification that these were not necessarily drilling prospects. These were legacy wells that had been previously drilled on the dome.
+
+And what did he mean—what did Mr.Brandl—what did you take
+Mr.Brandl to mean when he wrote these first five wheels are critical?
+
+This is part of gaining additional knowledge an incite into the wells that had been previously drilled.
+
+What made them critical?
+
+I'm not sure why Brad thought—Mr.Brandl thought they were critical.
+
+And the wells are the Burlington
+20-1, the fee 1024
+
+--- [Page 51] ---
+
+, the fee '
+953, the fee '954 and the fee 961, right?
+
+Those are the ones listed.
+
+And those wells are spread in every directions around the salt dome; is that right?
+
+MS. CURTIS: Object
+to the form.
+
+I'd have to look at it and refresh my memory with a map of the field.
+
+Okay.
+
+Next I'm going to hand you an exhibit that's been marked as
+Exhibit No. 129 and it's going to be Bates stamped Yellow Rock
+264305. If the
+technician could please share that as well.
+
+So take a minute to look at that,
+Mr. Easley, an let me know when you're
+ready.
+
+Okay.
+
+These are the minutes of a White Top
+Board ofDescribe the ores meeting held on October
+22nd, 2019. Do you see that?
+
+Do I.
+
+And you were present at this meeting, right?
+
+I was.
+
+At the bottom of Page No. One it says Mr.Brandl and Mr.Miller reviewed the quote methodology being followed with respect to geological/geophysical and engineering approach closed"
+.
+
+To developing prospective drilling locations, right?
+
+--- [Page 52] ---
+
+An the ranking of priority sayings for drilling.
+
+I say, yes.
+And at the top of Page No. Two
+, Mr.Brandl and
+Mr.Miller " commented on the complexities encountered by extensive subsurface faulting in and around the Sulphur
+Mines salt dome.
+Closed".
+
+Do you see that?
+
+I do.
+
+So the subsurface geology at Sulphur Mines is complex; is that fair to say
+?
+
+It a complex geology.
+
+Then under agenda item three, the board current drilling prospects, the 829A
+, 786 and the
+871.
+
+Do you see that?
+
+(Witness peruses document.)
+
+I do.
+
+Did any of those wells get drilled?
+
+No.
+
+I'm sorry
+, did you say no?
+
+No.
+
+Thank you
+.
+
+--- [Page 53] ---
+
+And one paragraph down in that same agenda item three, there had been significant cost overruns on the 1028,
+1027 and 1029 wells; is that right?
+
+MS. CURTIS: Object to
+the form. If you can read the document, the word significant is not there.
+
+It refers to cost overruns
+, those three wells.
+
+Do you consider those cost overruns significant?
+
+On the
+1028 and 1027
+, yes. On the
+1029 not as significant. But nevertheless
+, meaningful cost overruns.
+
+And those cost overruns had led to changes in drilling contractors; is that right?
+
+The parties mentioned in this
+Donelon energy did on in L why in.
+
+MS. CURTIS: Space
+between done and Lynn.
+
+And Sierra Hamilton
+, are both consulting drilling managers. The actual contractual drillers on those wells I believe was changed on the 1029—may be not.
+But—but stayed the same.
+Energy drilling.
+If you turn to agenda item four, that's titled strategy on well, location selection and risk management. Do you see that?
+
+I do.
+
+All right.
+
+Yellow Rock's focus was to identify " lower complexity well locations with
+
+--- [Page 54] ---
+
+" emphasis on rigid cost controls unquote; is that right?
+
+That's correct.
+
+Okay.
+
+You can set that document aside for now, Mr. Easley
+.
+
+Does this that mean you don't put it in the done pile?
+
+THE COURT REPORTER: No. You can put it right there.
+
+BY MR. HOBBY:
+
+And Mr.
+Easley, you mentioned that White Top had a loan from Sunny Solar; is that right?
+
+Yes.
+
+I'm sure it will show up the same on the transcript I'll also said Sunny Solar is it actually a
+Sunny Solar?
+
+That's my
+West Texas drawl.
+
+That was a
+$4.5 million credit facility, right?
+
+It increased over time with additional capital that was provided in the loan.
+
+What is
+Sunny Solar's relationship to Luminus management?
+
+I think I testified to that at the onset early on.
+Anything else—Did I not?
+
+Anything else to add to that?
+
+MS. CURTIS: Object
+to the form. Ask a question.
+
+--- [Page 55] ---
+
+BY MR. HOBBY:
+
+The question is: Do you have anything else to add to that?
+
+MS. CURTIS: Object
+to the form.
+
+No. Based on my recollection and my response.
+That loan came due in January of 2021
+; is that right?
+
+I don't recall the exact maturity date, but it was also the top fit, it could be accelerated under various circumstances
+.
+
+And White
+Top couldn't repay that loan; is that right?
+
+That's correct
+.
+
+I'm going to hand you a document
+I'll mark as Exhibit No. 130 and this is Bates stamped Yellow Rock why are 341521.
+If that could also be shared by the technician please.
+If you could just let me know when you've reviewed this, Mr. Easley
+.
+
+I've read it.
+
+Okay.
+
+This is a letter dated January 26, 2021, on White Top letterhead that's addressed to Sunny Solar
+. Do you see that?
+
+Yes.
+
+Who wrote this letter mar minister if you know?
+
+MR. HOBBY: I'll object
+
+--- [Page 56] ---
+
+to the improper objection it will be just a form objection.
+
+MS. CURTIS: The question
+is who wrote this letter. Do you know who wrote this letter,.
+
+MR. HOBBY:
+Mr. Easley can speak to
+that.
+
+THE WITNESS: I can.
+
+BY MR. HOBBY:
+
+Thank you.
+
+Who did write the letter?
+
+I would have probably did the initial draft and Mr.French would have reviewed it and then we would have collectively tried to improve on it.
+
+Okay.
+
+And if you look at the third line of what I'll call the second paragraph
+, the letter says
+White Top " will not be in a position to repay this indebtedness on or before the January 29, 2021, maturity date closed", right. Sorry close
+" affidavit?
+
+That's what it says.
+
+And that was the truth?
+
+That was absolutely the truth
+. That was our projection.
+
+And the letter attributes the inability to pay to the COVID_19 pandemic an to the drop in oil prices
+, correct?
+
+That's correct.
+
+And it asks for a one year extension in the last paragraph, right?
+
+That's correct.
+
+--- [Page 57] ---
+
+In exchange for that extension White Top offered Sunny Solar 250 company units at $1800 per unit; is that right?
+
+Ten percent of the face value. Yes
+.
+Okay.
+
+Now I'm going to hand you what I'm marking as
+Exhibit No. 131,
+YR_351388?
+
+Do you have a question relative to the document that you had me read other than what you asked me?
+
+Nothing other what I'm asking you for right now. Maybe we'll return to it later. But _
+_
+
+Nope. Thank you.
+
+Take a look at this and let me know when you're ready, please.
+
+(Witness peruses document.)
+
+I see them.
+
+Okay
+.
+
+I read it.
+
+This is an E-mail from Robin French dated June 18, 2021. Do you see that?
+
+I do.
+
+And you're copied on this E-mail
+, correct?
+
+Yes, I'm listed as a recipient, cc.
+
+Do you see there is a few items that have been redacted
+. In the two line E-mail address in the cc line an then the salutation at top of the E-mail?
+
+I do.
+
+--- [Page 58] ---
+
+Do you know who this E-mail would have been sent to?
+
+Not from looking at this I don't.
+
+What about just from your own memory?
+
+I wouldn't—wouldn't want to speculate on who might have been the recipients. I don't recall.
+
+Okay. The subject line to the E_ mail is White Top energy reorganization
+; is that right?
+
+That is correct
+.
+
+And in that first sentence there
+Mr.French writes about a quote reorganization chapter 11 plan for White Top energy
+LLC, closed"
+. Do you see that?
+
+(Witness peruses document.)
+
+My reading of this and my recollection of the general subject matter at the time is this was investigating the possibility of a plan to reorganization
+. I wasn't a formal plan. It was appended to this or actually attached.
+Okay.
+So by June 2021 white tops plans was to file for bankruptcy?
+
+MS. CURTIS: Object to the form
+.
+
+That was testified a potential alternative short of being able to either A, raise additional new capital to repay Sunny Solar in full. Or renegotiate the agreement with
+Sunny Solar.
+Okay.
+
+And at this point White Top had retained bankruptcy counsel, right?
+
+, we actually had—were talking to a few about his thoughts relative how to approach a restructuring proposal and he was a bankruptcy attorney an of course we asked him about what his view of the process would be and the cost and the timeline and that. If you request you
+AI called him his last name. It's Dick Fuqua.
+
+--- [Page 59] ---
+
+And White
+Top engage Mr.Fuqua?
+
+Yes.
+
+And the plan was to file bankruptcy Chapter
+11 in the Federal Bankruptcy Court southern district of Texas
+, right?
+
+MS. CURTIS: Object to
+the form.
+
+That
+'s what it says—said
+. But it was more to discuss the possibility of that as an alternative. Not a formal plan.
+
+Okay.
+
+Do you see the word plan used in this E-mail?
+
+I do.
+
+Okay.
+
+Are you saying that you disagree with that characterization?
+
+MS. CURTIS: Objection to the
+form. Misstates his prior testimony
+.
+
+THE WITNESS: I'm sorry.
+
+MS. CURTIS: You can answer.
+
+THE WITNESS: I can answer?
+
+MS. CURTIS: Yeah.
+Okay.
+
+What I'm saying is clarifying that there was not a formal written plan that was bankruptcy filing papers which you would normally submit
+
+--- [Page 60] ---
+
+. It had not risen to that level, but it was a discussion of that as one alternative.
+
+Was it an informal or unwritten plan?
+
+It wasn't a plan.
+
+Okay.
+
+So you disagree with Mr. French's
+
+characterization of it as a Chapter 11 plan?
+
+Yes.
+Next I' m going to hand you
+, Mr. Easley, what I'm marking as
+Exhibit No. 132 and this is going to be
+Bates stamped why are
+360803 and the technician can please share that.
+
+MS. HANDY: Walker, when
+you're done with this one do you mind if we take a quick restroom break?
+
+MR. HOBBY: Sure. I
+don't think this one will take too long.
+
+MS. HANDY: Thank you.
+
+BY MR. HOBBY:
+
+This is a memo dated August 24th, 2021 from yourself and Robin French, right?
+
+That's correct, yes.
+
+It's addressed to White Top energy LLC employees an consultants, right?
+
+It says
+White Top energy
+LLC ownership and management transition.
+And it's addressed to White Top energy employees and consultants.
+
+--- [Page 61] ---
+
+In the memorandum ie it announces that Sunny Solar would hold a majority and controlling interest closed" in
+White Top, correct?
+
+That's correct.
+
+And it says this restructuring plan is now being implemented, do you see that?
+
+I do.
+
+So is this refer to a deal between Sunny Solar and White Top that avoided a bankruptcy filing?
+
+MS. CURTIS: Object
+to the form.
+
+(Witness peruses document.)
+
+After evaluating alternatives and finally in early to mid-August timeframe of 2021
+, ultimately being unsuccessful in raising the additional capital to pay off
+Sunny Solar, this was deemed to be the best alternative.
+So what I'm saying in summary
+, I'm correcting your question relative to being an alternative to bankruptcy.
+
+What was it an alternative to
+?
+
+MS. CURTIS: Object
+to the form. Assumes an alternative to something.
+
+I think
+I would view it _
+_ I did view it at the time and we continued to view it as a negotiated restructure.
+
+And part of the restructuring involved you and Robin French being replaced as managers; is that right?
+
+Yes.
+
+And
+Jonathan Barrett would takeover as senior executive of White Top
+
+--- [Page 62] ---
+
+; is that right?
+
+That's what it says, yes.
+
+And that was, in fact, the case, right?
+
+I don't think Matt Steele actually was directly involved that much from going forward from that point is my recollection
+.
+
+Okay.
+
+But that can be clarified certainly by others.
+
+So I told Kaylyn this would be short.
+
+I think this is the last couple of questions. In August of 2021 the lender was taking control of
+White Top and Yellow Rock, right.
+
+Yes.
+
+======================================================================
+                    REPORTER'S CERTIFICATE
+======================================================================
+
+STATE OF LOUISIANA
+
+PARISH OF CALCASIEU
+
+        I, MARYBETH E. MUIR, Certified Court Reporter in and for
+the State of Louisiana and Registered Professional Reporter, do hereby
+certify that the witness, THOMAS L. EASLEY, was duly sworn by me prior
+to the taking of the foregoing deposition; that said deposition was
+taken by me in stenotype and transcribed under my supervision; and that
+the foregoing is a true and correct transcript of the testimony of
+said witness.
+
+        I further certify that I am not a relative or employee of
+counsel or any of the parties hereto, nor am I financially interested
+in the outcome of this matter.
+
+        [FLAG: LOUISIANA CERTIFICATION INCOMPLETE — reporter license
+         number required. Please add CCR No. before signing.]
+
+                              ___________________________________
+                              MARYBETH E. MUIR, CCR, RPR
+                              Certified Court Reporter
+                              State of Louisiana
+                              CCR No. ____________
+
+Date of Certification: _____________________________
+

@@ -3,7 +3,7 @@
   "ambiguous_term": {
     "steno_wrote": "Brat Spot",
     "correct_term": "Bright Spot",
-    "reason": "60-year-old Texas petroleum engineer. Long-i vowel collapses to short-a under drawl. 'Bright' → 'Braht' → steno hears 'Brat'.",
+    "reason": "60-year-old Texas petroleum engineer. Long-i vowel collapses to short-a under drawl. 'Bright' -> 'Braht' -> steno hears 'Brat'.",
     "occurrences": [
       {
         "rtf_timecode": "10:2:44:0",

@@ -8,223 +8,63 @@ Docket No.: 202-001594 | Witness: Thomas L. Easley | Date: Friday, March 13, 202
 NOTE: Line numbers are approximate (from cleaned_text.txt, not final pages).
 Cross-reference against the final formatted transcript before delivery.
 
-[Line 11344] REPORTER CHECK REQUIRED
-           Placeholder left by engine — content unclear from audio
-           Context: *REPORTER CHECK HERE* 5
-
-[Line 11558] REPORTER CHECK REQUIRED
-           Placeholder left by engine — content unclear from audio
-           Context: REPORTER CHECK HERE*.
-
-[Line  879] FILLER WORD
+[Line  756] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm I
+           Context: Uhmm I have a B.S., Bachelor of Science in general business from
 
-[Line 1037] FILLER WORD
+[Line  840] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm,
+           Context: Uhmm, no.
 
-[Line 1167] FILLER WORD
+[Line  911] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
            Context: Uhmm
+
+[Line  978] FILLER WORD
+           Filler word — remove per style rules or preserve per reporter preference
+           Context: My responsibilities involved oversight over several functions, legal activities,
 
 [Line 1274] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
-           Context: uhmm. I had oversight responsibilities over
+           Context: Uhmm. I've heard theories that the cavern in question was developed too close to
 
-[Line 1825] FILLER WORD
+[Line 1541] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm. I've
+           Context: Well, without going back and recounting what I had previously testified relative
 
-[Line 2418] FILLER WORD
+[Line 1664] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
-           Context: uhmm, that would have been
+           Context: Uhmm, among which would have been 20—the excess water in the salt water injectio
 
-[Line 2650] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm, among
-
-[Line 2835] FILLER WORD
+[Line 1756] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
            Context: . Uhmm
 
-[Line 2868] FILLER WORD
+[Line 1772] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm,
+           Context: Uhmm, not for that transaction
 
-[Line 2979] FILLER WORD
+[Line 1823] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
            Context: Uhmm.
 
-[Line 3148] FILLER WORD
+[Line 1914] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
            Context: . Uhmm.
 
-[Line 3612] FILLER WORD
+[Line 2184] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
            Context: Uhmm.
 
-[Line 3741] FILLER WORD
+[Line 2260] FILLER WORD
            Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm,
+           Context: Uhmm, we actually had—were talking to a few about his thoughts relative how to a
 
-[Line 4104] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: . Uhmm
-
-[Line 4142] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm. Brad
-
-[Line 4479] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: he is qualified. Uhmm
-
-[Line 4499] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: And, uhmm
-
-[Line 4630] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm
-
-[Line 5288] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm, that's correct
-
-[Line 5318] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm,
-
-[Line 5426] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm, yes. May I have
-
-[Line 5534] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm
-
-[Line 5545] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm, yes.
-
-[Line 5790] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm
-
-[Line 5846] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: uhmm, geological
-
-[Line 5895] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm, no
-
-[Line 5982] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm.
-
-[Line 6028] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm
-
-[Line 6031] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: geophysicist. Uhmm
-
-[Line 6056] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: uhmm, Jonathan
-
-[Line 6826] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm,
-
-[Line 6985] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm. And
-
-[Line 7399] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm,
-
-[Line 7576] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: one way or another. Uhmm
-
-[Line 8059] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: uhmm, I would say
-
-[Line 8896] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: this. Uhmm
-
-[Line 9239] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm.
-
-[Line 9633] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm
-
-[Line 9885] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: uhmm, yeah. It
-
-[Line 10539] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm. What
-
-[Line 10692] FILLER WORD
-           Filler word — remove per style rules or preserve per reporter preference
-           Context: Uhmm, it's starting to.
-
-[Line 10836] STENO ARTIFACT
-           Double underscore — possible em dash not converted
-           Context: And Mr.__ quickly referring
-
-[Line 1089] POSSIBLE MISRECOGNITION
+[Line  864] POSSIBLE MISRECOGNITION
            "blacktop" may be "White Top" — verify in context
-           Context: we formed blacktop
-
-[Line 6221] POSSIBLE MISRECOGNITION
-           "blacktop" may be "White Top" — verify in context
-           Context: blacktop minority
-
-[Line 6690] POSSIBLE MISRECOGNITION
-           "blacktop" may be "White Top" — verify in context
-           Context: , the blacktop and Sunny
-
-[Line 7699] POSSIBLE MISRECOGNITION
-           "blacktop" may be "White Top" — verify in context
-           Context: Yellow Rock or blacktop know
-
-[Line 8743] POSSIBLE MISRECOGNITION
-           "blacktop" may be "White Top" — verify in context
-           Context: member of Yellow Rock when blacktop bought their interest in Yellow Rock.
-
-[Line 11810] POSSIBLE MISRECOGNITION
-           "blacktop" may be "White Top" — verify in context
-           Context: blacktop to
-
-[Line 11687] POSSIBLE MISRECOGNITION
-           "brat spot" likely "bright spot" (seismic term)
-           Context: using brat spot
-
-[Line 11698] POSSIBLE MISRECOGNITION
-           "brat spot" likely "bright spot" (seismic term)
-           Context: for brat spots
-
-[Line 11783] POSSIBLE MISRECOGNITION
-           "brat spot" likely "bright spot" (seismic term)
-           Context: to identify brat spots
-
-[Line 11787] POSSIBLE MISRECOGNITION
-           "brat spot" likely "bright spot" (seismic term)
-           Context: using the brat spot
+           Context: 3D. Seismic survey that we shot—I'll use the term, industry term—for acquiring s
 
 
 --------------------------------------------------------------------------------
-Total flags: 54
+Total flags: 14
 ================================================================================
