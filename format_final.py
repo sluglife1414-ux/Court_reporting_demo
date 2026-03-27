@@ -40,7 +40,7 @@ REPORTER_NAME  = "MARYBETH E. MUIR, CCR, RPR"   # MB is always MB
 EXAMINING_ATTY = "MR. HOBBY"                    # primary examining attorney
 PARISH         = "PARISH OF CALCASIEU"
 COURT          = "14TH JUDICIAL DISTRICT"
-PLAINTIFF      = "YELLOW ROCK, LLC, et al,"
+PLAINTIFF      = "YELLOW ROCK, LLC, et al."
 PLAINTIFF_ROLE = "Plaintiffs,"
 DEFENDANT      = "WESTLAKE US 2 LLC f/k/a\n  EAGLE US 2 LLC et al.,"
 DEFENDANT_ROLE = "Defendants."
@@ -128,6 +128,7 @@ def build_index(app_start, stip_start, exam_start, cert_start, wcert_start, exhi
     L.append(f"  Stipulation\t{stip_start}")
     L.append("")
     L.append(f"  Examination")
+    L.append(f"       {WITNESS_NAME}")
     L.append(f"       {EXAMINING_ATTY}\t{exam_start}")
     L.append("")
     L.append(f"  Reporter's Certificate\t{cert_start}")
@@ -247,7 +248,7 @@ def build_errata():
             while len(L) < 22:
                 L.append("")
             L.append("  SIGNATURE:_______________________DATE:___________")
-            L.append(f"  {WITNESS_NAME}")
+            L.append(center(WITNESS_NAME))  # centered under signature line, matching MB
         while len(L) < 25:
             L.append("")
         return L[:25]
@@ -362,15 +363,36 @@ def format_appearances(raw_lines):
     # and indent non-header lines under their block
     cleaned = []
     in_block = False
+    pending_header = None  # accumulates multi-line party descriptions
+
     for line in stripped:
         if re.match(r'^(FOR THE|ATTORNEY FOR|ALSO PRESENT)', line):
             if cleaned:  # don't add blank at very start
                 cleaned.append("")
-            cleaned.append(line)
+            if line.rstrip().endswith(':'):
+                # Complete single-line party description — output immediately
+                wrapped = wrap_line(line, width=LINE_WIDTH, hang=4)
+                cleaned.extend(wrapped)
+                pending_header = None
+            else:
+                # Party description spans multiple lines (e.g. "FOR THE DEFENDANT, ALL STATE
+                # INSURANCE COMPANY, solely as successor-in-interest" then "to NORTHBROOK...COMPANY:")
+                # Accumulate until we see the closing colon
+                pending_header = line
             in_block = True
+        elif pending_header is not None:
+            # Continuation of a multi-line party description — join until colon found
+            pending_header = pending_header + ' ' + line
+            if pending_header.rstrip().endswith(':'):
+                # Complete — output the joined header
+                wrapped = wrap_line(pending_header, width=LINE_WIDTH, hang=4)
+                cleaned.extend(wrapped)
+                pending_header = None
         else:
             if in_block:
-                cleaned.append(f"    {line}")
+                # Firm name, address, email, BY: line — indent under party header
+                wrapped = wrap_line(f"    {line}", width=LINE_WIDTH, hang=4)
+                cleaned.extend(wrapped)
             else:
                 cleaned.append(line)
 
@@ -469,7 +491,11 @@ def format_testimony(raw_lines):
             continue
 
         # BY line resets Q/A toggle
+        # Always emit EXAMINATION header before BY line unless one was just added
+        # Matches MB's format: EXAMINATION on its own line, then BY MR. NAME:
         if re.match(r'^BY\s+(MR\.|MS\.)', block):
+            if not labeled or labeled[-1][0] != 'header':
+                labeled.append(('header', 'EXAMINATION'))
             labeled.append(('by', block))
             in_qa = True
             qa_toggle = 'Q'
@@ -502,8 +528,13 @@ def format_testimony(raw_lines):
             labeled.append(('colloquy', block))
             continue
 
-        # Witness info line (name, address) — use config var, not hardcoded name
-        if WITNESS_NAME in block or WITNESS_LAST in block:
+        # Witness info: name line, address, and oath text that follow the witness intro.
+        # Detected by name match OR known oath phrases — keeps all witness block
+        # lines at the same 8-char indent in the output (matches MB's format).
+        OATH_PHRASES = ['having been first duly sworn', 'was examined and testified',
+                        'follows:', '(Witness sworn.)']
+        if (WITNESS_NAME in block or WITNESS_LAST in block or
+                any(phrase in block for phrase in OATH_PHRASES)):
             labeled.append(('witness_info', block))
             continue
 
@@ -584,16 +615,23 @@ def format_testimony(raw_lines):
         elif kind == 'by':
             formatted.append(text)
         elif kind == 'witness_info':
-            formatted.append(text)
+            # Blank line before witness info block when following colloquy (matches MB)
+            if prev_kind == 'colloquy':
+                formatted.append('')
+            # Indent witness name/address to match MB's format (~8 chars)
+            formatted.append('        ' + text)
         elif kind == 'Q':
             body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
-            # MB format: Q. indented 5 spaces, text 3 spaces after label
-            # QA_LINE_WIDTH (52) matches CaseCATalyst's narrower Q/A column layout
-            wrapped = wrap_line('     Q.   ' + body, width=QA_LINE_WIDTH, hang=0)
+            # MB format: Q. indented 5 spaces, text 3 spaces after label = 10-char prefix
+            # width=QA_LINE_WIDTH+10 compensates for hang so continuation lines retain
+            # full content width (52 chars) while still indenting visually. Keeps page
+            # count stable vs flush-left. [2026-03-27 — hang=10+width=52 added 20 pages]
+            wrapped = wrap_line('     Q.   ' + body, width=QA_LINE_WIDTH + 10, hang=10)
             formatted.extend(wrapped)
         elif kind == 'A':
             body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
-            wrapped = wrap_line('     A.   ' + body, width=QA_LINE_WIDTH, hang=0)
+            # Same compensation as Q — hang=10, width+10 preserves content width
+            wrapped = wrap_line('     A.   ' + body, width=QA_LINE_WIDTH + 10, hang=10)
             formatted.extend(wrapped)
         elif kind == 'colloquy':
             cm = re.match(r'^((?:MR\.|MS\.|MRS\.)\s+\w+:|THE\s+(?:VIDEOGRAPHER|COURT REPORTER|WITNESS):)\s*(.*)', text)
