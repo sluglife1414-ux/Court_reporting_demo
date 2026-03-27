@@ -92,31 +92,31 @@ The engine found 70 corrections it is 80-90% sure about.
 Read these 5 examples. Circle YES or NO.
 If NO, write one sentence why -- it goes straight into the rulebook.
 
-  SC-1  |  p.81 l.21
+  SC-1  |  p.2 l.3
     WAS:    BY: IAN SALINAS_STERN, ESQ.
     NOW:    BY: IAN SALINAS-STERN, ESQ.
     OK?     YES / NO
     IF NO:  ________________________________
 
-  SC-2  |  p.130 l.2
+  SC-2  |  p.16 l.2
     WAS:    Early on in matters representing clients of mine was a partn
     NOW:    Early on in matters representing clients of mine — I was a p
     OK?     YES / NO
     IF NO:  ________________________________
 
-  SC-3  |  p.156 l.11
+  SC-3  |  p.19 l.2
     WAS:    When I was in public accounting , 13 years , I had the major
     NOW:    When I was in public accounting, 13 years, I had — the major
     OK?     YES / NO
     IF NO:  ________________________________
 
-  SC-4  |  p.161 l.2
+  SC-4  |  location unknown
     WAS:    purchased producing oil and gas properties . Some of which h
     NOW:    purchased producing oil and gas properties, some of which ha
     OK?     YES / NO
     IF NO:  ________________________________
 
-  SC-5  |  p.167 l.3
+  SC-5  |  p.21 l.8
     WAS:    I had been associated with a gentleman, he will L.R. French,
     NOW:    I had been associated with a gentleman, he will — L.R. Frenc
     OK?     YES / NO
@@ -135,222 +135,222 @@ Reply with the correct text for each item number.
   [CONFIRM NAME] = check your notes for the correct name
   [CONFIRM SENT] = listen for the sentence flow
 
-  ITEM 01  |  p.134 l.3  |  [LISTEN]      
+  ITEM 01  |  location unknown  |  [LISTEN]      
     WAS:     all of the responses being actually get picked up bathe tran
     FLAGGED: all of the responses being [REVIEW: possible steno error — "
     FIX:     ________________________________
 
-  ITEM 02  |  p.165 l.17  |  [LISTEN]      
+  ITEM 02  |  p.20 l.24  |  [LISTEN]      
     WAS:     The preceding companies evolved ultimately into White Top we
     FLAGGED: The preceding companies evolved ultimately into White Top we
     FIX:     ________________________________
 
-  ITEM 03  |  p.172 l.23  |  [CONFIRM NAME]
+  ITEM 03  |  location unknown  |  [CONFIRM NAME]
     WAS:     blacktop oil and gas
     FLAGGED: [REVIEW: "blacktop oil and gas" — witness appears to have mi
     FIX:     ________________________________
 
-  ITEM 04  |  line ~1124  |  [CONFIRM NAME]
+  ITEM 04  |  location unknown  |  [CONFIRM NAME]
     WAS:     REV rent signal—energy signal joint venture.
     FLAGGED: REV [REVIEW: steno fragment — heard as "REV rent signal" or 
     FIX:     ________________________________
 
-  ITEM 05  |  line ~1131  |  [CONFIRM NAME]
+  ITEM 05  |  location unknown  |  [CONFIRM NAME]
     WAS:     REV rent possibly get some portion
     FLAGGED: REV [REVIEW: entity name unclear — same as above] possibly g
     FIX:     ________________________________
 
-  ITEM 06  |  line ~1400  |  [LISTEN]      
+  ITEM 06  |  p.39 l.8  |  [LISTEN]      
     WAS:     amount of water can injected in those
     FLAGGED: amount of water [REVIEW: witness stated "can injected" — pos
     FIX:     ________________________________
 
-  ITEM 07  |  line ~1486  |  [LISTEN]      
+  ITEM 07  |  location unknown  |  [LISTEN]      
     WAS:     straight whole vertical wells
     FLAGGED: straight [REVIEW: witness stated "whole" — possible "hole" (
     FIX:     ________________________________
 
-  ITEM 08  |  line ~1621  |  [LISTEN]      
+  ITEM 08  |  location unknown  |  [LISTEN]      
     WAS:     raised _ _ passed on the concerns to me
     FLAGGED: raised — [REVIEW: steno gap — word(s) missing before dash] —
     FIX:     ________________________________
 
-  ITEM 09  |  line ~1911  |  [LISTEN]      
+  ITEM 09  |  p.55 l.22  |  [LISTEN]      
     WAS:     And the subject line is candidate selection for request are 
     FLAGGED: And the subject line is candidate selection for [REVIEW: "re
     FIX:     ________________________________
 
-  ITEM 10  |  line ~2021  |  [LISTEN]      
+  ITEM 10  |  location unknown  |  [LISTEN]      
     WAS:     The parties mentioned in this Donelon energy did on in L why
     FLAGGED: [REVIEW: steno mistranslation — witness testimony unclear. T
     FIX:     ________________________________
 
-  ITEM 11  |  line ~2112  |  [LISTEN]      
+  ITEM 11  |  location unknown  |  [LISTEN]      
     WAS:     but it was also the top fit, it could be accelerated
     FLAGGED: but it was also the top fit, it could be accelerated
     FIX:     ________________________________
 
-  ITEM 12  |  line ~2301  |  [CONFIRM NAME]
+  ITEM 12  |  p.61 l.4  |  [CONFIRM NAME]
     WAS:     Bates stamped why are 360803
     FLAGGED: Bates stamped [REVIEW: "why are 360803" — Bates number uncle
     FIX:     ________________________________
 
-  ITEM 13  |  line ~2446  |  [LISTEN]      
+  ITEM 13  |  p.70 l.6  |  [LISTEN]      
     WAS:     They did—they through primarily consultants situate arrangem
     FLAGGED: They did — they through primarily consultants [REVIEW: possi
     FIX:     ________________________________
 
-  ITEM 14  |  line ~2639  |  [LISTEN]      
+  ITEM 14  |  location unknown  |  [LISTEN]      
     WAS:     Uhmm .
     FLAGGED: [REVIEW: PUNCTUATION — steno fragmentation prevents confiden
     FIX:     ________________________________
 
-  ITEM 15  |  line ~2640  |  [LISTEN]      
+  ITEM 15  |  location unknown  |  [LISTEN]      
     WAS:     Uhmm .
     FLAGGED: [REVIEW: PUNCTUATION — steno fragmentation prevents confiden
     FIX:     ________________________________
 
-  ITEM 16  |  line ~2645  |  [LISTEN]      
+  ITEM 16  |  location unknown  |  [LISTEN]      
     WAS:     uhmm ,
     FLAGGED: [REVIEW: PUNCTUATION — steno fragmentation prevents confiden
     FIX:     ________________________________
 
-  ITEM 17  |  line ~2668  |  [CONFIRM NAME]
+  ITEM 17  |  location unknown  |  [CONFIRM NAME]
     WAS:     Done linen gee, done difficulties letter.
     FLAGGED: [REVIEW: SPEAKER UNCLEAR — steno produced unintelligible tex
     FIX:     ________________________________
 
-  ITEM 18  |  line ~2683  |  [CONFIRM NAME]
+  ITEM 18  |  location unknown  |  [CONFIRM NAME]
     WAS:     to dish er because
     FLAGGED: to [REVIEW: witness name unclear — steno produced "dish er."
     FIX:     ________________________________
 
-  ITEM 19  |  line ~2696  |  [LISTEN]      
+  ITEM 19  |  location unknown  |  [LISTEN]      
     WAS:     Uhmm .
     FLAGGED: [REVIEW: PUNCTUATION — steno fragmentation prevents confiden
     FIX:     ________________________________
 
-  ITEM 20  |  line ~2908  |  [CONFIRM SENT]
+  ITEM 20  |  location unknown  |  [CONFIRM SENT]
     WAS:     And Sunny Solar nor Luminus nor Mr. Barrett at that time LLC
     FLAGGED: And Sunny Solar nor Luminus nor Mr. Barrett at that time [RE
     FIX:     ________________________________
 
-  ITEM 21  |  line ~3152  |  [CONFIRM NAME]
+  ITEM 21  |  location unknown  |  [CONFIRM NAME]
     WAS:     Oliver resin mar sol
     FLAGGED: [REVIEW: "Oliver resin mar sol" — appears to be "Alvarez and
     FIX:     ________________________________
 
-  ITEM 22  |  line ~3154  |  [LISTEN]      
+  ITEM 22  |  p.92 l.5  |  [LISTEN]      
     WAS:     My response was to employ bunker sod with humid in us in New
     FLAGGED: My response was to [REVIEW: "employ bunker sod with humid in
     FIX:     ________________________________
 
-  ITEM 23  |  line ~3160  |  [CONFIRM NAME]
+  ITEM 23  |  location unknown  |  [CONFIRM NAME]
     WAS:     Oliver an mar sol is an evaluation firm ; is that right?
     FLAGGED: [REVIEW: "Oliver an mar sol" — likely "Alvarez and Marsol" s
     FIX:     ________________________________
 
-  ITEM 24  |  line ~3166  |  [CONFIRM NAME]
+  ITEM 24  |  p.92 l.21  |  [CONFIRM NAME]
     WAS:     So in the E-mail you're providing Luminus , Oliver and mar s
     FLAGGED: So in the E-mail you're providing Luminus, [REVIEW: "Oliver 
     FIX:     ________________________________
 
-  ITEM 25  |  line ~3195  |  [LISTEN]      
+  ITEM 25  |  p.93 l.25  |  [LISTEN]      
     WAS:     And, process.
     FLAGGED: And, process. [REVIEW: "And, process." — steno fragment; mea
     FIX:     ________________________________
 
-  ITEM 26  |  line ~3199  |  [LISTEN]      
+  ITEM 26  |  location unknown  |  [LISTEN]      
     WAS:     capital responses
     FLAGGED: capital [REVIEW: "responses" — possibly "resources"; transcr
     FIX:     ________________________________
 
-  ITEM 27  |  line ~3482  |  [CONFIRM NAME]
+  ITEM 27  |  p.101 l.24  |  [CONFIRM NAME]
     WAS:     Exhibit No. 137 which is why are 2885 '94 this is December 3
     FLAGGED: Exhibit No. 137 which is [REVIEW: unclear reference — heard 
     FIX:     ________________________________
 
-  ITEM 28  |  line ~3617  |  [LISTEN]      
+  ITEM 28  |  p.106 l.8  |  [LISTEN]      
     WAS:     If I can direct you to the section Sulphur Mines feels drill
     FLAGGED: If I can direct you to the section [REVIEW: "Sulphur Mines f
     FIX:     ________________________________
 
-  ITEM 29  |  line ~3720  |  [LISTEN]      
+  ITEM 29  |  location unknown  |  [LISTEN]      
     WAS:     It wasn't Nestor production .
     FLAGGED: It wasn't [REVIEW: "Nestor production" — unclear; possible r
     FIX:     ________________________________
 
-  ITEM 30  |  line ~3769  |  [LISTEN]      
+  ITEM 30  |  p.110 l.10  |  [LISTEN]      
     WAS:     put additional N and they wanted to do everything they could
     FLAGGED: put additional [REVIEW: apparent fragment — witness may have
     FIX:     ________________________________
 
-  ITEM 31  |  line ~4042  |  [LISTEN]      
+  ITEM 31  |  location unknown  |  [LISTEN]      
     WAS:     All right . Can I—I'll did he ever then responding until I s
     FLAGGED: All right. [REVIEW: witness response unclear — "Can I — I'll
     FIX:     ________________________________
 
-  ITEM 32  |  line ~4256  |  [LISTEN]      
+  ITEM 32  |  p.123 l.25  |  [LISTEN]      
     WAS:     the settlement restructuring agreement with Sunny Solar to t
     FLAGGED: the settlement restructuring agreement with Sunny Solar — [R
     FIX:     ________________________________
 
-  ITEM 33  |  line ~4275  |  [LISTEN]      
+  ITEM 33  |  p.124 l.19  |  [LISTEN]      
     WAS:     You know we've asserted a protection and this is not indiffe
     FLAGGED: You know we've asserted a protection and this is not indiffe
     FIX:     ________________________________
 
-  ITEM 34  |  line ~4591  |  [CONFIRM SENT]
+  ITEM 34  |  p.134 l.5  |  [CONFIRM SENT]
     WAS:     In my personal you're asking a broader question about Board'
     FLAGGED: In my personal [REVIEW: possible missing word — witness may 
     FIX:     ________________________________
 
-  ITEM 35  |  line ~5209  |  [LISTEN]      
+  ITEM 35  |  location unknown  |  [LISTEN]      
     WAS:     the subsurface carted "X" and why is at target bottom hole o
     FLAGGED: the subsurface carted "X" and [REVIEW: witness stated "why i
     FIX:     ________________________________
 
-  ITEM 36  |  line ~5221  |  [LISTEN]      
+  ITEM 36  |  location unknown  |  [LISTEN]      
     WAS:     we had an eye did he of 7000 feet down , which is what a mil
     FLAGGED: we had an [REVIEW: witness stated "eye did he of" — possible
     FIX:     ________________________________
 
-  ITEM 37  |  line ~5234  |  [LISTEN]      
+  ITEM 37  |  p.153 l.23  |  [LISTEN]      
     WAS:     you understood that the location of the caverns was directly
     FLAGGED: you understood that the location of the caverns was directly
     FIX:     ________________________________
 
-  ITEM 38  |  line ~5581  |  [LISTEN]      
+  ITEM 38  |  p.165 l.6  |  [LISTEN]      
     WAS:     so it would have _ _ you're correct on your math.
     FLAGGED: so it would have — [REVIEW: steno artifact "_ _" — possible 
     FIX:     ________________________________
 
-  ITEM 39  |  line ~5661  |  [LISTEN]      
+  ITEM 39  |  location unknown  |  [LISTEN]      
     WAS:     the IM D mines an minerals
     FLAGGED: the [REVIEW: "IM D" — possibly "IMD" or an agency abbreviati
     FIX:     ________________________________
 
-  ITEM 40  |  line ~5710  |  [LISTEN]      
+  ITEM 40  |  p.168 l.21  |  [LISTEN]      
     WAS:     Reading this E-mail—read do you reading it now disagree with
     FLAGGED: Reading this E-mail—[REVIEW: garbled question — heard as "re
     FIX:     ________________________________
 
-  ITEM 41  |  line ~6009  |  [LISTEN]      
+  ITEM 41  |  p.179 l.25  |  [LISTEN]      
     WAS:     That's helpful . I'll juice piecemeal. The red boundary line
     FLAGGED: That's helpful. I'll [REVIEW: witness said "juice" — possibl
     FIX:     ________________________________
 
-  ITEM 42  |  line ~6349  |  [LISTEN]      
+  ITEM 42  |  p.188 l.24  |  [LISTEN]      
     WAS:     Another attachment that Ms. Borrego attached *REPORTER CHECK
     FLAGGED: Another attachment that Ms. Borrego attached — [REVIEW: witn
     FIX:     ________________________________
 
-  ITEM 43  |  line ~6487  |  [CONFIRM NAME]
+  ITEM 43  |  location unknown  |  [CONFIRM NAME]
     WAS:     the why are number
     FLAGGED: the [REVIEW: "why are number" — steno error, likely "wire nu
     FIX:     ________________________________
 
-  ITEM 44  |  line ~6601  |  [CONFIRM NAME]
+  ITEM 44  |  p.196 l.10  |  [CONFIRM NAME]
     WAS:     approval of blacktop
     FLAGGED: approval of blacktop
     FIX:     ________________________________
@@ -363,72 +363,72 @@ SECTION 4 -- MISSING DATA  (14 items)
   [DECIDE VERBATIM] = witness said it wrong -- keep or correct?
   [CONFIRM]         = engine left as-is -- confirm that is right
 
-  NA-01  |  p.34 l.25  |  [SUPPLY]         
+  NA-01  |  location unknown  |  [SUPPLY]         
     TEXT:  Suite  New Orleans, Louisiana 70130
     NOTE:  Suite number is absent from the Kelly Hart & Hallman addre
     FIX:   ________________________________
 
-  NA-02  |  line ~1127  |  [DECIDE VERBATIM]
+  NA-02  |  location unknown  |  [DECIDE VERBATIM]
     TEXT:  It's fully diluted substantially diminimus interest .
     NOTE:  KB-010 verbatim rule — witness said 'diminimus.' This may 
     FIX:   ________________________________
 
-  NA-03  |  line ~1553  |  [DECIDE VERBATIM]
+  NA-03  |  p.44 l.10  |  [DECIDE VERBATIM]
     TEXT:  are you saying any conversations that you've had about it in
     NOTE:  Verbatim rule KB-010: 'in the context of with counsel' is 
     FIX:   ________________________________
 
-  NA-04  |  line ~1806  |  [DECIDE VERBATIM]
+  NA-04  |  location unknown  |  [DECIDE VERBATIM]
     TEXT:  I'm tallying it up in my mind if that's okay?
     NOTE:  verbatim — witness speech preserved exactly as spoken; rhe
     FIX:   ________________________________
 
-  NA-05  |  line ~2246  |  [DECIDE VERBATIM]
+  NA-05  |  p.64 l.11  |  [DECIDE VERBATIM]
     TEXT:  I wasn't a formal plan.
     NOTE:  Verbatim — witness's spoken grammatical error ('I wasn't' 
     FIX:   ________________________________
 
-  NA-06  |  line ~2259  |  [CONFIRM]        
+  NA-06  |  location unknown  |  [CONFIRM]        
     TEXT:  If you request you AI called him his last name.
     NOTE:  [REVIEW: 'If you request you AI called him his last name' 
     FIX:   ________________________________
 
-  NA-07  |  line ~2318  |  [DECIDE VERBATIM]
+  NA-07  |  location unknown  |  [DECIDE VERBATIM]
     TEXT:  majority and controlling interest closed" in
     NOTE:  [REVIEW: 'closed"' — appears to be the reporter's in-trans
     FIX:   ________________________________
 
-  NA-08  |  line ~3826  |  [DECIDE VERBATIM]
+  NA-08  |  location unknown  |  [DECIDE VERBATIM]
     TEXT:  No , the blacktop and Sunny Solar restructuring had been agr
     NOTE:  Verbatim rule KB-010: 'blacktop' transcribed exactly as sp
     FIX:   ________________________________
 
-  NA-09  |  line ~4148  |  [DECIDE VERBATIM]
+  NA-09  |  p.120 l.17  |  [DECIDE VERBATIM]
     TEXT:  You will you?
     NOTE:  Verbatim rule (KB-010, R1): transcribed exactly as receive
     FIX:   ________________________________
 
-  NA-10  |  line ~4403  |  [DECIDE VERBATIM]
+  NA-10  |  p.128 l.11  |  [DECIDE VERBATIM]
     TEXT:  Did Yellow Rock or White Top know what that second well was 
     NOTE:  KB-010 verbatim rule: 'blacktop' is what the witness said 
     FIX:   ________________________________
 
-  NA-11  |  line ~4963  |  [CONFIRM]        
+  NA-11  |  p.15 l.16  |  [CONFIRM]        
     TEXT:  , Mr. Easley.
     NOTE:  No change — comma and attribution correct as part of prece
     FIX:   ________________________________
 
-  NA-12  |  line ~5035  |  [DECIDE VERBATIM]
+  NA-12  |  p.147 l.2  |  [DECIDE VERBATIM]
     TEXT:  I'm not sure that was the purpose of why I was sending this—
     NOTE:  Verbatim preserved per KB-010. Witness self-corrections ('
     FIX:   ________________________________
 
-  NA-13  |  line ~6013  |  [DECIDE VERBATIM]
+  NA-13  |  p.180 l.4  |  [DECIDE VERBATIM]
     TEXT:  And you see there are yellow triangles that. The map, do you
     NOTE:  verbatim rule (KB-010): 'yellow triangles that.' appears t
     FIX:   ________________________________
 
-  NA-14  |  line ~6290  |  [DECIDE VERBATIM]
+  NA-14  |  location unknown  |  [DECIDE VERBATIM]
     TEXT:  that involve going in the different reservoirs, have not be 
     NOTE:  Verbatim rule KB-010: 'have not be issued' is grammaticall
     FIX:   ________________________________

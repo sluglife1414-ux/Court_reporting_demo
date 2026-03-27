@@ -13,21 +13,51 @@ BASE = r'C:\Users\scott\OneDrive\Documents\mb_demo_engine_v4'
 with open(os.path.join(BASE, 'correction_log.json'), encoding='utf-8') as f:
     data = json.load(f)
 
-with open(os.path.join(BASE, 'line_map.json'), encoding='utf-8') as f:
-    line_map = json.load(f)
+import re as _re
 
-def page_ref(line_approx):
-    """Convert raw line number to page/line ref using line_map. Falls back to line ~N."""
-    ref = line_map.get(str(line_approx))
-    if ref:
-        return ref
-    # search nearby lines +/- 5
-    for delta in range(1, 6):
-        for key in [str(line_approx + delta), str(line_approx - delta)]:
-            r = line_map.get(key)
-            if r:
-                return r
-    return f'line ~{line_approx}'
+# Load final formatted output for text-search page ref lookup
+with open(os.path.join(BASE, 'FINAL_DELIVERY',
+          'Easley_YellowRock_FINAL_FORMATTED.txt'), encoding='utf-8') as f:
+    _flines = f.read().split('\n')
+
+def page_ref(item):
+    """Find correct page/line by searching for item text in final formatted output.
+    Tries corrected text first, then original, then context before [REVIEW flag.
+    Falls back to 'location unknown' if not found.
+    """
+    candidates = []
+    corr = item.get('corrected', '').replace('\n', ' ').strip()
+    orig = item.get('original', '').replace('\n', ' ').strip()
+
+    # If corrected text has [REVIEW], extract the text BEFORE the flag as search phrase
+    if '[REVIEW' in corr:
+        before = corr.split('[REVIEW')[0].strip()
+        if len(before) > 10:
+            candidates.append(before[-40:])  # last 40 chars before [REVIEW
+        # Also try first 30 chars of original
+        if len(orig) > 10:
+            candidates.append(orig[:30])
+    else:
+        if corr and len(corr) > 5:
+            candidates.append(corr[:35])
+        if orig and len(orig) > 5:
+            candidates.append(orig[:35])
+
+    current_page = None
+    for phrase in candidates:
+        phrase_lower = phrase.lower()
+        for line in _flines:
+            stripped = line.strip()
+            if stripped.isdigit() and len(stripped) <= 3:
+                current_page = int(stripped)
+                continue
+            if phrase_lower in line.lower():
+                m = _re.match(r'^\s*(\d+)\s+', line)
+                lineno = m.group(1) if m else '?'
+                if current_page:
+                    return f'p.{current_page} l.{lineno}'
+
+    return 'location unknown'
 
 corrections = data['corrections']
 high   = [c for c in corrections if c.get('confidence') == 'HIGH']
@@ -137,7 +167,7 @@ L += [
 ]
 for i, item in enumerate(medium[:5], 1):
     L += [
-        f'  SC-{i}  |  {page_ref(item["line_approx"])}',
+        f'  SC-{i}  |  {page_ref(item)}',
         f'    WAS:    {clean(item["original"])}',
         f'    NOW:    {clean(item["corrected"])}',
         f'    OK?     YES / NO',
@@ -171,7 +201,7 @@ def action(item):
 
 for i, item in enumerate(low, 1):
     L += [
-        f'  ITEM {i:02d}  |  {page_ref(item["line_approx"])}  |  {action(item)}',
+        f'  ITEM {i:02d}  |  {page_ref(item)}  |  {action(item)}',
         f'    WAS:     {clean(item["original"])}',
         f'    FLAGGED: {clean(item["corrected"])}',
         f'    FIX:     ________________________________',
@@ -200,7 +230,7 @@ def na_action(item):
 
 for i, item in enumerate(na, 1):
     L += [
-        f'  NA-{i:02d}  |  {page_ref(item["line_approx"])}  |  {na_action(item)}',
+        f'  NA-{i:02d}  |  {page_ref(item)}  |  {na_action(item)}',
         f'    TEXT:  {clean(item["original"])}',
         f'    NOTE:  {item["reason"][:58]}',
         f'    FIX:   ________________________________',
