@@ -1,0 +1,156 @@
+{
+  "description": "Synthetic deposition audio — Texas drawl 'Bright Spot' sounds like 'Brat Spot'",
+  "ambiguous_term": {
+    "steno_wrote": "Brat Spot",
+    "correct_term": "Bright Spot",
+    "reason": "60-year-old Texas petroleum engineer. Long-i vowel collapses to short-a under drawl. 'Bright' → 'Braht' → steno hears 'Brat'.",
+    "occurrences": [
+      {
+        "rtf_timecode": "10:2:44:0",
+        "line_approx": 35
+      },
+      {
+        "rtf_timecode": "10:3:6:0",
+        "line_approx": 39
+      },
+      {
+        "rtf_timecode": "10:3:54:0",
+        "line_approx": 45
+      },
+      {
+        "rtf_timecode": "10:4:47:0",
+        "line_approx": 51
+      }
+    ]
+  },
+  "lines": [
+    {
+      "rtf_timecode": "10:0:3:0",
+      "speaker": "reporter",
+      "text_spoken": "We are on the record. The time is 10:00 a.m. This is the videotaped deposition of Earl Ray Thibodaux.",
+      "segment_file": "_seg_000.mp3"
+    },
+    {
+      "rtf_timecode": "10:0:22:0",
+      "speaker": "reporter",
+      "text_spoken": "Mr. Thibodaux, do you solemnly swear that the testimony you are about to give will be the truth, the whole truth, and nothing but the truth, so help you God?",
+      "segment_file": "_seg_001.mp3"
+    },
+    {
+      "rtf_timecode": "10:0:36:0",
+      "speaker": "witness",
+      "text_spoken": "I do.",
+      "segment_file": "_seg_002.mp3"
+    },
+    {
+      "rtf_timecode": "10:0:45:0",
+      "speaker": "examiner",
+      "text_spoken": "Please state your name for the record.",
+      "segment_file": "_seg_003.mp3"
+    },
+    {
+      "rtf_timecode": "10:0:52:0",
+      "speaker": "witness",
+      "text_spoken": "Earl Ray Thibodaux.",
+      "segment_file": "_seg_004.mp3"
+    },
+    {
+      "rtf_timecode": "10:0:59:0",
+      "speaker": "examiner",
+      "text_spoken": "Where are you currently employed?",
+      "segment_file": "_seg_005.mp3"
+    },
+    {
+      "rtf_timecode": "10:1:8:0",
+      "speaker": "witness",
+      "text_spoken": "I am a senior petroleum engineer with Lone Star Reservoir Consulting out of Midland, Texas.",
+      "segment_file": "_seg_006.mp3"
+    },
+    {
+      "rtf_timecode": "10:1:20:0",
+      "speaker": "examiner",
+      "text_spoken": "How long have you been in the petroleum engineering field?",
+      "segment_file": "_seg_007.mp3"
+    },
+    {
+      "rtf_timecode": "10:1:29:0",
+      "speaker": "witness",
+      "text_spoken": "Going on 35 years now. Started right out of Texas A and M back in 1991.",
+      "segment_file": "_seg_008.mp3"
+    },
+    {
+      "rtf_timecode": "10:1:44:0",
+      "speaker": "examiner",
+      "text_spoken": "Are you familiar with seismic interpretation methods used in reservoir analysis?",
+      "segment_file": "_seg_009.mp3"
+    },
+    {
+      "rtf_timecode": "10:1:55:0",
+      "speaker": "witness",
+      "text_spoken": "Oh yes, sir. That has been the core of my work for the last 20 years. We use seismic amplitude analysis to identify hydrocarbon-bearing formations.",
+      "segment_file": "_seg_010.mp3"
+    },
+    {
+      "rtf_timecode": "10:2:18:0",
+      "speaker": "examiner",
+      "text_spoken": "Can you explain what you observed in the seismic data for the Yellowrock formation?",
+      "segment_file": "_seg_011.mp3"
+    },
+    {
+      "rtf_timecode": "10:2:30:0",
+      "speaker": "witness_drawl",
+      "text_spoken": "Yes, sir. So when we ran the 3-D seismic survey over that area, we identified what we call a Brat Spot in the amplitude data. That high-amplitude anomaly right there told us there was gas-charged sand at that depth.",
+      "segment_file": "_seg_012.mp3"
+    },
+    {
+      "rtf_timecode": "10:3:5:0",
+      "speaker": "examiner",
+      "text_spoken": "What does that Brat Spot indicate specifically?",
+      "segment_file": "_seg_013.mp3"
+    },
+    {
+      "rtf_timecode": "10:3:14:0",
+      "speaker": "witness_drawl",
+      "text_spoken": "Well, in seismic interpretation, a high-amplitude anomaly like that -- and that is industry standard terminology -- it tells us that the acoustic impedance contrast between the reservoir rock and the overlying shale is very strong. That is a direct hydrocarbon indicator.",
+      "segment_file": "_seg_014.mp3"
+    },
+    {
+      "rtf_timecode": "10:3:53:0",
+      "speaker": "examiner",
+      "text_spoken": "Are you saying that the Brat Spot is what led to the recommendation to drill at that location?",
+      "segment_file": "_seg_015.mp3"
+    },
+    {
+      "rtf_timecode": "10:3:59:0",
+      "speaker": "witness_drawl",
+      "text_spoken": "That is correct. Without that anomaly in the seismic, we would not have had the confidence to recommend that well location.",
+      "segment_file": "_seg_016.mp3"
+    },
+    {
+      "rtf_timecode": "10:4:19:0",
+      "speaker": "defense",
+      "text_spoken": "Objection. Leading.",
+      "segment_file": "_seg_017.mp3"
+    },
+    {
+      "rtf_timecode": "10:4:26:0",
+      "speaker": "examiner",
+      "text_spoken": "I'll rephrase.",
+      "segment_file": "_seg_018.mp3"
+    },
+    {
+      "rtf_timecode": "10:4:30:0",
+      "speaker": "examiner",
+      "text_spoken": "What was the basis for the well location recommendation in your report?",
+      "segment_file": "_seg_019.mp3"
+    },
+    {
+      "rtf_timecode": "10:4:40:0",
+      "speaker": "witness_drawl",
+      "text_spoken": "The primary basis was the seismic amplitude anomaly -- this Brat Spot feature -- combined with the structural closure we mapped on the formation top.",
+      "segment_file": "_seg_020.mp3"
+    }
+  ],
+  "audio_file": "sample_depo.mp3",
+  "rtf_file": "sample_depo.rtf"
+}
