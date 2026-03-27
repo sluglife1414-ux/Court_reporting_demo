@@ -293,7 +293,7 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
         try:
             response = client.messages.create(
                 model=MODEL,
-                max_tokens=4096,
+                max_tokens=8192,
                 system=system_block,
                 messages=[{"role": "user", "content": user_msg}]
             )
