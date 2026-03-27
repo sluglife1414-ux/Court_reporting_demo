@@ -2,39 +2,65 @@
 build_mb_review_v2.py
 PURPOSE: Generate MB_REVIEW.txt for court reporter review.
          Plain text, Notepad-friendly, max 70 chars per line.
-INPUTS:  correction_log.json
+INPUTS:  correction_log.json, FINAL_DELIVERY/review_locations.json (Option B sidecar)
 OUTPUTS: FINAL_DELIVERY/MB_REVIEW.txt
 """
 
-import json, os, random
+import json, os, random, re as _re
 
-BASE = r'C:\Users\scott\OneDrive\Documents\mb_demo_engine_v4'
+BASE = os.path.dirname(os.path.abspath(__file__))
 
+# ── Load case config ─────────────────────────────────────
+_cfg_path = os.path.join(BASE, 'depo_config.json')
+_cfg = {}
+if os.path.exists(_cfg_path):
+    with open(_cfg_path, encoding='utf-8') as f:
+        _cfg = json.load(f)
+
+CASE_LABEL   = _cfg.get('case_short', 'Case').replace('_', ' v. ')
+DEPO_DATE    = _cfg.get('depo_date_short', '')
+CASE_SHORT   = _cfg.get('case_short', 'Case')
+
+# ── Load correction log ───────────────────────────────────
 with open(os.path.join(BASE, 'correction_log.json'), encoding='utf-8') as f:
     data = json.load(f)
 
-import re as _re
+# ── Load Option B sidecar (review_locations.json) ────────
+_sidecar_path = os.path.join(BASE, 'FINAL_DELIVERY', 'review_locations.json')
+_sidecar = {}
+if os.path.exists(_sidecar_path):
+    with open(_sidecar_path, encoding='utf-8') as f:
+        _sidecar = json.load(f)
 
-# Load final formatted output for text-search page ref lookup
-with open(os.path.join(BASE, 'FINAL_DELIVERY',
-          'Easley_YellowRock_FINAL_FORMATTED.txt'), encoding='utf-8') as f:
-    _flines = f.read().split('\n')
+# ── Load FINAL_FORMATTED.txt for fallback text search ────
+_formatted_path = os.path.join(BASE, 'FINAL_DELIVERY',
+                                f'{CASE_SHORT}_FINAL_FORMATTED.txt')
+_flines = []
+if os.path.exists(_formatted_path):
+    with open(_formatted_path, encoding='utf-8') as f:
+        _flines = f.read().split('\n')
 
-def page_ref(item):
-    """Find correct page/line by searching for item text in final formatted output.
-    Tries corrected text first, then original, then context before [REVIEW flag.
-    Falls back to 'location unknown' if not found.
+
+def page_ref(item, item_idx=None):
+    """Find correct page/line for a correction item.
+    Checks review_locations.json sidecar first (set by format_final.py Option B),
+    then falls back to text search in FINAL_FORMATTED.txt.
     """
+    # Sidecar lookup (most reliable — exact anchor from formatting pass)
+    if item_idx is not None and str(item_idx) in _sidecar:
+        loc = _sidecar[str(item_idx)]
+        if loc != 'location unknown':
+            return loc
+
+    # Fallback: text search
     candidates = []
     corr = item.get('corrected', '').replace('\n', ' ').strip()
     orig = item.get('original', '').replace('\n', ' ').strip()
 
-    # If corrected text has [REVIEW], extract the text BEFORE the flag as search phrase
     if '[REVIEW' in corr:
         before = corr.split('[REVIEW')[0].strip()
         if len(before) > 10:
-            candidates.append(before[-40:])  # last 40 chars before [REVIEW
-        # Also try first 30 chars of original
+            candidates.append(before[-40:])
         if len(orig) > 10:
             candidates.append(orig[:30])
     else:
@@ -59,14 +85,17 @@ def page_ref(item):
 
     return 'location unknown'
 
+
 corrections = data['corrections']
 high   = [c for c in corrections if c.get('confidence') == 'HIGH']
-medium = [c for c in corrections if c.get('confidence') == 'MEDIUM']
-low    = [c for c in corrections if c.get('confidence') == 'LOW']
-na     = [c for c in corrections if c.get('confidence') == 'N/A']
+medium = [(i, c) for i, c in enumerate(corrections) if c.get('confidence') == 'MEDIUM']
+low    = [(i, c) for i, c in enumerate(corrections) if c.get('confidence') == 'LOW']
+na     = [(i, c) for i, c in enumerate(corrections) if c.get('confidence') == 'N/A']
+
 
 def clean(s, maxlen=60):
     return s.replace('\n', ' ').replace('\r', ' ').strip()[:maxlen]
+
 
 SEP  = '-' * 60
 SEP2 = '=' * 60
@@ -75,10 +104,10 @@ L = []
 # ── HEADER ──────────────────────────────────────────────
 L += [
     SEP2,
-    'MB REVIEW  |  Easley v. YellowRock  |  March 13, 2026',
+    f'MB REVIEW  |  {CASE_LABEL}  |  {DEPO_DATE}',
     SEP2,
     '',
-    'The engine made 1,298 corrections to the rough draft.',
+    f'The engine made {len(corrections):,} corrections to the rough draft.',
     'Here is what you need to do:',
     '',
     f'  NOTHING  -- {len(high):,} fixes done automatically.',
@@ -101,15 +130,15 @@ L += [
 # ── SECTION 1: PROOF ────────────────────────────────────
 L += [
     SEP2,
-    'SECTION 1 -- THE 1,170 FIXES  (none of these are on you)',
+    f'SECTION 1 -- THE {len(high):,} FIXES  (none of these are on you)',
     SEP2,
     '',
-    'Every one of these 1,170 errors came from the CAT machine,',
+    f'Every one of these {len(high):,} errors came from the CAT machine,',
     'not from you.  You stroked the keys correctly.',
     'The machine translated your strokes wrong.',
     '',
     'As an expert reporter you have always caught and fixed these.',
-    'The engine fixed all 1,170 in 60 seconds.',
+    f'The engine fixed all {len(high):,} in 60 seconds.',
     '',
     SEP,
     'THE CAT MACHINE BROKE WORDS ACROSS LINES:',
@@ -141,12 +170,12 @@ L += [
     '  NOW:  BY: IAN SALINAS-STERN, ESQ.',
     '',
     SEP,
-    f'5 EXAMPLES FROM THE 1,170:',
+    f'5 EXAMPLES FROM THE {len(high):,}:',
     SEP,
     '',
 ]
 random.seed(42)
-for i, item in enumerate(random.sample(high, 5), 1):
+for i, item in enumerate(random.sample(high, min(5, len(high))), 1):
     L += [
         f'  [{i:02d}]  line ~{item["line_approx"]}',
         f'        WAS:  {clean(item["original"])}',
@@ -165,9 +194,9 @@ L += [
     'If NO, write one sentence why -- it goes straight into the rulebook.',
     '',
 ]
-for i, item in enumerate(medium[:5], 1):
+for i, (idx, item) in enumerate(medium[:5], 1):
     L += [
-        f'  SC-{i}  |  {page_ref(item)}',
+        f'  SC-{i}  |  {page_ref(item, idx)}',
         f'    WAS:    {clean(item["original"])}',
         f'    NOW:    {clean(item["corrected"])}',
         f'    OK?     YES / NO',
@@ -179,7 +208,7 @@ L += [f'  ({len(medium)-5} more MEDIUM items available on request.)', '']
 # ── SECTION 3: YOUR DECISIONS ───────────────────────────
 L += [
     SEP2,
-    'SECTION 3 -- YOUR DECISIONS  (44 items)',
+    f'SECTION 3 -- YOUR DECISIONS  ({len(low)} items)',
     SEP2,
     '',
     'These have placeholder text in the transcript right now.',
@@ -191,17 +220,19 @@ L += [
     '',
 ]
 
+
 def action(item):
     r = item.get('reason', '').lower()
-    if any(k in r for k in ['proper name','entity name','company name','bates','person name']):
+    if any(k in r for k in ['proper name', 'entity name', 'company name', 'bates', 'person name']):
         return '[CONFIRM NAME]'
-    if any(k in r for k in ['incomplete sentence','no predicate','sentence appears']):
+    if any(k in r for k in ['incomplete sentence', 'no predicate', 'sentence appears']):
         return '[CONFIRM SENT]'
     return '[LISTEN]      '
 
-for i, item in enumerate(low, 1):
+
+for i, (idx, item) in enumerate(low, 1):
     L += [
-        f'  ITEM {i:02d}  |  {page_ref(item)}  |  {action(item)}',
+        f'  ITEM {i:02d}  |  {page_ref(item, idx)}  |  {action(item)}',
         f'    WAS:     {clean(item["original"])}',
         f'    FLAGGED: {clean(item["corrected"])}',
         f'    FIX:     ________________________________',
@@ -211,7 +242,7 @@ for i, item in enumerate(low, 1):
 # ── SECTION 4: MISSING DATA ─────────────────────────────
 L += [
     SEP2,
-    'SECTION 4 -- MISSING DATA  (14 items)',
+    f'SECTION 4 -- MISSING DATA  ({len(na)} items)',
     SEP2,
     '',
     '  [SUPPLY]          = provide the missing information',
@@ -220,17 +251,19 @@ L += [
     '',
 ]
 
+
 def na_action(item):
     r = item.get('reason', '').lower()
-    if any(k in r for k in ['missing','absent','suite']):
+    if any(k in r for k in ['missing', 'absent', 'suite']):
         return '[SUPPLY]         '
-    if any(k in r for k in ['verbatim','spoken','mispronunciation','grammatical error']):
+    if any(k in r for k in ['verbatim', 'spoken', 'mispronunciation', 'grammatical error']):
         return '[DECIDE VERBATIM]'
     return '[CONFIRM]        '
 
-for i, item in enumerate(na, 1):
+
+for i, (idx, item) in enumerate(na, 1):
     L += [
-        f'  NA-{i:02d}  |  {page_ref(item)}  |  {na_action(item)}',
+        f'  NA-{i:02d}  |  {page_ref(item, idx)}  |  {na_action(item)}',
         f'    TEXT:  {clean(item["original"])}',
         f'    NOTE:  {item["reason"][:58]}',
         f'    FIX:   ________________________________',
@@ -238,9 +271,11 @@ for i, item in enumerate(na, 1):
     ]
 
 # ── FOOTER ──────────────────────────────────────────────
+from datetime import date
+today = date.today().strftime('%Y-%m-%d')
 L += [
     SEP2,
-    'END OF REVIEW  |  1,298 total corrections  |  2026-03-27',
+    f'END OF REVIEW  |  {len(corrections):,} total corrections  |  {today}',
     SEP2,
 ]
 

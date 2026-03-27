@@ -13,6 +13,7 @@ Matches the real output format from the Cox depo PDF:
 import re
 import textwrap
 import os
+import json
 
 # Use AI-corrected text if available, otherwise fall back to steno-cleaned text
 INPUT_FILE = 'corrected_text.txt' if os.path.exists('corrected_text.txt') else 'cleaned_text.txt'
@@ -260,19 +261,149 @@ def build_errata():
 # TEXT PARSERS
 # =========================================================
 
+def inject_anchors(text):
+    """
+    Option B: Replace each [REVIEW:...] tag with a short anchor {R:N} where N is
+    the correction_log index of that LOW/N/A item.  The anchor is tiny enough to
+    survive block-joining, line-wrapping, and pagination unchanged.  After
+    paginating we scan all_pages for {R:N} to get the exact p.XX l.YY for every
+    flagged item, then strip anchors before writing the final file.
+
+    Matching strategy: content-based.  For each LOW/N/A item we extract the
+    [REVIEW:...] tag from its corrected field and find that exact tag in the
+    source text, replacing it with {R:idx}.  This is correct even when the
+    number of [REVIEW] tags in the text exceeds the number of LOW/N/A items
+    (e.g. because HIGH/MEDIUM corrections also embedded [REVIEW] sub-notes).
+    """
+    log_path = 'correction_log.json'
+    if not os.path.exists(log_path):
+        return strip_review_tags(text), {}
+
+    with open(log_path, encoding='utf-8') as f:
+        data = json.load(f)
+
+    corrections = data.get('corrections', [])
+    anchor_map = {}  # correction_log_index -> anchor string
+
+    for idx, item in enumerate(corrections):
+        if item.get('confidence') not in ('LOW', 'N/A'):
+            continue
+        corrected = item.get('corrected', '')
+        m = re.search(r'\[REVIEW:[^\]]*\]', corrected)
+        if not m:
+            continue
+        review_tag = m.group(0)
+        anchor = f'{{R:{idx}}}'
+
+        if review_tag in text:
+            text = text.replace(review_tag, anchor, 1)
+            anchor_map[idx] = anchor
+        else:
+            # Partial match: try progressively shorter prefixes
+            matched = False
+            for prefix_len in (80, 60, 40, 20):
+                if prefix_len >= len(review_tag):
+                    continue
+                prefix = review_tag[:prefix_len]
+                pos = text.find(prefix)
+                if pos != -1:
+                    end = text.find(']', pos)
+                    if end != -1:
+                        text = text[:pos] + anchor + text[end + 1:]
+                        anchor_map[idx] = anchor
+                        matched = True
+                        break
+
+    # Strip any [REVIEW] tags that didn't match a LOW/N/A item, and all [FLAG] tags
+    text = re.sub(r'\[REVIEW:[^\]]*\]', '', text)
+    text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
+    text = re.sub(r'  +', ' ', text)
+    return text, anchor_map
+
+
+def strip_anchors(pages):
+    """Remove {R:N} anchors from all page lines after location capture."""
+    cleaned = []
+    for page_lines in pages:
+        cleaned.append([re.sub(r'\{R:\d+\}', '', line).rstrip() for line in page_lines])
+    return cleaned
+
+
 def strip_review_tags(text):
     """
-    Remove [REVIEW: ...] and [FLAG: ...] tags from the text before final formatting.
-    These tags are internal review markers for MB_REVIEW.txt — they must NOT
-    appear in the delivered PDF or formatted transcript.
-    Inline tags (mid-sentence) are removed cleanly. Block-only lines are dropped.
+    Fallback: remove [REVIEW: ...] and [FLAG: ...] tags when no correction_log
+    is available.  Normal path uses inject_anchors() instead.
     """
-    # Remove inline [REVIEW: ...] tags — anything in brackets starting with REVIEW or FLAG
     text = re.sub(r'\s*\[REVIEW:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
-    # Clean up any double spaces left behind
     text = re.sub(r'  +', ' ', text)
     return text
+
+
+def build_review_locations(all_pages, anchor_map):
+    """
+    Option B: Use {R:N} anchors placed during inject_anchors() to get the
+    exact p.XX l.YY for every LOW/N/A correction item.
+
+    Items with no [REVIEW] tag (corrected field didn't embed one) never
+    enter anchor_map — handled below with text search on original text.
+
+    Fallback: if an anchor was dropped during formatting, fall back to
+    text search on the original text.
+    """
+    if not anchor_map:
+        return
+
+    corrections = []
+    if os.path.exists('correction_log.json'):
+        with open('correction_log.json', encoding='utf-8') as f:
+            corrections = json.load(f).get('corrections', [])
+
+    # Build full set of LOW/N/A indices to process
+    all_review_indices = set(anchor_map.keys())
+    for i, c in enumerate(corrections):
+        if c.get('confidence') in ('LOW', 'N/A'):
+            all_review_indices.add(i)
+
+    locations = {}
+    for idx in sorted(all_review_indices):
+        anchor = f'{{R:{idx}}}' if idx in anchor_map else None
+        loc = None
+
+        if anchor is not None:
+            for page_idx, page_lines in enumerate(all_pages):
+                for line_idx, line in enumerate(page_lines):
+                    if anchor in line:
+                        loc = f'p.{page_idx + 1} l.{line_idx + 1}'
+                        break
+                if loc:
+                    break
+
+        # Fallback: text search on original (handles dropped anchors and no-tag items)
+        if not loc and idx < len(corrections):
+            orig = corrections[idx].get('original', '').replace('\n', ' ').strip()
+            words = orig.split()
+            for phrase in [orig[-30:], orig[:30], ' '.join(words[1:5])]:
+                if len(phrase) < 6:
+                    continue
+                for page_idx, page_lines in enumerate(all_pages):
+                    for line_idx, line in enumerate(page_lines):
+                        if phrase.lower() in line.lower():
+                            loc = f'~p.{page_idx + 1} l.{line_idx + 1}'
+                            break
+                    if loc:
+                        break
+                if loc:
+                    break
+
+        locations[str(idx)] = loc or 'location unknown'
+
+    out_path = os.path.join('FINAL_DELIVERY', 'review_locations.json')
+    with open(out_path, 'w', encoding='utf-8') as f:
+        json.dump(locations, f, indent=2)
+
+    resolved = sum(1 for v in locations.values() if v != 'location unknown')
+    print(f"[review_locations] {resolved}/{len(locations)} items located -> {out_path}")
 
 
 def parse_file(text):
@@ -666,7 +797,7 @@ def main():
     with open(INPUT_FILE, 'r', encoding='utf-8') as f:
         text = f.read()
 
-    text = strip_review_tags(text)
+    text, anchor_map = inject_anchors(text)
     sections = parse_file(text)
 
     # Parse exhibit numbers from index section
@@ -718,6 +849,12 @@ def main():
     # Fill index
     all_pages[idx_pos] = build_index(app_start, stip_start, exam_start,
                                       cert_start, wcert_start, exhibit_nums)
+
+    # Capture exact locations BEFORE stripping anchors
+    build_review_locations(all_pages, anchor_map)
+
+    # Strip {R:N} anchors — must not appear in final output
+    all_pages = strip_anchors(all_pages)
 
     # Render
     output_parts = []
