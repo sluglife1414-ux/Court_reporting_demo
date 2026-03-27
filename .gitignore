@@ -6,6 +6,15 @@
 extracted_text.txt
 extracted_qa.txt
 
+# Generated output files — reproducible from corrected_text.txt
+FINAL_DELIVERY/*.pdf
+FINAL_DELIVERY/*.txt
+
+# Python cache
+__pycache__/
+*.pyc
+test_audio/__pycache__/
+
 # Claude internal session data
 .claude/
 
