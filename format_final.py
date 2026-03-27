@@ -16,20 +16,37 @@ import os
 
 # Use AI-corrected text if available, otherwise fall back to steno-cleaned text
 INPUT_FILE = 'corrected_text.txt' if os.path.exists('corrected_text.txt') else 'cleaned_text.txt'
-OUTPUT_FILE = 'FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt'
 
 # --- Configuration ---
 LINES_PER_PAGE = 25
 LINE_WIDTH = 64   # measured from MB's PDF: 7.59" - 1.129" = 6.461" / 0.1" per char
 
-# --- Case metadata (Easley depo) ---
-WITNESS_NAME = "THOMAS L. EASLEY"
-DEPO_DATE = "Friday, March 13, 2026"
-DEPO_TIME = "9:09 a.m."
+# ═══════════════════════════════════════════════════════════
+# CASE CONFIG — update these for each new depo. Nothing else
+# in this file needs to change between cases.
+# ═══════════════════════════════════════════════════════════
+WITNESS_LAST   = "EASLEY"                        # used for output filename
+WITNESS_NAME   = "THOMAS L. EASLEY"              # full name as it appears in transcript
+CASE_SHORT     = "Easley_YellowRock"             # used in output filenames
+DEPO_DATE      = "Friday, March 13, 2026"
+DEPO_DATE_SHORT = "March 13, 2026"               # used in certificates
+DEPO_TIME      = "9:09 a.m."
 DEPO_LOCATION_1 = "111 North Post Oak Lane"
 DEPO_LOCATION_2 = "Houston, Texas  77024"
-REPORTER_NAME = "MARYBETH E. MUIR, CCR, RPR"
-EXAMINING_ATTY = "MR. HOBBY"
+REPORTER_NAME  = "MARYBETH E. MUIR, CCR, RPR"   # MB is always MB
+EXAMINING_ATTY = "MR. HOBBY"                    # primary examining attorney
+PARISH         = "PARISH OF CALCASIEU"
+COURT          = "14TH JUDICIAL DISTRICT"
+PLAINTIFF      = "YELLOW ROCK, LLC, et al,"
+PLAINTIFF_ROLE = "Plaintiffs,"
+DEFENDANT      = "WESTLAKE US 2 LLC f/k/a\n  EAGLE US 2 LLC et al.,"
+DEFENDANT_ROLE = "Defendants."
+DOCKET         = "202-001594"
+DIVISION       = "H"
+CERT_YEAR      = "2026"
+# ═══════════════════════════════════════════════════════════
+
+OUTPUT_FILE = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL_FORMATTED.txt'
 
 
 def center(text, width=LINE_WIDTH):
@@ -64,20 +81,19 @@ def build_caption():
     """Page 1 caption — all content on one page, reporter credit on page 1 per LA spec."""
     L = []
     L.append(center("STATE OF LOUISIANA"))
-    L.append(center("PARISH OF CALCASIEU"))
-    L.append(center("14TH JUDICIAL DISTRICT"))
+    L.append(center(PARISH))
+    L.append(center(COURT))
     L.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
     # Case style block — MB format: two-column, parties left / docket right
-    # Each row is padded to LINE_WIDTH with left party text and right docket text
     def case_row(left, right='', width=LINE_WIDTH):
         gap = width - len(left) - len(right)
         return left + ' ' * max(1, gap) + right
-    L.append(case_row("  YELLOW ROCK, LLC, et al,", "Docket No."))
-    L.append(case_row("       Plaintiffs,",          "202-001594"))
-    L.append(case_row("       v.",                   "Division \"H\""))
-    L.append(case_row("  WESTLAKE US 2 LLC f/k/a"))
-    L.append(case_row("  EAGLE US 2 LLC et al.,"))
-    L.append(case_row("       Defendants."))
+    L.append(case_row(f"  {PLAINTIFF}", "Docket No."))
+    L.append(case_row(f"       {PLAINTIFF_ROLE}", DOCKET))
+    L.append(case_row("       v.",                f"Division \"{DIVISION}\""))
+    for i, dline in enumerate(DEFENDANT.split('\n')):
+        L.append(case_row(f"  {dline.strip()}"))
+    L.append(case_row(f"       {DEFENDANT_ROLE}"))
     L.append("")
     L.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
     L.append("")
@@ -141,7 +157,8 @@ def build_reporter_cert():
     p1.append("Reporter in and for the State of Louisiana, and")
     p1.append("Registered Professional Reporter, as the officer")
     p1.append("before whom this testimony was taken, do hereby")
-    p1.append(f"certify that {WITNESS_NAME}, after having been duly")
+    p1.append(f"certify that {WITNESS_NAME}, after having been")
+    p1.append("duly")
     p1.append("sworn by me upon authority of R.S. 37:2554, did")
     p1.append("testify as hereinbefore set forth in the foregoing")
     p1.append("pages; that this testimony was reported by me in")
@@ -170,7 +187,7 @@ def build_reporter_cert():
     p2.append("interested in the outcome of this matter.")
     p2.append("")
     p2.append("")
-    p2.append("This ______ day of _____________, 2026.")
+    p2.append(f"This ______ day of _____________, {CERT_YEAR}.")
     p2.append("")
     p2.append("")
     p2.append("")
@@ -187,7 +204,7 @@ def build_witness_cert():
     L.append("")
     L.append(f"     I, {WITNESS_NAME}, do hereby certify that I have")
     L.append("read or have had read to me the foregoing transcript")
-    L.append(f"of my testimony given on March 13, 2026, and find")
+    L.append(f"of my testimony given on {DEPO_DATE_SHORT}, and find")
     L.append("same to be true and correct to the best of my")
     L.append("ability and understanding with the exceptions noted")
     L.append("on the amendment sheet;")
@@ -274,10 +291,15 @@ def parse_file(text):
         if 'S T I P U L A T I O N' in s:
             cur = 'stipulation'
             continue
-        # Testimony starts at witness address line or videographer
-        if cur == 'stipulation' and re.match(r'^THOMAS L\. EASLEY', s):
+        # Testimony starts when we see the witness name or videographer after stipulation.
+        # Uses WITNESS_NAME from config — no other hardcoding needed.
+        if cur == 'stipulation' and WITNESS_NAME in s:
             cur = 'testimony'
         if cur == 'stipulation' and s.startswith('THE VIDEOGRAPHER:'):
+            cur = 'testimony'
+        # Fallback: any colloquy line after stipulation means testimony has started
+        if cur == 'stipulation' and re.match(
+                r'^(MR\.|MS\.|MRS\.|THE COURT REPORTER:|THE WITNESS:)', s):
             cur = 'testimony'
 
         sections[cur].append(line)
