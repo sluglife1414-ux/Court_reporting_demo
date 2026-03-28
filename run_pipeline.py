@@ -18,7 +18,8 @@ STEPS:
   6. build_pdf.py            -> FINAL_DELIVERY/*_FINAL.pdf
   7. build_transcript.py     -> FINAL_DELIVERY/*_FINAL_TRANSCRIPT.txt
   8. build_condensed.py      -> FINAL_DELIVERY/*_CONDENSED.txt
-  9. build_deliverables.py   -> FINAL_DELIVERY/ analysis docs
+  9. build_summary.py        -> FINAL_DELIVERY/*_DEPOSITION_SUMMARY.txt  [Haiku, ~$0.06]
+ 10. build_deliverables.py   -> FINAL_DELIVERY/ analysis docs
 
 USE --skip-ai WHEN:
   - ai_engine.py already ran and corrected_text.txt is good
@@ -38,12 +39,13 @@ ALL_STEPS = [
     ('format_final.py',      'format',   'Format final -> FINAL_FORMATTED.txt'),
     ('build_pdf.py',         'pdf',      'Build PDF -> FINAL.pdf'),
     ('build_transcript.py',  'transcript','Build transcript -> FINAL_TRANSCRIPT.txt'),
-    ('build_condensed.py',   'condensed','Build condensed -> CONDENSED.txt'),
-    ('build_deliverables.py','deliverables','Build deliverables -> analysis docs'),
+    ('build_condensed.py',   'condensed',    'Build condensed -> CONDENSED.txt'),
+    ('build_summary.py',     'summary',      'Build AI summary -> DEPOSITION_SUMMARY.txt  [Haiku, ~$0.06]'),
+    ('build_deliverables.py','deliverables', 'Build deliverables -> analysis docs'),
 ]
 
 # Steps that run after the AI pass — safe to run independently
-POST_AI_STEPS = {'config', 'format', 'pdf', 'transcript', 'condensed', 'deliverables'}
+POST_AI_STEPS = {'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables'}
 
 
 def parse_args():
