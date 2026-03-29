@@ -2,20 +2,33 @@
 Build condensed transcript (4 lines per row, reduced spacing).
 """
 import re
+import json
 
-with open('FINAL_DELIVERY/Easley_YellowRock_FINAL_TRANSCRIPT.txt', 'r', encoding='utf-8') as f:
+with open('depo_config.json', encoding='utf-8') as _f:
+    _cfg = json.load(_f)
+_CASE = _cfg.get('case_short', 'Unknown_Case')
+
+with open(f'FINAL_DELIVERY/{_CASE}_FINAL_TRANSCRIPT.txt', 'r', encoding='utf-8') as f:
     full = f.read()
 
 # Condensed format: narrower, compressed
 # We'll produce a condensed version with 4-mini-pages per page concept
 # Output as readable condensed text
 
-header = """\
+_plaintiff  = _cfg.get('plaintiff', 'UNKNOWN')
+_defendant  = _cfg.get('defendant', 'UNKNOWN')
+_case_name  = f"{_plaintiff} v. {_defendant}"
+_docket     = _cfg.get('docket', 'UNKNOWN')
+_witness    = _cfg.get('witness_name', 'UNKNOWN')
+_depo_date  = _cfg.get('depo_date', 'UNKNOWN')
+_reporter   = _cfg.get('reporter_name', 'UNKNOWN')
+
+header = f"""\
 ================================================================================
 CONDENSED TRANSCRIPT
-Yellow Rock, LLC et al. v. Westlake US 2 LLC et al. | Docket 202-001594
-Witness: Thomas L. Easley | March 13, 2026
-Reporter: Marybeth E. Muir, CCR, RPR
+{_case_name} | Docket {_docket}
+Witness: {_witness} | {_depo_date}
+Reporter: {_reporter}
 [CONDENSED FORMAT — 4 transcript pages per page equivalent]
 ================================================================================
 
@@ -47,7 +60,7 @@ output = ''.join(condensed_lines)
 # Further collapse blank lines
 output = re.sub(r'\n{3,}', '\n\n', output)
 
-with open('FINAL_DELIVERY/Easley_YellowRock_CONDENSED.txt', 'w', encoding='utf-8') as f:
+with open(f'FINAL_DELIVERY/{_CASE}_CONDENSED.txt', 'w', encoding='utf-8') as f:
     f.write(output)
 
 print(f"Condensed transcript written. Length: {len(output):,} chars")

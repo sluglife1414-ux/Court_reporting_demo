@@ -4,7 +4,8 @@ run_pipeline.py — Master runner for mb_demo_engine_v4.
 Produces the full 10-file delivery package.
 
 USAGE:
-  python run_pipeline.py                 # full run (all 8 steps)
+  python run_pipeline.py                 # full run (all steps)
+  python run_pipeline.py --preflight     # extract + steno, review metadata, confirm before AI pass
   python run_pipeline.py --skip-ai       # skip RTF extract + steno + AI (use existing corrected_text.txt)
   python run_pipeline.py --format-only   # format + build steps only (same as --skip-ai)
   python run_pipeline.py --from extract  # start from a specific step
@@ -13,13 +14,15 @@ STEPS:
   1. extract_rtf.py          -> extracted_text.txt
   2. steno_cleanup.py        -> cleaned_text.txt
   3. ai_engine.py            -> corrected_text.txt + correction_log.json   [SLOW: ~56 min]
-  4. extract_config.py       -> depo_config.json
-  5. format_final.py         -> FINAL_DELIVERY/*_FINAL_FORMATTED.txt
-  6. build_pdf.py            -> FINAL_DELIVERY/*_FINAL.pdf
-  7. build_transcript.py     -> FINAL_DELIVERY/*_FINAL_TRANSCRIPT.txt
-  8. build_condensed.py      -> FINAL_DELIVERY/*_CONDENSED.txt
-  9. build_summary.py        -> FINAL_DELIVERY/*_DEPOSITION_SUMMARY.txt  [Haiku, ~$0.06]
- 10. build_deliverables.py   -> FINAL_DELIVERY/ analysis docs
+  4. verify_agent.py         -> verify_log.json  (2nd-pass: Haiku reviews HIGH corrections)  [~1 min]
+  5. apply_verify.py         -> corrected_text.txt updated (DISAGREE items get [REVIEW] tags)
+  6. extract_config.py       -> depo_config.json
+  7. format_final.py         -> FINAL_DELIVERY/*_FINAL_FORMATTED.txt
+  8. build_pdf.py            -> FINAL_DELIVERY/*_FINAL.pdf
+  9. build_transcript.py     -> FINAL_DELIVERY/*_FINAL_TRANSCRIPT.txt
+ 10. build_condensed.py      -> FINAL_DELIVERY/*_CONDENSED.txt
+ 11. build_summary.py        -> FINAL_DELIVERY/*_DEPOSITION_SUMMARY.txt  [Haiku, ~$0.06]
+ 12. build_deliverables.py   -> FINAL_DELIVERY/ analysis docs
 
 USE --skip-ai WHEN:
   - ai_engine.py already ran and corrected_text.txt is good
@@ -32,20 +35,22 @@ import os
 import argparse
 
 ALL_STEPS = [
-    ('extract_rtf.py',       'extract',  'Extract RTF -> raw text'),
-    ('steno_cleanup.py',     'steno',    'Steno cleanup -> cleaned text'),
-    ('ai_engine.py',         'ai',       'AI correction pass -> corrected text + correction log  [~56 min]'),
-    ('extract_config.py',    'config',   'Auto-extract case config -> depo_config.json'),
-    ('format_final.py',      'format',   'Format final -> FINAL_FORMATTED.txt'),
-    ('build_pdf.py',         'pdf',      'Build PDF -> FINAL.pdf'),
-    ('build_transcript.py',  'transcript','Build transcript -> FINAL_TRANSCRIPT.txt'),
+    ('extract_rtf.py',       'extract',      'Extract RTF -> raw text'),
+    ('steno_cleanup.py',     'steno',        'Steno cleanup -> cleaned text'),
+    ('ai_engine.py',         'ai',           'AI correction pass -> corrected text + correction log  [~56 min]'),
+    ('verify_agent.py',      'verify',       'Pass 2: Haiku reviews HIGH corrections -> verify_log.json  [~1 min]'),
+    ('apply_verify.py',      'apply_verify', 'Apply verify: re-tag DISAGREE items as [REVIEW] in corrected_text.txt'),
+    ('extract_config.py',    'config',       'Auto-extract case config -> depo_config.json'),
+    ('format_final.py',      'format',       'Format final -> FINAL_FORMATTED.txt'),
+    ('build_pdf.py',         'pdf',          'Build PDF -> FINAL.pdf'),
+    ('build_transcript.py',  'transcript',   'Build transcript -> FINAL_TRANSCRIPT.txt'),
     ('build_condensed.py',   'condensed',    'Build condensed -> CONDENSED.txt'),
     ('build_summary.py',     'summary',      'Build AI summary -> DEPOSITION_SUMMARY.txt  [Haiku, ~$0.06]'),
     ('build_deliverables.py','deliverables', 'Build deliverables -> analysis docs'),
 ]
 
 # Steps that run after the AI pass — safe to run independently
-POST_AI_STEPS = {'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables'}
+POST_AI_STEPS = {'verify', 'apply_verify', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables'}
 
 
 def parse_args():
@@ -66,6 +71,11 @@ def parse_args():
         metavar='STEP',
         choices=[s[1] for s in ALL_STEPS],
         help=f'Start from a specific step. Choices: {", ".join(s[1] for s in ALL_STEPS)}'
+    )
+    parser.add_argument(
+        '--preflight',
+        action='store_true',
+        help='Run extract + steno, review extracted metadata, then confirm before AI pass.'
     )
     parser.add_argument(
         '--dry-run',
@@ -106,8 +116,8 @@ def main():
             print("        Run ai_engine.py first, then use --skip-ai.")
             sys.exit(1)
         size = os.path.getsize('corrected_text.txt')
-        if size < 50000:
-            print(f"[ERROR] corrected_text.txt looks incomplete ({size:,} bytes).")
+        if size < 1000:
+            print(f"[ERROR] corrected_text.txt looks empty ({size:,} bytes).")
             print("        ai_engine.py may not have finished. Check the file.")
             sys.exit(1)
 
@@ -126,6 +136,37 @@ def main():
     if args.dry_run:
         print("DRY RUN — no steps executed.")
         return
+
+    # PREFLIGHT: extract + steno → review metadata → confirm before AI
+    if args.preflight:
+        print("=" * 60)
+        print("PREFLIGHT MODE — review metadata before AI pass")
+        print("=" * 60)
+        for script, key, desc in ALL_STEPS:
+            if key not in ('extract', 'steno'):
+                continue
+            print(f"[STEP] {desc}")
+            print(f"       Running {script}...")
+            result = subprocess.run([sys.executable, script], capture_output=False)
+            if result.returncode != 0:
+                print(f"\n[ERROR] {script} failed. Fix above and retry.")
+                sys.exit(1)
+            print()
+        print("[PREFLIGHT] Running extract_config.py --review ...")
+        print("            Review the extracted values below.")
+        print("            If anything is UNKNOWN, Ctrl+C now and fill in case_info manually.")
+        print()
+        result = subprocess.run([sys.executable, 'extract_config.py', '--review'], capture_output=False)
+        if result.returncode != 0:
+            print("\n[PREFLIGHT] Metadata review failed or rejected. Pipeline stopped.")
+            print("            Fix depo_config.json manually, then run: python run_pipeline.py --from ai")
+            sys.exit(1)
+        confirm = input("\n[PREFLIGHT] Metadata confirmed. Proceed to AI pass? (y/n): ").strip().lower()
+        if confirm != 'y':
+            print("[PREFLIGHT] Stopped. Run 'python run_pipeline.py --from ai' when ready.")
+            sys.exit(0)
+        steps = [(s, k, d) for s, k, d in ALL_STEPS if k not in ('extract', 'steno')]
+        print()
 
     for script, key, description in steps:
         # Summary is opt-in only — skip unless --summary flag passed

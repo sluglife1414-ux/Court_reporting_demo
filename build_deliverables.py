@@ -14,15 +14,21 @@ import os
 import json
 from datetime import date
 
-# --- Case constants ---
-CASE_NAME      = "Yellow Rock, LLC, et al. v. Westlake US 2 LLC, et al."
-DOCKET         = "202-001594"
-DIVISION       = "H"
-COURT          = "14th Judicial District Court, Parish of Calcasieu, Louisiana"
-WITNESS        = "Thomas L. Easley"
-DEPO_DATE      = "Friday, March 13, 2026"
-REPORTER       = "Marybeth E. Muir, CCR, RPR"
-EXAMINING_ATTY = "Walker Hobby, Esq. (Susman Godfrey LLP)"
+# --- Load case config ---
+with open('depo_config.json', encoding='utf-8') as _cfg_f:
+    _cfg = json.load(_cfg_f)
+
+_plaintiff = _cfg.get('plaintiff', 'UNKNOWN')
+_defendant = _cfg.get('defendant', 'UNKNOWN')
+CASE_NAME      = f"{_plaintiff} v. {_defendant}"
+CASE_SHORT     = _cfg.get('case_short', 'Unknown_Case')
+DOCKET         = _cfg.get('docket', 'UNKNOWN')
+DIVISION       = _cfg.get('division', '')
+COURT          = _cfg.get('court', 'UNKNOWN')
+WITNESS        = _cfg.get('witness_name', 'UNKNOWN')
+DEPO_DATE      = _cfg.get('depo_date', 'UNKNOWN')
+REPORTER       = _cfg.get('reporter_name', 'UNKNOWN')
+EXAMINING_ATTY = _cfg.get('atty_claimant_by', 'UNKNOWN')
 RUN_DATE       = date.today().strftime("%B %d, %Y")
 
 INPUT_FILE  = 'cleaned_text.txt'
@@ -90,8 +96,7 @@ FORMATTING REVIEW
 FINAL DELIVERY
 {'-' * 80}
 \u25a1  Delivered to:  {EXAMINING_ATTY}
-\u25a1  Copy sent to:  Thomas J. Madigan, Esq. (Sher Garner — Plaintiff)
-\u25a1  Rough draft delivered to: MS. CURTIS (requested on record)
+\u25a1  Copy sent to:  [opposing counsel — verify from appearances page]
 \u25a1  Invoice sent
 \u25a1  Delivery receipt confirmed
 
@@ -104,12 +109,6 @@ INVOICE NOTES
 \u25a1  Total invoice amount: $_____
 \u25a1  Invoice date: _____
 
-{'-' * 80}
-NOTES:
-  - Deposition terminated by plaintiff's counsel before completion.
-  - Westlake stated on record it was prepared to continue.
-  - This was a VIDEOTAPED deposition.
-  - Rough draft was requested by MS. CURTIS at conclusion.
 {HEADER_BAR}
 """
 
@@ -156,11 +155,6 @@ REPORTER:      {REPORTER}
 PROCESSED:     {RUN_DATE}
 {section("ATTORNEYS / APPEARANCES (from rough transcript)")}
 {app_text}
-{section("KEY FACTS FROM RECORD")}
-  - Deposition terminated by plaintiff's counsel before completion.
-  - Westlake stated on record it was prepared to continue.
-  - Rough draft requested by MS. CURTIS at conclusion.
-  - Videotaped deposition.
 {HEADER_BAR}
 """
 
@@ -387,7 +381,7 @@ os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 files = {
     'DELIVERY_CHECKLIST.txt':  build_checklist(),
-    'DEPOSITION_SUMMARY.txt':  build_summary(),
+    # DEPOSITION_SUMMARY.txt is produced by build_summary.py (Haiku AI) — do not duplicate here
     'EXHIBIT_INDEX.txt':        build_exhibit_index(),
     'MEDICAL_TERMS_LOG.txt':   build_medical_log(),
     'PROOF_OF_WORK.txt':       build_proof_of_work(),

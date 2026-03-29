@@ -315,6 +315,8 @@ def inject_anchors(text):
                         break
 
     # Strip any [REVIEW] tags that didn't match a LOW/N/A item, and all [FLAG] tags
+    # Two-pass: verify-agent tags first (may contain dashes/nested text), then standard
+    text = re.sub(r'\[REVIEW:.*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
     text = re.sub(r'\[REVIEW:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'  +', ' ', text)
@@ -333,7 +335,9 @@ def strip_review_tags(text):
     """
     Fallback: remove [REVIEW: ...] and [FLAG: ...] tags when no correction_log
     is available.  Normal path uses inject_anchors() instead.
+    Two-pass: verify-agent tags first (may contain dashes), then standard.
     """
+    text = re.sub(r'\[REVIEW:.*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
     text = re.sub(r'\s*\[REVIEW:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'  +', ' ', text)

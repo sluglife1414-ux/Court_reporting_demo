@@ -24,18 +24,25 @@ from reportlab.lib.units import inch
 from reportlab.pdfgen import canvas
 from reportlab.lib import colors
 
+import json
 from state_config import get_config
 
-# --- State selection ---
-STATE = 'LA'
+# --- Load case config ---
+with open('depo_config.json', encoding='utf-8') as _f:
+    _cfg = json.load(_f)
+CASE_SHORT = _cfg.get('case_short', 'Unknown_Case')
+
+# --- State selection (from depo_config or --state flag) ---
+_court = _cfg.get('court', '').upper()
+STATE = _cfg.get('state', 'LA').upper()  # trust explicit state field in depo_config.json
 for i, arg in enumerate(sys.argv[1:]):
     if arg == '--state' and i + 1 < len(sys.argv) - 1:
         STATE = sys.argv[i + 2].upper()
 
 CFG = get_config(STATE)
 
-INPUT_TXT  = 'FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt'
-OUTPUT_PDF = f'FINAL_DELIVERY/Easley_YellowRock_FINAL.pdf'
+INPUT_TXT  = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL_FORMATTED.txt'
+OUTPUT_PDF = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL.pdf'
 
 # --- Page geometry from config ---
 PAGE_W         = CFG['page_w']
@@ -185,9 +192,13 @@ def draw_page(c, page_data):
 def build_pdf(pages):
     """Render all pages to PDF."""
     c = canvas.Canvas(OUTPUT_PDF, pagesize=(PAGE_W, PAGE_H))
-    c.setTitle("Easley Deposition - Yellow Rock v. Westlake")
-    c.setAuthor("Marybeth E. Muir, CCR, RPR")
-    c.setSubject("Videotaped Deposition of Thomas L. Easley - March 13, 2026")
+    _witness   = _cfg.get('witness_name', 'UNKNOWN')
+    _depo_date = _cfg.get('depo_date', 'UNKNOWN')
+    _reporter  = _cfg.get('reporter_name', 'UNKNOWN')
+    _depo_type = _cfg.get('depo_type', 'Deposition')
+    c.setTitle(f"{CASE_SHORT} — {_depo_type} of {_witness}")
+    c.setAuthor(_reporter)
+    c.setSubject(f"{_depo_type} of {_witness} — {_depo_date}")
 
     for page_data in pages:
         draw_page(c, page_data)

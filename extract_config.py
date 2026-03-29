@@ -26,7 +26,7 @@ for candidate in ['corrected_text.txt', 'cleaned_text.txt', 'extracted_text.txt'
         break
 
 OUTPUT_FILE = 'depo_config.json'
-REPORTER_NAME = "MARYBETH E. MUIR, CCR, RPR"   # MB is always MB — not extracted
+REPORTER_NAME = "UNKNOWN — reporter_name required"   # never default to a real person's name
 
 DAY_NAMES = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
