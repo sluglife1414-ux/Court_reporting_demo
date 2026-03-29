@@ -119,6 +119,7 @@ supply from steno, not an engine error.
 | OI-4 | Revenue model | Scott + PM | Per-depo fee, monthly subscription, or revenue share? MB = first signal. |
 | OI-5 | KB-008 casing size notation | Scott | Style A vs Style B still unresolved. Interim = Style B. |
 | OI-6 | AD_QUESTIONS.md open items | Scott + AD | 6 open questions for AD before NY WC is production-ready. |
+| OI-7 | PM bot GitHub access | Scott | GitHub connector not set up in Claude.ai — only Calendar/Gmail connected. Fix: Settings → Integrations → GitHub. If unavailable, build PM_BRIEFING.md (single paste file). Pinned — do after Fourman run. |
 
 ---
 
