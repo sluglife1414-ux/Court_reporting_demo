@@ -4,7 +4,7 @@
 #
 # PM: surface these to Scott at next touchpoint with AD.
 # Code Claude: do not guess on these — wait for answers.
-# Last updated: 2026-03-29
+# Last updated: 2026-03-30
 
 ---
 
@@ -20,9 +20,17 @@
 | Depo time | ✅ 4:03 p.m. (from AD reference PDF) |
 | Reporter name | ✅ ALICIA D'ALOTTO (confirmed from cert page) |
 | Notary title | ✅ Notary Public of the State of New York |
+| Reporter address | ✅ 89 Lincoln Street, Staten Island, New York 10314 (from reference PDF) |
+| Reporter phone | ✅ 732-713-9869 (from reference PDF) |
+| Claimant atty firm | ✅ O'CONNOR LAW PLLC, 7 Woodland Ave Suite 10, Larchmont NY 10538 (from reference) |
+| Claimant atty by | ✅ TIMOTHY BLUM, ESQ., of Counsel (from reference) |
+| Respondent atty firm | ✅ STEWART GREENBLATT MANNING & BAEZ, 6800 Jericho Tpke Suite 100W, Syosset NY 11791 |
+| Respondent atty by | ✅ BARRY FRIEDLICH, ESQ. (from reference) |
+| NY state config | ✅ All layout values measured from reference PDF via pdfplumber (2026-03-30) |
+| Caption page format | ✅ Reporter contact on page 1 lines 24-25 (matches reference) |
 | Notary reg. # | 🔴 PLACEHOLDER (01DA6000000) — need real number |
 | Cert page structure | 🔴 UNKNOWN — does she have one? (see Q2 below) |
-| Sample finished depo | 🔴 NOT RECEIVED — needed to lock in format |
+| Sample finished depo | 🔴 Q3 CLOSED — we used Fourman reference PDF directly (better than asking!) |
 | Credential letters | 🔴 UNKNOWN — RPR? CCR? None? |
 
 ---
@@ -49,16 +57,10 @@ Scott's note (2026-03-29): "there is no cert page in final — it her sig then a
 
 ---
 
-### Q3 — Sample Finished Depo
-**What we need:** One of her completed, certified WC depo PDFs (any case — doesn't need to be Fourman).
-**Why:** This is the master measurement reference. We use `pdfplumber` to extract:
-  - Exact margins
-  - Font size
-  - Line spacing
-  - Q/A indent positions
-  - Her exact cert language verbatim
-**Without it:** All format measurements use the NY Gotesman baseline (different reporter, same state).
-**Priority:** HIGH — every format decision is a guess until we have this.
+### ~~Q3 — Sample Finished Depo~~ ✅ CLOSED 2026-03-30
+We measured the Fourman reference PDF (0324Fourman2026wcbG3953702.pdf) directly with pdfplumber.
+All layout values are now exact (not estimated). See HOUSE_STYLE_MODULE_dalotto.md for locked values.
+Remaining unknowns: cert page language (Q2), notary reg # (Q1).
 
 ---
 
