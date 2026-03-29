@@ -1,6 +1,17 @@
 import re
+import glob
+import sys
 
-with open('031326yellowrock-ROUGH_T_1.rtf', 'r', encoding='utf-8', errors='replace') as f:
+rtf_files = glob.glob('*.rtf')
+if not rtf_files:
+    print('ERROR: No .rtf file found in current directory.')
+    sys.exit(1)
+if len(rtf_files) > 1:
+    print(f'WARNING: Multiple .rtf files found: {rtf_files}. Using: {rtf_files[0]}')
+rtf_file = rtf_files[0]
+print(f'Reading: {rtf_file}')
+
+with open(rtf_file, 'r', encoding='utf-8', errors='replace') as f:
     content = f.read()
 
 # Remove steno-specific blocks with nested braces approach

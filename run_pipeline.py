@@ -72,6 +72,11 @@ def parse_args():
         action='store_true',
         help='Print which steps would run without executing them.'
     )
+    parser.add_argument(
+        '--summary',
+        action='store_true',
+        help='Run AI summary step (build_summary.py). Off by default — opt-in only.'
+    )
     return parser.parse_args()
 
 
@@ -123,6 +128,12 @@ def main():
         return
 
     for script, key, description in steps:
+        # Summary is opt-in only — skip unless --summary flag passed
+        if key == 'summary' and not args.summary:
+            print(f"[SKIP] summary — off by default. Use --summary to enable.")
+            print()
+            continue
+
         print(f"[STEP] {description}")
         print(f"       Running {script}...")
 
