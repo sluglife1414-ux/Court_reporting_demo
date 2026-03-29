@@ -1,5 +1,5 @@
 # ═══════════════════════════════════════════════════════════════════
-# PROJECT_BOARD.md — SCOTT + CLAUDE PROJECT LEAD
+# PROJECT_BOARD.md — SCOTT + PROJECT LEAD CLAUDE
 # Deposition Transformation Engine
 # ═══════════════════════════════════════════════════════════════════
 # THIS FILE IS FOR SCOTT + PROJECT LEAD CLAUDE ONLY.
@@ -8,20 +8,94 @@
 # HOW TO USE:
 #   Ping project lead Claude any time — session start, mid-day,
 #   when something ships, when something breaks, or just to think.
-#   Claude will update this board, maintain CLAUDE.md accuracy,
-#   and rewrite CURRENT_SPRINT.md for the code Claudes.
+#   Claude will update this board, rewrite CURRENT_SPRINT.md for
+#   code Claudes, and keep the GitHub as the PM source of truth.
 # ═══════════════════════════════════════════════════════════════════
 
 ## PROJECT SNAPSHOT
 **Project:**      Deposition Transformation Engine
-**Root folder:**  `C:\Users\scott\OneDrive\Documents\CR_Depo_Transform`
-**Job folder:**   `C:\Users\scott\OneDrive\Documents\ad_foreman_0324` (current active run)
-**Version:**      v4.0 (state-agnostic core)
+**Active repo:**  `C:\Users\scott\OneDrive\Documents\mb_demo_engine_v4\`
+**GitHub:**       https://github.com/sluglife1414-ux/Court_reporting_demo (PRIVATE, branch: court_reporting)
+**Job folder:**   `C:\Users\scott\OneDrive\Documents\ad_foreman_0324\` (last run)
+**Version:**      v4.1 (state-agnostic core, config-driven builds, 2-pass verify)
 **Goal:**         90%+ automated depo cleanup, lawyer-ready output
-**Benchmark:**    117 manual corrections on Easley depo (Yellow Rock v. Westlake)
-**Current score:** 78% (L3-001, 2026-03-21) — target is 90%+
-**Run cost:**     ~$2–4 per full Easley-length run
-**Model:**        claude-sonnet-4-6
+**Run cost:**     ~$0.007/page actual — 13x headroom under $0.10 design ceiling
+**Model:**        claude-sonnet-4-6 (AI pass), claude-haiku-4-5-20251001 (summary/verify)
+
+---
+
+## WHAT THIS BUSINESS IS
+
+Scott is building a **court reporter AI assist** business.
+
+**The product:** Raw steno RTF → clean formatted deposition PDF + 9 supporting files.
+~90% quality. ~60 min runtime. $2–4 per full run.
+
+**The model:** CR delivers under their own name. Engine is invisible to lawyers/clients.
+Their brand. Their certification. Our engine = their power tool.
+
+**Current CRs in pipeline:**
+| Reporter | Location | Specialty | Status |
+|----------|----------|-----------|--------|
+| MB (Marybeth E. Muir, CCR, RPR) | Louisiana | Civil, engineering/petroleum | Active — meeting today 3/30 |
+| AD (Alicia D'Alotto) | New York | Workers Comp Board (WCB) | Fourman cold test ✅ complete |
+
+---
+
+## WHAT THE ENGINE PRODUCES (10 files per depo)
+
+Every run drops these in `FINAL_DELIVERY/`:
+1. `FINAL.pdf` — formatted deposition PDF (lawyer-ready)
+2. `FINAL_TRANSCRIPT.txt` — clean full transcript
+3. `CONDENSED.txt` — 4-line-per-page condensed version
+4. `EXHIBIT_INDEX.txt`
+5. `DEPOSITION_SUMMARY.txt` (Haiku AI, ~$0.06/depo)
+6. `MEDICAL_TERMS_LOG.txt` (WC/medical cases)
+7. `QA_FLAGS.txt` → being replaced by `build_review_sheet.py` (next build)
+8. `PROOF_OF_WORK.txt`
+9. `DELIVERY_CHECKLIST.txt`
+10. `WORD_CONCORDANCE.txt` (3-column layout, speaker index)
+
+---
+
+## ARCHITECTURE — THE 3-PASS WORKFLOW
+
+```
+Pass 1 — AI Engine (ai_engine.py)
+  → corrected_text.txt + correction_log.json
+  → Classifications: HIGH / MEDIUM / LOW confidence
+
+Pass 2 — Verify Agent (verify_agent.py) [BUILT, NOT YET RUN]
+  → Targets only HIGH confidence items
+  → Second-opinion AI pass, catches AI's own errors
+
+Pass 3 — Audio Agent (audio_agent.py) [DESIGNED, NOT BUILT]
+  → Detects MP3/M4A in depo folder
+  → Batches REVIEW gaps (unknown words, unclear audio)
+  → Whisper API transcription at exact timestamps
+  → Produces build_review_sheet.py output (CR's listening queue)
+
+CR approves → certified final
+```
+
+**CR state module system:**
+- Each CR has their own `HOUSE_STYLE_MODULE_<name>.md`
+- Each state has its own `STATE_SPECS/` config
+- NEVER cross-load modules (AD's NY WC rules ≠ MB's LA civil rules)
+
+---
+
+## COMPLETED DEPOS
+
+| Depo | Reporter | Pages (ours) | Pages (CR) | Gap | Status |
+|------|----------|-------------|------------|-----|--------|
+| Easley (Yellow Rock v. Westlake) | MB | 211 | 223 | 12 (known, acceptable) | ✅ Ready to send to MB |
+| YellowRock/Brandl | MB | 318 | — | — | ✅ Complete |
+| Fourman WCB (M.D.) | AD | 27 | 28 | 1 (steno content only) | ✅ Cold test baseline |
+
+**Page gap note:** Gap is not a bug. MB's CaseCATalyst preserves short steno-stroke
+line breaks; our engine reflows at 52 chars. 1-page Fourman gap = content AD must
+supply from steno, not an engine error.
 
 ---
 
@@ -29,8 +103,9 @@
 
 | # | Blocker | Owner | Notes |
 |---|---------|-------|-------|
-| B-1 | KB-008 casing size notation unresolved | Scott | Style A vs Style B. Need Muir confirmation or Scott's call. Engine currently uses Style B as interim. |
-| B-2 | KB-006 scoring dispute unresolved | Scott | Casing physics rule valid — but was it a planted test target in L3-001? SCORES_LOG may have answer. |
+| B-1 | Easley + Brandl not yet formally reviewed by MB | Scott | Never sent. MB has not seen our output. Start feedback loop. |
+| B-2 | verify_agent.py never run | Code Claude | Built in Sessions 13-14. Fourman = baseline. Run it. |
+| B-3 | Phone audio download blocked | Scott | Leon M4A stuck on phone. Can't test audio agent until resolved. |
 
 ---
 
@@ -38,19 +113,19 @@
 
 | # | Item | Owner | Notes |
 |---|------|-------|-------|
-| OI-1 | KB numbering inconsistency | Scott + Claude | KB-001–011 use "KB-", 012–014 use "LA-KB-", 015 back to "KB-". Standardize? |
-| OI-2 | NY WC engine config | Scott | ai_engine.py has LA modules commented out for NY WC but no NY WC version exists yet. Separate script or config flag? |
-| OI-3 | SCORES_LOG location | Scott | Referenced in KB-009 as only valid performance measure. Where does it live — file, spreadsheet, notes? |
-| OI-4 | format_final.py — does it exist? | Scott | Listed as Stage 4 of pipeline. Never uploaded. Built or still TODO? |
-| OI-5 | extract_rtf.py — does it exist? | Scott | Stage 1. Same question. |
-| OI-6 | steno_cleanup.py — does it exist? | Scott | Stage 2. Same question. |
+| OI-1 | Identify mystery RTF Scott found | Scott | Another RTF discovered 3/28. Which depo? Which reporter? |
+| OI-2 | Leon CA WCAB state module | Code Claude | No STATE_MODULE_california_wcab.md exists yet. Needed for Leon run. |
+| OI-3 | NY WC state module | Code Claude | ad_foreman_0324 uses inline config. Extract to STATE_MODULE_ny_wcb.md? |
+| OI-4 | Revenue model | Scott + PM | Per-depo fee, monthly subscription, or revenue share? MB = first signal. |
+| OI-5 | KB-008 casing size notation | Scott | Style A vs Style B still unresolved. Interim = Style B. |
+| OI-6 | AD_QUESTIONS.md open items | Scott + AD | 6 open questions for AD before NY WC is production-ready. |
 
 ---
 
 ## 🟢 CURRENT SPRINT
 → See **CURRENT_SPRINT.md** for full code Claude instructions.
 
-**Sprint goal:** Close the gap from 78% → 90%+ on Easley benchmark
+**Sprint goal:** Leon setup + verify_agent.py first run + build_review_sheet.py
 **Active tasks:** See CURRENT_SPRINT.md
 
 ---
@@ -59,17 +134,20 @@
 
 | Date | What shipped | Notes |
 |------|-------------|-------|
-| 2026-03-21 | MASTER_DEPOSITION_ENGINE_v4.md | State-agnostic rebuild. 13 layers. |
-| 2026-03-21 | ai_engine.py v2.0 | Full chunked API pipeline, prompt caching, checkpoint/resume |
-| 2026-03-21 | STATE_MODULE_louisiana_engineering.md | Louisiana engineering cases |
-| 2026-03-21 | STATE_MODULE_nj_workers_comp.md | NJ workers comp |
-| 2026-03-21 | HOUSE_STYLE_MODULE_muir.md | Marybeth Muir CCR RPR house style |
-| 2026-03-22 | KB-010 (verbatim rule) | Learned from L1-001 audit — critical fix |
-| 2026-03-22 | KB-011 (abrupt endings) | Learned from L1-001 audit |
-| 2026-03-22 | LA-KB-012 (two-pass architecture) | Learned from PROD-RUN-001, Easley 191K chars |
-| 2026-03-22 | LA-KB-013, LA-KB-014 | Steno artifact fixes now in steno_cleanup.py |
-| 2026-03-23 | KB-015 (E-mail house style) | Muir confirmed spelling |
-| 2026-03-29 | CLAUDE.md, PROJECT_BOARD.md, CURRENT_SPRINT.md | Project management system stood up |
+| 2026-03-25 | ai_engine.py v2.0 | Full chunked API pipeline, prompt caching, checkpoint/resume |
+| 2026-03-25 | steno_cleanup.py | 8-step steno artifact cleanup |
+| 2026-03-26 | extract_config.py | Auto-extracts 19 case metadata fields from transcript |
+| 2026-03-26 | run_pipeline.py | One command runs all 9 steps; --skip-ai, --from, --dry-run flags |
+| 2026-03-26 | audio_resolve POC | 4/4 PASS on Brat→Bright Spot. Silence-padding fix applied. |
+| 2026-03-27 | Option B anchor injection | 333/333 Brandl items covered (292 exact, 31 approx, 10 unknown) |
+| 2026-03-27 | test_regression.py | 36 tests, ~3 sec/run, in both repos |
+| 2026-03-27 | build_summary.py | Haiku AI, 3-5 para narrative summary, ~$0.06/depo |
+| 2026-03-27 | MB_REVIEW doc system | build_mb_review_v2.py — proof + action items for CR |
+| 2026-03-28 | Fourman WCB cold test | 27 pages vs AD's 28. All format bugs fixed. git init done. |
+| 2026-03-28 | specialist_verify.py | 6-agent verification pass |
+| 2026-03-28 | HOUSE_STYLE_MODULE_dalotto.md | AD (NY WC) style seed |
+| 2026-03-28 | AD_QUESTIONS.md | 6 open items for AD before Fourman ships |
+| 2026-03-29 | PM coordination system | CLAUDE.md, PROJECT_BOARD.md, CURRENT_SPRINT.md |
 
 ---
 
@@ -77,41 +155,89 @@
 
 | Priority | Item | Notes |
 |----------|------|-------|
-| HIGH | HOUSE_STYLE_MODULE_dalotto.md | Alicia D'Alotto, NY WC reporter. Needed before NY WC production runs. |
-| HIGH | STATE_MODULE_ny_wcb.md | NY Workers Comp Board rules. Paired with D'Alotto module. |
-| HIGH | Benchmark run: get to 90%+ | Run ai_engine.py against Easley, score it, close the gap |
-| MEDIUM | Auto-glossary builder | Build glossary.txt from first-run corrections automatically |
-| MEDIUM | Billing/invoice output (FILE 9) | Add to FINAL_DELIVERY package |
-| LOW | Audio timestamp cross-reference | Tie transcript lines to audio timestamps |
+| HIGH | build_review_sheet.py | CR listening queue: page/line + audio timestamp per gap. Replaces QA_FLAGS.txt |
+| HIGH | Audio agent (audio_agent.py) | Whisper API, detect MP3/M4A in folder, batch REVIEW gaps |
+| HIGH | Send Easley + Brandl to MB | Start feedback loop. MB has never reviewed our output. |
+| MEDIUM | STATE_MODULE_california_wcab.md | Needed for Leon run |
+| MEDIUM | STATE_MODULE_ny_wcb.md | Extract from ad_foreman_0324 inline config |
+| MEDIUM | AD_QUESTIONS.md resolution | Get answers from AD before NY WC goes to production |
 | LOW | Multi-witness deposition handling | Currently single-witness only |
-| LOW | Web-based state module selector UI | Nice to have — not blocking anything |
+| LOW | Auto-glossary builder | Build glossary.txt from first-run corrections automatically |
 
 ---
 
-## 🧠 DECISIONS LOG — What was decided and why
+## 🧠 DECISIONS LOG
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
-| Pre-2026-03-29 | State-agnostic core (v4 rebuild) | Engine was too coupled to Louisiana. Now drop-in state modules. |
-| Pre-2026-03-29 | GREGG + MARGIE excluded from API chunks | Too many tokens per chunk. Key rules captured in Layer 5, Layer 6, KB entries. Still used in co-work sessions. |
-| Pre-2026-03-29 | claude-sonnet-4-6 not Opus | Cost vs quality tradeoff at $2–4/run |
-| Pre-2026-03-29 | Chunk at paragraph boundaries | Preserves Q&A integrity — never split a Q/A pair |
-| Pre-2026-03-29 | 100K char SIZE GATE | ~25K input tokens + 8 output files = hits 32K ceiling above 100K chars |
-| 2026-03-22 | Two-pass mode | Hit token ceiling on 191K Easley depo. Pass 1 = read + notes. Pass 2 = write. |
-| 2026-03-23 | E-mail not email | Muir house style confirmed in Cox depo (030626yellowrock-FINAL) |
+| 2026-03-25 | claude-sonnet-4-6 for AI pass | Cost vs quality — $2–4/run acceptable |
+| 2026-03-25 | Chunk at paragraph boundaries | Preserves Q&A integrity — never split a Q/A pair |
+| 2026-03-26 | --skip-ai flag required if corrected_text.txt exists | Protect 56 min of AI work from accidental overwrite |
+| 2026-03-27 | 10-Cent Page Rule | Design discipline. $0.007 actual vs $0.10 ceiling = 13x headroom |
+| 2026-03-27 | Mama Bear Rule | Commit before every build. Both repos. Codebase = baby. |
+| 2026-03-28 | muir.md BLOCKED from NY runs | NY WC ≠ LA civil. Never cross-load style modules. |
+| 2026-03-28 | "Agent" not "AI" in user-facing text | CR audience — "agent" is clearer and less alarming |
+| 2026-03-28 | Review sheet = CR listening queue | Page/line + context + audio timestamp. CR listens only to flagged moments |
+| 2026-03-28 | Fourman = 1-pass baseline | verify_agent.py not run intentionally — cold baseline first |
 
 ---
 
-## 📝 SESSION LOG — Running notes
+## 📝 SESSION LOG
 
-**2026-03-29**
-- Project management system created (PROJECT_BOARD, CLAUDE.md, CURRENT_SPRINT)
-- 16 open items identified and catalogued
-- KB-008 confirmed NOT Style B per Scott — answer still needed
-- Project root established: `C:\Users\scott\OneDrive\Documents\CR_Depo_Transform`
-- Architecture conversation started (job folders vs engine folder) — parked for now, not ready yet
-- Next: work through open items list one by one
+**2026-03-29 (PM system created)**
+- CLAUDE.md, PROJECT_BOARD.md, CURRENT_SPRINT.md created for PM coordination
+
+**2026-03-28 (Sessions 13-14 — Fourman WCB cold test)**
+- Full cold run: 27 pages vs AD's 28 — parity confirmed ✅
+- All 10 format bugs fixed
+- git init on ad_foreman_0324
+- specialist_verify.py built (not yet run on Fourman)
+- Leon depo discovered (CA WCAB, alicia_demo/)
+- Architecture: 3-pass workflow designed, review sheet spec'd
+
+**2026-03-27 (Sessions 7-12)**
+- Easley tip-to-tail rerun → 202 pages reproducible
+- 10 format bugs found and fixed vs MB reference
+- YellowRock/Brandl full run: 318 pages, 2,381 corrections
+- Option B anchor injection: 333/333 items covered
+- Regression harness: 36 tests in both repos
+- MB_REVIEW doc system built
+
+**2026-03-25–26 (Sessions 1-6)**
+- ai_engine.py v2.0 rebuilt
+- steno_cleanup.py 8 steps
+- extract_config.py, run_pipeline.py created
+- audio_resolve POC: 4/4 PASS
+- Easley full run: 1,155 corrections, 51.7 min, 211 pages
+
+---
+
+## SCOTT'S OPERATING RULES (PM must internalize)
+
+1. **Simple but no simpler.** Reliability > cleverness. 1969 Valiant, not a race car.
+2. **Look before you dive.** Flag "pool has no water" before executing. One sentence, then proceed.
+3. **FORK flag.** Hack vs right solution — surface it, let Scott decide. Log hacks as `[TECH DEBT]`.
+4. **Mama Bear Rule.** Commit before every build. Both repos tracked. Codebase = baby.
+5. **Buffet vs Pizza.** Scott unsure → show 2-3 options. Scott knows → execute, flag risks only.
+6. **"Button it up" = full housekeeping.** Commit code, update bug table, update docs, report clean.
+
+---
+
+## HOW CODE CLAUDES COMMUNICATE BACK TO PM
+
+When Code Claude finishes a task, it appends to CURRENT_SPRINT.md:
+
+✅ TASK DONE — [summary]
+Files changed: [list]
+Ready for: [what's next]
+
+🔴 BLOCKED — [what's blocking]
+Need from Scott/PM: [specific question]
+
+⚠️ FLAG — [unexpected finding]
+Recommendation: [suggestion]
 
 ---
 *Maintained by: Project Lead Claude + Scott*
+*Last updated: 2026-03-30*
 *Code Claudes: stay in CLAUDE.md and CURRENT_SPRINT.md*

@@ -4,142 +4,153 @@
 # ═══════════════════════════════════════════════════════════════════
 # Written by: Project Lead Claude
 # For:        Code Claudes working in Claude Code
-# Updated:    2026-03-29
+# Updated:    2026-03-30
 # ═══════════════════════════════════════════════════════════════════
 # BEFORE YOU TOUCH ANYTHING:
-#   1. Read CLAUDE.md fully — that is the technical ground truth.
-#   2. Read this file fully — these are your exact tasks.
+#   1. Read CLAUDE.md fully — technical ground truth.
+#   2. Read this file fully — your exact tasks.
 #   3. Do not invent scope. Do exactly what is written here.
 #   4. When done with a task, say so clearly so Scott can log it.
 # ═══════════════════════════════════════════════════════════════════
 
 ## SPRINT GOAL
-Close the gap from 78% → 90%+ on the Easley benchmark.
-The Easley depo (031326yellowrock-ROUGH_T_1.rtf, ~191K chars,
-Yellow Rock v. Westlake) is the reference dataset.
-117 manual corrections in PROOF_OF_WORK.txt = the answer key.
+
+Three parallel tracks:
+1. **Leon folder setup** — copy engine to alicia_demo/, configure for CA WCAB
+2. **verify_agent.py first run** — run on Fourman WCB, report results
+3. **build_review_sheet.py** — CR listening queue, replaces QA_FLAGS.txt
 
 ---
 
-## CONTEXT YOU MUST HOLD
+## WHERE THINGS STAND (read before starting)
 
-**The pipeline:**
+**Active engine:** `C:\Users\scott\OneDrive\Documents\mb_demo_engine_v4\`
+**GitHub:** https://github.com/sluglife1414-ux/Court_reporting_demo (PRIVATE, branch: court_reporting)
+**Last cold run:** Fourman WCB (M.D.) — 27 pages vs AD's 28. All format bugs fixed. ✅
+
+**The pipeline (run in order via run_pipeline.py):**
 ```
-extract_rtf.py  →  extracted_text.txt
-steno_cleanup.py → cleaned_text.txt
-ai_engine.py    → corrected_text.txt + correction_log.json
-format_final.py → FINAL_DELIVERY/ (8 output files)
+extract_rtf.py      → raw_text.txt
+steno_cleanup.py    → cleaned_text.txt
+ai_engine.py        → corrected_text.txt  (Claude API, ~56 min, checkpoints every chunk)
+extract_config.py   → depo_config.json    (auto-extracts 19 case metadata fields)
+format_final.py     → FINAL_FORMATTED.txt
+build_pdf.py        → FINAL.pdf
+build_transcript.py → FINAL_TRANSCRIPT.txt
+build_condensed.py  → CONDENSED.txt
+build_deliverables.py → 5 analysis docs
 ```
 
-**The AI correction stage (ai_engine.py) is what we are optimizing.**
-It reads cleaned_text.txt, calls Claude API in ~3,000-char chunks,
-applies all engine rules, and outputs corrected_text.txt.
+**One command runs it all:**
+```
+python run_pipeline.py              # full run (~60 min)
+python run_pipeline.py --skip-ai   # post-AI only (~2 min, use when corrected_text.txt exists)
+python run_pipeline.py --from STEP # resume from any step
+python run_pipeline.py --dry-run   # preview without running
+```
 
-**The scoring target:**
-correction_log.json output must match ≥ 90% of the 117 corrections
-in PROOF_OF_WORK.txt. We are currently at 78%.
+**⚠️ CRITICAL:** NEVER run without --skip-ai if corrected_text.txt already exists and is >50KB.
+That overwrites 56 minutes of API work.
 
-**Key gotcha — verbatim rule (KB-010):**
-NEVER correct what the witness said. Only correct steno machine errors.
-This was a critical failure in L1-001. A 30-year veteran flagged it
-as a disqualifying error. Do not touch witness speech, ever.
+**3-pass architecture (current design):**
+```
+Pass 1 — ai_engine.py         → corrected_text.txt + correction_log.json
+Pass 2 — verify_agent.py      → second-opinion on HIGH confidence items [BUILT, NOT RUN]
+Pass 3 — audio_agent.py       → Whisper API on REVIEW gaps [DESIGNED, NOT BUILT]
+```
 
-**Key gotcha — two-pass mode:**
-The Easley depo is 191K chars — well above the 100K SIZE GATE.
-ai_engine.py must run in two-pass mode (see CLAUDE.md Layer 2, Steps F+G).
-Pass 1 writes PROCESSING_NOTES.txt only. Pass 2a + 2b write everything else.
-Do NOT try to produce all 8 output files in a single pass — it will hit
-the 32K output token ceiling and produce nothing.
-
-**Key gotcha — prompt caching:**
-The system prompt (~47K tokens) is cached after chunk 1.
-Subsequent chunks cost ~10% of chunk 1. Don't break this.
-The cache_control block in correct_chunk() must stay intact.
+**Style module rule:** Each CR has their own HOUSE_STYLE_MODULE. NEVER cross-load.
+muir.md = MB (LA civil). dalotto.md = AD (NY WC). They are different CRs in different states.
 
 ---
 
 ## ⚠️ OPEN ITEMS THAT AFFECT YOUR WORK
 
-These are unresolved. Do not make decisions on these — flag and wait:
+Do not resolve these without Scott's input — flag and wait:
 
-- **KB-008:** Casing size notation (Style A vs Style B) is UNRESOLVED.
-  Engine currently uses Style B as interim. Do not change this until
-  Scott confirms the answer.
-- **KB-006:** Casing physics rule scoring is disputed. Rule itself is
-  valid — apply it. But do not adjust scoring expectations around it.
-- **KB numbering:** Some entries use "LA-KB-" prefix, most use "KB-".
-  Do not renumber until Scott decides. Keep as-is.
+- **AD_QUESTIONS.md** has 6 open items for Alicia D'Alotto. Do not finalize NY WC format
+  until those are answered.
+- **No STATE_MODULE_california_wcab.md exists.** Leon (alicia_demo/) is CA WCAB.
+  You will need to create a stub — flag to Scott before going live on that run.
+- **verify_agent.py has never been run.** Fourman is the baseline. Run it, report results,
+  do NOT make judgment calls about what the agent gets wrong — report only.
 
 ---
 
 ## ACTIVE TASKS
 
-### TASK 1 — Verify pipeline scripts exist
-**Status:** UNKNOWN — needs verification
-**Files to check:** All in `C:\Users\scott\OneDrive\Documents\CR_Depo_Transform`
-
-Check whether these scripts exist and are functional:
-- `extract_rtf.py` (Stage 1)
-- `steno_cleanup.py` (Stage 2)
-- `format_final.py` (Stage 4)
-
-For each one:
-- If it exists → report what it does and its current version/status
-- If it does not exist → report it as missing so Scott can decide priority
-
-Do NOT build any of these yet. Report first.
-
----
-
-### TASK 2 — Run scoring pass on Easley depo
-**Status:** PENDING (do after Task 1 confirms pipeline is intact)
-**Input:** 031326yellowrock-ROUGH_T_1.rtf
-**Reference:** PROOF_OF_WORK.txt (117 manual corrections = answer key)
-**Output:** Score report comparing correction_log.json to answer key
+### TASK 1 — Leon folder setup
+**Status:** READY
+**Folder:** `C:\Users\scott\OneDrive\Documents\alicia_demo\`
+**RTF:** `0313Leon2026_T.rtf` (CaseCATalyst, March 13, California WCAB)
+**Audio:** `-7849480339599919352.mp3` (iPhone Voice Memo, 13m 53s) — audio agent test PENDING
 
 Steps:
-1. Run full pipeline on Easley depo (two-pass mode — it's 191K chars)
-2. Compare correction_log.json to PROOF_OF_WORK.txt
-3. Report: how many of the 117 corrections did the engine catch?
-4. Report: what categories are we missing? (objections, exhibits, verbatim, punctuation, etc.)
-5. Do NOT modify any engine files during this task — observe only
-
-The goal is a gap analysis, not a fix. We fix in Task 3.
+1. Confirm the alicia_demo/ folder exists and RTF is there
+2. Copy the pipeline scripts from mb_demo_engine_v4/ into alicia_demo/
+   (or confirm run_pipeline.py can point at the folder — check first)
+3. Create a stub `depo_config.json` for Leon — flag all fields you can't auto-detect
+4. Create a stub `STATE_MODULE_california_wcab.md` — mark it DRAFT, flag to Scott
+5. Do NOT run the AI pass yet — report ready state and wait
 
 ---
 
-### TASK 3 — Gap closure (do after Task 2 gap analysis)
-**Status:** BLOCKED on Task 2
-**Goal:** Improve score from 78% to 90%+
+### TASK 2 — Run verify_agent.py on Fourman
+**Status:** READY
+**Folder:** `C:\Users\scott\OneDrive\Documents\ad_foreman_0324\`
+**Script:** `verify_agent.py` (also in mb_demo_engine_v4/ as specialist_verify.py)
+**Input:** correction_log.json from the Fourman run (122 corrections: 62 HIGH / 42 MED / 18 LOW)
 
-Based on Task 2 gap analysis, make targeted improvements to:
-- `KNOWLEDGE_BASE.txt` — add new KB entries for confirmed missed patterns
-- `ai_engine.py` — only if a specific rule application is broken in code
-- Do NOT touch `MASTER_DEPOSITION_ENGINE_v4.md` without Scott's approval
-- Do NOT touch any STATE_MODULE or HOUSE_STYLE_MODULE without Scott's approval
+Steps:
+1. Confirm verify_agent.py exists in ad_foreman_0324/ (or copy from mb_demo_engine_v4/)
+2. Run it against the Fourman correction_log.json
+3. Report:
+   - How many HIGH items did it agree with / flag / overturn?
+   - Any new catches the AI pass missed?
+   - Any false positives (things the agent called wrong that are actually right)?
+4. Do NOT auto-apply changes — report only. Scott decides what to accept.
 
-For every change you make:
-- State what you changed
-- State why (which missed corrections it addresses)
-- State what KB entry it maps to (or that a new KB entry is needed)
+---
+
+### TASK 3 — Build build_review_sheet.py
+**Status:** READY TO DESIGN
+**Purpose:** Replace QA_FLAGS.txt with a structured CR listening queue
+**Output format (per gap):**
+```
+Page [X], Line [Y]
+Context: "[5 words before] >>> [REVIEW WORD] <<< [5 words after]"
+Audio timestamp: [MM:SS] (if audio file present in folder)
+Action needed: [LISTEN / CONFIRM NAME / SUPPLY]
+```
+
+Steps:
+1. Read QA_FLAGS.txt from the Fourman FINAL_DELIVERY/ to understand current format
+2. Read format_final.py — find where [REVIEW] tags are generated and stripped
+3. Design build_review_sheet.py to:
+   - Read corrected_text.txt and find all [REVIEW] tags
+   - Map each tag to page/line using line_map.json (if it exists) or derive from format
+   - Extract 5-word context window around each tag
+   - If an audio file exists in the folder, calculate approximate timestamp
+     (timestamp = audio_length * (review_line / total_lines))
+   - Output REVIEW_SHEET.txt in FINAL_DELIVERY/
+4. Add build_review_sheet.py as a step in run_pipeline.py (after build_deliverables.py)
+5. FORK: if timestamp calculation is complex, flag it — Scott may want to defer
 
 ---
 
 ## DONE THIS SPRINT
-*(Project Lead Claude updates this when Scott confirms something shipped)*
 
 | Task | Completed | Notes |
 |------|-----------|-------|
-| Project management system | 2026-03-29 | CLAUDE.md, PROJECT_BOARD.md, CURRENT_SPRINT.md created |
+| PROJECT_BOARD.md updated | 2026-03-30 | Full state captured — PM bot now current |
+| CURRENT_SPRINT.md updated | 2026-03-30 | Replaced stale 78%→90% sprint with current tasks |
 
 ---
 
 ## HOW TO COMMUNICATE BACK
 
-When you finish a task or hit a blocker, be explicit:
-
 **If task complete:**
-> ✅ TASK [#] DONE — [one line summary of what you did]
+> ✅ TASK [#] DONE — [one line summary]
 > Files changed: [list]
 > Ready for: [what comes next]
 
@@ -151,186 +162,10 @@ When you finish a task or hit a blocker, be explicit:
 > ⚠️ FLAG — [what you found, where, why it matters]
 > Recommendation: [what you think should happen]
 
-Do not silently fix things outside your task scope.
-Flag them and wait. Over-communicate. Scott wants to know everything.
+Do not silently fix things outside your task scope. Flag and wait.
+Over-communicate. Scott wants to know everything.
 
 ---
 *Written by: Project Lead Claude*
-*Last updated: 2026-03-29*
+*Last updated: 2026-03-30*
 *Next update: when Scott pings with new progress or decisions*
-
----
-
-# ═══════════════════════════════════════════════════════════════════
-# PM FULL BRIEFING — FROM CODE CLAUDE (mb_demo_engine_v4)
-# Appended: 2026-03-29 by Claude Code (worktree: romantic-dubinsky)
-# ═══════════════════════════════════════════════════════════════════
-# PM — Read this before making any decisions. The project has moved
-# significantly past what CLAUDE.md currently reflects.
-# ═══════════════════════════════════════════════════════════════════
-
-## ⚠️ CRITICAL REORIENTATION — TWO CODEBASES
-
-The CLAUDE.md in this folder (`CR_Depo_Transform`) reflects an older
-snapshot (circa 2026-03-22). The REAL production engine lives here:
-
-**ACTIVE ENGINE:**
-`C:\Users\scott\OneDrive\Documents\mb_demo_engine_v4\`
-
-`CR_Depo_Transform\` = early sandbox / reference only.
-All future code work happens in `mb_demo_engine_v4\`.
-
----
-
-## WHAT THIS BUSINESS IS
-
-Scott is building a **court reporter AI assist** business.
-
-**The product:** Raw steno RTF → clean, formatted deposition PDF + 9
-supporting files, ~90%+ quality, ~60 minutes runtime.
-
-**The customer:** Court reporters (CRs) who produce deposition
-transcripts. The engine augments their work — it does not replace them.
-Their name, their brand, their certification. Our engine = their power tool.
-
-**Current CRs in pipeline:**
-| Reporter | Location | Specialty | Status |
-|----------|----------|-----------|--------|
-| MB (Marybeth E. Muir, CCR, RPR) | Louisiana | Civil, engineering/petroleum | Active client — reviewing output |
-| AD (Alicia D'Alotto) | New York | Workers Comp Board (WCB) | Cold test complete |
-
----
-
-## WHAT THE ENGINE PRODUCES (10 files per depo)
-
-Every run drops these in `FINAL_DELIVERY/`:
-1. `FINAL.pdf` — formatted deposition PDF (lawyer-ready)
-2. `FINAL_TRANSCRIPT.txt` — clean full transcript
-3. `CONDENSED.txt` — 4-line-per-page condensed version
-4. `EXHIBIT_INDEX.txt`
-5. `DEPOSITION_SUMMARY.txt` (Haiku AI, ~$0.06/depo)
-6. `MEDICAL_TERMS_LOG.txt` (WC/medical cases)
-7. `QA_FLAGS.txt` → being replaced by `build_review_sheet.py` (next build)
-8. `PROOF_OF_WORK.txt`
-9. `DELIVERY_CHECKLIST.txt`
-10. `WORD_CONCORDANCE.txt` (3-column layout, 7 pages, speaker index)
-
----
-
-## ARCHITECTURE — THE 3-PASS WORKFLOW (DESIGNED, PARTIALLY BUILT)
-
-```
-Pass 1 — AI Engine (ai_engine.py)
-  → corrected_text.txt + correction_log.json
-  → 122 corrections classified HIGH / MEDIUM / LOW
-
-Pass 2 — Verify Agent (verify_agent.py) [BUILT, NOT YET RUN]
-  → Targets only 62 HIGH confidence items
-  → Second-opinion AI pass, catches AI's own errors
-
-Pass 3 — Audio Agent (audio_agent.py) [DESIGNED, NOT BUILT]
-  → Detects MP3/M4A in depo folder
-  → Batches REVIEW gaps (unknown words, unclear audio)
-  → Whisper API transcription at exact timestamps
-  → Produces review_sheet.py (CR's listening queue)
-
-CR approves → certified final
-```
-
-The Review Sheet (not yet built) = the CR's listening queue:
-page/line + context + audio timestamp per gap. CR listens only to
-the flagged moments, not the whole recording.
-
----
-
-## COMPLETED DEPOS (PRODUCTION RUNS)
-
-| Depo | Reporter | Pages (ours) | Pages (CR) | Gap | Status |
-|------|----------|-------------|------------|-----|--------|
-| Easley (Yellow Rock v. Westlake) | MB | 211 | 223 | 12 (known, acceptable) | ✅ Ready to send to MB |
-| YellowRock/Brandl | MB | 318 | — | — | ✅ Complete |
-| Fourman WCB (M.D.) | AD | 27 | 28 | 1 (steno content only) | ✅ Cold test baseline |
-
-**Fourman** = first cold test of the NY WC format. All format bugs fixed.
-27 vs AD's 28 pages — 1-page gap is content AD needs to supply from steno,
-not an engine error. Parity confirmed.
-
----
-
-## NEXT BUILDS (in priority order)
-
-| # | Task | Who | Status |
-|---|------|-----|--------|
-| 1 | **MB meeting 3/30** — 30 min walkthrough | Scott | 🔴 TOMORROW |
-| 2 | **Identify mystery RTF** Scott found | Scott + Code Claude | 🔴 Monday |
-| 3 | **Leon folder setup** — copy engine to alicia_demo/, update config for CA WCAB | Code Claude | 🔴 Ready |
-| 4 | **Run verify_agent.py on Fourman** — first 2-pass test | Code Claude | 🔴 Ready |
-| 5 | **build_review_sheet.py** — page/line + audio timestamp, replaces QA_FLAGS | Code Claude | 🟡 |
-| 6 | **Audio agent design** — Whisper API, batch REVIEW gaps | Code Claude + Scott | 🟡 |
-| 7 | **HOUSE_STYLE_MODULE_dalotto.md** — AD's NY WC style rules | Code Claude | 🟡 |
-| 8 | **Send Easley + Brandl to MB** — formal review, start feedback loop | Scott | 🔴 Waiting on Scott |
-
----
-
-## LEON DEPO — NEXT TEST CASE
-
-**Purpose:** First CA WCAB run + first audio agent test
-**Folder:** `C:\Users\scott\OneDrive\Documents\alicia_demo\`
-**RTF:** `0313Leon2026_T.rtf` (CaseCATalyst, March 13)
-**Audio:** `-7849480339599919352.mp3` (iPhone Voice Memo, 13m 53s)
-**Reporter:** AD (Alicia D'Alotto)
-**State:** California WCAB (NOT NY — different state module needed)
-**Note:** No AD final to compare against. Pure pipeline + audio agent test.
-
----
-
-## BUSINESS MODEL CONTEXT (PM needs this for pricing/marketing)
-
-**Positioning:** Augment CR brand, not replace. CR still certifies.
-Engine removes the grunt work — steno artifact cleanup, formatting,
-exhibit tracking, Q&A structure. CR's value add = judgment + certification.
-
-**Economics (10-Cent Page Rule — design discipline, not pricing):**
-- Actual API cost: ~$0.007/page (13x headroom under $0.10 ceiling)
-- Every architecture decision stress-tested: can it survive $0.10/page?
-- Current: YES. 93% of budget unused.
-
-**Revenue model (TBD — PM to help think through):**
-- Per-depo fee to CR? Monthly subscription? Revenue share?
-- MB is the first real customer. Her feedback = product-market fit signal.
-- Scott has NOT yet formally delivered output to MB for review.
-
-**Key constraint:** CR delivers under their own name. Product must be
-invisible to lawyers/clients. Engine = back office, not front office.
-
----
-
-## SCOTT'S OPERATING RULES (PM must internalize these)
-
-1. **Simple but no simpler.** Reliability > cleverness. 1969 Valiant, not a race car.
-2. **Look before you dive.** Flag "pool has no water" before executing. One sentence, then proceed.
-3. **FORK flag.** Hack vs right solution — surface it, let Scott decide. Log hacks as `[TECH DEBT]`.
-4. **Mama Bear Rule.** Commit before every build. Both repos tracked. Codebase = baby.
-5. **Buffet vs Pizza.** Scott unsure → show 2-3 options. Scott knows → execute, flag risks only.
-6. **"Button it up" = full housekeeping.** Commit code, update bug table, update docs, report clean.
-
----
-
-## HOW CODE CLAUDES COMMUNICATE BACK TO PM
-
-When Code Claude finishes a task, it appends to this file using:
-
-✅ TASK DONE — [summary]
-Files changed: [list]
-Ready for: [what's next]
-
-🔴 BLOCKED — [what's blocking]
-Need from Scott/PM: [specific question]
-
-⚠️ FLAG — [unexpected finding]
-Recommendation: [suggestion]
-
----
-*PM Briefing written by: Code Claude (mb_demo_engine_v4 worktree)*
-*Date: 2026-03-29*
-*Source: memory system + cold_start_primer.md + project_next_steps.md*
