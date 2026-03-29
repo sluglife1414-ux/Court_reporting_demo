@@ -40,6 +40,7 @@ ALL_STEPS = [
     ('ai_engine.py',         'ai',           'AI correction pass -> corrected text + correction log  [~56 min]'),
     ('verify_agent.py',      'verify',       'Pass 2: Haiku reviews HIGH corrections -> verify_log.json  [~1 min]'),
     ('apply_verify.py',      'apply_verify', 'Apply verify: re-tag DISAGREE items as [REVIEW] in corrected_text.txt'),
+    ('specialist_verify.py', 'specialist',   'Pass 3: 6-agent specialist review -> specialist_verify_log.json  [~2 min]'),
     ('extract_config.py',    'config',       'Auto-extract case config -> depo_config.json'),
     ('format_final.py',      'format',       'Format final -> FINAL_FORMATTED.txt'),
     ('build_pdf.py',         'pdf',          'Build PDF -> FINAL.pdf'),
@@ -50,7 +51,7 @@ ALL_STEPS = [
 ]
 
 # Steps that run after the AI pass — safe to run independently
-POST_AI_STEPS = {'verify', 'apply_verify', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables'}
+POST_AI_STEPS = {'verify', 'apply_verify', 'specialist', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables'}
 
 
 def parse_args():
