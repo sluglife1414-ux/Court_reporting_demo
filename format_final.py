@@ -26,17 +26,33 @@ LINE_WIDTH = 64   # measured from MB's PDF: 7.59" - 1.129" = 6.461" / 0.1" per c
 QA_LINE_WIDTH = 52
 
 # ═══════════════════════════════════════════════════════════
-# CASE CONFIG — loaded from depo_config.json (written by extract_config.py)
-# Do NOT hardcode values here. Edit depo_config.json or fix extract_config.py.
+# CAPTION DATA SOURCE PRIORITY:
+# 1. CASE_CAPTION.json — human-verified, authoritative (edit this file manually)
+# 2. depo_config.json  — AI-extracted from steno (fallback only, may have errors)
+# Rule: steno is NOT the authoritative source for legal caption data.
+# Caption data should come from the retainer/engagement or MB's final.
 # ═══════════════════════════════════════════════════════════
+
 _cfg_path = 'depo_config.json'
+_caption_path = 'CASE_CAPTION.json'
+
 if not os.path.exists(_cfg_path):
     raise FileNotFoundError(
         "depo_config.json not found. Run extract_config.py first:\n"
         "  python extract_config.py"
     )
+
 with open(_cfg_path, encoding='utf-8') as _f:
     _cfg = json.load(_f)
+
+if os.path.exists(_caption_path):
+    with open(_caption_path, encoding='utf-8') as _cf:
+        _caption = json.load(_cf)
+    print(f"[format_final] Caption source: CASE_CAPTION.json (human-verified, authoritative)")
+    # Merge: CASE_CAPTION.json overrides depo_config.json for any key it provides
+    _cfg.update({k: v for k, v in _caption.items() if not k.startswith('_')})
+else:
+    print(f"[format_final] Caption source: depo_config.json (AI-extracted fallback — CASE_CAPTION.json not found)")
 
 WITNESS_LAST    = _cfg.get('witness_last', 'UNKNOWN')
 WITNESS_NAME    = _cfg.get('witness_name', 'UNKNOWN WITNESS')
@@ -44,6 +60,7 @@ CASE_SHORT      = _cfg.get('case_short', 'Unknown_Case')
 DEPO_DATE       = _cfg.get('depo_date', '')
 DEPO_DATE_SHORT = _cfg.get('depo_date_short', '')
 DEPO_TIME       = _cfg.get('depo_time', '')
+DEPO_LOCATION_0 = _cfg.get('venue_name', '')   # named venue (e.g. THE HOUSTONIAN); blank if not set
 DEPO_LOCATION_1 = _cfg.get('location_1', '')
 DEPO_LOCATION_2 = _cfg.get('location_2', '')
 REPORTER_NAME   = _cfg.get('reporter_name', 'UNKNOWN — reporter_name required')
@@ -64,9 +81,9 @@ if 'UNKNOWN' in REPORTER_NAME: _warnings.append(f"  reporter_name: {REPORTER_NAM
 if WITNESS_NAME == 'UNKNOWN WITNESS': _warnings.append("  witness_name: not extracted")
 if CASE_SHORT == 'Unknown_Case': _warnings.append("  case_short: not extracted")
 if _warnings:
-    print("[format_final] WARNING — missing fields in depo_config.json:")
+    print("[format_final] WARNING — missing fields:")
     for w in _warnings: print(w)
-    print("  Fix in depo_config.json before delivering transcript.")
+    print("  Fix in CASE_CAPTION.json (preferred) or depo_config.json before delivering transcript.")
 # ═══════════════════════════════════════════════════════════
 
 OUTPUT_FILE = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL_FORMATTED.txt'
@@ -163,6 +180,8 @@ def build_caption():
     L.append(center(DEPO_DATE))
     L.append(center(f"commencing at {DEPO_TIME}"))
     L.append(center("at"))
+    if DEPO_LOCATION_0:
+        L.append(center(DEPO_LOCATION_0))   # named venue line (e.g. THE HOUSTONIAN)
     L.append(center(DEPO_LOCATION_1))
     L.append(center(DEPO_LOCATION_2))
     L.append("")

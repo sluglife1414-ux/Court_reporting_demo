@@ -1,0 +1,37 @@
+{
+  "_source": "MB final PDF — 031326yellowrock-FINAL.pdf",
+  "_note": "AUTHORITATIVE caption data. Edit this file manually. Never overwrite from steno extraction.",
+  "_last_updated": "2026-03-30",
+
+  "witness_name": "THOMAS L. EASLEY",
+  "witness_last": "EASLEY",
+
+  "plaintiff": "YELLOW ROCK, LLC, et al,",
+  "plaintiff_role": "Plaintiffs,",
+
+  "defendant": "WESTLAKE US 2 LLC f/k/a\nEAGLE US 2 LLC et al.,",
+  "defendant_role": "Defendant.",
+
+  "docket": "202-001594",
+  "division": "H",
+
+  "venue_name": "THE HOUSTONIAN",
+  "location_1": "111 Post Oak Street",
+  "location_2": "Houston, Texas 70112",
+
+  "parish": "PARISH OF CALCASIEU",
+  "court": "14TH JUDICIAL DISTRICT",
+
+  "depo_date": "Friday, March 13, 2026",
+  "depo_date_short": "March 13, 2026",
+  "depo_time": "9:07 a.m.",
+
+  "reporter_name": "MARYBETH E. MUIR, CCR, RPR",
+  "reporter_credential_1": "CCR",
+  "reporter_credential_2": "RPR",
+
+  "examining_atty": "MR. HOBBY",
+  "case_short": "Easley_YellowRock",
+  "state": "LA",
+  "cert_year": "2026"
+}
