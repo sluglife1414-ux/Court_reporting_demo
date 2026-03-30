@@ -206,6 +206,34 @@ def extract_caption(lines):
     return parish, court, plaintiff, plaintiff_role, defendant, defendant_role, docket, division
 
 
+def extract_state(court, parish):
+    """Infer state code from court/parish fields.
+
+    Routing:
+      NY Workers' Comp (WCB)   → 'NY'       (AD's measured WC format)
+      NY civil/supreme/county  → 'NY_CIVIL' (22 NYCRR § 108.3 format)
+      Louisiana (any parish)   → 'LA'
+      NJ / CA / other          → None (manual override required in depo_config.json)
+    """
+    court_upper = (court or '').upper()
+
+    # NY Workers' Compensation Board
+    if 'WORKERS' in court_upper and 'COMPENSATION' in court_upper:
+        return 'NY'
+
+    # NY civil courts (Supreme Court, County Court, Civil Court, etc.)
+    NY_CIVIL_MARKERS = ('SUPREME COURT', 'COUNTY COURT', 'CIVIL COURT',
+                        'DISTRICT COURT', 'FAMILY COURT', 'SURROGATE')
+    if any(m in court_upper for m in NY_CIVIL_MARKERS):
+        return 'NY_CIVIL'
+
+    # Louisiana — any parish reference indicates LA
+    if parish:
+        return 'LA'
+
+    return None
+
+
 def extract_case_short(witness_name, defendant):
     """Build a safe filename-friendly case identifier."""
     if not witness_name:
@@ -254,6 +282,15 @@ def main():
                         help='Write without confirmation')
     args = parser.parse_args()
 
+    # ── Manual lock — if depo_config.json was hand-populated, skip extraction ──
+    if os.path.exists(OUTPUT_FILE) and not args.force:
+        with open(OUTPUT_FILE, encoding='utf-8') as _chk:
+            _existing = json.load(_chk)
+        if _existing.get('_extracted_from', '').startswith('manual'):
+            print(f"[CONFIG] Manual config detected — skipping extraction.")
+            print(f"         Use --force to override and re-extract.")
+            return
+
     print(f"Reading: {INPUT_FILE}")
     with open(INPUT_FILE, encoding='utf-8') as f:
         text = f.read()
@@ -268,6 +305,7 @@ def main():
     parish, court, plaintiff, plt_role, defendant, def_role, docket, division = \
         extract_caption(lines)
     case_short   = extract_case_short(witness, defendant)
+    state        = extract_state(court, parish)
 
     # Build date_short from date_str
     date_short = None
@@ -294,6 +332,7 @@ def main():
         "docket":           docket      or "UNKNOWN — CHECK RTF",
         "division":         division    or "UNKNOWN — CHECK RTF",
         "reporter_name":    REPORTER_NAME,
+        "state":            state or "UNKNOWN — CHECK RTF",
         "cert_year":        date_str.split(', ')[-1][:4] if date_str else "2026",
         "_extracted_from":  INPUT_FILE,
         "_extracted_at":    datetime.now().strftime("%Y-%m-%d %H:%M"),
