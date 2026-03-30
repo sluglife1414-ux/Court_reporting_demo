@@ -371,7 +371,14 @@ def inject_anchors(text):
 
     # Strip any [REVIEW] tags that didn't match a LOW/N/A item, and all [FLAG] tags
     # Two-pass: verify-agent tags first (may contain dashes/nested text), then standard
-    text = re.sub(r'\[REVIEW:.*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
+    # [REVIEW:] and [FLAG:] tags are ENGINE-GENERATED — defined in MASTER_DEPOSITION_ENGINE_v4.1.md
+    # These are NOT from MB, the CR, or CaseCATalyst. They are our internal AI uncertainty flags.
+    # Format: [REVIEW: explanation — reporter confirm] (verify-agent style)
+    #      or [REVIEW: explanation] (standard inline style)
+    # If the tag format ever changes in the master prompt, update these regexes to match.
+    # BUG HISTORY: .*? with re.DOTALL was eating 65,760 chars (34% of Easley) — fixed 2026-03-30
+    #              [^\[]*? prevents regex from crossing into adjacent [REVIEW: tags
+    text = re.sub(r'\[REVIEW:[^\[]*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
     text = re.sub(r'\[REVIEW:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'  +', ' ', text)
@@ -392,7 +399,14 @@ def strip_review_tags(text):
     is available.  Normal path uses inject_anchors() instead.
     Two-pass: verify-agent tags first (may contain dashes), then standard.
     """
-    text = re.sub(r'\[REVIEW:.*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
+    # [REVIEW:] and [FLAG:] tags are ENGINE-GENERATED — defined in MASTER_DEPOSITION_ENGINE_v4.1.md
+    # These are NOT from MB, the CR, or CaseCATalyst. They are our internal AI uncertainty flags.
+    # Format: [REVIEW: explanation — reporter confirm] (verify-agent style)
+    #      or [REVIEW: explanation] (standard inline style)
+    # If the tag format ever changes in the master prompt, update these regexes to match.
+    # BUG HISTORY: .*? with re.DOTALL was eating 65,760 chars (34% of Easley) — fixed 2026-03-30
+    #              [^\[]*? prevents regex from crossing into adjacent [REVIEW: tags
+    text = re.sub(r'\[REVIEW:[^\[]*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
     text = re.sub(r'\s*\[REVIEW:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'  +', ' ', text)
