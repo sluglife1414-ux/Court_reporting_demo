@@ -26,28 +26,47 @@ LINE_WIDTH = 64   # measured from MB's PDF: 7.59" - 1.129" = 6.461" / 0.1" per c
 QA_LINE_WIDTH = 52
 
 # ═══════════════════════════════════════════════════════════
-# CASE CONFIG — update these for each new depo. Nothing else
-# in this file needs to change between cases.
+# CASE CONFIG — loaded from depo_config.json (written by extract_config.py)
+# Do NOT hardcode values here. Edit depo_config.json or fix extract_config.py.
 # ═══════════════════════════════════════════════════════════
-WITNESS_LAST   = "EASLEY"                        # used for output filename
-WITNESS_NAME   = "THOMAS L. EASLEY"              # full name as it appears in transcript
-CASE_SHORT     = "Easley_YellowRock"             # used in output filenames
-DEPO_DATE      = "Friday, March 13, 2026"
-DEPO_DATE_SHORT = "March 13, 2026"               # used in certificates
-DEPO_TIME      = "9:09 a.m."
-DEPO_LOCATION_1 = "111 North Post Oak Lane"
-DEPO_LOCATION_2 = "Houston, Texas  77024"
-REPORTER_NAME  = "MARYBETH E. MUIR, CCR, RPR"   # MB is always MB
-EXAMINING_ATTY = "MR. HOBBY"                    # primary examining attorney
-PARISH         = "PARISH OF CALCASIEU"
-COURT          = "14TH JUDICIAL DISTRICT"
-PLAINTIFF      = "YELLOW ROCK, LLC, et al."
-PLAINTIFF_ROLE = "Plaintiffs,"
-DEFENDANT      = "WESTLAKE US 2 LLC f/k/a\n  EAGLE US 2 LLC et al.,"
-DEFENDANT_ROLE = "Defendants."
-DOCKET         = "202-001594"
-DIVISION       = "H"
-CERT_YEAR      = "2026"
+_cfg_path = 'depo_config.json'
+if not os.path.exists(_cfg_path):
+    raise FileNotFoundError(
+        "depo_config.json not found. Run extract_config.py first:\n"
+        "  python extract_config.py"
+    )
+with open(_cfg_path, encoding='utf-8') as _f:
+    _cfg = json.load(_f)
+
+WITNESS_LAST    = _cfg.get('witness_last', 'UNKNOWN')
+WITNESS_NAME    = _cfg.get('witness_name', 'UNKNOWN WITNESS')
+CASE_SHORT      = _cfg.get('case_short', 'Unknown_Case')
+DEPO_DATE       = _cfg.get('depo_date', '')
+DEPO_DATE_SHORT = _cfg.get('depo_date_short', '')
+DEPO_TIME       = _cfg.get('depo_time', '')
+DEPO_LOCATION_1 = _cfg.get('location_1', '')
+DEPO_LOCATION_2 = _cfg.get('location_2', '')
+REPORTER_NAME   = _cfg.get('reporter_name', 'UNKNOWN — reporter_name required')
+EXAMINING_ATTY  = _cfg.get('examining_atty', '')
+PARISH          = _cfg.get('parish', '')
+COURT           = _cfg.get('court', '')
+PLAINTIFF       = _cfg.get('plaintiff', '')
+PLAINTIFF_ROLE  = _cfg.get('plaintiff_role', 'Plaintiff,')
+DEFENDANT       = _cfg.get('defendant', '')
+DEFENDANT_ROLE  = _cfg.get('defendant_role', 'Defendant.')
+DOCKET          = _cfg.get('docket', '')
+DIVISION        = _cfg.get('division', '')
+CERT_YEAR       = _cfg.get('cert_year', str(__import__('datetime').date.today().year))
+
+# Warn on any critical unknowns
+_warnings = []
+if 'UNKNOWN' in REPORTER_NAME: _warnings.append(f"  reporter_name: {REPORTER_NAME}")
+if WITNESS_NAME == 'UNKNOWN WITNESS': _warnings.append("  witness_name: not extracted")
+if CASE_SHORT == 'Unknown_Case': _warnings.append("  case_short: not extracted")
+if _warnings:
+    print("[format_final] WARNING — missing fields in depo_config.json:")
+    for w in _warnings: print(w)
+    print("  Fix in depo_config.json before delivering transcript.")
 # ═══════════════════════════════════════════════════════════
 
 OUTPUT_FILE = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL_FORMATTED.txt'
@@ -66,6 +85,42 @@ def format_page(page_num, lines):
         else:
             out.append(f"{i+1:2d}")
     return '\n'.join(out)
+
+
+def wrap_qa_line(prefix, body, first_width=42, cont_width=52, hang=10):
+    """Two-width Q/A wrapper matching MB's measured format.
+
+    Measured from MB's 031326yellowrock-FINAL.pdf (2026-03-30):
+      - Q/A first line body: max ~40 chars  → first_width=42 (with prefix, total ~52)
+      - Continuation lines:  max ~52 chars  → cont_width=52
+
+    MB's CaseCATalyst uses narrower first lines (Q./A. label takes space)
+    and wider continuation lines — standard depo transcript convention.
+    TextWrapper cannot do two widths natively, so we handle manually.
+    """
+    indent = ' ' * hang
+    lines = []
+    # First line: prefix + up to first_width chars of body
+    if len(body) <= first_width:
+        lines.append(prefix + body)
+    else:
+        # Find last space within first_width
+        cut = body.rfind(' ', 0, first_width)
+        if cut == -1:
+            cut = first_width
+        lines.append(prefix + body[:cut])
+        remaining = body[cut:].lstrip()
+        # Continuation lines: indent + up to cont_width chars
+        while remaining:
+            if len(remaining) <= cont_width:
+                lines.append(indent + remaining)
+                break
+            cut = remaining.rfind(' ', 0, cont_width)
+            if cut == -1:
+                cut = cont_width
+            lines.append(indent + remaining[:cut])
+            remaining = remaining[cut:].lstrip()
+    return lines
 
 
 def wrap_line(text, width=LINE_WIDTH, hang=0):
@@ -757,16 +812,14 @@ def format_testimony(raw_lines):
             formatted.append('        ' + text)
         elif kind == 'Q':
             body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
-            # MB format: Q. indented 5 spaces, text 3 spaces after label = 10-char prefix
-            # width=QA_LINE_WIDTH+10 compensates for hang so continuation lines retain
-            # full content width (52 chars) while still indenting visually. Keeps page
-            # count stable vs flush-left. [2026-03-27 — hang=10+width=52 added 20 pages]
-            wrapped = wrap_line('     Q.   ' + body, width=QA_LINE_WIDTH + 10, hang=10)
+            # Two-width wrap: first line body=42 chars, continuation=52 chars
+            # Measured from MB's 031326yellowrock-FINAL.pdf (2026-03-30)
+            wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=42, hang=10)
             formatted.extend(wrapped)
         elif kind == 'A':
             body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
-            # Same compensation as Q — hang=10, width+10 preserves content width
-            wrapped = wrap_line('     A.   ' + body, width=QA_LINE_WIDTH + 10, hang=10)
+            # Same two-width wrap as Q
+            wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=42, hang=10)
             formatted.extend(wrapped)
         elif kind == 'colloquy':
             cm = re.match(r'^((?:MR\.|MS\.|MRS\.)\s+\w+:|THE\s+(?:VIDEOGRAPHER|COURT REPORTER|WITNESS):)\s*(.*)', text)

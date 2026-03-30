@@ -44,6 +44,23 @@ CFG = get_config(STATE)
 INPUT_TXT  = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL_FORMATTED.txt'
 OUTPUT_PDF = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL.pdf'
 
+# Fallback: if expected file doesn't exist, scan FINAL_DELIVERY for any *_FINAL_FORMATTED.txt
+# This handles mismatches between depo_config.json case_short and format_final.py output name
+if not os.path.exists(INPUT_TXT):
+    import glob as _glob
+    _candidates = _glob.glob('FINAL_DELIVERY/*_FINAL_FORMATTED.txt')
+    if len(_candidates) == 1:
+        INPUT_TXT = _candidates[0]
+        _found_short = os.path.basename(INPUT_TXT).replace('_FINAL_FORMATTED.txt', '')
+        OUTPUT_PDF = f'FINAL_DELIVERY/{_found_short}_FINAL.pdf'
+        print(f"[build_pdf] WARNING: case_short mismatch — expected '{CASE_SHORT}', found '{_found_short}'")
+        print(f"[build_pdf] Using: {INPUT_TXT}")
+        print(f"[build_pdf] Fix: align case_short in depo_config.json with format_final.py")
+    elif len(_candidates) > 1:
+        print(f"[build_pdf] ERROR: Multiple FINAL_FORMATTED files found, cannot auto-resolve:")
+        for c in _candidates: print(f"  {c}")
+        sys.exit(1)
+
 # --- Page geometry from config ---
 PAGE_W         = CFG['page_w']
 PAGE_H         = CFG['page_h']
