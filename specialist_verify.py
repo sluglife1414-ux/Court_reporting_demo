@@ -34,6 +34,7 @@ import anthropic
 
 MODEL      = 'claude-haiku-4-5-20251001'
 MAX_TOKENS = 4096
+BATCH_SIZE = 150    # items per API call — keeps output well under MAX_TOKENS
 LOG_FILE   = 'correction_log.json'
 OUTPUT_FILE = 'specialist_verify_log.json'
 
@@ -214,37 +215,53 @@ def parse_agent_response(response_text, high_items, flag_keyword='FLAG'):
 
 
 def run_agent(agent_key, agent_cfg, high_items, client):
-    """Run a single specialist agent. Returns result dict."""
+    """Run a single specialist agent, batching if item count exceeds BATCH_SIZE.
+
+    Large depos (1000+ HIGH items) would overflow MAX_TOKENS in a single call.
+    Each batch is BATCH_SIZE items — output stays well under 4096 tokens.
+    Results are merged across batches before returning.
+    """
     name = agent_cfg['name']
-    print(f"\n  [{name}] {agent_cfg['description']}")
-    print(f"  [{name}] Sending {len(high_items)} items...")
-
-    # ConsistencyAgent benefits from context; others don't need it
     include_ctx = (agent_key == 'consistency')
-    prompt = build_items_prompt(high_items, include_context=include_ctx)
+    batches = [high_items[i:i+BATCH_SIZE] for i in range(0, len(high_items), BATCH_SIZE)]
+    n_batches = len(batches)
 
+    print(f"\n  [{name}] {agent_cfg['description']}")
+    print(f"  [{name}] {len(high_items)} items → {n_batches} batch(es) of ≤{BATCH_SIZE}")
+
+    all_results = []
+    total_input_tok = total_output_tok = 0
     t0 = time.time()
-    try:
-        response = client.messages.create(
-            model=MODEL,
-            max_tokens=MAX_TOKENS,
-            system=agent_cfg['system'],
-            messages=[{'role': 'user', 'content': prompt}]
-        )
-    except Exception as e:
-        print(f"  [{name}] API error: {e}")
-        return None
+
+    for b_idx, batch in enumerate(batches, 1):
+        prompt = build_items_prompt(batch, include_context=include_ctx)
+        if n_batches > 1:
+            print(f"  [{name}] Batch {b_idx}/{n_batches} ({len(batch)} items)...", end=' ', flush=True)
+        try:
+            response = client.messages.create(
+                model=MODEL,
+                max_tokens=MAX_TOKENS,
+                system=agent_cfg['system'],
+                messages=[{'role': 'user', 'content': prompt}]
+            )
+        except Exception as e:
+            print(f"\n  [{name}] API error on batch {b_idx}: {e}")
+            return None
+
+        response_text = response.content[0].text
+        total_input_tok  += response.usage.input_tokens
+        total_output_tok += response.usage.output_tokens
+        batch_results = parse_agent_response(response_text, batch)
+        all_results.extend(batch_results)
+        if n_batches > 1:
+            flagged_in_batch = sum(1 for r in batch_results if r['flagged'])
+            print(f"{flagged_in_batch} flagged")
 
     elapsed = round(time.time() - t0, 1)
-    response_text = response.content[0].text
-    input_tok  = response.usage.input_tokens
-    output_tok = response.usage.output_tokens
-    cost = (input_tok / 1_000_000 * 0.80) + (output_tok / 1_000_000 * 4.00)
+    cost = (total_input_tok / 1_000_000 * 0.80) + (total_output_tok / 1_000_000 * 4.00)
+    flagged = [r for r in all_results if r['flagged']]
 
-    results = parse_agent_response(response_text, high_items)
-    flagged = [r for r in results if r['flagged']]
-
-    print(f"  [{name}] Done in {elapsed}s — {len(flagged)}/{len(results)} flagged  (${cost:.4f})")
+    print(f"  [{name}] Done in {elapsed}s — {len(flagged)}/{len(all_results)} flagged  (${cost:.4f})")
     for r in flagged:
         print(f"    FLAG line~{r['line_approx']}: {repr(r['original'][:50])} → {repr(r['corrected'][:50])}")
         if r['note']:
@@ -253,13 +270,13 @@ def run_agent(agent_key, agent_cfg, high_items, client):
     return {
         'agent':          name,
         'agent_key':      agent_key,
-        'items_reviewed': len(results),
+        'items_reviewed': len(all_results),
         'flagged_count':  len(flagged),
         'elapsed_seconds': elapsed,
-        'input_tokens':   input_tok,
-        'output_tokens':  output_tok,
+        'input_tokens':   total_input_tok,
+        'output_tokens':  total_output_tok,
         'cost_usd':       round(cost, 6),
-        'results':        results,
+        'results':        all_results,
     }
 
 
