@@ -845,17 +845,19 @@ def format_testimony(raw_lines):
             formatted.append('        ' + text)
         elif kind == 'Q':
             body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
-            # Two-width wrap: first line body=42 chars, continuation=52 chars
-            # Measured from MB's 031326yellowrock-FINAL.pdf (2026-03-30)
-            # [REVISIT:WRAP] cont_width=47 is a bracket guess — MB's CAT shows 52 chars/line but
-            # that includes the hang indent. Need MB to count chars on a finished Q/A line.
-            # cont_width=42→234pp, cont_width=52→214pp, target=223pp, trying 47 to split diff.
+            # Two-width wrap: first line body=42 chars, continuation=47 chars
+            # [REVISIT:WRAP] ⚠ HACK — matches MB's page count (222 vs 223) but NOT verified.
+            # cont_width=47 found by bracketing: 42→234pp, 52→214pp, 47→222pp (target 223).
+            # MB's CAT shows 52 chars/line but we don't know how hang indent factors in.
+            # HIGH PRIORITY: get MB to count chars on a finished Q/A line — owner: Scott.
+            # Do NOT change this value without re-running page count check on Easley.
             # [TECH DEBT: first_width=42 not yet validated against MB's layout]
             wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=47, hang=10)
             formatted.extend(wrapped)
         elif kind == 'A':
             body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
-            # [REVISIT:WRAP] same as Q above — cont_width=47 is a bracket guess, not measured
+            # [REVISIT:WRAP] ⚠ HACK — same as Q above. Matches page count, not verified.
+            # HIGH PRIORITY: owner Scott — get MB to count chars on a finished Q/A line.
             # [TECH DEBT: first_width=42 not yet validated against MB's layout]
             wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=47, hang=10)
             formatted.extend(wrapped)
