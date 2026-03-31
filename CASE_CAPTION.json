@@ -17,7 +17,8 @@
 
   "venue_name": "THE HOUSTONIAN",
   "location_1": "111 Post Oak Street",
-  "location_2": "Houston, Texas 70112",
+  "_location_1_note": "Street confirmed from MB final PDF. Steno had '111 North Post Oak Lane' — incorrect.",
+  "location_2": "Houston, Texas 77024",
 
   "parish": "PARISH OF CALCASIEU",
   "court": "14TH JUDICIAL DISTRICT",
