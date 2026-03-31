@@ -847,12 +847,17 @@ def format_testimony(raw_lines):
             body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
             # Two-width wrap: first line body=42 chars, continuation=52 chars
             # Measured from MB's 031326yellowrock-FINAL.pdf (2026-03-30)
-            wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=42, hang=10)
+            # [REVISIT:WRAP] cont_width=47 is a bracket guess — MB's CAT shows 52 chars/line but
+            # that includes the hang indent. Need MB to count chars on a finished Q/A line.
+            # cont_width=42→234pp, cont_width=52→214pp, target=223pp, trying 47 to split diff.
+            # [TECH DEBT: first_width=42 not yet validated against MB's layout]
+            wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=47, hang=10)
             formatted.extend(wrapped)
         elif kind == 'A':
             body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
-            # Same two-width wrap as Q
-            wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=42, hang=10)
+            # [REVISIT:WRAP] same as Q above — cont_width=47 is a bracket guess, not measured
+            # [TECH DEBT: first_width=42 not yet validated against MB's layout]
+            wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=47, hang=10)
             formatted.extend(wrapped)
         elif kind == 'colloquy':
             cm = re.match(r'^((?:MR\.|MS\.|MRS\.)\s+\w+:|THE\s+(?:VIDEOGRAPHER|COURT REPORTER|WITNESS):)\s*(.*)', text)
