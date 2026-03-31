@@ -33,6 +33,14 @@
 #     4. case_info.txt                      ← recommended
 #     5. glossary.txt                       ← optional
 #     6. HOUSE_STYLE_MODULE_*.md            ← optional (reporter-specific)
+#     7. MARGIE_STYLE_MODULE.txt            ← court reporting style authority
+#     8. GREGG_STYLE_MODULE.txt             ← general grammar/style fallback
+#
+# STYLE AUTHORITY HIERARCHY — when uncertain, consult in this order:
+#   1. HOUSE_STYLE_MODULE (CR preference — overrides everything)
+#   2. MARGIE_STYLE_MODULE (Morson's — court reporting authority)
+#   3. GREGG_STYLE_MODULE (Gregg Reference Manual — general grammar)
+#   Do NOT guess. If uncertain and no rule covers it → FLAG, do not fix.
 #
 #   Then say: "Process the deposition file using the engine prompt
 #              and the state module."

@@ -383,14 +383,15 @@ Date: 2026-03-30 | Reporter: Marybeth E. Muir, CCR, RPR
 ════════════════════════════════════════════════════════════════════════════════
 
 ────────────────────────────────────────────────────────────────────────────────
-KB-016 | NUMBER SPELLING — ONE THROUGH NINE
+KB-016 | NUMBER SPELLING — ONE THROUGH TEN
 Priority: HIGH | Category: formatting, testimony
-[REVISIT:KB] Verify with MB — standard CR rule, not yet MB-confirmed explicitly
+Source: GREGG_STYLE_MODULE.txt Rule 12.1 | [REVISIT:KB] Confirm cutoff with MB
 ────────────────────────────────────────────────────────────────────────────────
 PROBLEM: Engine outputs digits (6, 7, 3) where MB spells out (six, seven, three).
 Confirmed in Easley accuracy report (2026-03-30) — systematic across testimony.
 
-RULE: Spell out one through nine. Use digits for 10 and above.
+RULE: Spell out one through ten. Use figures for 11 and above.
+  Per Gregg Rule 12.1 — authoritative source: GREGG_STYLE_MODULE.txt
   CORRECT:   "I worked there for six years"
   INCORRECT: "I worked there for 6 years"
   CORRECT:   "There were 12 people in the room"
