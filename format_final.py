@@ -704,6 +704,9 @@ def format_appearances(raw_lines):
             if in_block:
                 # Normalize (Via Zoom) → (Zoom) to match MB's house style
                 line = re.sub(r'\(Via Zoom\)', '(Zoom)', line, flags=re.IGNORECASE)
+                # Midpoint dot between state and zip: "Louisiana 70130" → "Louisiana· 70130"
+                # MB's house style per accuracy report — applies to all address lines in appearances
+                line = re.sub(r'([A-Za-z])\s+(\d{5}(?:-\d{4})?)\s*$', r'\1· \2', line)
                 # Append (Zoom) to BY: lines for attorneys in ZOOM_ATTORNEYS list
                 # Match on last name / partial name — case-insensitive
                 if line.startswith('BY:') and '(Zoom)' not in line:
