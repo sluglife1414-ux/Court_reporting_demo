@@ -377,6 +377,34 @@ FIX APPLIED: steno_cleanup.py compound_fixes list updated:
   ('E_mail', 'E-mail')  — was 'email'
   ('e_mail', 'E-mail')  — was 'email'
 
+════════════════════════════════════════════════════════════════════════════════
+LEARNED FROM: Easley accuracy report comparison | Source: 031326yellowrock-FINAL
+Date: 2026-03-30 | Reporter: Marybeth E. Muir, CCR, RPR
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+KB-016 | NUMBER SPELLING — ONE THROUGH NINE
+Priority: HIGH | Category: formatting, testimony
+[REVISIT:KB] Verify with MB — standard CR rule, not yet MB-confirmed explicitly
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine outputs digits (6, 7, 3) where MB spells out (six, seven, three).
+Confirmed in Easley accuracy report (2026-03-30) — systematic across testimony.
+
+RULE: Spell out one through nine. Use digits for 10 and above.
+  CORRECT:   "I worked there for six years"
+  INCORRECT: "I worked there for 6 years"
+  CORRECT:   "There were 12 people in the room"
+  INCORRECT: "There were twelve people in the room"
+
+EXCEPTIONS (always digits regardless of value):
+  - Dollar amounts: $6, $3.5 million
+  - Percentages: 6%, 3%
+  - Addresses: 6 Main Street
+  - Exhibit numbers: Exhibit No. 6
+  - Docket numbers, case numbers
+  - Times: 9:07 a.m.
+  [REVISIT:KB] Confirm exceptions list with MB
+
 ================================================================================
 END OF KNOWLEDGE BASE
 ================================================================================
