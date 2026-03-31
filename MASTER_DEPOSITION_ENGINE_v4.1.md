@@ -990,6 +990,251 @@ NEXT UPGRADE IDEAS (v4.2 / v5):
   - Multi-witness deposition handling
   - Web-based state module selector UI
 
+===========================================================
+## STYLE GUIDE GAPS — Added from Margie/Gregg cross-reference
+Added: 2026-03-30
+Source files: MARGIE_STYLE_MODULE.txt | GREGG_STYLE_MODULE.txt
+===========================================================
+
+These rules are clearly applicable to deposition transcript work and were NOT
+explicitly stated in the main engine body above. Each is cited to source and rule.
+No pipeline behavior is changed — these are documentation additions only.
+
+---
+
+### GAP-001 | Yes/No Comma vs. Period — Echo Rule
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rules M-032, M-033, M-034, M-035]
+
+The engine (Layer 5) notes yes/no rules are SKIPPED in ROUGH_DRAFT MODE but does
+not document the underlying rule for FINAL_PASS MODE. The rule:
+
+  - "Yes"/"No" + what ECHOES the question → comma: "Yes, she did."
+  - "Yes"/"No" + NEW information (does NOT echo) → period: "Yes. She called about the loan."
+  - "Yes"/"No" at END of answer → comma before it: "We met several times, yes."
+  - Both comma and period can appear in same answer:
+      "Yes, she did. She embraced her new position."
+  - Same rules apply to: uh-huh, huh-uh, yep, nope, unh-unh [M-037]
+
+IMPORTANT ANTI-PATTERN: A semicolon between "Yes"/"No" and follow-on information
+is ALWAYS wrong. Use period only. Margie is explicit: "Is this a time for a
+semicolon? NO." [M-033]
+
+---
+
+### GAP-002 | Tag Clauses — Three-Way Punctuation Split
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rules M-041 through M-046]
+
+The engine does not document the three-way split for tag clauses:
+
+  TYPE 1 — Echo tag (wasn't he, was it, had they not): COMMA before tag.
+    "He was with the company ten years, wasn't he?"
+    "Her leg was not broken, was it, at the time you examined her?"
+
+  TYPE 2 — Independent subject/verb at END of sentence: SEMICOLON before it.
+    "He was with the company ten years; is that correct?"
+    "Her leg was not broken; is that right?"
+    Single-word fragments follow same rule: "He was there; correct?"
+
+  TYPE 3 — Independent subject/verb in MIDDLE of sentence: DASHES around it.
+    "He was with the company ten years -- is that correct? -- when you discovered..."
+
+  TYPE 4 — "Is that fair?" / "Is that what you are saying?" after a full statement:
+    PERIOD before it, stands as its own sentence.
+    "She regularly exceeded 40 hours a week. Is that fair?"
+
+---
+
+### GAP-003 | Polite Requests — Period, Not Question Mark
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rules M-021, M-022, M-023]
+
+The engine mentions "Period after polite request (M-021)" in ROUGH_DRAFT rules
+but does not define the test. The test:
+
+  A polite request is identified by: begins with "will," "would," "can," or "could"
+  AND cannot be answered "yes" or "no."
+
+  PERIOD:         Q Would you turn to page 5.
+  PERIOD:         Q Would you state your name for the record, please.
+  PERIOD:         Q Can you give me the names.   [expects the names as answer]
+  QUESTION MARK:  Q Can you give me the names?  [asking about ability → true question]
+
+  "May we have this marked for identification" — depends on addressee:
+    To court reporter → period (polite request)
+    To opposing counsel/judge → question mark (true question)
+
+---
+
+### GAP-004 | Stacked Questions — Multiple Question Marks
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rule M-040]
+
+When an attorney asks a series of short questions, each gets its own question mark.
+They may be stacked on separate lines or run inline:
+
+  Q Did you eat strawberries? blueberries? kiwi? papaya?
+  Q Was the car you saw red? blue? gray? brown?
+  Q Did you call 9-1-1? your doctor? the hospital?
+
+The question mark belongs where the question is FIRST asked. Clarifying phrases
+that follow a question mark end with a period (if a statement) or question mark
+(if themselves a question). [M-038, M-039]
+
+---
+
+### GAP-005 | "Okay," "All Right," "Fine," "Great" as Attorney Transitions
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rules M-029, M-030, M-031]
+
+When attorneys use these words as transitions before the next question:
+  - Paragraph them as their own complete units with a period.
+  - "Okay?" (confirming understanding) → question mark.
+  - "okay" as filler/throwaway mid-sentence → commas around it.
+
+  CORRECT:  Q Was surgery inevitable? A It was a definite. Q Okay. When did you tell him?
+  CORRECT:  Q All right. Fine. Did you reach...?
+  CORRECT:  "She was standing, okay, next to me..." [filler — commas]
+  CORRECT:  "You can speak with your attorney -- is that okay? -- before we go on." [legitimate question — dashes]
+
+---
+
+### GAP-006 | Abbreviation and Suffix Rules
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rules M-016, M-017, M-018]
+
+  - No periods in acronyms/initialisms: IBM not I.B.M., CEUs not CEU's [M-016]
+  - No apostrophe for plural of abbreviation: CEUs not CEU's [M-017]
+  - No commas around Jr., Sr., III, IV after a name: "Jack Macdonald Jr." not
+    "Jack Macdonald, Jr." [M-018 — OVERRIDES GREGG]
+
+---
+
+### GAP-007 | "Too" and "Also" at End of Sentence — No Comma
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rule M-015 — OVERRIDES GREGG]
+
+Do NOT put a comma before "too," "also," or "as well" at end of sentence.
+  CORRECT:   She had to have the test too.    [NOT: the test, too]
+  CORRECT:   He was a suspect also.           [NOT: a suspect, also]
+
+Traditional Gregg permits the comma. Court reporting standard: NO comma.
+
+---
+
+### GAP-008 | Month + Year Dates — No Comma Between Them
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rule M-004 — OVERRIDES GREGG]
+
+When only month + year appear (no specific day), NO comma between them.
+  CORRECT:   We moved there in June 2012.    [NOT: June, 2012]
+  CORRECT:   September 2004 is the year...  [NOT: September, 2004]
+
+Full date (month + day + year) mid-sentence → comma after year. [M-003]
+
+---
+
+### GAP-009 | Singular Possessives — Always Add 's (Including Words Ending in S)
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rule M-058 — OVERRIDES GREGG]
+
+For EVERY singular possessive, add apostrophe + s — no exceptions:
+  witness's | boss's | Mr. Ross's | Mrs. Wells's | Ms. Sanchez's
+
+Some guides use only apostrophe for words ending in s. Court reporting standard:
+always add 's. [OVERRIDES GREGG]
+
+---
+
+### GAP-010 | Explanatory Parentheticals ("That Is," "I.E.," "For Example")
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rule M-053]
+
+Punctuation before "that is," "i.e.," "for example," "e.g.," "namely":
+
+  After a FRAGMENT: pair of commas: "...that month, that is, August..."
+  Before a SENTENCE: semicolon before, comma after: "...that month; that is, it was August..."
+  Before a LIST: colon before, comma after: "...several months: for example, June, September..."
+  After a QUESTION: question mark before, comma after: "Did you talk to him? That is, when he came in..."
+  Renames subject: dash before, comma after: "...The CEO -- that is, Ronald Harris."
+  In MIDDLE of sentence: pair of dashes: "The accountant -- that is, Reynaldo Martin -- was..."
+
+---
+
+### GAP-011 | Semicolons — Series with Internal Commas
+[SOURCE: GREGG_STYLE_MODULE.txt — Rule 3.3]
+
+When items in a series already contain commas, use semicolons to separate items:
+  "The project involved engineers from Houston, Texas; New Orleans, Louisiana; and Denver, Colorado."
+  "The parties include Johnson & Associates, Inc.; Meridian Energy, LLC; and the State of Louisiana."
+
+---
+
+### GAP-012 | Brackets for Reporter Clarifications — NOT Parentheses
+[SOURCE: GREGG_STYLE_MODULE.txt — Rule 7.5]
+
+Use brackets [ ] for reporter-added clarifications within testimony.
+Do NOT use parentheses for this purpose.
+  CORRECT:   A. We put it [the valve] back in place.
+  CORRECT:   A. He [Mr. Johnson] was the one who approved it.
+
+---
+
+### GAP-013 | Compound Words — Suspending Hyphens in Parallel Modifiers
+[SOURCE: GREGG_STYLE_MODULE.txt — Rule 11.8]
+
+When two or more parallel compound modifiers share a common base word, use a
+suspending hyphen after each modifier element:
+  short- and long-term contracts    [NOT: short and long-term contracts]
+  pre- and post-accident records
+  two- and three-day sessions
+
+---
+
+### GAP-014 | Numbers — Spell Out One Through Ten in Testimony
+[SOURCE: GREGG_STYLE_MODULE.txt — Rule 12.1]
+
+Standard rule: spell out one through ten; figures for 11 and above.
+Exceptions (always figures): dollar amounts, percentages, addresses, exhibit numbers,
+docket numbers, times, measurements with units.
+[REVISIT:KB] Confirm cutoff and exceptions list with MB — flagged in KB-016.
+
+---
+
+### GAP-015 | Indirect Questions — Period, Not Question Mark
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rule M-024]
+
+An indirect question occurs in a dependent clause and does NOT use question word order.
+Use a PERIOD, not a question mark.
+  DIRECT:    What time did you leave?                     [question mark]
+  INDIRECT:  I am asking what time you left.              [period]
+  INDIRECT:  I want to know how far it was to his office. [period]
+
+Test: does the clause use inverted subject/verb order? If no → period.
+
+---
+
+### GAP-016 | Filler Words "Like," "You Know," "Gee," "Say" — Commas as Parentheticals
+[SOURCE: MARGIE_STYLE_MODULE.txt — Rule M-051]
+
+Filler words used as parentheticals must be surrounded by commas wherever they appear.
+The engine already removes "uh," "um" as fillers (Layer 6), but this rule covers the
+retained fillers:
+  "He was, like, about 15."
+  "They walked, like, you know, together for, like, three blocks."
+
+These are parentheticals — always set off with commas, never bare.
+
+---
+
+### GAP-017 | "Disinterested" vs. "Uninterested" in Legal Context
+[SOURCE: GREGG_STYLE_MODULE.txt — Rule 13.10]
+
+In legal contexts: "disinterested" = impartial, unbiased (correct for expert witness,
+disinterested party). Do NOT substitute "uninterested" (meaning "not engaged") in
+legal contexts where impartiality is the intended meaning. This distinction is a
+common error with significant legal consequence.
+
+---
+
+### GAP-018 | Comprise vs. Compose — "Comprised Of" is Always Wrong
+[SOURCE: GREGG_STYLE_MODULE.txt — Rule 13.12]
+
+  comprise: the whole comprises the parts ("The investigation comprises three phases.")
+  compose: the parts compose the whole ("Three phases compose the investigation.")
+  "Comprised of" is ALWAYS incorrect. Use "composed of."
+
 ═══════════════════════════════════════════════════════════════════
 END OF MASTER DEPOSITION TRANSFORMATION ENGINE v4.1
 ═══════════════════════════════════════════════════════════════════
