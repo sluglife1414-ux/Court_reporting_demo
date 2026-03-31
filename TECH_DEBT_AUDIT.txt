@@ -1,0 +1,73 @@
+================================================================================
+TECH DEBT AUDIT
+Generated: 2026-03-30
+Scope: All .py, .md, .txt files in mb_demo_engine_v4 (excluding .claude/worktrees)
+Tags searched: [TECH DEBT  |  [REVISIT  |  TODO  |  FIXME  |  HACK
+================================================================================
+
+FORMAT:
+TAG | File | Line | Description (exact text of tag)
+--------------------------------------------------------------------------------
+
+[HACK]      | format_final.py          | 849  | # [REVISIT:WRAP] ⚠ HACK — matches MB's page count (222 vs 223) but NOT verified. cont_width=47 found by bracketing: 42→234pp, 52→214pp, 47→222pp (target 223). MB's CAT shows 52 chars/line but we don't know how hang indent factors in. HIGH PRIORITY: get MB to count chars on a finished Q/A line — owner: Scott. Do NOT change this value without re-running page count check on Easley.
+
+[TECH DEBT] | format_final.py          | 854  | # [TECH DEBT: first_width=42 not yet validated against MB's layout]  (Q line wrap — first_width=42, cont_width=47)
+
+[HACK]      | format_final.py          | 859  | # [REVISIT:WRAP] ⚠ HACK — same as Q above. Matches page count, not verified. HIGH PRIORITY: owner Scott — get MB to count chars on a finished Q/A line.
+
+[TECH DEBT] | format_final.py          | 861  | # [TECH DEBT: first_width=42 not yet validated against MB's layout]  (A line wrap — same issue as Q)
+
+[TODO]      | HOUSE_STYLE_MODULE_dalotto.md | 137 | **TODO:** Get exact cert language from AD's sample finished depo. License/registration number field is UNKNOWN — must be added before delivery.
+
+[REVISIT]   | KNOWLEDGE_BASE.txt       | 388  | [REVISIT:KB] Confirm cutoff with MB  (KB-016: number spelling — Gregg says spell out 1-10, confirm with MB)
+
+[REVISIT]   | KNOWLEDGE_BASE.txt       | 407  | [REVISIT:KB] Confirm exceptions list with MB  (KB-016: number spelling exceptions list — dollar amounts, percentages, addresses, etc.)
+
+[TECH DEBT] | state_config.py          | 73   | 'margin_left': 1.00 * inch,  # [TECH DEBT] official spec = 1.75"; measured = 1.00"  (NY_WC profile — margin not confirmed against official spec)
+
+[TECH DEBT] | state_config.py          | 92   | # [TECH DEBT] Gotesman margins deviate from official spec — measure real civil job when it arrives.  (NY_CIVIL profile — margins unconfirmed)
+
+[TECH DEBT] | state_config.py          | 106  | 'margin_left': 1.00 * inch,  # [TECH DEBT] official spec = 1.75"; Gotesman = 1.00"  (NY_CIVIL margin_left)
+
+[TECH DEBT] | state_config.py          | 107  | 'margin_right': 0.88 * inch, # [TECH DEBT] official spec = 0.375"; Gotesman = 0.88"  (NY_CIVIL margin_right — both left and right deviate from 22 NYCRR § 108.3 spec)
+
+[TECH DEBT] | state_config.py          | 110  | 'pagenum_from_top': 0.35 * inch,  # [TECH DEBT] placeholder — measure from civil ref  (NY_CIVIL page number Y position is a placeholder)
+
+--------------------------------------------------------------------------------
+CONTEXT NOTE — PROJECT_BOARD.md line 220 (NOT a debt tag itself, but the rule):
+  "FORK flag. Hack vs right solution — surface it, let Scott decide. Log hacks as [TECH DEBT]."
+  This is the standing operating procedure. Not an actionable item.
+--------------------------------------------------------------------------------
+
+SUMMARY
+-------
+Total tags found:   13 actionable items
+[TECH DEBT] count: 7
+[REVISIT]   count: 2
+[HACK]      count: 2  (appear as [REVISIT:WRAP] + HACK in same comment block)
+[TODO]      count: 1
+[FIXME]     count: 0
+Files affected:     4
+
+PRIORITY RANKING (Scott's judgment required):
+  HIGH — format_final.py lines 849-861: Q/A wrap widths are hacks. first_width=42,
+         cont_width=47 not validated. Need MB to count characters on a finished
+         Q/A line from an approved transcript. Root cause of any page count drift.
+
+  HIGH — HOUSE_STYLE_MODULE_dalotto.md line 137: AD cert language and license number
+         are unknown. Cannot deliver a correct NY WC cert page without this.
+         Action: get AD's sample finished depo before next AD delivery.
+
+  MEDIUM — state_config.py lines 73, 92, 106, 107, 110: NY_WC and NY_CIVIL margins
+           use measured values from reference PDFs, not official spec values. The
+           spec (22 NYCRR § 108.3) says 1.75" left, 0.375" right. Gotesman and
+           WC samples show ~1.00" left, 0.88" right. Real-world files win until a
+           court clerk complains. Revisit when first real civil job arrives.
+
+  LOW — KNOWLEDGE_BASE.txt lines 388, 407: KB-016 number spelling rule. Gregg says
+        spell out 1-10. Exceptions list needs MB confirmation. Low risk since
+        direction is clear; just needs MB sign-off.
+
+================================================================================
+END OF TECH DEBT AUDIT — 2026-03-30
+================================================================================
