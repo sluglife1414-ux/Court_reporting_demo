@@ -54,6 +54,11 @@ if os.path.exists(_caption_path):
 else:
     print(f"[format_final] Caption source: depo_config.json (AI-extracted fallback — CASE_CAPTION.json not found)")
 
+# Zoom attendees — loaded from CASE_CAPTION.json, matched against BY: lines in appearances.
+# Names stored as last name or partial match (e.g. "MADIGAN" matches "THOMAS J. MADIGAN, ESQ.")
+# [REVISIT:ZOOM] Full list must be confirmed with MB — steno only captures some remote attendees.
+ZOOM_ATTORNEYS  = [n.upper() for n in _cfg.get('zoom_attorneys', [])]
+
 WITNESS_LAST    = _cfg.get('witness_last', 'UNKNOWN')
 WITNESS_NAME    = _cfg.get('witness_name', 'UNKNOWN WITNESS')
 CASE_SHORT      = _cfg.get('case_short', 'Unknown_Case')
@@ -697,6 +702,15 @@ def format_appearances(raw_lines):
                 pending_header = None
         else:
             if in_block:
+                # Normalize (Via Zoom) → (Zoom) to match MB's house style
+                line = re.sub(r'\(Via Zoom\)', '(Zoom)', line, flags=re.IGNORECASE)
+                # Append (Zoom) to BY: lines for attorneys in ZOOM_ATTORNEYS list
+                # Match on last name / partial name — case-insensitive
+                if line.startswith('BY:') and '(Zoom)' not in line:
+                    for zoom_name in ZOOM_ATTORNEYS:
+                        if zoom_name in line.upper():
+                            line = line.rstrip() + ' (Zoom)'
+                            break
                 # Firm name, address, email, BY: line — indent under party header
                 wrapped = wrap_line(f"    {line}", width=LINE_WIDTH, hang=4)
                 cleaned.extend(wrapped)

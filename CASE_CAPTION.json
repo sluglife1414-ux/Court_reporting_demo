@@ -34,5 +34,20 @@
   "examining_atty": "MR. HOBBY",
   "case_short": "Easley_YellowRock",
   "state": "LA",
-  "cert_year": "2026"
+  "cert_year": "2026",
+
+  "_zoom_note": "Attorneys who attended via Zoom. Engine appends (Zoom) to their BY: line in appearances. Source: MB final PDF 031326yellowrock-FINAL.pdf. [REVISIT:ZOOM] Confirm full list with MB — steno only captured 2 of ~8 remote attendees.",
+  "zoom_attorneys": [
+    "THOMAS J. MADIGAN",
+    "JEFFREY D. KESSLER",
+    "KAYLYN BLOSSER HANDY",
+    "WALKER HOBBY",
+    "ANTHONY F. SIRIANNI",
+    "AUBREY D. RECTOR",
+    "SAMUEL M. ROSAMOND",
+    "DARREN M. GUILLOT",
+    "BENNETT MATSON",
+    "LEAH ENGELHARDT",
+    "STEPHEN J. ECKHOLDT"
+  ]
 }
