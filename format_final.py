@@ -150,6 +150,55 @@ def wrap_line(text, width=LINE_WIDTH, hang=0):
 
 
 # =========================================================
+# EXHIBIT EXTRACTION
+# =========================================================
+
+def extract_exhibits(text):
+    """Extract exhibit numbers and descriptions from corrected transcript.
+
+    Scans (Whereupon, Exhibit No. X, description, was marked...) parentheticals.
+    Returns dict: {exhibit_number (int): description (str)}
+    Missing descriptions stored as '' — caller handles [REVIEW] display.
+
+    [TECH DEBT: build_deliverables.py has its own exhibit parsing — consolidate
+    both callers to use this function when hardcoded audit runs.]
+    """
+    exhibits = {}
+    pattern = re.compile(
+        r'\(Whereupon,\s+Exhibit\s+No\.\s+(\d+)'  # exhibit number
+        r'(?:,\s*([^,]+?))?\s*'                    # optional description
+        r'(?:,\s*)?was\s+marked',                  # "was marked" anchor
+        re.IGNORECASE
+    )
+    for m in pattern.finditer(text):
+        num = int(m.group(1))
+        desc = m.group(2).strip() if m.group(2) else ''
+        if num not in exhibits:                    # first occurrence wins
+            exhibits[num] = desc
+    return exhibits
+
+
+def find_exhibit_pages(all_pages):
+    """Find formatted page number where each exhibit was first introduced.
+
+    Scans assembled pages after testimony formatting is complete.
+    Returns dict: {exhibit_number (int): page_number (int, 1-indexed)}
+    """
+    exhibit_pages = {}
+    pattern = re.compile(r'Whereupon,\s+Exhibit\s+No\.\s+(\d+)', re.IGNORECASE)
+    for page_idx, page_lines in enumerate(all_pages):
+        if page_lines is None:
+            continue
+        for line in page_lines:
+            m = pattern.search(line)
+            if m:
+                num = int(m.group(1))
+                if num not in exhibit_pages:      # first occurrence only
+                    exhibit_pages[num] = page_idx + 1
+    return exhibit_pages
+
+
+# =========================================================
 # SECTION BUILDERS
 # =========================================================
 
@@ -277,34 +326,69 @@ def build_reporter_cert():
     return [p1[:25], p2[:25]]
 
 
-def build_witness_cert():
-    L = []
-    L.append(center("C E R T I F I C A T E"))
-    L.append("")
-    L.append(f"     I, {WITNESS_NAME}, do hereby certify that I have")
-    L.append("read or have had read to me the foregoing transcript")
-    L.append(f"of my testimony given on {DEPO_DATE_SHORT}, and find")
-    L.append("same to be true and correct to the best of my")
-    L.append("ability and understanding with the exceptions noted")
-    L.append("on the amendment sheet;")
-    L.append("")
-    L.append("  CHECK ONE BOX BELOW:")
-    L.append("  ( ) Without Correction.")
-    L.append("  ( ) With corrections, deletions, and/or")
-    L.append("      additions as reflected on the errata")
-    L.append("      sheet attached hereto.")
-    L.append("")
-    L.append("  Dated this ___ day of ___________,")
-    L.append("  2026.")
-    L.append("")
-    L.append("")
-    L.append(f"{'':20s}_________________________")
-    L.append(f"{'':20s}{WITNESS_NAME}")
-    L.append("")
-    L.append("")
-    L.append("")
-    L.append(f"  Reported by: {REPORTER_NAME}")
-    return [L[:25]]
+def build_witness_cert(exhibits=None):
+    """Witness certificate — exhibit index (if any) + signature block.
+
+    MB format: exhibit index table appears before the signature block.
+    If exhibits overflow 25 lines, index spans multiple pages; signature
+    always starts on its own page.
+
+    [REVISIT:WITNESS_CERT] Exact table format (column widths, header style)
+    needs MB confirmation before first production delivery.
+    Owner: Scott — confirm with MB at next meeting.
+    """
+    pages = []
+
+    # --- Exhibit Index (prepended per MB format) ---
+    if exhibits:
+        idx = []
+        idx.append(center("C E R T I F I C A T E"))
+        idx.append("")
+        idx.append("  EXHIBIT INDEX")
+        idx.append("")
+        for ex in exhibits:
+            num    = ex['number']
+            desc   = ex['description'] if ex['description'] \
+                     else f"[REVIEW: description not captured in steno]"
+            pg_str = str(ex['page']) if ex.get('page') else '[REVIEW: page?]'
+            label  = f"Exhibit No. {num}  {desc}"
+            gap    = max(1, LINE_WIDTH - 2 - len(label) - len(pg_str))
+            idx.append(f"  {label}{' ' * gap}{pg_str}")
+        # Paginate exhibit index — may span multiple pages
+        for i in range(0, len(idx), 25):
+            pages.append(idx[i:i + 25])
+
+    # --- Signature Block (always its own page) ---
+    sig = []
+    if not exhibits:                               # no index — header goes here
+        sig.append(center("C E R T I F I C A T E"))
+        sig.append("")
+    sig.append(f"     I, {WITNESS_NAME}, do hereby certify that I have")
+    sig.append("read or have had read to me the foregoing transcript")
+    sig.append(f"of my testimony given on {DEPO_DATE_SHORT}, and find")
+    sig.append("same to be true and correct to the best of my")
+    sig.append("ability and understanding with the exceptions noted")
+    sig.append("on the amendment sheet;")
+    sig.append("")
+    sig.append("  CHECK ONE BOX BELOW:")
+    sig.append("  ( ) Without Correction.")
+    sig.append("  ( ) With corrections, deletions, and/or")
+    sig.append("      additions as reflected on the errata")
+    sig.append("      sheet attached hereto.")
+    sig.append("")
+    sig.append("  Dated this ___ day of ___________,")
+    sig.append("  2026.")
+    sig.append("")
+    sig.append("")
+    sig.append(f"{'':20s}_________________________")
+    sig.append(f"{'':20s}{WITNESS_NAME}")
+    sig.append("")
+    sig.append("")
+    sig.append("")
+    sig.append(f"  Reported by: {REPORTER_NAME}")
+    pages.append(sig[:25])
+
+    return pages
 
 
 def build_errata():
@@ -892,12 +976,15 @@ def format_testimony(raw_lines):
 
 def main():
     with open(INPUT_FILE, 'r', encoding='utf-8') as f:
-        text = f.read()
+        raw_text = f.read()
 
-    text, anchor_map = inject_anchors(text)
+    # Extract exhibit descriptions BEFORE anchor injection — cleanest source
+    exhibit_descriptions = extract_exhibits(raw_text)
+
+    text, anchor_map = inject_anchors(raw_text)
     sections = parse_file(text)
 
-    # Parse exhibit numbers from index section
+    # Parse exhibit numbers from steno index section (catches any not in whereupon parentheticals)
     exhibit_nums = []
     for line in sections['index']:
         m = re.match(r'\s*Exhibit\s+No\.\s+(\d+)', line)
@@ -936,9 +1023,21 @@ def main():
     cert_start = len(all_pages) + 1
     all_pages.extend(build_reporter_cert())
 
-    # Witness Certificate
+    # Build exhibit list — combine steno index nums + whereupon extractions + page locations
+    exhibit_pages = find_exhibit_pages(all_pages)
+    all_exhibit_nums = sorted(set(exhibit_nums) | set(exhibit_descriptions.keys()) | set(exhibit_pages.keys()))
+    exhibits = [
+        {
+            'number':      num,
+            'description': exhibit_descriptions.get(num, ''),
+            'page':        exhibit_pages.get(num, 0),
+        }
+        for num in all_exhibit_nums
+    ]
+
+    # Witness Certificate (with exhibit index)
     wcert_start = len(all_pages) + 1
-    all_pages.extend(build_witness_cert())
+    all_pages.extend(build_witness_cert(exhibits))
 
     # Errata
     all_pages.extend(build_errata())
