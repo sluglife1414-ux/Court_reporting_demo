@@ -310,6 +310,33 @@ def run_tests():
     else:
         record("MB_REVIEW.txt exists", False, "File not found")
 
+    # ── 8. APPEARANCES BY: LINES FLAGGED (KB-017) ────────────
+    print("\n[8] Appearances BY: lines carry REVIEW flag (KB-017)")
+    corrected = load_text("corrected_text.txt")
+    if corrected:
+        lines = corrected.split("\n")
+        in_app = False
+        by_lines_unflagged = []
+        for line in lines:
+            s = line.strip()
+            if "A P P E A R A N C E S" in s:
+                in_app = True
+                continue
+            if in_app and "S T I P U L A T I O N" in s:
+                break
+            if in_app and s.startswith("BY:") and "NOT PRESENT" not in s:
+                if "[REVIEW:" not in s:
+                    by_lines_unflagged.append(s[:80])
+        record(
+            "all appearances BY: lines carry [REVIEW:] flag (KB-017)",
+            len(by_lines_unflagged) == 0,
+            f"{len(by_lines_unflagged)} unflagged BY: lines: "
+            + "; ".join(by_lines_unflagged[:3])
+            if by_lines_unflagged else ""
+        )
+    else:
+        record("corrected_text.txt exists for KB-017 check", False, "File not found")
+
     # ─────────────────────────────────────────────────────────
     # SUMMARY
     # ─────────────────────────────────────────────────────────

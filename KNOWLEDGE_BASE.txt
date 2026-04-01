@@ -406,6 +406,42 @@ EXCEPTIONS (always digits regardless of value):
   - Times: 9:07 a.m.
   [REVISIT:KB] Confirm exceptions list with MB
 
+────────────────────────────────────────────────────────────────────────────────
+KB-017 | APPEARANCES BY: LINES — ALWAYS FLAG, NEVER TRUST STENO SOURCE
+Priority: CRITICAL | Category: appearances, flagging, data-source
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: The steno RTF appearances block is pre-populated from the CASE DOCKET
+(attorneys of record), NOT from who actually appeared at the deposition. The
+attorneys on the docket are frequently NOT the ones who showed up. Example:
+Easley 2026-03-13 — steno had Trey Peacock (Westlake), Tucker Bohren (National
+Casualty), Aidan Gallaugher (Great American). MB's final had Walker Hobby,
+Aubrey Rector, Ryan Hall respectively — completely different people.
+
+The AI correctly left these names unchanged (no source evidence to correct
+them). But it also did NOT flag them — so wrong names passed through silently.
+Silent wrong answers on attorney names = legal record error. Unacceptable.
+
+RULE: Every BY: line in the appearances section MUST receive a [REVIEW:] flag:
+  REQUIRED OUTPUT FORMAT:
+    BY: [NAME AS FOUND IN STENO], ESQ. [REVIEW: appearances-by — steno source
+    is case docket, not depo attendees. Reporter must verify this attorney
+    actually appeared at this deposition.]
+
+  Apply to EVERY BY: line without exception. Even if name looks correct.
+  Do NOT apply this flag to "NOT PRESENT" lines (those need no BY: verification).
+
+WHY: Reporter is the only person who knows who actually showed up. The engine
+cannot verify this from transcript content alone. Flag every time, no exceptions.
+
+FIX APPLIED: MASTER_DEPOSITION_ENGINE_v4.1.md — appearances section rule added.
+test_regression.py — test 8 checks all BY: lines in corrected_text.txt carry flag.
+
+================================================================================
+LEARNED FROM: Easley v4.1 accuracy comparison 2026-03-31 — all BY: lines wrong,
+zero flags generated. Session 22 gotcha → permanent KB rule.
+Date: 2026-03-31 | Reporter: Marybeth E. Muir, CCR, RPR
+================================================================================
+
 ================================================================================
 END OF KNOWLEDGE BASE
 ================================================================================

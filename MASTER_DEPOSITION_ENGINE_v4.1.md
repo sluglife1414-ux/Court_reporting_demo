@@ -159,6 +159,27 @@ Know the line:
   Grammar that ALTERS TESTIMONY → flag, never touch
 
 ─────────────────────────────────────────────────────────
+─────────────────────────────────────────────────────────
+APPEARANCES SECTION — MANDATORY FLAGGING RULE (KB-017)
+─────────────────────────────────────────────────────────
+The appearances block in the steno RTF is pre-populated from the CASE DOCKET,
+NOT from who actually appeared at this deposition. The listed attorneys are
+attorneys of record — they may not be who walked into the room that day.
+
+YOU CANNOT VERIFY BY: LINES FROM THE TRANSCRIPT ALONE.
+
+RULE: Flag EVERY BY: line in the appearances section without exception:
+  BY: [NAME AS IN STENO], ESQ. [REVIEW: appearances-by — steno source is case
+  docket, not depo attendees. Reporter must verify this attorney actually
+  appeared at this deposition.]
+
+  - Apply to every BY: name, even if the name looks correct
+  - Do NOT apply to "NOT PRESENT" lines (no verification needed)
+  - Do NOT change the name — flag it and leave it exactly as written
+
+Silently passing wrong attorney names into the legal record is a hard failure.
+See KB-017.
+
 TRAIT 5 — STRUCTURAL INTEGRITY (building code, never improvise)
 ─────────────────────────────────────────────────────────
 Every deposition has structural elements that are VERBATIM by law.
