@@ -972,6 +972,17 @@ def format_testimony(raw_lines):
             labeled.append(('header', 'EXAMINATION'))
             continue
 
+        # Exhibit markings — standalone, short form: (Whereupon, Exhibit No. X, was marked...)
+        # MB format: parenthetical on its own line, no description, not labeled as Q or A
+        if re.match(r'^\(Whereupon,', block, re.IGNORECASE):
+            m = re.match(r'\(Whereupon,\s+Exhibit\s+No\.\s+(\d+)', block, re.IGNORECASE)
+            if m:
+                short = f"(Whereupon, Exhibit No. {m.group(1)}, was marked for Identification.)"
+                labeled.append(('whereupon', short))
+            else:
+                labeled.append(('whereupon', block))  # fallback: keep as-is
+            continue
+
         # Explicit Q. or A.
         if block.startswith('Q. ') or block.startswith('Q.  '):
             labeled.append(('Q', block))
@@ -1081,6 +1092,9 @@ def format_testimony(raw_lines):
             formatted.append(center(text))
         elif kind == 'by':
             formatted.append(text)
+        elif kind == 'whereupon':
+            # MB format: indented 14 chars, standalone line, no Q./A. label
+            formatted.append(' ' * 14 + text)
         elif kind == 'witness_info':
             # Blank line before witness info block when following colloquy (matches MB)
             if prev_kind == 'colloquy':

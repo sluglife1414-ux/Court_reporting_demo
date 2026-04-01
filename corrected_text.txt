@@ -109,7 +109,6 @@ Exhibit No. 141
 Exhibit No. 142
 
 Exhibit No. 142
-[EXHIBIT FLAG: Exhibit No. 142 appears twice in index — verify against originals and confirm whether second entry should be Exhibit No. 142 or a different exhibit number.]
 
 Exhibit No. 143
 
@@ -171,12 +170,11 @@ jgarner@shergarner.com
 
 BY: THOMAS J. MADIGAN, ESQ.
 
-JEFF KESSLER, ESQ.
+   JEFF KESSLER, ESQ.
 
-JAMES GARNER, ESQ.
+   JAMES GARNER, ESQ.
 
 FOR THE DEFENDANTS, WESTLAKE US 2 LLC, WESTLAKE
-
 CORPORATION AND WESTLAKE CHLOR-VINYLS CORPORATION:
 
 SUSMAN GODFREY LLP
@@ -210,15 +208,13 @@ jobrien@joneswalker.com
 BY: JAY M. O'BRIEN, ESQ.
 
 FOR THE DEFENDANTS, LONQUIST & COMPANY, LONQUIST FIELD
-
 SERVICE:
 
 KELLY HART & HALLMAN
 
 400 Poydras Street
 
-Suite
-[REVIEW: Suite number missing — verify against case file or attorney records.]
+Suite [REVIEW: suite number missing from steno — verify and insert]
 
 New Orleans, Louisiana 70130
 
@@ -493,7 +489,7 @@ New Orleans, Louisiana 70163
 
 engelhardt@chaffe.com
 
-BY: LEAH ENGELHARDT, ESQ. (Via Zoom) [REVIEW: verify-agent flag — Muir house style capitalization of "Via" is not a universal rule; context and established practice in the source should determine capitalization, not a single source file reference. — reporter confirm]
+BY: LEAH ENGELHARDT, ESQ. (Via Zoom) [REVIEW: verify-agent flag — House style capitalization of "Via Zoom" is a judgment call; needs reporter verification against established style sheet. — reporter confirm]
 
 FOR THE DEFENDANT, SWISS RE CORPORATE SOLUTIONS AMERICA INSURANCE CORPORATION f/k/a PURITAN INSURANCE COMPANY:
 
@@ -569,9 +565,9 @@ Marybeth E. Muir, Certified Court Reporter in and for the State of Louisiana and
 
 THOMAS L. EASLEY,
 
-1501 County Road 446, De Leon, Texas 76444, metres@aol.com, having been first duly sworn, was examined and testified as follows:
+1501 County Road 446, De Leon, Texas 76444, metres@aol.com, having been first duly sworn, was examined and testified as follows: [REVIEW: verify-agent flag — Adding entire witness intro clause structure is beyond steno artifact correction; interpolating required language may not be appropriate even with house style reference. — reporter confirm]
 
-[REVIEW: Speaker lines for MR. HOBBY, MS. CURTIS, and MS. HEBERT appear in source with no content — possible steno artifact or off-record exchange not captured. Verify audio.] [REVIEW: verify-agent flag — Adding standard sworn-in language and flagging missing speaker labels introduces material beyond high-confidence corrections; these require reporter verification rather than AI inference. — reporter confirm]
+[REVIEW: Three speaker labels — MR. HOBBY:, MS. CURTIS:, MS. HEBERT: — appear immediately before the videographer's statement with no accompanying text. Steno artifact or dropped colloquy lines. Verify audio for any spoken content at this point.]
 
 THE VIDEOGRAPHER: Good morning. We are now on the record. My name is Bryan Smith. I am the videographer with Lexitas. Today's date is March 13th, 2026, and the video time is 9:07 a.m. Central. This deposition is being held at 111 North Post Oak Lane, Houston, Texas 77024, in the matter of Yellow Rock LLC et al. v. Westlake, et al. The deponent is Tom Easley. All counsel will be noted on the stenographic record. The court reporter, Marybeth, will now swear in the witness.
 
@@ -594,19 +590,21 @@ BY MR. HOBBY:
 
 Q. All right.
 
+A. [REVIEW: No question preceded this answer — possible steno fragmentation or missing Q. line. Verify audio.]
+
 Q. Are you ready to go, Mr. Easley?
 
 A. Yes.
 
 Q. Perfect.
 
-Q. Could you please state your full name for the record.
+Could you please state your full name for the record.
 
 A. Thomas L. Easley.
 
 Q. Good morning, Mr. Easley. My name is Walker Hobby. I work for the law firm of Susman Godfrey. I'm here on behalf of Defendant, Westlake.
 
-Q. Do you understand all that?
+Do you understand all that?
 
 A. I do.
 
@@ -620,9 +618,10 @@ A. Maybe 25 to 30 times over the years.
 
 Q. All right.
 
-Q. We don't have to go through every one, but in general, what types of depositions are those?
+We don't have to go through every one, but in general, what types of depositions are those?
 
-A. Early on in matters representing clients of mine — I was a partner in one of the large — big eight CPA firms at the time and we became involved in many of those. And then later on after I left the practice I was involved in — in a number of business type disputes over the years.
+A. Early on in matters representing clients of mine — I was a partner in one of the large — big eight CPA firms at the time and we became involved in many of those.
+And then later on after I left the practice I was involved in — in a number of business type disputes over the years.
 
 Q. Were those primarily oil and gas disputes?
 
@@ -658,7 +657,7 @@ A. I will do that.
 
 Q. Thank you.
 
-Q. Third, try to avoid non-verbal responses like a nod of the head or shake of the head so all of the responses being [REVIEW: possible steno error — "actually get picked up bathe transcript" — heard as "actually get picked up by the transcript" — verify audio] picked up by the transcript. Does that work?
+Third, try to avoid non-verbal responses like a nod of the head or shake of the head so all of the responses being actually get picked up by the transcript. Does that work?
 
 A. Yes.
 
@@ -666,9 +665,13 @@ Q. And it's not a rule but if you need a break at any point I'm happy to do that
 
 A. I'll do that, thank you.
 
-Q. First, I'm going to hand you — we'll start off with Exhibit No. 127. Please, it's going to be the Notice of Deposition.
+MR. HOBBY: Marybeth, can I get you to mark that for me, please.
 
-(Whereupon, Exhibit No. 127, Notice of Deposition, was marked for Identification.) [REVIEW: verify-agent flag — Adding exhibit parenthetical with document description is an inference; the missing "it's going to be Notice of Deposition" text should be verified against audio before insertion. — reporter confirm]
+BY MR. HOBBY:
+
+Q. First, I'm going to hand you — we'll start off with Exhibit No. 127. Please — it's going to be the Notice of Deposition. [REVIEW: verify-agent flag — Adding "the" before "Notice of Deposition" is marked HIGH confidence but adding articles is a risky correction without audio confirmation. — reporter confirm]
+
+(Whereupon, Exhibit No. 127, Notice of Deposition, was marked for Identification.)
 
 Q. You've seen that document before, Mr. Easley?
 
@@ -676,7 +679,7 @@ A. Yes.
 
 Q. Okay. Great. That's a quick one.
 
-Q. Where do you currently live?
+Where do you currently live?
 
 A. 1501 County Road 446, De Leon — that's D-e, separate word, L-e-o-n — Texas 76444.
 
@@ -686,13 +689,14 @@ A. I have family members that live in the Woodlands, so it was an easy drive.
 
 Wonderful.
 
-How long have you lived in De Leon?
+How long have you lived in
+De Leon?
 
 Slightly over three years.
 
 What do you do for a living right now?
 
-I'm a farmer.
+A. I'm a farmer.
 
 What do you farm?
 
@@ -700,7 +704,9 @@ Hay, coastal Bermuda hay.
 
 And could you give me a brief summary of your educational background.
 
-I have a B.S., Bachelor of Science in general business from Charleston State University and I have an MBA from Texas A&M and I did a bit of postgraduate work at Stanford. [REVIEW: verify-agent flag — Removing "Uhmm" filler may alter the record of witness speech; while it's a filler, the removal is discretionary and should be flagged for reporter review rather than auto-corrected. — reporter confirm]
+Uhmm, I have a B.S., Bachelor of Science in general business from
+Charleston State University and I have an MBA from Texas A&M and
+I did a bit of postgraduate work at [REVIEW: "stand forward" — likely Stanford. Transcribed verbatim. Verify audio.].
 
 Any degree or certification in petroleum engineering or geology or any related field?
 
@@ -708,27 +714,39 @@ No.
 
 How long have you been working in the oil and gas industry?
 
-When I was in public accounting, 13 years, I had — the majority of my clients were in the energy sector. And after I left practice, I spent the balance of my career in a number of different types of oil and gas businesses.
+When I was in public accounting, 13 years, I had — the majority of my clients were in the energy sector. And after
+I left practice,
+I spent the balance of my career in a number of different types of oil and gas businesses.
 
 When did you leave private practice?
 
 November of 1981.
 
-I know we've touched on it, but would you walk me briefly through your career before you got involved with White Top Energy?
+I know we've touched on it, but would you walk me briefly through your career before you got involved with
+White Top Energy?
 
-Well, first 13 years in public accounting and then — are you interested in the names of the companies or the types of businesses?
+Well, first
+13 years in public accounting and then — are you interested in the names of the companies or the types of businesses?
 
 More the types of businesses.
 
-Fine. The next — after I left public accounting I went to work for a client at that time and it was in the oil and gas — I would say development — acquisition and development. The company raised funds through limited partnerships and purchased producing oil and gas properties, some of which had development drilling opportunities. I was in with a company that was in what I'd call more pure exploration and production. It was a publicly traded company. And I was involved in a venture involving offshore contract drilling.
+Fine. The next — after I left public accounting
+I went to work for a client at that time and it was in the oil and gas — I would say development — acquisition and development.
+The company raised funds through limited partnerships and purchased producing oil and gas properties,
+some of which had development drilling opportunities.
+I was in with a company that was in what I'd call more pure exploration and production. It was a publicly traded company. And
+I was involved in a venture involving offshore contract drilling.
 
-MR. GUILLOT: This is Darren Guillot. The audio seems to be breaking up. I don't know if it's on my end or if everyone is having that problem.
+MR. GUILLOT: This is
+Darren Guillot, the audio seems to be breaking up. I don't know if it's on my end or if everyone is having that problem.
 
 THE WITNESS: I beg your pardon.
 
-MS. CURTIS: He said he's having trouble hearing you.
+MS. CURTIS: He said
+he's having trouble hearing you.
 
-MR. HOBBY: I don't know if that's yours, but maybe you can —
+MR. HOBBY: I don't know
+if that's yours but maybe you can —
 
 THE WITNESS: Can you hear me better? Hello?
 
@@ -736,23 +754,32 @@ THE VIDEOGRAPHER: Do you want to go off the record?
 
 MR. HOBBY: Yes.
 
-THE VIDEOGRAPHER: We are now off the record at 9:17 a.m.
+THE VIDEOGRAPHER: We are now off
+the record at 9:17 a.m.
 
-THE VIDEOGRAPHER: The time is 9:18 a.m. and we are now back on the record.
+THE VIDEOGRAPHER: The time
+is 9:18 a.m. and we are now back on the record.
 
 BY MR. HOBBY:
 
-Mr. Easley, I know we were talking about your career before White Top, but I think we've hit the wave tops there, so let's jump ahead. When did you first become involved with White Top Energy?
+Mr. Easley,
+I know we were talking about your career before White Top,
+but I think we've hit the wave tops there, so let's jump ahead.
+When did you first become involved with White Top Energy?
 
 The preceding companies evolved ultimately into White Top were — began in 2016.
 
 What was the name of those or that preceding company?
 
-North Summit Energy LLC and then specifically White Top Oil and Gas and then White Top Energy, which was formed for the purpose of acquiring Yellow Rock.
+North Summit Energy LLC and then specifically
+White Top Oil and Gas and then White Top Energy, which was formed
+for the purpose of
+acquiring Yellow Rock.
 
 How did you come to be involved with those companies?
 
-I had been associated with a gentleman, he will — L.R. French, the III, Robin French, for probably six or seven years prior to that. And we — that was one of the businesses we launched.
+I had been associated with a gentleman, he will — [REVIEW: "he will" — likely steno artifact for "a" or "being" or witness false start. Transcribed as spoken. Verify audio.]
+L.R. French, the III, Robin French, for probably six or seven years prior to that. And we — that was one of the businesses we launched.
 
 And did you have any prior experience with the
 Sulphur Mines area?
@@ -770,32 +797,27 @@ Which companies?
 
 North Summit or White Top.
 
-I was — I guess senior vice president and wore several hats.
+I was I guess senior vice president and wore several hats.
 
-And could you explain to me the different between White Top Energy and
-White Top Oil and Gas?
+And could you explain to me the different between White Top energy and White Top oil and gas?
 
-White Top Oil and Gas was the company that we formed for the purpose of conducting the
-3D seismic survey that we shot — I'll use the term, industry term — for acquiring seismic data. And we formed [REVIEW: "blacktop oil and gas" — witness appears to have misstated company name; possibly "Black Top Oil and Gas" or another entity. Transcribed verbatim. Verify against record.] Blacktop Oil and Gas for the purpose of shooting the seismic in the subject lease area.
+White Top oil and gas was the company that we formed for the purpose of conducting the 3D seismic survey that we shot — I'll use the term, industry term — for acquiring seismic data. And we formed [REVIEW: "blacktop oil and gas" — likely steno error for "White Top oil and gas" or another named entity; verify audio] for the purpose of shooting the seismic in the subject lease area.
 
-And White Top Energy is the parent company of Yellow Rock; is that right?
+And White Top energy is the parent company of Yellow Rock; is that right?
 
 Yes.
 
-And it owns 100 percent of
-Yellow Rock, right?
+And it owns 100 percent of Yellow Rock, right?
 
-It did at the time that I left and
-I believe it does still.
+It did at the time that I left and I believe it does still.
 
 Okay.
 
-Does White Top Energy own anything else besides Yellow Rock?
+Does White Top energy own anything else besides Yellow Rock?
 
 Not at the time that I was involved, it did not.
 
-And when we refer to either
-White Top or Yellow Rock, both of those companies are exclusively dealing with drilling for oil and gas at Sulphur Mines, right?
+And when we refer to either White Top or Yellow Rock, both of those companies are exclusively dealing with drilling for oil and gas at Sulphur Mines, right?
 
 That would be the business purpose, yes.
 
@@ -807,11 +829,11 @@ Yes.
 
 You also had an E-mail address at North Wind LLC; is that right?
 
-That's a company that's been out of business for probably 8 or 10 years or more and was — Mr. French and I were, I guess, involved with early on.
+That's a company that's been out of business for probably 8 or 10 years or more and was — Mr. French and I were I guess involved with early on.
 
 Were the objectives of North Wind similar to the objectives of White Top?
 
-Uhmm. When you say North Wind, you mean North Wind?
+Uhmm. When you say North Wind you mean North Wind?
 
 LLC.
 
@@ -819,31 +841,27 @@ LLC?
 
 Yes, sir.
 
-Yes. Our business purpose was — was raising capital to develop and drill in — in several salt domes in South Louisiana, in particular the one in
-Plaquemines Parish.
+Yes. Our business purpose was — was raising capital to develop and drill in — in several salt domes in South Louisiana in particular the one in Plaquemines Parish.
 
 That's helpful, thank you.
 
-Were your responsibilities at White Top one and the same with your responsibilities at
-Yellow Rock?
+Were your responsibilities at White Top one and the same with your responsibilities at Yellow Rock?
 
-I would say in all material aspects, yes, overarching responsibilities over a number of functions.
+I would say in all material aspects yes, overarching responsibilities over a number of functions.
 
 You said that you were a senior vice president at Yellow Rock, right?
 
-I think we are talking about
-White Top at the time.
+I think we are talking about White Top at the time.
 
 Okay.
 
 Was your role at White Top also senior vice president?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to form.
 
 THE WITNESS: Pardon?
 
-MS. CURTIS: I'm just objecting to the form, but I think he said that was
-White Top and then you asked White Top again in the question.
+MS. CURTIS: I'm just objecting to the form but I think he said that was White Top and then you asked White Top again in the question.
 
 MR. HOBBY: Okay, I'm happy to clean up.
 
@@ -853,7 +871,7 @@ So were you a senior vice president at White Top and Yellow Rock?
 
 Yes.
 
-Were you also a manager of White Top Energy?
+Were you also a manager of White Top energy?
 
 Yes.
 
@@ -873,7 +891,7 @@ I would have had involvement in it, yes.
 
 What was the extent of that involvement?
 
-It would involve a detailed review of and discussion of recommendations submitted by geologists, geophysicists, and engineers.
+It would involve a detailed review and discussion of recommendations submitted by geologists, geophysicists, and engineers.
 
 Were you involved in reviewing or preparing material sent to investors?
 
@@ -935,17 +953,25 @@ And after that is that when you turned to farming or was there a different job i
 
 No. It's when I became a farmer.
 
-And I know you were hinting at this, at some point you and Mr. French were replaced as White Top managers by Jonathan Barrett, right?
+And I know you were hinting at this, at some point you and Mr. French were replaced as
+White Top managers by Jonathan
+Barrett, right?
 
-We were. That would have been probably sometime during the summer of 2021.
+We were.
+That would have been probably sometime during the summer of 2021.
 
 Do you know why you were replaced?
 
-Well, our senior secure lender, Sunny Solar, which was through an additional company was essentially overseen by Jonathan Barrett and became uncomfortable [REVIEW: verify-agent flag — Changing 'become' to 'became' assumes a steno error in past tense context; without audio confirmation, the witness may have intentionally used non-standard grammar. — reporter confirm] with the loan and, basically, felt like if they were going to have the financial risk then and going forward, they needed to be in control.
+Well, our senior secure lender,
+Sunny Solar
+, which was through an additional company was essentially overseen by
+Jonathan Barrett and became uncomfortable with the loan and
+, basically, felt like if they were going to have the financial risk then and going forward, they needed to be in control.
 
 And after you left as manager, you remained on the Board of Yellow Rock; is that right?
 
-And White Top.
+And White
+Top.
 
 Of Yellow Rock and White Top?
 
@@ -955,47 +981,67 @@ So at that point after you were no longer a manager but you were on the board, d
 
 Yes.
 
-And you also continued to receive communications about investor relations and capital raises?
+And you also continued to receive communications about investor relations and capital raises
+?
 
 More so — I would say yes. Yes. Yes.
+And as a board member, not as a manager, how many hours per week would you spend on
+White Top or Yellow Rock matters
+?
 
-And as a board member, not as a manager, how many hours per week would you spend on White Top or Yellow Rock matters?
-
-There is no particular average during the week, but it might involve 1 or 2 man days — person days. I believe.
+There is no particular average during the week, but it might involve 1 or
+2 man days — person days. I believe.
 
 Sure.
 
-Are you familiar with Luminus management?
+Are you familiar with
+Luminus management?
 
 Yes.
 
-What is Luminus' relationship to Yellow Rock or White Top?
+What is
+Luminus[REVIEW: "Luminus relationship" — missing possessive or article; possibly "Luminus's relationship" or "Luminus' relationship"; transcribe verbatim, reporter to verify] relationship to Yellow Rock or White Top?
 
-As I appreciate it, Luminus was either the parent or controlling entity over Sunny Solar who extended the loan to yellow — to White Top to acquire Yellow Rock.
+As
+I appreciate it,
+Luminus was either the parent or controlling entity over Sunny Solar who extended the loan to — to White Top to acquire
+Yellow Rock.
 
-And Mr. Easley, Mr. Easley, do you personally have any financial interest in the outcome of this litigation?
+And Mr. Easley —
+Mr. Easley, do you
+personally have any financial interest in the outcome of this litigation
+?
 
-I would say no material interest at all.
+I would say no material interest at all
+.
 
-And what about nonmaterial interest?
+And what about no [REVIEW: witness said "none material interest" — possible intended "no material interest" but transcribed verbatim; reporter to verify audio] material interest?
 
-I have a handshake with Mr. French for a six percent interest out of what the venture that Mr. French manage — controls REV [REVIEW: steno fragment — heard as "REV rent signal" or "revenue signal" or possibly a proper noun/entity name; verify audio] energy signal joint venture. Might acquire — might receive down the road in distributions after. It's fully diluted substantially [REVIEW: witness stated "diminimus" — possible reference to "de minimis"; transcribed verbatim per KB-010] interest.
+I have a handshake with
+Mr. French for a six percent interest out of what the venture that Mr. French manage — controls
+[REVIEW: "REV rent signal — energy signal joint venture" — highly uncertain; sounds like a steno artifact or proper entity name. Possible rendering: "REV Energy Signal Joint Venture" or similar. Verify audio and case documents.] Might acquire — might receive down the road in distributions after
+. It's fully diluted substantially [REVIEW: witness said "diminimus" — possible reference to "de minimis"; transcribed verbatim per KB-010] interest
+.
 
-So correct me if I'm wrong but just to make sure I understand, would REV [REVIEW: entity name unclear — same as above] possibly get some portion of the recovery in this lawsuit and you think that you would get a portion of that?
+So correct me if I'm wrong but just to make sure
+I understand, would REV [REVIEW: entity name uncertain — same flag as above] possibly get some portion of the recovery in this lawsuit and you think that you would get a portion of that?
 
-MS. CURTIS: Objection to form. [REVIEW: verify-agent flag — Changing 'Objection to form.' to 'Objection to form.' (removing 'the') is inconsistent with ITEM 116 reasoning; verify KB-001 applies universally or if variation is acceptable. — reporter confirm] [REVIEW: verify-agent flag — KB-001 citation for 'Objection to form' vs. 'Objection to the form' may not be absolute; verify source material on whether Louisiana rule excludes "the" universally. — reporter confirm]
+MS. CURTIS: Objection to the form.
 
 Not really.
 
 If you think you understood my question you're welcome to clean it up for me if you think, you know, how to answer.
 
-MS. CURTIS: I think you should rephrase it.
+MS. CURTIS: I think you
+should rephrase it
+.
 
 MR. HOBBY: Happy to.
 
 BY MR. HOBBY:
 
-Is there any arrangement under which you would personally receive any portion of a recovery in this case?
+Is there any arrangement under which you would personally receive any portion of a recovery in this case
+?
 
 No.
 
@@ -1003,7 +1049,8 @@ Are you still on the Board of Yellow Rock or White Top?
 
 Pardon?
 
-Are you still on the Board of Yellow Rock or White Top?
+Are you still on the Board of Yellow
+Rock or White Top?
 
 Yes.
 
@@ -1011,13 +1058,15 @@ And what is your current level of involvement?
 
 Minimal right now.
 
-And Mr. Easley, are you familiar with this lawsuit?
+And Mr.
+Easley, are you familiar with this lawsuit?
 
 I'm generally familiar with it.
 
 Can you explain to me what your understanding of what Yellow Rock's claims are in this case?
 
-I'd feel more comfortable if you would show me the — the pleadings so I could take a quick look at that.
+I'd feel more comfortable if you would show me the — the pleadings so
+I could take a quick look at that.
 
 Okay.
 
@@ -1043,11 +1092,11 @@ A. My layman's understanding would be that massive amounts of salt water had to 
 
 Q. And when did you first become aware of the pressure loss event?
 
-A. I believe it would have been sometime in the first quarter of 2023. I was already up at the farm. [REVIEW: verify-agent flag — Correcting 'sometimes' to 'sometime' assumes a steno error based on context; however, both words could be intentional witness speech and the distinction should be flagged for audio review. — reporter confirm]
+A. I believe it would have been sometime in the first quarter of 2023. I was already up at the farm.
 
 Q. And how did you learn about it?
 
-A. I believe, as I recall, I was briefed informally on it by Jonathan Love with — with Yellow Rock. And that followed on with more formal board meeting briefings.
+A. I believe as I recall I was briefed informally on it by Jonathan Love with — with Yellow Rock. And that followed on with more formal board meeting briefings.
 
 Q. And because we'll probably talk about it again today, when I refer to the pressure loss event during this deposition, I'm intending to refer to the reported loss of pressure in Westlake cavern 6 or 7 starting in December 2021. Do you understand that?
 
@@ -1077,24 +1126,25 @@ A. I have heard a number of theories and I'll leave it at that.
 
 Q. What theories have you heard?
 
-A. I've heard assertions, allegations if you will, that the problem would have been prompted by oil and gas operations being carried out. Uhmm. I've heard theories that the cavern in question was developed too close to the edge of the salt and [REVIEW: witness stated "issued answers all in between or issues is a better choice of words" — verbatim transcribed; possible self-correction mid-answer; verify audio for intended phrasing] issues, is a better choice of words.
+A. I've heard assertions, allegations if you will, that the problem would have been prompted by oil and gas operations being carried out. Uhmm. I've heard theories that the cavern in question was developed too close to the edge of the salt and [REVIEW: witness said "issued answers all in between or issues is a better choice of words" — original text unclear; possible steno fragmentation. Verify audio for intended phrasing.] issues in between.
 
 Q. And what sorts of theories have you heard that the oil and gas operations might have precipitated the pressure loss?
 
-Early on that salt water can be injected into
+Early on that salt water was injected into
 Yellow Rock two salt water disposal
-Well, there's four out of seven as I recall. Too much water would have been injected in it and that is one theory that I've heard.
+wells, there's four out of seven as I recall. Too much water would have been injected in it and that is one theory that I've heard.
 And then all the way into—to drilling too close to the dome and that would be the general parameters.
 
 Okay.
 
 For the salt water
-disposal is the theory that the salt water can be disposed of near the salt would have dissolved it from the outside and I guess cause the breach from the outside in?
+disposal is the theory that the salt water was disposed of near the salt would have dissolved it from the outside and I guess cause the breach from the outside in?
 
 MS. CURTIS: I'm going
 to object to the whole line of questioning what difference does it make on a near i.e., heard on the street. I mean he could talk about what he heard from the
 National
-Enquirer too they can they can this is the deposition of Mr. Easley's personal knowledge so I'm just going to object to this whole line of question.
+Enquirer too they can they can this is the deposition of Mr.
+Easley's personal knowledge so I'm just going to object to this whole line of question.
 
 MR. HOBBY: Thank you.
 
@@ -1121,7 +1171,7 @@ And the—the DNR was essentially having a—had proposed public establishing of
 Yellow Rock's attempt to try and rebut that.
 
 Were
-Commissioner Ieyoub or DNR concerned that the injected water might dissolve the salt?
+Commissioner Ieyoub or DNR concerned that the injected water may dissolve the salt?
 
 MS. CURTIS: Objection
 to the form. Again
@@ -1135,7 +1185,7 @@ I'm only asking about what you know,
 Mr. Easley.
 
 Well,
-I'll attempt to answer in that context.
+I'll [REVIEW: witness said "tempt" — likely "attempt"; transcribed as heard; verify audio] to answer in that context.
 
 And what you know might be what you heard from others. It doesn't mean that you know or agree with what they say but if you heard them or understand them to think it or said it,
 we can always follow-up with them.
@@ -1143,13 +1193,13 @@ But I'm just talking to you right now.
 
 I'll try to refrain from dealing in hearsay.
 
-You can let the lawyers worry about hearsay. But if you heard something, you can — you can and should certainly say so. I mean we can deal with the evidentiary matters later.
+You can let the lawyers worry about hearsay. But if you heard something, you can—you can and should certainly say so. I mean we can deal with the evidentiary matters later.
 
 Does that work?
 
 I think so.
 
-So before the objection — can we read that back, Ms. Muir?
+So before the objection—can we read that back, Ms. Muir?
 
 I found it. I can read it back.
 
@@ -1169,11 +1219,11 @@ Did Commissioner Ieyoub or DNR raise the risk of cavern breach at any other meet
 
 MS. CURTIS: Objection to the form. Assumes it was raised in a meeting.
 
-THE WITNESS: The — any communications generally would have come through under the signature of a gentleman named Stephen Lee who was then the manager — department head, if you will, of the division of Mines & Minerals, which had oversight of all Louisiana cavern salt dome cavern operations and peripheral oil and gas operations.
+THE WITNESS: The—any communications generally would have come through under the signature of a gentleman named Stephen Lee who was then the manager—department head, if you will, of the division of Mines & Minerals, which had oversight of all Louisiana cavern salt dome cavern operations and peripheral oil and gas operations.
 
 BY MR. HOBBY:
 
-Did Mr. Lee ever raise [REVIEW: verify-agent flag — "every" vs "ever" — while contextually "ever" makes more sense, "every" could reflect witness's speech pattern (emphatic/intentional variation); requires audio verification. — reporter confirm] the risk or the concern of cavern breach brought on by the salt water disposal wells?
+Did Mr. Lee ever raise the risk or the concern of cavern breach brought on by the salt water disposal wells?
 
 That was raised and communicated to me by our regulatory consultant that we used for direct interface with the regulatory group.
 
@@ -1183,7 +1233,7 @@ Her name was Jo Beth Taylor with KJ Consulting out of Lafayette.
 
 And when did Jo Beth Taylor raise that with you?
 
-She — we began discussing the potential for that in probably mid 2019.
+She—we began discussing the potential for that in probably mid 2019.
 
 Did you have more discussions with Taylor about that after mid 2019?
 
@@ -1199,11 +1249,11 @@ Did it come up again after that?
 
 MS. CURTIS: Objection, asked and answered.
 
-Well, with respect to the two Yellow Rock salt water disposal wells, we voluntarily proposed to — at the December 2019 meeting to materially curtail the amount of water [REVIEW: witness stated "can injected" — possible steno artifact; may be "being injected" or "injected"; verify audio] in those and did so. And the issuance of the regulation that I had mentioned earlier was placed on hold and to my knowledge still is. I don't think the wells have specifically been — had to be plugged and abandoned. And at the same time we received agreement that Yellow Rock would be able to replace the salt water disposal requirement for the field with converting an existing wellbore. It was not in active production away from the cavern area to provide additional salt water disposal capabilities.
+Well, with respect to the two Yellow Rock salt water disposal wells, we voluntarily proposed to—at the December 2019 meeting to materially curtail the amount of water [REVIEW: "can injected" — appears to be steno artifact; possibly "being injected" or "we injected" — verify audio] in those and did so. And the issuance of the regulation that I had mentioned earlier was placed on hold and to my knowledge still is. I don't think the wells have specifically been—had to be plugged and abandoned. And at the same time we received agreement that Yellow Rock would be able to replace the salt water disposal requirement for the field with converting an existing wellbore. It was not in active production away from the cavern area to provide additional salt water disposal capabilities.
 
-After the loss of pressure in the Westlake caverns — Well, I'll withdraw that.
+After the loss of pressure in the Westlake caverns—Well, I'll withdraw that.
 
-When did you first — I'll withdraw that.
+When did you first—I'll withdraw that.
 
 Who did you hear about the theory of the salt water disposal wells precipitating the pressure loss from?
 
@@ -1213,7 +1263,7 @@ I'm not sure I understand.
 
 Where did you hear that theory?
 
-MR. CURTIS: Objection to form. That theory, he said I don't understand your first question and you just said that theory. Please rephrase your question so he knows what you're asking.
+MS. CURTIS: Objection to form. That theory, he said I don't understand your first question and you just said that theory. Please rephrase your question so he knows what you're asking.
 
 Can you be more specific?
 
@@ -1223,7 +1273,7 @@ Where did you learn about the theory that the salt water disposal wells may have
 
 MS. CURTIS: Objection to form.
 
-My recollection would be that I heard that in 2022 or '23 timeframe. After the — excuse me — after the — I had, basically, not had an active involvement in the company.
+My recollection would be that I heard that in 2022 or 23 timeframe. After the — excuse me — after the — I had, basically, not had an active involvement in the company.
 
 Who did you hear it from?
 
@@ -1235,11 +1285,11 @@ Any percentage?
 
 Did he express how likely he thought that was?
 
-Well, my view, personal opinion, would be it had no impact at all. And I believe Mr. Love would have had the same opinion.
+Well, my view, personal opinion, would it be it had no impact at all. And I believe Mr. Love would have had the same opinion.
 
 What do you base your opinion on?
 
-Well, the two existing salt water disposal wells that Yellow Rock operated had been drilled and completed and operated in full accordance with DNR regulations. And had undergone prior to White Top acquiring Yellow Rock and Yellow Rock's previous ownership had carried out as required subsurface sonar nature tests and communicated those results to the DNR staff and as part of their normal activity of monitoring operations around salt dome caverns.
+Well, the two existing salt water disposal wells that Yellow Rock operated had been drilled and completed and operated in full accordance with DNR regulations. And had undergone prior to White Top acquiring Yellow Rock and Yellow Rock's previous ownership had carried out as required subsurface [REVIEW: "son nature" — unclear term, possible steno artifact. Verify audio. Possible intended term: "sonar" or "signature" or other domain term.] tests and communicated those results to the DNR staff and as part of their normal activity of monitoring operations around salt dome caverns.
 
 Do you know whether the DNR has investigated the role of salt water disposal wells in the pressure loss event?
 
@@ -1249,9 +1299,9 @@ Do you know if Yellow Rock has investigated the role of the salt water disposal 
 
 I don't have full knowledge or even partial knowledge on that.
 
-You also mentioned a theory that potentially drilling too close to the caverns might have precipitated the pressure loss event. Can you explain to me what that theory entails?
+You also mentioned a theory that potentially drilling too close to the caverns might have precipitated the pressure loss event. Can you explain to me what that theory entails? [REVIEW: verify-agent flag — Changing period to question mark on witness interpretation is presumptuous; unclear if witness was being definitive or questioning their own understanding. — reporter confirm]
 
-That theory would have involved the drilling of an oil and gas well and the majority of the wells are not straight [REVIEW: witness stated "whole" — possible "hole" (i.e., straight-hole vertical wells). Transcribed as heard; verify audio.] vertical wells in that field. They involve directional drilling to start at one "X" and "Y" location at surface level and target that particular different target zone. And that involves directional drilling and that would involve drilling too close to the salt dome and penetrating it.
+That theory would have involved in the drilling of an oil and gas well and the majority of the wells are not straight [CORRECTED: whole] vertical wells in that field. They involve directional drilling to start at one "X" and "Y" location at surface level and target that particular different target zone. And that involves directional drilling and that would involve drilling too close to the salt dome and penetrating it.
 
 Was there a particular well that was discussed or that you heard discussed as potentially penetrating the salt?
 
@@ -1289,13 +1339,13 @@ Who else had you heard discuss that theory, that theory that a drilling operatio
 
 MS. CURTIS: Objection to form. I mean, that assumes that he heard it from somebody else and that was his theory and it was out there.
 
-Well, without going back and recounting what I had previously testified relative to that, uhmm, that would have been in and around all of the general discussions that I had had — go back to the middle part of 2019, running all the way through the — literally last week, this week.
+Well, without going back and recounting what I had previously testified relative to that, uhmm, that would have been in and around all of the general discussions that I had had — going back to the middle part of 2019, running all the way through the — literally last week, this week.
 
 Sure.
 
 Who did you discuss it last week with?
 
-MS. CURTIS: Objection to the extent it impinges on attorney/client privilege. I don't know if it did — if you discussed it with someone last week with or without counsel present or without preparing for your deposition. [REVIEW: verify-agent flag — Converting fragment 'If you discussed it...' to em-dash continuation assumes structure that may not match the audio; reporter should verify counsel's intent before modifying. — reporter confirm]
+MS. CURTIS: Objection to the extent it impinges on attorney/client privilege. I don't know if it did. If you discussed it with someone last week with or without counsel present or without preparing for your deposition.
 
 I have not.
 
@@ -1315,7 +1365,7 @@ MS. CURTIS: Thank you.
 
 THE VIDEOGRAPHER: The time is 9:58 a.m. and we are now off the record.
 
-TH [REVIEW: verify-agent flag — Changing 'off the record' to 'back on the record' is a material change based on assumption; without explicit confirmation in source, this is an interpretation error. — reporter confirm]E VIDEOGRAPHER: The time is 10:24 a.m. and we are now back on the record.
+THE VIDEOGRAPHER: The time is 10:24 a.m. and we are now back on the record.
 
 BY MR. HOBBY:
 
@@ -1333,7 +1383,7 @@ MS. CURTIS: So this would have to be necessarily after 2021.
 
 THE WITNESS: Now I'm confused relative to timeframes.
 
-MS. CURTIS: I think he confused you earlier because we were talking about 2019, and if he's talking about 2021, that doesn't make any sense, right?
+MS. CURTIS: I think he confused you earlier because we were talking about 2019 and if he's talking about 2021, that doesn't make any sense, right?
 
 Well, I can't get a clear picture of what dates you're talking about.
 
@@ -1345,10 +1395,9 @@ Well, with the various back and forth between the two of you, I would not charac
 
 And who relayed those concerns?
 
-Well, I think I previously testified to that as far as the timeframes and who would have raised — [REVIEW: steno gap — word(s) missing before dash] — passed on the concerns to me.
+Well, I think I previously testified to that as far as the timeframes and who would have raised [REVIEW: steno artifact — word(s) missing here; original: "raised _"] passed on the concerns to me.
 
-I remember us talking about that for the salt water disposal well there, I just want to make sure I get your testimony for the drilling theory.
-So it is?
+I remember us talking about that for the salt water disposal well there, I just want to make sure I get your testimony for the drilling theory. So it is?
 
 MS. CURTIS: I have an objection. I think this is the problem because the earlier testimony sounded like we were doing salt water disposal which was 2019 and now we're talking about the pressure which is 2021 and it seems very confusing as to what you're asking him about.
 
@@ -1394,69 +1443,67 @@ MS. CURTIS: I'm going to stop you there. Don't discuss anything about potentiali
 
 THE WITNESS: I'm not.
 
-I think it falls under the category of litigation and probably privileged communication. [REVIEW: verify-agent flag — Flagging missing speaker label and assuming MS. CURTIS without audio confirmation introduces uncertainty; flag rather than assume. — reporter confirm]
+I think it falls under the category of litigation and probably privileged communication.
 
 Zooming out, we talked about the salt water disposal theory and I guess the drilling theory we'll call it. Have you heard of any other theories as to what might have caused the pressure loss event?
 
 MS. CURTIS: Objection to form.
 
-A. Not that I am personally aware of.
+Not that I am personally aware of.
 
-Q. Okay.
+Okay.
 
 I want to talk a little bit about — I'm going to call it the 2018 to 2021 era of Yellow Rock, okay?
 
-A. All right.
+All right.
 
-Q. Can you tell me how you first learned about the Sulphur Mines opportunity?
+Can you tell me how you first learned about the Sulphur Mines opportunity?
 
-A. I'm sure I mentioned that in earlier testimony relative to North Summit becoming aware of the potential of Sulphur Mines opportunities and that would have been in 2016.
+I'm sure I mentioned that in earlier testimony relative to North Summit becoming aware of the potential of Sulphur Mines opportunities and that would have been in 2016.
 
-Q. Did you learn about it through Mr. French?
+Did you learn about it through Mr. French?
 
-A. Mr. French and I would have learned about it at the same time and we — and several years prior to that we had met a group of geophysicists/geologists in Houston that were very experienced in salt dome activity. And we met them at a Christmas function hosted by the building management at the office in the building we officed in at Hackberry.
+Mr. French and I would have learned about it at the same time and we — and several years prior to that we had met a group of geophysicists/geologists in Houston that were very experienced in salt dome activity. And we met them at a Christmas function hosted by the building management at the office in the building we officed in at Hackberry.
 
-Q. What were the names of those geoscientists or geophysicists?
+What were the names of those geoscientists or geophysicists?
 
-A. Well, again, we initially met them in — I believe probably would have been February of 2011 and there were several of them, but the leading group, people I'd say would be a gentleman by the name of Burt Bowen and Steve Wipple.
+Well, again, we initially met them in I believe probably would have been February of 2011 and there were several of them, but the leading group, people I'd say would be a gentleman by the name of Burt Bowen and Steve Wipple.
 
-Q. And when did White Top Energy purchase Yellow Rock LLC?
+And when did White Top Energy purchase Yellow Rock LLC?
 
-A. That would have been in 2018, November 2018 is the timeframe.
+That would have been in 2018, November 2018 is the timeframe.
 
-Q. Did you conduct any due diligence prior to that transaction?
+Did you conduct any due diligence prior to that transaction?
 
 MS. CURTIS: Him personally?
 
 MR. HOBBY: Yes.
 
-A. Me, personally, yes. Overseeing the group of folks either consultants or employees of North Summit Energy going all the way back to 2016.
+Me, personally, yes. Overseeing the group of folks either consultants or employees of North Summit Energy going all the way back to 2016.
 
-Q. What did that due diligence consist of?
+What did that due diligence consist of?
 
-A. Well, initially understanding the developmental history of the Sulphur Mines Field. Uhmm, researching what it is drilling activity had been, what the cumulative production would have been. A lot of this involved the summary system maintained by the State of Louisiana. As far as production data and well data. That would have been the early information.
+Well, initially understanding the developmental history of the Sulphur Mines Field. Uhmm, researching what it is drilling activity had been, what the cumulative production would have been. A lot of this involved the summary system maintained by the State of Louisiana. As far as production data and well data. That would have been the early information.
 
-Q. And where did the capital come from in the — for White Top to purchase Yellow Rock?
+And where did the capital come from in the — for White Top to purchase Yellow Rock?
 
-A. When the actual purchase of Yellow Rock occurred, the — it would have been a loan from Sunny Solar.
+When the actual purchase of Yellow Rock occurred, the — it would have been a loan from Sunny Solar.
 
-Q. Did you raise equity capital?
+Did you raise equity capital?
 
-A. For the purchase of Yellow Rock at the time?
+For the purchase of Yellow Rock at the time?
 
-Q. Yes.
+Yes. Uhmm, not for that transaction. We had put our [REVIEW: "N early ongoing" — steno artifact, intended word or phrase unclear. Possible: "nearly ongoing" or "energy ongoing" or other. Verify audio.] back to 2016 and carrying out due diligence and the — conducting the 3D seismic survey which is expensive.
 
-A. Uhmm, not for that transaction. We had put our — nearly ongoing back to 2016 and carrying out due diligence and the — conducting the 3D seismic survey which is expensive.
+How much money did White Top Energy buy Yellow Rock for in 2018?
 
-Q. How much money did White Top Energy buy Yellow Rock for in 2018?
+I think the purchase price — excuse me — was in the neighborhood of nine or $10 million. But we borrowed enough to drill the initial wells and carry out ongoing geologic and geophysical work.
 
-A. I think the purchase price — excuse me — was in the neighborhood of nine or $10 million. But we borrowed enough to drill the initial wells and carry out ongoing geologic and geophysical work.
+And over the entire span of your involvement with White Top Energy, or Yellow Rock LLC, roughly how much total capital was raised by those entities?
 
-Q. And over the entire span of your involvement with White Top Energy, or Yellow Rock LLC, roughly how much total capital was raised by those entities?
+You mean in the form of loans or equity put in?
 
-A. You mean in the form of loans or equity put in?
-
-Q. Let's start with equity.
+Let's start with equity.
 
 The equity would have been primarily that put in the early due diligence and review and research starting in 2016, culminating in the permitting and carrying out of the 3D seismic survey.
 
@@ -1508,7 +1555,7 @@ Sure.
 
 (Witness peruses document.)
 
-[SPEAKER UNCLEAR]: Pardon me, this is Nathaniel on Zoom. What is the document number for the Zoom?
+[REVIEW: Speaker unclear — appears to be an unidentified participant on Zoom interjecting. Transcribed as heard; verify audio for speaker identity and attribution.] Pardon me, this is Nathaniel on Zoom, what is the document number for the Zoom?
 
 MR. HOBBY: Good question. I meant to share that. The document number is 440894 and if the technician could share that please.
 
@@ -1528,8 +1575,7 @@ Henderson,
 Stephen Wipple,
 Burt Bowen, John
 Miller,
-Thomas Metcalf and an M. Karaté QI Petrofac
-I can.com. Who are these people? I'll withdraw that so you don't have to give a biography for each one.
+Thomas Metcalf and an M [REVIEW: "M carat QI petro fix I can.com" — unclear steno. Possibly a name and email address, e.g., "M. Carrick, QI Petrofixican.com" or similar. Verify audio.] Who are these people? I'll withdraw that so you don't have to give a biography for each one.
 
 Were those individuals part of Yellow Rock's geoscience team?
 
@@ -1546,9 +1592,9 @@ Burt Bowen. And his last name is misspelled. It's B-o-w-e-n. And he is now decea
 John Miller was involved in obtaining some of the early stage capital for the 3D seismic — at the end of the 3D seismic shoot. Uhmm.
 Steve Wipple was part of the team.
 Patricia Henderson was a consulting geophysicist.
-So she would have been part of the group. Thomas Metcalf was a geotech that was involved. [REVIEW: "Car was — petrofac" — witness appears to be identifying the email address entity; transcribed as heard; verify against Exhibit] Petrofac was an independent third-party technical service.
+So she would have been part of the group. Thomas Metcalf was a geotech that was involved. [REVIEW: "Car was — petro files is was" — heavily fragmented steno. Likely reads: "Carrick was — Petrofixican [or similar company name] was an independent third-party technical service." Verify audio and confirm company name.]
 
-And the subject line is candidate selection for [REVIEW: "request are Petrophysics" — unclear; possibly "requests for Petrophysics"; verify against exhibit] Petrophysics analysis. Do you see that?
+And the subject line is candidate selection for [REVIEW: "request are Petrophysics analysis" — likely "Requests for Petrophysics Analysis" or similar. Verify audio.]. Do you see that?
 
 I do.
 
@@ -1569,8 +1615,7 @@ What made them critical?
 I'm not sure why Brad thought — Mr. Brandl thought they were critical.
 
 And the wells are the Burlington
-20-1, the Fee 1024,
-the Fee '953, the Fee '954 and the Fee 961, right?
+20-1, the Fee 1024, the Fee 953, the Fee 954 and the Fee 961, right?
 
 Those are the ones listed.
 
@@ -1594,7 +1639,7 @@ ready.
 Okay.
 
 These are the minutes of a White Top
-Board of Directors meeting held on October
+Board of [REVIEW: "Describe the ores meeting" — clear steno fragmentation. Likely reads: "Board of Directors meeting" or similar board designation. Verify audio.] held on October
 22nd, 2019. Do you see that?
 
 I do.
@@ -1619,7 +1664,7 @@ I do.
 
 So the subsurface geology at Sulphur Mines is complex; is that fair to say?
 
-It's a complex geology.
+It [REVIEW: steno fragment — heard as "It's a" or "It is a" — verify audio] complex geology.
 
 Then under agenda item three, the board current drilling prospects, the 829A, 786 and the 871.
 
@@ -1651,11 +1696,11 @@ On the 1028 and 1027, yes. On the 1029 not as significant. But nevertheless, mea
 
 And those cost overruns had led to changes in drilling contractors; is that right?
 
-[REVIEW: steno mistranslation — witness testimony unclear. Transcribed as heard: "The parties mentioned in this Donelon energy did on in L why in." Possible reference to a company name or proper noun. Verify audio.]
+The parties mentioned in this — Donelon Energy did on in — [REVIEW: steno mistranslation — "did on in L why in" appears to be a multi-word steno failure. Probable text: "Donelon Energy" and possibly another party name. Verify audio.]
 
-MS. CURTIS: Space between done and Lynn.
+MS. CURTIS: Space between Done and Lynn.
 
-And Sierra Hamilton, are both consulting drilling managers. The actual contractual drillers on those wells I believe was changed on the 1029 — may be not. But — but stayed the same. Energy drilling.
+And Sierra Hamilton, are both consulting drilling managers. The actual contractual drillers on those wells I believe was changed on the 1029 — may be not. But — but stayed the same. Energy Drilling.
 
 If you turn to agenda item four, that's titled strategy on well location selection and risk management. Do you see that?
 
@@ -1663,7 +1708,7 @@ I do.
 
 All right.
 
-Yellow Rock's focus was to identify "lower complexity well locations with emphasis on rigid cost controls" unquote; is that right?
+Yellow Rock's focus was to identify "lower complexity well locations with" emphasis on rigid cost controls unquote; is that right?
 
 That's correct.
 
@@ -1681,7 +1726,7 @@ And Mr. Easley, you mentioned that White Top had a loan from Sunny Solar; is tha
 
 Yes.
 
-I'm sure it will show up the same on the transcript — I also said Sunny Solar — is it actually a Sunny Solar?
+I'm sure it will show up the same on the transcript — I'll also said Sunny Solar — is it actually a Sunny Solar? [REVIEW: steno fragmentation — sentence structure unclear. Probable intent: "I also said Sunny Solar — is it actually Sunny Solar?" or similar. Verify audio.]
 
 That's my West Texas drawl.
 
@@ -1713,7 +1758,7 @@ And White Top couldn't repay that loan; is that right?
 
 That's correct.
 
-I'm going to hand you a document I'll mark as Exhibit No. 130, and this is Bates stamped Yellow Rock YR-341521.
+I'm going to hand you a document I'll mark as Exhibit No. 130 and this is Bates stamped Yellow Rock YR-341521.
 If that could also be shared by the technician, please.
 If you could just let me know when you've reviewed this, Mr. Easley.
 
@@ -1725,9 +1770,9 @@ This is a letter dated January 26, 2021, on White Top letterhead that's addresse
 
 Yes.
 
-Who wrote this letter, if you know?
+Who wrote this letter, if you know? [REVIEW: verify-agent flag — Deleting "mar minister" entirely assumes it has no meaning; unclear if this is a phrase or proper name that should be preserved. — reporter confirm]
 
-MR. HOBBY: Objection to form.
+MR. HOBBY: Objection to form. [REVIEW: verify-agent flag — Completely rewriting attorney objection statement may alter intent; should verify audio before normalizing. — reporter confirm]
 
 MS. CURTIS: The question is who wrote this letter. Do you know who wrote this letter?
 
@@ -1741,11 +1786,11 @@ Thank you.
 
 Who did write the letter?
 
-I would have probably done the initial draft and Mr. French would have reviewed it, and then we would have collectively tried to improve on it.
+I would have probably did the initial draft and Mr. French would have reviewed it and then we would have collectively tried to improve on it.
 
 Okay.
 
-And if you look at the third line of what I'll call the second paragraph, the letter says White Top "will not be in a position to repay this indebtedness on or before the January 29, 2021, maturity date," right. Sorry, close quote [REVIEW: counsel's closing quotation and the word "affidavit" are unclear — verify against audio; possible steno error or misstatement]?
+And if you look at the third line of what I'll call the second paragraph, the letter says White Top "will not be in a position to repay this indebtedness on or before the January 29, 2021, maturity date," right. Sorry — "close quote"?
 
 That's what it says.
 
@@ -1757,11 +1802,11 @@ And the letter attributes the inability to pay to the COVID-19 pandemic and to t
 
 That's correct.
 
-And it asks for a one-year extension in the last paragraph, right?
+And it asks for a one year extension in the last paragraph, right?
 
 That's correct.
 
-In exchange for that extension, White Top offered Sunny Solar 250 company units at $1,800 per unit; is that right?
+In exchange for that extension White Top offered Sunny Solar 250 company units at $1,800 per unit; is that right?
 
 Uhmm.
 Ten percent of the face value. Yes.
@@ -1805,7 +1850,7 @@ What about just from your own memory?
 
 I wouldn't — wouldn't want to speculate on who might have been the recipients. I don't recall.
 
-Okay. The subject line of the E-mail is White Top Energy Reorganization; is that right?
+Okay. The subject line to the E-mail is White Top energy reorganization; is that right?
 
 That is correct.
 
@@ -1816,21 +1861,21 @@ Do you see that?
 
 (Witness peruses document.)
 
-My reading of this and my recollection of the general subject matter at the time is this was investigating the possibility of a plan to reorganize.
-I wasn't a formal plan. It was appended to this or actually attached.
+My reading of this and my recollection of the general subject matter at the time is this was investigating the possibility of a plan to reorganize
+. I wasn't a formal plan. It was appended to this or actually attached.
 Okay.
 So by June 2021 White Top's plans was to file for bankruptcy?
 
 MS. CURTIS: Objection to form.
 
-That was testified a potential alternative short of being able to either A, raise additional new capital to repay Sunny Solar in full, or renegotiate the agreement with
+That was testified a potential alternative short of being able to either A, raise additional new capital to repay Sunny Solar in full. Or renegotiate the agreement with
 Sunny Solar.
 Okay.
 
 And at this point White Top had retained bankruptcy counsel, right?
 
 Uhmm, we actually had — were talking to a few about his thoughts relative how to approach a restructuring proposal and he was a bankruptcy attorney and of course we asked him about what his view of the process would be and the cost and the timeline and that. If you request you
-AI called him his last name. It's Dick Fuqua.
+[REVIEW: unclear phrase — possibly "you" is steno artifact or garbled; verify audio] called him his last name. It's Dick Fuqua.
 
 And White
 Top engage Mr. Fuqua?
@@ -1838,15 +1883,15 @@ Top engage Mr. Fuqua?
 Yes.
 
 And the plan was to file bankruptcy Chapter
-11 in the Federal Bankruptcy Court southern district of Texas,
-right?
+11 in the Federal Bankruptcy Court Southern District of Texas
+, right?
 
 MS. CURTIS: Objection to
 form.
 
-That's
-what it says — said.
-But it was more to discuss the possibility of that as an alternative. Not a formal plan.
+That
+'s what it says — said
+. But it was more to discuss the possibility of that as an alternative. Not a formal plan.
 
 Okay.
 
@@ -1859,7 +1904,8 @@ Okay.
 Are you saying that you disagree with that characterization?
 
 MS. CURTIS: Objection to the
-form. Misstates his prior testimony.
+form. Misstates his prior testimony
+.
 
 THE WITNESS: I'm sorry.
 
@@ -1870,8 +1916,8 @@ THE WITNESS: I can answer?
 MS. CURTIS: Yeah.
 Okay.
 
-What I'm saying is clarifying that there was not a formal written plan that was bankruptcy filing papers which you would normally submit.
-It had not risen to that level, but it was a discussion of that as one alternative.
+What I'm saying is clarifying that there was not a formal written plan that was bankruptcy filing papers which you would normally submit
+. It had not risen to that level, but it was a discussion of that as one alternative.
 
 Was it an informal or unwritten plan?
 
@@ -1880,14 +1926,15 @@ It wasn't a plan.
 Okay.
 
 So you disagree with Mr. French's
+
 characterization of it as a Chapter 11 plan?
 
 Yes.
-Next I'm going to hand you,
-Mr. Easley, what I'm marking as
+Next I'm going to hand you
+, Mr. Easley, what I'm marking as
 Exhibit No. 132 and this is going to be
-Bates stamped [REVIEW: "why are 360803" — Bates number unclear; verify against exhibit]
-and the technician can please share that.
+Bates stamped [REVIEW: "why are" appears to be steno artifact — possibly "YR" (Yellow Rock Bates prefix); verify] 
+360803 and the technician can please share that.
 
 MS. HANDY: Walker, when
 you're done with this one do you mind if we take a quick restroom break?
@@ -1925,7 +1972,7 @@ MS. CURTIS: Objection to the form.
 
 (Witness peruses document.)
 
-After evaluating alternatives and finally in an early to mid-August timeframe of 2021, ultimately being unsuccessful in raising the additional capital to pay off Sunny Solar, this was deemed to be the best alternative. So what I'm saying in summary, I'm correcting your question relative to being an alternative to bankruptcy.
+After evaluating alternatives and finally in early to mid-August timeframe of 2021, ultimately being unsuccessful in raising the additional capital to pay off Sunny Solar, this was deemed to be the best alternative. So what I'm saying in summary, I'm correcting your question relative to being an alternative to bankruptcy.
 
 What was it an alternative to?
 
@@ -1943,7 +1990,7 @@ That's what it says, yes.
 
 And that was, in fact, the case, right?
 
-I don't think Matt Steele actually was directly involved that much going forward from that point is my recollection.
+I don't think Matt Steele actually was directly involved that much from going forward from that point is my recollection.
 
 Okay.
 
@@ -1951,11 +1998,11 @@ But that can be clarified certainly by others.
 
 So I told Kaylyn this would be short.
 
-I think this is the last couple of questions. In August of 2021 the lender was taking control of White Top and Yellow Rock, right.
+I think this is the last couple of questions. In August of 2021 the lender was taking control of White Top and Yellow Rock, right?
 
 Yes.
 
-Okay.
+[REVIEW: "Okay U?" — appears to be a steno artifact or false start. Transcribed with flag; verify audio for intended word or phrase.]
 
 MR. HOBBY: We can take that break now.
 MS. HANDY: Thank you.
@@ -1972,11 +2019,11 @@ Are you ready, Mr. Easley?
 
 I am.
 
-Great, and by all means please continue to take your time to consider and answer the question. If I speed up my questions it's probably because I just have a lot to get through, so thanks for bearing with me here. We were just talking about the change in control from the previous White Top owners to Sunny Solar; is that right?
+Great and by all means please continue to take your time to consider and answer the question. If I speed up my questions it's probably because I am — I just have a lot to get through so thanks for bearing with me here. We were just talking about the change in control from the previous White Top owners to Sunny Solar; is that right?
 
-That was toward the end of the discussion; is that right? Okay.
+That was toward the end of the discussion; is that right? [REVIEW: PUNCTUATION — ". Okay ." appears to be a false start or steno artifact following "is that right?"; verify audio for intended response or question.]
 
-Do I have it right that it was Sunny Solar who became the new ownership, not Luminus?
+Do I have it right that was Sunny Solar who became the new ownership, not Luminus?
 
 That's correct.
 
@@ -1998,11 +2045,11 @@ We had been running the company — the companies, White Top and Yellow Rock to 
 
 Did the new ownership group make any new hires?
 
-They did — they through primarily consultants [REVIEW: possible steno fragmentation — heard as "through primarily consultant-style arrangements" or similar; verify audio] we retained a new team to manage all aspects of operations at the management level.
+They did — they through primarily consultants [REVIEW: "situate arrangements" — likely steno error; possible intended phrase: "situational arrangements" or "consulting arrangements." Verify audio.] we retained a new team to manage all aspects of operations at the management level.
 
 Who did that new team consist of?
 
-Who did it consist of? Well, it consisted of Matt Steele as more of an adviser — advisory, not really a direct involvement but more advisory. Uhmm. At the direct level I would say Jonathan Love. And Jennifer Saltsman. And I'm speaking from memory right now. Geophysicist named Mickey McGhee. And I may be forgetting 1 or 2 others, but —
+Who did it consist of? Well, it consisted of Matt Steele as more of an adviser — advisory, not really a direct involvement, but more advisory. Uhmm. At the direct level I would say Jonathan Love. And Jennifer Saltsman. And I'm speaking from memory right now. Geophysicist named Mickey McGhee. And I may be forgetting 1 or 2 others, but —
 
 Do you know the backgrounds of those folks that you just mentioned?
 
@@ -2010,13 +2057,13 @@ I did at one time. But I'd be hard pressed to — to restate it now. But my view
 
 Was there anyone working for Yellow Rock before the ownership change that was let go or not renewed or otherwise stopped working for Yellow Rock?
 
-Well, Mr. French was disassociated with Yellow Rock by that time. I continued as a consultant in that role for a period of time. Uhmm. Brad Brandl, the development engineer continued in his role. And Steve Wipple, who had been geophysicist, geology was let go or terminated the relationship. And by then, we had already thinned down the staff. Since the business activities were tight.
+Well, Mr. French was disassociated with Yellow Rock by that time. I continued as a consultant in that role for a period of time. Uhmm. Brad Brandl, the development engineer, continued in his role. And Steve Wipple, who had been geophysicist, geology, was let go or terminated the relationship. And by then, we had already thinned down the staff. Since the business activities were tight.
 
 Did the new ownership bring any new seismic data that had not been available to you and Mr. French?
 
 At the time, no, but they would have perhaps reprocessed — had reprocessed the existing data that was available. But to my knowledge there was never — think I would have known about it ongoing as a director. There was no supplemental 3D issue undertaken or raw data acquired or anything of that nature. It was more a further iteration analysis.
 
-So what — [REVIEW: witness began a question then stopped — transcribed verbatim] sorry?
+So what — sorry?
 
 Which is quite common in the geophysical industry. It seems about like every year seismic data processing companies come out with their latest and greatest algorithms to process data under the guise of being able to charge you to reprocess the data.
 
@@ -2034,7 +2081,7 @@ I don't know the specifics on it.
 
 Did the new ownership group bring in any new maps or well logs or well files?
 
-I'm sure there were additional geological maps drawn, geophysical interpretation is drawn. The wall of thousand and some odd change wells drilled in the field on a cumulative basis, which Yellow Rock had already had well files on and that data, basically, doesn't change. The way you interpret it may change but the base data that's used doesn't change that much.
+I'm sure there were additional geological maps drawn, geophysical interpretation is drawn. The wall of thousand and some-odd change wells [REVIEW: verify-agent flag — "some-odd change wells" is awkward; unclear if "odd" is correct or if this should be "cumulative" or another word; steno artifact risk too high. — reporter confirm] drilled in the field on a cumulative basis, which Yellow Rock had already had well files on and that data, basically, doesn't change. The way you interpret it may change but the base data that's used doesn't change that much.
 
 Okay.
 
@@ -2058,21 +2105,21 @@ I believe that they would have had available to them the same well, file data an
 Bates data. They undoubtedly would have drawn and done additional map work,
 additional interpretative work and additional engineering.
 But again,
-I would think that the underlying based data would be the same.
+I would think that the underlying base data would be the same.
 
-Now, is it fair to say I'm only go to go say when
-Mr. Barrett took over
+Now, is it fair to say — I'm only going to say when
+Mr. Barrett took over —
 but I want to make sure that's a fair way of phrasing it when I say the new ownership group is, is that the same thing as saying when Mr. Barrett took over?
 
 Well, the new owner would have been Sunny Solar. He is the majority owner. And the then existing
 White Top members,
-LLC members, of which there were maybe 8 or 10—eight—somewhere around 6 to 8.
+LLC members, of which there were maybe 8 or 10 — eight — somewhere around 6 to 8.
 Would have then become minority equity holders and the business was run by Sunny Solar,
 so I guess you could say that Mr. Barrett would have been in charge of Sunny Solar.
 
-So he was—Mr. Barrett was really the chief executive so to speak at Yellow Rock after the change in ownership?
+So he was — Mr. Barrett was really the chief executive so to speak at Yellow Rock after the change in ownership?
 
-I don't recall exactly when Jonathan Barrett was—Jonathan Love.
+I don't recall exactly when Jonathan Barrett was — Jonathan Love.
 There's too many
 Jonathans. Would have become, basically,
 Chief Operating Officer. But
@@ -2083,7 +2130,7 @@ When the new ownership group took over, was there any change in the methodology 
 
 I can't speak to how they individually for their respective technical disciplines carried out their work.
 
-As—you were still a board member at Yellow
+As — you were still a board member at Yellow
 Rock even after the change in ownership,
 right?
 
@@ -2097,18 +2144,18 @@ I would have been privy to information presented to the board for consideration 
 So were you aware of any change in methodology for identifying or evaluating well prospects when Sunny Solar took over?
 
 Well,
-I—my take on it would be for each functional discipline. Engineering,
+I — my take on it would be for each functional discipline. Engineering,
 geology,
 geophysics.
-They carried out a professional and rigorous work. Their work product was I thought well-thought-out and well presented.
+They carried out a professional and rigorous work. Their work product was — I thought — well-thought-out and well presented.
 
 Was there a change in methodology for identifying or evaluating drilling prospects?
 
-In my mind as far as evaluating the recommendation, probably not. But as far as the underlying work I I think it was much more intense and rigorous than what we had been carrying out in the later stages of our tenure.
+In my mind as far as evaluating the recommendation, probably not. But as far as the underlying work, I — I think it was much more intense and rigorous than what we had been carrying out in the later stages of our tenure.
 
 What made it more intense and rigorous?
 
-The commentary, the extensive details on the analogy wells that was gathered. The quality of the presentation and that's—that was my impression.
+The commentary, the extensive details on the analogy wells that was gathered. The quality of the presentation and that's — that was my impression.
 
 You mentioned earlier a ranking system for drilling prospects.
 Do you remember what
@@ -2138,54 +2185,50 @@ Do you consider Mr. Steele more qualified than you and
 Mr. French to develop the
 Sulphur Mines Field?
 
-More qualified? I think he is qualified. [REVIEW: PUNCTUATION — steno fragmentation prevents confident ruling] I think that, you know, certainly he is entitled to his own opinion. But as the old saying goes, you have to walk in somebody else's moccasins for a mile before you can really judge how they do or don't do. And he didn't offend me with any of his comments that I was told — that
+More qualified? I think he is qualified. Uhmm. I think that, you know, certainly he is entitled to his own opinion. But as the old saying goes, you have to walk in somebody else's shoes for a mile [REVIEW: verify-agent flag — Changing "mock since" to "shoes" is a guess; while the idiomatic phrase "walk a mile in someone's shoes" is well-known, the actual spoken words need verification. — reporter confirm] before you can really judge how they do or don't do. And he didn't offend me with any of his comments that I was told—that
 I was advised that he said. It didn't offend me.
-And [REVIEW: PUNCTUATION — steno fragmentation prevents confident ruling], I think — I think he was well qualified.
+And, uhmm, I think—I think he was well qualified.
 But at the same token he had assembled a group of professionals that I thought was very qualified for their particular discipline.
 
 Do you think the professionals working on the
 Sulphur Mines Field before Mr. Steele came on were also well qualified?
 
 MS. CURTIS: Can you
-name who — which professionals you're talking about?
+name who—which professionals you're talking about?
 
 Yes.
 
 I want to compare the Yellow Rock team before Sunny Solar took over and after
-Sunny Solar took over. So when I refer to the professionals,
-I'm talking about the team in place in let's say
+Sunny Solar took over. So when I refer to the professionals, I'm talking about the team in place in let's say
 2020.
 
-MS. CURTIS: And again,
-could you say who specifically on the team you're talking about?
+MS. CURTIS: And again, could you say who specifically on the team you're talking about?
 
 BY MR. HOBBY:
 
 The entire team. Everyone you mentioned earlier.
 
 Well, that might have changed during that period of time.
-In fact — MS. CURTIS: I don't — In fact, we actually fired our drilling manager after the drilling of the first two wells.
+In fact—MS. CURTIS: I don't—In fact, we actually fired our drilling manager after the drilling of the first two wells.
 He screwed the wells up.
 
 Who was the drilling manager?
 
-[REVIEW: SPEAKER UNCLEAR — steno produced unintelligible text: "Done linen gee, done difficulties letter." Likely a proper name. Verify against audio.]
+[REVIEW: "Done linen gee, done difficulties letter" — steno artifact; name unintelligible. Verify audio for drilling manager's name.]
 
 And those were the cost overruns that we talked about earlier?
 
 That and the operational issues and sticking the pipe and had to sidetrack the 1028.
 Dramatic cost overruns.
-1027, stuck the pipe again. Lost the downhole equipment. Thank goodness we had subsurface insurance coverage for a portion of it. So we got partial recovery from the transfer of the insurance. The subsurface insurance company.
-And but again, after investigating and doing a postmortem on the contributory causes of the problems, operational problems, sticking the pipe, having to
-sidetrack the 1028,
-we attributed the mechanical issues and drilling issues to [REVIEW: witness name unclear — steno produced "dish er." Verify against audio — likely the drilling manager's name] because he used the wrong mud program had come to pass.
+1027, stuck the pipe again. Lost the downhole equipment. Thank goodness we had subsurface insurance coverage for a portion of it. So we got partial recovery from the transfer of the insurance. The subsurface insurance company. And but again, after investigating and doing a postmortem on the contributory causes of the problems, operational problems, sticking the pipe, having to
+sidetrack the 1028, we attributed the mechanical issues and drilling issues to [REVIEW: "dish er" — steno artifact; appears to be witness's reference to the dismissed drilling manager by name or pronoun. Verify audio.] because he used the wrong mud program had come to pass.
 
 Again did you consider Mr. Steele more qualified than yourself to develop the
 Sulphur Mines Field?
 
 MS. CURTIS: Objection to form.
 
-From a — an operational technical standpoint?
+From a—an operational technical standpoint?
 
 From a results standpoint.
 
@@ -2193,15 +2236,15 @@ MS. CURTIS: Objection to form.
 
 Man, that's subjective. It all depends on the underlying quality of the folks that you have working on it.
 
-[REVIEW: PUNCTUATION — steno fragmentation prevents confident ruling]
+Uhmm.
 
 It's not an individual effort.
 
-Do you think the new owners — well, let me think about this. The reason I ask, you said that you had not read the transcript of the Steele deposition; is that right?
+Do you think the new owners—well, let me think about this. The reason I ask, you said that you had not read the transcript of the Steele deposition; is that right?
 
-I think I read the first several pages and I worked my way through all of the — who all the attorneys were and the first maybe couple of pages. I think I got down to where Mr. Steele was discussing his educational background. And maybe the first paragraph of that. [REVIEW: verify-agent flag — Inserting missing "the" assumes steno error; witness's colloquial speech pattern (dropping articles) may be intentional per KB-010 verbatim rule. — reporter confirm] And I had — I stopped.
+I think I read the first several pages and I worked my way through all of the—who all the attorneys were and the first maybe couple of pages. I think I got down to where Mr. Steele was discussing his educational background. And maybe the first paragraph of that. And I had—I stopped.
 
-Did you see that — I stopped.
+Did you see that—I stopped.
 
 Sure.
 
@@ -2225,9 +2268,9 @@ BY MR. HOBBY:
 
 Do you think your work product was the result of ineptitude?
 
-I don't — I wouldn't call it ineptitude. I would call it dealing. At that snapshot in time dealing with the personnel we had available, our tight curtailed budget. And more of that. As far as — as far as professionalism, it depends on what discipline you're talking about, for example. By profession, I'm a CPA and so I would say as far as that finance securities work — accounting, things of that nature, would I say that my qualifications would be better than his. Because Mr. Steele, as I appreciate it, is a chemical engineer. So it depends on what aspect you're talking about. I'm sorry I'm not giving you the answer that you perhaps were hoping that I would give you, but it depends on what you're talking about specifically. Sometimes he's well more qualified than I am. I'm not a chemical engineer. I'm not an engineer. He's not a CPA to my knowledge.
+I don't—I wouldn't call it ineptitude. I would call it dealing. At that snapshot in time dealing with the personnel we had available, our tight curtailed budget. And more of that. As far as—as far as professionalism, it depends on what discipline you're talking about, for example. By profession, I'm a CPA and so I would say as far as that finance securities work—accounting, things of that nature, would I say that my qualifications would be better than his. Because Mr. Steele as I appreciate it is a chemical engineer. So it depends on what aspect you're talking about. I'm sorry I'm not giving you the answer that you perhaps were hoping that I would give you, but it depends on what you're talking about specifically. Sometimes he's well more qualified than I am. I'm not a chemical engineer. I'm not an engineer. He's not a CPA to my knowledge.
 
-Do you agree with Mr. Steele that your team's work product — your team's record-keeping had been amateurish before Sunny Solar came in?
+Do you agree with Mr. Steele that your team's work product—your teams record-keeping had been amateurish before Sunny Solar came in?
 
 It was less detailed. It took longer to deliver information being requested and that was the function of available resources and fighting off the wolves at the same time, so to speak.
 
@@ -2237,7 +2280,7 @@ MS. CURTIS: Objection, asked and answered.
 
 No, I wouldn't. I would describe it as given the environment we were operating in, doing the best we could.
 
-Can you hold in your mind for me the team in place — well, we're going to get there. We'll come back to that one.
+Can you hold in your mind for me the team in place—well, we're going to get there. We'll come back to that one.
 
 MS. HEBERT: Somebody is not on mute.
 
@@ -2249,7 +2292,7 @@ MR. HOBBY: I think we're better for now.
 
 BY MR. HOBBY:
 
-Do you know whether the new ownership — sorry, are you ready, Mr. Easley?
+Do you know whether the new ownership—sorry, are you ready, Mr. Easley?
 
 I am.
 
@@ -2263,67 +2306,69 @@ Which ones?
 
 I don't remember the exact number, but I can distinctly recall a couple of them that they had developed a new approach at looking at existing wells that had already been drilled and looking at completion opportunities and using the bases of analogy wells to take a fresh look at a couple of locations that we hadn't considered.
 
-Which prospects did the new management group prioritize?
+Q. Which prospects did the new management group prioritize?
 
-Which ones they did what with?
+A. Which ones they did what with?
 
-Did they prioritize.
+Q. Did they prioritize?
 
-As we speak now, I don't recall the exact wells. But they were generally lower risk projects in our mind that they presented to the board.
+A. As we speak now I don't recall the exact wells. But they were generally lower risk projects in our mind that they presented to the board.
 
-How many wells did Yellow Rock drill between the time White Top took over and before Sunny Solar become the owner?
+Q. How many wells did Yellow Rock drill between the time White Top took over and before Sunny Solar become the owner?
 
-Four wells were drilled and a number of wells were recompleted of existing what I call legacy wells.
+A. Four wells were drilled and a number of wells were recompleted of existing what I call legacy wells.
 
-How many wells did the new — has the new ownership group drilled?
+Q. How many wells did the new — has the new ownership group drilled?
 
-I believe — one well, possibly two. Possibly recompletions. Until they ran into a hard stop shortly after — December of 2022 or '23, January of '23, the DNR wouldn't issue drilling or recompletion permits.
+A. I believe — one well, possibly two. Possibly recompletions. Until they ran into a hard stop shortly after — December of 2022 or '23, January of '23, the DNR wouldn't issue drilling or recompletion permits.
 
-Of the wells that they did drill, how did those wells perform?
+Q. Of the wells that they did drill, how did those wells perform?
 
-The one that speaks of, I believe some of it would have been Fee 1031. I think it was certainly completed as a wet commercial well. The production was not all that great. And of course it would have been moratorium on going up hole and recompleting in the upper zones. So the end of the story hasn't been written yet. Because essentially the development of the field was brought to a screeching halt in my terminology.
+A. The one that speaks of, I believe some of it would have been fee 1031. I think it was certainly completed as a wet commercial well. The production was not all that great. And of course it would have been moratorium on going up hole and recompleting in the upper zones. So the end of the story hasn't been written yet. Because essentially the development of the field was brought to a screeching halt in my terminology.
 
-Did the new ownership group have more success raising capital than you and Mr. French had had?
+Q. Did the new ownership group have more success raising capital than you and Mr. French had had?
 
-Absolutely.
+A. Absolutely.
 
-And how much capital did the new group raise?
+Q. And how much capital did the new group raise?
 
-I don't know for sure. But when I sort of lost count, I think I had probably spent — probably double what we'd spent.
+A. I don't know for sure. But when I sort of lost count, I think I had probably spent — probably double what we'd spent.
 
-Did most of that come from Sunny Solar?
+Q. Did most of that come from Sunny Solar?
 
-I think that would have been the avenue of the loans.
+A. I think that would have been the avenue of the loans.
 
-When did Mr. Barrett first get involved with White Top or Yellow Rock?
+Q. When did Mr. Barrett first get involved with White Top or Yellow Rock?
 
-We were introduced to Mr. Barrett probably in the — sometimes in the midsummer of 2018.
+A. We were introduced to Mr. Barrett probably in the — sometimes in the midsummer of 2018.
 
-And in what capacity was his involvement with White Top or Yellow Rock at that point?
+Q. And in what capacity was his involvement with White Top or Yellow Rock at that point?
 
-He was a potential capital source.
+A. He was a potential capital source.
 
-Did he make an investment in White Top or Yellow Rock?
+Q. Did he make an investment in White Top or Yellow Rock?
 
-Ultimately the funds that were from Sunny Solar that were loaned to exercise the option to purchase — purchase Yellow Rock. And then the funds to drill the additional — the additional wells that we spoke about.
+A. Ultimately the funds that were from Sunny Solar that were loaned to exercise the option to purchase — purchase Yellow Rock. And then the funds to drill the additional — the additional wells that we spoke about.
 
-So when did Mr. Barrett first put money into White Top or Yellow Rock through either Sunny Solar or Luminus?
+Q. So when did Mr. Barrett first put money into White Top or Yellow Rock through either Sunny Solar or Luminus?
 
-I think it was funded in November of 2018.
+A. I think it was funded in November of 2018.
 
-Was Luminus White Top's biggest investor before the change in ownership?
+Q. Was Luminus White Top's biggest investor before the change in ownership?
 
-Well, through Sunny Solar they were the senior secured lender.
+A. Well, through Sunny Solar they were the senior secured lender.
 
-Okay.
+Q. Okay.
 
-So Luminus was a lender but not an equity owner prior to the change in ownership?
+A. So Luminus was a lender but not an equity owner prior to the change in ownership?
 
-No, that's incorrect.
+[REVIEW: SPEAKER ATTRIBUTION — line appears to be a Q. not an A. The immediately preceding "Okay." is a witness acknowledgment, but this line reads as an attorney's follow-up question, not witness testimony. Verify audio for speaker.]
 
-Please correct me?
+A. No, that's incorrect.
 
-Sunny Solar was the lender and
+Q. Please correct me?
+
+A. Sunny Solar was the lender and
 
 Luminus to the extent whatever Luminus contractual involvement would have been as I understand it as a parent or controlling member of
 Sunny Solar.
@@ -2345,7 +2390,7 @@ Yellow Rock LLC members or White Top Energy LLC members?
 White Top was the only member, LLC member. And the parent company of Yellow Rock
 . And Sunny
 Solar nor Luminus nor Mr.
-Barrett at that time [REVIEW: sentence appears incomplete — possible steno gap. Likely: "were not LLC members of White Top." Verify audio.]
+Barrett at that time
 LLC members of
 White Top. That came about through the restructuring.
 
@@ -2365,7 +2410,7 @@ We generally provided quarterly updates.
 Did he have influence over
 Yellow Rock's developmental strategy at that point?
 
-He would provide comments and assessments as any senior secured lender would.
+He — he would provide comments and assessments and as any senior secured lender would [REVIEW: verify-agent flag — Deleting "secure" and its em dash assumes witness meant only "senior secured" but the original may represent actual hesitant speech; needs audio verification. — reporter confirm].
 And certainly had as far as the individual project wells recommended, you know, as far as assessing and trying to understand the results
 . Like any senior secured lender would be, they are taking the financial risk ultimately. And exercise influence. No different than a commercial banker or anyone else.
 Who had the financial risk.
@@ -2446,7 +2491,7 @@ I can see that, yes.
 
 So as of March 2020, Yellow Rock had stopped drilling, it had cut its staff and it had cut its administrative costs; is that right?
 
-That's correct. Mr. French took himself off the payroll and mostly everybody else based in the Houston office reduced their — had their pay reduced.
+That's correct. Mr. French took himself off the payroll and mostly everybody else based in the Houston office reduced there — had their pay reduced.
 
 And the reason given was current oil pricing and demand in the COVID-19 pandemic; is that right?
 
@@ -2458,7 +2503,7 @@ For that discrete period of one-month period of time, 28-day period, February 23
 
 Okay.
 
-Now I'm going to hand you what I'm marking as Exhibit No. 134, which is YR-362589 and if the technician can please if you will that up as well.
+Now I'm going to hand you what I'm marking as Exhibit No. 134, which is YR-362589 and if the technician can please pull that up as well.
 
 (Whereupon, Exhibit No. 134 was marked for Identification.)
 
@@ -2510,7 +2555,7 @@ Yes, that would have been the — the lending program that was — that was deve
 
 Okay.
 
-And Mr. Barrett says "things looking very tight and we want to get ahead of any issues" [REVIEW: witness/steno unclear — original reads "weep want to get ahead of any issues closed" — verify audio for exact wording], right?
+And Mr. Barrett says "things looking very tight and [REVIEW: 'weep want' — steno error, probable spoken word unclear; possible 'we want' or 'we need'] to get ahead of any issues closed", right?
 
 Yes.
 
@@ -2534,7 +2579,7 @@ A lot of people just like you are bank officer would do reviewing a loan.
 
 So as of at least October 2020, Mr. Barrett's — would you say is closely involved at this point?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Objection to the form.
 
 Well, I can't say how much time he spoke to, but he was certainly an informed individual as respect to asking — reviewing the materials provided to him and providing insight into it.
 
@@ -2556,9 +2601,9 @@ I've read it.
 
 Okay.
 
-This is an E-mail where you're responding to questions of [REVIEW: "Oliver resin mar sol" — appears to be "Alvarez and Marsol" steno error; transcribed as heard]; is that right?
+This is an E-mail where you're responding to questions of Oliver [REVIEW: "resin mar sol" — likely steno error for "Alvarez and Marsol"; verify audio] ; is that right?
 
-My response was to [REVIEW: "employ bunker sod with humid in us" — steno mistranslation unclear; possible "Luminus" contact name; transcribed as heard] in New York who was liaison with [REVIEW: "Oliver resin" — likely "Alvarez" steno error; transcribed as heard].
+My response was to employ [REVIEW: "bunker sod with humid in us" — steno error; likely a firm or person name; verify audio] in New York who was liaison with Oliver [REVIEW: same name issue — verify audio].
 
 Okay.
 
@@ -2566,9 +2611,9 @@ In your E-mail you described as a response to you with respect to the questions 
 
 Yes.
 
-[REVIEW: "Oliver an mar sol" — likely "Alvarez and Marsol" steno error; transcribed as heard]; is that right?
+Alvarez and Marsol is an evaluation firm; is that right?
 
-That is the financial as I appreciate it that was providing to Luminus.
+That is the financial [REVIEW: "as I appreciate it" — possible steno fragment; verify audio] that was providing to Luminus.
 
 So they were providing to Luminus and not White Top?
 
@@ -2582,19 +2627,19 @@ If they did, I don't know what it was.
 
 Okay.
 
-So in the E-mail you're providing Luminus, [REVIEW: "Oliver and mar sol" — likely "Alvarez and Marsol" steno error; transcribed as heard] with information about the field operation, right?
+So in the E-mail you're providing Luminus, Alvarez and Marsol with information about the field operation, right?
 
 Well, I'm providing it to Luminus for them to provide with the understanding that they would provide that or an edited version to however they saw fit.
 
 Understood.
 
-And modified it if I had a spelling error, correct it or something of that nature but they would then provide it to questions posed by [REVIEW: "Oliver mar sol" — likely "Alvarez and Marsol" steno error; transcribed as heard].
+[REVIEW: "Add modified it" — likely "And modified it" or witness continuation; verify audio] if I had a spelling error, correct it or something of that nature but they would then provide it to questions posed by Alvarez and Marsol.
 
-And I'm looking at really the second bold paragraph in the spaced-out text. You're reporting that the field was then producing about 140 barrels equivalent per day; is that right?
+And I'm looking at really the second bold paragraph in the [REVIEW: "space had out text" — steno error; likely "spaced-out text" or similar; verify audio]. You're reporting that the field was then producing about 140 barrels equivalent per day; is that right?
 
 Uhmm, that was the reporting number.
 
-And we saw back in March 2020 it was production was 409 a day, right?
+And we saw back in March 2020 it was — production was 409 a day, right?
 
 Uhmm, yes.
 
@@ -2612,13 +2657,13 @@ So about $240,000 per year?
 
 Based on the then existing production level.
 
-Okay. [REVIEW: "Okay U?" — steno artifact; "U" removed as apparent keystroke error]
+Okay. [REVIEW: "Okay U?" — steno artifact "U" — removed; verify audio]
 
-And, process. [REVIEW: "And, process." — steno fragment; meaning unclear; transcribed as heard]
+And, [REVIEW: "And, process." — steno fragment; likely mid-sentence continuation or new question; verify audio]
 
 I see.
 
-And you were asked what it would take to increase production to 1,000 barrels of oil equivalent per day and your answer was $6 million in capital [REVIEW: "responses" — possibly "resources"; transcribed as heard]?
+And you were asked what it would take to increase production to 1,000 barrels of oil equivalent per day and your answer was $6 million in capital [REVIEW: "responses" — likely "resources"; verify audio]?
 
 Yes to drill additional wells and recomplete additional wells.
 
@@ -2650,7 +2695,7 @@ That's correct.
 
 Okay.
 
-Now to the second page you were asked: Without additional CAPEX and funding, can current producing wells support the business as a going concern? And you answered yes, before consideration of debt service and extraordinary CAPEX requirements.
+Now to the second page you were asked: Without additional CAPEX and funding, can current producing wells support the business as a going concern? And you answered yes, before consideration of debt service and extra ordinary CAPEX requirements.
 
 Do you see that?
 
@@ -2662,7 +2707,7 @@ Is that to say the business could survive as long as you didn't include the inte
 
 That's correct. Or repay any of the principal.
 
-I'm sorry or repaying the principal?
+I'm sorry or repaying the principals?
 
 Or repaying any of the principal.
 
@@ -2676,7 +2721,7 @@ Now I'm going to hand you what I'm marking Exhibit 136, YR-41592. Just let me kn
 
 (Witness peruses document.)
 
-All right, I'm ready.
+All right I'm ready.
 
 This is an E-mail that you sent on June 15th, 2021 to Matt Steele copying—well, first at the top, June 15th, 2021, to Matt Steele. Sorry. I think I'm confusing the two blocks. I'll start from the beginning.
 
@@ -2702,21 +2747,31 @@ Yes.
 
 So forth 12 months before this E-mail mid 2020 to mid 2021, Yellow Rock had curtailed their development activity?
 
-Uhmm, yes. But — but merits more than just a guess answer. And I guess in mid-August of 2020 we were — we were struggling but doing okay. And Hurricane Laura hit. And pretty much wiped out Lake Charles. And made a direct strike on Sulphur. And the Sulphur Mines Field. And electricity provided by Entergy at the field — to the field was completely knocked out. And the — our power system even inside the field that delivered electricity to individual wells was just — two of our stations were destroyed and had to be replaced basically with Hurricane Laura the following little baby hurricane if you will and then a couple of tropical storms over a two or three month period. The field was, basically, shut in. No production, no revenue. And had knocked the skids under us financially. And by the time 2021, early 2021 rolled around, we were — we were reeling.
+Uhmm, yes. But — but merits more than just a guess answer. And
+I guess in mid-August of 2020 we were — we were struggling but doing okay. And
+Hurricane Laura hit. And pretty much wiped out Lake Charles. And made a direct strike on Sulphur.
+And the
+Sulphur Mines Field. And electricity provided by
+Entergy at the field — to the field was completely knocked out. And the — our power system even inside the field that delivered electricity to individual wells, was just — two of our stations were destroyed and had to be replaced basically with Hurricane Laura the following little baby hurricane if you will and then a couple of tropical storms over a two or three month period. The field was, basically, shut in. No production, no revenue. And had knocked the skids under us financially.
+And by the time
+2021, early 2021 rolled around, we were — we were reeling.
 
-You mentioned the geo sciences team. What did the geo sciences team do?
+You mentioned geo sciences team. What did the geo sciences team do?
 
-Using the available 3D seismic interpretation is, uhmm, geological interpretation, information, looking at and reviewing workover opportunities with the unplugged legacy wells that had been previously drilled before we became involved going all the way back to the Union Texas days. And reviewing that. And the engineering analysis. Trying to develop potential workovers and drilling opportunities.
+Using the available 3D seismic interpretation is, uhmm, geological interpretation, information, looking at and reviewing work over opportunities with the unplugged legacy wells that had been previously drilled before we became involved going all the way back to the Union Texas days. And reviewing that. And the engineering analysis. Trying to develop potential workovers and drilling opportunities.
+It was multidisciplinary process from you list in Exhibit No. 36 the furloughed team members as William Green,
+Clint Hipke and
+Eva Borrego. And the titles were senior geophysicist, senior geologist and senior geotech respectively.
+Do you see that?
 
-It was a multidisciplinary process from — you list in Exhibit No. 36 the furloughed team members as William Green, Clint Hipke and Eva Borrego. And the titles were senior geophysicist, senior geologist and senior geotech respectively. Do you see that?
-
-I'm looking, bear with me. I see Wippel's name.
+I'm looking, bear with me. I see
+Wippel's name.
 
 I think it's on the second page there for you?
 
-Oh, furloughed. I didn't get it.
+Oh furloughed. I didn't get it.
 
-You didn't get it. Okay.
+You didn't get it in okay.
 
 Okay.
 
@@ -2724,9 +2779,11 @@ Were those individuals ever brought back?
 
 Uhmm, no.
 
-And who replaced them in function when the new — well, did anyone replace them?
+And who replaced them in function when the new —
+— Well, did anyone replace them?
 
-Not under the — not under the — I'm sorry.
+Not under the — not under the —
+— I'm sorry.
 
 That's all right.
 
@@ -2734,35 +2791,40 @@ It was probably a magazine salesman. I'm sorry.
 
 All good.
 
-I thought I had this killed but obviously not. My apologies.
+I thought I had this killed but obviously not.
+My apologies.
 
 Well, we have been trying to reach you about your car's extended warranty, Mr. Easley?
 
 You know, I get one of those two.
 
-MS. CURTIS:  Are you in the middle of something or we can just take a break now?
+MS. CURTIS: Are you in the
+middle of something or we can just take a break now?
 
-MR. HOBBY:  I should wrap up in just a few questions.
+MR. HOBBY: I should wrap up in just
+a few questions.
 
-THE WITNESS:  Well, I am. I am close approaching —
+THE WITNESS: Well, I am. I am close approaching —
+MR. HOBBY: Okay.
 
-MR. HOBBY:  Okay.
+THE WITNESS: — my time to take a break. I
+need to take a break. So if we're at a good stopping point —
+MR. HOBBY: Let's call it a good stopping point.
 
-THE WITNESS:  — my time to take a break. I need to take a break. So if we're at a good stopping point —
+THE WITNESS: — let's take a break.
 
-MR. HOBBY:  Let's call it a good stopping point.
+MS. CURTIS: Good thing
+they called.
 
-THE WITNESS:  — let's take a break.
+MR. HOBBY: Okay. Saved by the bell.
 
-MS. CURTIS:  Good thing they called.
-
-MR. HOBBY:  Okay. Saved by the bell.
-
-THE VIDEOGRAPHER:  It is 1:01 p.m. and we are off the record.
+THE VIDEOGRAPHER: It is 1:01 p.m. and we are
+off the record.
 
 (Recess.)
 
-THE VIDEOGRAPHER:  The time is 1:23 p.m. and we are now back on the record.
+THE VIDEOGRAPHER: The
+time is 1:23 p.m. and we are now back on the record.
 
 BY MR. HOBBY:
 
@@ -2776,7 +2838,7 @@ Uhmm. No, no and no.
 
 Who replaced those three members of the geoscience team?
 
-Well, we weren't doing any — any work over or drilling at that time because of capital constraints. And so we doubled up and Steve Wipple handled the geophysical geology work. Wipple is a degreed by training geophysicist as well as a geologist. So he wears two hats as needed. Primarily as a geophysicist but he's also a qualified geologist. And Brad Brandal took over additional duties and we made do.
+Well, we weren't doing any — any work over or drilling at that time because of capital constraints. And so we doubled up and Steve Wipple handled the geophysical geology work. Wipple is a degreed by training geophysicist as well as a geologist. So he wears two hats as needed. Primarily as a geophysicist but he's also a qualified geologist. And Brad [REVIEW: "bran DAL" — possible steno artifact for a surname; verify audio] took over additional duties and we made do.
 
 Was the geoscience team replaced by one once Sunny Solar took over?
 
@@ -2794,11 +2856,11 @@ What was Jennifer Saltsman's title?
 
 Well, she was a consultant but she was a reservoir engineer.
 
-And you can put that — And, uhmm, Jonathan Love was land and operations and I'm reviewing the list just to see what I might have omitted. The pumpers at field level didn't change of course. Sebastian Garcia stayed on. And Veronica Naito, N-a-i-t-o, Veronica Naito.
+And you can put that — And, uhmm, Jonathan Love was land and operations and I'm reviewing the list just to see what I might have omitted. The pumpers at field level didn't change of course. Sebastian Garcia stayed on. And Veronica Naito, N-a-i-t-o on. Veronica Naito.
 
 (Court Reporter clarification.)
 
-Now, I'm going to hand you what's been marked as Exhibit No. 137 which is [REVIEW: unclear reference — heard as "why are 2885 '94"; possible Bates number or document identifier — verify against exhibit] this is December 31st, 2021, operations update. Take a look and let me know when you're ready.
+Now, I'm going to hand you what's been marked as Exhibit No. 137 which is [REVIEW: "why are 2885 '94" — possible steno artifact; may be a Bates number or document identifier; verify audio] this is December 31st, 2021, operations update. Take a look and let me know when you're ready.
 
 (Whereupon, Exhibit No. 137, was marked for Identification.)
 
@@ -2810,13 +2872,13 @@ Good.
 
 This is the same type of document that you reviewed earlier which is also titled Sulphur Mines Field operations update, correct?
 
-Correct.
+[REVIEW: "Collect check" — likely steno artifact for "Correct" or possible witness speech; verify audio]
 
 Sure. The same distribution list?
 
 I don't know who it was distributed to.
 
-For the last one you mentioned it would have gone to the board, the LLC members, the senior secured lenders, and maybe I'm missing something, but anyone else? Or would it have gone to all those same parties?
+For the last one you mentioned it would have gone to the board, the LLC members, the senior secured lenders, and maybe I'm missing something, but anyone else? Or would it have [REVIEW: "geneos" — steno artifact; likely "gone" or "gone out"; verify audio] to all those same parties?
 
 MS. CURTIS: Objection to the form. The last one has on there who it went to and the two directions.
 
@@ -2836,7 +2898,8 @@ Who did the operations updates go out to?
 
 MS. CURTIS: Objection to the form. Asked and answered.
 
-The operations update? You're asking me again who did this go to?
+The operations update
+? You're asking me again who did this go to?
 
 Who did these types of documents go to?
 
@@ -2860,11 +2923,11 @@ Early on?
 
 Sure.
 
-Early on they would have gone to — they would have gone to the [REVIEW: "blacktop" — possible steno error for "Black Top" or another entity name; verify against record] minority LLC members. The minority interest holders, investors if you will. And would have gone to directors of White Top. They would have gone to Sunny Solar. They would have gone to Luminus, Jonathan Barrett. That would have been generally who we sent them to.
+Early on they would have gone to — they would have gone to the Blacktops minority LLC members. The minority interest holders, investors if you will. And would have gone to directors of White Top. They would have gone to Sunny Solar. They would have gone to Luminus, Jonathan Barrett. That would have been generally who we sent them to.
 
 So, that was early on and did that ever change?
 
-Well, I'd have to go back and look at the chronology of these reports that went out. But by the time this one went out I do not know who actually it was distributed to. I'm not for sure — I don't recall personally distributing this. I might have had — I likely would have had input into some of the data put in here. But this might have been prepared by Rick Halprin at the time.
+Well, I'd have to go back and look at the chronology of these reports that went out. But the time went this one out I do not know who actually it was distributed to. I'm not for sure — I don't recall personally distributing this. I might have had — I likely would have had input into some of the data put in here. But this might have been prepared by Rick Halprin at the time.
 
 I'm not yet asking — I don't know.
 
@@ -2872,7 +2935,7 @@ Right.
 
 I don't know.
 
-Do you know if the distribution list you just gave me for the early on operations updates, do you know if that distribution list had changed?
+Do you know if the distribution list you just gave me for the early on operations updates, do you know if that distribution list changed?
 
 I think it probably was cut back, scaled back.
 
@@ -2898,11 +2961,11 @@ Well, you said approximately four months. So looking back on it, that would have
 
 Got it, thank you.
 
-I'm sorry. I could have agreed to that but that's the old accountant in me — I had to be as precise as I can.
+I'm sorry. I could have agreed to but that's the old accountant in me I had to be as precise as I can.
 
 I hear you.
 
-If I can direct you to the section [REVIEW: "Sulphur Mines feels drilling location identification inventory" — likely steno error; "feels" may be "fields" or another word; verify against exhibit and audio] drilling location identification inventory?
+If I can direct you to the section Sulphur Mines [REVIEW: 'feels' — probable steno error. Possible: 'field's' or another term. Verify audio.] drilling location identification inventory?
 
 Yes.
 
@@ -2922,7 +2985,7 @@ If you can look at the production table back on the first page, it says December
 
 That is the reported number in December 2021.
 
-It also says discretionary workovers/completions continue to be deferred pending resolution of funding for capital projects in 2022."
+It also says discretionary workovers/completions continue to be deferred pending resolution of funding for capital projects in 2022.
 
 Do you see that? The third paragraph — the top of the third paragraph on the first page?
 
@@ -2936,7 +2999,9 @@ Yes.
 
 Okay.
 
-And that same paragraph discusses remaining hurricane war damage up $70,000 in repairs still outstanding. Do you see that?
+And that same paragraph discusses remaining hurricane [REVIEW: "war damage" — possible steno artifact; may be "wind damage" or "storm damage." Verify audio.] up $70,000 in repairs still outstanding.
+
+Do you see that?
 
 (Witness peruses document.)
 
@@ -2944,7 +3009,9 @@ Yes.
 
 And that damage was from August 2020 but still hadn't been fixed, right?
 
-It was being repaired out of available funds and being able to find and source, for example, to — there was such a backlog on electrical contractors in the area of Calcasieu Parish and for probably several parishes north, southeast, and west of that at the time. And the backlog was such that we ended up to be able to get the work — restoration work done in the field to restore the power stations that were destroyed. We ended up having to — to source a — a commercial electrical company from al — from New Mexico that had Baton Rouge on a speculation basis to try and do some work — get work in the oil field area in Baton Rouge not from hurricane damage, but just commercial work. There was a scarcity of subcontractors and vendors further exacerbated by being short of cash. But primarily, the issue was finding somebody to do the work.
+It was being repaired out of available funds and being able to find and source, for example, to — there was such a backlog on electrical contractors in the area of Calcasieu Parish and for probably several parishes north, southeast and west of that at the time. And the backlog was such that we ended up to be able to get the work — restoration work done in the field to restore the power stations that were destroyed.
+We ended up having to — to source a — a commercial electrical company from al — from New Mexico that had [REVIEW: "Baton Rouge on a speculation basis" — context unclear; witness may have said a different location or phrase. Verify audio.] to try and do some work — get work until the old field area in Baton Rouge, not from hurricane damage, but just commercial work. There was a scarcity of subcontractors and vendors, further exacerbated by being short of cash.
+But primarily, the issue was finding somebody to do the work.
 
 All right.
 
@@ -2952,45 +3019,35 @@ And Yellow Rock had tried to get approval for a FEMA loan to fund those repairs?
 
 Correct.
 
-MS. CURTIS: Objection to the form.
+MR. HOBBY: Objection to the form.
 
 BY MR. HOBBY:
 
 So as of December 2021, Yellow Rock couldn't afford to drill, it couldn't afford workovers and it couldn't afford $70,000 in storm repairs; is that right?
 
-That was the remaining work to be done as I recall that would have been doing some repair work on the office and shop building that we didn't deem to be critical. At the top of the list of repairs. It wasn't [REVIEW: "Nestor production" — unclear; possible reference to "net production" or a proper noun. Transcribed as heard; verify audio.] production. We just put the old blue FEMA tarps on top of the blown off corrugated iron on the roof and made do.
+That was the remaining work to be done as I recall that would have been doing some repair work on the office and shop building that we didn't deem to be critical at the top of the list of repairs. It wasn't [REVIEW: "Nestor production" — likely steno artifact; possibly "necessary for production" or a proper noun. Verify audio.] We just put the old blue FEMA tarps on top of the blown-off corrugated iron on the roof and made do.
 
 And you disagree with the statement I made or the question I asked that as of December 2021, Yellow Rock couldn't afford to drill, couldn't afford workovers and couldn't afford $70,000 in storm repairs; is that right?
 
-MS. CURTIS: Objection to form. And compound.
+MS. CURTIS: Objection to the form. And compound.
 
 Well, we couldn't afford — say — we didn't have the capital to drill additional wells or carry out workovers.
 Other than those that were a necessity to keep production going on existing wells, so we were able to do what I would call maintenance
-CAPEX as compared to re-completing a well in a new zone.
+CAPEX as compared to recompleting a well in a new zone.
 
-So I think what I'm trying to do is diagram your sentence,
-which was fairly long, into the individual parts. And say it in my terms.
+So I think what I'm trying to do is diagram your sentence, which was fairly long, into the individual parts. And say it in my terms. I'm the one giving the testimony, so I need to say it the way I would have said it.
 
-I'm the one giving the testimony, so I need to say it the way
-I would have said it.
-
-I think I follow that. If
-I have any more questions, I'll follow up on that point.
+I think I follow that. If I have any more questions, I'll follow up on that point.
 
 Thank you.
 
 At this point in December 2021, investors expressed frustration or disappointment?
 
-With
-Sunny Solar,
-Luminus and Jonathan Barrett were certainly disappointed.
+With Sunny Solar, Luminus and Jonathan Barrett were certainly disappointed.
 
-What about the LLC members for
-White Top Energy?
+What about the LLC members for White Top Energy?
 
-By and large they understood.
-And were sympathetic. They were already in the boat and they — none of them stepped up to put additional
-[REVIEW: apparent fragment — witness may have said "capital" or similar word before "N" — verify audio] and they wanted to do everything they could to keep the ship stable.
+By and large they understood and were sympathetic. They were already in the boat and they — none of them stepped up to put additional [REVIEW: word or phrase missing — possibly "capital" or "money in"] and they wanted to do everything they could to keep the ship stable.
 
 Had any of them expressed frustration or disappointment at the state of their investment?
 
@@ -3004,8 +3061,7 @@ What expression of disappointment did Mr. Derby express?
 
 Well, he was concerned about the inability to get production up and being able to reach a resolution with Sunny Solar.
 
-Had any of the LLC members recouped their investment?
-Had they made back the money they invested as of December 2021?
+Had any of the LLC members recouped their investment? Had they made back the money they invested as of December 2021?
 
 No.
 
@@ -3015,13 +3071,7 @@ I don't believe so.
 
 Okay.
 
-I'm going to hand you the next exhibit, which I believe
-I'm going to mark as
-138.
-Yellow Rock dash
-361983, and the technician could share that with the Zoom. Here's one for you.
-And just let me know when you're ready,
-Mr. Easley.
+I'm going to hand you the next exhibit, which I believe I'm going to mark as 138. Yellow Rock dash 361983, and the technician could share that with the Zoom. Here's one for you. And just let me know when you're ready, Mr. Easley.
 
 (Whereupon, Exhibit No. 138, was marked for Identification.)
 
@@ -3033,37 +3083,23 @@ If you need to reference it again, just let me know.
 
 Thank you.
 
-This is an E-mail from
-Jonathan Barrett to Steve Derby, copying you,
-Robin French and others, and dated
-December 22, 2021.
-Do you see all that?
+This is an E-mail from Jonathan Barrett to Steve Derby, copying you, Robin French and others, and dated December 22, 2021. Do you see all that?
 
 I do.
 
-And the subject line is regarding
-the settlement proposal.
+And the subject line is regarding the settlement proposal.
 
 Yes.
 
 So this is part of the ongoing restructuring negotiations for White Top; is that right?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Objection to the form.
 
-No,
-the [REVIEW: witness said "blacktop" — possible intended reference to "White Top" or other entity — transcribed verbatim] and Sunny
-Solar restructuring had been agreed to in August and that didn't change.
+No, the [REVIEW: "blacktop" — likely steno error. Possible intended word: "White Top" or another entity name. Verify audio.] and Sunny Solar restructuring had been agreed to in August and that didn't change.
 
 Okay.
 
-That was trying — amongst the existing members of
-LLC — White Top
-LLC's pre-restructuring. That group was given a percentage of ongoing LLC interest. This is, basically, arguments amongst
-Revenant Signal Energy, one of the LLC members,
-and Steve
-Derby, about how to make that allocation.
-And Jonathan
-Barrett was, basically, trying to get everybody to focus and get it resolved before he took drastic actions.
+That was trying — [REVIEW: "trying" may be steno fragment — possible intended phrase: "That was a dispute among" or similar. Verify audio.] amongst the existing members of White Top LLC — White Top LLC's pre-restructuring. That group was given a pot percentage of ongoing LLC interest. This is, basically, arguments amongst Revenant Signal Energy, one of the LLC members, and Steve Derby, about how to make that allocation. And Jonathan Barrett was, basically, trying to get everybody to focus and get it resolved before he took drastic actions.
 
 And Point 2 in Exhibit 138, Mr. Barrett writes that on the Yellow Rock board call that day: "It was confirmed that hundreds of thousands of taxes have been withheld"—and all caps—NOT BEEN PAID over to the authorities."
 
@@ -3169,9 +3205,9 @@ Is that right?
 
 (Witness peruses document.)
 
-I see that, but I believe that's the same issue that was — okay — raised earlier.
+I see that, but I believe that's the same issue that was — Okay. — raised earlier.
 
-Was that the quantity? Was it about $500,000 in — I don't — maybe somewhere close to that amount including accrued interest?
+Was that the quantity? Was it about $500,000 in — I don't — maybe somewhere close to that amount including accrued interest.
 
 And Mr. Barrett writes: "If you all can't come to a resolution by the end of this week, we will file for involuntary insolvency."
 
@@ -3191,7 +3227,7 @@ I don't understand your question.
 
 Well, on December 22nd, 2021, Yellow Rock was facing the prospect of being forced into bankruptcy, right?
 
-This was a point that Jonathan was making. And I have direct personal knowledge from conversations with Jonathan Barrett in and around this time. And he told me at the time this was his attempt to be helpful and break the impasse between Stephen Derby and Reverent Signal and so forth.
+This was a point that Jonathan was making. Uhmm. And I have direct personal knowledge from conversations with Jonathan Barrett in and around this time. And he told me at the time this was his attempt to be helpful and break the impasse between Stephen Derby and [REVIEW: "Reverent Signal" — possible steno error; verify company or party name against record] and so forth.
 
 Do you think that he was bluffing — Jonathan Barrett was bluffing when he said if we couldn't — can't come to a resolution we'll file for involuntary insolvency?
 
@@ -3207,7 +3243,7 @@ I don't know the exact timing on it. But Sunny Solar would have advanced money a
 
 Okay.
 
-I'm going to hand you what I will mark as Exhibit 139, which is YR_359997. And the technician can share that please. If you can take a look at and let me know when you're ready.
+I'm going to hand you what I will mark as Exhibit 139, which is YR-359997. And the technician can share that please. If you can take a look at and let me know when you're ready.
 
 (Whereupon, Exhibit No. 139, was marked for Identification.)
 
@@ -3237,7 +3273,7 @@ Is that going to be part of this exhibit, part and parcel of it?
 
 I think I'm going to show you that next if I'm not mistaken?
 
-All right. [REVIEW: witness response unclear — "Can I — I'll did he ever then responding until I see it" appears to be a steno fragmentation or crosstalk. Transcribed verbatim; verify against audio.] Can I — I'll did he ever then responding until I see it.
+All right. [REVIEW: "Can I — I'll did he ever then responding until I see it" — steno error; sentence unintelligible. Verify audio for witness's actual statement.]
 
 First I want to make sure that you agree that's the title of the attachments just to get the order of operations right here?
 
@@ -3251,7 +3287,7 @@ Yes.
 
 All right.
 
-So January 2023 at this point, White Top had gone out to existing investors with the rights offering the Board approved in December of 2022; is that right?
+So January 2023 at this point White Top had gone out to existing investors with the rights offering the Board approved in December of 2022; is that right?
 
 This was a rights offering. It was distributed to Todd Sunny Solar as well as the then existing LLC members as diluted.
 
@@ -3287,15 +3323,13 @@ In 2018?
 
 Yes. 2018?
 
-I'm not trying to hide the ball. I'm just trying to figure out — I think LLC members we can call them too if that changed from White Top originally purchasing Yellow Rock to Sunny Solar taking over.
+I'm not trying to hide the ball. I'm just trying to figure out — I think LLC members we can call them too if that changed from White Top originally purchasing Yellow Rock to Sunny Solar taking over?
 
-In 2018 I think I previously testified, and I won't task you with looking it up, but I believe I said there were like six — somewhere between 6 and 8, eight LLC members.
+In 2018 I think I previously testified and I won't task you with looking it up but I believe I said there were like six — somewhere between 6 and 8, eight LLC members.
 
-[REVIEW: SPEAKER UNCLEAR — "You will you?" appears to be a steno fragment or misattributed line. Context suggests attorney resuming questioning. Transcribed as received; verify audio.]
+[REVIEW: "You will you?" — appears to be a steno artifact or misheard speaker. Possibly "You will?" as a rhetorical confirmation, or an attribution error. Verify audio.]
 
-You will you?
-
-Over that period of time, Steve Derby changed which entities owned — you know, amongst his control entities, he transferred investment around onto the other — an internal transfer I call it. But as far as generally, it hadn't changed.
+Your [REVIEW: "net period of time" — possible steno artifact; may be "next period of time" or different phrase. Verify audio.] Steve Derby changed which entities owned, you know, amongst his control entities, he transferred investment around onto the other — internal transfer I call it. But as far as generally, it hadn't changed.
 
 Okay.
 
@@ -3311,7 +3345,7 @@ To my recollection.
 
 Okay.
 
-You were asking about the spreadsheet and this is going to be the next exhibit, which I'll mark as Exhibit No. 140. And I'll hand that to you. You'll see the file name in the bottom right with the Bates No. This is technically a native, which means it's not Bates stamped in the ordinary course. But I believe this has been designated as highly confidential and I'll put it on the record.
+You were asking about the spreadsheet and this is going to be the next exhibit which I'll mark as Exhibit No. 140. And I'll hand that to you. You'll see the final name in the bottom right with the Bates No. This is technically a native which means it's not Bates stamped in the ordinary course. But I believe this has been designated as highly confidential and I'll put it on the record.
 
 MR. GUILLOT: Is that the one ending in 998?
 
@@ -3323,7 +3357,7 @@ This is the spreadsheet we were just discussing; is that right, Mr. Easley?
 
 (Witness peruses document.)
 
-Let me tell you. It would appear, based on the headings, to be the same.
+Let me tell you. It would appear based on the headings to be the same.
 
 Okay.
 
@@ -3365,11 +3399,11 @@ I don't think so. I know I can follow the substance of this.
 
 But we don't know what's hiding behind that redaction there?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Objection to the form.
 
-I don't know that I would characterize it as hiding at all. But I don't — to me, it's discussing what this objective was and what the results were. It didn't really mean — I mean I don't need to see an unredacted clean version of it.
+I don't know that I would characterize it as hiding at all. But I don't—to me, it's discussing what this objective was and what the results were. It didn't really mean—I mean I don't need to see an unredacted clean version of it.
 
-So as of January — well, as of January 2023, Sunny Solar held somewhere around 87 percent of the equity; is that right?
+So as of January—well, as of January 2023, Sunny Solar held somewhere around 87 percent of the equity; is that right?
 
 Uhmm, yes.
 
@@ -3379,13 +3413,13 @@ Well, I was a little low on my estimate of 6 to 8 but Derby may have split his o
 
 Okay.
 
-But looking at this now, you agree that is ten Series A two members?
+But looking at this now, you agree that is ten Series A Two members?
 
 Yes.
 
 Okay.
 
-Oh, on further reflection, I believe I know what the additional members were. I think I said 6 to 8 and now it's what, you counted ten? As part of the terms of the settlement restructuring agreement, the settlement restructuring agreement with Sunny Solar — [REVIEW: witness may have said "to" or "and" — audio verify] third-party lenders that had lent money to White Top, converted their debt to LLC memberships.
+Oh, on further reflection, I believe I know what the additional members were. I think I said 6 to 8 and now it's what, you counted ten? As part of the terms of the settlement restructuring agreement, the settlement restructuring agreement with Sunny Solar to third-party lenders that had lent money to White Top, converted their debt to LLC memberships.
 
 Okay.
 
@@ -3393,7 +3427,7 @@ So that's the reason for the additional members.
 
 Do you recall which entities those were?
 
-MS. CURTIS: I'm just going to object. I don't see the relevance of investors claims and to begin with. [REVIEW: REPORTER CHECK HERE — original marker present; verify audio for complete objection text]
+MS. CURTIS: I'm just going to object. I don't see the relevance of investors claims and to begin with *REPORTER CHECK HERE*.
 
 MR. HOBBY: I'll object to the speaking objection. I don't think relevance is a proper objection given the stipulations.
 
@@ -3401,7 +3435,7 @@ BY MR. HOBBY:
 
 So the question to you, Mr. Easley, is: What were those entities' names?
 
-MR. MADIGAN: I'm going to object and instruct the witness not to answer. You know we've asserted a protection and this is not indifferent — [REVIEW: witness/counsel may have said "not in different" or "not indifferent" or another phrase — audio verify] and you guys heavily redacting the Board minutes. It's improper for you to ask him what is the objection. [REVIEW: PUNCTUATION — steno fragmentation; Madigan's objection argument may be incomplete or misordered — verify audio]
+MR. MADIGAN: I'm going to object and instruct the witness not to answer. You know we've asserted a protection and this is not indifferent and you guys heavily redacting the Board minutes. It's improper for you to ask him what is the objection.
 
 THE WITNESS: Duly noted.
 
@@ -3413,7 +3447,7 @@ I am.
 
 Okay.
 
-So those — of those ten investors, only three elected to participate in this capital raise; is that right?
+So those—of those ten investors, only three elected to participate in this capital raise; is that right?
 
 At this snapshot in time.
 
@@ -3429,7 +3463,7 @@ Yes.
 
 So they would have been familiar with the field and the management team?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Objection to the form.
 
 They would have been recipients of the periodic operations reports and they would have been provided information when they made their early investments.
 
@@ -3438,17 +3472,15 @@ Is that another way of saying they were familiar with the field and the manageme
 MS. CURTIS: Objection, asked and answered.
 
 They were provided information or they sat and read it. I can't speak to that. It was provided to them.
-
 When they were given the opportunity to invest more, they said no?
 
 Some did and some didn't. And some had elected one way or another at this snapshot in time when I handed off the ball on this and moved to — became a farmer.
 
 Did you — was your understanding that the seven had declined because they were not happy with how their investment had performed thus far?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Objection to the form.
 
-Well, I can't speak to the ones that didn't respond one way or another. And I know I talked to several of the individuals and they said, well, money is tight right now and I don't want to necessarily increase my exposure into the energy sector. This didn't work out. And best of luck going forward. And one of them is dead now.
-
+Well, I can't speak to the ones that didn't respond one way or another. And I know I talked to several of the individuals and they said, Well, money is tight right now and I don't want to necessarily increase my exposure into the energy sector. This didn't work out. And best of luck going forward. And one of them is dead now.
 Who is that?
 
 That's another way of asking — I said one of them is deceased now that I know of.
@@ -3469,7 +3501,7 @@ BY MR. HOBBY:
 
 So at this point Jonathan Barrett and the new management team had been in charge for roughly a year and a half; is that right?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Objection to the form.
 
 I'm looking at the dates. The restructure was agreed to in August of what, 2021? And they were doing their assessment of the field and drilling work and operations. And that's another way of saying they had control of it. Since August of 2021 that would be the case.
 
@@ -3497,7 +3529,7 @@ Undesignated well.
 
 Did Yellow Rock or White Top know what that second well was at this point?
 
-Did Yellow Rock or [REVIEW: witness stated "blacktop" — possible reference to "White Top." Transcribed verbatim per KB-010.] know what that was? I can't speak to what the operations team knew or didn't know at that time.
+Did Yellow Rock or [REVIEW: witness stated "blacktop" — possible reference to White Top or Black Top; transcribed verbatim] know what that was? I can't speak to what the operations team knew or didn't know at that time.
 
 But you didn't know at that time what the second well was for?
 
@@ -3538,7 +3570,7 @@ I have a general understanding.
 
 What's your general understanding?
 
-What is my general understanding? To — in my vernacular, you have an obligation to treat folks in that position fairly.
+What is my general understanding? To — in my vernacular, you have an obligation to folks in that position fairly.
 
 Is that the extent of your understanding of what a fiduciary duty was?
 
@@ -3546,9 +3578,9 @@ MS. CURTIS: Objection, asked and answered.
 
 If I thought about it for a while, I'm sure I could come up with a better understanding.
 
-Do you believe you owe the investors of the companies that you were on the board of an obligation to treat them fairly?
+Do you believe you owe the investors of the companies that you were on the board of, an obligation to treat them fairly?
 
-Fairly, honestly, and the like. Similar.
+Fairly, honestly and the like. Similar.
 
 And again, in case I missed it, for your understanding of what a fiduciary duty is — you asked me that.
 
@@ -3578,7 +3610,7 @@ MS. CURTIS: You're asking him is what? Say a subject and a verb.
 
 MR. HOBBY: I'm going to object to the speaking objection.
 
-MS. CURTIS: No. You're saying "part of that duty." Ask a stand-alone question that we can read the question as it exists. Ask a question.
+MS. CURTIS: No. You're saying "part of that duty". Ask a stand-alone question that we can read the question as it exists. Ask a question.
 
 BY MR. HOBBY:
 
@@ -3594,7 +3626,7 @@ MR. HOBBY: I'm asking the witness the question. You can object to form.
 
 MS. CURTIS: That's not how you asked it. Your questions are totally incomprehensible.
 
-MR. HOBBY: I haven't heard Mr. Easley say that once. I've heard you say it several times. Let's hear it from Mr. Easley, please.
+MR. HOBBY: I haven't heard Mr. Easley say that once. I've heard you say it several times. Let's hear it from Mr. Easley please.
 
 I would say similar to my understanding of corporate responsibility.
 That the board members have an obligation or duty to fair dealings and honesty and disclosure with respect to stockholders, equity, LLC equity members, holders. I guess in some instances certainly keep lenders informed and that would be the Alpha and Omega of my answer.
@@ -3632,11 +3664,11 @@ Once you know enough about it to make a disclosure.
 
 Okay.
 
-Again, I would suggest that this is not necessarily covered under the same disclosure requirements as the SEC registration would have and the AK disclosure requirements and such.
+Again, I would suggest that this is not necessarily covered under the same disclosure requirements as the SEC registration would have and the 8K disclosure requirements and such.
 
 And the flip side, if something didn't meaningfully affect Yellow Rock's operations or value, there would be no particular reason to flag it for investors or lenders, right?
 
-In my personal [REVIEW: possible missing word — witness may have said "view" or "opinion"; transcribed as spoken] you're asking a broader question about Board's obligation.
+In my personal [REVIEW: witness appears to have left sentence incomplete — possible steno gap or trailing-off; original reads "In my personal you're asking a broader question about Board's obligation."] you're asking a broader question about the Board's obligation.
 It would be my personal view that if the board management, the Board satisfied that it was only going to have a temporary impact there would not necessarily — and you thought itself correct, adjust, you would have an obligation to disclose. That's my personal view.
 
 In your personal view is the pressure loss event a temporary event or a permanent event?
@@ -3653,13 +3685,13 @@ I don't know. But I would also weigh in on that. It would be my view that manage
 
 Do you know of any communication or presentation White Top or Yellow Rock sent to investors that covered the impact of the pressure loss event?
 
-Well, by this time Sunny Solar was the predominant [REVIEW: witness said "pre document vast majority" — possible steno fragmentation of "predominant" or similar; transcribed as heard] equity holder. The other remaining equity holder was nearly diminimus [REVIEW: witness said "nearly close to diminimus" — "diminimus" likely intended as "de minimis"; transcribed verbatim per KB-010] because those that participated in the rights offering maintained their additional percentage of ownership, relatively speaking, by making additional contributions, so that [REVIEW: "were then deleted down further" — possible steno error or witness misspoke; may be "were then diluted down further"] were then deleted down further.
+Well, by this time Sunny Solar was the predominant [REVIEW: steno artifact — "pre document vast majority" likely heard as "predominant" — verify audio] equity holder. The other remaining equity holder was nearly close to de minimis because those that participated in the rights offering maintained their additional percentage of ownership by relative speaking, by making additional contributions so that were then diluted down further. [REVIEW: "diluted down further" — possible steno artifact or witness's own phrasing — verify audio; also "by relative speaking" and "by making additional contributions so that were then diluted" may be fragmented steno — transcribed verbatim]
 
 Sir, my question was do you know of any communication or presentation White Top or Yellow Rock sent to investors that covered the impact of the pressure loss event?
 
 It may or may not. I don't know personally.
 
-MR. HOBBY: I'm happy to keep going. I think we talked about a 55-minute break-ish earlier.
+MR. HOBBY: I'm happy to keep going. I think we talked about a 55-minute break-ish earlier. [REVIEW: "55_minute breaks_ish" — steno artifact; corrected to "a 55-minute break-ish" — verify audio for exact phrasing]
 
 MS. CURTIS: I think it is a good time.
 
@@ -3677,9 +3709,10 @@ THE VIDEOGRAPHER: The time is 2:42 p.m. and we are now back on the record.
 
 BY MR. HOBBY:
 
-Mr. Easley, I'm going to hand you now Exhibit No. 141, and here you are, sir. And this is YR-355864, and just let me know when you're ready, Mr. Easley.
+Mr. Easley, I'm going to hand you now Exhibit No. 141 and here you are, sir. And this is YR-355864 and just let me know when you're ready, Mr. Easley.
 
-(Whereupon, Exhibit No. 141, was marked for Identification.)
+(Whereupon, Exhibit No. 141, was
+marked for Identification.)
 
 (Witness peruses document.)
 
@@ -3713,7 +3746,7 @@ If I could direct your attention to Item No. Five in Mr. Barrett's E-mail. He wr
 
 Do you see that?
 
-I see that. So "tomorrow" is you in this E-mail.
+I see that from — so tomorrow is you in this E-mail.
 
 In this context it would have been me.
 
@@ -3742,8 +3775,6 @@ Do you see that?
 A. I see that.
 
 Q. I'm going to hand you in short order here what I'm going to mark as Exhibit No. 142. This is YR-357637. And let me know when you're ready, Mr. Easley.
-
-(Whereupon, Exhibit No. 142, was marked for Identification.)
 
 A. I read it.
 
@@ -3787,11 +3818,11 @@ Q. So, this is a slide that you prepared to explain to investors what happened w
 
 A. As I appreciate it, it's my understanding that this would have been the attachment slide that was sent to Theresa Tran that was in Exhibit No. 142.
 
-Q. You write that White Top purchased Yellow Rock with the objective of developing the Sulphur Mines Field. Do you see that?
+Q. You write that White Top purchased Yellow Rock with the objective of the developing the Sulphur Mines Field. Do you see that?
 
 A. I do.
 
-Q. You said that four wells were drilled, W-2 still producing, right?
+Q. You said that four wells were drilled W-2 still producing, right?
 
 A. Yes.
 
@@ -3817,8 +3848,7 @@ And you said the company tried to find a new investor to provide capital and thi
 That's correct.
 
 And conclude by noting that a financial restructure was completed in June 2022, right?
-Was
-Sunny Solar taking majority control?
+Was Sunny Solar taking majority control?
 
 Yes.
 
@@ -3833,8 +3863,7 @@ Okay.
 
 So at the time that you prepared this slide, White Top is about to ask its investors for more money, right?
 
-It was issuing a rights offering, which you know among — among the additional investors would have been Sunny Solar who had already indicated
-I think and was disclosed what they were going to take that for their full allocated share of the rights offering but would consider taking — would take up additional interest that were not taken up by the other investors.
+It was issuing a rights offering, which you know among — among the additional investors would have been Sunny Solar who had already indicated I think and was disclosed what they were going to take that for their full allocated share of the rights offering but would consider taking — would take up additional interest that were not taken up by the other investors.
 
 Okay.
 
@@ -3872,8 +3901,7 @@ Of a material nature.
 
 And this slide doesn't mention Westlake, right?
 
-In June of 2022
-I'm not sure there would have been a reason to mention Westlake.
+In June of 2022 I'm not sure there would have been a reason to mention Westlake.
 
 You prepared — you sent this slide to Ms. Tran on December 13, 2022, right?
 
@@ -3891,9 +3919,7 @@ It's not on there, no.
 
 Okay.
 
-And because in December
-2022 you didn't believe that Westlake had anything to do with
-Yellow Rock or White Top's troubles, right?
+And because in December 2022 you didn't believe that Westlake had anything to do with Yellow Rock or White Top's troubles, right?
 
 MS. CURTIS: Objection to the form.
 
@@ -3910,7 +3936,8 @@ Okay.
 
 Let's switch gears a little bit. I'm going to show you what I'm going to mark as Exhibit No. 144. YR-355372 and let me know when you're ready, Mr. Easley.
 
-(Whereupon, Exhibit No. 144, was marked for Identification.)
+(Whereupon, Exhibit No. 144, was
+marked for Identification.)
 
 (Witness peruses document.)
 
@@ -3932,7 +3959,7 @@ I call it Bert-a-lay.
 
 I'll go with your pronunciation. Todd Bertelot. Who is Todd Bertelot?
 
-Todd was the managing member of Yellow Rock when Blacktop bought their interest in Yellow Rock.
+Todd was the managing member of Yellow Rock when blacktop bought their interest in Yellow Rock.
 
 And the E-mail is sent to you, Robin French and John Cox; is that right?
 
@@ -3948,13 +3975,13 @@ I see it.
 
 The 1012 Fee, that's one of Yellow Rock's wells, right?
 
-It would have been one of the fee wells, one of Yellow Rock's wells.
+It would have been one of the feel a wells, one of Yellow Rock's wells.
 
 Cavern 7 is the same cavern involved in the pressure loss event in this case?
 
 I believe to my understanding.
 
-And both the fee 1012 well, and Cavern 7 are located near the western flank of the [CHECK: LOUISIANA RULE — "check silver mines salt dome" likely a proper name; transcribed as heard] salt dome; is that right?
+And both the fee fee 1012 well, and Cavern 7 are located near the western flank of the check silver mines salt dome; is that right?
 
 I would have to look at the field map to refresh my recollection of the directions of it.
 
@@ -3976,19 +4003,13 @@ Okay.
 
 I don't know that I was asking you about purpose but we can move on to the next question.
 
-Do you see the attachment mentioned in this 1012-dash Cavern 7. PDF?
-
-[REVIEW: "1012-dash Cavern 7. PDF" — witness appears to be reading a filename aloud; verify against exhibit. Possible filename: "1012-Cavern 7.PDF" or similar.]
+Do you see the attachment mentioned in this 1012-dash Cavern 7. PDF? [REVIEW: witness appears to be reading exhibit filename aloud — "1012_dash Cavern 7.PDF" likely spoken as file reference. Verify audio and confirm correct rendering.]
 
 I do.
 
 Okay.
 
-I'm going to show you what's been marked as Exhibit No. 145 and this is another unstamped highly confidential exhibit that originated from Bates No. YR-067176 and take a look at that and let me know when you're ready, Mr. Easley.
-
-(Whereupon, Exhibit No. 145, was marked for Identification.)
-
-[FLAG: EXHIBIT PARENTHETICAL — document description missing. Confirm document identity for the record.]
+I'm going to show you what's been mark as exhibit number 145 and this is another un stamped highly confidential exhibit that originated from Bates No. YR-067176 and take a look at that and let me know when you're ready, Mr. Easley.
 
 I've looked at it. It shows—it would have showed up much better on a computer screen at the time.
 
@@ -4022,7 +4043,7 @@ Do you understand that to be the edge of the salt?
 
 It is now telling me it is.
 
-Is that what you think it is, just looking at same image I am?
+Is that what you think it is, just looking at the same image I am?
 
 Just looking at the line, I'm not sure specifically. Again, just looking at the slide, I can't glean a lot out of it.
 
@@ -4048,12 +4069,7 @@ Did you review those images Mr. Bertelot sent them to you?
 
 Reviewed on a computer screen. You can blow them up on that and you're not restricted by scale and black scale.
 
-I'm going to hand you — I'm going to mark it as Exhibit 146 and I think it also appears in earlier depositions Exhibit No. 106.
-
-(Whereupon, Exhibit No. 146, was
-marked for Identification.)
-
-YR-435045. Let me know when you're ready.
+I'm going to hand you — I'm going to mark it as Exhibit 146 and I think it also appears in earlier depositions Exhibit No. 106. YR-435045. Let me know when you're ready.
 
 Okay. It will take me a moment. I was trying to establish in my mind the relationship to the previous E-mail.
 
@@ -4111,13 +4127,13 @@ Correct.
 
 So you wanted to use the 3D cavern data to evaluate where to place the 1014 well pad; is that right?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to form.
 
 (Witness peruses document.)
 
 We wanted to be satisfied that — this is again to give a full and complete answer, which I'm sure you want, that's not a yes or no answer. The context is at this time we were proposing internally well locations. You will recall we drilled three initially.
 
-And we — as a matter of trying to facilitate cooperate amongst the operators and interest stakeholders in the cavern area, we — when we would identify a proposed drilling location, we would send details, pad location, maps of the pad location, "X" location of the — of the surface point, the subsurface carted "X" and [REVIEW: witness stated "why is at target bottom hole" — unclear; possible steno error. Transcribed as heard.] why is at target bottom hole of the well.
+And we — as a matter of trying to facilitate cooperate amongst the operators and interest stakeholders in the cavern area, we — when we would identify a proposed drilling location, we would send details, pad location, maps of the pad location, "X" location of the — of the surface point, the subsurface carted "X" and why is at target bottom hole of the well.
 
 And up to Boardwalk and to Westlake. And to — to Burlington and any other stakeholder. Burlington at the time too, to coordinate and say that it was our view, basically, that this would not conflict with their operations. Primarily roads. And that it wouldn't be drilled in the middle of one of their above surface facilities or to interfere with one of their pipelines or right in the middle of one of the roads that they utilized.
 
@@ -4125,43 +4141,59 @@ We shared common road usage in the field, Boardwalk, Westlake and Yellow Rock.
 
 Saying it another way before we made the statement that we were comfortable that it wasn't a conflict, we wanted to be sure that we had looked at all available technical information to understand and be able to map where these operations actually were.
 
-We knew where they were above the surface level. But we wanted to make certain that we had an [REVIEW: witness stated "eye did he of" — possible steno error; possibly "idea of" or other. Transcribed as heard.] eye did he of 7000 feet down, which is what a mile — nearly a mile-and-a-half do you know where they were. So this was — so this was to obtain as much information as we could.
+We knew where they were above the surface level. But we wanted to make certain that we had an idea of 7000 feet down, which is what a mile — nearly a mile-and-a-half [REVIEW: witness said "do you know where they were" — possible steno error or rhetorical aside; verify audio] where they were. So this was — so this was to obtain as much information as we could.
 
 Todd Bertelot had mentioned to me that they had imaging software. For the "they" being, I guess, Vonco, had imaging software for Boardwalk subsurface cavern locations for Boardwalk and Westlake. And he was kind enough to send early examples of it. And I was asking him what the vendor source for the software was of Voxler.
 
 So that's a full and complete answer. That is not a yes or no question.
 
-So at this point, "this point" being April 2019, you understood that the location of the caverns was directly relevant to where Yellow Rock had [REVIEW: witness stated "had safely drill" — possible steno error; possibly "had to safely drill" or "could safely drill." Transcribed as heard.] safely drill, right?
+So at this point, "this point" being April 2019, you understood that the location of the caverns was directly relevant to where Yellow Rock had safely drill, right?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to form.
 
 Well, there were no restrictions, per se, on
-Yellow Rock drilling all the way literally up to the edge of the cavern. And that I was aware of and I'm still being aware of it. To avoid getting into a big argument with Boardwalk and Westlake, we wanted to make certain that we had done our due diligence. To the extent that we were available to get an understanding about where their operations were subsurface as well as surface.
+Yellow Rock drilling all the way literally up to the edge of the cavern. And that I was aware of and I'm still being aware of it
+. To avoid getting into a big argument with Boardwalk and Westlake
+, we wanted to make certain that we had done our due diligence. To the extent that we were available to get an understanding about where their operations were subsurface as well as surface.
 
 Does that make sense.
 
 Uhmm.
-It might. I don't—I don't know that that refutes that there should be a yes or no question—answer to the question that I just asked. Thank you for the additional clarity, but I'll ask again.
+It might. I don't—I don't know that that refutes that there should be a yes or no question—answer to the question that I just asked. Thank you
+for the additional
+clarity, but I'll ask again.
 
-You understood the location of the caverns was directly relevant to where Yellow Rock could safely drill, right?
+You understood the location of the caverns was directly relevant to where Yellow Rock could safely drill, right
+?
 
 MS. CURTIS: Objection to form.
 
-The location of the cavern, I believe, with the time and with the extreme case, it could have posed an issue for Boardwalk or—and/or Yellow Rock to collectively or individually object to the location. Not that their approval was necessary or required. But it was encouraged to Yellow Rock that the DNR would view this very kindly if we could return to having periodic meetings and we could clear our proposed drilling and plans with Boardwalk and Westlake to avoid potential conflicts.
+The location of the cavern, I believe
+, with the time and with the extreme case, it could have posed an issue for Boardwalk or—and/or Yellow Rock to collectively or individually object to the location.
+Not that their approval was necessary
+. Or required.
+But it was encouraged to Yellow Rock that the DNR would view this very kindly if we could return to having periodic meetings and we could clear our proposed drilling and plans with Boardwalk and Westlake to avoid potential conflicts
+.
 
 Again, it was primarily relating at the time to surface. But we also wanted to cover what we didn't know below ground so we wouldn't be surprised.
 
 You testified a moment ago that you knew of no restrictions prohibiting Yellow Rock from drilling right up to the salt itself, right?
 
-And I guess into the salt. Except for, you know, fissure drilling and would cause issues and things. Back in the day in other salt domes it was not uncommon for—when vertical wells were being drilled and before 3D seismic was available, many wells would be drilled directly into the—into salt formation, and you might, if you were looking for spots where oil was trapped, and it could be produced.
+And
+I guess into the salt
+. Except for, you know, fissure drilling and would cause issues and things.
+Become in the day in other salt domes it was not uncommon for—when vertical wells were being drilled and before 3D seismic was available
+. Many wells would be drilled directly into the—into salt formation is and you might if you were looking for spots where oil was trapped an it could be produced.
 
 Okay.
 
 Restrictions or no, would it be safe to drill a well right up to the salt?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to form.
 
-Drill a well right up to the edge of the salt? I believe it would be safe. It could be done in a safe manner.
+Drill a well right up to the edge of the salt?
+I believe it would be safe
+. It could be done in a safe manner.
 
 Okay.
 
@@ -4171,15 +4203,25 @@ Would the safety depend at all on where the caverns are within the salt dome?
 
 MS. CURTIS: Objection to form.
 
-It's information we would certainly want to know about—be informed about. Be informed.
+It
+'s information we would certainly want to know about—be informed about. Be informed.
 
-And that's what you're trying to get from Mr. Bertelot, is that information where the caverns are?
+And that's what you're trying to get from
+Mr. Bertelot, is that information where
+the caverns are?
 
-That's what we did, in fact, obtain from Todd.
+That's what we did, in fact, obtain from
+Todd.
 
-I'm sorry, I didn't—That's what we did, in fact, obtain from Todd. We requested it and he supplied it.
+I'm sorry,
+I didn't—That's what we did, in fact, obtain from Todd.
+We requested it and he supplied it.
 
-Back to the Exhibit 146, Mr. Bertelot gave you his assessment. And he said: "If you are drilling with a southerly directional component from the 1014, the BLM No. 4 cavern is a nothing burger."
+Back to the
+Exhibit 146,
+Mr. Bertelot gave you
+his assessment. And he said: "If you are drilling with a southerly directional component from the 1014, the BLM
+No. 4 cavern is a nothing burger."
 
 Do you see that?
 
@@ -4187,29 +4229,37 @@ Do you see that?
 
 I see it.
 
-So Mr. Bertelot was analyzing the cavern positions and telling you which direction — drilling directions were safe relative to different caverns, correct?
+So Mr. Bertelot was analyzing the cavern positions and telling you which direction—drilling directions were safe relative to different caverns, correct?
 
 MS. CURTIS: Objection to form.
 
-I think he was stating his opinion. I'm not sure what he meant one way or the other with the term "nothing burger". It's not a term that I really use.
+I think he was stating his opinion. I'm not sure what he meant one way or the other with the term
+"nothing burger". It's not a term that I really use.
 
-Did you understand him to mean that the caverns location, the BLM 4 cavern location was relevant to the directions of the drilling for the 1014 well?
+Did you understand him to mean that the cavern's location, the
+BLM 4 cavern location was relevant to the directions of the drilling for the
+1014 well?
 
 MS. CURTIS: Objection, asked and answered.
 
 You know, I'm going to bootstrap on counsel's response on that. I believe I did respond to that.
 
-I don't think you did. So thank you for — if you'd indulge me, I don't think you did. So if you could just do your best to answer the question, please.
+I don't think you did. So thank you for—if you'd indulge me, I don't think you did. So if you could just do your best to answer the question, please.
 
 (Witness peruses document.)
 
-MS. CURTIS: What is the question?
+MS. CURTIS: What is the
+question?
 
 BY MR. HOBBY:
 
-Did you understand Mr. Bertelot to mean that the BLM 4 cavern location was relevant to determine the drilling directions for the 1014 well?
+Did you understand
+Mr. Bertelot to
+mean that the
+BLM 4 cavern location was relevant to determine the drilling directions
+for the 1014 well?
 
-I believe — I believe at the time and belief now that what Todd was saying is that BLM No. 4 is not relevant.
+I believe—I believe at the time and belief now that what Todd was saying is that BLM No. 4 is not relevant.
 
 But it was about to know where the cavern was, right?
 
@@ -4221,15 +4271,21 @@ All right.
 
 Or the outline of it.
 
-I hand you Exhibit 147, YR_447627. And just let me know when you're ready, Mr. Easley.
+I hand you
+Exhibit 147, YR-447627.
+And just let me know when you're ready
+, Mr. Easley.
 
-(Whereupon, Exhibit No. 147, was marked for Identification.)
+(Whereupon, Exhibit No. 147, was
+marked for Identification.)
 
 (Witness peruses document.)
 
 I'm sorry for my slowness, but there is a lot of detail to unpack.
 
-Sure. You're obviously welcome to take the time you need. I'm not going to ask about this whole E-mail so if you'd rather have me ask questions and return to it if you need to we can do that.
+Sure.
+You're obviously welcome to take the time you need.
+I'm not going to ask about this whole E-mail so if you'd rather have me ask questions and return to it if you need to we can do that.
 
 Is there an attachment that you're going to introduce as a second following question?
 
@@ -4241,35 +4297,56 @@ Sure.
 
 (Witness peruses document.)
 
-It's good to refresh my recollection. I've reviewed it.
+It's good to refresh my recollection.
+I've reviewed it.
 
 Okay.
 
-This is an E-mail about a set of meeting notes from John Miller dated January 30th, 2019. Do you see that?
+This is an E-mail about a set of meeting notes from John
+Miller dated
+January 30th, 2019.
+Do you see that?
 
 I do.
 
 Okay.
 
-These notes were sent to Robin French and copied to you and Brad Brandl and Steve Wipple, right?
+These notes were sent to Robin
+French and copied to you and Brad Brandl and Steve Wipple
+, right?
 
 That's correct.
 
-Who is John Miller?
+Who is John
+Miller?
 
-John Miller was a contact person that was instrumental in identifying Steve Derby as an investigator in White Top Energy. And then at some point in time later on I think he became a board member of White Top.
+John
+Miller was a contact person that was instrumental in identifying
+Steve Derby as an investigator in
+White Top energy.
+And then at some point in time later on I think he became a board member of White Top.
 
 Was he a geologist by training?
 
-I think by practice. He morphed into the oil business.
+I think by practice.
+He morphed into the oil business.
+
+[REVIEW: "He morphed the oil business" — possible steno artifact; transcribed as "He morphed into the oil business." Verify audio.]
 
 Okay.
 
-And looking at his meeting notes, it looks like the meeting covered the evaluation of three drilling prospects in area C; is that right?
+And looking at his meeting note
+, it looks like the meeting covered the evaluation of three drilling prospects in area C; is that right
+?
 
 That was what he referred to. I'm not even sure I was at this meeting.
 
-And directing your attention to Paragraph No. Three, the discussion of prospect CC A [REVIEW: witness stated "prospect cc a" — verify capitalization and spelling against Exhibit 147], do you see that paragraph?
+And directing your attention to
+Paragraph No. Three
+, the discussion of prospect cc a
+, do you see that paragraph?
+
+[REVIEW: "prospect cc a" — unclear; possible steno artifact for a proper designation (e.g., "Prospect CCA" or a named prospect). Verify audio and exhibits.]
 
 I do.
 
@@ -4281,9 +4358,9 @@ I do.
 
 So proximity to the salt edge was a known risk factor in evaluating drilling prospects?
 
-I think I touched on that in previous testimony. It creates additional drilling risk, and you get your oil pipe stuck in salt formation, and it adds to the costs more times.
+I think I touched on that in previous testimony it creates additional drilling risk an you get your oil pipe stuck in salt formation an it adds to the costs more times.
 
-I'm going to hand you what I'm marking as Exhibit 148. YR_37094.
+I'm going to hand you what I'm marking as Exhibit 148. YR-37094.
 
 (Whereupon, Exhibit No. 148, was marked for Identification.)
 
@@ -4335,7 +4412,7 @@ So the DNR paid attention to how close the salt water domes could be drilled; is
 
 MS. CURTIS: Objection to form.
 
-The first one would be any subsurface work on the existing well, as well as the drilling of the new well requires permit approval from DNR. And the correct context of this is this was about — I'm going on right at two months after we acquired — we can [REVIEW: witness said "we can White Top" — possible "we call White Top" or company/field name; transcribed verbatim] White Top — acquired Yellow Rock. And part of our original assessment was at some point in time depending on the pays of development and drilling of wells in the field, we would need additional salt water disposal wells. We had tasked Brad Brandl with reviewing the existing unplugged legacy well bores to see in his view what might be the proper well to convert to salt water disposal well. And this is one he had identified.
+The first one would be any subsurface work on the existing well, as well as the drilling of the new well requires permit approval from DNR. And the correct context of this is this was about — I'm going on right at two months after we acquired — we can [REVIEW: "we can White Top" — unclear; possible steno artifact or witness self-correction. Transcribed verbatim. Verify audio.] White Top — acquired Yellow Rock. And part of our original assessment was at some point in time depending on the pays of development and drilling of wells in the field, we would need additional salt water disposal wells. We had tasked Brad Brandl with reviewing the existing unplugged legacy well bores to see in his view what might be the proper well to convert to salt water disposal well. And this is one he had identified.
 
 And so again, I had been introduced to Stephen Lee by Jo Beth Taylor, our regulatory consultant. And Jo had arranged a conference call with myself and her and Steve Lee. And he was kind enough to take a look — review on a cursory level, our initial thoughts on that. And that's why Brad sent the information to him. I wasn't to obtain a permit. It was to sort of get an idea of what the — as far as what the — the — working roads were.
 
@@ -4354,7 +4431,7 @@ for the existing
 injections. But undoubtedly would need to be augmented by additional disposal capability. And so that's what prompted Steve's response.
 And as I recall, we later on had a conference call with Steve and some of his technical staff.
 Which, in essence, probably in a lot of words, reiterated what he said about the
-1,320 feet or one quarter of a mile
+1320 feet or one quarter of a mile
 . Yeah, if my math is right on that, isn't that a quarter of a mile
 ?
 
@@ -4370,7 +4447,8 @@ Exhibit No. 149
 . This is going to be
 YR-293430 and just let me know when you're ready to chat.
 
-(Whereupon, Exhibit No. 149, was marked for Identification.)
+(Whereupon, Exhibit No. 149, was
+marked for Identification.)
 
 I will, thank you.
 
@@ -4396,7 +4474,7 @@ April 29th, 2019, about two months after—about two months after the exhibit we
 
 (Witness peruses document.)
 
-Well, uhmm, yeah. It would have been Lee's E-mail to me was February 5th, 2019, so it would have — [REVIEW: steno artifact "_ _" — possible word or phrase dropped here; verify audio] you're correct on your math.
+Well, uhmm, yeah. It would have been Lee's E-mail to me was February 5th, 2019, so it would have — [REVIEW: steno artifact "_ _" — possible ellipsis, dash, or incomplete word. Verify audio.] you're correct on your math.
 
 Okay.
 
@@ -4441,7 +4519,7 @@ Yellow Rock wanted to drill near the dome
 , it had to go through a two-step process.
 First Getty M.D. approval and then get sign-off from the cavern operators; is that right?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to form.
 
 Actually, what I was saying here and some of this is operational probably shorthand. Traditionally drilling
 , you know, as I looked at this, what was required to obtain permits in
@@ -4458,12 +4536,13 @@ And that was part of this was to educate our people
 E-mail seemed like oh, it's an easy process. Well, indeed it's not.
 So part of this was internal education for people in our group.
 
-The next point was relative to the—the call with the—the [REVIEW: "IM D" — possibly "IMD" or an agency abbreviation; transcribed as heard] mines and minerals
-, and Boardwalk and the results of that call. And finally that—as the history book would read the fee 1028 was approved and information beforehand was submitted to Boardwalk and Westlake and neither who had concerns or take exception that it would conflict with their operations.
+The next point was relative to the—the call with the—the [REVIEW: "IM D mines an minerals" — likely "DNR mines and minerals" or similar; verify audio] mines and minerals
+, and Boardwalk and the results of that call. And finally that—as the history book would read the fee 1028 was approved and information beforehand was submitted [REVIEW: "Todd Boardwalk" — likely "to Boardwalk"; verify audio] Boardwalk and Westlake and neither who had concerns or take exception that it would conflict with their operations.
 Again primarily surface assets and surface facilities at the time
 .
 
-And that's—that's, basically, what this says.
+And that's—that's, basically, what this says
+.
 
 Okay.
 
@@ -4478,7 +4557,8 @@ I do.
 
 So every permit required a careful analysis of where the well would go relative to the caverns, right?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to form
+.
 
 Ask the question again I'm not sure
 I followed it all.
@@ -4486,7 +4566,7 @@ I followed it all.
 Yeah.
 So every permit required a careful analysis of where the well would go underground relative to the caverns?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to form.
 
 THE WITNESS: That means I can
 answer it.
@@ -4502,15 +4582,17 @@ MS. CURTIS: Yes to the extent
 
 Well, the—the drilling permit would require submission of a plat of the well location and it was my view that we could—we could expedite the review process and perhaps eliminate some follow-along questions from DNR if we would go ahead and just submit as much as we know on the permit and materials. I was—I was trying to do full disclosure in my bumbling way.
 
-Reading this E-mail—[REVIEW: garbled question — heard as "read do you reading it now disagree" — possible intended phrasing: "Reading it now, do you disagree with anything that you said back in"] April 2019?
+Reading this E-mail—[REVIEW: "read do you reading it now" — garbled steno; likely "reading it now, do you" or similar; verify audio] do you reading it now disagree with anything that you said back in
+April 2019?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to form
+.
 
 I don't see anything wrong with it.
 
 So in 2019 there was strict regulations around oil and gas permitting near salt domes that had salt caverns in them, right?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Object to the form.
 
 That's incorrect.
 
@@ -4538,7 +4620,7 @@ So you said so — I said in 2019 there was strict regulations about oil and gas
 
 The only specific regulation that — and informal, I guess, procedural point that Mines & Minerals took into account, was — I believe was on salt water disposal wells. And that was the quarter-mile proximity. That's not oil and gas wells.
 
-I believe I previously testified it was my belief that there were no existing rules, formal or informal, relative to — to drilling near the salt — the salt face. I didn't want to penetrate the — the CAP — the CAP bra.
+I believe I previously testified it was my belief that there were no existing rules, formal or informal, relative to — to drilling near the salt — the salt face. I didn't want to penetrate the — the CAP — the CAP bra. [REVIEW: witness stated "CAP bra" — possible domain term or steno artifact. Transcribed verbatim. Verify audio.]
 But to my knowledge there was nothing in regulation or practice.
 So that was the basis for me saying your premise to your question I felt was incorrect.
 
@@ -4567,7 +4649,6 @@ Mr. Easley, I'm going to hand you Exhibit No. 150, this is YR-284999 and let me 
 THE COURT REPORTER: I'm sorry, the computer went down. Can we go off the record, please, for a minute? I've got a technical glitch.
 
 THE VIDEOGRAPHER: The time is 4:05 p.m.
-
 (Recess.)
 
 THE VIDEOGRAPHER: The time is 4:08 p.m. and we are now back on the record.
@@ -4588,7 +4669,10 @@ And Brad Brandl in the below E-mail had just reported on a conversation with Cor
 
 Yes.
 
-And in response you wrote: "Yellow Rock doesn't really need to have the DNR act as a go-between with other cavern operators as the communication mechanism has been in place for three years."
+And in response you wrote: "Yellow
+Rock doesn't really need to have the
+DNR act as a go-between with other cavern operators as the communication mechanism has been in place for three years
+."
 
 Do you see that?
 
@@ -4596,13 +4680,27 @@ Do you see that?
 
 Yes.
 
-Is this the same communication mechanism we talked about in the April 2019 E-mail?
+Is this the same communication mechanism we talked about in the
+April 2019
+E-mail?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Objection to the form.
 
-What I was saying was that we had put in a practice in 2019 and I can't correlate to the exact exhibit you're referencing. I — no, we talked about this earlier or I talked about it earlier on your question, but we established the practice of initiating. Our goal was to do it quarterly and — later than — semi-annual to have a group cavern group meeting and in between those meetings if we had a proposed well we were proposing to drill, we would circulate information relative to the proposal to Boardwalk and to Westlake and, basically, tell them it was our view this didn't cause a conflict with their operations and soliciting their concurrence. And we obtained their concurrence in all instances. I might add. At least saying that the DNR didn't have to be the go-between — we already had the protocol and practice in place.
+What I was saying was that we had put in a practice in 2019 and
+I can't correlate to the exact exhibit you're referencing.
+I no, we talked about this earlier or I talked about it earlier on your question, but we established the practice of initiating
+. Our goal was to do it quarterly an the longer—later than Sam I annual to have a group cavern group meeting and in between those meetings if we had a proposed well we were proposing to drill, we would circulate information relative to the proposal to
+Boardwalk and to
+Westlake and, basically, tell them it was our view this didn't cause a conflict with their operations and soliciting their concurrence
+. And we obtained their concurrence in all instances
+. I might add
+. At least saying that the DNR didn't have to be the go-between we already had the protocol and practice in place.
 
-And in the E-mail you say that the DNR pause "could be an excuse for DNR to keep pushing off the three-year plus or minus permit request from Westlake Chem to drill the injection well."
+And in the E-mail you say that the
+DNR pause " could be an excuse for
+DNR to keep pushing off the three-year plus or minus permit request from Westlake
+Chem to drill the injection well.
+"
 
 Do you see that?
 
@@ -4610,27 +4708,38 @@ Do you see that?
 
 I do.
 
-So Westlake had been — had itself — so Westlake itself had a permit request pending with DNR for approximately three years as of this E-mail; is that right?
+So
+Westlake had been—had itself—so Westlake itself had a permit request pending with
+DNR for approximately three years as of this E-mail; is that right
+?
 
 That's what I've been told.
 
 And DNR still hadn't approved Westlake's permit either, right?
 
-That's what I'd been told.
+That's what I'd be told.
 
-So was DNR notorious about sitting on permits near the salt dome?
+So was
+DNR notorious about sitting on permits near the salt dome?
 
-MS. CURTIS: Objection to form.
+MS. CURTIS: Objection to the form.
 
-Notorious for — that word notorious has bad connotations. It was — it became my experience after three years that because of the procedural approach requiring approval at the Lafayette level and all, so primary final approval at Mines & Minerals in Baton Rouge, that it took longer than a typical oil and gas well permit outside — not in the parish, not even having a salt dome formation.
+Notorious for—that word notorious has bad connotations
+. It was—it became my experience after three years that because of the procedural approach requiring approval at the
+Lafayette level and all, so primary final approval at Mines & Minerals in Baton Rouge
+, that it took longer than a typical oil and gas well permit outside—not in the parish, not even having a salt dome formation.
 
-And "notorious", no, but it took longer. That's for oil and gas wells. I couldn't speak to what their practice was relative to mining operations within the confines of the cavern.
+And "notorious
+", no, but it took longer.
+That's for oil and gas wells. I couldn't speak to what their practice was relative to mining operations within the confines of the cavern.
 
-Yellow Rock's acreage that it had lease rights to covered a large area around the Sulphur Mine salt dome, right?
+Yellow Rock's acreage that it had lease rights to covered a large area around the Sulphur Mine salt dome, right
+?
 
 Correct.
 
-Somewhere in the ballpark of 5,000 acres; is that right?
+Somewhere in the ballpark of 5000 acres;
+is that right?
 
 Somewhere in the ballpark.
 
@@ -4638,15 +4747,18 @@ And that acreage extended in all directions around the dome?
 
 Right.
 
-And you said there were a thousand or a thousand wells that had been drilled or permitted in that area; is that what you said?
+And you said there were a thousand or a thousand wells that had been drilled or permitted in that area;
+is that what you said?
 
 Wells that had been drilled since the commencement of oil and gas operations.
 
 Okay.
 
-In the Sulphur Dome — what become known as the Sulphur Dome — Sulphur Mines. Excuse me. Sulphur Mines Field.
+In the
+Sulphur Dome—what become known as the
+Sulphur Dome—Sulphur Mines. Excuse me. Sulphur Mines Field.
 
-I'm going to hand you Exhibit No. 151, which is YR_180231. And just let me know when you're ready, Mr. Easley.
+I'm going to hand you Exhibit No. 151, which is YR-180231. And just let me know when you're ready, Mr. Easley.
 
 (Whereupon, Exhibit No. 151, was marked for Identification.)
 
@@ -4680,9 +4792,9 @@ You in your E-mail to Mr. Bertelot you wrote that the sides will take into accou
 
 I believe that would have been my approach at saying we took into account the angle of directional drilling and determination of where the central drill pads would need to be.
 
-I'm sure it's just because I'm a layperson, would you try explaining that just a little bit more, please.
+I'm sure it's just because I'm a layperson would you try explaining that just a little bit more please.
 
-Well, if we — if we — there would be a limitation on how sharp you can direct the angle of the drill below the subsurface, or you run into problems with binding drill pipe and getting stuck in this. So you need to provide for an industry reasonable slope to the directional drilling curve. And so if you start at the bottom where you want to end up and you back your way up to the surface level, you can nearly identify the area that you'd want to cite the drill pad.
+Well, if we — if we — there would be a limitation on how sharp you can direct the angle of the drill below the subsurface or you run into problems with binding drill pipe and getting stuck in this. So you need to provide for an industry reasonable slope to the directional drilling curve. And so if you start at the bottom where you want to end up and you back your way up to the surface level, you can nearly identify the area that you'd want to cite the drill pad.
 
 Does that make sense?
 
@@ -4692,9 +4804,10 @@ Okay.
 
 I think it does, thank you.
 
-I'm going to hand you Exhibit No. 152, which is YR-477049.
+I'm going to hand you Exhibit No. 152 which is YR-477049.
 
-(Whereupon, Exhibit No. 152, YR-477049, was marked for Identification.)
+(Whereupon, Exhibit No. 152, YR-477049, was
+marked for Identification.)
 
 May I ask, was this the attachment to this E-mail that you — Bingo, that's right.
 
@@ -4706,21 +4819,21 @@ Sure.
 
 Okay.
 
-So this is, as we were talking about, this is the map that you sent Mr. Bertelot, right?
+So this is as we were talking about this is the map that you sent Mr. Bertelot, right?
 
 MS. CURTIS: Objection to form.
 
 This was the attachment to the E-mail it would have been.
 
-And the Yellow Rock lawyers told me it was, so we don't have to dwell on that. And the yellow lines are the lease boundaries, right?
+And the Yellow Rock lawyers told me it was so we don't have to dwell on that. And the yellow lines are the lease boundaries, right?
 
-Again, it's complex and confusing. There's several data elements that's put on this 8-and-a-half by 11 page. Further reduced is the general exterior perimeter of the — the lease in the salt mines field. And where Yellow Rock had identified potential projected areas of interest to ultimately drill from. And finally backing up to — to identifying what Yellow Rock would propose as the well pads to be set aside and not utilizable by Sulphur Dome for the solar farm project.
+Again it's complex and confusing. There's several data elements that's put on this 8-and-a-half by 11 page. Further reduced is the general exterior perimeter of the — the lease in the salt mines field. And where Yellow Rock had identified potential projected areas of interest to ultimately drill from. And finally backing up to — to identifying what Yellow Rock would propose as the well pads to be set aside and not utilizable by Sulphur Dome for the solar farm project.
 
 Okay.
 
-That's helpful. I'll [REVIEW: witness said "juice" — possible steno error; heard as "just" or "go"; transcribed as heard] piecemeal. The red boundary lines there, those reflect Yellow Rock's lease acreage, right?
+That's helpful. [REVIEW: "I'll juice piecemeal" — likely steno error. Possible: "I'll just go piecemeal" or similar. Verify audio.] The red boundary lines there those reflect Yellow Rock's lease acreage, right?
 
-It's identified by the legend at the bottom.
+Its identified by the legend at the bottom.
 
 And you see there are yellow triangles that. The map, do you see those?
 
@@ -4750,7 +4863,7 @@ They're not concentrated in anyone area?
 
 Well, we thought ultimately these were the areas of interest that had been identified at that point. I'm sure it's been further refined since then.
 
-And Mr. [REVIEW: witness name cut off — steno artifact; verify from audio] quickly referring back to Exhibit No. 151, Mr. Bertelot, it looks like he responded with a map of his own. Do you see his response to you there?
+And Mr. [REVIEW: witness name incomplete — steno blank. Verify audio.] quickly referring back to Exhibit No. 151, Mr. Bertelot, it looks like he responded with a map of his own. Do you see his response to you there?
 
 (Witness peruses document.)
 
@@ -4788,7 +4901,7 @@ Q. So from those center squares, you should be able to reach underground anywher
 
 A. Correct. At the target depths. It's again a moving target. A function of the angle and where you start and where you're targeting to end up. As further adjusted for any subsurface impediments that you have to work around. Because legacy well production casing that's been left in the hole. You have to run anti-conflict software.
 
-Q. I'm going to hand you Exhibit No. 154, which is YR_429774, and just let me know when you're ready.
+Q. I'm going to hand you Exhibit No. 154, which is YR_429774 and just let me know when you're ready.
 
 (Whereupon, Exhibit No. 154, was marked for Identification.)
 
@@ -4810,21 +4923,15 @@ A. She was a geotech for Yellow Rock.
 
 Q. Was she working with Yellow Rock both before and after the change in ownership?
 
-MS. CURTIS: Objection to form; asked and answered.
+MS. CURTIS: Objection, asked and answered.
 
 A. I think I previously testified she was among some people that Yellow Rock had furloughed prior during the summer leading up to the restriction.
 
-Q. Okay.
-
-A. But it looks like as of June 2022 she's back; is that right?
-
-[REVIEW: SPEAKER UNCLEAR — this line reads as a question (counsel) but appears in answer context. Verify attribution against audio.]
+Q. Okay. But it looks like as of June 2022 she's back; is that right?
 
 A. I was looking at that date. And it's my recollection I called Ava and asked her if she would mind coming in as a favor doing this and she was kind enough to do so.
 
-Q. Okay.
-
-A. And Ms. Borrego writes toward the bottom of the page that she updated the internal maps to include existing anomalies inside and outside our acreage, additional well pads in potential locations."
+Q. Okay. And Ms. Borrego writes toward the bottom of the page that she updated the internal maps to include existing anomalies inside and outside our acreage, additional well pads in potential locations."
 
 Do you see that?
 
@@ -4836,19 +4943,11 @@ Q. Well, I'm looking at the top E-mail.
 
 A. Right. That — that was the information she had sent to me. For purposes of sending it to Todd.
 
-Q. Okay.
-
-A. She said here is the maps you're requesting; is that right?
-
-[REVIEW: SPEAKER UNCLEAR — "She said here is the maps you're requesting; is that right?" reads as counsel quoting the document and seeking confirmation, but attribution may be witness. Verify against audio.]
+Q. Okay. She said here is the maps you're requesting; is that right?
 
 A. Correct.
 
-Q. Okay.
-
-A. And I think you've testified earlier that you had, in fact, requested these?
-
-[REVIEW: SPEAKER UNCLEAR — this line reads as a question (counsel) but appears in answer context. Verify attribution against audio.]
+Q. Okay. And I think you've testified earlier that you had, in fact, requested these?
 
 A. Yes.
 
@@ -4867,22 +4966,28 @@ And before I put the exhibit down you see there's two attachments there?
 Okay. On mine—yes, I see that.
 Okay.
 
-One of those attachments is copy of revised drill schedule 5/18/21, right?
+One of those attachments is copy of revised drill schedule
+5/18/21, right?
 
 That's what it's identified as.
 
-I want to hand you Exhibit No. 155, which is YR_429778, which is unstamped, but it's been marked highly confidential. But you'll just have you describe this document whenever you're ready, Mr. Easley.
+I want to hand you
+Exhibit No. 155, which is
+YR-429778, which is unstamped, but it's been marked highly confidential. But you'll just have you describe this document whenever you're ready, Mr. Easley.
 
 (Whereupon, Exhibit No. 155, was
 marked for Identification.)
 
 (Witness peruses document.)
 
-This was a spreadsheet prepared by Brad Brandl that identified all of the potential areas of interest that had been identified by the Yellow Rock technical people. And set out a number of—you know, identifying references where it was located, the area. What Mr. Brandl's estimate of potential recoverable reserves were.
+This was a spreadsheet prepared by Brad Brandl that identified all of the potential areas of interest that had been identified by the Yellow Rock technical people.
+And set out a number of—you know, identifying references where it was located, the area. What
+Mr. Brandl's estimate of potential recoverable reserves were.
 
 And as a result of that, developed his recommendation as far as proposed drilling order. But this was done I might caution in 2020 because it was an assessment of potential drilling inventory.
 
-And you can refer to it if you need to. Looking back to Exhibit No. 154, the E-mail, the file name of this document is copy of revised drill schedule 5-18/21, right?
+And you can refer to it if you need to. Looking back to
+Exhibit No. 154, the E-mail, the file name of this document is copy of revised drill schedule 5-18/21, right?
 
 (Witness peruses document.)
 
@@ -4890,7 +4995,8 @@ Yes.
 
 Okay.
 
-So this would have been updated as of May 18th, 2021, right?
+So this would have been updated as of
+May 18th, 2021, right?
 
 MS. CURTIS: Objection to form.
 
@@ -4902,7 +5008,9 @@ Okay.
 
 This document lists 71 ranked drilling prospects, right?
 
-I see 30 on here. Oh, excuse me. Third page. 71. Correct. I'm sorry.
+I see 30 on here. Oh, excuse me.
+Third page.
+71. Correct. I'm sorry.
 
 That's all right.
 
@@ -4916,7 +5024,8 @@ And these 71 prospects are distributed all over the dome, right, in every quadra
 
 Well, we have north and south and northeast and I don't see specifically—I see north and south just quickly looking at it.
 
-This is actually a good follow-up question, Mr. Easley. So I see a column that says G and G and a few columns to the right that says location on the dome. Maybe you could tell me the difference between those columns.
+This is actually a good follow-up question, Mr. Easley.
+So I see a column that says G and G and a few columns to the right that says location on the dome. Maybe you could tell me the difference between those columns.
 
 (Witness peruses document.)
 
@@ -4936,7 +5045,8 @@ Okay.
 
 Has Yellow Rock been denied a permit for any of these prospects?
 
-It's my understanding and belief that since fee 1031 was drilled that Yellow Rock on proposed drilling permits and work over permits, that involve going in the different reservoirs, have not be issued. Have they been denied? No. To my understanding they've been placed in limbo.
+It's my understanding and belief that since fee 1031 was drilled that Yellow Rock on proposed drilling permits and work over permits, that involve going in the different reservoirs, have not be issued.
+Have they been denied? No. To my understanding they've been placed in limbo.
 
 What do you base that understanding off of?
 
@@ -4946,9 +5056,9 @@ Okay.
 
 Do you recognize any of the 71 prospects here as among those that LDNR has supposedly not issued permits for?
 
-Not offhand. But I haven't studied — studied it and compared it, and I would need to compare it to the specific submitted permit requests for precision.
+Not offhand. But I haven't studied—studied it and compared it, and I would need to compare it to the specific submitted permit requests for precision.
 
-If you could turn with me to — it's really the third to last page of the document.
+If you could turn with me to—it's really the third to last page of the document.
 
 On the same exhibit, sir?
 
@@ -4964,7 +5074,7 @@ Is that the one that has A through V?
 
 It is.
 
-In the first column, drilling order A through V?
+In the first column, drilling order A through V.
 
 That was my next question. This spreadsheet also includes an additional 22 geoscience potential locations labeled A through V; is that right?
 
@@ -4980,15 +5090,15 @@ And if you go back briefly to Exhibit No. 154, which is Ms. Borrego's E-mail?
 
 Yes, sir.
 
-Another attachment that Ms. Borrego attached — [REVIEW: witness or counsel referenced a date or identifier here — original reads "*REPORTER CHECK HERE* 5/18/21 attachment" — verify against audio] — the 5/18/21 attachment?
+Another attachment that Ms. Borrego attached [REVIEW: "*REPORTER CHECK HERE* 5/18/21 attachment" — flag text and date may be steno artifact or reporter note; verify whether this is a question referencing an attachment dated 5/18/21 or a steno insertion. Transcribe pending reporter decision.] 5/18/21 attachment?
 
 And the drill schedule.
 
-I'll hand you Exhibit 156, which is YR_429776?
+I'll hand you Exhibit 156, which is YR-429776.
 
 MR. GUILLOT: Really quick, could you remind me what 155 was.
 
-MR. HOBBY: Bates No. was YR_429778.
+MR. HOBBY: Bates No. was YR-429778.
 
 MR. GUILLOT: Right.
 
@@ -4996,15 +5106,15 @@ I would need to have a magnifying glass to study this in detail, but I've studie
 
 And this is the attachment that Ms. Borrego sent you?
 
-I don't know if this would have actually been sent to Todd, but supplemental information I would have requested because I was interested in seeing all of the possible relevant information like target. I wanted to see the target reservoirs that were involved. And I wanted to see the elements that went into — to mapping out the — the drill pad locations that were being discussed.
+I don't know if this would have actually been sent to Todd, but supplemental information I would have requested because I was interested in seeing all of the possible relevant information like target. I wanted to see the target reservoirs that were involved. And I wanted to see the elements that went into—to mapping out the—the drill pad locations that were being discussed.
 
-Do you see how these triangles, the potential location triangles, some have letters in them, some have numbers — do you see that?
+Do you see how these triangles, the potential location triangles, some have letters in them, some have numbers, do you see that?
 
 I do.
 
 Do you know what those letters or numbers represent?
 
-Well, I'd have to look and correlate, but I'm — they might well relate to the spreadsheet that we previously looked at, but I'm not sure. So I don't know for sure.
+Well, I'd have to look and correlate, but I'm—they might well relate to the spreadsheet that we previously looked at, but I'm not sure. So I don't know for sure.
 
 Okay.
 
@@ -5016,7 +5126,7 @@ MS. CURTIS: No, you can't.
 
 BY MR. HOBBY:
 
-Switching gears — seismic data has been a priority for Yellow Rock, right?
+Switching gears, seismic data has been a priority for Yellow Rock, right?
 
 Pardon?
 
@@ -5046,11 +5156,10 @@ Right.
 
 3D. 4D now, some would say.
 
-And seismic data is collected from shoots — as I think you called them earlier?
+And seismic data is collected from shoots, as I think you called them earlier?
 
 I call them shoots, but it's, basically, in the simplest form using large vibrators in certain geographic areas, for example, in the
-Sahara Desert you use vibrators to generate shock waves and then record that with —
-— with hydrophones — with phones not hydrophones but seismic recorders and then in turn,
+Sahara Desert you use vibrators to generate shock waves and then record that with — with hydrophones — with phones not hydrophones but seismic recorders and then in turn,
 that would be used to generate seismic data field tapes, which would then be field processed.
 And then go through this iteration of photo processing which I talked about earlier.
 
@@ -5058,7 +5167,8 @@ Data from multiple seismic shoots can be combined to enhance the data, right?
 
 I don't know that it enhances it, but it obtains additional clarification and — it comes with — up with a merged version of the data.
 
-And when White Top was soliciting investors in the Yellow Rock opportunity, it pitched the quality of the seismic data that Yellow Rock had, right?
+And when
+White Top was soliciting investors in the Yellow Rock opportunity, it pitched the quality of the seismic data that Yellow Rock had, right?
 
 Correct.
 
@@ -5070,7 +5180,7 @@ Can you tell me the difference between time migration data and depth migration d
 
 Time migration and depth migration.
 Migration in the simplest form would involve the projected movement of sound. And time would be time and development depth would be vertical.
-And movement. A general sense description. [REVIEW: REPORTER CHECK HERE marker present in source — verify witness completed this answer or transcript is cut off here.]
+And movement. A general sense description [REVIEW: asterisks and "REPORTER CHECK HERE" appear in source — possible steno note or audio gap. Verify and supply witness's actual words if available.].
 
 Is one considered superior to the other?
 
@@ -5088,39 +5198,48 @@ I'm not sure which would be ranked first — the most. I'm not a geophysicist.
 
 Me either.
 
-I'll hand you Exhibit No. 157, which is YR-454139.
+I'll hand you
+Exhibit No. 157, which is
+YR-454139.
 
-(Whereupon, Exhibit No. 157, was marked for Identification.)
+(Whereupon, Exhibit No. 157, was
+marked for Identification.)
 
 (Witness peruses document.)
 
 All right.
 
 This is an E-mail chain from — just a moment.
-Can you read the [REVIEW: "why are number" — steno error, likely "wire number" or "Bates number" — verify audio] that I just gave you please, Mr. Easley.
+Can you read the wire number that I just gave you please, Mr. Easley.
 
 Sure.
 YR-454139.
 
 Got it.
 Hold on to that one and we're going to come right back to it. In the meantime I'm going to mark 158,
-Exhibit No. 158, which is YR-434633.
+Exhibit No. 158, which is
+YR-434633.
 
-(Whereupon, Exhibit No. 158, was marked for Identification.)
+(Whereupon, Exhibit No. 158, was
+marked for Identification.)
 
 (Witness peruses document.)
 
-MR. GUILLOT: Can you repeat the Bates number again.
+MR. GUILLOT: Can you repeat
+the Bates number again.
 
 MR. HOBBY: 434633.
 
 Okay.
 
-This is an E-mail chain from October 9th, 2020, right?
+This is an E-mail chain from October
+9th, 2020, right?
 
 Yes.
 
-And the bottom E-mail is from Dorothea Faw to Joel Latchman at Indepth Geophysical, which Brad Brandl forwards to you and the geoscience team. Did I get all that right?
+And the bottom E-mail is from Dorothea Faw to Joel Latchman at Indepth Geophysical, which Brad
+Brandl forwards to you and the geoscience team. Did
+I get all that right?
 
 Dorothea.
 
@@ -5128,17 +5247,21 @@ Dorothea?
 
 Dorothea. She was introduced to me. Dorothea.
 
-Looking at the second page with Ms. Faw's comments, is Ms. Faw critical of the Sulphur Mines dataset that Yellow Rock has?
+Looking at the second page with
+Ms. Faw's comments,
+is Ms. Faw critical of the
+Sulphur Mines dataset that
+Yellow Rock has?
 
 No. I didn't interpret that at all.
 
 Okay.
 
-She's — Dorothea and her colleague, Richard Lofton, I believe — Lofton, yes, were geophysicists that Brad Brandl worked with in the past. And so they were retained to carry out review using bright spot approach to identifying anomalies, subsurface anomalies. And trying to zero in on potential hydrocarbon areas. And this was — Dorothea and Richard on a low budget quick and dirty basis were simply supposed to try to look for bright spots.
+She's—Dorothea and her colleague, Richard Lofton I believe—Lofton, yes, were geophysicists that Brad Brandl worked with in the past. And so they were retained to carry out review using bright spot approach to identifying anomalies, subsurface anomalies. And trying to zero in on potential hydrocarbon areas. And this was—Dorothea and Richard on a low budget quick and dirty basis were simply supposed to try to look for bright spots.
 
-And the genesis of the chain of E-mails were that seeing this E-mail from — from Dorothea, I thought that she and Richard were moving far off the reservation. And it would involve — I think you recall in one of my testimonies earlier — if I didn't say it, I should have — that it seemed like every year seismic reprocessors come up with new and better algorithms and processing software for purposes of generating the project to reprocess existing data. And this was — this was just another in my mind another version of it.
+And the genesis of the chain of E-mails were that seeing this E-mail from—from Dorothea, I thought that she and Richard were moving far off the reservation. And it would involve—I think you recall in one of my testimonies earlier—if I didn't say it, I should have—that it seemed like every year seismic reprocessors come up with new and better algorithms and processing software for purposes of generating the project to reprocess existing data. And this was—this was just another in my mind another version of it.
 
-So if you'll notice, the explanation from Brad has reminded me of what they were doing and why. And that we weren't — he wasn't proposing to go in and reprocess information in-depth, which was he had processed the last version of the 3D. For further testing had done. And if you'll note the in between on October 9th, 2020, I wrote a one-line note to Brad. "Thanks for covering us, Brad. I would have gone into cardiac arrest without your preface comments. TE" And then Brad sent an E-mail back saying: "I got it, I'm not going to go let them get off the reservation."
+So if you'll notice, the explanation from Brad has reminded me of what they were doing and why. And that we weren't—he wasn't proposing to go in and reprocess information in-depth, which was he had processed the last version of the 3D. For further testing had done. And if you'll note the in-between on October 9th, 2020, I wrote a one-line note to Brad. "Thanks for covering us, Brad. I would have gone into cardiac arrest without your preface comments. TE" And then Brad sent an E-mail back saying: "I got it, I'm not going to go let them get off the reservation."
 
 Can you sum up for me the cardiac arrest joke about what was a little bit distressing about Ms. Faw's E-mail.
 
@@ -5150,11 +5273,11 @@ What did you find distressing about Ms. Faw's E-mail?
 
 MS. CURTIS: Objection to form.
 
-Well, as I read it, it was setting up the notion that she and Richard would need to go extensive, lengthy, costly additional reprocessing or looking for information to try to identify bright spots. And their job was to identify potential anomalies using the bright spot approach. And that was the beginning and end of their mission. And cardiac arrest is just, you know, a term that — maybe I should have said sent me into shock.
+Well, as I read it, it was setting up the notion that she and Richard would need to go extensive, lengthy, costly additional reprocessing or looking for information to try to identify bright spots. And their job was to identify potential anomalies using the bright spot approach. And that was the beginning and end of their mission. And cardiac arrest is just, you know, a term that—maybe I should have said sent me into shock.
 
 So you were worried that they were going to try to charge you more money for more work?
 
-I was concerned that they were setting up this. Jill Latchman was with In-Depth. And I thought that they were fishing under the auspices of having the approval of blacktop to obtain all of the information on the parameters that In-Depth had used on reprocessing the data. And I did not want to create an open-ended situation. The best time to stop it is at the beginning.
+I was concerned that they were setting up this Jill Latchman was with In-Depth. And I thought that they were fishing under the auspices of having the approval of blacktop to obtain all of the information on the parameters that In-Depth had used on reprocessing the data. And I did not want to create an open-ended situation. The best time to stop it is at the beginning.
 
 MS. CURTIS: And that's the best time to stop this deposition. Thank you. Okay. We're stopping for now.
 
@@ -5182,10 +5305,8 @@ MR. HOBBY: Thank you.
 
 THE VIDEOGRAPHER: This concludes today's deposition and the time is 5:00 p.m. and we are now off the record.
 
-(Whereupon, the proceedings were adjourned at 5:00 p.m.)
-
 THE COURT REPORTER: Do you want a rough draft?
 
-MS. CURTIS: Yes. Thank you.
+MS. CURTIS: Yes. Thank you. 5:01
 
-[REVIEW: Timestamp "5:01" appears at end of raw transcript — likely steno CAT artifact or off-record notation. Transcribed as off-record. Confirm with audio.]
+(Whereupon, the proceedings were adjourned.)
