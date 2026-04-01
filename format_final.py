@@ -172,8 +172,8 @@ def extract_exhibits(text):
     exhibits = {}
     pattern = re.compile(
         r'\(Whereupon,\s+Exhibit\s+No\.\s+(\d+)'  # exhibit number
-        r'(?:,\s*(.+?))?,?\s*was\s+marked',        # description = everything up to "was marked"
-        re.IGNORECASE | re.DOTALL
+        r'(?:,\s*([^()]*?))?,?\s*was\s+marked',     # description = inside paren only, no escape
+        re.IGNORECASE
     )
     for m in pattern.finditer(text):
         num = int(m.group(1))
