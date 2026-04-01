@@ -172,13 +172,14 @@ def extract_exhibits(text):
     exhibits = {}
     pattern = re.compile(
         r'\(Whereupon,\s+Exhibit\s+No\.\s+(\d+)'  # exhibit number
-        r'(?:,\s*([^,]+?))?\s*'                    # optional description
-        r'(?:,\s*)?was\s+marked',                  # "was marked" anchor
-        re.IGNORECASE
+        r'(?:,\s*(.+?))?,?\s*was\s+marked',        # description = everything up to "was marked"
+        re.IGNORECASE | re.DOTALL
     )
     for m in pattern.finditer(text):
         num = int(m.group(1))
-        desc = m.group(2).strip() if m.group(2) else ''
+        # Collapse newlines/whitespace; strip trailing comma artifact
+        raw = m.group(2) if m.group(2) else ''
+        desc = ' '.join(raw.split()).rstrip(',').strip()
         if num not in exhibits:                    # first occurrence wins
             exhibits[num] = desc
     return exhibits
