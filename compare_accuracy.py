@@ -49,7 +49,10 @@ OUTPUT_FILE          = r"FINAL_DELIVERY\accuracy_report.txt"
 # Order matters: checked top-to-bottom, first match wins.
 SECTION_MARKERS = [
     # Certificates — check first so cert headers never fall into TESTIMONY
-    ('CERTIFICATE', re.compile(r"^\s*(REPORTER'?S?\s+CERTIF|CERTIF.*REPORTER|WITNESS'?S?\s+CERTIF|C\s+E\s+R\s+T\s+I\s+F)", re.I)),
+    # [TECH DEBT: section detection is single-format (MB/LA). CERTIF.*REPORTER removed — too broad,
+    #  matched "Certified Court Reporter" in stipulation body text, causing false cert boundary.
+    #  See brainstorm_industrial_scale.md — FORMAT CHALLENGE section for full redesign notes.]
+    ('CERTIFICATE', re.compile(r"^\s*(REPORTER'?S?\s+CERTIF|WITNESS'?S?\s+CERTIF|C\s+E\s+R\s+T\s+I\s+F)", re.I)),
     ('ERRATA',      re.compile(r'^\s*(ERRATA\s*SHEET|ERRATA)\s*$', re.I)),
     # INDEX before TESTIMONY — index pages contain "EXAMINATION BY: PAGE" entries
     # which would falsely trigger TESTIMONY if checked first
