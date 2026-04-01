@@ -69,6 +69,7 @@ DEPO_LOCATION_0 = _cfg.get('venue_name', '')   # named venue (e.g. THE HOUSTONIA
 DEPO_LOCATION_1 = _cfg.get('location_1', '')
 DEPO_LOCATION_2 = _cfg.get('location_2', '')
 REPORTER_NAME   = _cfg.get('reporter_name', 'UNKNOWN — reporter_name required')
+REPORTER_NAME_DISPLAY = _cfg.get('reporter_name_display', REPORTER_NAME.title())  # title case for witness cert
 EXAMINING_ATTY  = _cfg.get('examining_atty', '')
 PARISH          = _cfg.get('parish', '')
 COURT           = _cfg.get('court', '')
@@ -390,7 +391,7 @@ def build_witness_cert(exhibits=None):
     sig.append("")
     sig.append("")
     sig.append("")
-    sig.append(f"  Reported by: {REPORTER_NAME}")
+    sig.append(f"  Reported by: {REPORTER_NAME_DISPLAY}")
     pages.append(sig[:25])
 
     return pages

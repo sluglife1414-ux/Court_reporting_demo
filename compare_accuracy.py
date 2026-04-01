@@ -484,6 +484,56 @@ def main(engine_file=None, approved_pdf=None, out_file=None):
     print("GROUND TRUTH ACCURACY COMPARISON  v2 (section-aware)")
     print("=" * 60)
 
+    # ── COARSE CHECK (pages / words / chars) ──────────────────────
+    print("\nCOARSE CHECK (run this before trusting section scores)")
+    print("-" * 60)
+
+    # Page count: use generated PDF (same folder as engine TXT) vs approved PDF.
+    # Comparing two PDFs via pdfplumber = apples-to-apples.
+    # TXT char/word counts are inflated by formatting — not reliable vs PDF.
+    engine_pdf = str(engine_file).replace('_FINAL_FORMATTED.txt', '_FINAL.pdf')
+    eng_pdf_texts  = _extract_pdf_pages(engine_pdf) if os.path.exists(engine_pdf) else []
+    eng_pages = len(eng_pdf_texts)
+    eng_words = sum(len(t.split()) for t in eng_pdf_texts)
+    eng_chars = sum(len(t) for t in eng_pdf_texts)
+
+    pdf_page_texts = _extract_pdf_pages(approved_pdf)
+    appr_pages = len(pdf_page_texts)
+    appr_words = sum(len(t.split()) for t in pdf_page_texts)
+    appr_chars = sum(len(t) for t in pdf_page_texts)
+
+    if not eng_pdf_texts:
+        print("  WARNING: engine PDF not found — page/word/char counts unavailable.")
+        print(f"  Expected: {engine_pdf}")
+
+    def _pct_diff(a, b):
+        if b == 0: return 0.0
+        return abs(a - b) / b * 100
+
+    def _flag(pct):
+        if pct <= 2:   return 'OK'
+        if pct <= 10:  return 'WARN'
+        return '*** GAP ***'
+
+    print(f"  {'Metric':<12} {'Engine':>10} {'Approved':>10} {'Diff':>8}  {'Status'}")
+    print(f"  {'-'*12} {'-'*10} {'-'*10} {'-'*8}  {'-'*10}")
+    for label, e_val, a_val in [
+        ('Pages',      eng_pages, appr_pages),
+        ('Words',      eng_words, appr_words),
+        ('Chars',      eng_chars, appr_chars),
+    ]:
+        diff = e_val - a_val
+        pct  = _pct_diff(e_val, a_val)
+        flag = _flag(pct)
+        sign = '+' if diff >= 0 else ''
+        print(f"  {label:<12} {e_val:>10,} {a_val:>10,} {sign}{diff:>+7,}  {flag} ({pct:.1f}%)")
+
+    print()
+    print("  Rule: Pages/Words/Chars within 2% = green light for section scores.")
+    print("        If GAP -- fix coarse first, section scores are misleading.")
+    print("-" * 60)
+    # ── END COARSE CHECK ──────────────────────────────────────────
+
     print("Detecting running headers...")
     pdf_header = detect_running_header_from_pdf(approved_pdf)
     txt_header = detect_running_header_from_txt(engine_file)

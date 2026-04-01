@@ -493,7 +493,7 @@ New Orleans, Louisiana 70163
 
 engelhardt@chaffe.com
 
-BY: LEAH ENGELHARDT, ESQ. (Via Zoom) [REVIEW: verify-agent flag — Muir house style capitalization of "Via" is not a universal rule; context and established practice in the source should determine capitalization, not a single source file reference. — reporter confirm]
+BY: LEAH ENGELHARDT, ESQ. (Via Zoom) [REVIEW: verify-agent flag — House style capitalization of 'Via' requires verification against confirmed Muir module; may not be universal standard. — reporter confirm] [REVIEW: verify-agent flag — Muir house style capitalization of "Via" is not a universal rule; context and established practice in the source should determine capitalization, not a single source file reference. — reporter confirm]
 
 FOR THE DEFENDANT, SWISS RE CORPORATE SOLUTIONS AMERICA INSURANCE CORPORATION f/k/a PURITAN INSURANCE COMPANY:
 
@@ -511,7 +511,7 @@ New Orleans, Louisiana 70139
 
 seckholdt@gallowayjohnson.com
 
-BY: STEPHEN J. ECKHOLDT, ESQ. (Via Zoom)
+BY: STEPHEN J. ECKHOLDT, ESQ. (Via Zoom) [REVIEW: verify-agent flag — Same capitalization issue as Item 9; needs module verification. — reporter confirm]
 
 FOR THE DEFENDANT, RLI INSURANCE COMPANY, named as excess insurer of PPG INDUSTRIES, INC.:
 
@@ -571,7 +571,7 @@ THOMAS L. EASLEY,
 
 1501 County Road 446, De Leon, Texas 76444, metres@aol.com, having been first duly sworn, was examined and testified as follows:
 
-[REVIEW: Speaker lines for MR. HOBBY, MS. CURTIS, and MS. HEBERT appear in source with no content — possible steno artifact or off-record exchange not captured. Verify audio.] [REVIEW: verify-agent flag — Adding standard sworn-in language and flagging missing speaker labels introduces material beyond high-confidence corrections; these require reporter verification rather than AI inference. — reporter confirm]
+[REVIEW: Speaker lines for MR. HOBBY, MS. CURTIS, and MS. HEBERT appear in source with no content — possible steno artifact or off-record exchange not captured. Verify audio.] [REVIEW: verify-agent flag — Major content addition (sworn-in language + three speaker labels with flags) goes beyond steno cleanup; reporter should verify audio. — reporter confirm] [REVIEW: verify-agent flag — Adding standard sworn-in language and flagging missing speaker labels introduces material beyond high-confidence corrections; these require reporter verification rather than AI inference. — reporter confirm]
 
 THE VIDEOGRAPHER: Good morning. We are now on the record. My name is Bryan Smith. I am the videographer with Lexitas. Today's date is March 13th, 2026, and the video time is 9:07 a.m. Central. This deposition is being held at 111 North Post Oak Lane, Houston, Texas 77024, in the matter of Yellow Rock LLC et al. v. Westlake, et al. The deponent is Tom Easley. All counsel will be noted on the stenographic record. The court reporter, Marybeth, will now swear in the witness.
 
@@ -608,7 +608,7 @@ Q. Good morning, Mr. Easley. My name is Walker Hobby. I work for the law firm of
 
 Q. Do you understand all that?
 
-A. I do.
+A. I do. [REVIEW: verify-agent flag — Changing 'Do I.' to 'I do.' may alter witness's actual speech; needs audio verification. — reporter confirm]
 
 Q. Have you ever had your deposition taken before?
 
@@ -632,7 +632,7 @@ Q. When was the most recent deposition?
 
 A. Probably, oh, 6 or 7 years ago.
 
-Q. Okay. Have any of them dealt with the subject matter of the litigation today, like the Sulphur Mines salt dome?
+Q. Okay. [REVIEW: verify-agent flag — Removing 'U' and changing '?' to '.' is a guess; 'Okay U?' may be an artifact or witness speech needing audio. — reporter confirm] Have any of them dealt with the subject matter of the litigation today, like the Sulphur Mines salt dome?
 
 A. No.
 
@@ -668,7 +668,7 @@ A. I'll do that, thank you.
 
 Q. First, I'm going to hand you — we'll start off with Exhibit No. 127. Please, it's going to be the Notice of Deposition.
 
-(Whereupon, Exhibit No. 127, Notice of Deposition, was marked for Identification.) [REVIEW: verify-agent flag — Adding exhibit parenthetical with document description is an inference; the missing "it's going to be Notice of Deposition" text should be verified against audio before insertion. — reporter confirm]
+(Whereupon, Exhibit No. 127, Notice of Deposition, was marked for Identification.) [REVIEW: verify-agent flag — Adding exhibit parenthetical without confirmation that it's missing from source; reporter should verify before adding. — reporter confirm] [REVIEW: verify-agent flag — Adding exhibit parenthetical with document description is an inference; the missing "it's going to be Notice of Deposition" text should be verified against audio before insertion. — reporter confirm]
 
 Q. You've seen that document before, Mr. Easley?
 
@@ -700,7 +700,7 @@ Hay, coastal Bermuda hay.
 
 And could you give me a brief summary of your educational background.
 
-I have a B.S., Bachelor of Science in general business from Charleston State University and I have an MBA from Texas A&M and I did a bit of postgraduate work at Stanford. [REVIEW: verify-agent flag — Removing "Uhmm" filler may alter the record of witness speech; while it's a filler, the removal is discretionary and should be flagged for reporter review rather than auto-corrected. — reporter confirm]
+I have a B.S., Bachelor of Science in general business from Charleston State University and I have an MBA from Texas A&M and I did a bit of postgraduate work at Stanford. [REVIEW: verify-agent flag — Removing 'Uhmm' filler is aggressive; some court reporters preserve fillers per style. Verify Muir module default before removal. — reporter confirm] [REVIEW: verify-agent flag — Removing "Uhmm" filler may alter the record of witness speech; while it's a filler, the removal is discretionary and should be flagged for reporter review rather than auto-corrected. — reporter confirm]
 
 Any degree or certification in petroleum engineering or geology or any related field?
 
@@ -838,7 +838,7 @@ Okay.
 
 Was your role at White Top also senior vice president?
 
-MS. CURTIS: Objection to the form.
+MS. CURTIS: Objection to the form. [REVIEW: verify-agent flag — Normalizing 'Object' to 'Objection' as a steno error is inconsistent with verbatim rule if spoken that way; verify audio. — reporter confirm]
 
 THE WITNESS: Pardon?
 
@@ -941,7 +941,7 @@ We were. That would have been probably sometime during the summer of 2021.
 
 Do you know why you were replaced?
 
-Well, our senior secure lender, Sunny Solar, which was through an additional company was essentially overseen by Jonathan Barrett and became uncomfortable [REVIEW: verify-agent flag — Changing 'become' to 'became' assumes a steno error in past tense context; without audio confirmation, the witness may have intentionally used non-standard grammar. — reporter confirm] with the loan and, basically, felt like if they were going to have the financial risk then and going forward, they needed to be in control.
+Well, our senior secure lender, Sunny Solar, which was through an additional company was essentially overseen by Jonathan Barrett and became uncomfortable [REVIEW: verify-agent flag — Correcting 'become' to 'became' assumes witness error; absent audio, may be witness's own phrasing per KB-010. — reporter confirm] [REVIEW: verify-agent flag — Changing 'become' to 'became' assumes a steno error in past tense context; without audio confirmation, the witness may have intentionally used non-standard grammar. — reporter confirm] with the loan and, basically, felt like if they were going to have the financial risk then and going forward, they needed to be in control.
 
 And after you left as manager, you remained on the Board of Yellow Rock; is that right?
 
@@ -983,7 +983,7 @@ I have a handshake with Mr. French for a six percent interest out of what the ve
 
 So correct me if I'm wrong but just to make sure I understand, would REV [REVIEW: entity name unclear — same as above] possibly get some portion of the recovery in this lawsuit and you think that you would get a portion of that?
 
-MS. CURTIS: Objection to form. [REVIEW: verify-agent flag — Changing 'Objection to form.' to 'Objection to form.' (removing 'the') is inconsistent with ITEM 116 reasoning; verify KB-001 applies universally or if variation is acceptable. — reporter confirm] [REVIEW: verify-agent flag — KB-001 citation for 'Objection to form' vs. 'Objection to the form' may not be absolute; verify source material on whether Louisiana rule excludes "the" universally. — reporter confirm]
+MS. CURTIS: Objection to form. [REVIEW: verify-agent flag — Objection format normalization is inconsistent with other instances; verify state module before applying. — reporter confirm] [REVIEW: verify-agent flag — Normalizing to 'Objection to form' without 'the' conflicts with Item 116 and needs state module confirmation. — reporter confirm] [REVIEW: verify-agent flag — Removing 'the' from 'Objection to the form' may not align with actual Louisiana standard; needs state module verification. — reporter confirm] [REVIEW: verify-agent flag — Changing 'Objection to form.' to 'Objection to form.' (removing 'the') is inconsistent with ITEM 116 reasoning; verify KB-001 applies universally or if variation is acceptable. — reporter confirm] [REVIEW: verify-agent flag — KB-001 citation for 'Objection to form' vs. 'Objection to the form' may not be absolute; verify source material on whether Louisiana rule excludes "the" universally. — reporter confirm]
 
 Not really.
 
@@ -1029,7 +1029,7 @@ MR. HOBBY: I understand. The question stands.
 
 BY MR. HOBBY:
 
-Q. What is your understanding of what the claims are in this lawsuit?
+Q. What is your understanding of what the claims are in this lawsuit? [REVIEW: verify-agent flag — Adding Q. label assumes speaker identity; reporter should verify who asked the question. — reporter confirm]
 
 A. My general understanding is that the issue, volumes, basically, the inability to obtain regulatory permits to either re-complete existing wells or drill new wells in the Sulphur Dome field and damages that would come out of that as a result of, basically, the allegations of Westlake being responsible for mismanagement of their operations in the salt dome.
 
@@ -1043,7 +1043,7 @@ A. My layman's understanding would be that massive amounts of salt water had to 
 
 Q. And when did you first become aware of the pressure loss event?
 
-A. I believe it would have been sometime in the first quarter of 2023. I was already up at the farm. [REVIEW: verify-agent flag — Correcting 'sometimes' to 'sometime' assumes a steno error based on context; however, both words could be intentional witness speech and the distinction should be flagged for audio review. — reporter confirm]
+A. I believe it would have been sometime in the first quarter of 2023. I was already up at the farm. [REVIEW: verify-agent flag — Correcting 'sometimes' to 'sometime' is a guess about witness intent; without audio, both are plausible. — reporter confirm] [REVIEW: verify-agent flag — Correcting 'sometimes' to 'sometime' assumes a steno error based on context; however, both words could be intentional witness speech and the distinction should be flagged for audio review. — reporter confirm]
 
 Q. And how did you learn about it?
 
@@ -1051,7 +1051,7 @@ A. I believe, as I recall, I was briefed informally on it by Jonathan Love with 
 
 Q. And because we'll probably talk about it again today, when I refer to the pressure loss event during this deposition, I'm intending to refer to the reported loss of pressure in Westlake cavern 6 or 7 starting in December 2021. Do you understand that?
 
-MS. CURTIS: He wants to know if he refers to it, can you — will you accept his definition that it was loss of pressure in December 2021 as a shorthand for the purpose of the deposition.
+MS. CURTIS: He wants to know if he refers to it, can you — will you accept his definition that it was loss of pressure in December 2021 as a shorthand for the purpose of the deposition. [REVIEW: verify-agent flag — Restoring 'not' is critical, but 'lost of pressure' → 'loss of pressure' should be verified against audio. — reporter confirm]
 
 A. I'm not sure exactly when the beginning of the loss of pressure occurred.
 
@@ -1173,7 +1173,7 @@ THE WITNESS: The — any communications generally would have come through under 
 
 BY MR. HOBBY:
 
-Did Mr. Lee ever raise [REVIEW: verify-agent flag — "every" vs "ever" — while contextually "ever" makes more sense, "every" could reflect witness's speech pattern (emphatic/intentional variation); requires audio verification. — reporter confirm] the risk or the concern of cavern breach brought on by the salt water disposal wells?
+Did Mr. Lee ever raise [REVIEW: verify-agent flag — Correcting 'every' to 'ever' is uncertain; audio verification needed. — reporter confirm] [REVIEW: verify-agent flag — "every" vs "ever" — while contextually "ever" makes more sense, "every" could reflect witness's speech pattern (emphatic/intentional variation); requires audio verification. — reporter confirm] the risk or the concern of cavern breach brought on by the salt water disposal wells?
 
 That was raised and communicated to me by our regulatory consultant that we used for direct interface with the regulatory group.
 
@@ -1235,7 +1235,7 @@ Any percentage?
 
 Did he express how likely he thought that was?
 
-Well, my view, personal opinion, would be it had no impact at all. And I believe Mr. Love would have had the same opinion.
+Well, my view, personal opinion, would be it had no impact [REVIEW: verify-agent flag — Correcting 'it be it' to 'be it' is a judgment call; audio needed to confirm steno error vs. witness speech. — reporter confirm] at all. And I believe Mr. Love would have had the same opinion.
 
 What do you base your opinion on?
 
@@ -1251,7 +1251,7 @@ I don't have full knowledge or even partial knowledge on that.
 
 You also mentioned a theory that potentially drilling too close to the caverns might have precipitated the pressure loss event. Can you explain to me what that theory entails?
 
-That theory would have involved the drilling of an oil and gas well and the majority of the wells are not straight [REVIEW: witness stated "whole" — possible "hole" (i.e., straight-hole vertical wells). Transcribed as heard; verify audio.] vertical wells in that field. They involve directional drilling to start at one "X" and "Y" location at surface level and target that particular different target zone. And that involves directional drilling and that would involve drilling too close to the salt dome and penetrating it.
+That theory would have involved the drilling [REVIEW: verify-agent flag — Removing 'in' may alter witness intent; without audio, correction is uncertain. — reporter confirm] of an oil and gas well and the majority of the wells are not straight [REVIEW: witness stated "whole" — possible "hole" (i.e., straight-hole vertical wells). Transcribed as heard; verify audio.] vertical wells in that field. They involve directional drilling to start at one "X" and "Y" location at surface level and target that particular different target zone. And that involves directional drilling and that would involve drilling too close to the salt dome and penetrating it.
 
 Was there a particular well that was discussed or that you heard discussed as potentially penetrating the salt?
 
@@ -1295,7 +1295,7 @@ Sure.
 
 Who did you discuss it last week with?
 
-MS. CURTIS: Objection to the extent it impinges on attorney/client privilege. I don't know if it did — if you discussed it with someone last week with or without counsel present or without preparing for your deposition. [REVIEW: verify-agent flag — Converting fragment 'If you discussed it...' to em-dash continuation assumes structure that may not match the audio; reporter should verify counsel's intent before modifying. — reporter confirm]
+MS. CURTIS: Objection to the extent it impinges on attorney/client privilege. I don't know if it did — if you discussed it with someone last week with or without counsel present or without preparing for your deposition. [REVIEW: verify-agent flag — Major rewrite of attorney's objection; needs audio verification to confirm intended structure. — reporter confirm] [REVIEW: verify-agent flag — Converting fragment 'If you discussed it...' to em-dash continuation assumes structure that may not match the audio; reporter should verify counsel's intent before modifying. — reporter confirm]
 
 I have not.
 
@@ -1315,7 +1315,7 @@ MS. CURTIS: Thank you.
 
 THE VIDEOGRAPHER: The time is 9:58 a.m. and we are now off the record.
 
-TH [REVIEW: verify-agent flag — Changing 'off the record' to 'back on the record' is a material change based on assumption; without explicit confirmation in source, this is an interpretation error. — reporter confirm]E VIDEOGRAPHER: The time is 10:24 a.m. and we are now back on the record.
+TH [REVIEW: verify-agent flag — Changing 'off the record' to 'back on the record' is a guess; audio must verify which statement was actually made. — reporter confirm] [REVIEW: verify-agent flag — Changing 'off the record' to 'back on the record' is a material change based on assumption; without explicit confirmation in source, this is an interpretation error. — reporter confirm]E VIDEOGRAPHER: The time is 10:24 a.m. and we are now back on the record.
 
 BY MR. HOBBY:
 
@@ -1394,7 +1394,7 @@ MS. CURTIS: I'm going to stop you there. Don't discuss anything about potentiali
 
 THE WITNESS: I'm not.
 
-I think it falls under the category of litigation and probably privileged communication. [REVIEW: verify-agent flag — Flagging missing speaker label and assuming MS. CURTIS without audio confirmation introduces uncertainty; flag rather than assume. — reporter confirm]
+I think it falls under the category of litigation and probably privileged communication. [REVIEW: verify-agent flag — Missing speaker label and unclear attribution; reporter should verify who made this privileged communication instruction. — reporter confirm] [REVIEW: verify-agent flag — Flagging missing speaker label and assuming MS. CURTIS without audio confirmation introduces uncertainty; flag rather than assume. — reporter confirm]
 
 Zooming out, we talked about the salt water disposal theory and I guess the drilling theory we'll call it. Have you heard of any other theories as to what might have caused the pressure loss event?
 
@@ -1418,7 +1418,7 @@ A. Mr. French and I would have learned about it at the same time and we — and 
 
 Q. What were the names of those geoscientists or geophysicists?
 
-A. Well, again, we initially met them in — I believe probably would have been February of 2011 and there were several of them, but the leading group, people I'd say would be a gentleman by the name of Burt Bowen and Steve Wipple.
+A. Well, again, we initially met them in — I believe probably would have been February of 2011 and there were several of them, but the leading group, people I'd say would be a gentleman by the name of Burt Bowen and Steve Wipple. [REVIEW: verify-agent flag — Adding em dash after 'in' assumes witness interrupted self; without audio, this is interpretive. — reporter confirm]
 
 Q. And when did White Top Energy purchase Yellow Rock LLC?
 
@@ -1434,7 +1434,7 @@ A. Me, personally, yes. Overseeing the group of folks either consultants or empl
 
 Q. What did that due diligence consist of?
 
-A. Well, initially understanding the developmental history of the Sulphur Mines Field. Uhmm, researching what it is drilling activity had been, what the cumulative production would have been. A lot of this involved the summary system maintained by the State of Louisiana. As far as production data and well data. That would have been the early information.
+A. Well, initially understanding the developmental history of the Sulphur Mines Field. Uhmm, researching what it is drilling activity had been, what the cumulative production would have been. A lot of this involved the summary system maintained by the State of Louisiana. As far as production data and well data. That would have been the early information. [REVIEW: verify-agent flag — 'what it is drilling activity' is preserved as witness speech, but grammatically awkward; reporter should confirm this is verbatim. — reporter confirm]
 
 Q. And where did the capital come from in the — for White Top to purchase Yellow Rock?
 
@@ -1653,7 +1653,7 @@ And those cost overruns had led to changes in drilling contractors; is that righ
 
 [REVIEW: steno mistranslation — witness testimony unclear. Transcribed as heard: "The parties mentioned in this Donelon energy did on in L why in." Possible reference to a company name or proper noun. Verify audio.]
 
-MS. CURTIS: Space between done and Lynn.
+MS. CURTIS: Space between done and Lynn. [REVIEW: verify-agent flag — Preserving 'Space between done and Lynn' as is; uncertain if this is counsel's spelling instruction or a steno error needing clarification. — reporter confirm]
 
 And Sierra Hamilton, are both consulting drilling managers. The actual contractual drillers on those wells I believe was changed on the 1029 — may be not. But — but stayed the same. Energy drilling.
 
@@ -1725,9 +1725,9 @@ This is a letter dated January 26, 2021, on White Top letterhead that's addresse
 
 Yes.
 
-Who wrote this letter, if you know?
+Who wrote this letter, if you know? [REVIEW: verify-agent flag — Restoring 'if you know' is reasonable, but 'mar minister' interpretation is uncertain; verify against audio. — reporter confirm]
 
-MR. HOBBY: Objection to form.
+MR. HOBBY: Objection to form. [REVIEW: verify-agent flag — Completely rewriting counsel's objection without audio verification is too aggressive an interpretation. — reporter confirm]
 
 MS. CURTIS: The question is who wrote this letter. Do you know who wrote this letter?
 
@@ -1793,7 +1793,7 @@ And you're copied on this E-mail, correct?
 
 Yes, I'm listed as a recipient, cc.
 
-Do you see there are a few items that have been redacted — in the two-line E-mail address in the cc line and then the salutation at the top of the E-mail?
+Do you see there are a few items that have been redacted — in the two-line E-mail address in the cc line and then the salutation at the top of the E-mail? [REVIEW: verify-agent flag — Multiple corrections including 'there is' → 'there are' assume grammatical error; witness may have said either; audio needed. — reporter confirm]
 
 I do.
 
@@ -1805,7 +1805,7 @@ What about just from your own memory?
 
 I wouldn't — wouldn't want to speculate on who might have been the recipients. I don't recall.
 
-Okay. The subject line of the E-mail is White Top Energy Reorganization; is that right?
+Okay. The subject line of the E-mail is White Top Energy Reorganization; is that right? [REVIEW: verify-agent flag — Changing 'to the E-mail' to 'of the E-mail' is uncertain; witness may have said 'to' colloquially. — reporter confirm]
 
 That is correct.
 
@@ -1842,7 +1842,7 @@ And the plan was to file bankruptcy Chapter
 right?
 
 MS. CURTIS: Objection to
-form.
+form. [REVIEW: verify-agent flag — Multiple KB-001 objection normalizations throughout have not been consistently applied; needs blanket verification. — reporter confirm]
 
 That's
 what it says — said.
@@ -1972,7 +1972,7 @@ Are you ready, Mr. Easley?
 
 I am.
 
-Great, and by all means please continue to take your time to consider and answer the question. If I speed up my questions it's probably because I just have a lot to get through, so thanks for bearing with me here. We were just talking about the change in control from the previous White Top owners to Sunny Solar; is that right?
+Great, and by all means please continue to take your time to consider and answer the question. If I speed up my questions it's probably because I just have a lot to get through, so thanks [REVIEW: verify-agent flag — Removing 'I am' assumes steno error, but witness may have said it; audio verification needed. — reporter confirm] for bearing with me here. We were just talking about the change in control from the previous White Top owners to Sunny Solar; is that right?
 
 That was toward the end of the discussion; is that right? Okay.
 
@@ -2034,7 +2034,7 @@ I don't know the specifics on it.
 
 Did the new ownership group bring in any new maps or well logs or well files?
 
-I'm sure there were additional geological maps drawn, geophysical interpretation is drawn. The wall of thousand and some odd change wells drilled in the field on a cumulative basis, which Yellow Rock had already had well files on and that data, basically, doesn't change. The way you interpret it may change but the base data that's used doesn't change that much.
+I'm sure there were additional geological maps drawn, geophysical interpretation is drawn. The wall of thousand and some odd change wells [REVIEW: verify-agent flag — Removing underscore from 'some_odd' without clarifying if it's a compound modifier or colloquialism is uncertain. — reporter confirm] drilled in the field on a cumulative basis, which Yellow Rock had already had well files on and that data, basically, doesn't change. The way you interpret it may change but the base data that's used doesn't change that much.
 
 Okay.
 

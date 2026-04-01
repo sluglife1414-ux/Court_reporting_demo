@@ -16,10 +16,9 @@
   "defendant_role": "Defendants.",
   "docket": "202-001594",
   "division": "H",
-  "reporter_name": "MARYBETH E. MUIR, CCR, RPR",
+  "reporter_name": "UNKNOWN — reporter_name required",
   "state": "LA",
   "cert_year": "2026",
   "_extracted_from": "corrected_text.txt",
-  "_extracted_at": "2026-03-30 13:55",
-  "_caption_source": "CASE_CAPTION.json — see that file for authoritative caption data"
+  "_extracted_at": "2026-03-31 21:29"
 }
