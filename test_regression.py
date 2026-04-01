@@ -310,8 +310,70 @@ def run_tests():
     else:
         record("MB_REVIEW.txt exists", False, "File not found")
 
-    # ── 8. APPEARANCES BY: LINES FLAGGED (KB-017) ────────────
-    print("\n[8] Appearances BY: lines carry REVIEW flag (KB-017)")
+    # ── 8. COARSE METRICS vs MB GROUND TRUTH ─────────────────
+    # Principle: coarsest check first. Pages/words/chars must roughly match
+    # MB's approved PDF before any line-by-line accuracy work is meaningful.
+    # TOLERANCES: ±3 pages, ±3% words, ±5% chars (formatting differences
+    # account for some char delta even when content is correct).
+    # Ground truth: MB Easley final — 031326yellowrock-FINAL.pdf (223 pages)
+    print("\n[8] Coarse metrics vs MB ground truth (pages / words / chars)")
+    MB_APPROVED_PDF = r"C:\Users\scott\Downloads\031326yellowrock-FINAL.pdf"
+    our_pdf = os.path.join(BASE, "FINAL_DELIVERY", "FINAL.pdf")
+
+    PAGE_TOLERANCE  = 3      # pages
+    WORD_TOLERANCE  = 0.03   # 3%
+    CHAR_TOLERANCE  = 0.05   # 5%
+
+    def extract_metrics(pdf_path):
+        """Return (pages, words, chars) from a PDF."""
+        try:
+            import pdfplumber
+            with pdfplumber.open(pdf_path) as pdf:
+                pages = len(pdf.pages)
+                text = "".join(p.extract_text() or "" for p in pdf.pages)
+            words = len(text.split())
+            chars = len(text)
+            return pages, words, chars
+        except Exception as e:
+            return None, None, str(e)
+
+    if not os.path.exists(MB_APPROVED_PDF):
+        record("MB approved PDF found for coarse metrics", False,
+               f"Not found: {MB_APPROVED_PDF}")
+    elif not os.path.exists(our_pdf):
+        record("our FINAL.pdf found for coarse metrics", False,
+               f"Not found: {our_pdf}")
+    else:
+        mb_pages, mb_words, mb_chars = extract_metrics(MB_APPROVED_PDF)
+        our_pages, our_words, our_chars = extract_metrics(our_pdf)
+
+        if mb_pages is None:
+            record("coarse metrics: MB PDF readable", False, str(mb_chars))
+        elif our_pages is None:
+            record("coarse metrics: our PDF readable", False, str(our_chars))
+        else:
+            page_diff = abs(our_pages - mb_pages)
+            word_pct  = abs(our_words - mb_words) / max(mb_words, 1)
+            char_pct  = abs(our_chars - mb_chars) / max(mb_chars, 1)
+
+            record(
+                f"page count within ±{PAGE_TOLERANCE} (ours={our_pages} mb={mb_pages} diff={our_pages - mb_pages:+d})",
+                page_diff <= PAGE_TOLERANCE,
+                f"off by {page_diff} pages — structural issue likely" if page_diff > PAGE_TOLERANCE else ""
+            )
+            record(
+                f"word count within ±{int(WORD_TOLERANCE*100)}% (ours={our_words:,} mb={mb_words:,} diff={our_words - mb_words:+,})",
+                word_pct <= WORD_TOLERANCE,
+                f"{word_pct:.1%} off — AI may have dropped or added content" if word_pct > WORD_TOLERANCE else ""
+            )
+            record(
+                f"char count within ±{int(CHAR_TOLERANCE*100)}% (ours={our_chars:,} mb={mb_chars:,} diff={our_chars - mb_chars:+,})",
+                char_pct <= CHAR_TOLERANCE,
+                f"{char_pct:.1%} off — formatting drift likely" if char_pct > CHAR_TOLERANCE else ""
+            )
+
+    # ── 9. APPEARANCES BY: LINES FLAGGED (KB-017) ────────────
+    print("\n[9] Appearances BY: lines carry REVIEW flag (KB-017)")
     corrected = load_text("corrected_text.txt")
     if corrected:
         lines = corrected.split("\n")
