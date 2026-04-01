@@ -68,7 +68,8 @@ DEPO_TIME       = _cfg.get('depo_time', '')
 DEPO_LOCATION_0 = _cfg.get('venue_name', '')   # named venue (e.g. THE HOUSTONIAN); blank if not set
 DEPO_LOCATION_1 = _cfg.get('location_1', '')
 DEPO_LOCATION_2 = _cfg.get('location_2', '')
-REPORTER_NAME   = _cfg.get('reporter_name', 'UNKNOWN — reporter_name required')
+REPORTER_NAME         = _cfg.get('reporter_name', 'UNKNOWN — reporter_name required')
+REPORTER_NAME_DISPLAY = _cfg.get('reporter_name_display', REPORTER_NAME)  # title case for witness cert "Reported by:" line
 EXAMINING_ATTY  = _cfg.get('examining_atty', '')
 PARISH          = _cfg.get('parish', '')
 COURT           = _cfg.get('court', '')
@@ -244,38 +245,84 @@ def build_caption():
     return [L[:25]]
 
 
-def build_index(app_start, stip_start, exam_start, cert_start, wcert_start, exhibit_nums=None):
-    # Use TAB as delimiter between label and page number.
-    # PDF builder detects \t and renders label left, number right-aligned.
-    L = []
-    L.append(center("I N D E X"))
-    L.append("\t\tPage")          # "Page" header right-aligned
-    L.append(f"  Caption\t1")
-    L.append("")
-    L.append(f"  Appearances\t{app_start}")
-    L.append("")
-    L.append(f"  Stipulation\t{stip_start}")
-    L.append("")
-    L.append(f"  Examination")
-    L.append(f"       {WITNESS_NAME}")
-    L.append(f"       {EXAMINING_ATTY}\t{exam_start}")
-    L.append("")
-    L.append(f"  Reporter's Certificate\t{cert_start}")
-    L.append("")
-    L.append(f"  Witness's Certificate\t{wcert_start}")
-    L.append("")
-    L.append(center("* * * * * * * *"))
-    L.append("")
-    L.append("  EXHIBITS")
-    L.append("")
-    if exhibit_nums:
-        for num in exhibit_nums:
-            L.append(f"  Exhibit No. {num}")
+def build_index(app_start, stip_start, exam_start, cert_start, wcert_start, exhibits=None):
+    """Build index — returns list of pages (may be multiple if exhibit list is long).
+
+    Page 1: I N D E X header + section TOC + * * * * + start of exhibit list
+    Page 2+: E X H I B I T S header + continuation of exhibit list
+
+    Exhibit format: "  Exhibit No. XXX  Description............  Page"
+    Right-aligns page number to LINE_WIDTH — matches MB's PDF layout.
+
+    Source priority: CASE_CAPTION.json exhibit_list → passed exhibits param
+    [REVISIT:INDEX] Confirm exhibit header format with MB (E X H I B I T S vs EXHIBITS)
+    """
+    # Use exhibit_list from config if available (authoritative)
+    exhibit_list = _cfg.get('exhibit_list', [])
+    if not exhibit_list and exhibits:
+        # Fall back to steno-extracted exhibits
+        exhibit_list = exhibits
+
+    # Build TOC section (always fits on page 1 header)
+    toc = []
+    toc.append(center("I N D E X"))
+    toc.append("\t\tPage")
+    toc.append(f"  Caption\t1")
+    toc.append("")
+    toc.append(f"  Appearances\t{app_start}")
+    toc.append("")
+    toc.append(f"  Stipulation\t{stip_start}")
+    toc.append("")
+    toc.append(f"  Examination")
+    toc.append(f"       {WITNESS_NAME}")
+    toc.append(f"       {EXAMINING_ATTY}\t{exam_start}")
+    toc.append("")
+    toc.append(f"  Reporter's Certificate\t{cert_start}")
+    toc.append("")
+    toc.append(f"  Witness's Certificate\t{wcert_start}")
+    toc.append("")
+    toc.append(center("* * * * * * * *"))
+    toc.append("")
+    toc.append("  EXHIBITS")
+    toc.append("")   # 20 lines used — 5 lines left on page 1 for exhibits
+
+    # Build exhibit lines
+    exhibit_lines = []
+    if exhibit_list:
+        for ex in exhibit_list:
+            num  = ex.get('number', ex) if isinstance(ex, dict) else ex
+            desc = ex.get('description', '') if isinstance(ex, dict) else ''
+            pg   = str(ex.get('page', '')) if isinstance(ex, dict) else ''
+            if not desc:
+                desc = '[REVIEW: description not in steno]'
+            label = f"  Exhibit No. {num}  {desc}"
+            # Right-align page number
+            if pg:
+                gap = max(1, LINE_WIDTH - len(label) - len(pg))
+                exhibit_lines.append(f"{label}{' ' * gap}{pg}")
+            else:
+                exhibit_lines.append(label)
     else:
-        L.append("  [Exhibits to be indexed]")
-    while len(L) < 25:
-        L.append("")
-    return L[:25]
+        exhibit_lines.append("  [REVIEW: no exhibit list — add to CASE_CAPTION.json exhibit_list]")
+
+    # Paginate: fill page 1 after TOC, then overflow pages with E X H I B I T S header
+    pages = []
+    page1 = toc + exhibit_lines[:5]
+    while len(page1) < 25:
+        page1.append("")
+    pages.append(page1[:25])
+
+    remaining = exhibit_lines[5:]
+    while remaining:
+        pg = [center("E X H I B I T S"), ""]
+        chunk = remaining[:23]   # 25 - 2 header lines
+        remaining = remaining[23:]
+        pg.extend(chunk)
+        while len(pg) < 25:
+            pg.append("")
+        pages.append(pg[:25])
+
+    return pages
 
 
 def build_reporter_cert():
@@ -390,7 +437,7 @@ def build_witness_cert(exhibits=None):
     sig.append("")
     sig.append("")
     sig.append("")
-    sig.append(f"  Reported by: {REPORTER_NAME}")
+    sig.append(f"  Reported by: {REPORTER_NAME_DISPLAY}")
     pages.append(sig[:25])
 
     return pages
@@ -663,7 +710,103 @@ def paginate(lines, header=None):
     return pages
 
 
+def format_appearances_from_config(appearances):
+    """Render appearances from CASE_CAPTION.json structured data.
+
+    This is the authoritative path — used when 'appearances' key exists in config.
+    Steno fallback is used only when config block is absent.
+
+    Each entry in appearances list:
+      role        — "ATTORNEY FOR PLAINTIFF" / "FOR THE DEFENDANT, ..."
+      firm        — firm name (may wrap)
+      address_1   — street
+      address_2   — suite (optional)
+      city_state_zip — full city/state/zip line
+      phone       — phone number (optional)
+      emails      — list of email addresses (optional)
+      attorneys   — list of {name, zoom} dicts; OR "NOT PRESENT" string
+    """
+    lines = []
+    for i, block in enumerate(appearances):
+        if i > 0:
+            lines.append("")
+
+        # Role header — wrap long party descriptions at LINE_WIDTH
+        role = block.get('role', '')
+        if role and not role.rstrip().endswith(':'):
+            role = role.rstrip() + ':'
+        wrapped_role = wrap_line(role, width=LINE_WIDTH, hang=4)
+        lines.extend(wrapped_role)
+
+        # Firm name
+        firm = block.get('firm', '')
+        if firm:
+            for l in wrap_line(f"    {firm}", width=LINE_WIDTH, hang=4):
+                lines.append(l)
+
+        # Address
+        for field in ['address_1', 'address_2']:
+            val = block.get(field, '').strip()
+            if val:
+                lines.append(f"    {val}")
+
+        # City/state/zip — apply midpoint dot
+        csz = block.get('city_state_zip', '').strip()
+        if csz:
+            csz = re.sub(r'([A-Za-z])\s+(\d{5}(?:-\d{4})?)\s*$', r'\1· \2', csz)
+            lines.append(f"    {csz}")
+
+        # Phone
+        phone = block.get('phone', '').strip()
+        if phone:
+            lines.append(f"    {phone}")
+
+        # Emails
+        for email in block.get('emails', []):
+            lines.append(f"    {email}")
+
+        # Attorneys / NOT PRESENT
+        attorneys = block.get('attorneys', [])
+        if attorneys == 'NOT PRESENT' or attorneys == ['NOT PRESENT']:
+            lines.append(f"    NOT PRESENT")
+        elif attorneys:
+            first = True
+            for atty in attorneys:
+                name = atty.get('name', '').strip()
+                zoom = atty.get('zoom', False)
+                suffix = ' (Zoom)' if zoom else ''
+                if first:
+                    lines.append(f"    BY: {name}{suffix}")
+                    first = False
+                else:
+                    lines.append(f"    {name}{suffix}")
+
+    # ALSO PRESENT block
+    also_present = _cfg.get('also_present', [])
+    if also_present:
+        lines.append("")
+        lines.append("    ALSO PRESENT:")
+        for person in also_present:
+            lines.append(f"    {person}")
+
+    return paginate(lines, header="A P P E A R A N C E S:")
+
+
 def format_appearances(raw_lines):
+    """Format appearances — config-first, steno fallback.
+
+    If CASE_CAPTION.json has an 'appearances' block, use it (authoritative).
+    Otherwise fall back to steno-parsed appearances with a [REVIEW] flag.
+    """
+    # Config-first path — authoritative
+    if _cfg.get('appearances'):
+        return format_appearances_from_config(_cfg['appearances'])
+
+    # Steno fallback — flag for CR review
+    # [TECH DEBT: steno appearances is incomplete — Zoom attendees may not announce]
+    raw_lines = list(raw_lines)
+    raw_lines.insert(0, '[REVIEW: appearances sourced from steno only — verify list is complete, Zoom attendees may not have announced on the record]')
+
     """Format appearances: remove ALL blank lines from source, then
     re-insert single blanks only between attorney blocks (FOR THE...).
     Indent firm address and BY: lines under each block header."""
@@ -1017,11 +1160,18 @@ def main():
     cap = build_caption()
     all_pages.extend(cap)
 
-    # Index placeholder
-    all_pages.append(None)
-    idx_pos = len(all_pages) - 1
+    # Pre-calculate index page count so section start numbers are correct.
+    # build_index() is called twice: once here to measure, once at end to fill with real numbers.
+    # [TECH DEBT: two-pass index build — pre-build just to count pages, then rebuild with real numbers]
+    index_placeholder = build_index(99, 99, 99, 99, 99)
+    num_index_pages = len(index_placeholder)
 
-    # Appearances
+    # Reserve index slots
+    idx_pos = len(all_pages)
+    for _ in range(num_index_pages):
+        all_pages.append(None)
+
+    # Appearances — starts after caption + index pages
     app_start = len(all_pages) + 1
     app_pages = format_appearances(sections['appearances'])
     all_pages.extend(app_pages)
@@ -1040,10 +1190,10 @@ def main():
     cert_start = len(all_pages) + 1
     all_pages.extend(build_reporter_cert())
 
-    # Build exhibit list — combine steno index nums + whereupon extractions + page locations
+    # Build exhibit list for witness cert (steno-extracted, descriptions from whereupon lines)
     exhibit_pages = find_exhibit_pages(all_pages)
     all_exhibit_nums = sorted(set(exhibit_nums) | set(exhibit_descriptions.keys()) | set(exhibit_pages.keys()))
-    exhibits = [
+    steno_exhibits = [
         {
             'number':      num,
             'description': exhibit_descriptions.get(num, ''),
@@ -1052,16 +1202,18 @@ def main():
         for num in all_exhibit_nums
     ]
 
-    # Witness Certificate (with exhibit index)
+    # Witness Certificate — signature block only (exhibit list now lives in index)
     wcert_start = len(all_pages) + 1
-    all_pages.extend(build_witness_cert(exhibits))
+    all_pages.extend(build_witness_cert())
 
     # Errata
     all_pages.extend(build_errata())
 
-    # Fill index
-    all_pages[idx_pos] = build_index(app_start, stip_start, exam_start,
-                                      cert_start, wcert_start, exhibit_nums)
+    # Build final index with correct page numbers and fill placeholders
+    final_index_pages = build_index(app_start, stip_start, exam_start,
+                                    cert_start, wcert_start, steno_exhibits)
+    for i, pg in enumerate(final_index_pages):
+        all_pages[idx_pos + i] = pg
 
     # Capture exact locations BEFORE stripping anchors
     build_review_locations(all_pages, anchor_map)

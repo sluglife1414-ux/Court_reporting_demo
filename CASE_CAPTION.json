@@ -1,7 +1,7 @@
 {
   "_source": "MB final PDF — 031326yellowrock-FINAL.pdf",
   "_note": "AUTHORITATIVE caption data. Edit this file manually. Never overwrite from steno extraction.",
-  "_last_updated": "2026-03-30",
+  "_last_updated": "2026-03-31",
 
   "witness_name": "THOMAS L. EASLEY",
   "witness_last": "EASLEY",
@@ -28,6 +28,7 @@
   "depo_time": "9:07 a.m.",
 
   "reporter_name": "MARYBETH E. MUIR, CCR, RPR",
+  "reporter_name_display": "Marybeth E. Muir, CCR, RPR",
   "reporter_credential_1": "CCR",
   "reporter_credential_2": "RPR",
 
@@ -36,18 +37,315 @@
   "state": "LA",
   "cert_year": "2026",
 
-  "_zoom_note": "Attorneys who attended via Zoom. Engine appends (Zoom) to their BY: line in appearances. Source: MB final PDF 031326yellowrock-FINAL.pdf. [REVISIT:ZOOM] Confirm full list with MB — steno only captured 2 of ~8 remote attendees.",
-  "zoom_attorneys": [
-    "THOMAS J. MADIGAN",
-    "JEFFREY D. KESSLER",
-    "KAYLYN BLOSSER HANDY",
-    "WALKER HOBBY",
-    "ANTHONY F. SIRIANNI",
-    "AUBREY D. RECTOR",
-    "SAMUEL M. ROSAMOND",
-    "DARREN M. GUILLOT",
-    "BENNETT MATSON",
-    "LEAH ENGELHARDT",
-    "STEPHEN J. ECKHOLDT"
+  "_zoom_note": "Superseded by appearances block below — zoom flag now lives on each attorney entry.",
+  "zoom_attorneys": [],
+
+  "also_present": [
+    "Jonathan Love",
+    "Leslie Partida, Paralegal",
+    "Bryan Smith, Videographer"
+  ],
+
+  "_appearances_note": "Full appearances sourced from MB final PDF 031326yellowrock-FINAL.pdf pages 5-10. Human-verified. CR updates this at intake for each new depo.",
+  "appearances": [
+    {
+      "role": "ATTORNEY FOR PLAINTIFF",
+      "firm": "SHER GARNER CAHILL RICHTER KLEIN & HILBERT, L.L.C.",
+      "address_1": "909 Poydras Street",
+      "address_2": "Suite 2800",
+      "city_state_zip": "New Orleans, Louisiana 70112",
+      "phone": "504.299.2100",
+      "emails": ["mcurtis@shergarner.com", "khandy@shergarner.com", "tmadigan@shergarner.com", "jkessler@shergarner.com", "jgarner@shergarner.com"],
+      "attorneys": [
+        {"name": "MARTHA Y. CURTIS, ESQ.", "zoom": false},
+        {"name": "KAYLYN BLOSSER HANDY, ESQ.", "zoom": false},
+        {"name": "THOMAS J. MADIGAN, ESQ.", "zoom": true},
+        {"name": "JEFFREY D. KESSLER, ESQ.", "zoom": true},
+        {"name": "JAMES M. GARNER, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANTS, WESTLAKE US 2 LLC, WESTLAKE CORPORATION AND WESTLAKE CHLOR-VINYLS CORPORATION",
+      "firm": "SUSMAN GODFREY LLP",
+      "address_1": "1000 Louisiana Street",
+      "address_2": "Suite 5100",
+      "city_state_zip": "Houston, Texas 77002-5096",
+      "phone": "713.651.9366",
+      "emails": ["whobby@susmangodfrey.com"],
+      "attorneys": [
+        {"name": "WALKER HOBBY, ESQ.", "zoom": false}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANTS, PPG",
+      "firm": "JONES WALKER",
+      "address_1": "445 North Boulevard",
+      "address_2": "Suite 800",
+      "city_state_zip": "Baton Rouge, Louisiana 70802",
+      "phone": "225.248.2056",
+      "emails": ["jobrien@joneswalker.com"],
+      "attorneys": [
+        {"name": "JAY M. O'BRIEN, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANTS, LONQUIST & COMPANY, LONQUIST FIELD SERVICE",
+      "firm": "KELLY HART & HALLMAN",
+      "address_1": "400 Poydras Street",
+      "address_2": "Suite 3600",
+      "city_state_zip": "New Orleans, Louisiana 70130",
+      "phone": "504.522.1812",
+      "emails": ["aimee.hebert@kellyhart.com"],
+      "attorneys": [
+        {"name": "AIMEE W. HEBERT, ESQ.", "zoom": false}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, ALL STATE INSURANCE COMPANY, solely as successor-in-interest to NORTHBROOK EXCESS AND SURPLUS INSURANCE COMPANY, formerly NORTHBROOK INSURANCE COMPANY",
+      "firm": "WINDELS MARX",
+      "address_1": "180 Park Avenue",
+      "city_state_zip": "Florham Park, New Jersey 07932-1054",
+      "phone": "973.966.3207",
+      "emails": ["asirianni@@windelsmarx.com"],
+      "attorneys": [
+        {"name": "ANTHONY F. SIRIANNI, JR., ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, NATIONAL CASUALTY COMPANY",
+      "firm": "PHELPS DUNBAR",
+      "address_1": "365 Canal Street",
+      "address_2": "Suite 2000",
+      "city_state_zip": "New Orleans, Louisiana 70130-6534",
+      "phone": "504.679.5686",
+      "emails": ["aubrey.rector@phelps.com"],
+      "attorneys": [
+        {"name": "AUBREY D. RECTOR, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, CERTAIN UNDERWRITERS AT LLOYDS, LONDON, BERKSHIRE HATHAWAY SPECIALTY INSURANCE COMPANY, THE CONTINENTAL INSURANCE COMPANY, GOVERNMENT EMPLOYEES INSURANCE COMPANY, COLUMBIA CASUALTY COMPANY, CNA, GEICO, STONEWALL INSURANCE COMPANY AND GENERAL REINSURANCE CORPORATION",
+      "firm": "TAYLOR, WELLONS, POLITZ & DUHE, LLC",
+      "address_1": "1555 Poydras Street",
+      "address_2": "Suite 2000",
+      "city_state_zip": "New Orleans, Louisiana 70112",
+      "phone": "504.525.9888",
+      "emails": ["srosamond@twpdlaw.com"],
+      "attorneys": [
+        {"name": "SAMUEL M. ROSAMOND, III, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, STARR INDEMNITY AND LIABILITY COMPANY",
+      "firm": "TREADAWAY BOLLINGER, LLC",
+      "address_1": "406 North Florida Street",
+      "address_2": "Suite 2",
+      "city_state_zip": "Covington, Louisiana 70433",
+      "phone": "504.833.7300",
+      "emails": ["darren@ztalaw.com"],
+      "attorneys": [
+        {"name": "DARREN M. GUILLOT, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, GEMINI INSURANCE COMPANY",
+      "firm": "PHELPS DUNBAR",
+      "address_1": "365 Canal Street",
+      "address_2": "Suite 2000",
+      "city_state_zip": "New Orleans, Louisiana 70130-6534",
+      "phone": "504.679.5685",
+      "emails": ["bennett.matson@phelps.com"],
+      "attorneys": [
+        {"name": "BENNETT MATSON, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, ALLSTATE INSURANCE COMPANY",
+      "firm": "MUSGRAVE, MCLACHLAN & PENN, LLC",
+      "address_1": "1555 Poydras Street",
+      "address_2": "Suite 2100",
+      "city_state_zip": "New Orleans, Louisiana 70112",
+      "phone": "504.799.4300",
+      "emails": ["lmd@mmpfirm.com"],
+      "attorneys": [
+        {"name": "LINDSEY DEVEREUX, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, AIG ENTITIES",
+      "firm": "MCDOWELL HETHERINGTON",
+      "address_1": "1001 Fannin Street",
+      "address_2": "Suite 2400",
+      "city_state_zip": "Houston, Texas 77002",
+      "emails": ["benton.surrett@mhllp.com"],
+      "attorneys": [
+        {"name": "BENTON SURRETT, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, GREAT AMERICAN INSURANCE COMPANY",
+      "firm": "DUPLASS, APLC",
+      "address_1": "433 Metairie Road",
+      "address_2": "Suite 600",
+      "city_state_zip": "Metairie, Louisiana 70005",
+      "phone": "504.832.3700",
+      "emails": ["rhall@duplass.com"],
+      "attorneys": [
+        {"name": "RYAN M. HALL, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, OLD REPUBLIC INSURANCE COMPANY",
+      "firm": "KENNEDYS LAW LLP",
+      "address_1": "400 Connell Drive",
+      "address_2": "Suite 700",
+      "city_state_zip": "Berkeley Heights, New Jersey 07922",
+      "phone": "564.224.9104",
+      "emails": ["sally.clements@kenndyslaw.com"],
+      "attorneys": [
+        {"name": "SALLY CLEMENTS, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, TIG",
+      "firm": "MOULEDOUX, BLAND, LEGRAND & BRACKETT",
+      "address_1": "701 Poydras Street",
+      "address_2": "Suite 600",
+      "city_state_zip": "New Orleans, Louisiana 70139",
+      "phone": "504.522.2121",
+      "emails": ["pdominick@mblb.com"],
+      "attorneys": [
+        {"name": "PAIGE M. DOMINICK, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, LIBERTY SURPLUS INSURANCE CORPORATION",
+      "firm": "BARRASSO USDIN KUPPERMAN FREEMAN & SARVER",
+      "address_1": "909 Poydras Street",
+      "address_2": "Suite 2350",
+      "city_state_zip": "New Orleans, Louisiana 70112",
+      "phone": "504.589.9762",
+      "emails": ["mpilcher@barrassousdin.com"],
+      "attorneys": [
+        {"name": "MORGAN L. PILCHER, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, HAMILTON INSURANCE DESIGNATED ACTIVITY COMPANY",
+      "firm": "COSMICH, SIMMONS & BROWN",
+      "address_1": "650 Poydras Street",
+      "address_2": "Suite 2215",
+      "city_state_zip": "New Orleans, Louisiana 70130",
+      "phone": "601.863.2100",
+      "emails": ["kenan.rand@cs-law.com"],
+      "attorneys": [
+        {"name": "KENAN S. RAND, JR., ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, ZURICH REINSURANCE LTD F/K/A ZURICH INTERNATIONAL (BERMUDA) LTD",
+      "firm": "SKARZYNSKI MARICK & BLACK",
+      "address_1": "500 West Madison Street",
+      "address_2": "Suite 3600",
+      "city_state_zip": "Chicago, Illinois 60661",
+      "phone": "312.946.4239",
+      "emails": ["acandela@skarzynski.com"],
+      "attorneys": "NOT PRESENT"
+    },
+    {
+      "role": "FOR THE DEFENDANT, TRAVELERS CASUALTY & SURETY CO.",
+      "firm": "LUGENBUHL WHEATON PECK RANKIN & HUBBARD",
+      "address_1": "601 Poydras Street",
+      "address_2": "Suite 2775",
+      "city_state_zip": "New Orleans, Louisiana",
+      "phone": "504.568.1990",
+      "emails": ["kmcglone@lawla.com"],
+      "attorneys": [
+        {"name": "KEVIN MCGLONE, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, ZURICH as alleged insurer of PPG",
+      "firm": "SALLEY HITE MERCER AND RESOR",
+      "address_1": "One Canal Place",
+      "address_2": "365 Canal Street, Suite 1710",
+      "city_state_zip": "New Orleans, Louisiana 70130",
+      "phone": "504.566.8815",
+      "emails": ["istern@shmrlaw.com"],
+      "attorneys": "NOT PRESENT"
+    },
+    {
+      "role": "FOR THE DEFENDANT, ENDURANCE AMERICAN INSURANCE COMPANY",
+      "firm": "CHAFFE MCCALL LLP",
+      "address_1": "1100 Poydras Street",
+      "address_2": "Suite 2300",
+      "city_state_zip": "New Orleans, Louisiana 70163",
+      "phone": "504.585.7081",
+      "emails": ["lfitzpatrick@chaffe.com"],
+      "attorneys": [
+        {"name": "LISA FITZPATRICK, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, SWISS RE CORPORATE SOLUTIONS AMERICA INSURANCE CORPORATION f/k/a PURITAN INSURANCE COMPANY",
+      "firm": "GALLOWAY JOHNSON",
+      "address_1": "One Shell Square",
+      "address_2": "701 Poydras Street, Suite 4040",
+      "city_state_zip": "New Orleans, Louisiana 70139",
+      "phone": "504.525.6802",
+      "emails": ["seckholdt@gallowayjohnson.com"],
+      "attorneys": [
+        {"name": "STEPHEN J. ECKHOLDT, ESQ.", "zoom": true}
+      ]
+    },
+    {
+      "role": "FOR THE DEFENDANT, RLI INSURANCE COMPANY, named as excess insurer of PPG INDUSTRIES, INC.",
+      "firm": "LUGENBUHL WHEATON PECK RANKIN & HUBBARD",
+      "address_1": "601 Poydras Street",
+      "address_2": "Suite 2775",
+      "city_state_zip": "New Orleans, Louisiana",
+      "phone": "504.568.1990",
+      "emails": ["sschmeeckle@lawla.com", "zlamachio@lawla.com"],
+      "attorneys": [
+        {"name": "SETH SCHMEECKLE, ESQ.", "zoom": true},
+        {"name": "ZACHARY T. LAMACHIO, ESQ.", "zoom": true}
+      ]
+    }
+  ],
+
+  "_exhibit_list_note": "Sourced from MB final PDF pages 2-4. Human-verified. Page numbers reference MB's 223-page final — will be 1 page off until page count matches exactly.",
+  "exhibit_list": [
+    {"number": 127, "description": "Notice of Deposition of Matt Steele, Todd Bertolet, John Cox and Thomas Easley", "page": 17},
+    {"number": 128, "description": "E-mail chain, 9/10/18 YR-440894-895", "page": 57},
+    {"number": 129, "description": "White Top Energy, LLC Board of Directors Meeting - October 22, 2019 Minutes YR-264305-308", "page": 60},
+    {"number": 130, "description": "Letter, 1/26/21 YR-341521", "page": 65},
+    {"number": 131, "description": "E-mail chain, 6/18/21 YR-351388-389", "page": 68},
+    {"number": 132, "description": "White Top Energy, LLC Memorandum, 8/24/21 YR-360803", "page": 72},
+    {"number": 133, "description": "White Top Energy, LLC Sulphur Mines Field Operations and Financial Update, 3/27/20 YR-352461-463", "page": 94},
+    {"number": 134, "description": "E-mail chain, 10/6/20 YR-362589-590", "page": 97},
+    {"number": 135, "description": "E-mail chain, 1/22/21 YR-323003-004", "page": 100},
+    {"number": 136, "description": "E-mail chain, 6/15/21 YR-341592-593", "page": 105},
+    {"number": 137, "description": "White Top Energy, LLC Sulphur Mines Field Operations Update, 12/31/21 YR-288594-595", "page": 112},
+    {"number": 138, "description": "E-mail chain, 12/22/21 YR-361983-986", "page": 122},
+    {"number": 139, "description": "E-mail chain, 1/25/23 YR-359997", "page": 129},
+    {"number": 140, "description": "White Top Energy, LLC Rights Offering - Response Status, 1/1/23 YR-359998", "page": 134},
+    {"number": 141, "description": "E-mail chain, 12/12/22 YR-355864", "page": 151},
+    {"number": 142, "description": "E-mail chain, 12/13/22 YR-357637", "page": 153},
+    {"number": 143, "description": "White Top Energy, LLC Summary of Financial Restructure - June 2022", "page": 155},
+    {"number": 144, "description": "E-mail chain, 12/18/18 YR-355372-373", "page": 160},
+    {"number": 145, "description": "Voxler images (4)", "page": 163},
+    {"number": 146, "description": "E-mail chain, 4/2/19 YR-435045-046", "page": 166},
+    {"number": 147, "description": "E-mail chain, 1/30/19 YR-447627-630", "page": 175},
+    {"number": 148, "description": "E-mail chain, 2/5/19 YR-371094-371100", "page": 177},
+    {"number": 149, "description": "E-mail chain, 4/29/19 YR-293430", "page": 181},
+    {"number": 150, "description": "E-mail chain, 9/20/22 YR-284999-285000", "page": 188},
+    {"number": 151, "description": "E-mail chain, 5/24/21 YR-180231-232", "page": 193},
+    {"number": 152, "description": "Sulphur Dome, LLC survey YR-477049", "page": 197},
+    {"number": 153, "description": "Sulphur Dome, LLC Drill Site Pad Reservation, 2003 Lease Agreement Leased Lands", "page": 200},
+    {"number": 154, "description": "E-mail chain, 6/28/22 YR-429774-775", "page": 201},
+    {"number": 155, "description": "Yellow Rock, LLC 2020 Drilling Inventory YR-429778 (multiple pages unstamped)", "page": 204},
+    {"number": 156, "description": "Sulphur Dome, LLC Sulphur Mines Lands Project Review YR-429776-777", "page": 209},
+    {"number": 157, "description": "E-mail chain, 11/15/22 YR-454139-140", "page": 213},
+    {"number": 158, "description": "E-mail chain, 10/9/20 YR-434633-634", "page": 213}
   ]
 }
