@@ -27,11 +27,24 @@ CASE_SHORT = cfg.get('case_short', 'Unknown_Case')
 INPUT_FILE  = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL_FORMATTED.txt'
 OUTPUT_FILE = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL_TRANSCRIPT.txt'
 
-# --- Read formatted transcript ---
+# --- Fallback: scan for any *_FINAL_FORMATTED.txt if expected name not found ---
 if not os.path.exists(INPUT_FILE):
-    print(f'[ERROR] {INPUT_FILE} not found.')
-    print('        Run format_final.py first (or python run_pipeline.py --from format).')
-    sys.exit(1)
+    import glob as _glob
+    _candidates = [f for f in _glob.glob('FINAL_DELIVERY/*_FINAL_FORMATTED.txt')
+                   if not os.path.basename(f).startswith('accuracy_report_')]
+    if len(_candidates) == 1:
+        INPUT_FILE  = _candidates[0]
+        _found_short = os.path.basename(INPUT_FILE).replace('_FINAL_FORMATTED.txt', '')
+        OUTPUT_FILE = f'FINAL_DELIVERY/{_found_short}_FINAL_TRANSCRIPT.txt'
+        print(f'[build_transcript] WARNING: case_short mismatch — using {INPUT_FILE}')
+    elif len(_candidates) > 1:
+        print(f'[ERROR] Multiple FINAL_FORMATTED files found, cannot auto-resolve:')
+        for c in _candidates: print(f'  {c}')
+        sys.exit(1)
+    else:
+        print(f'[ERROR] {INPUT_FILE} not found.')
+        print('        Run format_final.py first (or python run_pipeline.py --from format).')
+        sys.exit(1)
 
 with open(INPUT_FILE, encoding='utf-8') as f:
     content = f.read()
