@@ -239,9 +239,11 @@ def build_caption():
         L.append(center(DEPO_LOCATION_0))   # named venue line (e.g. THE HOUSTONIAN)
     L.append(center(DEPO_LOCATION_1))
     L.append(center(DEPO_LOCATION_2))
-    L.append("")
-    L.append(f"  Reported By:  {REPORTER_NAME}")
+    L.append(f"  Reported By: {REPORTER_NAME}")
     L.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
+    # Pad to 25 then slice — trailing * * * must land within the page limit
+    while len(L) < 25:
+        L.append("")
     return [L[:25]]
 
 
@@ -750,7 +752,7 @@ def format_appearances_from_config(appearances):
             if val:
                 lines.append(f"    {val}")
 
-        # City/state/zip — apply midpoint dot
+        # City/state/zip — midpoint dot between state and zip per MB house style
         csz = block.get('city_state_zip', '').strip()
         if csz:
             csz = re.sub(r'([A-Za-z])\s+(\d{5}(?:-\d{4})?)\s*$', r'\1· \2', csz)
@@ -848,7 +850,7 @@ def format_appearances(raw_lines):
                 # Normalize (Via Zoom) → (Zoom) to match MB's house style
                 line = re.sub(r'\(Via Zoom\)', '(Zoom)', line, flags=re.IGNORECASE)
                 # Midpoint dot between state and zip: "Louisiana 70130" → "Louisiana· 70130"
-                # MB's house style per accuracy report — applies to all address lines in appearances
+                # MB's house style — confirmed present in approved PDF
                 line = re.sub(r'([A-Za-z])\s+(\d{5}(?:-\d{4})?)\s*$', r'\1· \2', line)
                 # Append (Zoom) to BY: lines for attorneys in ZOOM_ATTORNEYS list
                 # Match on last name / partial name — case-insensitive

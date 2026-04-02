@@ -353,6 +353,12 @@ def analyze_section(name, engine_lines, approved_lines):
         pct, matched, total, details = word_level_accuracy(engine_lines, approved_lines)
         unit = 'words'
     else:
+        # INDEX uses \t in FINAL_FORMATTED.txt for PDF right-alignment, but pdfplumber
+        # extracts the rendered PDF as spaces. Normalize tabs → single space before scoring.
+        # [TECH DEBT: tab-based column layout should be replaced with a proper column model]
+        if name == 'INDEX':
+            engine_lines   = [l.replace('\t', ' ') for l in engine_lines]
+            approved_lines = [l.replace('\t', ' ') for l in approved_lines]
         pct, matched, total, details = line_level_accuracy(engine_lines, approved_lines)
         unit = 'lines'
 
