@@ -758,8 +758,8 @@ def format_appearances_from_config(appearances):
             for l in wrap_line(f"    {firm}", width=LINE_WIDTH, hang=4):
                 lines.append(l)
 
-        # Address
-        for field in ['address_1', 'address_2']:
+        # Address — up to 3 lines (building name, street, suite)
+        for field in ['address_1', 'address_2', 'address_3']:
             val = block.get(field, '').strip()
             if val:
                 lines.append(f"    {val}")

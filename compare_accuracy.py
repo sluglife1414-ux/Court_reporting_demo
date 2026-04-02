@@ -489,9 +489,9 @@ def line_level_accuracy(engine_lines, approved_lines):
 
 # Which comparison method to use per section
 SECTION_METHOD = {
-    'CAPTION':       'line',   # field-by-field
+    'CAPTION':       'word',   # word-level — MB PDF wraps lines at col width, engine does not
     'INDEX':         'line',   # structural
-    'APPEARANCES':   'line',   # attorney names
+    'APPEARANCES':   'word',   # word-level — MB PDF wraps attorney names, engine writes full lines
     'STIPULATION':   'word',   # verbatim
     'TESTIMONY':     'qa',     # Q/A-aware speaker-block alignment (drift-free)
     'CERTIFICATE_1': 'word',
