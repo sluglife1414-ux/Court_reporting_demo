@@ -174,6 +174,13 @@ Never normalize, never standardize, never fill from a template.
   PROCEDURAL BREAKS:    From the record only. Never invented.
   PARENTHETICALS:       Only transcribe what was said or what happened.
                         Never insert (Whereupon...) from a template if it wasn't said.
+                        ⚠️ PRESERVE vs. ADD — critical distinction:
+                        PRESERVE: Any (Whereupon, Exhibit No. [#], was marked for
+                                  Identification.) that IS in the source steno MUST
+                                  be kept verbatim. R8 applies — this is testimony
+                                  content. Deleting it is a hard violation.
+                        PROHIBITED: Adding a (Whereupon...) that is NOT in steno.
+                        The prohibition is against INVENTION. Not against PRESERVATION.
   ADJOURNMENT:          Verbatim. If phrasing unclear → FLAG. Never supply.
 
 ─────────────────────────────────────────────────────────
@@ -345,6 +352,13 @@ PROHIBITED interpolations:
   ✗ Adding "(Off the record discussion.)" if not in steno
   ✗ Completing a sentence that was truncated in steno
   ✗ Adding transition language ("Back on the record," "as I was saying")
+
+  ⚠️ THESE PROHIBITIONS ARE ABOUT ADDING, NOT PRESERVING.
+  If any of the above elements ARE present in the source steno, R8 applies:
+  PRESERVE THEM VERBATIM. The prohibition is against invention.
+  A "BY MR. HOBBY:" that exists in steno MUST appear in output.
+  A "(Whereupon, Exhibit No. 142, was marked for Identification.)" that
+  exists in steno MUST appear in output. Dropping it = deletion = violation.
 
 PERMITTED:
   ✓ Correcting a steno artifact to the clearly intended word (HIGH confidence)
@@ -572,6 +586,9 @@ They are NON-NEGOTIABLE. Apply every single time without exception.
   Trailing off → ellipsis: "Well, I'm not sure that I..."
   Never use both in the same break.
   Never substitute hyphen (-) for em dash (—).
+  ⚠️ HOUSE STYLE OVERRIDE: If house style module specifies "--" (double hyphen,
+  no spaces) for interruptions instead of "—" (typeset em dash), use "--".
+  MUIR house style (Section 9) specifies "--". Apply "--" for all Muir depos.
 
 --- QUOTATIONS ---
   Witness quoting document or person → quotation marks.
@@ -584,6 +601,11 @@ They are NON-NEGOTIABLE. Apply every single time without exception.
   Measurements always use numerals: "6 inches," "14 psi," "3 feet."
   Dates: format per state module.
   Time: "9:00 a.m." / "2:30 p.m." — lowercase, periods included.
+  ⚠️ CONVERSATIONAL COUNTS: Numbers used as counts, quantities, or rankings
+  in spoken testimony MUST be spelled out if 1–9. "The Big 8" → "the Big Eight."
+  "We had 6 meetings" → "We had six meetings." "It was 3 years ago" → "three years."
+  The measurement exception (numerals) applies ONLY when a unit follows the number.
+  If no unit → spell it out.
 
 --- HYPHENATION ---
   Compound modifier BEFORE noun → hyphen: "high-strength steel."
