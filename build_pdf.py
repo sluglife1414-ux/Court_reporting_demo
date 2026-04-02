@@ -48,7 +48,9 @@ OUTPUT_PDF = f'FINAL_DELIVERY/{CASE_SHORT}_FINAL.pdf'
 # This handles mismatches between depo_config.json case_short and format_final.py output name
 if not os.path.exists(INPUT_TXT):
     import glob as _glob
-    _candidates = _glob.glob('FINAL_DELIVERY/*_FINAL_FORMATTED.txt')
+    # Exclude accuracy_report_* files — those are scoring artifacts, not transcript inputs
+    _candidates = [f for f in _glob.glob('FINAL_DELIVERY/*_FINAL_FORMATTED.txt')
+                   if not os.path.basename(f).startswith('accuracy_report_')]
     if len(_candidates) == 1:
         INPUT_TXT = _candidates[0]
         _found_short = os.path.basename(INPUT_TXT).replace('_FINAL_FORMATTED.txt', '')

@@ -283,12 +283,16 @@ def main():
     args = parser.parse_args()
 
     # ── Manual lock — if depo_config.json was hand-populated, skip extraction ──
-    if os.path.exists(OUTPUT_FILE) and not args.force:
+    # NOTE: manual lock is always respected — even --force cannot bypass it.
+    # --force only skips the interactive Y/n prompt, not the lock.
+    # To re-extract over a manual config, edit _extracted_from away from "manual" first.
+    if os.path.exists(OUTPUT_FILE):
         with open(OUTPUT_FILE, encoding='utf-8') as _chk:
             _existing = json.load(_chk)
         if _existing.get('_extracted_from', '').startswith('manual'):
             print(f"[CONFIG] Manual config detected — skipping extraction.")
-            print(f"         Use --force to override and re-extract.")
+            print(f"         (--force does not override a manual lock.)")
+            print(f"         Edit _extracted_from in depo_config.json to re-extract.")
             return
 
     print(f"Reading: {INPUT_FILE}")
