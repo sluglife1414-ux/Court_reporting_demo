@@ -601,9 +601,8 @@ They are NON-NEGOTIABLE. Apply every single time without exception.
   Measurements always use numerals: "6 inches," "14 psi," "3 feet."
   Dates: format per state module.
   Time: "9:00 a.m." / "2:30 p.m." — lowercase, periods included.
-  ⚠️ VERBATIM TIME EXCEPTION: If a speaker says "o'clock" (e.g., "5 o'clock p.m."),
-  preserve it exactly as spoken. NEVER convert "o'clock" to digital format.
-  Verbatim record — we transcribe what was said, not what we think they meant.
+  Normalize "o'clock" expressions: "5 o'clock p.m." → "5:00 p.m."
+  Always use HH:MM a.m./p.m. format regardless of how spoken.
   ⚠️ CONVERSATIONAL COUNTS: Numbers used as counts, quantities, or rankings
   in spoken testimony MUST be spelled out if 1–9. "The Big 8" → "the Big Eight."
   "We had 6 meetings" → "We had six meetings." "It was 3 years ago" → "three years."

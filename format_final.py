@@ -463,27 +463,22 @@ def build_witness_cert(exhibits=None):
 
 
 def build_errata():
-    # MB format: 3 lines per entry (Page No., Reason, blank) — no extra underscore line
-    # Two full pages of errata (matching MB's 2-page errata section)
+    # MB format: 3 lines per entry — Page No. / underscore change line / Reason for change
+    # 7 entries per page, 2 pages, signature + witness name at bottom of each page
     def errata_page(include_signature=False):
         L = []
         L.append("  DEPOSITION ERRATA SHEET")
-        L.append("")
-        entries_per_page = 7 if include_signature else 8
-        for _ in range(entries_per_page):
+        for _ in range(7):
             L.append("  Page No._____Line No._____Change to:______________")
+            L.append("  _______________________________________________")
             L.append("  Reason for change:________________________________")
-            L.append("")
-        if include_signature:
-            while len(L) < 22:
-                L.append("")
-            L.append("  SIGNATURE:_______________________DATE:___________")
-            L.append(center(WITNESS_NAME))  # centered under signature line, matching MB
+        L.append("  SIGNATURE:_______________________DATE:___________")
+        L.append(center(WITNESS_NAME))
         while len(L) < 25:
             L.append("")
         return L[:25]
 
-    return [errata_page(include_signature=False), errata_page(include_signature=True)]
+    return [errata_page(), errata_page()]
 
 
 # =========================================================

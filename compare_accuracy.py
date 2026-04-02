@@ -243,9 +243,21 @@ def split_sections(lines):
 
 # ── Word-Level Comparison (for Testimony) ────────────────────────────────────
 
+_UNDERSCORE_RE = re.compile(r'^_+$')
+_UNDERSCORE_NORM = '_______________________________________________'  # 47 chars — standard
+
+def _normalize_line(line):
+    """Normalize underscore-only lines to standard length before comparison.
+    pdfplumber extracts variable-length underscore strings from PDFs; this
+    prevents false mismatches on errata blank fields."""
+    stripped = line.strip()
+    if _UNDERSCORE_RE.match(stripped) and len(stripped) >= 10:
+        return _UNDERSCORE_NORM
+    return line
+
 def words_from_lines(lines):
     """Flatten lines to a single list of words, stripping line breaks."""
-    text = ' '.join(l for l in lines if l.strip())
+    text = ' '.join(_normalize_line(l) for l in lines if l.strip())
     return text.split()
 
 
