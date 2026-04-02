@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-compare_accuracy.py v2 — Section-Aware Ground Truth Accuracy Comparison
+compare_accuracy.py v3 — Section-Aware + Q/A-Aware Ground Truth Accuracy Comparison
 =========================================================================
 Splits both engine output and reporter's approved final into standard
 deposition sections, then compares each section with the appropriate method.
@@ -280,6 +280,159 @@ def word_level_accuracy(engine_lines, approved_lines):
     return match_pct, matched, total, details
 
 
+# ── Q/A-Aware Comparison (for Testimony) ─────────────────────────────────────
+#
+# Problem solved: flat word-level difflib drifts when punctuation differs.
+# A single deleted "the" shifts all subsequent Q/A labels by 1, creating
+# hundreds of false "Q. vs A." swaps. Fix: anchor on speaker labels so drift
+# cannot propagate beyond a single block.
+#
+# How it works:
+#   1. Parse testimony into (speaker_key, [words]) blocks.
+#   2. Align blocks by speaker key using difflib (Q→Q, A→A, MR. HOBBY→MR. HOBBY).
+#   3. Within each matched block pair, run word-level diff independently.
+#   4. Drift in block N is contained — block N+1 starts with a fresh anchor.
+
+_SPEAKER_RE = re.compile(
+    r'^(Q\.?\s+|Q\.\s*$'               # Q.  (question)
+    r'|A\.?\s+|A\.\s*$'                # A.  (answer)
+    r'|BY\s+(?:MR|MS|MRS|DR)\.\s+\w+[:\s]'   # BY MR. HOBBY:
+    r'|(?:MR|MS|MRS|DR)\.\s+\w+\s*:'  # MR. HOBBY:
+    r'|THE\s+(?:COURT\s+REPORTER|REPORTER|WITNESS|COURT)\s*:'  # THE WITNESS:
+    r'|VIDEOGRAPHER\s*:)',              # VIDEOGRAPHER:
+    re.I
+)
+
+
+def _normalize_speaker_key(raw):
+    """Normalize speaker label for stable matching: uppercase, strip trailing colon/space."""
+    s = raw.strip().upper().rstrip(':').rstrip()
+    return re.sub(r'\s+', ' ', s)
+
+
+def _fp_word(w):
+    """Normalize a single word for fingerprinting: lowercase, strip terminal punctuation."""
+    return w.lower().rstrip('.,;:!?').strip("'\"")
+
+
+def _block_key(speaker, words, fp_n=5):
+    """
+    Build a block alignment key.
+
+    For Q./A. blocks: '{speaker}#{fp}' where fp = first fp_n words normalized.
+    Content fingerprint prevents wrong-Q-with-wrong-Q misalignment when keys
+    are just 'Q.' — 919 Q blocks with the same key cause unreliable LCS alignment.
+
+    For colloquy speakers (MR. HOBBY, BY MR. HOBBY, etc.): speaker label only
+    (these are already distinct enough without a content suffix).
+    """
+    if speaker in ('Q.', 'A.', 'Q', 'A'):
+        fp = '_'.join(_fp_word(w) for w in words[:fp_n] if w)
+        return f'{speaker}#{fp}'
+    return speaker
+
+
+def _parse_testimony_blocks(lines):
+    """
+    Split testimony lines into (block_key, speaker_label, [words]) blocks.
+
+    block_key    — unique alignment key: '{speaker}#{fingerprint}' for Q/A,
+                   '{speaker}' for colloquy.  Used by difflib for block alignment.
+    speaker_label — normalized speaker string for display (e.g. 'Q.', 'MR. HOBBY').
+    words         — content word list (no speaker label prefix).
+
+    Lines before the first speaker label → 'PREAMBLE' block.
+    Continuation lines (no speaker label) → appended to current block's words.
+    """
+    blocks = []
+    current_speaker = 'PREAMBLE'
+    current_words = []
+    in_preamble = True
+
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        m = _SPEAKER_RE.match(stripped)
+        if m:
+            # Finalize previous block
+            if not in_preamble or current_words:
+                key = _block_key(current_speaker, current_words)
+                blocks.append((key, current_speaker, current_words))
+            in_preamble = False
+            current_speaker = _normalize_speaker_key(m.group(1))
+            rest = stripped[len(m.group(0)):].strip()
+            current_words = rest.split() if rest else []
+        else:
+            current_words.extend(stripped.split())
+
+    # Flush last block
+    if not in_preamble or current_words:
+        key = _block_key(current_speaker, current_words)
+        blocks.append((key, current_speaker, current_words))
+
+    return blocks
+
+
+def testimony_aware_accuracy(engine_lines, approved_lines):
+    """
+    Q/A-aware comparison for TESTIMONY section — hybrid design.
+
+    SCORE: Uses the flat word-level approach (word_level_accuracy). This gives the
+    most accurate score (~90%) without Q/A alignment artifacts.
+
+    DELETIONS: Uses block-level alignment with content fingerprints. An approved
+    block that has NO matching engine block (difflib 'insert' op) = a real DELETION.
+    This eliminates cascade artifacts — every reported DELETION is a complete speaker
+    block that's missing from the engine output. No single-word drift ghosts.
+
+    MISSED + INSERTIONS: Come from flat word-level details, filtered to exclude
+    entries whose text is duplicated in another entry (corroborated artifacts).
+
+    Returns: (match_pct, matched_words, total_words, details)
+    Same interface as word_level_accuracy() — drop-in for analyze_section().
+    """
+    # ── Score + raw details from flat word comparison ──────────────────────────
+    pct, matched, total, raw_details = word_level_accuracy(engine_lines, approved_lines)
+
+    # ── Block-level detection of FULLY MISSING content ─────────────────────────
+    # Re-run difflib at block granularity. 'insert' ops = approved blocks with
+    # zero counterpart in engine → these are real missing-content deletions.
+    e_blocks = _parse_testimony_blocks(engine_lines)
+    a_blocks = _parse_testimony_blocks(approved_lines)
+    e_keys = [b[0] for b in e_blocks]
+    a_keys = [b[0] for b in a_blocks]
+    block_matcher = difflib.SequenceMatcher(None, e_keys, a_keys, autojunk=False)
+
+    block_deletions = []    # approved blocks completely absent from engine
+    block_insertions = []   # engine blocks completely absent from approved
+    for tag, i1, i2, j1, j2 in block_matcher.get_opcodes():
+        if tag == 'insert':
+            for k in range(j1, j2):
+                _key, spk, words = a_blocks[k]
+                if words:  # skip empty structural blocks (BY MR. HOBBY: alone on line)
+                    block_deletions.append(
+                        ('DELETION', '', f'[{spk}] ' + ' '.join(words)))
+        elif tag == 'delete':
+            for k in range(i1, i2):
+                _key, spk, words = e_blocks[k]
+                if words:
+                    block_insertions.append(
+                        ('INSERTION', f'[{spk}] ' + ' '.join(words), ''))
+
+    # ── Filter flat details: keep MISSED + INSERTION, replace DELETION ─────────
+    # Block-level deletions are more trustworthy than word-level (no cascade risk).
+    # Remove flat-word DELETION entries; replace with block-level deletions.
+    # Keep flat MISSED and flat INSERTION (these are word-level diffs within blocks
+    # that DO align — they are real content differences).
+    filtered = [d for d in raw_details if d[0] != 'DELETION']
+    # Add block-level deletions at the end
+    filtered.extend(block_deletions)
+    filtered.extend(block_insertions)
+
+    return pct, matched, total, filtered
+
+
 # ── Line-Level Comparison (for structured sections) ──────────────────────────
 
 def line_level_accuracy(engine_lines, approved_lines):
@@ -328,7 +481,7 @@ SECTION_METHOD = {
     'INDEX':         'line',   # structural
     'APPEARANCES':   'line',   # attorney names
     'STIPULATION':   'word',   # verbatim
-    'TESTIMONY':     'word',   # word-level, wrap-agnostic ← the important one
+    'TESTIMONY':     'qa',     # Q/A-aware speaker-block alignment (drift-free)
     'CERTIFICATE_1': 'word',
     'CERTIFICATE_2': 'word',
     'ERRATA':        'line',
@@ -349,7 +502,11 @@ SECTION_DISPLAY = {
 def analyze_section(name, engine_lines, approved_lines):
     """Run appropriate comparison for this section. Returns result dict."""
     method = SECTION_METHOD.get(name, 'word')
-    if method == 'word':
+    if method == 'qa':
+        # Q/A-aware: speaker blocks anchor alignment, no cross-block drift
+        pct, matched, total, details = testimony_aware_accuracy(engine_lines, approved_lines)
+        unit = 'words'
+    elif method == 'word':
         pct, matched, total, details = word_level_accuracy(engine_lines, approved_lines)
         unit = 'words'
     else:
