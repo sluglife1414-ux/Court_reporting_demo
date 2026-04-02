@@ -209,7 +209,22 @@ def find_exhibit_pages(all_pages):
 # =========================================================
 
 def build_caption():
-    """Page 1 caption — all content on one page, reporter credit on page 1 per LA spec."""
+    """Page 1 caption — all content on one page, reporter credit on page 1 per LA spec.
+
+    LINE COUNT CONSTRAINT — READ BEFORE EDITING:
+    Caption must fit in exactly 25 lines (1 page). For Easley/YellowRock the fixed
+    structure produces exactly 25 lines:
+      3 header lines (state/parish/court) + top * * *
+      + 3 case-style lines + 2 defendant lines (DEFENDANT has \\n) + defendant_role
+      + blank + middle * * * + blank
+      + 5 depo-id lines (VIDEOTAPED DEPOSITION / OF / witness / taken on / date)
+      + 2 time/at lines + 3 location lines (venue + street + city)
+      + Reported By + trailing * * *
+    = 25 lines. Adding a blank anywhere (e.g. before "Reported By:") pushes the
+    trailing * * * to index 25, which L[:25] silently drops. Verified: accuracy
+    report showed [DELETION] for the trailing * * * when blank was present.
+    If DEFENDANT is a single line (no \\n), total is 24 — the while-pad fills it.
+    """
     L = []
     L.append(center("STATE OF LOUISIANA"))
     L.append(center(PARISH))
@@ -239,9 +254,11 @@ def build_caption():
         L.append(center(DEPO_LOCATION_0))   # named venue line (e.g. THE HOUSTONIAN)
     L.append(center(DEPO_LOCATION_1))
     L.append(center(DEPO_LOCATION_2))
+    # NO blank before Reported By: — keeping it tight so trailing * * * stays within
+    # the 25-line limit. See docstring above.
     L.append(f"  Reported By: {REPORTER_NAME}")
     L.append(center("* * * * * * * * * * * * * * * * * * * * * * * *"))
-    # Pad to 25 then slice — trailing * * * must land within the page limit
+    # Pad short captions (single-line defendant, missing venue, etc.) to full page
     while len(L) < 25:
         L.append("")
     return [L[:25]]
