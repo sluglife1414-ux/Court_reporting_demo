@@ -931,17 +931,17 @@ def format_appearances(raw_lines):
                 pending_header = None
         else:
             if in_block:
-                # Normalize (Via Zoom) → (Zoom) to match MB's house style
-                line = re.sub(r'\(Via Zoom\)', '(Zoom)', line, flags=re.IGNORECASE)
+                # Normalize (Zoom) → (Via Zoom) — MB's house style (pending confirmation)
+                line = re.sub(r'\(Zoom\)', '(Via Zoom)', line, flags=re.IGNORECASE)
                 # Midpoint dot between state and zip: "Louisiana 70130" → "Louisiana· 70130"
                 # MB's house style — confirmed present in approved PDF
                 line = re.sub(r'([A-Za-z])\s+(\d{5}(?:-\d{4})?)\s*$', r'\1· \2', line)
-                # Append (Zoom) to BY: lines for attorneys in ZOOM_ATTORNEYS list
+                # Append (Via Zoom) to BY: lines for attorneys in ZOOM_ATTORNEYS list
                 # Match on last name / partial name — case-insensitive
-                if line.startswith('BY:') and '(Zoom)' not in line:
+                if line.startswith('BY:') and '(Via Zoom)' not in line:
                     for zoom_name in ZOOM_ATTORNEYS:
                         if zoom_name in line.upper():
-                            line = line.rstrip() + ' (Zoom)'
+                            line = line.rstrip() + ' (Via Zoom)'
                             break
                 # Firm name, address, email, BY: line — indent under party header
                 wrapped = wrap_line(f"    {line}", width=LINE_WIDTH, hang=4)

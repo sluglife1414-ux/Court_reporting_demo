@@ -238,8 +238,28 @@ review_can_answer    = [it for it in review_actionable
                         if it not in review_needs_audio]
 audio_total          = review_audio_count + len(review_needs_audio)
 
+# Deduplicate actionable items — same snippet can appear twice if multiple
+# REVIEW tags point to the same line in corrected_text.txt
+_seen_snippets = set()
+_deduped = []
+for _it in review_can_answer:
+    _key = _it['snippet'].strip()[:50]
+    if _key not in _seen_snippets:
+        _seen_snippets.add(_key)
+        _deduped.append(_it)
+review_can_answer = _deduped
+
 
 # ── Item-type plain English labels ────────────────────────────────────────────
+
+def truncate_at_word(s, max_len=65):
+    """Truncate at word boundary with ellipsis — no mid-word cuts."""
+    s = s.strip()
+    if len(s) <= max_len:
+        return s
+    cut = s[:max_len].rsplit(' ', 1)[0]
+    return cut + '...'
+
 
 def plain_english_label(note):
     """Convert engine-speak to plain English MB will understand."""
@@ -318,11 +338,11 @@ add(
     '',
     f'  Attorneys who appeared remotely are listed as:',
     f'',
-    f'      THOMAS J. MADIGAN, ESQ.  (Zoom)',
+    f'      THOMAS J. MADIGAN, ESQ.  (Via Zoom)',
     f'',
     f'  Should this be:',
-    f'      (A)  (Zoom)       ← current',
-    f'      (B)  (Via Zoom)   ← alternate',
+    f'      (A)  (Via Zoom)   ← current',
+    f'      (B)  (Zoom)       ← alternate',
     f'',
     f'  Your choice: _______',
     f'  (Whichever you pick, we apply it to every depo going forward.)',
@@ -381,7 +401,7 @@ else:
             f'  {pg_ref}',
             f'',
             f'  What the transcript says:',
-            f'    {item["snippet"][:68]}',
+            f'    {truncate_at_word(item["snippet"])}',
             f'',
             f'  What to check:',
             f'    {label}',
