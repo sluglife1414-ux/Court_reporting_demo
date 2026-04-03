@@ -83,10 +83,18 @@ PAGENUM_Y      = PAGE_H - CFG['pagenum_from_top']   # upper right, per spec
 DRAW_VERT_LINE = CFG['vert_line']
 
 
+_SUBROW = '\x00'   # sentinel prefix that marks an appearances sub-row in text_lines
+
+
 def parse_formatted_txt(path):
     """
     Parse the formatted .txt file into a list of pages.
-    Each page is a dict: {num: int, lines: [str x 25]}
+    Each page is a dict: {num: int, lines: [str], doubled: bool}
+
+    Standard pages: lines has 25 strings (one per numbered line).
+    Doubled pages (appearances): lines has up to 50 strings — numbered lines
+    interleaved with sub-rows.  Sub-rows are prefixed with _SUBROW so
+    draw_page can render them at y - LINE_SPACING/2 below their parent line.
     """
     with open(path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -110,14 +118,21 @@ def parse_formatted_txt(path):
             m = re.match(r'^\s*(\d{1,2})\s{1,4}(.*)', line)
             if m:
                 text_lines.append(m.group(2).rstrip())
+            elif line.startswith('    ') and line.strip():
+                # 4-space-indented non-numbered line = appearances sub-row
+                text_lines.append(_SUBROW + line[4:].rstrip())
             else:
                 text_lines.append('')
 
-        # Pad to LINES_PER_PAGE
-        while len(text_lines) < LINES_PER_PAGE:
-            text_lines.append('')
+        doubled = any(l.startswith(_SUBROW) for l in text_lines)
 
-        pages.append({'num': pnum, 'lines': text_lines[:LINES_PER_PAGE]})
+        # Pad standard pages to LINES_PER_PAGE; doubled pages may have more rows
+        if not doubled:
+            while len(text_lines) < LINES_PER_PAGE:
+                text_lines.append('')
+            text_lines = text_lines[:LINES_PER_PAGE]
+
+        pages.append({'num': pnum, 'lines': text_lines, 'doubled': doubled})
 
     return pages
 
@@ -158,54 +173,70 @@ def draw_page(c, page_data):
         c.line(line_x1, y_top, line_x1, y_bot)
         c.line(line_x2, y_top, line_x2, y_bot)
 
-    # --- 25 numbered lines ---
-    for i, text in enumerate(lines):
-        line_num = i + 1
-        line_y   = TEXT_TOP - LINE_SPACING - (i * LINE_SPACING)
-
-        # Line number right-aligned in margin column
-        c.setFont(FONT_NAME, FONT_SIZE)
-        c.drawRightString(LINENUM_X + 0.28 * inch, line_y, str(line_num))
-
+    def _draw_text(text, y):
+        """Render one text line at the given y-coordinate (shared by main and sub-rows)."""
         if not text.strip():
-            continue
-
+            return
         c.setFont(FONT_NAME, FONT_SIZE)
-
         if '\t' in text:
-            # Tab-delimited index line: left label + right-aligned page number
-            parts = text.split('\t')
+            parts  = text.split('\t')
             label  = parts[0]
             number = parts[-1].strip()
             if label.strip():
-                c.drawString(TEXT_X, line_y, label)
+                c.drawString(TEXT_X, y, label)
             if number:
-                c.drawRightString(TEXT_RIGHT, line_y, number)
+                c.drawRightString(TEXT_RIGHT, y, number)
         else:
-            # Check for Q./A. line — draw label in bold, rest in regular
             qa_match = re.match(r'^(\s*)(Q\.|A\.)(\s+.*)$', text)
             if qa_match:
-                prefix = qa_match.group(1)   # leading spaces
-                label  = qa_match.group(2)   # "Q." or "A."
-                rest   = qa_match.group(3)   # "   body text..."
-                char_w = FONT_SIZE * 0.6     # Courier monospace char width
+                prefix  = qa_match.group(1)
+                label   = qa_match.group(2)
+                rest    = qa_match.group(3)
+                char_w  = FONT_SIZE * 0.6
                 x_label = TEXT_X + len(prefix) * char_w
                 c.setFont(FONT_BOLD, FONT_SIZE)
-                c.drawString(x_label, line_y, label)
+                c.drawString(x_label, y, label)
                 c.setFont(FONT_NAME, FONT_SIZE)
-                c.drawString(x_label + len(label) * char_w, line_y, rest)
+                c.drawString(x_label + len(label) * char_w, y, rest)
             else:
-                # Detect pre-centered lines (balanced leading/trailing spaces, ≥8 leading)
-                # and true-center them on the page rather than anchoring at TEXT_X.
                 leading  = len(text) - len(text.lstrip())
                 trailing = len(text) - len(text.rstrip())
                 is_centered = (leading >= 8 and abs(leading - trailing) <= 2)
                 if is_centered:
-                    c.drawCentredString(PAGE_W / 2, line_y, text.strip())
+                    c.drawCentredString(PAGE_W / 2, y, text.strip())
                 else:
-                    # Normal line — truncate to available width (safety)
                     max_chars = int((TEXT_RIGHT - TEXT_X) / (FONT_SIZE * 0.6)) + 5
-                    c.drawString(TEXT_X, line_y, text[:max_chars])
+                    c.drawString(TEXT_X, y, text[:max_chars])
+
+    # --- Numbered lines (25 slots) ---
+    # For doubled pages (appearances), each slot may have a sub-row rendered
+    # 13pt below the main row — matching MB's two-text-row-per-slot layout.
+    doubled = page_data.get('doubled', False)
+    idx   = 0
+    slot  = 0
+    while slot < LINES_PER_PAGE and idx < len(lines):
+        text = lines[idx]
+
+        # Sub-rows in wrong position (shouldn't occur) — skip
+        if text.startswith(_SUBROW):
+            idx += 1
+            continue
+
+        line_y = TEXT_TOP - LINE_SPACING - (slot * LINE_SPACING)
+
+        # Line number
+        c.setFont(FONT_NAME, FONT_SIZE)
+        c.drawRightString(LINENUM_X + 0.28 * inch, line_y, str(slot + 1))
+
+        _draw_text(text, line_y)
+        idx  += 1
+        slot += 1
+
+        # Peek: if next entry is a sub-row, render it 13pt below the main row
+        if doubled and idx < len(lines) and lines[idx].startswith(_SUBROW):
+            sub_text = lines[idx][len(_SUBROW):]
+            _draw_text(sub_text, line_y - LINE_SPACING / 2)
+            idx += 1
 
 
 def build_pdf(pages):

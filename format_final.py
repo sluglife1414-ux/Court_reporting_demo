@@ -100,13 +100,26 @@ def center(text, width=LINE_WIDTH):
 
 
 def format_page(page_num, lines):
-    """Format a page: page number header + 25 numbered lines."""
+    """Format a page: page number header + 25 numbered lines.
+
+    Standard pages: lines is a 25-string list → one item per numbered line.
+    Doubled pages (appearances): lines is a 50-string list → two items per slot.
+      Slot N: main row at line N (numbered), sub-row on the next output line
+      with 4-space indent and no line number.  build_pdf.py detects sub-rows
+      by their '    ' prefix and renders them 13pt below their parent line.
+    """
     out = [str(page_num)]
-    for i in range(25):
-        if i < len(lines):
-            out.append(f"{i+1:2d}  {lines[i]}")
-        else:
-            out.append(f"{i+1:2d}")
+    if len(lines) <= 25:
+        for i in range(25):
+            out.append(f"{i+1:2d}  {lines[i] if i < len(lines) else ''}")
+    else:
+        # Doubled format: 50-item flat list, pairs as (main, sub)
+        for slot in range(25):
+            main = lines[slot * 2]     if slot * 2     < len(lines) else ''
+            sub  = lines[slot * 2 + 1] if slot * 2 + 1 < len(lines) else ''
+            out.append(f"{slot+1:2d}  {main}")
+            if sub:
+                out.append(f"    {sub}")   # sub-row: 4-space indent, no line number
     return '\n'.join(out)
 
 
@@ -699,6 +712,60 @@ def collapse_blanks(lines):
     return out
 
 
+def paginate_doubled(items, header=None):
+    """Pack content 2 items per line slot — returns pages as flat 50-string lists.
+
+    Matches MB's two-sub-row format for appearances sections.
+    Each page slot holds a main row + sub-row (13pt below in PDF).
+
+    Rules:
+    - Header gets its own full slot at start of each page (sub-row left blank).
+    - Blank separator items get their own full slot (no pairing) — preserves block spacing.
+    - Non-blank content items pair sequentially: first→main row, next→sub row of same slot.
+    """
+    pages = []
+    cur = []       # flat 50-string list: [main0, sub0, main1, sub1, ...]
+    pending = False  # True when cur's last sub-row slot is still empty
+
+    def flush():
+        nonlocal pending
+        while len(cur) < 50:
+            cur.append("")
+        pages.append(cur[:50])
+        cur.clear()
+        pending = False
+
+    def start_page():
+        if header:
+            cur.append(header)
+            cur.append("")   # header's sub-row is always blank
+
+    start_page()
+
+    for item in items:
+        if not item.strip():                  # blank separator — full slot, no pairing
+            pending = False                   # close any open sub-row
+            if len(cur) >= 50:
+                flush(); start_page()
+            cur.extend(["", ""])
+        elif pending:                         # fill the open sub-row
+            cur[-1] = item
+            pending = False
+        else:                                 # new main row
+            if len(cur) >= 50:
+                flush(); start_page()
+            cur.append(item)
+            cur.append("")                    # sub-row pending
+            pending = True
+
+    if cur:
+        while len(cur) < 50:
+            cur.append("")
+        pages.append(cur[:50])
+
+    return pages
+
+
 def paginate(lines, header=None):
     """Split lines into 25-line pages. Optionally repeat header on new pages."""
     pages = []
@@ -803,7 +870,7 @@ def format_appearances_from_config(appearances):
         for person in also_present:
             lines.append(f"    {person}")
 
-    return paginate(lines, header="A P P E A R A N C E S:")
+    return paginate_doubled(lines, header="A P P E A R A N C E S:")
 
 
 def format_appearances(raw_lines):
