@@ -178,7 +178,7 @@ for idx, line in enumerate(lines):
             before = line.strip()
             whisper = m.get('whisper_text', '')[:80]
             tag_pattern = re.compile(r'\[REVIEW:\s*' + re.escape(m['note'][:30]) + r'[^\]]*\]')
-            replacement = f'[AUDIO: whisper heard "{whisper}" — verify]'
+            replacement = f'[AUDIO: audio check heard "{whisper}" — verify]'
             new_line = tag_pattern.sub(replacement, line).strip()
             if new_line == line.strip():
                 new_line = re.sub(r'\[REVIEW:[^\]]*\]', replacement, line, count=1).strip()
@@ -224,7 +224,7 @@ SEP = '-' * W
 section = [
     '',
     DBL,
-    'SECTION F — AUDIO CORRECTIONS  (Whisper confirmed)',
+    'SECTION F — AUDIO CORRECTIONS  (audio check confirmed)',
     DBL,
     '',
     '  These items were flagged as uncertain by the engine.',
@@ -264,7 +264,7 @@ else:
             f'  WAS:  {before_display}',
             f'  NOW:  {after_display}',
             f'  WHY:  {reason}',
-            f'  (Whisper score: {item["match_score"]})',
+            f'  (audio check confidence: {item["match_score"]})',
             '',
         ]
 
@@ -275,8 +275,8 @@ if surfaced:
         f'  AUDIO SUGGESTIONS  ({len(surfaced)} items — your decision)',
         SEP,
         '',
-        '  Whisper heard something here but was not certain enough to',
-        '  auto-apply. Each item shows what Whisper heard.',
+        '  The audio check heard something here but was not certain enough',
+        '  to auto-apply. Each item shows what the audio check heard.',
         '  Write OK or your correction in the ANSWER line.',
         '',
     ]
@@ -285,7 +285,7 @@ if surfaced:
         section += [
             f'  ── SUGGEST-{n:02d} {"─" * (W - 15)}',
             f'  Line {item["line_num"]}  |  Score: {item["match_score"]}',
-            f'  Whisper heard: {whisper}',
+            f'  Audio check heard: {whisper}',
             f'  ANSWER: ________________________________________________',
             '',
         ]
