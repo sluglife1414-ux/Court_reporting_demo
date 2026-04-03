@@ -1169,9 +1169,13 @@ def format_testimony(raw_lines):
         if kind == 'blank':
             continue
 
-        # No blank lines inserted anywhere in testimony (LA rule)
+        # Structural blank transitions (match MB's PDF — not "LA no-blanks rule" testimony)
+        # MB p.12 line 20: blank after witness info block before next colloquy
+        if prev_kind == 'witness_info' and kind != 'witness_info':
+            formatted.append('')
 
         if kind == 'header':
+            formatted.append('')  # MB has a blank transcript line before section headers (p.13 line 18)
             formatted.append(center(text))
         elif kind == 'by':
             formatted.append(text)
@@ -1179,11 +1183,13 @@ def format_testimony(raw_lines):
             # MB format: indented 14 chars, standalone line, no Q./A. label
             formatted.append(' ' * 14 + text)
         elif kind == 'witness_info':
-            # Blank line before witness info block when following colloquy (matches MB)
+            # Blank line before witness info block when following colloquy (matches MB p.12 line 14)
             if prev_kind == 'colloquy':
                 formatted.append('')
-            # Indent witness name/address to match MB's format (~8 chars)
-            formatted.append('        ' + text)
+            # Wrap witness info at QA_LINE_WIDTH=52 — MB's CAT width, 8-char indent.
+            # Long address+oath lines must wrap to match MB's multi-line witness block.
+            for wline in wrap_line('        ' + text, width=QA_LINE_WIDTH, hang=8):
+                formatted.append(wline)
         elif kind == 'Q':
             body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
             # Two-width wrap: first line body=42 chars, continuation=44 chars
