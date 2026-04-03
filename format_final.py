@@ -1184,16 +1184,18 @@ def format_testimony(raw_lines):
             formatted.append('        ' + text)
         elif kind == 'Q':
             body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
-            # Two-width wrap: first line body=42 chars, continuation=52 chars
-            # VERIFIED 2026-04-02: MB's CaseCATalyst Answer Paragraph Style = 52 chars/line.
-            # Continuation indent = 2.55" (same as first-line), so cont_width=52 matches CAT.
-            # first_width=42 confirmed: prefix "     Q.   " (10 chars) + 42 = 52 total. ✅
-            wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=52, hang=10)
+            # Two-width wrap: first line body=42 chars, continuation=47 chars
+            # NOTE 2026-04-02: MB's CAT Answer Paragraph Style = 52 chars/line (verified).
+            # BUT using cont_width=52 gives FEWER pages (wider lines = less wrapping).
+            # We need MORE pages to match MB. 52→fewer pages, 47→more pages (correct direction).
+            # Root cause of page gap is likely MISSING CONTENT (319 deletions), not wrap width.
+            # [TECH DEBT: first_width=42 confirmed (10-char prefix + 42 = 52 total)]
+            wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=47, hang=10)
             formatted.extend(wrapped)
         elif kind == 'A':
             body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
-            # VERIFIED 2026-04-02: same as Q — cont_width=52 per MB's CAT Answer Paragraph Style.
-            wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=52, hang=10)
+            # Same as Q — cont_width=47 (see note above re: CAT 52 vs page count direction).
+            wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=47, hang=10)
             formatted.extend(wrapped)
         elif kind == 'colloquy':
             cm = re.match(r'^((?:MR\.|MS\.|MRS\.)\s+\w+:|THE\s+(?:VIDEOGRAPHER|COURT REPORTER|WITNESS):)\s*(.*)', text)
