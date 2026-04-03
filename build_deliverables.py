@@ -28,7 +28,7 @@ COURT          = _cfg.get('court', 'UNKNOWN')
 WITNESS        = _cfg.get('witness_name', 'UNKNOWN')
 DEPO_DATE      = _cfg.get('depo_date', 'UNKNOWN')
 REPORTER       = _cfg.get('reporter_name', 'UNKNOWN')
-EXAMINING_ATTY = _cfg.get('atty_claimant_by', 'UNKNOWN')
+EXAMINING_ATTY = _cfg.get('examining_atty', 'UNKNOWN')
 RUN_DATE       = date.today().strftime("%B %d, %Y")
 
 INPUT_FILE  = 'cleaned_text.txt'
@@ -70,7 +70,6 @@ REPORTER PRE-DELIVERY ACTIONS
 \u25a1  All [CORRECTED: ___] and [REVIEW: ___] tags verified against audio
 \u25a1  *REPORTER CHECK HERE* placeholder resolved
 \u25a1  Caption page location confirmed (address and zip code verified)
-\u25a1  Duplicate Exhibit 142 on index resolved
 \u25a1  All exhibit descriptions verified against original marked exhibits
 \u25a1  Exhibit Bates numbers verified
 \u25a1  "ROUGH DRAFT" designation REMOVED from final version
@@ -88,7 +87,7 @@ FORMATTING REVIEW
 \u25a1  Speaker labels consistent (Q. / A. / MR. / MS. / THE WITNESS:)
 \u25a1  Em dashes used for interruptions; ellipses for trailing off
 \u25a1  Off-record transitions preserved: "(Off the record.)"
-\u25a1  Examination header present: EXAMINATION BY MR. HOBBY:
+\u25a1  Examination header present: EXAMINATION BY {EXAMINING_ATTY}:
 \u25a1  Stipulation pages formatted correctly
 \u25a1  Appearances pages formatted correctly
 \u25a1  Exhibit index page verified against physical exhibits

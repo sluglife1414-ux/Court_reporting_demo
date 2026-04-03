@@ -7,8 +7,10 @@ import pdfplumber
 import re
 import sys
 
-ENGINE_TXT = r"FINAL_DELIVERY\Easley_YellowRock_FINAL_FORMATTED.txt"
-MB_PDF     = r"C:\Users\scott\Downloads\031326yellowrock-FINAL.pdf"
+import json as _json, os as _os
+_case_short = _json.load(open('depo_config.json', encoding='utf-8')).get('case_short', 'Unknown_Case') if _os.path.exists('depo_config.json') else 'Unknown_Case'
+ENGINE_TXT = rf"FINAL_DELIVERY\{_case_short}_FINAL_FORMATTED.txt"
+MB_PDF     = r"C:\Users\scott\Downloads\031326yellowrock-FINAL.pdf"  # [DEV] update per depo
 CONTEXT    = 5  # lines to show before/after deviation
 
 # ── Extract MB PDF lines ──────────────────────────────────────────────────────

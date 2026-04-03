@@ -39,8 +39,14 @@ except ImportError:
     _PYPDF_AVAILABLE = False
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
-DEFAULT_ENGINE_FILE  = r"FINAL_DELIVERY\Easley_YellowRock_FINAL_FORMATTED.txt"
-DEFAULT_APPROVED_PDF = r"C:\Users\scott\Downloads\031326yellowrock-FINAL.pdf"
+# Derive engine file default from depo_config.json so this script works for any case.
+import json as _json, os as _os
+_case_short = 'Unknown_Case'
+if _os.path.exists('depo_config.json'):
+    with open('depo_config.json', encoding='utf-8') as _f:
+        _case_short = _json.load(_f).get('case_short', 'Unknown_Case')
+DEFAULT_ENGINE_FILE  = rf"FINAL_DELIVERY\{_case_short}_FINAL_FORMATTED.txt"
+DEFAULT_APPROVED_PDF = r"C:\Users\scott\Downloads\031326yellowrock-FINAL.pdf"  # [DEV] update per depo
 OUTPUT_FILE          = r"FINAL_DELIVERY\accuracy_report.txt"
 
 # ── Section Detection Markers ─────────────────────────────────────────────────

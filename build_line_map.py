@@ -5,7 +5,7 @@ Maps each correction in correction_log.json to its page:line citation
 in the final formatted transcript.
 
 How it works:
-  1. Parse FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt into
+  1. Parse FINAL_DELIVERY/{case_short}_FINAL_FORMATTED.txt into
      (page, line, content) tuples — one per numbered line.
   2. For each correction, extract a clean search phrase from the corrected text.
   3. Scan formatted lines for the phrase. First match wins.
@@ -19,7 +19,11 @@ import json
 import os
 import re
 
-FORMATTED_FILE  = 'FINAL_DELIVERY/Easley_YellowRock_FINAL_FORMATTED.txt'
+with open('depo_config.json', encoding='utf-8') as _cfg_f:
+    _cfg = json.load(_cfg_f)
+_case_short = _cfg.get('case_short', 'Unknown_Case')
+
+FORMATTED_FILE  = f'FINAL_DELIVERY/{_case_short}_FINAL_FORMATTED.txt'
 CORRECTION_LOG  = 'correction_log.json'
 LINE_MAP_FILE   = 'line_map.json'
 
