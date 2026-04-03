@@ -1032,6 +1032,7 @@ def format_testimony(raw_lines):
     labeled = []
     in_qa = False
     qa_toggle = 'Q'  # starts with Q after BY line
+    examination_header_emitted = False  # MB only has ONE EXAMINATION header (first BY line only)
 
     for block in blocks:
         if not block:
@@ -1039,11 +1040,12 @@ def format_testimony(raw_lines):
             continue
 
         # BY line resets Q/A toggle
-        # Always emit EXAMINATION header before BY line unless one was just added
-        # Matches MB's format: EXAMINATION on its own line, then BY MR. NAME:
+        # EXAMINATION header appears only before the FIRST BY line — MB's format has exactly one.
+        # All subsequent BY MR. X: lines after objections/breaks appear without the header.
         if re.match(r'^BY\s+(MR\.|MS\.)', block):
-            if not labeled or labeled[-1][0] != 'header':
+            if not examination_header_emitted:
                 labeled.append(('header', 'EXAMINATION'))
+                examination_header_emitted = True
             labeled.append(('by', block))
             in_qa = True
             qa_toggle = 'Q'
