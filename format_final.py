@@ -357,7 +357,7 @@ def build_index(app_start, stip_start, exam_start, cert_start, wcert_start, exhi
     return pages
 
 
-def build_reporter_cert():
+def build_reporter_cert(page_count=None):
     p1 = []
     p1.append(center("C E R T I F I C A T E"))
     p1.append("")
@@ -370,10 +370,10 @@ def build_reporter_cert():
     p1.append("Registered Professional Reporter, as the officer")
     p1.append("before whom this testimony was taken, do hereby")
     p1.append(f"certify that {WITNESS_NAME}, after having been")
-    p1.append("duly")
-    p1.append("sworn by me upon authority of R.S. 37:2554, did")
+    p1.append("duly sworn by me upon authority of R.S. 37:2554, did")
     p1.append("testify as hereinbefore set forth in the foregoing")
-    p1.append("pages; that this testimony was reported by me in")
+    count_str = f"{page_count} " if page_count else ""
+    p1.append(f"{count_str}pages; that this testimony was reported by me in")
     p1.append("the stenotype reporting method, was prepared and")
     p1.append("transcribed by me or under my personal direction and")
     p1.append("supervision, and is a true and correct transcript to")
@@ -1186,18 +1186,18 @@ def format_testimony(raw_lines):
             formatted.append('        ' + text)
         elif kind == 'Q':
             body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
-            # Two-width wrap: first line body=42 chars, continuation=47 chars
-            # NOTE 2026-04-02: MB's CAT Answer Paragraph Style = 52 chars/line (verified).
-            # BUT using cont_width=52 gives FEWER pages (wider lines = less wrapping).
-            # We need MORE pages to match MB. 52→fewer pages, 47→more pages (correct direction).
-            # Root cause of page gap is likely MISSING CONTENT (319 deletions), not wrap width.
-            # [TECH DEBT: first_width=42 confirmed (10-char prefix + 42 = 52 total)]
-            wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=47, hang=10)
+            # Two-width wrap: first line body=42 chars, continuation=44 chars
+            # CALIBRATION 2026-04-02: MB's CAT = 52 chars/line but our format wraps differently.
+            # Our text-file format has 10-char indent on cont lines; MB's PDF has no such indent.
+            # Net effect: our engine packs 9% more words/line than MB → fewer pages.
+            # cont_width calibration: 52→211pp, 47→218pp, 44→target ~223pp (MB=223)
+            # [TECH DEBT: derive from MB's actual PDF measurements, not bracketing]
+            wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=45, hang=10)
             formatted.extend(wrapped)
         elif kind == 'A':
             body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
-            # Same as Q — cont_width=47 (see note above re: CAT 52 vs page count direction).
-            wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=47, hang=10)
+            # Same as Q — cont_width=44, see calibration note above.
+            wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=45, hang=10)
             formatted.extend(wrapped)
         elif kind == 'colloquy':
             cm = re.match(r'^((?:MR\.|MS\.|MRS\.)\s+\w+:|THE\s+(?:VIDEOGRAPHER|COURT REPORTER|WITNESS):)\s*(.*)', text)
@@ -1280,9 +1280,9 @@ def main():
     test_pages = format_testimony(sections['testimony'])
     all_pages.extend(test_pages)
 
-    # Reporter's Certificate
+    # Reporter's Certificate — page_count = pages before cert (cert_start - 1)
     cert_start = len(all_pages) + 1
-    all_pages.extend(build_reporter_cert())
+    all_pages.extend(build_reporter_cert(page_count=cert_start - 1))
 
     # Build exhibit list for witness cert (steno-extracted, descriptions from whereupon lines)
     exhibit_pages = find_exhibit_pages(all_pages)
