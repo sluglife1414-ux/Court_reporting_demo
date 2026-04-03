@@ -342,6 +342,36 @@ def main():
         "_extracted_at":    datetime.now().strftime("%Y-%m-%d %H:%M"),
     }
 
+    # CASE_CAPTION.json is authoritative for identity fields — always overrides text extraction.
+    # Same pattern as format_final.py. Prevents cross-contamination when a previous witness
+    # is mentioned in the current depo's testimony (e.g., Easley name in Halprin transcript).
+    CAPTION_IDENTITY_FIELDS = (
+        'witness_name', 'witness_last', 'case_short',
+        'examining_atty', 'depo_date', 'depo_date_short', 'depo_time',
+    )
+    caption_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'CASE_CAPTION.json')
+    if os.path.exists(caption_path):
+        with open(caption_path, encoding='utf-8') as _cf:
+            _cap = json.load(_cf)
+        _overrides = {}
+        for _field in CAPTION_IDENTITY_FIELDS:
+            _val = _cap.get(_field, '')
+            if _val and not str(_val).startswith('_'):
+                _overrides[_field] = _val
+        # Derive witness_last from witness_name if not explicit in caption
+        if 'witness_name' in _overrides and 'witness_last' not in _overrides:
+            _overrides['witness_last'] = _overrides['witness_name'].split()[-1]
+        # Derive case_short from caption if not explicit: LastName_DefendantShort
+        if 'case_short' not in _overrides and 'witness_name' in _overrides:
+            _last = _overrides['witness_name'].split()[-1].title()
+            _def  = _cap.get('defendant', config.get('defendant', ''))
+            _def_short = _def.split()[0].title() if _def else 'Unknown'
+            _overrides['case_short'] = f"{_last}_{_def_short}"
+        if _overrides:
+            config.update(_overrides)
+            print(f"[extract_config] CASE_CAPTION.json override: "
+                  f"{', '.join(_overrides.keys())}")
+
     problems = validate(config)
 
     print()
