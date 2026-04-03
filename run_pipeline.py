@@ -9,6 +9,7 @@ USAGE:
   python run_pipeline.py --skip-ai       # skip input extract + steno + AI (use existing corrected_text.txt)
   python run_pipeline.py --format-only   # format + build steps only (same as --skip-ai)
   python run_pipeline.py --from extract  # start from a specific step
+  python run_pipeline.py --with-audio    # include audio check steps after specialist verify
 
 INPUT FORMAT AUTO-DETECTION (step 1):
   Pipeline detects input format automatically — no manual switching needed.
@@ -48,8 +49,10 @@ ALL_STEPS = [
     ('ai_engine.py',         'ai',           'AI correction pass -> corrected text + correction log  [~56 min]'),
     ('verify_agent.py',      'verify',       'Pass 2: Haiku reviews HIGH corrections -> verify_log.json  [~1 min]'),
     ('apply_verify.py',      'apply_verify', 'Apply verify: re-tag DISAGREE items as [REVIEW] in corrected_text.txt'),
-    ('specialist_verify.py', 'specialist',   'Pass 3: 6-agent specialist review -> specialist_verify_log.json  [~2 min]'),
-    ('extract_config.py',    'config',       'Auto-extract case config -> depo_config.json'),
+    ('specialist_verify.py',      'specialist',    'Pass 3: 6-agent specialist review -> specialist_verify_log.json  [~2 min]'),
+    ('audio_validation.py',       'audio_check',   'Audio check: match [REVIEW] items to recording -> audio_matches.json  [--with-audio]'),
+    ('apply_audio_validation.py', 'apply_audio',   'Apply audio corrections -> corrected_text.txt + Section F in MB_REVIEW  [--with-audio]'),
+    ('extract_config.py',         'config',        'Auto-extract case config -> depo_config.json'),
     ('format_final.py',      'format',       'Format final -> FINAL_FORMATTED.txt'),
     ('build_pdf.py',         'pdf',          'Build PDF -> FINAL.pdf'),
     ('build_transcript.py',  'transcript',   'Build transcript -> FINAL_TRANSCRIPT.txt'),
@@ -60,7 +63,7 @@ ALL_STEPS = [
 ]
 
 # Steps that run after the AI pass — safe to run independently
-POST_AI_STEPS = {'verify', 'apply_verify', 'specialist', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables', 'mb_review'}
+POST_AI_STEPS = {'verify', 'apply_verify', 'specialist', 'audio_check', 'apply_audio', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables', 'mb_review'}
 
 
 def detect_input_format():
@@ -132,6 +135,12 @@ def parse_args():
         '--summary',
         action='store_true',
         help='Run AI summary step (build_summary.py). Off by default — opt-in only.'
+    )
+    parser.add_argument(
+        '--with-audio',
+        action='store_true',
+        dest='with_audio',
+        help='Run audio check steps after specialist verify. Requires audio_transcript.json on disk.'
     )
     return parser.parse_args()
 
@@ -239,6 +248,21 @@ def main():
             print(f"[SKIP] summary — off by default. Use --summary to enable.")
             print()
             continue
+
+        # Audio check is opt-in only — skip unless --with-audio flag passed
+        if key in ('audio_check', 'apply_audio') and not args.with_audio:
+            print(f"[SKIP] {key} — off by default. Use --with-audio to enable.")
+            print()
+            continue
+
+        # Audio check guard — targeted mode requires audio_transcript.json on disk
+        if key == 'audio_check' and args.with_audio:
+            if not os.path.exists('audio_transcript.json'):
+                print(f"[WARN] audio_transcript.json not found — skipping audio check.")
+                print(f"       Run full transcription first:")
+                print(f"         python audio_validation.py --full-run")
+                print()
+                continue
 
         print(f"[STEP] {description}")
         print(f"       Running {script}...")
