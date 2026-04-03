@@ -218,6 +218,17 @@ def build_system_prompt():
     if missing:
         print(f'\n  WARNING: {len(missing)} engine file(s) missing. Proceeding with available rules.\n', flush=True)
 
+    # Case-specific dictionary injection (graceful — works with or without .tlx)
+    try:
+        from load_case_dictionary import load_case_dictionary, build_dictionary_prompt_block
+        dict_words = load_case_dictionary(search_dir=engine_dir)
+        dict_block = build_dictionary_prompt_block(dict_words)
+        if dict_block:
+            sections.append(dict_block)
+            print(f'  [ENGINE] Case dictionary: {len(dict_words)} proper nouns injected into prompt', flush=True)
+    except Exception as e:
+        print(f'  [ENGINE] Case dictionary: skipped ({e})', flush=True)
+
     # API mode override is always last — highest priority
     sections.append(API_MODE_OVERRIDE)
 

@@ -447,29 +447,34 @@ def build_witness_cert(exhibits=None):
     if not exhibits:                               # no index — header goes here
         sig.append(center("C E R T I F I C A T E"))
         sig.append("")
-    sig.append(f"     I, {WITNESS_NAME}, do hereby certify that I have")
+    # Indentation measured from MB's Easley final PDF via pdfplumber (2026-04-03):
+    #   x0=102.9 → 3-char indent for "I," line
+    #   x0=81.3  → 0-char indent for body, CHECK, ( ), Dated, 2026., Reported by:
+    #   x0=110.1 → 4-char indent for "additions" / "sheet" continuation lines
+    #   x0=210.9 → 18-char indent for signature line and witness name
+    sig.append(f"   I, {WITNESS_NAME}, do hereby certify that I have")
     sig.append("read or have had read to me the foregoing transcript")
     sig.append(f"of my testimony given on {DEPO_DATE_SHORT}, and find")
     sig.append("same to be true and correct to the best of my")
     sig.append("ability and understanding with the exceptions noted")
     sig.append("on the amendment sheet;")
     sig.append("")
-    sig.append("  CHECK ONE BOX BELOW:")
-    sig.append("  ( ) Without Correction.")
-    sig.append("  ( ) With corrections, deletions, and/or")
-    sig.append("      additions as reflected on the errata")
-    sig.append("      sheet attached hereto.")
+    sig.append("CHECK ONE BOX BELOW:")
+    sig.append("( ) Without Correction.")
+    sig.append("( ) With corrections, deletions, and/or")
+    sig.append("    additions as reflected on the errata")
+    sig.append("    sheet attached hereto.")
     sig.append("")
-    sig.append("  Dated this ___ day of ___________,")
-    sig.append("  2026.")
-    sig.append("")
-    sig.append("")
-    sig.append(f"{'':20s}_________________________")
-    sig.append(f"{'':20s}{WITNESS_NAME}")
+    sig.append("Dated this ___ day of ___________,")
+    sig.append("2026.")
     sig.append("")
     sig.append("")
+    sig.append(f"{'':18s}_________________________")
+    sig.append(f"{'':18s}{WITNESS_NAME}")
     sig.append("")
-    sig.append(f"  Reported by: {REPORTER_NAME_DISPLAY}")
+    sig.append("")
+    sig.append("")
+    sig.append(f"Reported by: {REPORTER_NAME_DISPLAY}")
     pages.append(sig[:25])
 
     return pages
@@ -1214,9 +1219,12 @@ def format_testimony(raw_lines):
                 # MB format: entire colloquy block indented 14 chars from TEXT_X
                 # Speaker label and all continuation lines start at col 14
                 # Measured from MB's PDF: continuation x0=2.499" = TEXT_X + 14*0.1"
+                # Wrap at QA_LINE_WIDTH=52 (MB's CAT width), not LINE_WIDTH=64.
+                # MB's CAT: 52 chars total width - 14 indent = 38 chars content/line.
+                # Using LINE_WIDTH=64 gave us 50 chars/line — too wide, causing page undercount.
                 COLLOQUY_INDENT = 14
                 full_indented = ' ' * COLLOQUY_INDENT + full
-                wrapped = wrap_line(full_indented, width=LINE_WIDTH, hang=COLLOQUY_INDENT)
+                wrapped = wrap_line(full_indented, width=QA_LINE_WIDTH, hang=COLLOQUY_INDENT)
                 formatted.extend(wrapped)
             else:
                 formatted.append(text)

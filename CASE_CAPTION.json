@@ -1,52 +1,50 @@
 {
-  "_source": "MB final PDF — 031326yellowrock-FINAL.pdf",
-  "_note": "AUTHORITATIVE caption data. Edit this file manually. Never overwrite from steno extraction.",
-  "_last_updated": "2026-03-31",
+  "_source": "040226yellowrock-ROUGH.sgngl — extracted 2026-04-03, verified against sgngl text",
+  "_note": "AUTHORITATIVE caption data for Halprin depo. Edit manually. Never overwrite from steno.",
+  "_last_updated": "2026-04-03",
+  "_prev_caption": "Easley_YellowRock — backed up in git before this run",
 
-  "witness_name": "THOMAS L. EASLEY",
-  "witness_last": "EASLEY",
+  "witness_name": "RICK HALPRIN",
+  "witness_last": "HALPRIN",
 
   "plaintiff": "YELLOW ROCK, LLC, et al,",
   "plaintiff_role": "Plaintiffs,",
 
   "defendant": "WESTLAKE US 2 LLC f/k/a\nEAGLE US 2 LLC et al.,",
-  "defendant_role": "Defendant.",
+  "defendant_role": "Defendants.",
 
   "docket": "202-001594",
   "division": "H",
 
-  "venue_name": "THE HOUSTONIAN",
-  "location_1": "111 Post Oak Street",
-  "_location_1_note": "Street confirmed from MB final PDF. Steno had '111 North Post Oak Lane' — incorrect.",
-  "location_2": "Houston, Texas 77024",
+  "venue_name": "",
+  "_venue_note": "Depo taken at SHER GARNER offices — no named venue (e.g. hotel). Leave blank.",
+  "location_1": "909 Poydras Street",
+  "location_2": "New Orleans, Louisiana",
 
   "parish": "PARISH OF CALCASIEU",
   "court": "14TH JUDICIAL DISTRICT",
 
-  "depo_date": "Friday, March 13, 2026",
-  "depo_date_short": "March 13, 2026",
-  "depo_time": "9:07 a.m.",
+  "depo_date": "Thursday, April 2, 2026",
+  "depo_date_short": "April 2, 2026",
+  "depo_time": "9:04 a.m.",
 
   "reporter_name": "MARYBETH E. MUIR, CCR, RPR",
   "reporter_name_display": "Marybeth E. Muir, CCR, RPR",
   "reporter_credential_1": "CCR",
   "reporter_credential_2": "RPR",
 
-  "examining_atty": "MR. HOBBY",
-  "case_short": "Easley_YellowRock",
+  "examining_atty": "MR. CAUGHEY",
+  "case_short": "Halprin_YellowRock",
   "state": "LA",
   "cert_year": "2026",
 
-  "_zoom_note": "Superseded by appearances block below — zoom flag now lives on each attorney entry.",
   "zoom_attorneys": [],
 
   "also_present": [
-    "Jonathan Love",
-    "Leslie Partida, Paralegal",
-    "Bryan Smith, Videographer"
+    "Darren Guastella, Videographer"
   ],
 
-  "_appearances_note": "Full appearances sourced from MB final PDF 031326yellowrock-FINAL.pdf pages 5-10. Human-verified. CR updates this at intake for each new depo.",
+  "_appearances_note": "Sourced from 040226yellowrock-ROUGH.sgngl. Verified against binary extraction 2026-04-03. Same case as Easley but different witness date — attorney lineup has changed.",
   "appearances": [
     {
       "role": "ATTORNEY FOR PLAINTIFF",
@@ -55,13 +53,25 @@
       "address_2": "Suite 2800",
       "city_state_zip": "New Orleans, Louisiana 70112",
       "phone": "504.299.2100",
-      "emails": ["mcurtis@shergarner.com", "khandy@shergarner.com", "tmadigan@shergarner.com", "jkessler@shergarner.com", "jgarner@shergarner.com"],
+      "emails": [
+        "mcurtis@shergarner.com",
+        "tmadigan@shergarner.com",
+        "jgarner@shergarner.com",
+        "khandy@shergarner.com",
+        "bkeay@shergarner.com",
+        "jmyles@shergarner.com",
+        "strosclair@shergarner.com",
+        "lpartidadepaz@shergarner.com"
+      ],
       "attorneys": [
         {"name": "MARTHA Y. CURTIS, ESQ.", "zoom": false},
-        {"name": "KAYLYN BLOSSER HANDY, ESQ.", "zoom": false},
         {"name": "THOMAS J. MADIGAN, ESQ.", "zoom": true},
-        {"name": "JEFFREY D. KESSLER, ESQ.", "zoom": true},
-        {"name": "JAMES M. GARNER, ESQ.", "zoom": true}
+        {"name": "JAMES M. GARNER, ESQ.", "zoom": true},
+        {"name": "KAYLYN HANDY, ESQ.", "zoom": true},
+        {"name": "BRANDON KEAY, ESQ.", "zoom": true},
+        {"name": "JOHN MYLES, ESQ.", "zoom": true},
+        {"name": "SOPHIE RAE TROSCLAIR, ESQ.", "zoom": false},
+        {"name": "LESLIE PARTIDA DEPAZ, Paralegal", "zoom": false}
       ]
     },
     {
@@ -71,9 +81,9 @@
       "address_2": "Suite 5100",
       "city_state_zip": "Houston, Texas 77002-5096",
       "phone": "713.651.9366",
-      "emails": ["whobby@susmangodfrey.com"],
+      "emails": ["twilson@susmangodfrey.com"],
       "attorneys": [
-        {"name": "WALKER HOBBY, ESQ.", "zoom": false}
+        {"name": "TAYLOR H. WILSON, JR., ESQ.", "zoom": false}
       ]
     },
     {
@@ -92,12 +102,11 @@
       "role": "FOR THE DEFENDANTS, LONQUIST & COMPANY, LONQUIST FIELD SERVICE",
       "firm": "KELLY HART & HALLMAN",
       "address_1": "400 Poydras Street",
-      "address_2": "Suite 3600",
       "city_state_zip": "New Orleans, Louisiana 70130",
       "phone": "504.522.1812",
-      "emails": ["aimee.hebert@kellyhart.com"],
+      "emails": ["loulan.pitre@kellyhart.com"],
       "attorneys": [
-        {"name": "AIMEE W. HEBERT, ESQ.", "zoom": false}
+        {"name": "LOULAN J. PITRE, JR., ESQ.", "zoom": false}
       ]
     },
     {
@@ -107,9 +116,7 @@
       "city_state_zip": "Florham Park, New Jersey 07932-1054",
       "phone": "973.966.3207",
       "emails": ["asirianni@@windelsmarx.com"],
-      "attorneys": [
-        {"name": "ANTHONY F. SIRIANNI, JR., ESQ.", "zoom": true}
-      ]
+      "attorneys": "NOT PRESENT"
     },
     {
       "role": "FOR THE DEFENDANT, NATIONAL CASUALTY COMPANY",
@@ -167,9 +174,7 @@
       "city_state_zip": "New Orleans, Louisiana 70112",
       "phone": "504.799.4300",
       "emails": ["lmd@mmpfirm.com"],
-      "attorneys": [
-        {"name": "LINDSEY DEVEREUX, ESQ.", "zoom": true}
-      ]
+      "attorneys": "NOT PRESENT"
     },
     {
       "role": "FOR THE DEFENDANT, AIG ENTITIES",
@@ -189,9 +194,9 @@
       "address_2": "Suite 600",
       "city_state_zip": "Metairie, Louisiana 70005",
       "phone": "504.832.3700",
-      "emails": ["rhall@duplass.com"],
+      "emails": ["nboyer@duplass.com"],
       "attorneys": [
-        {"name": "RYAN M. HALL, ESQ.", "zoom": true}
+        {"name": "NICOLE BOYER, ESQ.", "zoom": true}
       ]
     },
     {
@@ -259,9 +264,10 @@
       "address_2": "Suite 2775",
       "city_state_zip": "New Orleans, Louisiana",
       "phone": "504.568.1990",
-      "emails": ["kmcglone@lawla.com"],
+      "emails": ["kmcglone@lawla.com", "jguichet@lawla.com"],
       "attorneys": [
-        {"name": "KEVIN MCGLONE, ESQ.", "zoom": true}
+        {"name": "KEVIN MCGLONE, ESQ.", "zoom": true},
+        {"name": "JOSEPH GUICHET, ESQ.", "zoom": true}
       ]
     },
     {
@@ -272,8 +278,10 @@
       "address_3": "Suite 1710",
       "city_state_zip": "New Orleans, Louisiana 70130",
       "phone": "504.566.8815",
-      "emails": ["istern@shmrlaw.com"],
-      "attorneys": "NOT PRESENT"
+      "emails": ["ktwenhafel@shmrlaw.com"],
+      "attorneys": [
+        {"name": "KOURTNEY TWENHAFEL, ESQ.", "zoom": true}
+      ]
     },
     {
       "role": "FOR THE DEFENDANT, ENDURANCE AMERICAN INSURANCE COMPANY",
@@ -282,7 +290,7 @@
       "address_2": "Suite 2300",
       "city_state_zip": "New Orleans, Louisiana 70163",
       "phone": "504.585.7081",
-      "emails": ["lfitzpatrick@chaffe.com"],
+      "emails": ["lisa.fitzpatrick@chaffe.com"],
       "attorneys": [
         {"name": "LISA FITZPATRICK, ESQ.", "zoom": true}
       ]
@@ -307,47 +315,42 @@
       "address_2": "Suite 2775",
       "city_state_zip": "New Orleans, Louisiana",
       "phone": "504.568.1990",
-      "emails": ["sschmeeckle@lawla.com", "zlamachio@lawla.com"],
+      "emails": ["sschmeeckle@lawla.com"],
       "attorneys": [
-        {"name": "SETH SCHMEECKLE, ESQ.", "zoom": true},
-        {"name": "ZACHARY T. LAMACHIO, ESQ.", "zoom": true}
+        {"name": "SETH SCHMEECKLE, ESQ.", "zoom": true}
       ]
     }
   ],
 
-  "_exhibit_list_note": "Sourced from MB final PDF pages 2-4. Human-verified. Page numbers reference MB's 223-page final — will be 1 page off until page count matches exactly.",
+  "_exhibit_list_note": "Sourced from 040226yellowrock-ROUGH.sgngl. Exhibit numbers 193-218 + 236 + 257. Page numbers are ROUGH DRAFT estimates — will be off until we have MB's final.",
   "exhibit_list": [
-    {"number": 127, "description": "Notice of Deposition of Matt Steele, Todd Bertolet, John Cox and Thomas Easley", "page": 17},
-    {"number": 128, "description": "E-mail chain, 9/10/18 YR-440894-895", "page": 57},
-    {"number": 129, "description": "White Top Energy, LLC Board of Directors Meeting - October 22, 2019 Minutes YR-264305-308", "page": 60},
-    {"number": 130, "description": "Letter, 1/26/21 YR-341521", "page": 65},
-    {"number": 131, "description": "E-mail chain, 6/18/21 YR-351388-389", "page": 68},
-    {"number": 132, "description": "White Top Energy, LLC Memorandum, 8/24/21 YR-360803", "page": 72},
-    {"number": 133, "description": "White Top Energy, LLC Sulphur Mines Field Operations and Financial Update, 3/27/20 YR-352461-463", "page": 94},
-    {"number": 134, "description": "E-mail chain, 10/6/20 YR-362589-590", "page": 97},
-    {"number": 135, "description": "E-mail chain, 1/22/21 YR-323003-004", "page": 100},
-    {"number": 136, "description": "E-mail chain, 6/15/21 YR-341592-593", "page": 105},
-    {"number": 137, "description": "White Top Energy, LLC Sulphur Mines Field Operations Update, 12/31/21 YR-288594-595", "page": 112},
-    {"number": 138, "description": "E-mail chain, 12/22/21 YR-361983-986", "page": 122},
-    {"number": 139, "description": "E-mail chain, 1/25/23 YR-359997", "page": 129},
-    {"number": 140, "description": "White Top Energy, LLC Rights Offering - Response Status, 1/1/23 YR-359998", "page": 134},
-    {"number": 141, "description": "E-mail chain, 12/12/22 YR-355864", "page": 151},
-    {"number": 142, "description": "E-mail chain, 12/13/22 YR-357637", "page": 153},
-    {"number": 143, "description": "White Top Energy, LLC Summary of Financial Restructure - June 2022", "page": 155},
-    {"number": 144, "description": "E-mail chain, 12/18/18 YR-355372-373", "page": 160},
-    {"number": 145, "description": "Voxler images (4)", "page": 163},
-    {"number": 146, "description": "E-mail chain, 4/2/19 YR-435045-046", "page": 166},
-    {"number": 147, "description": "E-mail chain, 1/30/19 YR-447627-630", "page": 175},
-    {"number": 148, "description": "E-mail chain, 2/5/19 YR-371094-371100", "page": 177},
-    {"number": 149, "description": "E-mail chain, 4/29/19 YR-293430", "page": 181},
-    {"number": 150, "description": "E-mail chain, 9/20/22 YR-284999-285000", "page": 188},
-    {"number": 151, "description": "E-mail chain, 5/24/21 YR-180231-232", "page": 193},
-    {"number": 152, "description": "Sulphur Dome, LLC survey YR-477049", "page": 197},
-    {"number": 153, "description": "Sulphur Dome, LLC Drill Site Pad Reservation, 2003 Lease Agreement Leased Lands", "page": 200},
-    {"number": 154, "description": "E-mail chain, 6/28/22 YR-429774-775", "page": 201},
-    {"number": 155, "description": "Yellow Rock, LLC 2020 Drilling Inventory YR-429778 (multiple pages unstamped)", "page": 204},
-    {"number": 156, "description": "Sulphur Dome, LLC Sulphur Mines Lands Project Review YR-429776-777", "page": 209},
-    {"number": 157, "description": "E-mail chain, 11/15/22 YR-454139-140", "page": 213},
-    {"number": 158, "description": "E-mail chain, 10/9/20 YR-434633-634", "page": 213}
+    {"number": 236, "description": "Curriculum Vitae", "page": 16},
+    {"number": 193, "description": "E-mail, 11/8/21", "page": 41},
+    {"number": 194, "description": "E-mail, 11/16/21 YR-312335-312339", "page": 47},
+    {"number": 195, "description": "E-mail, 11/17/21 YR-312354-312355", "page": 54},
+    {"number": 196, "description": "E-mail, 2/2/22 YR-282511-285312", "page": 60},
+    {"number": 197, "description": "6-Month Target Budget", "page": 60},
+    {"number": 198, "description": "E-mail, 3/6/22 YR-146348", "page": 69},
+    {"number": 199, "description": "E-mail, 5/9/22 YR-147547-147708", "page": 71},
+    {"number": 200, "description": "E-mail, 6/9/22 YR-183731-183746", "page": 82},
+    {"number": 201, "description": "E-mail, 12/21/22 YR-287718-287720", "page": 85},
+    {"number": 202, "description": "E-mail, 6/15/22 YR-364101-354102", "page": 91},
+    {"number": 203, "description": "E-mail, 11/23/22 YR-285267-285270", "page": 101},
+    {"number": 204, "description": "E-mail, 6/3/22 YR-316738-316739", "page": 116},
+    {"number": 205, "description": "E-mail, 6/3/22 YR-316914-316917", "page": 118},
+    {"number": 206, "description": "E-mail, 6/6/22 YR-316922-316925", "page": 122},
+    {"number": 207, "description": "E-mail, 7/6/22 YR-303674-303680", "page": 125},
+    {"number": 208, "description": "E-mail, 12/13/24 YR-313881-313886", "page": 127},
+    {"number": 209, "description": "E-mail, 11/17/22 YR-149690-149756", "page": 130},
+    {"number": 210, "description": "E-mail, 5/16/23 YR-239794-239810", "page": 142},
+    {"number": 211, "description": "E-mail, 8/3/23 YR-321891-321895", "page": 147},
+    {"number": 212, "description": "Memo, 8/7/23 YR-281246-281247", "page": 162},
+    {"number": 213, "description": "White Top Energy, LLC Sulphur Mines Field August 2023 Fund Raise YR-454055-454076", "page": 164},
+    {"number": 214, "description": "E-mail, 12/4/23 YR-227005-227006", "page": 177},
+    {"number": 215, "description": "E-mail, 3/27/24 YR-228647-228682", "page": 179},
+    {"number": 216, "description": "E-mail, 2/1/24 YR-312035", "page": 185},
+    {"number": 217, "description": "E-mail, 7/22/24 YR-230547-230569", "page": 188},
+    {"number": 218, "description": "E-mail, 8/9/24 YR-181211-181212", "page": 192},
+    {"number": 257, "description": "Native File Excel Spreadsheet No Bates Numbers", "page": 202}
   ]
 }
