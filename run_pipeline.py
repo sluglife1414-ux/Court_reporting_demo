@@ -6,12 +6,20 @@ Produces the full 10-file delivery package.
 USAGE:
   python run_pipeline.py                 # full run (all steps)
   python run_pipeline.py --preflight     # extract + steno, review metadata, confirm before AI pass
-  python run_pipeline.py --skip-ai       # skip RTF extract + steno + AI (use existing corrected_text.txt)
+  python run_pipeline.py --skip-ai       # skip input extract + steno + AI (use existing corrected_text.txt)
   python run_pipeline.py --format-only   # format + build steps only (same as --skip-ai)
   python run_pipeline.py --from extract  # start from a specific step
 
+INPUT FORMAT AUTO-DETECTION (step 1):
+  Pipeline detects input format automatically — no manual switching needed.
+  Priority: .sgngl > .rtf
+    .sgngl found (engine dir or ../mb_*/ or ../*_yellowrock*/) → extract_sgngl.py
+    .rtf found (engine dir only)                               → extract_rtf.py
+    Both found                                                 → .sgngl wins, .rtf ignored (warned)
+    Neither found                                              → pipeline stops with clear error
+
 STEPS:
-  1. extract_rtf.py          -> extracted_text.txt
+  1. extract_sgngl.py OR extract_rtf.py  -> extracted_text.txt  [auto-detected]
   2. steno_cleanup.py        -> cleaned_text.txt
   3. ai_engine.py            -> corrected_text.txt + correction_log.json   [SLOW: ~56 min]
   4. verify_agent.py         -> verify_log.json  (2nd-pass: Haiku reviews HIGH corrections)  [~1 min]
@@ -35,7 +43,7 @@ import os
 import argparse
 
 ALL_STEPS = [
-    ('extract_rtf.py',       'extract',      'Extract RTF -> raw text'),
+    ('extract_rtf.py',       'extract',      'Extract input -> raw text  [format auto-detected at runtime]'),
     ('steno_cleanup.py',     'steno',        'Steno cleanup -> cleaned text'),
     ('ai_engine.py',         'ai',           'AI correction pass -> corrected text + correction log  [~56 min]'),
     ('verify_agent.py',      'verify',       'Pass 2: Haiku reviews HIGH corrections -> verify_log.json  [~1 min]'),
@@ -52,6 +60,42 @@ ALL_STEPS = [
 
 # Steps that run after the AI pass — safe to run independently
 POST_AI_STEPS = {'verify', 'apply_verify', 'specialist', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables'}
+
+
+def detect_input_format():
+    """
+    Detect available input file and return the correct extractor script.
+
+    Priority: .sgngl > .rtf
+    Mirrors the search paths used by extract_sgngl.py auto-detection.
+
+    Returns:
+        (script, description, fmt)  where fmt is 'sgngl', 'rtf', or None
+    """
+    import glob as _glob
+
+    sgngl_candidates = (
+        _glob.glob('*.sgngl') +
+        _glob.glob('../mb_*/*.sgngl') +
+        _glob.glob('../*_yellowrock*/*.sgngl')
+    )
+    rtf_candidates = _glob.glob('*.rtf')
+
+    if sgngl_candidates:
+        sgngl_path = sgngl_candidates[0]
+        if rtf_candidates:
+            print(f"[INPUT] .sgngl found: {sgngl_path}")
+            print(f"[INPUT] .rtf also found: {rtf_candidates[0]} — .sgngl takes priority (remove .rtf if this is wrong)")
+        else:
+            print(f"[INPUT] .sgngl found: {sgngl_path}")
+        return ('extract_sgngl.py', f'Extract .sgngl -> raw text  [{sgngl_path}]', 'sgngl')
+
+    if rtf_candidates:
+        rtf_path = rtf_candidates[0]
+        print(f"[INPUT] .rtf found: {rtf_path}")
+        return ('extract_rtf.py', f'Extract RTF -> raw text  [{rtf_path}]', 'rtf')
+
+    return (None, None, None)
 
 
 def parse_args():
@@ -94,8 +138,27 @@ def parse_args():
 def main():
     args = parse_args()
 
+    # ── Step 1: detect input format and swap extractor if needed ─────────────
+    # Only needed when we're actually running the extract step.
+    # --skip-ai and --from <post-ai-step> both bypass extraction entirely.
+    needs_extract = (
+        not args.skip_ai and
+        (not args.start_from or args.start_from in ('extract', 'steno'))
+    )
+    steps_list = ALL_STEPS[:]
+    if needs_extract:
+        script, desc, fmt = detect_input_format()
+        if script is None:
+            print("[ERROR] No input file found.")
+            print("        Need a .sgngl (engine dir or ../mb_*/) or a .rtf (engine dir).")
+            print("        Copy the input file here, or run with --skip-ai if AI is already done.")
+            sys.exit(1)
+        # Swap step 1 with the detected extractor
+        steps_list[0] = (script, 'extract', desc)
+    # ─────────────────────────────────────────────────────────────────────────
+
     # Determine which steps to run
-    steps = ALL_STEPS[:]
+    steps = steps_list[:]
 
     if args.skip_ai:
         steps = [(s, k, d) for s, k, d in steps if k in POST_AI_STEPS]
@@ -143,7 +206,7 @@ def main():
         print("=" * 60)
         print("PREFLIGHT MODE — review metadata before AI pass")
         print("=" * 60)
-        for script, key, desc in ALL_STEPS:
+        for script, key, desc in steps_list:
             if key not in ('extract', 'steno'):
                 continue
             print(f"[STEP] {desc}")
@@ -166,7 +229,7 @@ def main():
         if confirm != 'y':
             print("[PREFLIGHT] Stopped. Run 'python run_pipeline.py --from ai' when ready.")
             sys.exit(0)
-        steps = [(s, k, d) for s, k, d in ALL_STEPS if k not in ('extract', 'steno')]
+        steps = [(s, k, d) for s, k, d in steps_list if k not in ('extract', 'steno')]
         print()
 
     for script, key, description in steps:
