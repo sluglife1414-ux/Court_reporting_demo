@@ -138,11 +138,32 @@ for i, raw_line in enumerate(_clines):
         else:
             # Get text before the [REVIEW] tag for page lookup
             before = raw_line.split('[REVIEW')[0].strip()
-            snippet = before[-50:] if len(before) > 10 else raw_line[:50]
+
+            # If text before tag is too short or IS a [REVIEW] tag itself,
+            # look at surrounding lines for a usable search phrase
+            def is_usable(s):
+                return (len(s.strip()) >= 15
+                        and not s.strip().startswith('[REVIEW')
+                        and s.strip() not in ('Q.', 'A.', 'Q', 'A'))
+
+            if not is_usable(before):
+                # Scan surrounding lines for context
+                context = ''
+                for offset in [-2, -1, 1, 2]:
+                    idx2 = i + offset
+                    if 0 <= idx2 < len(_clines):
+                        candidate = re.sub(r'\[REVIEW[^\]]*\]', '', _clines[idx2]).strip()
+                        if is_usable(candidate):
+                            context = candidate
+                            break
+                snippet = context[:68] if context else before[:68]
+            else:
+                snippet = before[-68:]
+
             pg, ln = find_page_for_text(snippet)
             review_actionable.append({
                 'note':    tag_note[:100],
-                'snippet': (before[:65] if before else raw_line[:65]),
+                'snippet': snippet[:68],
                 'page':    pg,
                 'line':    ln,
             })
@@ -207,6 +228,61 @@ def section(title):
     add('', DBL, title, DBL, '')
 
 
+# ── Separate actionable items from audio-only (dollar amounts, etc.) ──────────
+AUDIO_KEYWORDS = ['dollar amount missing', 'amount missing', 'figure missing',
+                  'number missing', 'percent missing']
+
+review_needs_audio   = [it for it in review_actionable
+                        if any(k in it['note'].lower() for k in AUDIO_KEYWORDS)]
+review_can_answer    = [it for it in review_actionable
+                        if it not in review_needs_audio]
+audio_total          = review_audio_count + len(review_needs_audio)
+
+
+# ── Item-type plain English labels ────────────────────────────────────────────
+
+def plain_english_label(note):
+    """Convert engine-speak to plain English MB will understand."""
+    n = note.lower()
+    if 'bates' in n:
+        return 'Document reference number looks wrong — please verify'
+    if 'exhibit' in n and ('gap' in n or 'sequence' in n or 'jump' in n):
+        return 'Exhibit numbers skip a range — were these marked in this depo?'
+    if 'exhibit' in n and ('duplicate' in n or 'double' in n):
+        return 'Same exhibit number appears twice — please confirm'
+    if 'exhibit' in n and 'number' in n:
+        return 'Exhibit number may have a steno error — please verify'
+    if 'wipple' in n or ('proper name' in n or 'name' in n and 'spelling' in n):
+        return 'Name spelling uncertain — not in case dictionary, please verify'
+    if 'self-correct' in n or ('bart' in n and 'barrett' in n) or 'corrected to' in n:
+        return 'Witness appears to have self-corrected — which name/word is right?'
+    if 'steno line-number artifact' in n or 'line number artifact' in n:
+        return 'A CAT line number got embedded in testimony text — confirm removal'
+    if 'speaker' in n and ('unclear' in n or 'unknown' in n or 'attribution' in n):
+        return 'Could not tell if this line is a Q or an A — please identify speaker'
+    if 'applied' in n and 'implied' in n:
+        return 'Two similar words appear — which did the witness/attorney say?'
+    if 'missing word' in n or 'word missing' in n or 'word appears missing' in n:
+        return 'A word appears to be missing — what should it say?'
+    if 'videographer' in n:
+        return 'Videographer introduction may be incomplete — please verify'
+    if 'truncated' in n or 'full' in n and 'bates' in n:
+        return 'Reference number appears cut off — please provide complete number'
+    if 'math' in n or 'total' in n:
+        return 'Numbers don\'t add up — please verify the figures'
+    if 'date' in n:
+        return 'Date appears incomplete or fragmented — please verify'
+    if 'duplicate' in n or 'appears twice' in n:
+        return 'Something appears twice — confirm which is correct'
+    if 'e-mail address' in n or 'email' in n:
+        return 'An email address appears in testimony text — is this correct?'
+    return 'Engine was uncertain here — please review and correct'
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# BUILD THE DOCUMENT
+# ═════════════════════════════════════════════════════════════════════════════
+
 # HEADER
 add(
     DBL,
@@ -215,108 +291,165 @@ add(
     f'  Prepared for: {REPORTER}',
     DBL,
     '',
-    f'  Total pages:        {total_pages}',
-    f'  Engine corrections: {total_corr:,}  '
-    f'({high_count:,} applied automatically)',
-    f'  Items for your eyes: {len(review_actionable)} now '
-    f'+ {review_audio_count} during audio pass',
-    '',
-    '  WHAT TO DO:',
-    '  1. Open the PDF alongside this file.',
-    '  2. Section A — go to each page, confirm it looks right (5 pages).',
-    '  3. Section B — review each flagged item, write your answer.',
-    '  4. Section C — filler words: remove them all, or keep some?',
-    '  5. Sign off at the bottom and reply.',
-    '',
+    '  This file tells you exactly what to look at.',
     '  You do NOT need to read all 241 pages.',
-    '  Audio-dependent items are handled in your normal audio pass.',
+    '  Open the PDF alongside this file and work through each section.',
+    '',
+    f'  Total transcript pages:  {total_pages}',
+    f'  Items needing your eyes: {len(review_can_answer)} (Section B)',
+    f'  Audio pass items:        {audio_total} (Section D — your normal pass)',
+    '',
+    '  HOW TO USE THIS:',
+    '  Step 1 — Section A: Go to 5 specific pages in the PDF.',
+    '           Confirm each one looks right. Note anything wrong.',
+    '  Step 2 — Section B: For each item, find the page in the PDF.',
+    '           Write your answer in the ANSWER line.',
+    '  Step 3 — Section C: One filler-word question. Circle your choice.',
+    '  Step 4 — Section E: Sign off and reply to Scott.',
+    '',
+    '  Questions? Call or text Scott.',
+    '',
+)
+
+# FORMAT QUESTION — (Zoom) vs (Via Zoom)
+add(
+    SEP,
+    '  QUICK FORMAT QUESTION (circle one):',
+    '',
+    f'  Attorneys who appeared remotely are listed as:',
+    f'',
+    f'      THOMAS J. MADIGAN, ESQ.  (Zoom)',
+    f'',
+    f'  Should this be:',
+    f'      (A)  (Zoom)       ← current',
+    f'      (B)  (Via Zoom)   ← alternate',
+    f'',
+    f'  Your choice: _______',
+    f'  (Whichever you pick, we apply it to every depo going forward.)',
+    SEP,
     '',
 )
 
 # SECTION A — SPOT CHECK
-section(f'SECTION A — SPOT CHECK  (5 pages)')
-add('  Open the PDF to each page. Confirm it looks right.',
-    '  Write any corrections in the NOTES line.', '')
+section('SECTION A — 5 PAGES TO CHECK  (about 5 minutes)')
+add(
+    '  Open the PDF. Jump to each page number listed.',
+    '  Read that page. If something looks wrong, write it in NOTES.',
+    '  If it looks right, leave NOTES blank and move on.',
+    '',
+)
 
 for sc in SPOT_CHECKS:
     add(
-        f'  ┌─ PDF PAGE {sc["page"]}  —  {sc["label"]}',
-        f'  │  CHECK: {sc["check"]}',
-        f'  │  NOTES: _____________________________________________',
+        f'  ┌─ GO TO PAGE {sc["page"]}  —  {sc["label"]}',
+        f'  │',
+        f'  │  What to check:  {sc["check"]}',
+        f'  │',
+        f'  │  NOTES: _________________________________________________',
         f'  └',
         '',
     )
 
-# SECTION B — ACTIONABLE REVIEW ITEMS
-section(f'SECTION B — ITEMS NEEDING YOUR ANSWER  ({len(review_actionable)} items)')
+# SECTION B — ITEMS NEEDING HER ANSWER
+section(f'SECTION B — {len(review_can_answer)} ITEMS THAT NEED YOUR ANSWER  (about 10 minutes)')
 
-if not review_actionable:
-    add('  No items require your input right now. Engine was confident.', '')
+if not review_can_answer:
+    add('  Nothing flagged. Engine was confident throughout.', '')
 else:
     add(
-        '  These are places where the engine flagged something specific.',
-        '  Find the page in the PDF. Write the correct answer.',
+        '  For each item below:',
+        '    1. Find the page in the PDF (page number is listed).',
+        '    2. Read what it says.',
+        '    3. Write the correct answer in the ANSWER line.',
+        '       If it looks fine as-is, write: OK',
+        '       If you need audio to answer, write: AUDIO',
+        '',
+        '  (Items that can only be answered with audio are in Section D.)',
         '',
     )
-    for n, item in enumerate(review_actionable, 1):
-        pg_ref = f'PDF page {item["page"]}, line {item["line"]}' \
-                 if item['page'] else 'location — search PDF'
+    for n, item in enumerate(review_can_answer, 1):
+        search_phrase = item["snippet"].strip()
+        # Never show a [REVIEW tag as the search phrase — it's not in the PDF
+        if search_phrase.startswith('[REVIEW') or len(search_phrase) < 8:
+            search_phrase = '(see note below — search surrounding context)'
+        pg_ref = (f'Go to PDF page {item["page"]}, line {item["line"]}'
+                  if item['page'] else
+                  f'Search PDF for: "{search_phrase[:50]}"')
+        label  = plain_english_label(item['note'])
         add(
-            f'  B-{n:02d}  {pg_ref}',
-            f'        TEXT:    {item["snippet"][:65]}',
-            f'        ISSUE:   {item["note"][:65]}',
-            f'        ANSWER:  _____________________________________________',
+            f'  ── ITEM B-{n:02d} {"─" * (W - 12)}',
+            f'  {pg_ref}',
+            f'',
+            f'  What the transcript says:',
+            f'    {item["snippet"][:68]}',
+            f'',
+            f'  What to check:',
+            f'    {label}',
+            f'',
+            f'  ANSWER: ________________________________________________',
             '',
         )
 
 # SECTION C — FILLER WORDS
-section(f'SECTION C — FILLER WORDS  ({filler_count} found in testimony)')
+section(f'SECTION C — FILLER WORDS  (one question)')
 add(
-    f'  The engine found {filler_count} filler words (uhmm, uh-huh used as filler, etc.)',
-    '  in the testimony. Your call:',
+    f'  The engine found {filler_count} places in the testimony where the witness said',
+    f'  "uhmm" or similar filler words.',
     '',
-    '  ( ) Remove all filler words  — cleaner transcript',
-    '  ( ) Keep all filler words    — verbatim record',
-    '  ( ) Remove only "uhmm"       — keep other fillers',
-    '  ( ) I will mark them individually in the PDF',
+    '  A filler word is a sound a witness makes while thinking — not actual',
+    '  testimony. Examples:  "Uhmm, I believe so."  /  "Well, uh, I think..."',
     '',
-    '  NOTE: Uh-huh (yes) and Huh-uh (no) as answers are KEPT regardless.',
+    '  NOTE: "Uh-huh" meaning YES and "Huh-uh" meaning NO are kept always.',
+    '  Those are real answers. Only true fillers are in scope here.',
+    '',
+    '  What would you like us to do with filler words?  (circle one)',
+    '',
+    '    ( ) Remove all filler words     — cleaner, most common choice',
+    '    ( ) Keep all filler words        — verbatim record',
+    '    ( ) Remove "uhmm" only           — keep other fillers',
+    '    ( ) I will mark them myself      — send me the full list',
+    '',
+    '  Your choice applies to this depo and all future depos.',
     '',
 )
 
-# SECTION D — AUDIO PASS ITEMS
-section(f'SECTION D — AUDIO PASS  ({review_audio_count} items deferred)')
+# SECTION D — AUDIO PASS
+section(f'SECTION D — AUDIO PASS  ({audio_total} items — your normal review)')
 add(
-    f'  {review_audio_count} items in this transcript need audio to resolve.',
-    '  These are heavy steno reconstructions where the engine could not',
-    '  confirm what was said. They are flagged [REVIEW] in the source.',
+    '  These items cannot be resolved without listening to the recording.',
+    '  They include:',
+    '    - Words the steno machine dropped entirely',
+    '    - Sentences the engine had to reconstruct from fragments',
+    '    - Dollar amounts and numbers the steno did not capture',
     '',
-    '  You do not need to address these now.',
-    '  Handle in your normal audio review pass.',
+    '  This is your normal audio review pass — nothing new here.',
+    '  Handle these the same way you always have.',
     '',
-    '  If you want a full list, ask Scott for the detailed QA log.',
+    '  If you want the full list of these items, ask Scott.',
     '',
 )
 
 # SECTION E — SIGN-OFF
 section('SECTION E — SIGN-OFF')
 add(
-    f'  Reviewed by: {REPORTER}',
-    f'  Date:        ___________________________',
+    f'  When you are done, fill in below and reply to Scott.',
     '',
-    '  Status:',
+    f'  Reviewed by:  {REPORTER}',
+    f'  Date:         _________________________________',
     '',
-    '    ( ) APPROVED — deliver as-is',
-    '    ( ) APPROVED WITH CORRECTIONS — see notes above',
-    '    ( ) NEEDS REWORK — contact Scott',
+    '  How does the transcript look overall?  (circle one)',
     '',
-    '  Comments:',
+    '    ( ) GOOD — deliver with my corrections noted above',
+    '',
+    '    ( ) NEEDS WORK — call me before delivering',
+    '',
+    '  Anything else I should know:',
     '  __________________________________________________________________',
     '  __________________________________________________________________',
     '',
     DBL,
-    f'  {CASE_SHORT}  |  Generated {date.today().strftime("%B %d, %Y")}',
-    f'  Engine: MASTER_DEPOSITION_ENGINE v4  |  Not a legal document',
+    f'  {CASE_SHORT}  |  {date.today().strftime("%B %d, %Y")}',
+    f'  This document is a reporter review aid. Not a legal document.',
     DBL,
 )
 
