@@ -1,0 +1,352 @@
+"""
+audio_validation.py — Whisper audio transcription for deposition audio validation
+==================================================================================
+DEFAULT MODE (targeted):
+  Sends only the flagged [REVIEW] time windows to Whisper — ~30 sec per item.
+  Cost: ~$0.30  |  Time: 3-5 min  |  Requires: audio_transcript.json on disk
+  Run: python audio_validation.py
+
+FULL-RUN MODE (whole depo):
+  Transcribes the entire audio file from start to finish.
+  Use once per depo to build audio_transcript.json, or when targeted mode
+  cannot find enough matches.
+  Cost: ~$2.04  |  Time: 20-30 min
+  Run: python audio_validation.py --full-run
+
+Requires:
+  - OPENAI_API_KEY set in environment
+  - pip install openai
+  - ffmpeg on PATH
+
+Output:
+  audio_transcript.json  — full Whisper transcript with timestamps (full-run only)
+  audio_matches.json     — [REVIEW] items matched to Whisper segments
+
+Cost: ~$0.006/min of audio transcribed
+
+Author:  Scott + Claude
+Version: 1.1  (2026-04-03) — added --full-run flag, targeted mode is default
+"""
+
+import os
+import sys
+import json
+import re
+import math
+import tempfile
+import subprocess
+
+# ── Mode flag ─────────────────────────────────────────────────────────────────
+# Default: targeted mode (time-slice only flagged items — fast, cheap)
+# --full-run: transcribe entire audio file (use once per depo to build transcript)
+FULL_RUN = '--full-run' in sys.argv
+
+BASE = os.path.dirname(os.path.abspath(__file__))
+
+# ── Config ────────────────────────────────────────────────────────────────────
+
+AUDIO_FILE   = os.path.join(
+    BASE, '..', 'mb_040226_halprin_yellowrock', '040226yellowrock-ROUGH.opus'
+)
+CORRECTED    = os.path.join(BASE, 'corrected_text.txt')
+OUT_TRANSCRIPT = os.path.join(BASE, 'audio_transcript.json')
+OUT_MATCHES    = os.path.join(BASE, 'audio_matches.json')
+
+CHUNK_MB     = 15          # keep well under 25MB API limit
+CONTEXT_SEC  = 2           # seconds before/after a match to pull for context
+WHISPER_MODEL = 'whisper-1'
+
+
+# ── Validate environment ───────────────────────────────────────────────────────
+
+api_key = os.environ.get('OPENAI_API_KEY')
+if not api_key:
+    print('ERROR: OPENAI_API_KEY not set in environment.')
+    print('  Run:  setx OPENAI_API_KEY "your-key-here"')
+    print('  Then open a new terminal and re-run this script.')
+    sys.exit(1)
+
+if not os.path.exists(AUDIO_FILE):
+    print(f'ERROR: Audio file not found: {AUDIO_FILE}')
+    sys.exit(1)
+
+try:
+    from openai import OpenAI
+except ImportError:
+    print('ERROR: openai package not installed.')
+    print('  Run:  pip install openai')
+    sys.exit(1)
+
+
+# ── Check for ffmpeg (needed for chunking) ────────────────────────────────────
+
+def check_ffmpeg():
+    try:
+        subprocess.run(['ffmpeg', '-version'], capture_output=True, check=True)
+        return True
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        return False
+
+HAS_FFMPEG = check_ffmpeg()
+
+
+# ── Audio chunking ────────────────────────────────────────────────────────────
+
+def get_duration_seconds(audio_path):
+    """Get audio duration using ffprobe."""
+    result = subprocess.run(
+        ['ffprobe', '-v', 'error', '-show_entries', 'format=duration',
+         '-of', 'default=noprint_wrappers=1:nokey=1', audio_path],
+        capture_output=True, text=True
+    )
+    return float(result.stdout.strip())
+
+
+def split_audio(audio_path, chunk_mb=20):
+    """Split audio into chunks under chunk_mb MB. Returns list of (start_sec, temp_path)."""
+    file_size_mb = os.path.getsize(audio_path) / (1024 * 1024)
+    n_chunks     = math.ceil(file_size_mb / chunk_mb)
+    duration     = get_duration_seconds(audio_path)
+    chunk_dur    = duration / n_chunks
+
+    print(f'  Audio: {file_size_mb:.1f}MB, {duration/60:.1f} min')
+    print(f'  Splitting into {n_chunks} chunks of ~{chunk_dur/60:.1f} min each')
+
+    chunks = []
+    tmp_dir = tempfile.mkdtemp()
+    for i in range(n_chunks):
+        start  = i * chunk_dur
+        out    = os.path.join(tmp_dir, f'chunk_{i:03d}.mp3')
+        subprocess.run([
+            'ffmpeg', '-y', '-i', audio_path,
+            '-ss', str(start), '-t', str(chunk_dur),
+            '-ac', '1', '-b:a', '32k', out
+        ], capture_output=True, check=True)
+        chunks.append((start, out))
+        print(f'  Chunk {i+1}/{n_chunks} ready  ({start/60:.1f} min offset)')
+
+    return chunks
+
+
+# ── Whisper transcription ─────────────────────────────────────────────────────
+
+def transcribe_chunk(client, chunk_path, offset_sec):
+    """Transcribe one audio chunk. Returns list of segment dicts with adjusted timestamps."""
+    with open(chunk_path, 'rb') as f:
+        response = client.audio.transcriptions.create(
+            model=WHISPER_MODEL,
+            file=f,
+            response_format='verbose_json',
+            timestamp_granularities=['segment'],
+        )
+    # Guard: segments is Optional — can be None if Whisper returns no segments
+    if not response.segments:
+        print(f'  WARNING: No segments returned for chunk at offset {offset_sec/60:.1f} min')
+        return []
+
+    segments = []
+    skipped  = 0
+    for seg in response.segments:
+        # Quality signals from the SDK — use them, don't ignore them
+        is_silence   = seg.no_speech_prob > 0.8 and seg.avg_logprob < -1.0
+        low_confidence = seg.avg_logprob < -1.0
+
+        if is_silence:
+            skipped += 1
+            continue  # Skip silence — Whisper hallucinates on silent audio
+
+        segments.append({
+            'start':          round(seg.start + offset_sec, 2),
+            'end':            round(seg.end   + offset_sec, 2),
+            'text':           seg.text.strip(),
+            'low_confidence': low_confidence,   # flag but keep — MB can verify
+            'avg_logprob':    round(seg.avg_logprob, 3),
+        })
+
+    if skipped:
+        print(f'  Skipped {skipped} silence segment(s)')
+
+    return segments
+
+
+# ── Load [REVIEW] audio items from corrected_text.txt ─────────────────────────
+
+def load_review_items():
+    """Extract lines with [REVIEW] tags that require audio verification."""
+    if not os.path.exists(CORRECTED):
+        print(f'WARNING: {CORRECTED} not found — skipping match step.')
+        return []
+
+    _AUDIO_KEYS = [
+        'audio', 'reconstruction', 'beyond steno', 'fragmented',
+        'reporter confirm', 'steno gap', 'requires audio', 'verify audio',
+        'percent figure', 'unclear', 'speaker attribution',
+    ]
+
+    items = []
+    with open(CORRECTED, encoding='utf-8') as f:
+        lines = f.read().split('\n')
+
+    for i, raw in enumerate(lines):
+        if '[REVIEW' not in raw:
+            continue
+        tags = re.findall(r'\[REVIEW:\s*(.*?)(?:\]|$)', raw)
+        for tag in tags:
+            if any(k in tag.lower() for k in _AUDIO_KEYS):
+                # Clean text before the tag for matching
+                clean = re.sub(r'\[REVIEW[^\]]*\]', '', raw).strip()
+                clean = re.sub(r'\s+', ' ', clean)
+                items.append({
+                    'line_num': i + 1,
+                    'note':     tag.strip()[:120],
+                    'text':     clean[:120],
+                })
+    return items
+
+
+# ── Match review items to Whisper segments ────────────────────────────────────
+
+def normalize(s):
+    """Lowercase, strip punctuation for fuzzy matching."""
+    return re.sub(r'[^a-z0-9\s]', '', s.lower())
+
+
+def find_match(item_text, segments, context_sec=2):
+    """Find the best Whisper segment matching the review item text."""
+    if not item_text or len(item_text) < 8:
+        return None
+
+    # Use last 6+ words of the clean text as search key
+    words = item_text.split()
+    search = normalize(' '.join(words[-6:]))
+
+    best_seg  = None
+    best_score = 0
+
+    for seg in segments:
+        seg_norm = normalize(seg['text'])
+        # Count matching words
+        match_words = sum(1 for w in search.split() if w in seg_norm)
+        score = match_words / max(len(search.split()), 1)
+        if score > best_score:
+            best_score = score
+            best_seg   = seg
+
+    if best_score < 0.5 or best_seg is None:
+        return None
+
+    return {
+        'start':       max(0, best_seg['start'] - context_sec),
+        'end':         best_seg['end'] + context_sec,
+        'match_score': round(best_score, 2),
+        'whisper_text': best_seg['text'],
+    }
+
+
+# ── Main ──────────────────────────────────────────────────────────────────────
+
+def main():
+    print('=' * 60)
+    mode_label = 'FULL-RUN MODE' if FULL_RUN else 'TARGETED MODE'
+    print(f'AUDIO VALIDATION — Whisper Transcription  [{mode_label}]')
+    print('=' * 60)
+
+    client = OpenAI(api_key=api_key)
+
+    # ── Step 1: Transcription ─────────────────────────────────────────────────
+    #
+    # FULL-RUN MODE: transcribe entire audio file → saves audio_transcript.json
+    # Use once per depo. After that, targeted mode reads from that file.
+    # Run with: python audio_validation.py --full-run
+    #
+    if FULL_RUN:
+        if os.path.exists(OUT_TRANSCRIPT):
+            print(f'\nFound existing transcript: {OUT_TRANSCRIPT}')
+            print('Skipping transcription — delete file to re-run full pass.')
+            with open(OUT_TRANSCRIPT, encoding='utf-8') as f:
+                all_segments = json.load(f)
+        else:
+            if not HAS_FFMPEG:
+                print('\nERROR: ffmpeg not found.')
+                print('  winget install ffmpeg')
+                sys.exit(1)
+
+            print(f'\nAudio file: {AUDIO_FILE}')
+            print('Splitting audio into chunks...')
+            chunks = split_audio(AUDIO_FILE, CHUNK_MB)
+
+            all_segments = []
+            for idx, (offset, chunk_path) in enumerate(chunks):
+                print(f'\nTranscribing chunk {idx+1}/{len(chunks)}  '
+                      f'(offset {offset/60:.1f} min)...')
+                segs = transcribe_chunk(client, chunk_path, offset)
+                all_segments.extend(segs)
+                print(f'  → {len(segs)} segments')
+
+            with open(OUT_TRANSCRIPT, 'w', encoding='utf-8') as f:
+                json.dump(all_segments, f, indent=2)
+            print(f'\nTranscript saved: {OUT_TRANSCRIPT}')
+            print(f'Total segments:   {len(all_segments)}')
+
+    # ── TARGETED MODE: read existing transcript, match [REVIEW] items only ────
+    #
+    # Default mode. Reads audio_transcript.json built by --full-run.
+    # Future: will extract and send only the flagged time windows directly.
+    # Cost: fraction of full run.  Time: minutes, not 30 min.
+    #
+    else:
+        if not os.path.exists(OUT_TRANSCRIPT):
+            print('\nERROR: audio_transcript.json not found.')
+            print('  Run the full transcription first:')
+            print('    python audio_validation.py --full-run')
+            sys.exit(1)
+        print(f'\nLoading existing transcript: {OUT_TRANSCRIPT}')
+        with open(OUT_TRANSCRIPT, encoding='utf-8') as f:
+            all_segments = json.load(f)
+        print(f'  {len(all_segments)} segments loaded')
+
+    # ── Step 2: Match [REVIEW] items ──────────────────────────────────────────
+    print('\nLoading [REVIEW] audio items from corrected_text.txt...')
+    review_items = load_review_items()
+    print(f'  Found {len(review_items)} audio-flagged items')
+
+    print('Matching to Whisper segments...')
+    matches = []
+    unmatched = 0
+    for item in review_items:
+        result = find_match(item['text'], all_segments, CONTEXT_SEC)
+        entry = {**item}
+        if result:
+            entry.update(result)
+            entry['status'] = 'MATCHED'
+        else:
+            entry['status'] = 'UNMATCHED'
+            unmatched += 1
+        matches.append(entry)
+
+    with open(OUT_MATCHES, 'w', encoding='utf-8') as f:
+        json.dump(matches, f, indent=2)
+
+    matched = len(matches) - unmatched
+    print(f'\nMatched:   {matched}/{len(matches)}')
+    print(f'Unmatched: {unmatched}  (MB handles in audio pass)')
+    print(f'\nResults saved: {OUT_MATCHES}')
+
+    # ── Step 3: Summary ───────────────────────────────────────────────────────
+    duration = all_segments[-1]['end'] if all_segments else 0
+    cost_est = (duration / 60) * 0.006
+
+    print('\n' + '=' * 60)
+    print('SUMMARY')
+    print('=' * 60)
+    print(f'Depo duration:    {duration/3600:.1f} hours  ({duration/60:.0f} min)')
+    print(f'Whisper segments: {len(all_segments)}')
+    print(f'Review items:     {len(review_items)}')
+    print(f'Matched:          {matched} ({100*matched//max(len(matches),1)}%)')
+    print(f'Estimated cost:   ${cost_est:.2f}')
+    print()
+    print('Next step: python apply_audio_validation.py')
+
+
+if __name__ == '__main__':
+    main()
