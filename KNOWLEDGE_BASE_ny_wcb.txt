@@ -1,0 +1,118 @@
+================================================================================
+KNOWLEDGE BASE — NEW YORK WCB DEPOSITION ENGINE (AD D'ALOTTO)
+Feeds into: MASTER_DEPOSITION_ENGINE_v4.1.md (read at Layer 1, before all processing)
+Purpose: Accumulated lessons from real NY WC test runs. Each entry is a validated
+         correction to engine behavior. Overrides engine defaults where noted.
+================================================================================
+INSTRUCTION TO ENGINE: Read this file in full before processing any transcript.
+Every rule here reflects a confirmed error from a scored run. Apply these rules
+with the same authority as the state module.
+================================================================================
+
+REPORTER: ALICIA D'ALOTTO | STATE: NEW YORK | TYPE: WORKERS' COMPENSATION
+
+DO NOT apply Louisiana KB rules to NY WC depositions.
+Louisiana objection format, terminology, and state-specific rules do NOT apply here.
+
+================================================================================
+LEARNED FROM: Run NY-001 | Wade Pearce WCB depo | Date: 2026-03-30
+Score: 91.9% testimony | Overall: 38.5% (dragged by formatting structure, not AI)
+Source: compare_accuracy.py vs AD's finished Wade_Pearce depo (0323Wade2026wcbg3097551.pdf)
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+KB-NY-001 | SWORN vs AFFIRMED — CRITICAL VERBATIM RULE
+Priority: CRITICAL | Overrides: verbatim instinct for oath language
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine wrote "Having been first duly sworn" — AD's finished transcript
+says "Having been first duly affirmed." Verbatim rule incorrectly blocked fix
+because steno said "sworn" and AI treated it as spoken testimony.
+
+CRITICAL DISTINCTION — READ THIS BEFORE APPLYING VERBATIM RULE:
+  Oath language ("Having been first duly sworn/affirmed...") is REPORTER
+  BOILERPLATE. It is NOT witness testimony. It is NOT something any witness
+  said under oath. It is language the court reporter writes to certify how
+  the witness was placed under obligation before testifying.
+
+  The verbatim rule applies to WITNESS SPEECH only.
+  The verbatim rule does NOT apply to reporter boilerplate.
+  Oath language is reporter's responsibility — correct it per reporter's practice.
+
+RULE: For AD D'Alotto NY WC depositions, ALWAYS use "affirmed":
+  CORRECT:   "Having been first duly affirmed before a Notary Public..."
+  INCORRECT: "Having been first duly sworn before a Notary Public..."
+
+  - If steno says "sworn" in the oath block → CORRECT to "affirmed". Not a verbatim violation.
+  - If steno says "affirmed" → keep as-is.
+  - This applies everywhere the oath appears: appearances section, oath block, certificate.
+  - Do NOT insert [REVIEW] — this is a known rule, not an ambiguous case.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-NY-002 | DOUBLE DASH — NOT EM DASH
+Priority: HIGH | Overrides: master engine default em dash rule
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine used em dash (—) for interruptions and trailing speech.
+AD's finished transcript uses double dash (--) instead.
+
+RULE: In AD D'Alotto NY WC depositions, use double dash (--) NOT em dash (—).
+  CORRECT:   "I was -- I don't recall."
+  INCORRECT: "I was — I don't recall."
+
+This overrides the master engine's default em dash behavior for this reporter.
+Apply to: interrupted speech, mid-sentence breaks WHERE A DASH IS WARRANTED.
+
+IMPORTANT — DO NOT SUBSTITUTE DASHES FOR MISSING CONTENT:
+  If the steno is unclear or a word is missing, do NOT insert "--" as a
+  placeholder. Either reconstruct the word from context (HIGH confidence) or
+  insert [REVIEW: word unclear]. A dash is punctuation, not a gap filler.
+  AD uses commas far more than dashes for pauses and continuations.
+  When in doubt between a comma and a dash — use a comma.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-NY-003 | YEAR PLACEHOLDER IN CERTIFICATE
+Priority: MEDIUM | Format rule
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine wrote actual year "2026" in the reporter's certificate.
+AD's finished transcript uses "20___" as a year placeholder (to be filled in
+at signing).
+
+RULE: In the reporter's certificate signature block, use "20___" NOT the actual
+year. AD fills this in manually at time of signing.
+  CORRECT:   "...this 26th day of March, 20___."
+  INCORRECT: "...this 26th day of March, 2026."
+
+────────────────────────────────────────────────────────────────────────────────
+KB-NY-004 | DATE FORMAT IN CERTIFICATE — SPACED LETTERS
+Priority: MEDIUM | Format rule
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine formatted the date normally. AD's cert uses spaced-letter
+format for the month and day: "2 6 th" and "M a r c h".
+
+RULE: In the reporter's certificate, the day and month use spaced characters:
+  CORRECT:   "2 6 th day of M a r c h"
+  INCORRECT: "26th day of March"
+
+This is AD's personal style for the certificate signature block.
+TODO: Confirm exact spacing pattern from additional AD samples.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-NY-005 | RUNNING HEADER BLEED — KNOWN BUG (OPEN)
+Priority: HIGH | Bug in format_final.py / compare_accuracy.py
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: WCB case number (e.g., "WCB G309 7551") is appearing as content
+insertions throughout testimony pages in compare_accuracy.py output. The
+running header is bleeding into section text content.
+
+ROOT CAUSE: Unknown — either format_final.py is embedding the header in the
+wrong location in the output text, or compare_accuracy.py is not correctly
+stripping running headers before comparison.
+
+IMPACT: Artificially inflates insertion count in accuracy reports.
+STATUS: Open bug as of 2026-03-30. Investigate format_final.py header injection
+and compare_accuracy.py header-stripping logic.
+
+DO NOT confuse header-bleed insertions with actual content errors.
+
+================================================================================
+END OF KB — NY-001 through NY-005 (added 2026-03-30, Wade run)
+================================================================================

@@ -1,0 +1,11 @@
+{
+  "reporter_id":   "dalotto_ny_001",
+  "reporter_name": "Alicia D'Alotto",
+  "state_label":   "New York WCB",
+  "modules": {
+    "state_module":   "STATE_MODULE_ny_wcb.md",
+    "house_style":    "HOUSE_STYLE_MODULE_dalotto.md",
+    "knowledge_base": "KNOWLEDGE_BASE_ny_wcb.txt",
+    "dictionary":     null
+  }
+}

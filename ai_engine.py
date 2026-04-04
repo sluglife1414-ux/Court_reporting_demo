@@ -95,9 +95,9 @@ WHAT YOU DO — AND ONLY WHAT YOU DO:
        - Layer 9:  Edge case engine — log any edge cases encountered
        - Layer 10: Flag types — use exact flag text formats
        - Layer 11: Self-audit checklist — run mentally before returning JSON
-       - State Module (Louisiana Engineering) — all rules, esp. objections
-       - House Style Module (Muir) — E-mail, em dash, objection format
-       - Knowledge Base (KB-001 through KB-015) — ALL 15 RULES, every chunk
+       - State Module (loaded for this run) — all rules, esp. objections
+       - House Style Module (loaded for this run) — reporter-specific style rules
+       - Knowledge Base (loaded for this run) — ALL KB RULES, every chunk
        - Gregg Reference Manual — punctuation rules as applicable
        - Margie Wakeman Wells — court reporting style as applicable
   3. Return ONLY valid JSON in the exact format specified below.
@@ -179,31 +179,108 @@ DO NOT:
 # SYSTEM PROMPT BUILDER
 # ─────────────────────────────────────────────────────────────────────────────
 
-ENGINE_FILES = [
-    ('MASTER_DEPOSITION_ENGINE_v4.1.md',     'MASTER DEPOSITION TRANSFORMATION ENGINE v4.1'),
-    ('STATE_MODULE_louisiana_engineering.md', 'STATE MODULE — LOUISIANA ENGINEERING'),
-    ('HOUSE_STYLE_MODULE_muir.md',            'HOUSE STYLE MODULE — MARYBETH E. MUIR, CCR, RPR'),
-    ('KNOWLEDGE_BASE.txt',                    'KNOWLEDGE BASE — CONFIRMED RULES FROM REAL RUNS (KB-001 to KB-015)'),
-    # GREGG_STYLE_MODULE.txt and MARGIE_STYLE_MODULE.txt (~30K tokens combined) excluded from
-    # per-chunk API calls due to token rate limits. Their key rules are already captured in:
-    #   - Master Engine Layer 5 (Punctuation Bible — references Margie rules by name)
-    #   - Master Engine Layer 6 (Grammar rules)
-    #   - KB entries KB-001 through KB-015 (confirmed real-world applications)
-    # Full modules remain available for Claude co-work sessions (non-API mode).
-]
+# ─────────────────────────────────────────────────────────────────────────────
+# CR CONFIG — dynamic module loading
+# Reads cr_config.json from the engine directory to determine which reporter
+# and state modules to load. Falls back to MB/Louisiana defaults if not found.
+#
+# cr_config.json format:
+#   {
+#     "reporter_id":   "dalotto_ny_001",
+#     "reporter_name": "Alicia D'Alotto",
+#     "state_label":   "NEW YORK WCB",
+#     "modules": {
+#       "state_module":  "STATE_MODULE_ny_wcb.md",
+#       "house_style":   "HOUSE_STYLE_MODULE_dalotto.md",
+#       "knowledge_base":"KNOWLEDGE_BASE_ny_wcb.txt"
+#     }
+#   }
+#
+# To run MB/Louisiana: delete cr_config.json (or don't create one).
+# To run AD/NY WC: create cr_config.json with the values above.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Defaults — MB Louisiana (backward compatible)
+_DEFAULT_STATE_MODULE  = ('STATE_MODULE_louisiana_engineering.md', 'STATE MODULE — LOUISIANA ENGINEERING')
+_DEFAULT_HOUSE_STYLE   = ('HOUSE_STYLE_MODULE_muir.md',            'HOUSE STYLE MODULE — MARYBETH E. MUIR, CCR, RPR')
+_DEFAULT_KB            = ('KNOWLEDGE_BASE.txt',                    'KNOWLEDGE BASE — CONFIRMED RULES FROM REAL RUNS (KB-001 to KB-015)')
+_DEFAULT_REPORTER_NAME = 'Marybeth E. Muir, CCR, RPR'
+_DEFAULT_STATE_LABEL   = 'Louisiana Engineering'
+
+
+def load_cr_config(engine_dir):
+    """
+    Read cr_config.json from engine_dir.
+    Returns (state_module_tuple, house_style_tuple, kb_tuple, reporter_name, state_label, dictionary_setting).
+
+    dictionary_setting values:
+      None        → no cr_config found, use glob default (backward compat)
+      False       → cr_config says skip dictionary (null in JSON)
+      'filename'  → cr_config specifies exact dictionary file to load
+
+    Falls back to MB/Louisiana defaults if cr_config.json not found.
+    """
+    config_path = os.path.join(engine_dir, 'cr_config.json')
+    if not os.path.exists(config_path):
+        print('  [ENGINE] cr_config.json not found — using MB/Louisiana defaults', flush=True)
+        return _DEFAULT_STATE_MODULE, _DEFAULT_HOUSE_STYLE, _DEFAULT_KB, _DEFAULT_REPORTER_NAME, _DEFAULT_STATE_LABEL, None
+
+    with open(config_path, 'r', encoding='utf-8') as f:
+        cfg = json.load(f)
+
+    mods = cfg.get('modules', {})
+    reporter_name = cfg.get('reporter_name', 'Unknown Reporter')
+    state_label   = cfg.get('state_label',   'Unknown State')
+
+    state_module  = (mods['state_module'],  f'STATE MODULE — {state_label.upper()}')
+    house_style   = (mods['house_style'],   f'HOUSE STYLE MODULE — {reporter_name.upper()}')
+    kb_file       = mods.get('knowledge_base', None)
+    kb = (kb_file, f'KNOWLEDGE BASE — {reporter_name.upper()} ({state_label.upper()})') if kb_file else _DEFAULT_KB
+
+    # dictionary: explicit null in JSON → False (skip). Missing key → None (glob default).
+    dict_setting = mods.get('dictionary', 'KEY_MISSING')
+    if dict_setting == 'KEY_MISSING':
+        dictionary = None        # key not present — use glob default
+    elif dict_setting is None:
+        dictionary = False       # explicitly null — skip dictionary
+    else:
+        dictionary = dict_setting  # specific filename
+
+    print(f'  [ENGINE] cr_config.json loaded — reporter: {reporter_name} | state: {state_label}', flush=True)
+    return state_module, house_style, kb, reporter_name, state_label, dictionary
+
+
+# ENGINE_FILES is built at runtime by build_system_prompt() using load_cr_config().
+# GREGG_STYLE_MODULE.txt and MARGIE_STYLE_MODULE.txt (~30K tokens combined) excluded from
+# per-chunk API calls due to token rate limits. Their key rules are captured in:
+#   - Master Engine Layer 5 (Punctuation Bible — references Margie rules by name)
+#   - Master Engine Layer 6 (Grammar rules)
+#   - KB entries (confirmed real-world applications)
+# Full modules remain available for Claude co-work sessions (non-API mode).
 
 
 def build_system_prompt():
     """
-    Load all 6 engine rule files from same directory as this script,
-    concatenate them, and append the API mode override.
+    Load engine rule files from same directory as this script.
+    Reads cr_config.json to determine which reporter/state modules to load.
+    Falls back to MB/Louisiana defaults if cr_config.json not found.
     Returns the full system prompt string.
     """
     engine_dir = os.path.dirname(os.path.abspath(__file__))
+
+    state_module, house_style, kb, reporter_name, state_label, dictionary_setting = load_cr_config(engine_dir)
+
+    engine_files = [
+        ('MASTER_DEPOSITION_ENGINE_v4.1.md', 'MASTER DEPOSITION TRANSFORMATION ENGINE v4.1'),
+        state_module,
+        house_style,
+        kb,
+    ]
+
     sections = []
     missing = []
 
-    for filename, label in ENGINE_FILES:
+    for filename, label in engine_files:
         path = os.path.join(engine_dir, filename)
         if os.path.exists(path):
             with open(path, 'r', encoding='utf-8') as f:
@@ -219,15 +296,26 @@ def build_system_prompt():
         print(f'\n  WARNING: {len(missing)} engine file(s) missing. Proceeding with available rules.\n', flush=True)
 
     # Case-specific dictionary injection (graceful — works with or without .tlx)
-    try:
-        from load_case_dictionary import load_case_dictionary, build_dictionary_prompt_block
-        dict_words = load_case_dictionary(search_dir=engine_dir)
-        dict_block = build_dictionary_prompt_block(dict_words)
-        if dict_block:
-            sections.append(dict_block)
-            print(f'  [ENGINE] Case dictionary: {len(dict_words)} proper nouns injected into prompt', flush=True)
-    except Exception as e:
-        print(f'  [ENGINE] Case dictionary: skipped ({e})', flush=True)
+    # dictionary_setting: None = glob default, False = skip, str = specific file
+    if dictionary_setting is False:
+        print('  [ENGINE] Case dictionary: skipped (cr_config says no dictionary for this CR)', flush=True)
+    else:
+        try:
+            from load_case_dictionary import load_case_dictionary, build_dictionary_prompt_block
+            if isinstance(dictionary_setting, str):
+                # cr_config specified a specific dictionary file
+                import os as _os
+                dict_path = _os.path.join(engine_dir, dictionary_setting)
+                dict_words = load_case_dictionary(search_dir=_os.path.dirname(dict_path))
+            else:
+                # None = no cr_config, use glob default (backward compat)
+                dict_words = load_case_dictionary(search_dir=engine_dir)
+            dict_block = build_dictionary_prompt_block(dict_words)
+            if dict_block:
+                sections.append(dict_block)
+                print(f'  [ENGINE] Case dictionary: {len(dict_words)} proper nouns injected into prompt', flush=True)
+        except Exception as e:
+            print(f'  [ENGINE] Case dictionary: skipped ({e})', flush=True)
 
     # API mode override is always last — highest priority
     sections.append(API_MODE_OVERRIDE)
