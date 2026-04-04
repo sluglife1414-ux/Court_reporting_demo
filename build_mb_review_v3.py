@@ -43,6 +43,8 @@ def load_json(path, default=None):
 
 cfg         = load_json(os.path.join(BASE, 'depo_config.json'))
 caption     = load_json(os.path.join(BASE, 'CASE_CAPTION.json'))
+# CASE_CAPTION.json is authoritative — override depo_config for identity fields
+cfg.update(caption)
 corr_data   = load_json(os.path.join(BASE, 'correction_log.json'))
 if isinstance(corr_data, list):
     corr_data = {'corrections': corr_data}

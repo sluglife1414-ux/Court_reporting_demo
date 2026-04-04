@@ -28,8 +28,12 @@ import json
 from state_config import get_config
 
 # --- Load case config ---
+# CASE_CAPTION.json is authoritative — overrides depo_config.json (matches format_final.py logic)
 with open('depo_config.json', encoding='utf-8') as _f:
     _cfg = json.load(_f)
+if os.path.exists('CASE_CAPTION.json'):
+    with open('CASE_CAPTION.json', encoding='utf-8') as _cf:
+        _cfg.update(json.load(_cf))
 CASE_SHORT = _cfg.get('case_short', 'Unknown_Case')
 
 # --- State selection (from depo_config or --state flag) ---

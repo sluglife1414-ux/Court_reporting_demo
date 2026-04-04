@@ -15,8 +15,12 @@ import json
 from datetime import date
 
 # --- Load case config ---
+# CASE_CAPTION.json is authoritative — overrides depo_config.json (matches format_final.py logic)
 with open('depo_config.json', encoding='utf-8') as _cfg_f:
     _cfg = json.load(_cfg_f)
+if os.path.exists('CASE_CAPTION.json'):
+    with open('CASE_CAPTION.json', encoding='utf-8') as _cf:
+        _cfg.update(json.load(_cf))
 
 _plaintiff = _cfg.get('plaintiff', 'UNKNOWN')
 _defendant = _cfg.get('defendant', 'UNKNOWN')

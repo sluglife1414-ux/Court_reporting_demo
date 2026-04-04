@@ -3,9 +3,14 @@ Build condensed transcript (4 lines per row, reduced spacing).
 """
 import re
 import json
+import os
 
 with open('depo_config.json', encoding='utf-8') as _f:
     _cfg = json.load(_f)
+# CASE_CAPTION.json is authoritative — overrides depo_config.json (matches format_final.py logic)
+if os.path.exists('CASE_CAPTION.json'):
+    with open('CASE_CAPTION.json', encoding='utf-8') as _cf:
+        _cfg.update(json.load(_cf))
 _CASE = _cfg.get('case_short', 'Unknown_Case')
 
 with open(f'FINAL_DELIVERY/{_CASE}_FINAL_TRANSCRIPT.txt', 'r', encoding='utf-8') as f:

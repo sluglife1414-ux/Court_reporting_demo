@@ -39,14 +39,21 @@ except ImportError:
     _PYPDF_AVAILABLE = False
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
-# Derive engine file default from depo_config.json so this script works for any case.
+# Derive engine file + approved PDF from CASE_CAPTION.json (authoritative) with
+# depo_config.json as fallback — works for any case without manual edits.
 import json as _json, os as _os
-_case_short = 'Unknown_Case'
+_cfg = {}
 if _os.path.exists('depo_config.json'):
     with open('depo_config.json', encoding='utf-8') as _f:
-        _case_short = _json.load(_f).get('case_short', 'Unknown_Case')
+        _cfg = _json.load(_f)
+if _os.path.exists('CASE_CAPTION.json'):
+    with open('CASE_CAPTION.json', encoding='utf-8') as _f:
+        _cfg.update(_json.load(_f))   # CASE_CAPTION.json wins on any overlapping key
+_case_short = _cfg.get('case_short', 'Unknown_Case')
 DEFAULT_ENGINE_FILE  = rf"FINAL_DELIVERY\{_case_short}_FINAL_FORMATTED.txt"
-DEFAULT_APPROVED_PDF = r"C:\Users\scott\Downloads\031326yellowrock-FINAL.pdf"  # [DEV] update per depo
+# approved_pdf_path in CASE_CAPTION.json is the per-depo MB final PDF location.
+# Add it once per depo: "approved_pdf_path": "C:\\path\\to\\MB_final.pdf"
+DEFAULT_APPROVED_PDF = _cfg.get('approved_pdf_path') or None
 OUTPUT_FILE          = r"FINAL_DELIVERY\accuracy_report.txt"
 
 # ── Section Detection Markers ─────────────────────────────────────────────────
@@ -663,6 +670,12 @@ def main(engine_file=None, approved_pdf=None, out_file=None):
     global OUTPUT_FILE
     if out_file:
         OUTPUT_FILE = out_file
+
+    if not approved_pdf:
+        print("ERROR: No approved PDF path set.")
+        print("  Option 1: Add 'approved_pdf_path' to CASE_CAPTION.json")
+        print("  Option 2: python compare_accuracy.py --approved path/to/MB_final.pdf")
+        import sys; sys.exit(1)
 
     print("=" * 60)
     print("GROUND TRUTH ACCURACY COMPARISON  v2 (section-aware)")

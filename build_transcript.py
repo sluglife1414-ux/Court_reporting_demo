@@ -21,6 +21,10 @@ if not os.path.exists('depo_config.json'):
 
 with open('depo_config.json', encoding='utf-8') as f:
     cfg = json.load(f)
+# CASE_CAPTION.json is authoritative — overrides depo_config.json (matches format_final.py logic)
+if os.path.exists('CASE_CAPTION.json'):
+    with open('CASE_CAPTION.json', encoding='utf-8') as _cf:
+        cfg.update(json.load(_cf))
 
 CASE_SHORT = cfg.get('case_short', 'Unknown_Case')
 
