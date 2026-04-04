@@ -568,6 +568,10 @@ def inject_anchors(text):
     text = re.sub(r'\[REVIEW:[^\[]*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
     text = re.sub(r'\[REVIEW:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
+    # Strip [CORRECTED:] audit-trail tags — engine-generated, not for final output.
+    # These are applied by apply_audio_validation.py to mark auto-corrections in corrected_text.txt.
+    # The corrected text is already in place; the tag is an annotation only.
+    text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
     text = re.sub(r'  +', ' ', text)
     return text, anchor_map
 
@@ -596,6 +600,7 @@ def strip_review_tags(text):
     text = re.sub(r'\[REVIEW:[^\[]*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
     text = re.sub(r'\s*\[REVIEW:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
+    text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
     text = re.sub(r'  +', ' ', text)
     return text
 
