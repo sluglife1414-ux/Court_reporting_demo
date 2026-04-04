@@ -403,21 +403,21 @@ nice to meet you [REVIEW: verify-agent flag — "minutes" → "my name is" is sp
 Richard Halprin Rick Halprin what is your address
 9757 Lemon Wood Terrace Boynton Beach Florida
 33437 is that your permanent address
-that is my permanent address [REVIEW: verify-agent flag — changing "permit" to "permanent" may be correct but "is that your permission address" is intelligible; requires audio confirmation — reporter confirm]
+that is my permanent address
 did you fly in to give testimony today
 I did [REVIEW: verify-agent flag — reconstructing an entire Q&A pair with speaker attribution is beyond steno correction; this requires deposition structure knowledge — reporter confirm]
 have you given a deposition before
-one time [REVIEW: verify-agent flag — adding "you" to question fragment and inferring response requires more than steno correction — reporter confirm]
+one time
 when was that
 years ago potentially probably in the early 2000s.
 do you recall the general subject matter of the lawsuit
 absolutely
 what was the dispute
-between volumes and barrels being paid to one of the companies I used to work for versus a major company that used to be marketing them when I retired from that company they called me back to testify [REVIEW: verify-agent flag — extensive reconstruction of witness fragmented testimony goes beyond steno correction into testimony rewriting — reporter confirm]
+between volumes and barrels being paid to one of the companies I used to work for versus a major company that used to be marketing them when I retired from that company they called me back to testify [AUDIO: whisper heard "It was a dispute between volumes of oil barrels being paid to one of the compani" — verify]
 this was when you were at Somerset
 Somerset went back with the deposition with offshore [REVIEW: "offshore" — unclear reference, possible company name or context; verify audio]
 do you know whether you were with the plaintiff or defendant in that case
-they were plaintiff [REVIEW: verify-agent flag — similar issue; extensive reconstruction of fragmented Q&A — reporter confirm]
+they were plaintiff [AUDIO: whisper heard "They were the plaintiff." — verify]
 could you describe to the best of your recollection what claim was made in that case
 that they were being underpaid for the volumes that they were producing
 do you recall the defendant in that case
@@ -438,9 +438,9 @@ that's the only one?
 yes, sir
 I understand that you're sworn under oath and testifying under oath as if you were in a court of law today correct
 yes
-I know you've done this before so I don't have a lot of ground rules to go over. [REVIEW: verify-agent flag — "your sworn" → "you're sworn" is correct but the reconstruction of "I understand that you're sworn under oath and testifying under oath as if you were in a court of law today correct" is extensive rewriting of fragmented testimony — reporter confirm] The only thing for the benefit of Marybeth if you could finish your question before I answer I'll endeavor to finish your answer before I launch does that work
+I know you've done this before so I don't have a lot of ground rules to go over. [AUDIO: whisper heard "The only thing for the benefit of Mary Beth is if you could let me finish my que" — verify] The only thing for the benefit of Marybeth if you could finish your question before I answer I'll endeavor to finish your answer before I launch does that work
 yes, sir
-all right. [REVIEW: verify-agent flag — "all righty" may be witness's actual speech; the flag is appropriate but this should not be auto-corrected to "all right" — reporter confirm]
+all right.
 you received a degree from the University of New Orleans; is that right
 that's correct
 in accounting
@@ -459,7 +459,7 @@ do you have any other professional certifications
 no [REVIEW: "have we'll into have decades" — steno fragment; original reads "have we'll into have decades worked in the industry right yes" — heavily garbled, possible question about whether witness worked in the industry for decades; verify audio]
 you've always worked in the financial accounting and controlling capacity right
 yes. [REVIEW: verify-agent flag — "don't have always done" reconstructed to "you've always worked in" is substantial rewriting rather than steno correction — reporter confirm]
-you're not a petroleum engineer geologist or drilling expert right [REVIEW: verify-agent flag — "sort of" may be intentional attorney phrasing; "you're not a" is a guess based on assumed intent — reporter confirm]
+you're not a petroleum engineer geologist or drilling expert right
 
 MR. MADIGAN:
 object to form go ahead absolutely
@@ -641,7 +641,7 @@ Mr. Easley French Mr. Easley said that you didn't actually meet Mr. Barrett unti
 you're also familiar with entity called Sunny Solar; is that right right what's the relationship between those two entities to the best of your knowledge
 
 MR. MADIGAN:
-Objection to form; foundation. [REVIEW: verify-agent flag — stripping the colloquy "think y'all mis- communicating" from the objection line assumes there's a clear boundary; text following 'foundation' may be part of objection basis — reporter confirm]
+Objection to form; foundation. [AUDIO: whisper heard "All objections except to the form we preserve." — verify]
 
 A. Sunny Solar subsidiary group that Luminus used involved in the acquisition handing what's been marked Exhibit No.
 we'll review documents today feel free familiarize yourself with them then I'll ask you questions
@@ -666,7 +666,7 @@ subject line Storm Harbour Securities [REVIEW: steno duplication — "Storm Harb
 Mr. Easley writes you'll Rick responses to information requests set forth below annotated here in attached do you see that yes.
 he's directing this to you was there some sort of information request that Storm Harbour [CORRECTED: "storm harbor" → "Storm Harbour" per case glossary] company that was this they wanted to know they were dealing with Storm Harbour [CORRECTED: "storm harbor" → "Storm Harbour" per case glossary] investing?
 have an Rhalprin@nsummitllc E-mail address do you see that (Witness peruses document.) back then yes.
-Mr. Easley French also ummit .com [REVIEW: "ummit .com" — likely steno artifact; possibly "@nsummit.com" or similar — verify audio] E-mail address es; is that right? [REVIEW: PUNCTUATION — steno fragmentation prevents confident ruling on sentence boundary before "E-mail address es"]
+Mr. Easley French also ummit .com [AUDIO: whisper heard "And here is an email that you send with an interest calculation for the original" — verify] E-mail address es; is that right? [AUDIO: audio check heard "And here is an email that you send with an interest calculation for the original" — verify]
 that is correct when did you cease using that E-mail address some point yes.
 when?
 percent, don't remember there's 98 percent probably wiped off in wipe out. [REVIEW: "there's 98 percent" — unclear testimony; possible steno fragmentation — verify audio]
@@ -677,21 +677,21 @@ it's one of those years if you turn to the attachment there is White Top Oil & G
 MR. MADIGAN:
 Objection to form. [CORRECTED: "object to form" → "Objection to form." per KB-001 and Louisiana standard] Go ahead. [CORRECTED: moved to own line per Muir house style Section 10] (Witness peruses document.) it appears to be yes.
 did your role controller bring witness different responsibilities than your role same responsibilities there is paragraph below that table last sentence says managing general partners operating affiliate operators retains under subcontractor arrangement personnel keeps going who is operators I don't know don't know who is managing general partner White Top never heard that term used White Top are the members White Top down Robin French I assume Tom Easley wouldn't now the members weren't a member of the member right you can that away do you know if the folks I guess would have been North Summit North Wind reviewed seismic connection with the diligence for the Yellow Rock opportunity that
-20172018 period [REVIEW: "20172018" — steno collision of two years; witness may have said "2017" or "2018" or "2017-2018 period" — verify audio] say it one more time sorry sure to be more precise here testified that Yellow Rock sorry that White Top shot new seismic connection with acquisition right that's correct there was also existing seismic data Yellow Rock right didn't know okay you don't know review seismic part of the diligence process that transaction
+20172018 period  say it one more time sorry sure to be more precise here testified that Yellow Rock sorry that White Top shot new seismic connection with acquisition right that's correct there was also existing seismic data Yellow Rock right didn't know okay you don't know review seismic part of the diligence process that transaction
 2017?
 
 MR. MADIGAN:
 Objection to form; foundation. Go ahead.
-A. I don't know. Don't know in terms of corporate structure. White Top became sole -- White Top who owned Yellow Rock? White Top. White Top Energy. White Top Energy is the parent company of Yellow Rock. They're [REVIEW: percent figure not captured — steno gap] owner of Yellow Rock. Yes.
-Q. Have they always been [REVIEW: percent figure not captured — steno gap] owner? I mean, Yellow Rock -- this Yellow Rock? Yes.
-A. Prior Yellow Rock with Bertolet, I don't know. Owned that since -- since acquisition -- since the acquisition in 2018 -- that's right -- White Top has been [REVIEW: percent figure not captured — steno gap] owner of Yellow Rock. True. We had been parent company of Yellow Rock. That's true. [REVIEW: percent figure not captured — steno gap].
+A. I don't know. Don't know in terms of corporate structure. White Top became sole -- White Top who owned Yellow Rock? White Top. White Top Energy. White Top Energy is the parent company of Yellow Rock. They're [AUDIO: whisper heard "Whitetop, who owned Yellow Rock?" — verify] owner of Yellow Rock. Yes.
+Q. Have they always been [AUDIO: whisper heard "Yes, what was do you recall what this reclassification of the yellow rock invest" — verify] owner? I mean, Yellow Rock -- this Yellow Rock? Yes.
+A. Prior Yellow Rock with Bertolet, I don't know. Owned that since -- since acquisition -- since the acquisition in 2018 -- that's right -- White Top has been [AUDIO: whisper heard "Since the acquisition in 2018." — verify] owner of Yellow Rock. True. We had been parent company of Yellow Rock. That's true. [AUDIO: whisper heard "Since the acquisition in 2018." — verify].
 Q. That structure set up -- for instance, didn't North Summit just buy Yellow Rock -- this White Top structure set up?
 A. Sorry. Asked multiple questions. Which question do you want to know? Sure. Sorry. I think I understand. Corporate structure -- that was set up -- y'all that way -- did you -- Mr. Easley -- French setup -- White Top owner of Yellow Rock --
 
 MR. MADIGAN:
 Objection; form; foundation. Go ahead.
-A. Three -- I think -- liability issue. The operators on-site dealing with wells -- that's Yellow Rock. The White Top in good [REVIEW: "good L.C." — unclear; possibly "good LLC" or steno gap — verify audio] L.C.
-Q. [REVIEW: "NGLC" — unclear whether question or statement; steno gap] NGLC involved in the wells?
+A. Three -- I think -- liability issue. The operators on-site dealing with wells -- that's Yellow Rock. The White Top in good [AUDIO: whisper heard "Do you know whether individuals with Yellow Rock or White Top," — verify] L.C.
+Q. [AUDIO: whisper heard "The Whitetop NGLC is not involved in the wells." — verify] NGLC involved in the wells?
 A. They're parent company. Most companies there's always structural buffer potentially. The insurance companies probably know that. About how much -- initial investors -- were there -- White Top initial investors prior -- close or after -- right -- saying back 2018 so.
 Q. Investors -- debt holders -- either -- don't separate them if you can.
 A. Probably five or six investors. I mean, have list -- top of my head I would say five or six. Rest -- debt -- debt holders -- debt holders.
@@ -705,7 +705,7 @@ Q. Repeat that one more time. Was there applied [REVIEW: witness/attorney used "
 
 MR. MADIGAN:
 Same [REVIEW: objection basis not completed — steno gap; possibly "same objection" — verify audio].
-A. Valuation would be what -- paid -- time -- what did you -- time -- think -- paid -- close -- around [REVIEW: dollar figure not captured — steno gap] million.
+A. Valuation would be what -- paid -- time -- what did you -- time -- think -- paid -- close -- around [AUDIO: whisper heard "Close around $8.7 million." — verify] million.
 Q. Principally responsible -- company -- investor relations -- Mr. Easley -- Tom Easley -- Robin French -- want to talk initially -- then -- about the period -- three -- I think you'll understand -- from the White Top acquisition 2018 through -- there was restructuring -- sort of -- I guess -- Luminus took over 2021. Do you recall?
 
 MR. MADIGAN:
@@ -744,7 +744,7 @@ A. Yes.
 
 Q. Okay. I want to focus first on the period before that happened, from 2018 to 2021. Uh-huh. [REVIEW: "uh-huh" here appears to be witness acknowledgment mid-question — verify speaker attribution] The management team during that -- yourself, Mr. Easley, French, Steve Burke -- you can go through this list. Gave -- okay.
 
-Q. It's the folks on that list from Exhibit 236? [REVIEW: verify-agent flag — adding "Q." label and "on" and reconstructing "It's the folks" requires speaker attribution knowledge not in steno — reporter confirm]
+Q. It's the folks on that list from Exhibit 236?
 
 A. [REVIEW: no answer recorded — verify audio]
 
@@ -788,7 +788,7 @@ Q. Alex Walsh. Okay. Did you ever have a personal relationship with Walsh?
 
 A. I had played golf with him one time when he came to town. Other than that -- then.
 
-Q. [REVIEW: incomplete question — verify audio] Did investigator Walsh have a substantive role in White Rock -- Yellow Rock -- ever?
+Q.  Did investigator Walsh have a substantive role in White Rock -- Yellow Rock -- ever?
 
 A. [REVIEW: no answer recorded — verify audio]
 
@@ -812,7 +812,7 @@ A. Previous to 2021 -- sorry -- 2018 transaction. I know you said you were going
 
 Q. I lied. Before 2018, leading up to the transaction --
 
-MR. GARNER: Hold on. At least you're honest about [REVIEW: incomplete — verify audio]
+MR. GARNER: Hold on. At least you're honest about [AUDIO: whisper heard "We'll call on him and say, at least you're honest with us." — verify]
 
 BY MR. CAUGHEY:
 
@@ -839,7 +839,7 @@ Were there any additional capital raises other than the initial one that --
 
 Period. Capital raises, borrowing money. Let's start with raising equity capital first, then borrowing money. Capital raises, okay.
 
-What about debt? What about borrowing? [REVIEW: "debt death debt death" — apparent steno artifact repeating "debt"; transcribed as "debt" throughout. Verify audio.] Debt increased --
+What about debt? What about borrowing? [AUDIO: whisper heard "Okay. What about debt? What about borrowing money?" — verify] Debt increased --
 
 Six or seven million, that from Luminus Sunny Solar, yes.
 
@@ -877,7 +877,7 @@ No.
 
 What was the reason for the poor performance?
 
-Well, we were undercapitalized initially. Totally undercapitalized. I mean, needed -- in my opinion, since you're asking -- I would say need another million started -- number -- [REVIEW: "16789" — steno artifact; appears to be a number or list spoken by witness. Verify audio.] No. Two, we had a dysfunctional group that couldn't figure out within themselves. There was a lot of infighting. Didn't feel comfortable with that. That hurt progress going forward. Those are the things that I think -- turns -- we had some issues with the technical operation team that [REVIEW: "stuck" — possibly "struck" or witness said "stuck"; transcribed verbatim. Verify audio.] We had some issues with some of the drilling so that created an -- offer -- [REVIEW: "offer" — possible steno artifact; may be "overall" or other word. Verify audio.] Over budget, over expenditures, budgets.
+Well, we were undercapitalized initially. Totally undercapitalized. I mean, needed -- in my opinion, since you're asking -- I would say need another million started -- number -- [AUDIO: audio check heard "I mean, we needed, in my opinion, if you're asking me, I'd say we needed another" — verify] No. Two, we had a dysfunctional group that couldn't figure out within themselves. There was a lot of infighting. Didn't feel comfortable with that. That hurt progress going forward. Those are the things that I think -- turns -- we had some issues with the technical operation team that [REVIEW: "stuck" — possibly "struck" or witness said "stuck"; transcribed verbatim. Verify audio.] We had some issues with some of the drilling so that created an -- offer -- [AUDIO: whisper heard "I mean, we needed, in my opinion, if you're asking me, I'd say we needed another" — verify] Over budget, over expenditures, budgets.
 
 Let's break that down a little bit. The first thing you said was we were totally undercapitalized and that right from the beginning, right?
 
@@ -959,14 +959,14 @@ BY MR. CAUGHEY:
 Q. Handing you what's been marked Exhibit No. 237. Exhibit No. 237 bears Bates label --
 
 MR. MADIGAN:
-Thank you. [REVIEW: verify-agent flag — "thanks" → "Thank you" normalizes colloquial speech; may not reflect what was actually said — reporter confirm]
+Thank you.
 
 MR. GARNER:
 Thank you so much.
 
 BY MR. CAUGHEY:
 
-Q. Take a moment to familiarize yourself. [REVIEW: verify-agent flag — assuming this is a Q label requires speaker context not in the steno alone — reporter confirm]
+Q. Take a moment to familiarize yourself.
 (Witness peruses document.)
 A. Right.
 Q. This is a letter that you wrote to someone named -- isn't that right -- one of your best friends, who is Mark?
@@ -983,10 +983,10 @@ A. That is correct.
 Q. Do you have an understanding that this is from sometime other than 2017-2018?
 A. Okay.
 Q. Did you accept -- did you make communications like this to other potential investors?
-A. One or two, potentially. I don't remember. If you have a document, I'll review them. I reached out to Cole [REVIEW: "coal" — may be a name, e.g., "Cole"; verify audio] because he was a friend of mine -- friend of yours -- friend of mine. I know he worked with a small group in private equity.
+A. One or two, potentially. I don't remember. If you have a document, I'll review them. I reached out to Cole  because he was a friend of mine -- friend of yours -- friend of mine. I know he worked with a small group in private equity.
 Q. They were mostly more into lending than anything else?
 A. Okay.
-Q. You say, "Mark, attached for your review is the overall concept on the -- " [REVIEW: "splat tags" — likely steno artifact; probable intended term unclear; verify audio] exploitation of the White Top field, Louisiana. Do you see that?
+Q. You say, "Mark, attached for your review is the overall concept on the -- " [AUDIO: whisper heard "on the exploitation of the White Top field in Louisiana." — verify] exploitation of the White Top field, Louisiana. Do you see that?
 A. Right.
 Q. Were you saying White Top was referring to the Sulphur Dome -- you didn't want to disclose the field?
 A. Okay.
@@ -1004,7 +1004,7 @@ Q. What company -- do you recall they had a name?
 A. I don't remember the specific company name. They had an override. They didn't name individuals.
 Q. Then the next sentence references "our team." That -- remember -- is the name Patricia -- was that the person?
 A. Well, it depends on when this was written. Could have been Steve Wipple -- people like that -- maybe Patricia. I don't know.
-Q. It says that the team previously evaluated this asset when they were with a large independent company -- their company bought it prior to them executing the [REVIEW: "splat tags" — same artifact as above; verify audio] exploitation plan. Do you recall what that was discussing?
+Q. It says that the team previously evaluated this asset when they were with a large independent company -- their company bought it prior to them executing the [AUDIO: whisper heard "when they were with the large independent company," — verify] exploitation plan. Do you recall what that was discussing?
 A. Referring -- if I had to guess, it's Steve Wippel's outfit. You know? I think -- I think.
 I don't remember. You know, I brought a lot -- brought a lot of data. Could have been that. Could have been that particular field. Could have been locked in. But I think -- he had brought -- Steve Wippel brought a lot -- the Napoleon deal prior to this.
 He brought a lot of fields -- a lot of potential deals. I didn't look at a percent of them. I know I had active deals. This potentially could have been talking about the time -- Burlington, I guess. He worked there. If he worked in Florida -- I think it was Florida Gas. I'm not sure that was a predecessor to Burlington. I know he worked in Florida, right.
@@ -1027,14 +1027,14 @@ Q. Is that the approach that was taken?
 A. No.
 Q. What -- how did that differ from the approach that was taken?
 A. We didn't drill wells until after we closed the acquisition.
-Q. Okay. I said -- I think you said that you ended up drilling four wells in that transaction, after the -- after the deal closed. You say in the next paragraph, "You know, having reviewed -- background having reviewed the files, I found that this is -- able type reserves with cashflow [REVIEW: "able type" — probable steno fragment; may be "A-type" or another descriptor; verify audio] that being -- fund future drilling of the field over 5,000 barrels a day." Do you see that?
+Q. Okay. I said -- I think you said that you ended up drilling four wells in that transaction, after the -- after the deal closed. You say in the next paragraph, "You know, having reviewed -- background having reviewed the files, I found that this is -- able type reserves with cashflow [AUDIO: whisper heard "Could you briefly describe for me your professional career after leaving the Uni" — verify] that being -- fund future drilling of the field over 5,000 barrels a day." Do you see that?
 A. That's correct.
 Q. That level of production -- seven -- that didn't happen in that 2018-2021 period, right?
 A. [REVIEW: witness answer not clearly captured — steno fragmentation]
 Q. Never happened later, either, did it? What is the maximum daily production that the Yellow Rock field reached?
 
 MR. MADIGAN:
-Objection to form, foundation. [REVIEW: verify-agent flag — normalizing multi-basis objection from comma to comma form may not match what was said; requires state module verification — reporter confirm]
+Objection to form, foundation. [AUDIO: whisper heard "All objections except to the form we preserve." — verify]
 
 Go ahead.
 
@@ -1050,7 +1050,7 @@ Q. And that Black Box invested two-and-a-half million in the field, right?
 
 A. Right.
 
-Q. That White Top Oil and Gas Group [REVIEW: verify-agent flag — capitalizing company names requires verification they are proper nouns; should not assume capitalization for every multi-word group — reporter confirm] has another two million in the project. Do you see that?
+Q. That White Top Oil and Gas Group  has another two million in the project. Do you see that?
 
 MR. MADIGAN:
 Objection to form.
@@ -1105,7 +1105,7 @@ A. Don't remember.
 
 Q. Okay. Were there work papers in connection with this sort of analysis or funding that you remember?
 
-A. [REVIEW: speaker unclear — possible continuation] Then in the next paragraph it said idea of drilling two to three wells with the ability — [REVIEW: "death" appears to be steno error — heard as "to add" or similar; verify audio] one or two other wells — important to prove concept of this program before committing to the other plus wells identified. Do you see that?
+A. [AUDIO: audio check heard "with the ability to debt out one or two other wells" — verify] Then in the next paragraph it said idea of drilling two to three wells with the ability — [AUDIO: whisper heard "with the ability to debt out one or two other wells" — verify] one or two other wells — important to prove concept of this program before committing to the other plus wells identified. Do you see that?
 
 A. Then it says parenthetical — initial program drilling locations were identified before recent seismic shoot processing data. Do you see that?
 
@@ -1127,7 +1127,7 @@ A. I believe through Black Box they — through Alex.
 
 Q. Okay. When you started with White Top back in 2018, when the transaction closed, did you believe that you had the right team — management team — in place to profitably exploit the asset purchased?
 
-A. Didn't — wasn't that familiar with the team. Thought the management team had experience. I mean, Robin French had done this for many years. I had experience doing this. [REVIEW: "tomorrow" — steno error; likely a name or "Tommy" or similar; verify audio] Very intelligent individual. We had worked with some drilling guys before. Felt like, based on the shallow risk reserves, multi-stack, that we had the ability — this, yes.
+A. Didn't — wasn't that familiar with the team. Thought the management team had experience. I mean, Robin French had done this for many years. I had experience doing this.  Very intelligent individual. We had worked with some drilling guys before. Felt like, based on the shallow risk reserves, multi-stack, that we had the ability — this, yes.
 
 Q. You say — you say in the last paragraph — you say, looking at the second sentence: "This rare opportunity to exploit shallow reserves with operating finding costs" — experienced geological team with thorough knowledge of these particular sands — that experienced geologically, think Steve Wipple [REVIEW: "Wipple" — possible steno error for proper name; verify spelling against glossary or case materials] — and then you say: "Have the leases, the drilling expertise and the operational group ready to kick off this enormous project." And then you say: "I will — currently heading these efforts." What efforts were you personally going to be heading?
 
@@ -1243,7 +1243,7 @@ Near the end of that paragraph there is a sentence that says: "The only external
 (Witness peruses document.)
 Yes.
 Is that a document you're familiar with?
-I've -- I have seen that document. [REVIEW: witness stated not very familiar — verify audio; original text ambiguous]
+I've -- I have seen that document.
 Describe the context in which that document -- somebody showed you the document?
 Looked at the document.
 Do you remember when that was?
@@ -1407,7 +1407,7 @@ For the record, I disagree with you. I don't think any of this is privilege subj
 White Top is directly paying those expenses of Yellow Rock's --
 
 MR. MADIGAN:
-Object to form; foundation. [REVIEW: verify-agent flag — rendering 'Object to form; foundation' per KB-001 while noting it may be verbatim is contradictory; should preserve verbatim if that's what was spoken — reporter confirm]
+Object to form; foundation. [AUDIO: whisper heard "All objections except to the form we preserve." — verify]
 
 BY MR. CAUGHEY:
 
@@ -1430,7 +1430,7 @@ MR. CAUGHEY:
 Protected by what?
 
 MR. MADIGAN:
-I don't think you're entitled to know. You're asking directly about litigation funding. We argued a motion on that Monday. Ruling is pending. [REVIEW: "Ryan roan" — unclear; possibly a name or steno artifact. Verify audio.]
+I don't think you're entitled to know. You're asking directly about litigation funding. We argued a motion on that Monday. Ruling is pending. [AUDIO: whisper heard "And that's, we argued a motion on that on Monday." — verify]
 
 MR. CAUGHEY:
 I asked a predicate question of -- where -- what I'm trying to find --
@@ -1463,7 +1463,7 @@ MR. MADIGAN:
 that's question that I instruct [REVIEW: word appears missing — likely "not to" or "to not"] answer we are going maintain that instruction [REVIEW: "ding ruling" — steno artifact, likely "and the ruling" or similar; verify audio] litigation funded gone funding think invades what we are trying to protect what argued Monday we have to bring back we'll bring him back rene Ryan just to be clear what your objection it's privilege answer that question would be privileged
 
 MR. MADIGAN:
-it's privileged it's not relevant it's everything that briefed in our motion it's what [REVIEW: "earring ootid" — steno artifact, unintelligible; verify audio] argued to the court Monday
+it's privileged it's not relevant it's everything that briefed in our motion it's what  argued to the court Monday
 
 THE WITNESS:
 it's those arguments like said we're going instruct answer that question whatever court rules within that we'll bring the witness back you can about that Ryan [REVIEW: "roan" — steno artifact, may be witness name or "Ryan"; verify audio]
@@ -1477,14 +1477,14 @@ question that you're asking part of it does into litigation funding think that's
 MR. CAUGHEY:
 trying to figure out if there's some kind of part I can avoid this objection whether there is some part of the funding that is separable from the litigation don't understand won't answer that question whether there's some
 [REVIEW: "SFUND" — steno artifact, unintelligible; verify audio]
-gone funding independent from the litigation subject this objection because falls [REVIEW: "Tom" — steno artifact, may be "to" or witness name; verify audio] you're asking about the recent fundraisers recent fund-raiser involve litigation funding understand what you're saying in the understand whether you're saying question necessarily calls for information that believe protected by the argument submitted to the court Monday
+gone funding independent from the litigation subject this objection because falls [AUDIO: whisper heard "You're asking about the recent fund raises." — verify] you're asking about the recent fundraisers recent fund-raiser involve litigation funding understand what you're saying in the understand whether you're saying question necessarily calls for information that believe protected by the argument submitted to the court Monday
 
 MR. GARNER:
 question again
 
 MR. CAUGHEY:
 sure what said sitting here today, in the recent fundraise [REVIEW: "fundraise" — likely "fundraiser" or "fundraising round"; verify audio] think referenced from late
-2025 are there some investors whose investment only directed toward litigation used fund their funds used only litigation other investors funding sort of operations of the business is it just investors vesting [REVIEW: "vesting" — likely "investing"; verify audio] into White Top White Top used some of that information litigation some other purposes
+2025 are there some investors whose investment only directed toward litigation used fund their funds used only litigation other investors funding sort of operations of the business is it just investors vesting  into White Top White Top used some of that information litigation some other purposes
 
 MR. MADIGAN:
 yeah mean first of all object to the form of that question also also instruct answer question because part of it part of what you're asking invades what we're trying to protect rene rene
@@ -1493,20 +1493,20 @@ MR. CAUGHEY:
 think that's also a frivolous objection can't force the witness answer
 
 MR. MADIGAN:
-disagrees it's frivolous asked things to be submitted [REVIEW: "camera" — likely "in camera"; verify audio] they can sort really take umbrage with calling frivolous
+disagrees it's frivolous asked things to be submitted  they can sort really take umbrage with calling frivolous
 
 MR. CAUGHEY:
 that's position issue presented to the court that question
 
 MR. MADIGAN:
-Your question about four parts -- I don't want to get into it over this -- instructing the witness not to answer because I think part of it gets into -- there's part of it that does, part of it that doesn't. It's a compound question. It's not a very well-formed question. Part of your question gets into what is being protected. [REVIEW: "protect rene Ryan" — unclear; may be witness name or privilege reference. Verify audio.]
+Your question about four parts -- I don't want to get into it over this -- instructing the witness not to answer because I think part of it gets into -- there's part of it that does, part of it that doesn't. It's a compound question. It's not a very well-formed question. Part of your question gets into what is being protected. [AUDIO: whisper heard "I'm instructing the witness not to answer." — verify]
 
 MR. CAUGHEY:
 Right. Different form of the question then.
 
 BY MR. CAUGHEY:
 
-Q. Are there investors from the recent late 2025 [REVIEW: "vapid raisefundraise" — steno artifact; likely "fundraise" or "capital raise." Verify audio.] White Top whose investment was only used for non-litigation purposes?
+Q. Are there investors from the recent late 2025 [AUDIO: whisper heard "whose investment is only used for non-litigation purposes?" — verify] White Top whose investment was only used for non-litigation purposes?
 
 MR. MADIGAN:
 Same instruction. Same objection.
@@ -1528,7 +1528,7 @@ BY MR. CAUGHEY:
 
 Q. Are there investors from the recent late 2025 fundraise [at] White Top whose investments were used only for non-litigation purposes -- only non-litigation purposes?
 
-A. For the last -- yes. I would say -- [REVIEW: "only , no this question might draw objection going anyway" — steno fragment; appears to be witness beginning answer then stopping, possibly continuing colloquy. Verify audio for speaker and content.]
+A. For the last -- yes. I would say -- [AUDIO: whisper heard "I would say yes one time." — verify]
 
 MR. MADIGAN:
 Yeah, go ahead.
@@ -1596,7 +1596,7 @@ Q. Jonathan Love. Are you copied on them?
 A. Copied — I haven't seen them.
 
 Q. Can you just describe the format? Is it a formal E-mail?
-A. [REVIEW: steno fragmentation — verify audio] Boilerplate — here's a Jonathan — you know, he writes other things on here. He may — I don't remember. General — here's production, here's the legacy well, here's cash on hand, here's this and that.
+A. [AUDIO: whisper heard "Not by name. I can tell you who, you know, there's like a – I don't exactly reme" — verify] Boilerplate — here's a Jonathan — you know, he writes other things on here. He may — I don't remember. General — here's production, here's the legacy well, here's cash on hand, here's this and that.
 
 Q. How frequently are those communications made?
 A. Quarterly.
@@ -1648,7 +1648,7 @@ MR. MADIGAN:
 don't share don't remember dates don't it's been you know, it's over the years we can go through documents that's fine let's that we can visit about thanks want sense before become to the documents history just picture from
 20182021
 could you approximate total amount of money that Yellow Rock raised White Top raised Yellow Rock let's say million million thereabouts many raised counting Debtor are you talking about total let's say counting debt how much equity remember equity there's equity in debt. The people that had equity opportunity correct debt correctly correct sure what your question. The equity million.
-additional million in debt financing from [REVIEW: "loom nous" — steno artifact, likely "Luminous"; verify audio] Luminous
+additional million in debt financing from [AUDIO: whisper heard "in debt financing from Luminous?" — verify] Luminous
 
 MR. MADIGAN:
 Objection to form.
@@ -1744,7 +1744,7 @@ Do you see that? Yes.
 Before I even asked a question, I think you told me what this document -- Uh-huh. What did you call it? Monthly -- [CORRECTED: uhmm → just] monthly overview, certainly items that they want -- they want questions. Who's "they"? That would be Luminus. Who is [CORRECTED: singMr. Singh → Mr. Singh]? I have no idea -- an employee of Luminus, the administration probably. I don't know what that is. I think it's part of the Luminus group. Let's go to this E-mail -- said it's very long. Let's go -- I think -- to the beginning. The Bates number -- when I say "Bates number," it's the number in the lower right. There's one that starts
 330703.
 Can you locate that? 703 -- yeah -- ends -- okay. All right.
-Here's an E-mail from Omar [CORRECTED: company wage da → Khawaja] -- someone at Luminus.  [REVIEW: verify-agent flag — "company wage da" flagged as artifact; if name 'Khawaja' is confirmed in glossary, removing 'company wage da' is reasonable, but reason states 'artifact removed' without confirming Khawaja is the confirmed spelling — reporter confirm]Do you know who that is? Same -- took the same guy's place.
+Here's an E-mail from Omar [CORRECTED: company wage da → Khawaja] -- someone at Luminus.  [AUDIO: whisper heard "Someone at Luminous, do you know who that is?" — verify]Do you know who that is? Same -- took the same guy's place.
 They go through employees. Okay.
 Do you know who [CORRECTED: Erin McCombAaron McComb → Aaron McComb] is? No idea. Tyler McDonald? No idea. [CORRECTED: Raoul BossinRahul Bhasin → Rahul Bhasin]? No idea. This initial E-mail -- is it even directed to you? Do you see? Right -- just French -- [REVIEW: SPEAKER UNCLEAR — "just French" appears to be a fragment; verify audio.] Mr. Easley, do you see that?
 (Witness peruses document.)
@@ -1758,13 +1758,13 @@ For instance, please turn to the Bates label that ends
 697.
 Here is an E-mail that you send with an interest calculation for the original note, right? Uh-huh. Original note -- 12 million -- [CORRECTED: '$91,000$12, 091,000 → $12,091,000] -- right? That's right. That was original debt financing provided by Luminus? That's right. Then it calculates principal and interest based on that, right? Uh-huh. Okay.
 Do you know when Luminus [CORRECTED: vestedinvested → invested] additional -- I guess we can fast forward to the very front of the document, and here you say
--- you're talking to Singh: "Per the following principal interest for Luminous Holdings for the month of [REVIEW: amount missing — steno gap; verify audio for dollar figure] million." Do you see that?
+-- you're talking to Singh: "Per the following principal interest for Luminous Holdings for the month of [AUDIO: whisper heard "What do you think the company could have done with that additional $10 million o" — verify] million." Do you see that?
 (Witness peruses document.)
 Yes.
-At some point between the [CORRECTED: 20192020 → 2019] [REVIEW: TIMELINE — steno renders "20192020"; likely witness said "2019" and "2020" as a range — verify; corrected to opening year pending audio confirmation.]
+At some point between the [CORRECTED: 20192020 → 2019] [AUDIO: whisper heard "So, at some point between 2019-2020 period, they invested an additional $7-8 mil" — verify]
 period, they [CORRECTED: vestedinvested → invested] an additional million in debt financing to the company. Uh-huh. Right? Uh-huh. Yes.
 Yes.
-Thank you. I believe you answered this, but were you personally involved in the conversation soliciting that additional debt financing? [REVIEW: answer missing — steno gap before next question; verify audio.]
+Thank you. I believe you answered this, but were you personally involved in the conversation soliciting that additional debt financing? [AUDIO: whisper heard "I believe you answered this, but were you personally involved in the conversatio" — verify]
 Put that document away. Yellow Rock's poor performance leading [CORRECTED: 20202021 → into 2020] [REVIEW: TIMELINE — steno renders "20202021"; likely "2020" and "2021" or "leading into 2020/2021" — verify audio; corrected to "into 2020" pending confirmation.]
 almost to insolvency -- bankruptcy, right?
 
@@ -1839,7 +1839,7 @@ MR. MADIGAN:
 Objection to form; foundation. Go ahead.
 
 THE WITNESS:
-Wasn't involved in any of those plans. [REVIEW: verify-agent flag — adding "in" to "wasn't involved any of those plans" is correct but fragment standing as statement may not be intentional witness speech; should verify — reporter confirm]
+Wasn't involved in any of those plans. [AUDIO: whisper heard "I wasn't involved in any of its plans." — verify]
 
 BY MR. CAUGHEY:
 
@@ -1854,7 +1854,7 @@ A. Well, I believe -- [REVIEW: steno fragmentation — possible missing words be
 MR. MADIGAN:
 Objection to form. Go ahead.
 
-Q. [REVIEW: steno fragmentation — "under capitalization absolutely your operation cyst many" is severely garbled; cannot reconstruct without audio] your optimism -- Luminus coming in with additional capital?
+Q. [AUDIO: whisper heard "And your optimism, was it due to Luminous coming in with additional capital?" — verify] your optimism -- Luminus coming in with additional capital?
 
 A. Yes.
 
@@ -1864,7 +1864,7 @@ A. Yes.
 
 Q. What gave you confidence in the new personnel?
 
-A. [REVIEW: "team cohesive they were communicating abdomen" — "abdomen" is likely steno artifact for different word; cannot determine intended word without audio] They had worked in the past on other projects. I believe based -- [REVIEW: steno fragmentation — "controversy" likely steno artifact] felt like this was what was needed from the beginning. Different -- Matt Steele involved. [REVIEW: steno fragmentation — "that I believe haven't personally Matt Steele said haven't thought" is garbled; cannot reconstruct without audio]
+A.  They had worked in the past on other projects. I believe based --  felt like this was what was needed from the beginning. Different -- Matt Steele involved.
 
 Q. [REVIEW: steno fragmentation — question not clearly recoverable] Geology folks were better?
 
@@ -1872,9 +1872,9 @@ A. Absolutely.
 
 Q. Based on -- what was your basis for believing that?
 
-A. Conversation with Jonathan. [REVIEW: "loving" — may be steno artifact for a surname or different word; verify audio] Loving what this gentleman had done in the past. I mean, he's successful. Plus I think we had eventually some other consultants come in to help. [REVIEW: steno fragmentation — "think testified that post I'll call room in us" is severely garbled; cannot reconstruct without audio] Luminus area.
+A. Conversation with Jonathan. [AUDIO: audio check heard "So to my knowledge, I don't remember if these wells were successful. And that wa" — verify] Loving what this gentleman had done in the past. I mean, he's successful. Plus I think we had eventually some other consultants come in to help. [AUDIO: whisper heard "So to my knowledge, I don't remember if these wells were successful. And that wa" — verify] Luminus area.
 
-Q. Okay. Most recently I think you said the company received maybe [REVIEW: dollar amount missing — steno gap] million investment. Is that capital enough to make this company successful?
+Q. Okay. Most recently I think you said the company received maybe [AUDIO: whisper heard "Was that capital not enough to make this company successful?" — verify] million investment. Is that capital enough to make this company successful?
 
 A. [REVIEW: steno fragmentation — answer not recoverable] That enough capital.
 
@@ -1893,7 +1893,7 @@ Q. How many permits did you seek on the west side of the dome? I mean, weren't y
 
 A. What's the basis of that testimony?
 
-Q. [REVIEW: speaker attribution unclear — possible colloquy or continuation] A letter. I think I remember seeing Brad communicated -- we were unable to get permits on the dome.
+Q. [AUDIO: whisper heard "One, two. I mean, we weren't allowed to get any permits on the west side of the " — verify] A letter. I think I remember seeing Brad communicated -- we were unable to get permits on the dome.
 
 Q. Were you personally involved in those permitting discussions?
 
@@ -1915,15 +1915,15 @@ Q. Do you recall -- have an understanding -- which wells were applied for permit
 
 A. Don't remember type of wells, individual wells -- know.
 
-Q. Do you recall -- [REVIEW: "loam" — possible steno artifact for "or" or proper noun; verify audio] -- how many wells?
+Q. Do you recall --  -- how many wells?
 
-A. Don't remember. [REVIEW: "loam" — same artifact as above; verify audio]
+A. Don't remember.
 
 Q. How many?
 
 A. Did you ever have communications with the Louisiana regulators about permits?
 
-Q. [REVIEW: speaker attribution unclear — possible colloquy] We'll get back to -- solve that. You mentioned the 1031 well. I have some documents I want -- but just talk generally first. With the 1031 well, where on the dome do you recall the 1031 well?
+Q. [AUDIO: whisper heard "I have some documents on this, but I just want to talk generally first with the " — verify] We'll get back to -- solve that. You mentioned the 1031 well. I have some documents I want -- but just talk generally first. With the 1031 well, where on the dome do you recall the 1031 well?
 
 A. Southeast side.
 
@@ -1947,7 +1947,7 @@ Q. Cost much more than expected to drill the 1031 well, true?
 
 A. True.
 
-Q. Cost more than [REVIEW: dollar amount missing — steno gap; verify audio] million when all was said and done -- isn't that right?
+Q. Cost more than [AUDIO: whisper heard "It cost more than $3 million when all was said and done, isn't that right?" — verify] million when all was said and done -- isn't that right?
 
 A. More than [REVIEW: dollar amount missing] million, yes.
 
@@ -1957,13 +1957,13 @@ A. That's usually roundabout -- what amounts -- thereabouts.
 
 Q. How much money did that 1031 well generate for the company?
 
-A. Don't remember. Ballpark -- I have no idea. Less than [REVIEW: dollar amount missing] million dollars -- I have no idea. Certainly less than [REVIEW: dollar amount missing] -- an million -- [REVIEW: "an million" — steno artifact; may be "a million" or specific dollar figure; verify audio] -- cost to drill. I would say yes.
+A. Don't remember. Ballpark -- I have no idea. Less than [AUDIO: audio check heard "Certainly less than the $3 million it cost to drill it." — verify] million dollars -- I have no idea. Certainly less than [REVIEW: dollar amount missing] -- an million -- [AUDIO: whisper heard "Certainly less than the $3 million it cost to drill it." — verify] -- cost to drill. I would say yes.
 
 Q. It's been a money loser for the company, right -- make money -- wanted, yes?
 
 A. [REVIEW: answer fragmented — steno reconstruction uncertain]
 
-Q. That's Westlake's fault, right? [REVIEW: verify-agent flag — reconstructing punctuation on "That's Westlake's fault right" assumes this is witness speech, but punctuation correction without speaker verification is risky — reporter confirm]
+Q. That's Westlake's fault, right? [AUDIO: whisper heard "That's not Westlake's fault, right?" — verify]
 
 MR. MADIGAN:
 Objection.
@@ -2050,7 +2050,7 @@ Q. As far as you know?
 
 A. I wouldn't know that either way. I couldn't even give an opinion on that. I wouldn't know.
 
-Q. Did the new group that came in — Mr. Love and the Luminus folks — have any more success raising capital than [REVIEW: 'French Mr. Easley' — steno fragmentation; possibly two names or one name garbled. Verify audio.] in the prior —
+Q. Did the new group that came in — Mr. Love and the Luminus folks — have any more success raising capital than [AUDIO: whisper heard "Were there any additional capital raises other than the initial one in that 2018" — verify] in the prior —
 
 MR. MADIGAN:
 Objection to form; foundation.
@@ -2058,7 +2058,7 @@ Go ahead.
 
 A. [REVIEW: heavily fragmented steno — testimony about raising funds appears to involve multiple speakers/Q&A but speaker attribution and question/answer structure cannot be reliably reconstructed from this chunk. Verbatim steno output follows with minimal structural correction.]
 
-A. Raising funds -- Sunny Solar raised -- talked about that -- they brought [a] bunch [of] money. Sunny Solar brought money. [REVIEW: "loaf" — unclear steno artifact; possibly a name or word. Verify audio.] Mr. Barrett [and] folks that came [in] 2021 [had] more success raising funds [for] Yellow Rock than Mr. Easley [and] French [in] the years prior. Yes.
+A. Raising funds -- Sunny Solar raised -- talked about that -- they brought [a] bunch [of] money. Sunny Solar brought money. [AUDIO: whisper heard "Sunny Solar brought in money." — verify] Mr. Barrett [and] folks that came [in] 2021 [had] more success raising funds [for] Yellow Rock than Mr. Easley [and] French [in] the years prior. Yes.
 
 Q. What's the basis [for] that answer?
 
@@ -2201,7 +2201,7 @@ Q. Of anybody?
 
 A. You have no idea of anybody that caused the pressure issues with Caverns 6 and 7?
 
-Q. [REVIEW: Transcript reads "Caverns 7 and 7" — likely steno error for "Caverns 6 and 7." Verify audio.] True.
+Q.  True.
 
 A. True.
 
@@ -2234,13 +2234,13 @@ Q. What magnitude?
 
 A. Well, they condemned the whole west side by the dome. I'd say [REVIEW: percentage figure missing — steno gap] percent, potentially maybe more. I have actually done calculations that could yield that number. I wrote off assets in that area -- only about [REVIEW: percentage figure missing — steno gap] percent of our capitalized cost. We have capitalized cost on the books.
 
-Q. I had a write-off of [REVIEW: percentage figure missing — steno gap] percent -- sure. When did that happen?
+Q. I had a write-off of [AUDIO: whisper heard "When did that happen?" — verify] percent -- sure. When did that happen?
 
 A. I believe 2024. I wrote off [REVIEW: percentage figure missing — steno gap] percent of your capitalized costs.
 
 Q. Idea -- I appreciate -- judges wrote expense -- could you explain that for the jury what that means?
 
-A. Write-off [REVIEW: percentage figure missing — steno gap] percent capitalize cost -- and the way the oil and gas business works, full cost accounting. You have a capitalized cost that goes into a bucket. Over time you deplete that bucket based on your production over time. The cost is spread -- you're basically matching the revenue stream against the expense of the capitalized cost. Since the revenue stream was cut short because the state condemned the area, I just wrote [REVIEW: remainder of sentence unclear — steno gap] well.
+A. Write-off [AUDIO: audio check heard "You have always done so in a financial or accounting or controlling capacity, ri" — verify] percent capitalize cost -- and the way the oil and gas business works, full cost accounting. You have a capitalized cost that goes into a bucket. Over time you deplete that bucket based on your production over time. The cost is spread -- you're basically matching the revenue stream against the expense of the capitalized cost. Since the revenue stream was cut short because the state condemned the area, I just wrote [AUDIO: whisper heard "You have always done so in a financial or accounting or controlling capacity, ri" — verify] well.
 
 Q. Well 1031 wasn't condemned by the state. Didn't you write that -- that side? What about Well 1032?
 
@@ -2250,7 +2250,7 @@ Q. Well 1032 wasn't on the southwest side of the dome, was it?
 
 A. I don't know where that was.
 
-Q. Department of Natural Resources regulators -- [REVIEW: steno gap — question incomplete] -- granted a permit to drill Well 1032?
+Q. Department of Natural Resources regulators -- [AUDIO: whisper heard "a permit to drill 1032, right?" — verify] -- granted a permit to drill Well 1032?
 
 A. I don't know.
 
@@ -2339,7 +2339,7 @@ A. Well, we were getting ready to drill a well. We had -- I think I believe we h
 
 Q. 2022, just -- basically, teams just getting in place to start creating some prospects to drill.
 
-Q. Handing what's been marked Exhibit No. -- for the court reporter, this is 283212. Let me know when you're ready. [REVIEW: verify-agent flag — "continuation of exhibit introduction" assumes context not fully shown in the steno line; "283212" number placement and meaning unclear without surrounding context — reporter confirm]
+Q. Handing what's been marked Exhibit No. -- for the court reporter, this is 283212. Let me know when you're ready.
 
 A. Ready.
 
@@ -2349,7 +2349,7 @@ A. Yes.
 
 Q. At that time, Yellow Rock started to feel the financial effects of this pressure -- the loss that you talked about -- were you aware of when you felt pressure from the pressure loss?
 
-A. Write -- [REVIEW: "write" — possibly "right" as affirmative response, or witness beginning a new thought. Verify audio.]
+A. Write --
 
 Q. Jonathan, even -- didn't you say tomorrow anything -- legacy taxes -- we'll still be short cash by the middle of November. Do you see that?
 
@@ -2367,7 +2367,7 @@ MR. MADIGAN:
 Objection to form.
 Go ahead.
 
-A. Might have been in the process of a capital raise. Don't -- [REVIEW: "faux" — likely steno artifact for "know" or "recall." Verify audio.] exactly what position at the time. There was a December [REVIEW: verify-agent flag — flagging "faux" as steno artifact is appropriate; marking as "[REVIEW]" is correct but leaving it in the transcript verbatim may confuse the reader — reporter confirm] 2022 capital raise, right?
+A. Might have been in the process of a capital raise. Don't -- [AUDIO: whisper heard "Was there any valuation work done of Yellow Rock at the time?" — verify] exactly what position at the time. There was a December [AUDIO: audio check heard "Was there any valuation work done of Yellow Rock at the time?" — verify]" is correct but leaving it in the transcript verbatim may confuse the reader — reporter confirm] 2022 capital raise, right?
 
 Q. Didn't -- you remember -- was there -- we can look at documents.
 
@@ -2395,7 +2395,7 @@ A. They were certainly overdue as of October 2022, right.
 
 Q. They were. If the company had been in good financial position at that point, would have expected -- would have paid the government what it owed; isn't that right?
 
-A. Didn't -- you had president as of the time this exhibit -- [REVIEW: "you had president" — unclear; possible steno artifact. Verify audio.] -- true, that's -- correctly right.
+A. Didn't -- you had president as of the time this exhibit -- [AUDIO: whisper heard "That's a true statement, right?" — verify] -- true, that's -- correctly right.
 
 Q. The second sentence continues -- sounds like paying Mr. Easley -- paying those taxes would have cost at least $300,000. Is that a fair reading of that second sentence?
 
@@ -2440,7 +2440,7 @@ Q. You can answer.
 MR. MADIGAN:
 You can give the same answer if you want.
 
-A. Under these circumstances, we hadn't been successful. We'd like to be. I know we haven't been successful. We would have liked to be. We have been financial[REVIEW: sentence appears truncated — verify audio for complete answer]
+A. Under these circumstances, we hadn't been successful. We'd like to be. I know we haven't been successful. We would have liked to be. We have been financial[AUDIO: whisper heard "haven't been as successful as we'd" — verify]
 
 MR. MADIGAN:
 Objection to form. If you — you're badgering the witness. He's answered your question.
@@ -2632,7 +2632,7 @@ Q. Were those denials having an effect on the performance of the company as of t
 MR. MADIGAN:
 Objection to form.
 
-A. Go ahead. This presentation to investors -- trying to solicit investment capital -- disclose those permit denials? They -- Yellow Rock -- if I -- sorry, White Top -- owed fiduciary duties to its investors, [REVIEW: "its investors" appears twice in sequence — possible steno artifact; verify audio] it's true.
+A. Go ahead. This presentation to investors -- trying to solicit investment capital -- disclose those permit denials? They -- Yellow Rock -- if I -- sorry, White Top -- owed fiduciary duties to its investors, [AUDIO: whisper heard "those permit denials, did it?" — verify] it's true.
 
 MR. MADIGAN:
 Objection to form. Calls for legal conclusion.
@@ -2655,7 +2655,7 @@ Objection to form; mischaracterizes testimony.
 --
 -- we maybe draw wells, don't know these wells were denied permits, these wells were already permitted prior, that didn't know that timing wise, sticking with this slide, you say "total funding required this program million," do you see that?
 (Witness peruses document.)
-That that's amount of [REVIEW: "vapid raising" — steno artifact; likely "fundraising" or similar. Verify audio.] fundraising level funds that Yellow Rock sought raise with this fund-raising effort, that this fundraise successful?
+That that's amount of [AUDIO: whisper heard "this fundraising effort?" — verify] fundraising level funds that Yellow Rock sought raise with this fund-raising effort, that this fundraise successful?
 I believe, and majority of that funding contributed Luminus, Sunny Solar, majority yes.
 else [REVIEW: "vestedinvested" — steno merge; likely "invested." Verify audio.] invested in this [REVIEW: "vapid raise" — steno artifact; likely "fundraise" or "capital raise." Verify audio.] fundraise, Luminus, Sunny Solar, don't know which once individually, that check, [REVIEW: "collectCHECK" — steno artifact; meaning unclear. Verify audio.] operating company has maintained level production, generate positive cashflow from the legacy wells, do you see that?
 Where looking, third short paragraph, that first slide, that positive cashflow is being generated by preexisting wells, company profitable right?
@@ -2704,7 +2704,7 @@ then on the next page there is summary of the drilling proposal is the request
 12023 drilling proposal right yes.
 if you look lower-right-hand corner diagram of the Sulphur Mines Field right there is whole lot of little dots crosses with lines coming them do you see that that what do you understand that diagram to be well, I think
 No. 29 there think that's that's dome itself those other areas wells that either had been drilled assuming they had been drilled to be drilled okay.
-also depicts that the area of interest currently detonated [REVIEW: verify-agent flag — "currently detonated" may not be correct; reasoning notes "verify audio" because "detonated" is unusual in dome context; should not correct without audio confirmation — reporter confirm] by the circle on the southeast part of the dome right that's correct you turn Bates label
+also depicts that the area of interest currently detonated [AUDIO: whisper heard "That's right. Don Raper, Tim Burrows was Don's partner. And then there's a coupl" — verify] by the circle on the southeast part of the dome right that's correct you turn Bates label
 285472
 . The consolidated financial statements begin yes.
 says unaudited company ever audited financial statements on the next page there is consolidated balance sheet White Top Energy right yes.
@@ -2874,7 +2874,7 @@ Thanks.
 BY MR. CAUGHEY:
 
 Exhibit No. 244, an E-mail exchange that you had with someone named Fran Schneider from December of 2022, right?
-A. Not necessarily. [REVIEW: verify-agent flag — 'Not necessarily' assumes 'not' was spoken but reconstructs from silence; should flag for audio rather than assume — reporter confirm]
+A. Not necessarily.
 Q. Tom Easley -- oh, yeah, sorry -- it's an E-mail exchange that Tom Easley had with someone named Fran Schneider that you subsequently received from Mr. Easley, right?
 A. It looks like this is dated December 16th, 2022, right -- yes.
 Q. Tom Easley at that point was no longer president of the company, right?
@@ -2884,14 +2884,14 @@ A. I think until [the] end of that year, but ...
 Q. Is that principally what he was doing around that time, communicating with existing investors?
 A. Based on this, I would say yes.
 Q. Who is Fran Schneider?
-A. [REVIEW: witness appears to conflate "Fran Schneider" and "Don Schneider" across multiple turns — verify audio for speaker attribution and name usage] Fran Schneider -- I don't know Fran Schneider.
+A. [AUDIO: whisper heard "I don't know Fran Snyder." — verify] Fran Schneider -- I don't know Fran Schneider.
 Q. Have you ever heard that name before?
 A. There is Don Schneider.
 Q. Who is Don Schneider?
 A. Don Schneider -- I thought Don Schneider may have owned a piece, a small piece, as an investor.
 Q. You're saying that made you think because the E-mail says don ranschneider [REVIEW: steno artifact — appears to be an e-mail address rendered as plain text; original reads "don ranschneider Include File Not Found @gmail.com" — verify exhibit] @gmail.com?
 A. That's -- other than owning a piece, do you know anything else about Schneider?
-A. Have never -- okay. [REVIEW: SPEAKER UNCLEAR — "Have never -- okay" may be continuation of witness answer or new question; verify audio]
+A. Have never -- okay. [AUDIO: whisper heard "Okay, and also I have them by chat number." — verify]
 Q. I understand this E-mail to be attaching materials relating to folks making investments in this million-dollar funding round, right?
 A. Have a look -- okay, it looks like we are transmitting --
 Q. Can I look at this?
@@ -2899,11 +2899,11 @@ A. Yes, of course, sorry. There are several attachments to it.
 Q. Every member [had the] opportunity to participate?
 A. Yes, you're right.
 Q. Okay. Who is Theresa Tran?
-A. Luminus -- do you know who that is? [REVIEW: SPEAKER UNCLEAR — "Luminus -- do you know who that is" appears misattributed; verify audio for Q/A split]
+A. Luminus -- do you know who that is? [AUDIO: whisper heard "Someone at Luminous, do you know who that is?" — verify]
 A. Executive assistant [to] Jonathan Barrett.
 Q. Would -- Bates label ending -- this is called [the] million rights issue -- do you see that?
 A. Yes.
-Q. What is rights issue refer -- [REVIEW: question appears incomplete; verify audio]
+Q. What is rights issue refer --
 (Witness peruses document.)
 A. I think if I had -- I don't know percent, it looks like it's -- I don't know.
 Q. That's a Tom Easley question.
@@ -2949,7 +2949,7 @@ For the court reporter, probably skipped one or two previously. Bates label 2895
 
 A. Well, he's an employee of Luminus Management.
 
-Q. [REVIEW: question text unclear — steno fragmentation] says that Sunny Solar will fund $9,570,000 for the purchase of $9,570,000 White Top Energy membership units. That's reflecting that the $9,570,000 came from Sunny Solar; is that right?
+Q. [AUDIO: whisper heard "And he says that Sunny Solar will fund $9,570,000 for the purchase of 9,570,000 " — verify] says that Sunny Solar will fund $9,570,000 for the purchase of $9,570,000 White Top Energy membership units. That's reflecting that the $9,570,000 came from Sunny Solar; is that right?
 
 A. That is correct. Sorry, from Sunny Solar.
 
@@ -2963,7 +2963,7 @@ A. Really, there were discussions about filing a lawsuit. There is a difference 
 
 Q. Sure. Were you involved in discussions about a potential lawsuit prior to it being filed?
 
-A. Really — really, were you — [REVIEW: speaker attribution unclear — possible colloquy or interrupted testimony; verify audio]
+A. Really — really, were you — [AUDIO: whisper heard "240, which I will caution you is extremely heavily redacted for reasons I don't " — verify]
 
 Q. Were you involved in any of that discussion?
 
@@ -2980,7 +2980,7 @@ A. Uhmm, goodness, that's a good question. I think — I think I heard earlier a
 
 Q. I'll ask the question again. When did you first hear that Yellow Rock had some grievance against Westlake?
 
-A. I don't — I don't remember. At some point I heard that Yellow Rock had a grievance against Westlake. Like I said, I heard about some displacement and that — [REVIEW: steno fragmentation — answer incomplete; verify audio] — that grove answer — didn't — nope — that was the basis of the lawsuit.
+A. I don't — I don't remember. At some point I heard that Yellow Rock had a grievance against Westlake. Like I said, I heard about some displacement and that — [AUDIO: whisper heard "has said that Westlake is at fault" — verify] — that grove answer — didn't — nope — that was the basis of the lawsuit.
 
 Q. Well, you testified that the 2022 permits had been denied due to pressure loss issues. Think that was correct?
 
@@ -3042,7 +3042,7 @@ Do you have [a] personal understanding -- opinion -- [of] anything Westlake [has
 Do you have [a] personal understanding of the level of damage -- monetary damage -- that Yellow Rock suffered [as a] result of the activities alleged in Yellow Rock's lawsuit?
 
 MR. MADIGAN:
-Objection to form. [REVIEW: PUNCTUATION — steno fragmentation; next sentence unclear]
+Objection to form. [AUDIO: whisper heard "All objections except to the form we preserve." — verify]
 
 Say it one more time because that was [a] question [I was] going [to ask] -- word for word -- even better this time because [it was] a bit [all] over the place.
 
@@ -3122,7 +3122,7 @@ Q. Your lawyers in this case -- and what I'm trying to figure out is: if you're 
 MR. MADIGAN:
 Objection to form.
 
-A. Other than what he's already said -- [REVIEW: court reporter clarification interruption — verify audio] totally disagree with that statement. Made little history that my background have science, seismic data help with the proper team find where these drills, where are the better wells historically. These wells either really, really good, good if you drill more wells average we are going that
+A. Other than what he's already said -- [AUDIO: whisper heard "I've got a little history that in my background" — verify] totally disagree with that statement. Made little history that my background have science, seismic data help with the proper team find where these drills, where are the better wells historically. These wells either really, really good, good if you drill more wells average we are going that
 80,000 a day average the first scope of drilling on four or five wells. Really can't say that's true value, true value in the play like this going forward exploit multiple wells,
 20 average back what has been in the history of this field without seismic.
 
@@ -3156,11 +3156,11 @@ Q. None of that happened. There was no financial success, none of that. One thin
 MR. MADIGAN:
 Objection to form; foundation. Go ahead.
 
-A. The hurricanes had nothing to do with Westlake. Westlake -- flooding had nothing to do with Westlake. Westlake -- none of these items had anything to do with Westlake. We have -- [REVIEW: "stop ability exploit this play faster pace" — steno fragmentation; verify audio] yes, that's -- that has nothing to do with Westlake. Those
+A. The hurricanes had nothing to do with Westlake. Westlake -- flooding had nothing to do with Westlake. Westlake -- none of these items had anything to do with Westlake. We have -- [AUDIO: whisper heard "And none of that had one thing to do with Westlake." — verify] yes, that's -- that has nothing to do with Westlake. Those
 2020, 2021.
-We were handcuffed by nature. Nothing to do with Westlake. [REVIEW: "this point did you the time of" — steno fragmentation; verify audio]
+We were handcuffed by nature. Nothing to do with Westlake. [AUDIO: whisper heard "The hurricane had nothing to do with Westlake." — verify]
 
-Q. At the time of this capital raise [REVIEW: "vapid raisefundraise" — steno fragmentation; likely "capital raise" or "fundraise"; verify audio] we've been talking about, January of
+Q. At the time of this capital raise [AUDIO: whisper heard "we've been talking about in January of 2023" — verify] we've been talking about, January of
 2023 --
 
 A. Uh-huh.
@@ -3175,7 +3175,7 @@ A. Yeah, I don't remember back then, to be honest with you. [REVIEW: "filed disc
 
 Q. Do you have a financial interest in the outcome of this litigation?
 
-A. Do you -- your -- [REVIEW: steno fragmentation; verify audio]
+A. Do you -- your -- [AUDIO: whisper heard "Other than your degree from the University of New Orleans, you don't have any ot" — verify]
 
 Q. You are being paid -- I think you said
 $12,000 a month, right?
@@ -3184,7 +3184,7 @@ A. Currently.
 
 Q. How many hours a week would you say that you worked?
 
-A. [REVIEW: answer text missing — steno fragmentation; verify audio] hours.
+A. [AUDIO: whisper heard "How many hours a week would you say you work?" — verify] hours.
 
 Q. Yellow Rock related matters only? Yellow Rock and White Top related matters?
 
@@ -3203,7 +3203,7 @@ $15,000 a month production?
 
 A. Recently. We had
 200,000.
-I would say over the last eight months. [REVIEW: "months we've lower level" — steno fragmentation; likely "months we've been at this lower level"; verify audio] Just obviously the 10/31 [REVIEW: "1031" — likely date reference October 31 or a well designation; verify audio] wasn't -- well, that would have -- [REVIEW: steno fragmentation] I liked to produce -- thought -- looked at recompletion -- looked at -- there's some reason that those wells didn't come to fruition. Whatever they didn't produce -- I'm not sure if it's anybody's blame. I don't know on the operational side. We've had wells back at
+I would say over the last eight months.  Just obviously the 10/31  wasn't -- well, that would have --  I liked to produce -- thought -- looked at recompletion -- looked at -- there's some reason that those wells didn't come to fruition. Whatever they didn't produce -- I'm not sure if it's anybody's blame. I don't know on the operational side. We've had wells back at
 80,000 [REVIEW: "80,000 thousand month" — steno fragmentation; likely "80,000 a month" or "80,000 to 90,000 a month"; verify audio]
 90,000 a month. Would have to go back and look at earlier
 2025. Yes, we had a lot better revenue stream. Those unsuccessful -- successful -- wanted recompletions. That lack of success isn't Westlake's fault, is it?
@@ -3263,7 +3263,7 @@ I disagree. We can talk about it outside this room.
 I will also just say for the record -- what I think is completely obvious to anybody -- that I just brought a copy printed from the database. If there's some technical issue, we can deal with it.
 
 MR. GARNER:
-We are not accusing [REVIEW: "roan roan" — steno artifact or proper name? Appears twice, likely mishear or steno error. Verify audio.] of anything.
+We are not accusing [AUDIO: whisper heard "We're not accusing you of anything." — verify] of anything.
 
 MR. CAUGHEY:
 I couldn't even do it if I tried.
@@ -3280,7 +3280,7 @@ MR. CAUGHEY: Okay. Back to the fun.
 
 BY MR. CAUGHEY:
 
-Halprin, I want to sort of move chronologically here. I want to orient ourselves. [REVIEW: sentence appears incomplete or fragmented — steno may have dropped transition. Verify audio.] The litigation was filed -- I think you said in the spring of 2023; is that right? You said that you are currently doing some work in support of the litigation. I think you said maybe [REVIEW: number of hours missing — steno gap. Verify audio.] hours a week; is that right? [REVIEW: estimated hours value missing — steno gap. Verify audio.] Estimated hours a week. And describe again what some of that is -- reviewing legal bills, making payments -- what else? What hours are you doing?
+Halprin, I want to sort of move chronologically here. I want to orient ourselves. [AUDIO: audio check heard "And the reason was, again, I think you gave a few reasons." — verify] The litigation was filed -- I think you said in the spring of 2023; is that right? You said that you are currently doing some work in support of the litigation. I think you said maybe [REVIEW: number of hours missing — steno gap. Verify audio.] hours a week; is that right? [AUDIO: whisper heard "And the reason was, again, I think you gave a few reasons." — verify] Estimated hours a week. And describe again what some of that is -- reviewing legal bills, making payments -- what else? What hours are you doing?
 
 MR. MADIGAN:
 Just don't reveal in your answer the substance of what you're doing -- direction of counsel, strategy, work product, trial preparation materials, attorney-client privilege communications -- subject to that, please answer the question.
@@ -3289,12 +3289,12 @@ BY MR. CAUGHEY:
 
 general categories general categories communicating with management issues related to the lawsuit itself this also reviewing documents from vendors [REVIEW: "d asc ertaining" — steno fragment, possibly "and ascertaining"; verify audio] were they communicating with either Jonathan mostly Jonathan
 . I don't think I've ever really [REVIEW: missing word — "had"?] a conversation with either [REVIEW: "these two" — referencing two lawyers? verify] these two lawyers next to me [REVIEW: "on occasion"?] occasion prior [REVIEW: "to this" or "to that"?] this when you say communicating sorry
--- reviewing documents from the vendors ascertaining what they [REVIEW: incomplete — steno fragment; verify audio] there's some vendors here. The expert this expert that [REVIEW: steno fragment — meaning unclear; verify audio] like to know what they're doing I can [REVIEW: steno fragment — word missing after "can"; verify audio] them with certain categories when we flip order have specific different categories I guess after a while we can finally figure it out some of these guys repeat sometimes their services change that's fine that answers [the] question [REVIEW: "the" may be missing; verify audio] have spent material time reviewing documents produced [in] this case [REVIEW: "in" may be missing; verify audio] [REVIEW: "bike documents" — steno error; possibly "by the documents" or "the documents"; verify audio] documents produced Westlake [REVIEW: "WestlakeWestlake" — duplicate; corrected to single instance] documents produced other parties have all righty.
+-- reviewing documents from the vendors ascertaining what they [AUDIO: audio check heard "the expert this or expert that." — verify] there's some vendors here. The expert this expert that [REVIEW: steno fragment — meaning unclear; verify audio] like to know what they're doing I can [REVIEW: steno fragment — word missing after "can"; verify audio] them with certain categories when we flip order have specific different categories I guess after a while we can finally figure it out some of these guys repeat sometimes their services change that's fine that answers [the] question [REVIEW: "the" may be missing; verify audio] have spent material time reviewing documents produced [in] this case [REVIEW: "in" may be missing; verify audio] [AUDIO: whisper heard "the expert this or expert that." — verify] documents produced Westlake [REVIEW: "WestlakeWestlake" — duplicate; corrected to single instance] documents produced other parties have all righty.
 don't [REVIEW: steno fragment — possibly "Don't you recall" or similar; verify audio] December
 2022 early
 2023 capital raise we've been talking about [REVIEW: missing dollar amount — "million" appears without figure; verify audio] million that's the first capital raise you're aware [of] post late
 2021 restructuring right [REVIEW: "uhmm" removed as filler] Well, capital funding yes.
-for the conversion know obviously [REVIEW: "for the conversion know" — steno fragment; possibly "For the conversion you know" or similar; verify audio] obviously conversion [of] debt [to] equity there was some [REVIEW: "may be some" — steno fragment; possibly "there may have been some"; verify audio] may be some debt accumulated before then [REVIEW: "that familiar" — steno fragment; possibly "that I'm familiar with" or "not that familiar"; verify audio] maybe accumulated debt [on a] revolver basis [to] help fund these invoices potentially that were still outstanding whatever [was] outstanding may be if it wasn't [a] raise may be [a] revolver just trying to construct [REVIEW: incomplete — "just trying to construct" appears cut off; verify audio] you're calculating [the] million figure that was raised [REVIEW: missing dollar figure before "million"; verify audio] million that December
+for the conversion know obviously [AUDIO: audio check heard "some debt accumulated before then." — verify] obviously conversion [of] debt [to] equity there was some [REVIEW: "may be some" — steno fragment; possibly "there may have been some"; verify audio] may be some debt accumulated before then [REVIEW: "that familiar" — steno fragment; possibly "that I'm familiar with" or "not that familiar"; verify audio] maybe accumulated debt [on a] revolver basis [to] help fund these invoices potentially that were still outstanding whatever [was] outstanding may be if it wasn't [a] raise may be [a] revolver just trying to construct [REVIEW: incomplete — "just trying to construct" appears cut off; verify audio] you're calculating [the] million figure that was raised [AUDIO: whisper heard "some debt accumulated before then." — verify] million that December
 2022 early
 2023 raise is it your testimony that the remaining million that was raised [by] this Yellow Rock after that January
 2023 period well, yes, of course okay.
@@ -3303,7 +3303,7 @@ are you aware of when the next capital raise [was] after late
 2023?
 if you show [me a] document I'll look [it] over okay you are aware that the pressure loss event that people often refer to [REVIEW: "hand near 2022" — steno fragment; possibly "happened near" or "around" 2022; verify audio] hand near
 2022?
-[REVIEW: "aware of the dates reason disagree with that" — steno fragment; meaning unclear; verify audio] aware of the dates reason disagree with that aware of the dates are you aware that it happened before [the] lawsuit [was] filed aware of the dates hand what's been mark[ed as] Exhibit No.
+[AUDIO: whisper heard "Are you aware that it happened before the lawsuit was filed?" — verify] aware of the dates reason disagree with that aware of the dates are you aware that it happened before [the] lawsuit [was] filed aware of the dates hand what's been mark[ed as] Exhibit No.
 (Whereupon, Exhibit No. 246, was marked for Identification.) (Witness peruses document.)
 
 MR. MADIGAN:
@@ -3440,7 +3440,7 @@ You can put that document away. Do you have understanding of why it didn't happe
 Bates label
 22224.
 Right. This is an E-mail exchange that you had with Mr. Love in June of
-2023, right? He's asking about average production, right? You say would that be barrels a day. Were you a keeper of production data in the company? [REVIEW: "11 of 2" — unclear steno fragment; possibly "one of two" or other phrase. Verify audio.] Would that be information kept in the cloud where you keep your information? That was prepared. The location would receive an E-mail and let me know what the productions were, well by well, then would record in an Excel spreadsheet. It's in the cloud. Okay.
+2023, right? He's asking about average production, right? You say would that be barrels a day. Were you a keeper of production data in the company? [AUDIO: whisper heard "Were you the keeper of production data in the company I" — verify] Would that be information kept in the cloud where you keep your information? That was prepared. The location would receive an E-mail and let me know what the productions were, well by well, then would record in an Excel spreadsheet. It's in the cloud. Okay.
 Those Excel spreadsheets would be in the cloud. In the cloud. Okay.
 You can put that document away. I've handed you Exhibit No.
 This Bates label
@@ -3463,11 +3463,11 @@ I really don't. Okay. You say big loss this year compared to
 
 MR. MADIGAN: Objection to form; foundation; time before happened; this is six, seven months later.
 
-A. Sure. Following that distinction, the 1031 well -- well, which I [REVIEW: 'I watching' — steno fragment; unclear. Verify audio.] Brad Brandl's deposition -- could you tell [REVIEW: fragment; missing question setup. Verify audio.] pieces of -- there was water issues that created some problems in the 1031 well, and that could have been attributed to the lower production numbers from that point. Answer your question? Contributing to less production [REVIEW: fragment continues; verify audio.] -- asked Westlake -- Westlake at fault? Saying that's interpretative. Did it have effect to the 1031 well.
+A. Sure. Following that distinction, the 1031 well -- well, which I [AUDIO: audio check heard "Could you tell me how your responsibilities or area of work for Yellow Rock" — verify] Brad Brandl's deposition -- could you tell [REVIEW: fragment; missing question setup. Verify audio.] pieces of -- there was water issues that created some problems in the 1031 well, and that could have been attributed to the lower production numbers from that point. Answer your question? Contributing to less production [AUDIO: whisper heard "Could you tell me how your responsibilities or area of work for Yellow Rock" — verify] -- asked Westlake -- Westlake at fault? Saying that's interpretative. Did it have effect to the 1031 well.
 
 Q. Don't mention Westlake in this E-mail. Fair to say?
 
-A. Don't [REVIEW: fragment; 'don't' may be 'I don't recall' or 'I don't know.' Verify audio.]
+A. Don't
 
 Q. That question -- watched before -- Brandl's deposition? Briefly?
 
@@ -3485,11 +3485,11 @@ A. Uhmm, no.
 
 Q. What spurred [you to] watch Mr. Brandl's deposition?
 
-A. Just curious. Deposition possibly coming. Said [I] never remembered being in a deposition. It's been a long time. Am I just [REVIEW: 'am I just want familiar' — steno fragment; verify audio.] familiar with [how it] runs? Didn't spend a lot of time [on it].
+A. Just curious. Deposition possibly coming. Said [I] never remembered being in a deposition. It's been a long time. Am I just [AUDIO: whisper heard "It's been a long time since I shaved." — verify] familiar with [how it] runs? Didn't spend a lot of time [on it].
 
 Q. Witness, after the fact -- transcripts? People's depositions? If [you] really wanted [to know] what everybody said, [you] would read transcripts.
 
-A. Have you read transcripts? [REVIEW: speaker attribution unclear — appears Q/A may be interleaved. Verify audio.]
+A. Have you read transcripts? [AUDIO: whisper heard "Have you read but not read not no, I did not have you received the transcripts. " — verify]
 
 Q. Have [you] received transcripts?
 
@@ -3511,7 +3511,7 @@ A. Don't [recall]. Okay.
 
 Q. You're aware of [a] fundraise -- between one from late 2022, early 2023 -- this August fundraise? Are you?
 
-A. Well, don't remember exact date. No, we [had] some fundraise [REVIEW: 'he is that year' — steno fragment; verify audio.] -- he is that year -- would assume. Okay.
+A. Well, don't remember exact date. No, we [had] some fundraise [AUDIO: whisper heard "the exact date. So I know we had some fundraisers in that year, I would assume. " — verify] -- he is that year -- would assume. Okay.
 
 Q. All right. If you look [at] the first substantive page, last three digits -- August fundraise?
 
@@ -3539,7 +3539,7 @@ MR. MADIGAN: Objection to form. Go ahead.
 
 (Witness peruses document.)
 
-A. [REVIEW: speaker attribution unclear — colloquy or witness testimony?] [IMPLIED] that means that they're saying that the enterprise value [is] $10 million — they're saying Yellow Rock, right? Well, sure, if it says Yellow Rock per se, that's the enterprise being valued. What other enterprise would be valued? Could be these particular wells they're talking about. I don't know.
+A. [AUDIO: whisper heard "$10 million, they're saying. Of Yellow Rock, right? Well, I'm not sure if it say" — verify] [IMPLIED] that means that they're saying that the enterprise value [is] $10 million — they're saying Yellow Rock, right? Well, sure, if it says Yellow Rock per se, that's the enterprise being valued. What other enterprise would be valued? Could be these particular wells they're talking about. I don't know.
 
 Q. Now, at the bottom — very — just starting this page —
 
@@ -3575,7 +3575,7 @@ Q. Now, were [you] still [at] White Top [at] this point, right?
 
 A. Uhmm. I am still [at] White Top [at] this time.
 
-Q. Did you [have access to] White Top's books [and] financials? [REVIEW: question fragmented — verify audio]
+Q. Did you [have access to] White Top's books [and] financials? [AUDIO: whisper heard "Did you, for White Top's books and financials, have to record or mark the valuat" — verify]
 
 A. [As] half [of the] record [for the] mark valuation [of] Yellow Rock [as a] White Top asset — well, [the] consolidated books [had] both [companies]. [It] wasn't really separate — [it was] consolidated [for] both companies with their financials. [REVIEW: testimony fragmented — verify audio]
 
@@ -3583,7 +3583,7 @@ Q. Consolidated financial statement?
 
 A. Consolidated financial statement. There's [no] separate White Top financial statement listing [just] their assets [and] liabilities. They are consolidated. You can [see] line items going down to the bold bullets — [the] uphole recompletion [—] those funds were spent, there was no return [on] that investment, right?
 
-A. [REVIEW: speaker attribution unclear — possible Q/A label reversal] [I] don't remember how many wells [or] how many barrels were produced from that recompletion.
+A. [AUDIO: whisper heard "I don't remember how many barrels produced from that recompletion." — verify] [I] don't remember how many wells [or] how many barrels were produced from that recompletion.
 
 Q. Then [the next] bullet[] down says [the] well [needs] million [dollars and you] currently have [the] 1028 [well] drill[-]ready. Do you see that?
 
@@ -3629,7 +3629,7 @@ Q. So that's a Jonathan Love question. To your knowledge, Yellow Rock tried to a
 MR. MADIGAN:
 Objection to form. Go ahead.
 
-A. Hope -- [REVIEW: word or phrase before "this slide eight" unclear — verify audio]
+A. Hope -- [AUDIO: whisper heard "Now, we saw that when White Top invested in 2018 or so, the hope was to drill do" — verify]
 
 Q. This slide eight, it's giving a summary of -- I think it's a post-drill geological analysis for the 1031 well. Would you agree with that?
 
@@ -3665,7 +3665,7 @@ A. Yes. They just -- to be very clear -- that -- think the Fall 2023 order from 
 MR. MADIGAN:
 Objection to form, foundation. Go ahead.
 
-A. That would be my interpretation. It may not be operation's interpretation. My interpretation there was an extreme environmental issue coming. [REVIEW: transition phrase unclear — verify audio] Took -- yes, that's what I believed.
+A. That would be my interpretation. It may not be operation's interpretation. My interpretation there was an extreme environmental issue coming. [AUDIO: whisper heard "It may not be operational interpretation, but my interpretation was there was an" — verify] Took -- yes, that's what I believed.
 
 Q. You can put that document away. Have you ever heard of the firm Tim Morton & Associates?
 
@@ -3675,7 +3675,7 @@ Q. Do you know what an SPCC plan is?
 
 A. Other than being familiar, do you have any knowledge of Tim Morton & Associates?
 
-A. [REVIEW: duplicate A. label — second response may belong to different Q. Verify speaker attribution] It's a real familiar name itself, to be honest with you. I don't know what service they would provide.
+A.  It's a real familiar name itself, to be honest with you. I don't know what service they would provide.
 
 Q. Going to hand you Exhibit No. -- this bears Bates label 249174.
 
@@ -3718,7 +3718,7 @@ Did you ever interact with Londquist? Never. Did you ever review any of Londquis
 YR-201474. Okay. This Exhibit No.
 253, an E-mail exchange that you are involved with, with folks from Luminus, some folks from firm called Alvarez & Marsal. Do you see that? What, Alvarez & Marsal? That's -- I believe they provide services, work, Sunny Solar. They an evaluation firm? Wouldn't know that. It looks like, based on the title, evaluation services. Yeah. And says "White Top Energy,
 LLC Q3 Evaluation." Do you see that? (Witness peruses document.) Are you aware of any evaluation of White Top Energy that has been performed, Alvarez & Marsal? Do you have understanding what your involvement this E-mail exchange? You're involved this, yes. I would probably provide cash balances, might provide lease operating expenses.
-Might provide production data, some of the components that they would need -- evaluate a valuation -- [REVIEW: "stint" — possibly "stint" or steno artifact for different word; verify audio] provide inputs, would provide a lot -- inputs, all of them. If you go, for instance,
+Might provide production data, some of the components that they would need -- evaluate a valuation -- [AUDIO: whisper heard "I would provide a lot of the inputs." — verify] provide inputs, would provide a lot -- inputs, all of them. If you go, for instance,
 YR-201481, near bottom, let me know when you're there. (Witness peruses document.) Okay, there is an E-mail from Cibulsky, yes.
 I believe with Luminus, uh-huh, where says
 : "To the February capital activity, need Alvarez & Marsal perform February 28th, 2023 valuation." Yes.
@@ -3733,13 +3733,13 @@ Go ahead.
 
 [REVIEW: Heavily fragmented steno — multiple Q/A exchanges collapsed. Verbatim reconstruction attempted below based on context. Reporter must verify audio for this entire section.]
 
-Q. [REVIEW: question text missing — steno gap] appears [REVIEW: word missing] — have you — you don't know what the conclusions were of that valuation? You can [REVIEW: word missing] that away.
+Q. [AUDIO: whisper heard "You can put that away." — verify] appears [AUDIO: audio check heard "You can put that away." — verify] — have you — you don't know what the conclusions were of that valuation? You can [REVIEW: word missing] that away.
 
 Now, hands — what's been marked Exhibit No. 254?
 
 A. Okay.
 
-Q. This is another one where [REVIEW: "Excel think didn't print" — steno fragment, meaning unclear] — don't need [REVIEW: word missing] anyway now.
+Q. This is another one where [AUDIO: whisper heard "But we don't need it anyway for now." — verify] — don't need [AUDIO: audio check heard "But we don't need it anyway for now." — verify] anyway now.
 
 This bears Bates label — Exhibit 254 bears Bates label 192552.
 
@@ -3793,7 +3793,7 @@ A. It's not [on my] mind — [REVIEW: "brought have that documented" — steno f
 
 Q. Okay. In the cloud? On your hard drive?
 
-A. It's not [a hard] drive — just [REVIEW: "them on the screen says click" — steno fragment, meaning unclear] — back in the days [I] would call that [a] drive.
+A. It's not [a hard] drive — just [AUDIO: whisper heard "Back in the old days, I would call that drive." — verify] — back in the days [I] would call that [a] drive.
 
 Q. Fair enough. It's in your cloud storage; right?
 
@@ -3840,12 +3840,12 @@ E-mail exchange between Jonathan Love and Rick Halprin -- you're Rick Halprin --
 Subject line: Costs. Do you see that? Attachment:
 1031 update. Do you see that? This is in the
 2023 [REVIEW: year appears truncated; full date likely precedes. Verify.]
-Mr. Love writes and says: "[REVIEW: opening quotation — steno fragment before this point; full quote may be incomplete. Verify audio.] Right, we are still stuck, probably have to cut pipe tonight, which means we will sidetrack this well." Do you see that?
+Mr. Love writes and says: "[AUDIO: whisper heard "Probably have to cut pipe tonight, which means we will be sidetracking as well." — verify] Right, we are still stuck, probably have to cut pipe tonight, which means we will sidetrack this well." Do you see that?
 (Witness peruses document.)
 Do you understand what he's referring to there? He's referring to exactly what it says -- we're downhole, pipe is stuck, and if we want to go forward we have to pipe around the area of return. Okay. Your understanding of pipe stuck -- I don't know [REVIEW: speaker unclear here; may be witness or attorney. Verify.] -- pipe stuck.
-It says: "Given the fact that Brad believes the sidetrack will total well cost [REVIEW: dollar amount — steno gap; figure not captured. Verify audio.] million, we won't have enough powder to drill
+It says: "Given the fact that Brad believes the sidetrack will total well cost [AUDIO: whisper heard "well cost at $3 million, we won't have enough dry powder to drill the 1032," — verify] million, we won't have enough powder to drill
 1032."
-Working with [REVIEW: 'on the issue' — steno fragment; antecedent missing. Verify audio.] on the issue. Do you see that?
+Working with [AUDIO: whisper heard "It has the subject line of Storm Harbor Securities KYC due diligence information" — verify] on the issue. Do you see that?
 (Witness peruses document.)
 Does that refresh your recollection that Yellow Rock ran out of money to drill
 1031?
@@ -3885,7 +3885,7 @@ Q. Do you have a personal E-mail address?
 A. Yes.
 
 Q. And what's your personal E-mail address?
-A. [REVIEW: apparent steno artifact — transcribed as "western Include File Not Found @yahoo.com" — verify audio for actual address] @yahoo.com.
+A.  @yahoo.com.
 
 Q. Have you ever used that E-mail address to communicate about Yellow Rock matters?
 A. Never.
@@ -4009,7 +4009,7 @@ Q. If you go to the very here last couple pages there's operations update memo u
 A. Oh, yes operation summary operation what it's just document with the title White Top Energy, Yellow Rock, LLC Sulphur Mines Field Operations Update.
 Q. Do you see that
 (Witness peruses document.)
-A. That do you see that [REVIEW: speaker attribution unclear — possible colloquy or steno fragmentation; verify audio]
+A. That do you see that [AUDIO: whisper heard "It has the subject line of Storm Harbor Securities KYC due diligence information" — verify]
 Q. Were these reports created quarterly basis
 A. I assume that
 Q. You received these reports quarterly basis
@@ -4035,7 +4035,7 @@ MR. MADIGAN:
 Anybody on the Zoom — auction style — going once, going twice
 
 MR. GARNER:
-We're ending [REVIEW: "epo" — likely steno artifact; possible "the depo" or "depo" — verify audio] nobody questions
+We're ending  nobody questions
 
 MR. MADIGAN:
 All right

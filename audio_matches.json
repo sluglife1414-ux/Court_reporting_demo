@@ -1,0 +1,2424 @@
+[
+  {
+    "line_num": 392,
+    "note": "verify-agent flag \u2014 flagging \"WestlakeWestlake\" duplication as steno artifact throughout is reasonable but applying it g",
+    "text": "We are on the record. Today's date April 2nd, 2026. The time approximately 9:09 a.m. My name is Darrin Guastell with Lex",
+    "start": 13999.0,
+    "end": 14014.0,
+    "match_score": 0.5,
+    "whisper_text": "Sir, Exhibit 244 is an email exchange that you had with someone named Fran Snyder in December of 2022, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 402,
+    "note": "verify-agent flag \u2014 \"minutes\" \u2192 \"my name is\" is speculative; should flag for audio verification rather than reconstruct ",
+    "text": "nice to meet you what is your name",
+    "start": 370.74,
+    "end": 376.24,
+    "match_score": 0.67,
+    "whisper_text": "What's your name, sir?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 406,
+    "note": "verify-agent flag \u2014 changing \"permit\" to \"permanent\" may be correct but \"is that your permission address\" is intelligibl",
+    "text": "that is my permanent address",
+    "start": 392.24,
+    "end": 397.74,
+    "match_score": 1.0,
+    "whisper_text": "That is my permanent address.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 408,
+    "note": "verify-agent flag \u2014 reconstructing an entire Q&A pair with speaker attribution is beyond steno correction; this requires",
+    "text": "I did",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 410,
+    "note": "verify-agent flag \u2014 adding \"you\" to question fragment and inferring response requires more than steno correction \u2014 repor",
+    "text": "one time",
+    "start": 401.24,
+    "end": 407.24,
+    "match_score": 1.0,
+    "whisper_text": "One time.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 416,
+    "note": "verify-agent flag \u2014 extensive reconstruction of witness fragmented testimony goes beyond steno correction into testimony",
+    "text": "between volumes and barrels being paid to one of the companies I used to work for versus a major company that used to be",
+    "start": 420.24,
+    "end": 437.24,
+    "match_score": 0.83,
+    "whisper_text": "It was a dispute between volumes of oil barrels being paid to one of the companies I used to work for versus a major company.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 418,
+    "note": "\"offshore\" \u2014 unclear reference, possible company name or context; verify audio",
+    "text": "Somerset went back with the deposition with offshore",
+    "start": 442.24,
+    "end": 451.24,
+    "match_score": 0.67,
+    "whisper_text": "I was at Somerset and then went back to do a deposition for WT Offshore.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 420,
+    "note": "verify-agent flag \u2014 similar issue; extensive reconstruction of fragmented Q&A \u2014 reporter confirm",
+    "text": "they were plaintiff",
+    "start": 459.24,
+    "end": 467.24,
+    "match_score": 1.0,
+    "whisper_text": "They were the plaintiff.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 441,
+    "note": "verify-agent flag \u2014 \"your sworn\" \u2192 \"you're sworn\" is correct but the reconstruction of \"I understand that you're sworn u",
+    "text": "I know you've done this before so I don't have a lot of ground rules to go over. The only thing for the benefit of Maryb",
+    "start": 555.24,
+    "end": 569.24,
+    "match_score": 0.83,
+    "whisper_text": "The only thing for the benefit of Mary Beth is if you could let me finish my question before you answer and I'm going to endeavor to let you finish your answer before I launch it.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 443,
+    "note": "verify-agent flag \u2014 \"all righty\" may be witness's actual speech; the flag is appropriate but this should not be auto-cor",
+    "text": "all right.",
+    "start": 271.38,
+    "end": 277.8,
+    "match_score": 1.0,
+    "whisper_text": "All right, Aaron, let her rip.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 459,
+    "note": "\"have we'll into have decades\" \u2014 steno fragment; original reads \"have we'll into have decades worked in the industry rig",
+    "text": "no",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 461,
+    "note": "verify-agent flag \u2014 \"don't have always done\" reconstructed to \"you've always worked in\" is substantial rewriting rather ",
+    "text": "yes.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 462,
+    "note": "verify-agent flag \u2014 \"sort of\" may be intentional attorney phrasing; \"you're not a\" is a guess based on assumed intent \u2014 ",
+    "text": "you're not a petroleum engineer geologist or drilling expert right",
+    "start": 634.24,
+    "end": 646.24,
+    "match_score": 1.0,
+    "whisper_text": "You are not any sort of petroleum engineer or geologist or expert in oil and gas drilling, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 534,
+    "note": "verify-agent flag \u2014 extensive reconstruction of fragmented attorney colloquy speech with multiple inferred words \u2014 repor",
+    "text": "Just want to interject -- I don't want to hijack anything -- just want to make sure you don't disclose the substance of ",
+    "start": 652.24,
+    "end": 662.24,
+    "match_score": 0.67,
+    "whisper_text": "Other than your degree from the University of New Orleans, you don't have any other degrees, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 566,
+    "note": "answer unclear \u2014 steno fragmentation",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 568,
+    "note": "answer unclear \u2014 steno fragmentation",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 574,
+    "note": "answer unclear \u2014 steno fragmentation",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 634,
+    "note": "verify-agent flag \u2014 'object to the form' normalized to 'Objection to form' drops 'the'; if witness/attorney actually sai",
+    "text": "Objection to form. flag is appropriate but the correction leaves the line incomplete; should either include 'Go ahead' o",
+    "start": 241.64,
+    "end": 246.48,
+    "match_score": 0.5,
+    "whisper_text": "Go ahead.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 644,
+    "note": "verify-agent flag \u2014 stripping the colloquy \"think y'all mis- communicating\" from the objection line assumes there's a cl",
+    "text": "Objection to form; foundation.",
+    "start": 186.2,
+    "end": 192.08,
+    "match_score": 0.75,
+    "whisper_text": "All objections except to the form we preserve.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 649,
+    "note": "verify-agent flag \u2014 line break insertion within parenthetical markup changes the R8-protected formatting; should preserv",
+    "text": "marked for Identification.)",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 665,
+    "note": "steno duplication \u2014 \"Storm Harbour Securities\" appears twice; verify audio",
+    "text": "subject line Storm Harbour Securities K why credit [CORRECTED: \"K why credit\" \u2014 likely steno artifact for \"KYC\"] KYC Dil",
+    "start": 3481.95,
+    "end": 3494.15,
+    "match_score": 0.67,
+    "whisper_text": "It has the subject line of Storm Harbor Securities KYC due diligence information. Do you see that?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 669,
+    "note": "\"ummit .com\" \u2014 likely steno artifact; possibly \"@nsummit.com\" or similar \u2014 verify audio",
+    "text": "Mr. Easley French also ummit .com E-mail address es; is that right?",
+    "start": 8877.5,
+    "end": 8889.5,
+    "match_score": 0.83,
+    "whisper_text": "And here is an email that you send with an interest calculation for the original note, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 672,
+    "note": "\"there's 98 percent\" \u2014 unclear testimony; possible steno fragmentation \u2014 verify audio",
+    "text": "percent, don't remember there's 98 percent probably wiped off in wipe out.",
+    "start": 2032.24,
+    "end": 2040.24,
+    "match_score": 0.67,
+    "whisper_text": "Do you know what the scope of Jonathan Love's consulting work for wiped out is?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 674,
+    "note": "\"20222021\" \u2014 appears to be steno collision of two years; witness may have said \"2022\" or \"2021\" \u2014 verify audio",
+    "text": "20222021",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 680,
+    "note": "\"20172018\" \u2014 steno collision of two years; witness may have said \"2017\" or \"2018\" or \"2017-2018 period\" \u2014 verify audio",
+    "text": "20172018 period say it one more time sorry sure to be more precise here testified that Yellow Rock sorry that White Top ",
+    "start": 3722.55,
+    "end": 3730.55,
+    "match_score": 1.0,
+    "whisper_text": "You testified that Yellow Rock, I'm sorry, that Whitetop",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 685,
+    "note": "percent figure not captured \u2014 steno gap",
+    "text": "A. I don't know. Don't know in terms of corporate structure. White Top became sole -- White Top who owned Yellow Rock? W",
+    "start": 3760.95,
+    "end": 3766.95,
+    "match_score": 1.0,
+    "whisper_text": "Whitetop, who owned Yellow Rock?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 686,
+    "note": "percent figure not captured \u2014 steno gap",
+    "text": "Q. Have they always been owner? I mean, Yellow Rock -- this Yellow Rock? Yes.",
+    "start": 17455.28,
+    "end": 17464.62,
+    "match_score": 1.0,
+    "whisper_text": "Yes, what was do you recall what this reclassification of the yellow rock investment was",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 687,
+    "note": "percent figure not captured \u2014 steno gap",
+    "text": "A. Prior Yellow Rock with Bertolet, I don't know. Owned that since -- since acquisition -- since the acquisition in 2018",
+    "start": 3783.35,
+    "end": 3789.35,
+    "match_score": 1.0,
+    "whisper_text": "Since the acquisition in 2018.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 687,
+    "note": "percent figure not captured \u2014 steno gap",
+    "text": "A. Prior Yellow Rock with Bertolet, I don't know. Owned that since -- since acquisition -- since the acquisition in 2018",
+    "start": 3783.35,
+    "end": 3789.35,
+    "match_score": 1.0,
+    "whisper_text": "Since the acquisition in 2018.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 693,
+    "note": "\"good L.C.\" \u2014 unclear; possibly \"good LLC\" or steno gap \u2014 verify audio",
+    "text": "A. Three -- I think -- liability issue. The operators on-site dealing with wells -- that's Yellow Rock. The White Top in",
+    "start": 1829.24,
+    "end": 1836.24,
+    "match_score": 1.0,
+    "whisper_text": "Do you know whether individuals with Yellow Rock or White Top,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 694,
+    "note": "\"NGLC\" \u2014 unclear whether question or statement; steno gap",
+    "text": "Q. NGLC involved in the wells?",
+    "start": 3837.15,
+    "end": 3846.15,
+    "match_score": 0.83,
+    "whisper_text": "The Whitetop NGLC is not involved in the wells.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 707,
+    "note": "objection basis not completed \u2014 steno gap; possibly \"same objection\" \u2014 verify audio",
+    "text": "Same .",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 708,
+    "note": "dollar figure not captured \u2014 steno gap",
+    "text": "A. Valuation would be what -- paid -- time -- what did you -- time -- think -- paid -- close -- around million.",
+    "start": 3948.55,
+    "end": 3955.55,
+    "match_score": 0.75,
+    "whisper_text": "Close around $8.7 million.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 719,
+    "note": "objection basis not completed \u2014 steno gap",
+    "text": "Same .",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 745,
+    "note": "\"uh-huh\" here appears to be witness acknowledgment mid-question \u2014 verify speaker attribution",
+    "text": "Q. Okay. I want to focus first on the period before that happened, from 2018 to 2021. Uh-huh. The management team during",
+    "start": 4070.15,
+    "end": 4078.15,
+    "match_score": 0.67,
+    "whisper_text": "Who was the management team during that period?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 747,
+    "note": "verify-agent flag \u2014 adding \"Q.\" label and \"on\" and reconstructing \"It's the folks\" requires speaker attribution knowledg",
+    "text": "Q. It's the folks on that list from Exhibit 236?",
+    "start": 4083.55,
+    "end": 4091.55,
+    "match_score": 1.0,
+    "whisper_text": "It's the folks on that list from Exhibit 236.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 749,
+    "note": "no answer recorded \u2014 verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 769,
+    "note": "no answer recorded \u2014 verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 791,
+    "note": "incomplete question \u2014 verify audio",
+    "text": "Q. Did investigator Walsh have a substantive role in White Rock -- Yellow Rock -- ever?",
+    "start": 1559.24,
+    "end": 1567.24,
+    "match_score": 1.0,
+    "whisper_text": "Were you ever employed by Yellow Rock?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 793,
+    "note": "no answer recorded \u2014 verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 797,
+    "note": "no answer recorded \u2014 verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 801,
+    "note": "no answer recorded \u2014 verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 805,
+    "note": "no answer recorded \u2014 verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 807,
+    "note": "\"Barrett\" appears here but may be \"Bertolet\" or different individual \u2014 verify audio",
+    "text": "Q. Sounds like you don't have a present relationship with Mr. Barrett -- -- who, you know, worked for the company. Have ",
+    "start": 618.24,
+    "end": 629.24,
+    "match_score": 0.67,
+    "whisper_text": "You have, and we'll get into it, but you have for decades worked in the oil and gas industry, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 815,
+    "note": "incomplete \u2014 verify audio",
+    "text": "MR. GARNER: Hold on. At least you're honest about",
+    "start": 4263.55,
+    "end": 4269.55,
+    "match_score": 0.83,
+    "whisper_text": "We'll call on him and say, at least you're honest with us.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 842,
+    "note": "\"debt death debt death\" \u2014 apparent steno artifact repeating \"debt\"; transcribed as \"debt\" throughout. Verify audio.",
+    "text": "What about debt? What about borrowing? Debt increased --",
+    "start": 4348.15,
+    "end": 4354.15,
+    "match_score": 0.8,
+    "whisper_text": "Okay. What about debt? What about borrowing money?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 880,
+    "note": "\"16789\" \u2014 steno artifact; appears to be a number or list spoken by witness. Verify audio.",
+    "text": "Well, we were undercapitalized initially. Totally undercapitalized. I mean, needed -- in my opinion, since you're asking",
+    "start": 4422.35,
+    "end": 4432.35,
+    "match_score": 0.83,
+    "whisper_text": "I mean, we needed, in my opinion, if you're asking me, I'd say we needed another 10 million to get started.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 880,
+    "note": "\"stuck\" \u2014 possibly \"struck\" or witness said \"stuck\"; transcribed verbatim. Verify audio.",
+    "text": "Well, we were undercapitalized initially. Totally undercapitalized. I mean, needed -- in my opinion, since you're asking",
+    "start": 4422.35,
+    "end": 4432.35,
+    "match_score": 0.83,
+    "whisper_text": "I mean, we needed, in my opinion, if you're asking me, I'd say we needed another 10 million to get started.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 880,
+    "note": "\"offer\" \u2014 possible steno artifact; may be \"overall\" or other word. Verify audio.",
+    "text": "Well, we were undercapitalized initially. Totally undercapitalized. I mean, needed -- in my opinion, since you're asking",
+    "start": 4422.35,
+    "end": 4432.35,
+    "match_score": 0.83,
+    "whisper_text": "I mean, we needed, in my opinion, if you're asking me, I'd say we needed another 10 million to get started.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 894,
+    "note": "next line \u2014 apparent steno fragment \"rejected they were running show\"; may be witness testimony or colloquy. Transcribed",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 962,
+    "note": "verify-agent flag \u2014 \"thanks\" \u2192 \"Thank you\" normalizes colloquial speech; may not reflect what was actually said \u2014 report",
+    "text": "Thank you.",
+    "start": 451.24,
+    "end": 458.24,
+    "match_score": 1.0,
+    "whisper_text": "Thank you.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 969,
+    "note": "verify-agent flag \u2014 assuming this is a Q label requires speaker context not in the steno alone \u2014 reporter confirm",
+    "text": "Q. Take a moment to familiarize yourself.",
+    "start": 5095.75,
+    "end": 5101.75,
+    "match_score": 1.0,
+    "whisper_text": "Take a moment to familiarize yourself.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 975,
+    "note": "witness did not provide last name \u2014 steno unclear",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 986,
+    "note": "\"coal\" \u2014 may be a name, e.g., \"Cole\"; verify audio",
+    "text": "A. One or two, potentially. I don't remember. If you have a document, I'll review them. I reached out to Cole because he",
+    "start": 5182.75,
+    "end": 5189.75,
+    "match_score": 1.0,
+    "whisper_text": "You reached out to Mr. Cole because he's a friend of yours?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 989,
+    "note": "\"splat tags\" \u2014 likely steno artifact; probable intended term unclear; verify audio",
+    "text": "Q. You say, \"Mark, attached for your review is the overall concept on the -- \" exploitation of the White Top field, Loui",
+    "start": 5200.75,
+    "end": 5208.75,
+    "match_score": 1.0,
+    "whisper_text": "on the exploitation of the White Top field in Louisiana.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 993,
+    "note": "verify-agent flag \u2014 \"Bertolet\" proper noun spelling is assumed; if not confirmed in glossary, should flag for verificati",
+    "text": "Q. Continue -- you say, \"Acquired rights to take over operations from the current operator\" -- that outfit that's referr",
+    "start": 7010.5,
+    "end": 7017.5,
+    "match_score": 0.6,
+    "whisper_text": "Do you have an understanding of what that's referring to?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1002,
+    "note": "\"HERE*.\" \u2014 steno artifact, exact source unclear; appears to mark a location in the document being reviewed; verify.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1007,
+    "note": "\"splat tags\" \u2014 same artifact as above; verify audio",
+    "text": "Q. It says that the team previously evaluated this asset when they were with a large independent company -- their compan",
+    "start": 5286.75,
+    "end": 5293.75,
+    "match_score": 0.8,
+    "whisper_text": "when they were with the large independent company,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1030,
+    "note": "\"able type\" \u2014 probable steno fragment; may be \"A-type\" or another descriptor; verify audio",
+    "text": "Q. Okay. I said -- I think you said that you ended up drilling four wells in that transaction, after the -- after the de",
+    "start": 688.24,
+    "end": 701.24,
+    "match_score": 1.0,
+    "whisper_text": "Could you briefly describe for me your professional career after leaving the University of New Orleans in 1980?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1037,
+    "note": "verify-agent flag \u2014 normalizing multi-basis objection from comma to comma form may not match what was said; requires sta",
+    "text": "Objection to form, foundation.",
+    "start": 186.2,
+    "end": 192.08,
+    "match_score": 0.75,
+    "whisper_text": "All objections except to the form we preserve.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1043,
+    "note": "partial sentence \u2014 steno fragmentation, verify audio",
+    "text": "Q. Now, the next paragraph talks about Black Box -- that sunk most of their available funds into -- -- portion need defi",
+    "start": 5493.75,
+    "end": 5501.75,
+    "match_score": 0.5,
+    "whisper_text": "that sunk most of their available funds into the G&G portion",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1053,
+    "note": "verify-agent flag \u2014 capitalizing company names requires verification they are proper nouns; should not assume capitaliza",
+    "text": "Q. That White Top Oil and Gas Group has another two million in the project. Do you see that?",
+    "start": 7001.5,
+    "end": 7013.5,
+    "match_score": 1.0,
+    "whisper_text": "The subject is royalty split on the white top project we all put together and sold. Do you see that?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1060,
+    "note": "speaker attribution unclear \u2014 steno fragmentation",
+    "text": "Q. \"The idea would be to bring in investors -- $400,000 each.\" Do you see that? Investing in this project. Then it says ",
+    "start": 5723.75,
+    "end": 5730.75,
+    "match_score": 0.67,
+    "whisper_text": "And then it says in parenthetical,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1060,
+    "note": "preceding word \"coal\" \u2014 possible steno artifact, verify audio",
+    "text": "Q. \"The idea would be to bring in investors -- $400,000 each.\" Do you see that? Investing in this project. Then it says ",
+    "start": 5723.75,
+    "end": 5730.75,
+    "match_score": 0.67,
+    "whisper_text": "And then it says in parenthetical,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1060,
+    "note": "sentence fragment \u2014 steno fragmentation, verify audio",
+    "text": "Q. \"The idea would be to bring in investors -- $400,000 each.\" Do you see that? Investing in this project. Then it says ",
+    "start": 5723.75,
+    "end": 5730.75,
+    "match_score": 0.67,
+    "whisper_text": "And then it says in parenthetical,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1083,
+    "note": "question/answer attribution unclear \u2014 steno fragmentation",
+    "text": "Q.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1085,
+    "note": "\"uhmm\" \u2014 filler re [REVIEW: verify-agent flag \u2014 removing 'uhmm' filler is a default Layer 6 rule but 'uhmm' may be part ",
+    "text": "A. The reason -- again, I think I gave the reason -- needed a million more dollars, infighting, some technical reasons. ",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1087,
+    "note": "\"1030\" \u2014 possible exhibit number, Bates reference, or steno artifact \u2014 verify audio",
+    "text": "A. Good well anyway. Infighting with the geology.",
+    "start": 956.24,
+    "end": 966.24,
+    "match_score": 0.5,
+    "whisper_text": "And it sounds like you worked with a geologist who would do the geology work",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1108,
+    "note": "speaker unclear \u2014 possible continuation",
+    "text": "A. Then in the next paragraph it said idea of drilling two to three wells with the ability \u2014 one or two other wells \u2014 im",
+    "start": 5713.75,
+    "end": 5720.75,
+    "match_score": 0.8,
+    "whisper_text": "with the ability to debt out one or two other wells",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1108,
+    "note": "\"death\" appears to be steno error \u2014 heard as \"to add\" or similar; verify audio",
+    "text": "A. Then in the next paragraph it said idea of drilling two to three wells with the ability \u2014 one or two other wells \u2014 im",
+    "start": 5713.75,
+    "end": 5720.75,
+    "match_score": 0.8,
+    "whisper_text": "with the ability to debt out one or two other wells",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1120,
+    "note": "\"2021\" appears mid-line without context \u2014 verify whether witness said \"through 2021\" or separate answer; verify audio",
+    "text": "Q. Is the four wells during the 2017\u20132018 period \u2014 one more?",
+    "start": 3710.55,
+    "end": 3718.55,
+    "match_score": 0.6,
+    "whisper_text": "for the Yellow Rock opportunity in that 2017-2018 period?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1130,
+    "note": "\"tomorrow\" \u2014 steno error; likely a name or \"Tommy\" or similar; verify audio",
+    "text": "A. Didn't \u2014 wasn't that familiar with the team. Thought the management team had experience. I mean, Robin French had don",
+    "start": 5832.75,
+    "end": 5839.75,
+    "match_score": 1.0,
+    "whisper_text": "I mean, Robin French had done this many years.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1161,
+    "note": "\"Tomorrow Robin\" \u2014 unclear. Possible steno error for a name or phrase. Verify audio.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1170,
+    "note": "PUNCTUATION \u2014 steno fragmentation; \"Before -- okay.\" may be incomplete answer. Verify audio.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1187,
+    "note": "\"accept information\" \u2014 possible steno error for \"receive information\" or similar. Transcribed as heard; verify audio.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1220,
+    "note": "\"hand\" \u2014 unclear. Possible steno error or truncated speech. Verify audio.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1240,
+    "note": "company name unclear \u2014 steno fragmentation; verify audio",
+    "text": "First paragraph says: \"Bryce Bryson -- Geotomogeo -- team worked with Burlington. What's that referring to?",
+    "start": 6272.75,
+    "end": 6278.75,
+    "match_score": 0.67,
+    "whisper_text": "What's that referring to?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1246,
+    "note": "witness stated not very familiar \u2014 verify audio; original text ambiguous",
+    "text": "I've -- I have seen that document.",
+    "start": 6300.75,
+    "end": 6306.75,
+    "match_score": 1.0,
+    "whisper_text": "I have seen that document.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1260,
+    "note": "answer to this question appears missing \u2014 steno fragmentation; verify audio",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1263,
+    "note": "affirmative response inferred from context; verify audio",
+    "text": "Yes.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1279,
+    "note": "\"Marg\" \u2014 verify audio; possible truncated term or proper noun",
+    "text": "Well, Miocene shallow. The CIB HAZ deeper. The Hackberry even deeper. between the Miocene sands and the CIB HAZ sands.",
+    "start": 5869.75,
+    "end": 5876.75,
+    "match_score": 0.67,
+    "whisper_text": "with a thorough knowledge of these particular sands.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1369,
+    "note": "witness may have said a first name before \"about your owes\" \u2014 possibly \"Tim\" or similar; steno fragmentation unclear \u2014 v",
+    "text": "Q. What about -- Tim Burroughs, Don's partner?",
+    "start": 7063.5,
+    "end": 7082.5,
+    "match_score": 0.6,
+    "whisper_text": "That's right. Don Raper, Tim Burrows was Don's partner. And then there's a couple of small, like .002, you know, very small individuals that may participate with these guys. We didn't know until after the fact.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1403,
+    "note": "colloquy overlap \u2014 verify speaker attribution and sequence with audio",
+    "text": "--",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1406,
+    "note": "\"president's investors\" \u2014 unclear; possibly \"present investors\" or transcript fragment. Verify audio.",
+    "text": "For the record, I disagree with you. I don't think any of this is privilege subject to objection. Let's start siphoning ",
+    "start": 7199.5,
+    "end": 7207.5,
+    "match_score": 0.5,
+    "whisper_text": "I mean, for the record, I disagree with you. I don't think any of this is privileged or subject to an objection.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1410,
+    "note": "verify-agent flag \u2014 rendering 'Object to form; foundation' per KB-001 while noting it may be verbatim is contradictory; ",
+    "text": "Object to form; foundation.",
+    "start": 186.2,
+    "end": 192.08,
+    "match_score": 0.75,
+    "whisper_text": "All objections except to the form we preserve.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1419,
+    "note": "series of amounts unclear \u2014 steno fragmentation; heard as \"3-and-a-half million, [X",
+    "text": "A. I think there's been -- three-and-a-half million, million, [X] million, 9-and-a-half million.\" Verify audio for compl",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1419,
+    "note": "amount missing \u2014 steno gap before \"million.\" Verify audio.",
+    "text": "A. I think there's been -- three-and-a-half million, million, [X] million, 9-and-a-half million.\" Verify audio for compl",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1433,
+    "note": "\"Ryan roan\" \u2014 unclear; possibly a name or steno artifact. Verify audio.",
+    "text": "I don't think you're entitled to know. You're asking directly about litigation funding. We argued a motion on that Monda",
+    "start": 7349.5,
+    "end": 7356.5,
+    "match_score": 1.0,
+    "whisper_text": "And that's, we argued a motion on that on Monday.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1463,
+    "note": "\"ding ruling\" \u2014 steno artifact, likely \"and the ruling\" or similar; verify audio",
+    "text": "that's question that I instruct answer we are going maintain that instruction litigation funded gone funding think invad",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1466,
+    "note": "\"earring ootid\" \u2014 steno artifact, unintelligible; verify audio",
+    "text": "it's privileged it's not relevant it's everything that briefed in our motion it's what argued to the court Monday",
+    "start": 7636.5,
+    "end": 7642.5,
+    "match_score": 1.0,
+    "whisper_text": "It's what we argued to the court on Monday.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1469,
+    "note": "\"roan\" \u2014 steno artifact, may be witness name or \"Ryan\"; verify audio",
+    "text": "it's those arguments like said we're going instruct answer that question whatever court rules within that we'll bring th",
+    "start": 7646.5,
+    "end": 7653.5,
+    "match_score": 0.67,
+    "whisper_text": "we'll bring the witness back and you can ask him about that.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1479,
+    "note": "\"SFUND\" \u2014 steno artifact, unintelligible; verify audio",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1480,
+    "note": "\"Tom\" \u2014 steno artifact, may be \"to\" or witness name; verify audio",
+    "text": "gone funding independent from the litigation subject this objection because falls you're asking about the recent fundrai",
+    "start": 7696.5,
+    "end": 7704.5,
+    "match_score": 0.83,
+    "whisper_text": "You're asking about the recent fund raises.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1486,
+    "note": "\"fundraise\" \u2014 likely \"fundraiser\" or \"fundraising round\"; verify audio",
+    "text": "sure what said sitting here today, in the recent fundraise think referenced from late",
+    "start": 7730.5,
+    "end": 7738.5,
+    "match_score": 0.67,
+    "whisper_text": "I think you referenced from late 2025,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1487,
+    "note": "\"vesting\" \u2014 likely \"investing\"; verify audio",
+    "text": "2025 are there some investors whose investment only directed toward litigation used fund their funds used only litigatio",
+    "start": 7742.5,
+    "end": 7748.5,
+    "match_score": 1.0,
+    "whisper_text": "And their funds used only for litigation",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1496,
+    "note": "\"camera\" \u2014 likely \"in camera\"; verify audio",
+    "text": "disagrees it's frivolous asked things to be submitted they can sort really take umbrage with calling frivolous",
+    "start": 7788.5,
+    "end": 7795.5,
+    "match_score": 1.0,
+    "whisper_text": "So I really take umbrage with calling it frivolous.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1502,
+    "note": "\"protect rene Ryan\" \u2014 unclear; may be witness name or privilege reference. Verify audio.",
+    "text": "Your question about four parts -- I don't want to get into it over this -- instructing the witness not to answer because",
+    "start": 7803.5,
+    "end": 7809.5,
+    "match_score": 0.83,
+    "whisper_text": "I'm instructing the witness not to answer.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1509,
+    "note": "\"vapid raisefundraise\" \u2014 steno artifact; likely \"fundraise\" or \"capital raise.\" Verify audio.",
+    "text": "Q. Are there investors from the recent late 2025 White Top whose investment was only used for non-litigation purposes?",
+    "start": 7831.5,
+    "end": 7839.5,
+    "match_score": 0.83,
+    "whisper_text": "whose investment is only used for non-litigation purposes?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1531,
+    "note": "\"only , no this question might draw objection going anyway\" \u2014 steno fragment; appears to be witness beginning answer the",
+    "text": "A. For the last -- yes. I would say --",
+    "start": 9433.5,
+    "end": 9438.5,
+    "match_score": 1.0,
+    "whisper_text": "I would say yes one time.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1553,
+    "note": "\"what just answer to the last question everything in the you're asking whose funding litigation that's limits\" \u2014 heavily",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1590,
+    "note": "response unclear \u2014 steno fragmentation; verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1599,
+    "note": "steno fragmentation \u2014 verify audio",
+    "text": "A. Boilerplate \u2014 here's a Jonathan \u2014 you know, he writes other things on here. He may \u2014 I don't remember. General \u2014 here",
+    "start": 7046.5,
+    "end": 7064.5,
+    "match_score": 0.8,
+    "whisper_text": "Not by name. I can tell you who, you know, there's like a \u2013 I don't exactly remember their names. I pay them every month, but they're under like asset link. Don Raper, maybe, was the main guy in that group.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1639,
+    "note": "response unclear \u2014 steno fragmentation; verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1651,
+    "note": "\"loom nous\" \u2014 steno artifact, likely \"Luminous\"; verify audio",
+    "text": "additional million in debt financing from Luminous",
+    "start": 8312.5,
+    "end": 8317.5,
+    "match_score": 0.83,
+    "whisper_text": "in debt financing from Luminous?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1660,
+    "note": "steno fragmentation \u2014 question unclear. Appears to ask about collecting checks just from Luminus or from others as well.",
+    "text": "Q.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1662,
+    "note": "steno fragmentation \u2014 answer unclear. Appears to be a negative response regarding investment returns. Verify audio.",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1747,
+    "note": "verify-agent flag \u2014 \"company wage da\" flagged as artifact; if name 'Khawaja' is confirmed in glossary, removing 'company",
+    "text": "Here's an E-mail from Omar [CORRECTED: company wage da \u2192 Khawaja] -- someone at Luminus. Do you know who that is? Same -",
+    "start": 8755.5,
+    "end": 8761.5,
+    "match_score": 0.8,
+    "whisper_text": "Someone at Luminous, do you know who that is?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1749,
+    "note": "SPEAKER UNCLEAR \u2014 \"just French\" appears to be a fragment; verify audio.",
+    "text": "Do you know who [CORRECTED: Erin McCombAaron McComb \u2192 Aaron McComb] is? No idea. Tyler McDonald? No idea. [CORRECTED: Ra",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1761,
+    "note": "amount missing \u2014 steno gap; verify audio for dollar figure",
+    "text": "-- you're talking to Singh: \"Per the following principal interest for Luminous Holdings for the month of million.\" Do yo",
+    "start": 4494.55,
+    "end": 4502.55,
+    "match_score": 0.83,
+    "whisper_text": "What do you think the company could have done with that additional $10 million of capital?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1764,
+    "note": "TIMELINE \u2014 steno renders \"20192020\"; likely witness said \"2019\" and \"2020\" as a range \u2014 verify; corrected to opening yea",
+    "text": "At some point between the [CORRECTED: 20192020 \u2192 2019]",
+    "start": 8929.5,
+    "end": 8942.5,
+    "match_score": 0.8,
+    "whisper_text": "So, at some point between 2019-2020 period, they invested an additional $7-8 million in debt financing, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1767,
+    "note": "answer missing \u2014 steno gap before next question; verify audio.",
+    "text": "Thank you. I believe you answered this, but were you personally involved in the conversation soliciting that additional ",
+    "start": 8947.5,
+    "end": 8958.5,
+    "match_score": 1.0,
+    "whisper_text": "I believe you answered this, but were you personally involved in the conversation soliciting that additional debt financing?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1768,
+    "note": "TIMELINE \u2014 steno renders \"20202021\"; likely \"2020\" and \"2021\" or \"leading into 2020/2021\" \u2014 verify audio; corrected to \"",
+    "text": "Put that document away. Yellow Rock's poor performance leading [CORRECTED: 20202021 \u2192 into 2020]",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1777,
+    "note": "SPEAKER UNCLEAR \u2014 \"Did you have a view on that matter?\" appears to be a separate question by examining attorney, not an ",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1783,
+    "note": "PUNCTUATION \u2014 steno fragmentation prevents confident ruling on Q/A structure throughout this chunk. Multiple speaker att",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1787,
+    "note": "SPEAKER UNCLEAR \u2014 final question reconstructed from fragmented steno. Verify audio for exact wording and speaker.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1842,
+    "note": "verify-agent flag \u2014 adding \"in\" to \"wasn't involved any of those plans\" is correct but fragment standing as statement ma",
+    "text": "Wasn't involved in any of those plans.",
+    "start": 9584.5,
+    "end": 9591.5,
+    "match_score": 0.83,
+    "whisper_text": "I wasn't involved in any of its plans.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1852,
+    "note": "year range unclear \u2014 steno renders \"20182021\" \u2014 may be 2018 to 2021 or 2018-2021",
+    "text": "A. Well, I believe -- think there is potential out there. We had the right money that maybe Lou could have brought. Thin",
+    "start": 9603.5,
+    "end": 9613.5,
+    "match_score": 0.67,
+    "whisper_text": "And if we had the right money that Mayloose could have brought in, I think it was a great opportunity to continue drilling.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1857,
+    "note": "steno fragmentation \u2014 \"under capitalization absolutely your operation cyst many\" is severely garbled; cannot reconstruct",
+    "text": "Q. your optimism -- Luminus coming in with additional capital?",
+    "start": 9631.5,
+    "end": 9639.5,
+    "match_score": 0.83,
+    "whisper_text": "And your optimism, was it due to Luminous coming in with additional capital?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1867,
+    "note": "\"team cohesive they were communicating abdomen\" \u2014 \"abdomen\" is likely steno artifact for different word; cannot determin",
+    "text": "A. They had worked in the past on other projects. I believe based -- felt like this was what was needed from the beginni",
+    "start": 9650.5,
+    "end": 9658.5,
+    "match_score": 1.0,
+    "whisper_text": "Based on my conversations, it felt like this was what we needed from the beginning.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1867,
+    "note": "steno fragmentation \u2014 \"that I believe haven't personally Matt Steele said haven't thought\" is garbled; cannot reconstruc",
+    "text": "A. They had worked in the past on other projects. I believe based -- felt like this was what was needed from the beginni",
+    "start": 9650.5,
+    "end": 9658.5,
+    "match_score": 1.0,
+    "whisper_text": "Based on my conversations, it felt like this was what we needed from the beginning.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1875,
+    "note": "\"loving\" \u2014 may be steno artifact for a surname or different word; verify audio",
+    "text": "A. Conversation with Jonathan. Loving what this gentleman had done in the past. I mean, he's successful. Plus I think we",
+    "start": 17832.0,
+    "end": 17841.0,
+    "match_score": 0.83,
+    "whisper_text": "So to my knowledge, I don't remember if these wells were successful. And that wasn't my... I think",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1875,
+    "note": "steno fragmentation \u2014 \"think testified that post I'll call room in us\" is severely garbled; cannot reconstruct without a",
+    "text": "A. Conversation with Jonathan. Loving what this gentleman had done in the past. I mean, he's successful. Plus I think we",
+    "start": 17832.0,
+    "end": 17841.0,
+    "match_score": 0.83,
+    "whisper_text": "So to my knowledge, I don't remember if these wells were successful. And that wasn't my... I think",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1877,
+    "note": "dollar amount missing \u2014 steno gap",
+    "text": "Q. Okay. Most recently I think you said the company received maybe million investment. Is that capital enough to make th",
+    "start": 9702.5,
+    "end": 9710.5,
+    "match_score": 1.0,
+    "whisper_text": "Was that capital not enough to make this company successful?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1886,
+    "note": "steno fragmentation \u2014 multiple sentences run together; approximate reconstruction follows",
+    "text": "A. Into a lot of problems that we didn't know about -- money spent based on findings after the fact -- what your clients",
+    "start": 1391.24,
+    "end": 1401.24,
+    "match_score": 0.6,
+    "whisper_text": "Could you describe what your role was at the company?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1896,
+    "note": "speaker attribution unclear \u2014 possible colloquy or continuation",
+    "text": "Q. A letter. I think I remember seeing Brad communicated -- we were unable to get permits on the dome.",
+    "start": 9764.5,
+    "end": 9772.5,
+    "match_score": 1.0,
+    "whisper_text": "One, two. I mean, we weren't allowed to get any permits on the west side of the dome.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1918,
+    "note": "\"loam\" \u2014 possible steno artifact for \"or\" or proper noun; verify audio",
+    "text": "Q. Do you recall -- -- how many wells?",
+    "start": 4505.55,
+    "end": 4516.55,
+    "match_score": 1.0,
+    "whisper_text": "How many wells, if you recall, did Yellow Rock drill in that 2018 to 2021 period?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1920,
+    "note": "\"loam\" \u2014 same artifact as above; verify audio",
+    "text": "A. Don't remember.",
+    "start": 1048.24,
+    "end": 1056.24,
+    "match_score": 1.0,
+    "whisper_text": "I don't remember the dates exactly.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1926,
+    "note": "speaker attribution unclear \u2014 possible colloquy",
+    "text": "Q. We'll get back to -- solve that. You mentioned the 1031 well. I have some documents I want -- but just talk generally",
+    "start": 9864.5,
+    "end": 9872.5,
+    "match_score": 1.0,
+    "whisper_text": "I have some documents on this, but I just want to talk generally first with the 1031 well.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1950,
+    "note": "dollar amount missing \u2014 steno gap; verify audio",
+    "text": "Q. Cost more than million when all was said and done -- isn't that right?",
+    "start": 9904.5,
+    "end": 9912.5,
+    "match_score": 1.0,
+    "whisper_text": "It cost more than $3 million when all was said and done, isn't that right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1960,
+    "note": "\"an million\" \u2014 steno artifact; may be \"a million\" or specific dollar figure; verify audio",
+    "text": "A. Don't remember. Ballpark -- I have no idea. Less than million dollars -- I have no idea. Certainly less than -- an mi",
+    "start": 9935.5,
+    "end": 9942.5,
+    "match_score": 1.0,
+    "whisper_text": "Certainly less than the $3 million it cost to drill it.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1964,
+    "note": "answer fragmented \u2014 steno reconstruction uncertain",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 1966,
+    "note": "verify-agent flag \u2014 reconstructing punctuation on \"That's Westlake's fault right\" assumes this is witness speech, but pu",
+    "text": "Q. That's Westlake's fault, right?",
+    "start": 9945.5,
+    "end": 9952.5,
+    "match_score": 0.8,
+    "whisper_text": "That's not Westlake's fault, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 1989,
+    "note": "connection/question context unclear \u2014 steno fragmentation. Verify audio.",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2053,
+    "note": "'French Mr. Easley' \u2014 steno fragmentation; possibly two names or one name garbled. Verify audio.",
+    "text": "Q. Did the new group that came in \u2014 Mr. Love and the Luminus folks \u2014 have any more success raising capital than in the p",
+    "start": 4327.75,
+    "end": 4340.75,
+    "match_score": 0.83,
+    "whisper_text": "Were there any additional capital raises other than the initial one in that 2018 to 2021 period?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2059,
+    "note": "heavily fragmented steno \u2014 testimony about raising funds appears to involve multiple speakers/Q&A but speaker attributio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2061,
+    "note": "\"loaf\" \u2014 unclear steno artifact; possibly a name or word. Verify audio.",
+    "text": "A. Raising funds -- Sunny Solar raised -- talked about that -- they brought [a] bunch [of] money. Sunny Solar brought mo",
+    "start": 10655.79,
+    "end": 10661.19,
+    "match_score": 0.83,
+    "whisper_text": "Sunny Solar brought in money.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2067,
+    "note": "\"30, thereabouts\" \u2014 unclear whether this is a question or continuation of prior testimony. Possible figure stated was $3",
+    "text": "Q. Thirty, thereabouts -- [was] that equity capital, or was that debt too?",
+    "start": 3321.24,
+    "end": 3327.24,
+    "match_score": 0.67,
+    "whisper_text": "Was that a debt or equity investment?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2069,
+    "note": "\"some down debt\" \u2014 steno fragment; possibly \"some were debt\" or \"some were structured as debt.\" Verify audio.",
+    "text": "A. Some [were] down[,] debt.",
+    "start": 440.24,
+    "end": 446.24,
+    "match_score": 0.6,
+    "whisper_text": "Was this when you were at Somerset?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2080,
+    "note": "SPEAKER UNCLEAR \u2014 extended passage lacks Q./A. attribution. Possible colloquy between MR. MADIGAN and witness, or steno ",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2082,
+    "note": "SPEAKER UNCLEAR \u2014 fragment continues without speaker attribution. Transcribed verbatim.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2084,
+    "note": "SPEAKER UNCLEAR \u2014 apparent Q&A exchange embedded in unattributed block. Transcribed verbatim.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2087,
+    "note": "SPEAKER UNCLEAR \u2014 \"he being witness\" appears to be steno fragmentation; may be \"the witness\" or a different phrase. Tran",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2089,
+    "note": "SPEAKER UNCLEAR \u2014 continues without attribution.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2092,
+    "note": "SPEAKER UNCLEAR \u2014 passage throughout this block lacks Q./A. labels. Transcribed verbatim.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2095,
+    "note": "\"signature\" appears repeatedly as a steno artifact \u2014 may be \"significant\" or a different word. Transcribed verbatim; ver",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2101,
+    "note": "SPEAKER UNCLEAR \u2014 apparent Q&A continues without attribution.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2107,
+    "note": "\"are myou\" \u2014 steno artifact; likely \"are you\" or possibly \"tell me\" running into next phrase. Transcribed as fragment be",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2110,
+    "note": "SPEAKER UNCLEAR \u2014 fragment ends mid-sentence. Transcribed verbatim.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2204,
+    "note": "Transcript reads \"Caverns 7 and 7\" \u2014 likely steno error for \"Caverns 6 and 7.\" Verify audio.",
+    "text": "Q. True.",
+    "start": 10734.27,
+    "end": 10739.87,
+    "match_score": 1.0,
+    "whisper_text": "equity. Is that true or false?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2235,
+    "note": "percentage figure missing \u2014 steno gap",
+    "text": "A. Well, they condemned the whole west side by the dome. I'd say percent, potentially maybe more. I have actually done c",
+    "start": 627.24,
+    "end": 637.24,
+    "match_score": 0.67,
+    "whisper_text": "You have always done so in a financial or accounting or controlling capacity, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2235,
+    "note": "percentage figure missing \u2014 steno gap",
+    "text": "A. Well, they condemned the whole west side by the dome. I'd say percent, potentially maybe more. I have actually done c",
+    "start": 627.24,
+    "end": 637.24,
+    "match_score": 0.67,
+    "whisper_text": "You have always done so in a financial or accounting or controlling capacity, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2237,
+    "note": "percentage figure missing \u2014 steno gap",
+    "text": "Q. I had a write-off of percent -- sure. When did that happen?",
+    "start": 11438.59,
+    "end": 11443.59,
+    "match_score": 0.8,
+    "whisper_text": "When did that happen?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2239,
+    "note": "percentage figure missing \u2014 steno gap",
+    "text": "A. I believe 2024. I wrote off percent of your capitalized costs.",
+    "start": 11444.83,
+    "end": 11450.59,
+    "match_score": 0.67,
+    "whisper_text": "percent of your capitalized",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2243,
+    "note": "percentage figure missing \u2014 steno gap",
+    "text": "A. Write-off percent capitalize cost -- and the way the oil and gas business works, full cost accounting. You have a cap",
+    "start": 627.24,
+    "end": 637.24,
+    "match_score": 0.83,
+    "whisper_text": "You have always done so in a financial or accounting or controlling capacity, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2243,
+    "note": "remainder of sentence unclear \u2014 steno gap",
+    "text": "A. Write-off percent capitalize cost -- and the way the oil and gas business works, full cost accounting. You have a cap",
+    "start": 627.24,
+    "end": 637.24,
+    "match_score": 0.83,
+    "whisper_text": "You have always done so in a financial or accounting or controlling capacity, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2253,
+    "note": "steno gap \u2014 question incomplete",
+    "text": "Q. Department of Natural Resources regulators -- -- granted a permit to drill Well 1032?",
+    "start": 11505.15,
+    "end": 11510.79,
+    "match_score": 0.83,
+    "whisper_text": "a permit to drill 1032, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2266,
+    "note": "answer attribution unclear \u2014 steno gap",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2294,
+    "note": "\"VEFRTS\" \u2014 steno artifact, possible speaker label or word. Verify audio.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2298,
+    "note": "\"ripe\" \u2014 steno artifact or term; verify audio. Possible: \"right\"?",
+    "text": "I'm just going to object then, also interject -- I don't know what your knowledge -- be careful not to reveal communicat",
+    "start": 11634.03,
+    "end": 11639.71,
+    "match_score": 0.67,
+    "whisper_text": "knowledge is, but be careful not to",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2342,
+    "note": "verify-agent flag \u2014 \"continuation of exhibit introduction\" assumes context not fully shown in the steno line; \"283212\" n",
+    "text": "Q. Handing what's been marked Exhibit No. -- for the court reporter, this is 283212. Let me know when you're ready.",
+    "start": 6617.75,
+    "end": 6622.75,
+    "match_score": 1.0,
+    "whisper_text": "Let me know when you're ready.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2352,
+    "note": "\"write\" \u2014 possibly \"right\" as affirmative response, or witness beginning a new thought. Verify audio.",
+    "text": "A. Write --",
+    "start": 3510.95,
+    "end": 3526.95,
+    "match_score": 1.0,
+    "whisper_text": "Okay, and Mr. Easley writes, you can see at the top, Rick, responses to information requests that are below are annotated here and are attached.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2370,
+    "note": "\"faux\" \u2014 likely steno artifact for \"know\" or \"recall.\" Verify audio.",
+    "text": "A. Might have been in the process of a capital raise. Don't -- exactly what position at the time. There was a December \"",
+    "start": 3883.15,
+    "end": 3892.15,
+    "match_score": 0.8,
+    "whisper_text": "Was there any valuation work done of Yellow Rock at the time?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2398,
+    "note": "\"you had president\" \u2014 unclear; possible steno artifact. Verify audio.",
+    "text": "A. Didn't -- you had president as of the time this exhibit -- -- true, that's -- correctly right.",
+    "start": 14298.0,
+    "end": 14304.0,
+    "match_score": 0.75,
+    "whisper_text": "That's a true statement, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2429,
+    "note": "\"HAFB\" \u2014 possible steno artifact or acronym; verify audio",
+    "text": "A. Well, due to the hurricanes and everything else that caused operations to go down for several months and everything e",
+    "start": 12162.27,
+    "end": 12167.91,
+    "match_score": 0.67,
+    "whisper_text": "months and everything else caused",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2443,
+    "note": "sentence appears truncated \u2014 verify audio for complete answer",
+    "text": "A. Under these circumstances, we hadn't been successful. We'd like to be. I know we haven't been successful. We would ha",
+    "start": 12204.71,
+    "end": 12209.79,
+    "match_score": 0.83,
+    "whisper_text": "haven't been as successful as we'd",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2461,
+    "note": "sentence truncated \u2014 verify audio; \"CHECK CHECK\" appears to be steno marker, not testimony",
+    "text": "In fact, most \u2014 \" is appropriate but removing \"CHECK CHECK\" assumes it's a steno marker, not testimony; should verify au",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2518,
+    "note": "answer not captured \u2014 steno gap. Verify audio.",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2550,
+    "note": "answer not captured \u2014 steno gap. Verify audio.",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2590,
+    "note": "Speaker attribution unclear \u2014 preceding exchange appears to conflate Q and A. Verify audio for proper Q/A assignment.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2635,
+    "note": "\"its investors\" appears twice in sequence \u2014 possible steno artifact; verify audio",
+    "text": "A. Go ahead. This presentation to investors -- trying to solicit investment capital -- disclose those permit denials? Th",
+    "start": 12811.19,
+    "end": 12817.19,
+    "match_score": 0.8,
+    "whisper_text": "those permit denials, did it?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2642,
+    "note": "Speaker attribution unclear \u2014 this line reads as Q but follows an A. Verify audio.",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2651,
+    "note": "\"were\" vs. \"was\" \u2014 steno fragment; verify audio",
+    "text": "Q. White Top owed fiduciary duties to its investors, didn't disclose to those investors seeking capital this -- in your ",
+    "start": 1832.24,
+    "end": 1839.24,
+    "match_score": 0.6,
+    "whisper_text": "other than yourself, access this in cloud?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2658,
+    "note": "\"vapid raising\" \u2014 steno artifact; likely \"fundraising\" or similar. Verify audio.",
+    "text": "That that's amount of fundraising level funds that Yellow Rock sought raise with this fund-raising effort, that this fun",
+    "start": 12891.19,
+    "end": 12897.19,
+    "match_score": 0.83,
+    "whisper_text": "this fundraising effort?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2660,
+    "note": "\"vestedinvested\" \u2014 steno merge; likely \"invested.\" Verify audio.",
+    "text": "else invested in this fundraise, Luminus, Sunny Solar, don't know which once individually, that check, operating company",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2660,
+    "note": "\"vapid raise\" \u2014 steno artifact; likely \"fundraise\" or \"capital raise.\" Verify audio.",
+    "text": "else invested in this fundraise, Luminus, Sunny Solar, don't know which once individually, that check, operating company",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2660,
+    "note": "\"collectCHECK\" \u2014 steno artifact; meaning unclear. Verify audio.",
+    "text": "else invested in this fundraise, Luminus, Sunny Solar, don't know which once individually, that check, operating company",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2678,
+    "note": "\"vapid raise\" \u2014 steno artifact; likely \"fundraise\" or \"capital raise.\" Verify audio.",
+    "text": "The question merely that the pressure issues that talked about caverns were on the southwest side of the dome, this fund",
+    "start": 3505.55,
+    "end": 3514.55,
+    "match_score": 0.67,
+    "whisper_text": "There was a company that I tried to contact directly for funding of this acquisition.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2707,
+    "note": "verify-agent flag \u2014 \"currently detonated\" may not be correct; reasoning notes \"verify audio\" because \"detonated\" is unus",
+    "text": "also depicts that the area of interest currently detonated by the circle on the southeast part of the dome right that's ",
+    "start": 7063.5,
+    "end": 7082.5,
+    "match_score": 0.83,
+    "whisper_text": "That's right. Don Raper, Tim Burrows was Don's partner. And then there's a couple of small, like .002, you know, very small individuals that may participate with these guys. We didn't know until after the fact.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2829,
+    "note": "page/exhibit reference unclear \u2014 verify against exhibit",
+    "text": "Q.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 2877,
+    "note": "verify-agent flag \u2014 'Not necessarily' assumes 'not' was spoken but reconstructs from silence; should flag for audio rath",
+    "text": "A. Not necessarily.",
+    "start": 14011.0,
+    "end": 14016.0,
+    "match_score": 1.0,
+    "whisper_text": "Not necessarily.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2887,
+    "note": "witness appears to conflate \"Fran Schneider\" and \"Don Schneider\" across multiple turns \u2014 verify audio for speaker attrib",
+    "text": "A. Fran Schneider -- I don't know Fran Schneider.",
+    "start": 14061.0,
+    "end": 14066.0,
+    "match_score": 0.8,
+    "whisper_text": "I don't know Fran Snyder.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2894,
+    "note": "SPEAKER UNCLEAR \u2014 \"Have never -- okay\" may be continuation of witness answer or new question; verify audio",
+    "text": "A. Have never -- okay.",
+    "start": 10.44,
+    "end": 17.560000000000002,
+    "match_score": 0.75,
+    "whisper_text": "Okay, and also I have them by chat number.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2902,
+    "note": "SPEAKER UNCLEAR \u2014 \"Luminus -- do you know who that is\" appears misattributed; verify audio for Q/A split",
+    "text": "A. Luminus -- do you know who that is?",
+    "start": 8755.5,
+    "end": 8761.5,
+    "match_score": 1.0,
+    "whisper_text": "Someone at Luminous, do you know who that is?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2906,
+    "note": "question appears incomplete; verify audio",
+    "text": "Q. What is rights issue refer --",
+    "start": 14147.0,
+    "end": 14153.0,
+    "match_score": 1.0,
+    "whisper_text": "What does rights issue refer to?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2952,
+    "note": "question text unclear \u2014 steno fragmentation",
+    "text": "Q. says that Sunny Solar will fund $9,570,000 for the purchase of $9,570,000 White Top Energy membership units. That's r",
+    "start": 14573.0,
+    "end": 14593.0,
+    "match_score": 0.83,
+    "whisper_text": "And he says that Sunny Solar will fund $9,570,000 for the purchase of 9,570,000 white top energy membership units.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2966,
+    "note": "speaker attribution unclear \u2014 possible colloquy or interrupted testimony; verify audio",
+    "text": "A. Really \u2014 really, were you \u2014",
+    "start": 6944.5,
+    "end": 6956.5,
+    "match_score": 0.75,
+    "whisper_text": "240, which I will caution you is extremely heavily redacted for reasons I don't really understand.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2979,
+    "note": "word unclear \u2014 steno artifact",
+    "text": "A. Uhmm, goodness, that's a good question. I think \u2014 I think I heard earlier about some that was being displaced. Didn't",
+    "start": 14726.0,
+    "end": 14733.0,
+    "match_score": 0.67,
+    "whisper_text": "I think I heard earlier about the oil that was being displaced.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2979,
+    "note": "word unclear",
+    "text": "A. Uhmm, goodness, that's a good question. I think \u2014 I think I heard earlier about some that was being displaced. Didn't",
+    "start": 14726.0,
+    "end": 14733.0,
+    "match_score": 0.67,
+    "whisper_text": "I think I heard earlier about the oil that was being displaced.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2979,
+    "note": "unclear \u2014 possibly \"oily\" is steno artifact; verify audio",
+    "text": "A. Uhmm, goodness, that's a good question. I think \u2014 I think I heard earlier about some that was being displaced. Didn't",
+    "start": 14726.0,
+    "end": 14733.0,
+    "match_score": 0.67,
+    "whisper_text": "I think I heard earlier about the oil that was being displaced.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2983,
+    "note": "steno fragmentation \u2014 answer incomplete; verify audio",
+    "text": "A. I don't \u2014 I don't remember. At some point I heard that Yellow Rock had a grievance against Westlake. Like I said, I h",
+    "start": 11364.87,
+    "end": 11370.39,
+    "match_score": 0.83,
+    "whisper_text": "has said that Westlake is at fault",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 2998,
+    "note": "word missing \u2014 verify audio",
+    "text": "I think -- I don't -- I think somebody in the fall of 2023 -- when the State sent a letter saying, Hey, guys, [we had] g",
+    "start": 776.24,
+    "end": 789.24,
+    "match_score": 0.67,
+    "whisper_text": "They were, had, there were limited partnerships involved in the oil and gas business.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3000,
+    "note": "SPEAKER UNCLEAR \u2014 \"VIERN\" may be steno artifact for attorney name or witness name; verify audio",
+    "text": "VIERN",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3030,
+    "note": "\"Citgo leer\" \u2014 steno artifact unclear; may be \"sitting here\" or other phrase; verify audio",
+    "text": "[I] didn't read [it, so I] wouldn't [know], just [from] Citgo today.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3045,
+    "note": "PUNCTUATION \u2014 steno fragmentation; next sentence unclear",
+    "text": "Objection to form.",
+    "start": 186.2,
+    "end": 192.08,
+    "match_score": 1.0,
+    "whisper_text": "All objections except to the form we preserve.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3125,
+    "note": "court reporter clarification interruption \u2014 verify audio",
+    "text": "A. Other than what he's already said -- totally disagree with that statement. Made little history that my background hav",
+    "start": 15193.0,
+    "end": 15201.0,
+    "match_score": 0.83,
+    "whisper_text": "I've got a little history that in my background",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3132,
+    "note": "speaker attribution unclear \u2014 verify whether this is witness or colloquy",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3159,
+    "note": "\"stop ability exploit this play faster pace\" \u2014 steno fragmentation; verify audio",
+    "text": "A. The hurricanes had nothing to do with Westlake. Westlake -- flooding had nothing to do with Westlake. Westlake -- non",
+    "start": 15378.0,
+    "end": 15385.0,
+    "match_score": 1.0,
+    "whisper_text": "And none of that had one thing to do with Westlake.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3161,
+    "note": "\"this point did you the time of\" \u2014 steno fragmentation; verify audio",
+    "text": "We were handcuffed by nature. Nothing to do with Westlake.",
+    "start": 15381.0,
+    "end": 15389.0,
+    "match_score": 0.83,
+    "whisper_text": "The hurricane had nothing to do with Westlake.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3163,
+    "note": "\"vapid raisefundraise\" \u2014 steno fragmentation; likely \"capital raise\" or \"fundraise\"; verify audio",
+    "text": "Q. At the time of this capital raise we've been talking about, January of",
+    "start": 15415.0,
+    "end": 15422.0,
+    "match_score": 1.0,
+    "whisper_text": "we've been talking about in January of 2023",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3174,
+    "note": "\"filed discussions\" \u2014 steno fragmentation; may be \"I had discussions\" or similar; verify audio",
+    "text": "A. Yeah, I don't remember back then, to be honest with you. I don't know when. Sure, I had discussions eventually. It co",
+    "start": 2678.24,
+    "end": 2685.24,
+    "match_score": 0.67,
+    "whisper_text": "the electrical company, you know, what they had with Energy,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3174,
+    "note": "missing context \u2014 steno fragmentation before \"sure I had discussions eventually\"; verify audio",
+    "text": "A. Yeah, I don't remember back then, to be honest with you. I don't know when. Sure, I had discussions eventually. It co",
+    "start": 2678.24,
+    "end": 2685.24,
+    "match_score": 0.67,
+    "whisper_text": "the electrical company, you know, what they had with Energy,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3174,
+    "note": "\"sure if it's before don't know when it wasn't a key\" \u2014 steno fragmentation; verify audio",
+    "text": "A. Yeah, I don't remember back then, to be honest with you. I don't know when. Sure, I had discussions eventually. It co",
+    "start": 2678.24,
+    "end": 2685.24,
+    "match_score": 0.67,
+    "whisper_text": "the electrical company, you know, what they had with Energy,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3178,
+    "note": "steno fragmentation; verify audio",
+    "text": "A. Do you -- your --",
+    "start": 652.24,
+    "end": 662.24,
+    "match_score": 1.0,
+    "whisper_text": "Other than your degree from the University of New Orleans, you don't have any other degrees, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3187,
+    "note": "answer text missing \u2014 steno fragmentation; verify audio",
+    "text": "A. hours.",
+    "start": 15463.0,
+    "end": 15471.0,
+    "match_score": 1.0,
+    "whisper_text": "How many hours a week would you say you work?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3193,
+    "note": "speaker attribution unclear \u2014 the preceding line reads as a question; may be Q./A. label error; verify audio",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3206,
+    "note": "\"months we've lower level\" \u2014 steno fragmentation; likely \"months we've been at this lower level\"; verify audio",
+    "text": "I would say over the last eight months. Just obviously the 10/31 wasn't -- well, that would have -- I liked to produce -",
+    "start": 15518.0,
+    "end": 15524.0,
+    "match_score": 1.0,
+    "whisper_text": "that we would have liked to have produced.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3206,
+    "note": "\"1031\" \u2014 likely date reference October 31 or a well designation; verify audio",
+    "text": "I would say over the last eight months. Just obviously the 10/31 wasn't -- well, that would have -- I liked to produce -",
+    "start": 15518.0,
+    "end": 15524.0,
+    "match_score": 1.0,
+    "whisper_text": "that we would have liked to have produced.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3207,
+    "note": "\"80,000 thousand month\" \u2014 steno fragmentation; likely \"80,000 a month\" or \"80,000 to 90,000 a month\"; verify audio",
+    "text": "80,000",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3215,
+    "note": "\"CHECK\" \u2014 steno artifact or speaker; verify audio",
+    "text": "Check.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3243,
+    "note": "\"he had\" \u2014 steno artifact; likely \"that has\" or similar; verify audio",
+    "text": "243, which has Bates stamp",
+    "start": 16231.0,
+    "end": 16242.0,
+    "match_score": 0.6,
+    "whisper_text": "Exhibit 243, which is page stamp YR285451",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3266,
+    "note": "\"roan roan\" \u2014 steno artifact or proper name? Appears twice, likely mishear or steno error. Verify audio.",
+    "text": "We are not accusing of anything.",
+    "start": 16381.0,
+    "end": 16387.0,
+    "match_score": 0.83,
+    "whisper_text": "We're not accusing you of anything.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3283,
+    "note": "sentence appears incomplete or fragmented \u2014 steno may have dropped transition. Verify audio.",
+    "text": "Halprin, I want to sort of move chronologically here. I want to orient ourselves. The litigation was filed -- I think yo",
+    "start": 5603.75,
+    "end": 5612.75,
+    "match_score": 0.8,
+    "whisper_text": "And the reason was, again, I think you gave a few reasons.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3283,
+    "note": "number of hours missing \u2014 steno gap. Verify audio.",
+    "text": "Halprin, I want to sort of move chronologically here. I want to orient ourselves. The litigation was filed -- I think yo",
+    "start": 5603.75,
+    "end": 5612.75,
+    "match_score": 0.8,
+    "whisper_text": "And the reason was, again, I think you gave a few reasons.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3283,
+    "note": "estimated hours value missing \u2014 steno gap. Verify audio.",
+    "text": "Halprin, I want to sort of move chronologically here. I want to orient ourselves. The litigation was filed -- I think yo",
+    "start": 5603.75,
+    "end": 5612.75,
+    "match_score": 0.8,
+    "whisper_text": "And the reason was, again, I think you gave a few reasons.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3290,
+    "note": "\"d asc ertaining\" \u2014 steno fragment, possibly \"and ascertaining\"; verify audio",
+    "text": "general categories general categories communicating with management issues related to the lawsuit itself this also revie",
+    "start": 7148.5,
+    "end": 7168.5,
+    "match_score": 0.5,
+    "whisper_text": "Jonathan Love, myself, those costs. We also have all the legal attorney's bills, their expert witnesses, this cost here, etc., etc.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3292,
+    "note": "incomplete \u2014 steno fragment; verify audio",
+    "text": "-- reviewing documents from the vendors ascertaining what they there's some vendors here. The expert this expert that li",
+    "start": 16488.0,
+    "end": 16494.0,
+    "match_score": 0.83,
+    "whisper_text": "the expert this or expert that.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3292,
+    "note": "steno fragment \u2014 meaning unclear; verify audio",
+    "text": "-- reviewing documents from the vendors ascertaining what they there's some vendors here. The expert this expert that li",
+    "start": 16488.0,
+    "end": 16494.0,
+    "match_score": 0.83,
+    "whisper_text": "the expert this or expert that.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3292,
+    "note": "steno fragment \u2014 word missing after \"can\"; verify audio",
+    "text": "-- reviewing documents from the vendors ascertaining what they there's some vendors here. The expert this expert that li",
+    "start": 16488.0,
+    "end": 16494.0,
+    "match_score": 0.83,
+    "whisper_text": "the expert this or expert that.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3292,
+    "note": "\"the\" may be missing; verify audio",
+    "text": "-- reviewing documents from the vendors ascertaining what they there's some vendors here. The expert this expert that li",
+    "start": 16488.0,
+    "end": 16494.0,
+    "match_score": 0.83,
+    "whisper_text": "the expert this or expert that.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3292,
+    "note": "\"in\" may be missing; verify audio",
+    "text": "-- reviewing documents from the vendors ascertaining what they there's some vendors here. The expert this expert that li",
+    "start": 16488.0,
+    "end": 16494.0,
+    "match_score": 0.83,
+    "whisper_text": "the expert this or expert that.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3292,
+    "note": "\"bike documents\" \u2014 steno error; possibly \"by the documents\" or \"the documents\"; verify audio",
+    "text": "-- reviewing documents from the vendors ascertaining what they there's some vendors here. The expert this expert that li",
+    "start": 16488.0,
+    "end": 16494.0,
+    "match_score": 0.83,
+    "whisper_text": "the expert this or expert that.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3293,
+    "note": "steno fragment \u2014 possibly \"Don't you recall\" or similar; verify audio",
+    "text": "don't December",
+    "start": 1.6,
+    "end": 7.32,
+    "match_score": 0.5,
+    "whisper_text": "Don't take care of it.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3295,
+    "note": "missing dollar amount \u2014 \"million\" appears without figure; verify audio",
+    "text": "2023 capital raise we've been talking about million that's the first capital raise you're aware [of] post late",
+    "start": 16541.0,
+    "end": 16548.0,
+    "match_score": 0.67,
+    "whisper_text": "That's the first capital raise you're aware of",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3297,
+    "note": "\"for the conversion know\" \u2014 steno fragment; possibly \"For the conversion you know\" or similar; verify audio",
+    "text": "for the conversion know obviously obviously conversion [of] debt [to] equity there was some may be some debt accumulated",
+    "start": 16568.0,
+    "end": 16575.0,
+    "match_score": 0.83,
+    "whisper_text": "some debt accumulated before then.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3297,
+    "note": "\"may be some\" \u2014 steno fragment; possibly \"there may have been some\"; verify audio",
+    "text": "for the conversion know obviously obviously conversion [of] debt [to] equity there was some may be some debt accumulated",
+    "start": 16568.0,
+    "end": 16575.0,
+    "match_score": 0.83,
+    "whisper_text": "some debt accumulated before then.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3297,
+    "note": "\"that familiar\" \u2014 steno fragment; possibly \"that I'm familiar with\" or \"not that familiar\"; verify audio",
+    "text": "for the conversion know obviously obviously conversion [of] debt [to] equity there was some may be some debt accumulated",
+    "start": 16568.0,
+    "end": 16575.0,
+    "match_score": 0.83,
+    "whisper_text": "some debt accumulated before then.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3297,
+    "note": "incomplete \u2014 \"just trying to construct\" appears cut off; verify audio",
+    "text": "for the conversion know obviously obviously conversion [of] debt [to] equity there was some may be some debt accumulated",
+    "start": 16568.0,
+    "end": 16575.0,
+    "match_score": 0.83,
+    "whisper_text": "some debt accumulated before then.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3297,
+    "note": "missing dollar figure before \"million\"; verify audio",
+    "text": "for the conversion know obviously obviously conversion [of] debt [to] equity there was some may be some debt accumulated",
+    "start": 16568.0,
+    "end": 16575.0,
+    "match_score": 0.83,
+    "whisper_text": "some debt accumulated before then.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3304,
+    "note": "\"hand near 2022\" \u2014 steno fragment; possibly \"happened near\" or \"around\" 2022; verify audio",
+    "text": "if you show [me a] document I'll look [it] over okay you are aware that the pressure loss event that people often refer ",
+    "start": 16639.0,
+    "end": 16646.0,
+    "match_score": 0.67,
+    "whisper_text": "that people often refer to happened near the end of 2022?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3306,
+    "note": "\"aware of the dates reason disagree with that\" \u2014 steno fragment; meaning unclear; verify audio",
+    "text": "aware of the dates reason disagree with that aware of the dates are you aware that it happened before [the] lawsuit [was",
+    "start": 16649.0,
+    "end": 16656.0,
+    "match_score": 1.0,
+    "whisper_text": "Are you aware that it happened before the lawsuit was filed?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3310,
+    "note": "\"why I am\" \u2014 steno fragment; meaning unclear; verify audio",
+    "text": "thank you Jim why I am",
+    "start": 239.96,
+    "end": 244.8,
+    "match_score": 0.5,
+    "whisper_text": "Say what you wanna say, Jim.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3319,
+    "note": "\"Ryan ruin\" \u2014 steno fragment; possibly \"Ryan, you're on\" or similar; verify audio",
+    "text": "I'll share Ryan ruin",
+    "start": 17896.24,
+    "end": 17907.64,
+    "match_score": 0.5,
+    "whisper_text": "Now, you see at the very top, just starting at this page, the new shares will be offered at 70 cents per share,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3443,
+    "note": "\"11 of 2\" \u2014 unclear steno fragment; possibly \"one of two\" or other phrase. Verify audio.",
+    "text": "2023, right? He's asking about average production, right? You say would that be barrels a day. Were you a keeper of prod",
+    "start": 17340.16,
+    "end": 17348.56,
+    "match_score": 1.0,
+    "whisper_text": "Were you the keeper of production data in the company I",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3461,
+    "note": "Witness testified earlier that problems with 1031 well could not be attributed to Westlake \u2014 possible contradiction with",
+    "text": "1031 well, had it been drilled without problems, that would have a lot more revenue that time period. Testified earlier ",
+    "start": 18280.64,
+    "end": 18294.64,
+    "match_score": 0.67,
+    "whisper_text": "You testified earlier that before this time, Yellow Rock had had permits denied for wells in the southwest portion of the dome, right?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3466,
+    "note": "'I watching' \u2014 steno fragment; unclear. Verify audio.",
+    "text": "A. Sure. Following that distinction, the 1031 well -- well, which I Brad Brandl's deposition -- could you tell pieces of",
+    "start": 1708.24,
+    "end": 1721.24,
+    "match_score": 0.8,
+    "whisper_text": "Could you tell me how your responsibilities or area of work for Yellow Rock",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3466,
+    "note": "fragment; missing question setup. Verify audio.",
+    "text": "A. Sure. Following that distinction, the 1031 well -- well, which I Brad Brandl's deposition -- could you tell pieces of",
+    "start": 1708.24,
+    "end": 1721.24,
+    "match_score": 0.8,
+    "whisper_text": "Could you tell me how your responsibilities or area of work for Yellow Rock",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3466,
+    "note": "fragment continues; verify audio.",
+    "text": "A. Sure. Following that distinction, the 1031 well -- well, which I Brad Brandl's deposition -- could you tell pieces of",
+    "start": 1708.24,
+    "end": 1721.24,
+    "match_score": 0.8,
+    "whisper_text": "Could you tell me how your responsibilities or area of work for Yellow Rock",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3470,
+    "note": "fragment; 'don't' may be 'I don't recall' or 'I don't know.' Verify audio.",
+    "text": "A. Don't",
+    "start": 1.6,
+    "end": 7.32,
+    "match_score": 1.0,
+    "whisper_text": "Don't take care of it.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3488,
+    "note": "'am I just want familiar' \u2014 steno fragment; verify audio.",
+    "text": "A. Just curious. Deposition possibly coming. Said [I] never remembered being in a deposition. It's been a long time. Am ",
+    "start": 163.8,
+    "end": 170.88,
+    "match_score": 0.83,
+    "whisper_text": "It's been a long time since I shaved.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3492,
+    "note": "speaker attribution unclear \u2014 appears Q/A may be interleaved. Verify audio.",
+    "text": "A. Have you read transcripts?",
+    "start": 17631.2,
+    "end": 17640.16,
+    "match_score": 1.0,
+    "whisper_text": "Have you read but not read not no, I did not have you received the transcripts. I",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3514,
+    "note": "'he is that year' \u2014 steno fragment; verify audio.",
+    "text": "A. Well, don't remember exact date. No, we [had] some fundraise -- he is that year -- would assume. Okay.",
+    "start": 17754.2,
+    "end": 17766.6,
+    "match_score": 0.8,
+    "whisper_text": "the exact date. So I know we had some fundraisers in that year, I would assume. All right. If",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3542,
+    "note": "speaker attribution unclear \u2014 colloquy or witness testimony?",
+    "text": "A. [IMPLIED] that means that they're saying that the enterprise value [is] $10 million \u2014 they're saying Yellow Rock, rig",
+    "start": 17880.64,
+    "end": 17890.64,
+    "match_score": 1.0,
+    "whisper_text": "$10 million, they're saying. Of Yellow Rock, right? Well, I'm not sure if it says Yellow Rock for a second.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3550,
+    "note": "response not captured \u2014 verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3556,
+    "note": "question fragmented \u2014 verify audio",
+    "text": "Q. Explain \u2014 you are aware [but] [didn't] necessarily think [you needed to be involved]?",
+    "start": 1375.24,
+    "end": 1385.24,
+    "match_score": 0.67,
+    "whisper_text": "Were you involved in the decision to acquire that Napoleon Bell asset?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3578,
+    "note": "question fragmented \u2014 verify audio",
+    "text": "Q. Did you [have access to] White Top's books [and] financials?",
+    "start": 17993.64,
+    "end": 18008.64,
+    "match_score": 1.0,
+    "whisper_text": "Did you, for White Top's books and financials, have to record or mark the valuation of Yellow Rock as a White Top asset?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3580,
+    "note": "testimony fragmented \u2014 verify audio",
+    "text": "A. [As] half [of the] record [for the] mark valuation [of] Yellow Rock [as a] White Top asset \u2014 well, [the] consolidated",
+    "start": 1281.24,
+    "end": 1287.24,
+    "match_score": 0.6,
+    "whisper_text": "Well, they were trying to get assets.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3586,
+    "note": "speaker attribution unclear \u2014 possible Q/A label reversal",
+    "text": "A. [I] don't remember how many wells [or] how many barrels were produced from that recompletion.",
+    "start": 18050.64,
+    "end": 18060.64,
+    "match_score": 0.83,
+    "whisper_text": "I don't remember how many barrels produced from that recompletion.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3590,
+    "note": "response not captured \u2014 verify audio",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3614,
+    "note": "Q/A label unclear \u2014 verify audio for speaker attribution",
+    "text": "A.",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3632,
+    "note": "word or phrase before \"this slide eight\" unclear \u2014 verify audio",
+    "text": "A. Hope --",
+    "start": 9555.5,
+    "end": 9570.5,
+    "match_score": 1.0,
+    "whisper_text": "Now, we saw that when White Top invested in 2018 or so, the hope was to drill dozens of wells.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3640,
+    "note": "transition phrase unclear \u2014 verify audio",
+    "text": "Q. That's just what this slide is purporting to detail. This slide was done in August of 2023. They -- -- belief -- -- t",
+    "start": 0,
+    "end": 5.6,
+    "match_score": 0.5,
+    "whisper_text": "That is a remotely or not at all.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3640,
+    "note": "word unclear, possibly \"the belief at\" or \"their belief at\"",
+    "text": "Q. That's just what this slide is purporting to detail. This slide was done in August of 2023. They -- -- belief -- -- t",
+    "start": 0,
+    "end": 5.6,
+    "match_score": 0.5,
+    "whisper_text": "That is a remotely or not at all.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3668,
+    "note": "transition phrase unclear \u2014 verify audio",
+    "text": "A. That would be my interpretation. It may not be operation's interpretation. My interpretation there was an extreme env",
+    "start": 18325.64,
+    "end": 18335.64,
+    "match_score": 1.0,
+    "whisper_text": "It may not be operational interpretation, but my interpretation was there was an extreme environmental issue coming up.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3678,
+    "note": "duplicate A. label \u2014 second response may belong to different Q. Verify speaker attribution",
+    "text": "A. It's a real familiar name itself, to be honest with you. I don't know what service they would provide.",
+    "start": 18410.64,
+    "end": 18420.64,
+    "match_score": 1.0,
+    "whisper_text": "The name itself, to be honest with you, I wouldn't know what service they provide.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3721,
+    "note": "\"stint\" \u2014 possibly \"stint\" or steno artifact for different word; verify audio",
+    "text": "Might provide production data, some of the components that they would need -- evaluate a valuation -- provide inputs, wo",
+    "start": 18921.64,
+    "end": 18927.64,
+    "match_score": 0.8,
+    "whisper_text": "I would provide a lot of the inputs.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3734,
+    "note": "Heavily fragmented steno \u2014 multiple Q/A exchanges collapsed. Verbatim reconstruction attempted below based on context. R",
+    "text": "",
+    "status": "UNMATCHED"
+  },
+  {
+    "line_num": 3736,
+    "note": "question text missing \u2014 steno gap",
+    "text": "Q. appears \u2014 have you \u2014 you don't know what the conclusions were of that valuation? You can that away.",
+    "start": 14608.0,
+    "end": 14613.0,
+    "match_score": 0.83,
+    "whisper_text": "You can put that away.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3742,
+    "note": "\"Excel think didn't print\" \u2014 steno fragment, meaning unclear",
+    "text": "Q. This is another one where \u2014 don't need anyway now.",
+    "start": 19044.64,
+    "end": 19050.64,
+    "match_score": 0.8,
+    "whisper_text": "But we don't need it anyway for now.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3784,
+    "note": "\"laugh\" \u2014 possible steno artifact for \"laughs\" or interjection; verify audio",
+    "text": "A. [I] think [I] said million, didn't [I]? That was December 22nd. Uhmm \u2014 [I] would have [to] take a guess \u2014 nine \u2014 \u2014 mi",
+    "start": 3702.55,
+    "end": 3710.55,
+    "match_score": 0.67,
+    "whisper_text": "Do you know if the folks at, I guess it would have been North Summit or North Wind,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3796,
+    "note": "\"them on the screen says click\" \u2014 steno fragment, meaning unclear",
+    "text": "A. It's not [a hard] drive \u2014 just \u2014 back in the days [I] would call that [a] drive.",
+    "start": 19201.64,
+    "end": 19207.64,
+    "match_score": 1.0,
+    "whisper_text": "Back in the old days, I would call that drive.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3824,
+    "note": "'opinion would have been because of the environmental issues that we were faced' \u2014 speaker unclear; may be witness answe",
+    "text": "Objection to form and foundation. Go ahead.",
+    "start": 19782.64,
+    "end": 19788.64,
+    "match_score": 0.67,
+    "whisper_text": "Objective form foundation, go ahead.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3843,
+    "note": "opening quotation \u2014 steno fragment before this point; full quote may be incomplete. Verify audio.",
+    "text": "Mr. Love writes and says: \" Right, we are still stuck, probably have to cut pipe tonight, which means we will sidetrack ",
+    "start": 19515.64,
+    "end": 19523.64,
+    "match_score": 1.0,
+    "whisper_text": "Probably have to cut pipe tonight, which means we will be sidetracking as well.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3845,
+    "note": "speaker unclear here; may be witness or attorney. Verify.",
+    "text": "Do you understand what he's referring to there? He's referring to exactly what it says -- we're downhole, pipe is stuck,",
+    "start": 4445.75,
+    "end": 4455.75,
+    "match_score": 0.6,
+    "whisper_text": "And as it turns out, some of the issues were our technical operations team that got stuck",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3846,
+    "note": "dollar amount \u2014 steno gap; figure not captured. Verify audio.",
+    "text": "It says: \"Given the fact that Brad believes the sidetrack will total well cost million, we won't have enough powder to d",
+    "start": 19545.64,
+    "end": 19554.64,
+    "match_score": 1.0,
+    "whisper_text": "well cost at $3 million, we won't have enough dry powder to drill the 1032,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3848,
+    "note": "'on the issue' \u2014 steno fragment; antecedent missing. Verify audio.",
+    "text": "Working with on the issue. Do you see that?",
+    "start": 3481.95,
+    "end": 3494.15,
+    "match_score": 0.83,
+    "whisper_text": "It has the subject line of Storm Harbor Securities KYC due diligence information. Do you see that?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3888,
+    "note": "apparent steno artifact \u2014 transcribed as \"western Include File Not Found @yahoo.com\" \u2014 verify audio for actual address",
+    "text": "A. @yahoo.com.",
+    "start": 19706.64,
+    "end": 19712.64,
+    "match_score": 1.0,
+    "whisper_text": "westernparick at yahoo.com.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 3947,
+    "note": "word unclear \u2014 appears truncated; possibly \"big\" or \"tall\" \u2014 verify audio",
+    "text": "Your stack is getting .",
+    "start": 215.44,
+    "end": 221.84,
+    "match_score": 0.5,
+    "whisper_text": "for the insurers who are just now getting the discovery,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 4002,
+    "note": "question appears incomplete or fragmented \u2014 verify audio",
+    "text": "Q. Were there often White Top's board meet would have collect with Jonathan Love",
+    "start": 1843.24,
+    "end": 1850.24,
+    "match_score": 0.67,
+    "whisper_text": "where Jonathan Love would have a Jonathan Love folder?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 4006,
+    "note": "\"tramcentral\" \u2014 likely steno artifact; possible \"central\" or other term \u2014 verify audio",
+    "text": "Q. Do you know if it's update operational update do you know White Top maintains sent repository of the Board documents ",
+    "start": 20186.64,
+    "end": 20193.64,
+    "match_score": 0.67,
+    "whisper_text": "a central repository of board documents,",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 4012,
+    "note": "speaker attribution unclear \u2014 possible colloquy or steno fragmentation; verify audio",
+    "text": "A. That do you see that",
+    "start": 3481.95,
+    "end": 3494.15,
+    "match_score": 1.0,
+    "whisper_text": "It has the subject line of Storm Harbor Securities KYC due diligence information. Do you see that?",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 4038,
+    "note": "\"epo\" \u2014 likely steno artifact; possible \"the depo\" or \"depo\" \u2014 verify audio",
+    "text": "We're ending nobody questions",
+    "start": 20347.64,
+    "end": 20355.64,
+    "match_score": 1.0,
+    "whisper_text": "We're ending the depot. Nobody's got questions.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 4047,
+    "note": "sentence appears truncated \u2014 verify audio",
+    "text": "Nothing from",
+    "start": 265.72,
+    "end": 272.72,
+    "match_score": 0.5,
+    "whisper_text": "and I don't know if it needs anything from the line.",
+    "status": "MATCHED"
+  },
+  {
+    "line_num": 4062,
+    "note": "MR. CAUGHEY's response not captured \u2014 verify audio.",
+    "text": "",
+    "status": "UNMATCHED"
+  }
+]
