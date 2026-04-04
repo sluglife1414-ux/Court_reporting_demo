@@ -110,14 +110,18 @@ def remove_deleted_steno(content):
     result = []
     i = 0
     depth = 0  # nesting counter (supports rare double-deleted blocks)
+    # Pattern lengths (both are 14 chars: backslash + 13 letters/digit)
+    DEL1 = '\\cxsgdelsteno1'   # len=14
+    DEL0 = '\\cxsgdelsteno0'   # len=14
+    N    = 14
     while i < len(content):
-        if content[i:i+15] == '\\cxsgdelsteno1':
+        if content[i:i+N] == DEL1:
             depth += 1
-            i += 15
-        elif content[i:i+15] == '\\cxsgdelsteno0':
+            i += N
+        elif content[i:i+N] == DEL0:
             if depth > 0:
                 depth -= 1
-            i += 15
+            i += N
         else:
             if depth == 0:
                 result.append(content[i])
