@@ -71,3 +71,10 @@ PRIORITY RANKING (Scott's judgment required):
 ================================================================================
 END OF TECH DEBT AUDIT — 2026-03-30
 ================================================================================
+
+[TECH DEBT: build_transcript.py — 2026-04-03]
+  build_transcript.py outputs byte-for-byte identical content to FINAL_FORMATTED.txt.
+  Expected: plain stripped transcript (no page headers, no line numbers).
+  Actual: formatted content copied as-is.
+  Discovered: Halprin run, Session 30.
+  Priority: LOW — MB does not use this file directly. Fix before second CR onboarded.
