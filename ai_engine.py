@@ -225,7 +225,10 @@ def load_cr_config(engine_dir):
 
     Falls back to MB/Louisiana defaults if cr_config.json not found.
     """
-    config_path = os.path.join(engine_dir, 'cr_config.json')
+    # CWD (job work folder) takes priority — fall back to engine_dir for legacy runs
+    config_path = os.path.join(os.getcwd(), 'cr_config.json')
+    if not os.path.exists(config_path):
+        config_path = os.path.join(engine_dir, 'cr_config.json')
     if not os.path.exists(config_path):
         print('  [ENGINE] cr_config.json not found — using MB/Louisiana defaults', flush=True)
         return _DEFAULT_STATE_MODULE, _DEFAULT_HOUSE_STYLE, _DEFAULT_KB, _DEFAULT_REPORTER_NAME, _DEFAULT_STATE_LABEL, None

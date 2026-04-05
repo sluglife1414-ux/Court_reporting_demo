@@ -81,16 +81,27 @@ total_pages = max((v for v in _page_at.values() if v), default=0)
 
 
 def find_page_for_text(snippet, max_search=20):
-    """Search FINAL_FORMATTED for snippet and return (page, line) or (None, None)."""
-    snippet_clean = snippet.lower().strip()[:40]
-    if len(snippet_clean) < 6:
+    """Search FINAL_FORMATTED for snippet and return (page, line) or (None, None).
+    Tries progressively shorter word chunks to handle line-wrap mismatches."""
+    words = snippet.lower().strip().split()
+    if len(words) < 2:
         return None, None
-    for i, raw in enumerate(_flines):
-        if snippet_clean in raw.lower():
-            pg = _page_at.get(i)
-            m  = re.match(r'^\s{0,2}(\d{1,2})\s{1,3}', raw)
-            ln = int(m.group(1)) if m else None
-            return pg, ln
+    # Try 4-word chunks starting at word 0, 1, 2, 3 — handles line-wrap splits
+    for start in range(min(4, len(words))):
+        for chunk_size in (5, 4, 3):
+            chunk_words = words[start:start + chunk_size]
+            if len(chunk_words) < 3:
+                continue
+            candidate = ' '.join(chunk_words)
+            if len(candidate) < 6:
+                continue
+            for i, raw in enumerate(_flines):
+                raw_norm = re.sub(r'\s+', ' ', raw.lower())
+                if candidate in raw_norm:
+                    pg = _page_at.get(i)
+                    m  = re.match(r'^\s{0,2}(\d{1,2})\s{1,3}', raw)
+                    ln = int(m.group(1)) if m else None
+                    return pg, ln
     return None, None
 
 
@@ -435,21 +446,90 @@ add(
     '',
 )
 
-# SECTION D — AUDIO PASS
-section(f'SECTION D — AUDIO PASS  ({audio_total} items — your normal review)')
+# SECTION D — AUDIO VERIFICATION AGENT
+# Load audio_apply_log.json — two action types: AUTO (we changed it) and SUGGEST (your call)
+AUDIO_LOG_PATH = os.path.join(BASE, 'audio_apply_log.json')
+audio_auto    = []   # changes we made — AD confirms
+audio_suggest = []   # suggestions — AD decides
+
+if os.path.exists(AUDIO_LOG_PATH):
+    with open(AUDIO_LOG_PATH, encoding='utf-8') as _af:
+        _log = json.load(_af)
+    audio_auto    = _log.get('applied', [])
+    audio_suggest = _log.get('surfaced', [])
+
+d_total = len(audio_auto) + len(audio_suggest)
+section(f'SECTION D — AUDIO VERIFICATION AGENT  ({d_total} items)')
 add(
-    '  These items cannot be resolved without listening to the recording.',
-    '  They include:',
-    '    - Words the steno machine dropped entirely',
-    '    - Sentences the engine had to reconstruct from fragments',
-    '    - Dollar amounts and numbers the steno did not capture',
-    '',
-    '  This is your normal audio review pass — nothing new here.',
-    '  Handle these the same way you always have.',
-    '',
-    '  If you want the full list of these items, ask Scott.',
+    '  Your audio verification agent listened to the full recording.',
+    '  This section has two parts — read the header for each part carefully.',
     '',
 )
+
+# ── Part D1: Changes we made — AD confirms ────────────────────────────────────
+add(
+    f'  ┌─────────────────────────────────────────────────────────────────┐',
+    f'  │  PART 1 OF 2 — WE MADE A CHANGE  ({len(audio_auto)} items)              │',
+    f'  │                                                                 │',
+    f'  │  The agent was confident enough to clean up these lines.        │',
+    f'  │  The [REVIEW] tag has been removed and the line reads clean.    │',
+    f'  │                                                                 │',
+    f'  │  YOUR JOB:  Go to each page. Read the line. Listen if needed.  │',
+    f'  │             Write OK — or write the correction.                 │',
+    f'  └─────────────────────────────────────────────────────────────────┘',
+    '',
+)
+
+for n, item in enumerate(audio_auto, 1):
+    after_clean = re.sub(r'\[REVIEW[^\]]*\]', '', item.get('after', '')).strip()
+    whisper     = item.get('whisper_text', '').strip()
+    pg, ln      = find_page_for_text(after_clean)
+    pg_ref      = (f'Go to PDF page {pg}, line {ln}' if ln else f'Go to PDF page {pg}') if pg else f'Search PDF for: "{truncate_at_word(after_clean, 40)}"'
+    add(
+        f'  ── CONFIRM D1-{n:02d} {"─" * (W - 16)}',
+        f'  {pg_ref}',
+        f'',
+        f'  Line now reads:',
+        f'    {truncate_at_word(after_clean, 70)}',
+        f'',
+        f'  Agent heard:  "{truncate_at_word(whisper, 60)}"' if whisper else '',
+        f'',
+        f'  CONFIRM: ___  (write OK — or your correction)',
+        f'',
+    )
+
+# ── Part D2: Suggestions — AD decides ─────────────────────────────────────────
+add(
+    f'  ┌─────────────────────────────────────────────────────────────────┐',
+    f'  │  PART 2 OF 2 — YOUR CALL  ({len(audio_suggest)} items)                      │',
+    f'  │                                                                 │',
+    f'  │  The agent heard something but was not certain enough to        │',
+    f'  │  change the line. It left a note in the transcript for you.     │',
+    f'  │                                                                 │',
+    f'  │  YOUR JOB:  Go to each page. Listen to the recording.          │',
+    f'  │             Write exactly what was said.                        │',
+    f'  └─────────────────────────────────────────────────────────────────┘',
+    '',
+)
+
+for n, item in enumerate(audio_suggest, 1):
+    before_clean = re.sub(r'\[REVIEW[^\]]*\]', '', item.get('before', '')).strip()
+    whisper      = item.get('whisper_text', '').strip()
+    note         = item.get('note', '')
+    pg, ln       = find_page_for_text(before_clean)
+    pg_ref       = (f'Go to PDF page {pg}, line {ln}' if ln else f'Go to PDF page {pg}') if pg else f'Search PDF for: "{truncate_at_word(before_clean, 40)}"'
+    add(
+        f'  ── YOUR CALL D2-{n:02d} {"─" * (W - 18)}',
+        f'  {pg_ref}',
+        f'',
+        f'  What the transcript says (with gap):',
+        f'    {truncate_at_word(before_clean, 70)}',
+        f'',
+        f'  Agent heard:  "{truncate_at_word(whisper, 60)}"' if whisper else '  Agent heard:  (no clear match in recording)',
+        f'',
+        f'  YOUR ANSWER: {"_" * 46}',
+        f'',
+    )
 
 # SECTION E — SIGN-OFF
 section('SECTION E — SIGN-OFF')

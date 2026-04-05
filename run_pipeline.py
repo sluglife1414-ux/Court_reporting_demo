@@ -64,7 +64,9 @@ if os.path.exists(_env_path):
             _line = _line.strip()
             if _line and not _line.startswith('#') and '=' in _line:
                 _k, _v = _line.split('=', 1)
-                os.environ.setdefault(_k.strip(), _v.strip())
+                _key, _val = _k.strip(), _v.strip()
+                if _val:  # .env wins — overwrite empty/missing env vars
+                    os.environ[_key] = _val
 
 # Force UTF-8 for all child processes — any pipeline script that prints
 # Unicode (arrows, em-dashes, checkmarks) will work on Windows cp1252 consoles.
