@@ -54,6 +54,18 @@ import sys
 import os
 import argparse
 
+# ── Load .env from engine dir — runs before anything else ────────────────────
+# Keys live in .env (gitignored). Loaded once here, inherited by all subprocesses.
+# No external packages needed — plain file read.
+_env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+if os.path.exists(_env_path):
+    with open(_env_path, encoding='utf-8') as _ef:
+        for _line in _ef:
+            _line = _line.strip()
+            if _line and not _line.startswith('#') and '=' in _line:
+                _k, _v = _line.split('=', 1)
+                os.environ.setdefault(_k.strip(), _v.strip())
+
 # Force UTF-8 for all child processes — any pipeline script that prints
 # Unicode (arrows, em-dashes, checkmarks) will work on Windows cp1252 consoles.
 os.environ.setdefault('PYTHONIOENCODING', 'utf-8')
