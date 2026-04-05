@@ -4,20 +4,31 @@ run_pipeline.py — Master runner for mb_demo_engine_v4.
 Produces the full 10-file delivery package.
 
 USAGE:
-  python run_pipeline.py                 # full run (all steps)
-  python run_pipeline.py --preflight     # extract + steno, review metadata, confirm before AI pass
-  python run_pipeline.py --skip-ai       # skip input extract + steno + AI (use existing corrected_text.txt)
-  python run_pipeline.py --format-only   # format + build steps only (same as --skip-ai)
-  python run_pipeline.py --from extract  # start from a specific step
-  python run_pipeline.py --with-audio    # include audio check steps after specialist verify
+  python run_pipeline.py                        # full run (all steps), CWD = engine dir
+  python run_pipeline.py --job-dir path/to/job  # run against a specific job folder
+  python run_pipeline.py --preflight            # extract + steno, review metadata, confirm before AI pass
+  python run_pipeline.py --skip-ai              # skip input extract + steno + AI (use existing corrected_text.txt)
+  python run_pipeline.py --format-only          # format + build steps only (same as --skip-ai)
+  python run_pipeline.py --from extract         # start from a specific step
+  python run_pipeline.py --with-audio           # include audio check steps after specialist verify
+
+JOB FOLDER MODEL:
+  Each depo runs in its own job folder. All intermediate files (extracted_text.txt,
+  cleaned_text.txt, corrected_text.txt, FINAL_DELIVERY/) land in that folder.
+  Two jobs can run in parallel without collision.
+
+  Job folder must contain:
+    - CASE_CAPTION.json  (required — hard stop if missing)
+    - Input file (.rtf primary, .sgngl fallback)
+    - cr_config.json     (optional — defaults to format_final.py if absent)
 
 INPUT FORMAT AUTO-DETECTION (step 1):
   Pipeline detects input format automatically — no manual switching needed.
   Priority: .sgngl > .rtf
-    .sgngl found (engine dir or ../mb_*/ or ../*_yellowrock*/) → extract_sgngl.py
-    .rtf found (engine dir only)                               → extract_rtf.py
-    Both found                                                 → .sgngl wins, .rtf ignored (warned)
-    Neither found                                              → pipeline stops with clear error
+    .sgngl found (job dir or ../mb_*/ or ../*_yellowrock*/) → extract_sgngl.py
+    .rtf found (job dir only)                               → extract_rtf.py
+    Both found                                              → .sgngl wins, .rtf ignored (warned)
+    Neither found                                           → pipeline stops with clear error
 
 STEPS:
   1. extract_sgngl.py OR extract_rtf.py  -> extracted_text.txt  [auto-detected]
@@ -43,6 +54,10 @@ import sys
 import os
 import argparse
 
+# Absolute path to the engine directory.
+# Stays valid after os.chdir() to a job folder — script paths are built from this.
+ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 ALL_STEPS = [
     ('extract_rtf.py',       'extract',      'Extract input -> raw text  [format auto-detected at runtime]'),
     ('steno_cleanup.py',     'steno',        'Steno cleanup -> cleaned text'),
@@ -64,6 +79,15 @@ ALL_STEPS = [
 
 # Steps that run after the AI pass — safe to run independently
 POST_AI_STEPS = {'verify', 'apply_verify', 'specialist', 'audio_check', 'apply_audio', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables', 'mb_review'}
+
+
+def load_cr_config():
+    """Load cr_config.json from CWD (job folder). Returns {} if not found."""
+    if os.path.exists('cr_config.json'):
+        import json
+        with open('cr_config.json', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
 
 
 def detect_input_format():
@@ -109,6 +133,13 @@ def parse_args():
         epilog=__doc__
     )
     parser.add_argument(
+        '--job-dir',
+        dest='job_dir',
+        metavar='PATH',
+        help='Path to job folder. All I/O (input file, intermediates, FINAL_DELIVERY/) goes here. '
+             'Required for parallel runs. Defaults to CWD if omitted.'
+    )
+    parser.add_argument(
         '--skip-ai', '--format-only',
         action='store_true',
         dest='skip_ai',
@@ -148,6 +179,35 @@ def parse_args():
 def main():
     args = parse_args()
 
+    # ── Job directory — chdir so all relative file I/O lands in the job folder ──
+    if args.job_dir:
+        job_dir = os.path.abspath(args.job_dir)
+        if not os.path.isdir(job_dir):
+            print(f"[ERROR] --job-dir '{job_dir}' does not exist.")
+            sys.exit(1)
+        os.chdir(job_dir)
+        print(f"[JOB] Working directory: {job_dir}")
+
+    # ── CASE_CAPTION.json hard stop — every job requires one ─────────────────
+    if not os.path.exists('CASE_CAPTION.json'):
+        print("[ERROR] CASE_CAPTION.json not found.")
+        print("        Every job requires a CASE_CAPTION.json in the job folder.")
+        print(f"        Working directory: {os.getcwd()}")
+        sys.exit(1)
+
+    # ── CR config + formatter dispatch ───────────────────────────────────────
+    # cr_config.json lives in the job folder (copied from CR profile at intake).
+    # Default formatter: format_final.py (MB/LA). Override via cr_config.json.
+    cr_cfg = load_cr_config()
+    formatter = cr_cfg.get('formatter', 'format_final.py')
+    for i, (script, key, desc) in enumerate(ALL_STEPS):
+        if key == 'format':
+            ALL_STEPS[i] = (formatter, key, desc)
+            if formatter != 'format_final.py':
+                print(f"[CR] formatter: {formatter}  (cr_config.json)")
+            break
+    # ─────────────────────────────────────────────────────────────────────────
+
     # ── Step 1: detect input format and swap extractor if needed ─────────────
     # Only needed when we're actually running the extract step.
     # --skip-ai and --from <post-ai-step> both bypass extraction entirely.
@@ -160,7 +220,7 @@ def main():
         script, desc, fmt = detect_input_format()
         if script is None:
             print("[ERROR] No input file found.")
-            print("        Need a .sgngl (engine dir or ../mb_*/) or a .rtf (engine dir).")
+            print("        Need a .sgngl (job dir or ../mb_*/) or a .rtf (job dir).")
             print("        Copy the input file here, or run with --skip-ai if AI is already done.")
             sys.exit(1)
         # Swap step 1 with the detected extractor
@@ -221,7 +281,7 @@ def main():
                 continue
             print(f"[STEP] {desc}")
             print(f"       Running {script}...")
-            result = subprocess.run([sys.executable, script], capture_output=False)
+            result = subprocess.run([sys.executable, os.path.join(ENGINE_DIR, script)], capture_output=False)
             if result.returncode != 0:
                 print(f"\n[ERROR] {script} failed. Fix above and retry.")
                 sys.exit(1)
@@ -230,7 +290,7 @@ def main():
         print("            Review the extracted values below.")
         print("            If anything is UNKNOWN, Ctrl+C now and fill in case_info manually.")
         print()
-        result = subprocess.run([sys.executable, 'extract_config.py', '--review'], capture_output=False)
+        result = subprocess.run([sys.executable, os.path.join(ENGINE_DIR, 'extract_config.py'), '--review'], capture_output=False)
         if result.returncode != 0:
             print("\n[PREFLIGHT] Metadata review failed or rejected. Pipeline stopped.")
             print("            Fix depo_config.json manually, then run: python run_pipeline.py --from ai")
@@ -268,7 +328,7 @@ def main():
         print(f"       Running {script}...")
 
         # extract_config runs with --force (no interactive prompt)
-        cmd = [sys.executable, script]
+        cmd = [sys.executable, os.path.join(ENGINE_DIR, script)]
         if key == 'config':
             cmd.append('--force')
 
