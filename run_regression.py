@@ -47,7 +47,8 @@ import sys
 ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Minimum corrected_text.txt size — below this the AI pass probably didn't finish
-CORRECTED_TEXT_MIN_BYTES = 50_000
+# 10KB floor: catches empty/aborted runs without penalizing short depos (Fourman = 20KB)
+CORRECTED_TEXT_MIN_BYTES = 10_000
 
 # Accuracy floor for MB jobs (compare_accuracy.py score)
 ACCURACY_FLOOR = 97.3
@@ -150,7 +151,7 @@ def run_job_regression(label, work_dir, cr_type):
     ct_exists = os.path.exists(ct_path)
     ct_size   = os.path.getsize(ct_path) if ct_exists else 0
     chk('corrected_text.txt exists',   ct_exists, '' if ct_exists else 'Run AI pass first')
-    chk('corrected_text.txt > 50KB',   ct_size >= CORRECTED_TEXT_MIN_BYTES,
+    chk('corrected_text.txt > 10KB',   ct_size >= CORRECTED_TEXT_MIN_BYTES,
         f"{ct_size:,} bytes" if ct_exists else 'file missing')
 
     # CASE_CAPTION.json

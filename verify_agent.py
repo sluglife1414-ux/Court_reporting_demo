@@ -164,7 +164,7 @@ def run_verify(log_path):
     if disagreed:
         print(f"\nDISAGREED ITEMS ({len(disagreed)}):")
         for r in disagreed:
-            print(f"  line ~{r['line_approx']}: {repr(r['original'][:50])} → {repr(r['corrected'][:50])}")
+            print(f"  line ~{r['line_approx']}: {repr(r['original'][:50])} -> {repr(r['corrected'][:50])}")
             if r['verify_note']:
                 print(f"    Note: {r['verify_note']}")
 
