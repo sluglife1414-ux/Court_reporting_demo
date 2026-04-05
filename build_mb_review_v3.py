@@ -30,7 +30,7 @@ import os
 import re
 from datetime import date
 
-BASE = os.path.dirname(os.path.abspath(__file__))
+BASE = os.getcwd()  # job's work folder (set by run_pipeline.py --job-dir)
 
 
 # ── Load config ───────────────────────────────────────────────────────────────
@@ -478,7 +478,7 @@ add(
 
 # ── Write output ─────────────────────────────────────────────────────────────
 
-out_path = os.path.join(BASE, 'FINAL_DELIVERY', f'{CASE_SHORT}_MB_REVIEW.txt')
+out_path = os.path.join(BASE, 'FINAL_DELIVERY', f'{CASE_SHORT}_CR_REVIEW.txt')
 os.makedirs(os.path.dirname(out_path), exist_ok=True)
 with open(out_path, 'w', encoding='utf-8') as f:
     f.write('\n'.join(L))

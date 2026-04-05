@@ -64,7 +64,7 @@ EXPECTED_DELIVERY_SUFFIXES = [
     '_FINAL_FORMATTED.txt',
     '_FINAL_TRANSCRIPT.txt',
     '_CONDENSED.txt',
-    '_MB_REVIEW.txt',
+    '_CR_REVIEW.txt',
 ]
 
 

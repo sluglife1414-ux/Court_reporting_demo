@@ -74,7 +74,7 @@ ALL_STEPS = [
     ('build_condensed.py',   'condensed',    'Build condensed -> CONDENSED.txt'),
     ('build_summary.py',     'summary',      'Build AI summary -> DEPOSITION_SUMMARY.txt  [Haiku, ~$0.06]'),
     ('build_deliverables.py','deliverables', 'Build deliverables -> analysis docs'),
-    ('build_mb_review_v3.py','mb_review',    'Build MB review package -> {case}_MB_REVIEW.txt'),
+    ('build_mb_review_v3.py','mb_review',    'Build CR review package -> {case}_CR_REVIEW.txt'),
 ]
 
 # Steps that run after the AI pass — safe to run independently
