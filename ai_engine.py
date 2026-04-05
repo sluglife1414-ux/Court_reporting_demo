@@ -401,10 +401,12 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
                 system=system_block,
                 messages=[{"role": "user", "content": user_msg}]
             )
-            # Extract cache usage stats if available
-            usage = getattr(response, 'usage', None)
+            # Extract token usage stats
+            usage        = getattr(response, 'usage', None)
             cache_create = getattr(usage, 'cache_creation_input_tokens', 0) or 0
             cache_read   = getattr(usage, 'cache_read_input_tokens', 0) or 0
+            input_tok    = getattr(usage, 'input_tokens', 0) or 0
+            output_tok   = getattr(usage, 'output_tokens', 0) or 0
 
             raw = response.content[0].text.strip()
 
@@ -416,7 +418,7 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
             parsed = json.loads(raw)
             corrected = parsed.get('corrected_text', chunk_content)
             corrections = parsed.get('corrections', [])
-            return corrected, corrections, cache_create, cache_read
+            return corrected, corrections, cache_create, cache_read, input_tok, output_tok
 
         except json.JSONDecodeError:
             if attempt < MAX_RETRIES:
@@ -424,7 +426,7 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
                 time.sleep(1)
             else:
                 print(f'  [ERROR] JSON parse failed after retries — chunk kept as-is', flush=True)
-                return chunk_content, [], 0, 0
+                return chunk_content, [], 0, 0, 0, 0
 
         except Exception as e:
             if attempt < MAX_RETRIES:
@@ -432,7 +434,7 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
                 time.sleep(3)
             else:
                 print(f'  [ERROR] API call failed — chunk kept as-is', flush=True)
-                return chunk_content, [], 0, 0
+                return chunk_content, [], 0, 0, 0, 0
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -547,11 +549,13 @@ def main():
         print(f'  [RESUME] {len(all_corrections)} corrections already logged', flush=True)
         print(flush=True)
     else:
-        start_chunk          = 0
-        corrected_chunks     = []
-        all_corrections      = []
+        start_chunk           = 0
+        corrected_chunks      = []
+        all_corrections       = []
         cache_creation_tokens = 0
-        cache_read_tokens    = 0
+        cache_read_tokens     = 0
+        total_input_tokens    = 0
+        total_output_tokens   = 0
 
     start_time = time.time()
     last_progress_time = start_time
@@ -562,13 +566,15 @@ def main():
         pct = (i + 1) / len(chunks) * 100
         print(f'  [{i+1:3d}/{len(chunks)}]  ~line {line_start:<6}  {pct:5.1f}%', end='', flush=True)
 
-        corrected, corrections, cc_tok, cr_tok = correct_chunk(
+        corrected, corrections, cc_tok, cr_tok, in_tok, out_tok = correct_chunk(
             client, system_prompt, chunk, line_start, i, len(chunks)
         )
         corrected_chunks.append(corrected)
         all_corrections.extend(corrections)
         cache_creation_tokens += cc_tok
-        cache_read_tokens += cr_tok
+        cache_read_tokens     += cr_tok
+        total_input_tokens    += in_tok
+        total_output_tokens   += out_tok
 
         n = len(corrections)
         print(f'  +{n} correction{"s" if n != 1 else ""}', flush=True)
@@ -632,6 +638,23 @@ def main():
     print(f'Corrections:  {len(all_corrections)} total', flush=True)
     print(f'Cache write:  {cache_creation_tokens:,} tokens (chunk 1)', flush=True)
     print(f'Cache reads:  {cache_read_tokens:,} tokens ({len(chunks)-1} chunks at ~10% cost)', flush=True)
+
+    # ── Cost estimate (Sonnet 4.6 pricing) ───────────────────────────────────
+    # input_tokens includes cache tokens — subtract to get non-cached input
+    non_cached_input = max(0, total_input_tokens - cache_creation_tokens - cache_read_tokens)
+    cost_input       = non_cached_input      * 3.00  / 1_000_000
+    cost_cache_write = cache_creation_tokens * 3.75  / 1_000_000
+    cost_cache_read  = cache_read_tokens     * 0.30  / 1_000_000
+    cost_output      = total_output_tokens   * 15.00 / 1_000_000
+    cost_total       = cost_input + cost_cache_write + cost_cache_read + cost_output
+    print(flush=True)
+    print(f'--- COST ESTIMATE (Sonnet 4.6) ---', flush=True)
+    print(f'  Input (non-cached): {non_cached_input:>10,} tok  ${cost_input:.4f}', flush=True)
+    print(f'  Cache write:        {cache_creation_tokens:>10,} tok  ${cost_cache_write:.4f}', flush=True)
+    print(f'  Cache read:         {cache_read_tokens:>10,} tok  ${cost_cache_read:.4f}', flush=True)
+    print(f'  Output:             {total_output_tokens:>10,} tok  ${cost_output:.4f}', flush=True)
+    print(f'  TOTAL:                              ${cost_total:.4f}', flush=True)
+    print(f'----------------------------------', flush=True)
     print(flush=True)
     for conf in ('HIGH', 'MEDIUM', 'LOW', 'N/A', 'UNKNOWN'):
         if conf in conf_counts:
