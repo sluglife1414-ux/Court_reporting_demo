@@ -1,23 +1,61 @@
-# Raw source file (large binary-ish RTF — keep out of git if desired)
-# Comment out the line below if you want the raw RTF tracked
-031326yellowrock-ROUGH_T_1.rtf
+# ============================================================
+# mb_demo_engine_v4 — .gitignore
+# Engine dir = CODE ONLY. Job data lives in cr_profiles/.
+# If you're about to commit a file listed here, stop and ask
+# whether it belongs in a job folder instead.
+# ============================================================
 
-# Intermediate extraction files (reproducible from RTF + scripts)
+# ── Job pipeline outputs (belong in job folder work/) ────────
+corrected_text.txt
+corrected_text_*.txt
+cleaned_text.txt
+cleaned_text_*.txt
 extracted_text.txt
 extracted_qa.txt
+depo_config.json
+correction_log.json
+verify_log.json
+specialist_verify_log.json
+audio_matches.json
+audio_apply_log.json
+audio_transcript.json
+line_map.json
+word_timestamps.json
 
-# Generated output files — reproducible from corrected_text.txt
-FINAL_DELIVERY/*.pdf
-FINAL_DELIVERY/*.txt
+# ── Case data (belong in job folder work/) ───────────────────
+CASE_CAPTION.json
+CASE_CAPTION_*.json
+cr_config.json
 
-# Python cache
+# ── Input files (belong in job folder intake/) ───────────────
+*.rtf
+*.sgngl
+*.mp4
+*.m4a
+*.wav
+*.mp3
+
+# ── Delivery output (belong in job folder FINAL_DELIVERY/) ───
+FINAL_DELIVERY/
+*.pdf
+
+# ── Debug / scratch outputs ──────────────────────────────────
+audio_quality.txt
+audio_sample.txt
+section_f_preview.txt
+*.log
+
+# ── Python cache ─────────────────────────────────────────────
 __pycache__/
 *.pyc
+*.pyo
 test_audio/__pycache__/
 
-# Claude internal session data
-.claude/
-
-# Windows
+# ── OS / editor noise ────────────────────────────────────────
+.DS_Store
 Thumbs.db
 desktop.ini
+
+# ── Claude internal ──────────────────────────────────────────
+.claude/
+.env
