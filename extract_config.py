@@ -393,6 +393,7 @@ def main():
     CAPTION_IDENTITY_FIELDS = (
         'witness_name', 'witness_last', 'case_short',
         'examining_atty', 'depo_date', 'depo_date_short', 'depo_time',
+        'reporter_name', 'state',
     )
     caption_path = 'CASE_CAPTION.json'                                  # CWD = job folder
     if not os.path.exists(caption_path):
