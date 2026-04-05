@@ -35,7 +35,7 @@ REPORTER       = _cfg.get('reporter_name', 'UNKNOWN')
 EXAMINING_ATTY = _cfg.get('examining_atty', 'UNKNOWN')
 RUN_DATE       = date.today().strftime("%B %d, %Y")
 
-INPUT_FILE  = 'cleaned_text.txt'
+INPUT_FILE  = 'corrected_text.txt'
 OUTPUT_DIR  = 'FINAL_DELIVERY'
 
 HEADER_BAR = "=" * 80
