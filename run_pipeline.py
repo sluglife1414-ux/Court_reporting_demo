@@ -54,6 +54,10 @@ import sys
 import os
 import argparse
 
+# Force UTF-8 for all child processes — any pipeline script that prints
+# Unicode (arrows, em-dashes, checkmarks) will work on Windows cp1252 consoles.
+os.environ.setdefault('PYTHONIOENCODING', 'utf-8')
+
 # Absolute path to the engine directory.
 # Stays valid after os.chdir() to a job folder — script paths are built from this.
 ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))

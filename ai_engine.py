@@ -40,6 +40,11 @@ import json
 import time
 import re
 
+# AI output can contain Unicode (arrows, quotes, em-dashes) — force UTF-8 so
+# cp1252 Windows console never crashes on AI-generated text.
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 try:
     import anthropic
 except ImportError:

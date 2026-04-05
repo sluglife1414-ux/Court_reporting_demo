@@ -187,7 +187,7 @@ def run_job_regression(label, work_dir, cr_type):
     print(f"  Running pipeline --skip-ai ...")
     cmd = [sys.executable, os.path.join(ENGINE_DIR, 'run_pipeline.py'),
            '--job-dir', work_dir, '--skip-ai']
-    result = subprocess.run(cmd, capture_output=True, text=True)
+    result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace')
     pipeline_ok = result.returncode == 0
     chk('Pipeline --skip-ai completed without error', pipeline_ok,
         '' if pipeline_ok else f"exit code {result.returncode}")
@@ -232,7 +232,7 @@ def run_job_regression(label, work_dir, cr_type):
             print(f"  Running compare_accuracy.py against approved PDF ...")
             acc_cmd = [sys.executable, os.path.join(ENGINE_DIR, 'compare_accuracy.py')]
             acc_result = subprocess.run(acc_cmd, capture_output=True, text=True,
-                                        cwd=work_dir)
+                                        encoding='utf-8', errors='replace', cwd=work_dir)
             score = parse_accuracy_score(acc_result.stdout + acc_result.stderr)
             if score is not None:
                 chk(f"Accuracy score >= {ACCURACY_FLOOR}%",
