@@ -70,7 +70,7 @@ ALL_STEPS = [
     ('apply_verify.py',      'apply_verify', 'Apply verify: re-tag DISAGREE items as [REVIEW] in corrected_text.txt'),
     ('specialist_verify.py',      'specialist',    'Pass 3: 6-agent specialist review -> specialist_verify_log.json  [~2 min]'),
     ('audio_validation.py',       'audio_check',   'Audio check: match [REVIEW] items to recording -> audio_matches.json  [--with-audio]'),
-    ('apply_audio_validation.py', 'apply_audio',   'Apply audio corrections -> corrected_text.txt + Section F in MB_REVIEW  [--with-audio]'),
+    ('apply_audio_validation.py', 'apply_audio',   'Apply audio corrections -> corrected_text.txt + Section F in CR_REVIEW  [--with-audio]'),
     ('extract_config.py',         'config',        'Auto-extract case config -> depo_config.json'),
     ('format_final.py',      'format',       'Format final -> FINAL_FORMATTED.txt'),
     ('build_pdf.py',         'pdf',          'Build PDF -> FINAL.pdf'),
@@ -78,11 +78,11 @@ ALL_STEPS = [
     ('build_condensed.py',   'condensed',    'Build condensed -> CONDENSED.txt'),
     ('build_summary.py',     'summary',      'Build AI summary -> DEPOSITION_SUMMARY.txt  [Haiku, ~$0.06]'),
     ('build_deliverables.py','deliverables', 'Build deliverables -> analysis docs'),
-    ('build_mb_review_v3.py','mb_review',    'Build CR review package -> {case}_CR_REVIEW.txt'),
+    ('build_cr_review.py',   'cr_review',    'Build CR review package -> {case}_CR_REVIEW.txt'),
 ]
 
 # Steps that run after the AI pass — safe to run independently
-POST_AI_STEPS = {'verify', 'apply_verify', 'specialist', 'audio_check', 'apply_audio', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables', 'mb_review'}
+POST_AI_STEPS = {'verify', 'apply_verify', 'specialist', 'audio_check', 'apply_audio', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables', 'cr_review'}
 
 
 def load_cr_config():
@@ -175,7 +175,7 @@ def parse_args():
         '--with-audio',
         action='store_true',
         dest='with_audio',
-        help='Run audio check steps after specialist verify. Requires audio_transcript.json on disk.'
+        help='Run audio check steps after specialist verify. Auto-transcribes if no cache exists.'
     )
     return parser.parse_args()
 
@@ -340,14 +340,6 @@ def main():
             print()
             continue
 
-        # Audio check guard — targeted mode requires audio_transcript.json on disk
-        if key == 'audio_check' and args.with_audio:
-            if not os.path.exists('audio_transcript.json'):
-                print(f"[WARN] audio_transcript.json not found — skipping audio check.")
-                print(f"       Run full transcription first:")
-                print(f"         python audio_validation.py --full-run")
-                print()
-                continue
 
         print(f"[STEP] {description}")
         print(f"       Running {script}...")

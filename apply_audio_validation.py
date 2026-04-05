@@ -21,10 +21,10 @@ Non-negotiables:
   - Backup corrected_text.txt before touching anything
   - Never delete testimony — only remove/replace [REVIEW] tags
   - Full decision log saved to audio_apply_log.json
-  - MB-facing report appended to existing MB_REVIEW.txt
+  - CR-facing report appended to existing {CASE_SHORT}_CR_REVIEW.txt
 
 Author:  Scott + Claude
-Version: 1.0  (2026-04-03)
+Version: 2.0  (2026-04-05) — job-folder-aware, BASE = os.getcwd(), CR_REVIEW.txt
 """
 
 import os
@@ -34,7 +34,8 @@ import re
 import shutil
 from datetime import date
 
-BASE = os.path.dirname(os.path.abspath(__file__))
+# CWD = job's work/ folder (set by run_pipeline.py via os.chdir)
+BASE = os.getcwd()
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 MATCHES_PATH   = os.path.join(BASE, 'audio_matches.json')
@@ -50,8 +51,8 @@ if os.path.exists(cfg_path):
 if os.path.exists(cap_path):
     caption = json.load(open(cap_path, encoding='utf-8'))
 
-CASE_SHORT = cfg.get('case_short', 'Case')
-REVIEW_PATH = os.path.join(BASE, 'FINAL_DELIVERY', f'{CASE_SHORT}_MB_REVIEW.txt')
+CASE_SHORT  = cfg.get('case_short', 'Case')
+REVIEW_PATH = os.path.join(BASE, 'FINAL_DELIVERY', f'{CASE_SHORT}_CR_REVIEW.txt')
 
 # ── Thresholds ────────────────────────────────────────────────────────────────
 AUTO_THRESHOLD    = 0.9   # score >= this → auto-apply (with MB audit trail)

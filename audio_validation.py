@@ -1,32 +1,32 @@
 """
-audio_validation.py — Whisper audio transcription for deposition audio validation
-==================================================================================
-DEFAULT MODE (targeted):
-  Sends only the flagged [REVIEW] time windows to Whisper — ~30 sec per item.
-  Cost: ~$0.30  |  Time: 3-5 min  |  Requires: audio_transcript.json on disk
-  Run: python audio_validation.py
+audio_validation.py — Whisper audio validation for deposition [REVIEW] items
+=============================================================================
+Runs from the job's work/ folder (set by run_pipeline.py --job-dir).
 
-FULL-RUN MODE (whole depo):
-  Transcribes the entire audio file from start to finish.
-  Use once per depo to build audio_transcript.json, or when targeted mode
-  cannot find enough matches.
-  Cost: ~$2.04  |  Time: 20-30 min
-  Run: python audio_validation.py --full-run
+WHAT IT DOES:
+  1. Finds the audio file in ../intake/ automatically
+  2. If audio_transcript.json doesn't exist, transcribes the full audio
+     via Whisper (once per depo — cached after that)
+  3. Matches each [REVIEW] audio item to a Whisper segment
+  4. Saves audio_matches.json for apply_audio_validation.py
+
+Cost: ~$0.006/min of audio. A 40-min depo = ~$0.25.
+Time: 20-30 min first run (transcription), seconds after (cached).
 
 Requires:
   - OPENAI_API_KEY set in environment
   - pip install openai
   - ffmpeg on PATH
 
-Output:
-  audio_transcript.json  — full Whisper transcript with timestamps (full-run only)
-  audio_matches.json     — [REVIEW] items matched to Whisper segments
-
-Cost: ~$0.006/min of audio transcribed
-
 Author:  Scott + Claude
-Version: 1.1  (2026-04-03) — added --full-run flag, targeted mode is default
+Version: 2.0  (2026-04-05) — job-folder-aware, auto-transcribe, no hardcoded paths
 """
+# ──────────────────────────────────────────────────────────────
+# v2.0  2026-04-05  rip out hardcoded Halprin paths
+#                   BASE = os.getcwd() — always the job work folder
+#                   auto-discover audio from ../intake/
+#                   auto-transcribe if audio_transcript.json missing
+# ──────────────────────────────────────────────────────────────
 
 import os
 import sys
@@ -36,25 +36,33 @@ import math
 import tempfile
 import subprocess
 
-# ── Mode flag ─────────────────────────────────────────────────────────────────
-# Default: targeted mode (time-slice only flagged items — fast, cheap)
-# --full-run: transcribe entire audio file (use once per depo to build transcript)
-FULL_RUN = '--full-run' in sys.argv
-
-BASE = os.path.dirname(os.path.abspath(__file__))
+# CWD = job's work/ folder (set by run_pipeline.py via os.chdir)
+BASE = os.getcwd()
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
-AUDIO_FILE   = os.path.join(
-    BASE, '..', 'mb_040226_halprin_yellowrock', '040226yellowrock-ROUGH.opus'
-)
-CORRECTED    = os.path.join(BASE, 'corrected_text.txt')
+CORRECTED      = os.path.join(BASE, 'corrected_text.txt')
 OUT_TRANSCRIPT = os.path.join(BASE, 'audio_transcript.json')
 OUT_MATCHES    = os.path.join(BASE, 'audio_matches.json')
 
-CHUNK_MB     = 15          # keep well under 25MB API limit
-CONTEXT_SEC  = 2           # seconds before/after a match to pull for context
+CHUNK_MB      = 15    # keep well under 25MB Whisper API limit
+CONTEXT_SEC   = 2     # seconds before/after match for context clip
 WHISPER_MODEL = 'whisper-1'
+
+AUDIO_EXTENSIONS = ('.m4a', '.mp4', '.wav', '.mp3', '.opus', '.ogg', '.flac')
+
+
+# ── Find audio file in intake/ ────────────────────────────────────────────────
+
+def find_audio_file():
+    """Scan ../intake/ for any audio file. Returns path or None."""
+    intake_dir = os.path.join(BASE, '..', 'intake')
+    if not os.path.isdir(intake_dir):
+        return None
+    for fname in os.listdir(intake_dir):
+        if fname.lower().endswith(AUDIO_EXTENSIONS):
+            return os.path.join(intake_dir, fname)
+    return None
 
 
 # ── Validate environment ───────────────────────────────────────────────────────
@@ -66,8 +74,11 @@ if not api_key:
     print('  Then open a new terminal and re-run this script.')
     sys.exit(1)
 
-if not os.path.exists(AUDIO_FILE):
-    print(f'ERROR: Audio file not found: {AUDIO_FILE}')
+AUDIO_FILE = find_audio_file()
+if not AUDIO_FILE:
+    print('ERROR: No audio file found in ../intake/')
+    print('  Expected: .m4a, .mp4, .wav, .mp3, or .opus')
+    print('  Copy the audio file to the intake/ folder and re-run.')
     sys.exit(1)
 
 try:
@@ -247,63 +258,44 @@ def find_match(item_text, segments, context_sec=2):
 
 def main():
     print('=' * 60)
-    mode_label = 'FULL-RUN MODE' if FULL_RUN else 'TARGETED MODE'
-    print(f'AUDIO VALIDATION — Whisper Transcription  [{mode_label}]')
+    print('AUDIO VALIDATION — Whisper [REVIEW] Matcher')
     print('=' * 60)
+    print(f'Job folder: {BASE}')
+    print(f'Audio file: {os.path.basename(AUDIO_FILE)}')
 
     client = OpenAI(api_key=api_key)
 
     # ── Step 1: Transcription ─────────────────────────────────────────────────
-    #
-    # FULL-RUN MODE: transcribe entire audio file → saves audio_transcript.json
-    # Use once per depo. After that, targeted mode reads from that file.
-    # Run with: python audio_validation.py --full-run
-    #
-    if FULL_RUN:
-        if os.path.exists(OUT_TRANSCRIPT):
-            print(f'\nFound existing transcript: {OUT_TRANSCRIPT}')
-            print('Skipping transcription — delete file to re-run full pass.')
-            with open(OUT_TRANSCRIPT, encoding='utf-8') as f:
-                all_segments = json.load(f)
-        else:
-            if not HAS_FFMPEG:
-                print('\nERROR: ffmpeg not found.')
-                print('  winget install ffmpeg')
-                sys.exit(1)
-
-            print(f'\nAudio file: {AUDIO_FILE}')
-            print('Splitting audio into chunks...')
-            chunks = split_audio(AUDIO_FILE, CHUNK_MB)
-
-            all_segments = []
-            for idx, (offset, chunk_path) in enumerate(chunks):
-                print(f'\nTranscribing chunk {idx+1}/{len(chunks)}  '
-                      f'(offset {offset/60:.1f} min)...')
-                segs = transcribe_chunk(client, chunk_path, offset)
-                all_segments.extend(segs)
-                print(f'  → {len(segs)} segments')
-
-            with open(OUT_TRANSCRIPT, 'w', encoding='utf-8') as f:
-                json.dump(all_segments, f, indent=2)
-            print(f'\nTranscript saved: {OUT_TRANSCRIPT}')
-            print(f'Total segments:   {len(all_segments)}')
-
-    # ── TARGETED MODE: read existing transcript, match [REVIEW] items only ────
-    #
-    # Default mode. Reads audio_transcript.json built by --full-run.
-    # Future: will extract and send only the flagged time windows directly.
-    # Cost: fraction of full run.  Time: minutes, not 30 min.
-    #
-    else:
-        if not os.path.exists(OUT_TRANSCRIPT):
-            print('\nERROR: audio_transcript.json not found.')
-            print('  Run the full transcription first:')
-            print('    python audio_validation.py --full-run')
-            sys.exit(1)
-        print(f'\nLoading existing transcript: {OUT_TRANSCRIPT}')
+    # If audio_transcript.json exists, use it (cached — no re-cost).
+    # If not, transcribe the full audio now. Done once per depo.
+    if os.path.exists(OUT_TRANSCRIPT):
+        print(f'\nCached transcript found — loading...')
         with open(OUT_TRANSCRIPT, encoding='utf-8') as f:
             all_segments = json.load(f)
         print(f'  {len(all_segments)} segments loaded')
+    else:
+        print('\nNo transcript cached — transcribing full audio via Whisper...')
+        print('(Runs once per depo. Cached in audio_transcript.json after this.)')
+
+        if not HAS_FFMPEG:
+            print('\nERROR: ffmpeg not found. Run: winget install ffmpeg')
+            sys.exit(1)
+
+        print('\nSplitting audio into chunks...')
+        chunks = split_audio(AUDIO_FILE, CHUNK_MB)
+
+        all_segments = []
+        for idx, (offset, chunk_path) in enumerate(chunks):
+            print(f'\nTranscribing chunk {idx+1}/{len(chunks)}  '
+                  f'(offset {offset/60:.1f} min)...')
+            segs = transcribe_chunk(client, chunk_path, offset)
+            all_segments.extend(segs)
+            print(f'  -> {len(segs)} segments')
+
+        with open(OUT_TRANSCRIPT, 'w', encoding='utf-8') as f:
+            json.dump(all_segments, f, indent=2)
+        print(f'\nTranscript saved: {OUT_TRANSCRIPT}')
+        print(f'Total segments:   {len(all_segments)}')
 
     # ── Step 2: Match [REVIEW] items ──────────────────────────────────────────
     print('\nLoading [REVIEW] audio items from corrected_text.txt...')
