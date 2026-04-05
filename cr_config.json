@@ -2,6 +2,7 @@
   "reporter_id":   "dalotto_ny_001",
   "reporter_name": "Alicia D'Alotto",
   "state_label":   "New York WCB",
+  "formatter":     "format_final_ny_wcb.py",
   "modules": {
     "state_module":   "STATE_MODULE_ny_wcb.md",
     "house_style":    "HOUSE_STYLE_MODULE_dalotto.md",

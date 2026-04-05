@@ -176,8 +176,29 @@ def parse_args():
     return parser.parse_args()
 
 
+def load_cr_config():
+    """Load cr_config.json if present. Returns {} if not found."""
+    if os.path.exists('cr_config.json'):
+        import json
+        with open('cr_config.json', encoding='utf-8') as f:
+            return json.load(f)
+    return {}
+
+
 def main():
     args = parse_args()
+    cr_cfg = load_cr_config()
+
+    # ── CR formatter dispatch ─────────────────────────────────────────────────
+    # cr_config.json owns the formatter. Default: format_final.py (MB/LA).
+    formatter = cr_cfg.get('formatter', 'format_final.py')
+    for i, (script, key, desc) in enumerate(ALL_STEPS):
+        if key == 'format':
+            ALL_STEPS[i] = (formatter, key, desc)
+            if formatter != 'format_final.py':
+                print(f"[CR] formatter: {formatter}  (cr_config.json)")
+            break
+    # ─────────────────────────────────────────────────────────────────────────
 
     # ── Job directory — chdir so all relative file I/O lands in the job folder ──
     if args.job_dir:
