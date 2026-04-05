@@ -24,6 +24,11 @@ import time
 import argparse
 import anthropic
 
+# AI-generated text (verify_note, reasons) can contain Unicode (arrows, quotes, etc.)
+# Force UTF-8 stdout so cp1252 Windows console doesn't crash on those chars.
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+
 # ── Config ───────────────────────────────────────────────────────────────────
 
 MODEL          = 'claude-haiku-4-5-20251001'   # Haiku — cheap for verify pass
