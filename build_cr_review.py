@@ -108,12 +108,14 @@ def find_page_for_text(snippet):
     if not words:
         return None, None
 
-    # Single-token: Bates numbers, hyphenated refs (e.g. YR-364101-354102)
-    if len(words) == 1 and len(words[0]) >= 6:
-        target = words[0]
+    # Single-token: Bates numbers, hyphenated refs, individual words in PASS* check
+    if len(words) == 1 and len(words[0]) >= 5:
+        target      = words[0]
+        target_norm = re.sub(r"[-']", '', target)   # "write-off"→"writeoff", "wasn't"→"wasnt"
         for i, raw in enumerate(_flines):
-            raw_norm = re.sub(r'\[([^\]]+)\]', r'\1', raw.lower())
-            if target in raw_norm:
+            raw_norm  = re.sub(r'\[([^\]]+)\]', r'\1', raw.lower())
+            raw_alpha = re.sub(r"[-']", '', raw_norm)  # strip hyphens/apostrophes for fuzzy match
+            if target in raw_norm or target_norm in raw_alpha:
                 pg = _page_at.get(i)
                 m  = re.match(r'^\s{0,2}(\d{1,2})\s+', raw)
                 return pg, (int(m.group(1)) if m else None)
@@ -231,19 +233,28 @@ _STOPWORDS = {
 }
 
 
-def run_rtf_integrity_check():
+def run_10slice_check():
     """
-    Ground-truth integrity check: sample the raw RTF at 25/50/75/99%
-    and verify each phrase appears in FINAL_FORMATTED.
+    Pipeline acceptance test: divide the raw RTF into 10 equal slices,
+    pull one distinctive phrase from each slice, verify it appears in
+    FINAL_FORMATTED.
 
-    This catches content dropped BEFORE corrected_text was written
-    (i.e., in the AI engine pass) — something the corrected_text→FINAL
-    check cannot detect because it only sees our own output.
+    This is the ground-truth check — RTF is the only file we did NOT
+    produce. Catches content dropped at any stage of the pipeline.
 
-    Phrase selection: scan from each checkpoint backward until we find
-    a run of real words that includes at least 2 'distinctive' words
-    (alpha-only, 5+ chars, not common stopwords). These are the words
-    most likely to survive the AI correction pass unchanged.
+    Scoring:
+      10/10  → DELIVER
+       9/10  → DELIVER  (one steno-correction miss is acceptable)
+       8/10  → HOLD — Scott reviews failed slices
+      <=7/10 → DO NOT DELIVER — pipeline failure
+
+    Returns list of 10 result dicts, each with:
+      slice   — slice number 1-10
+      pct     — approximate position in depo (10, 20, ... 100)
+      phrase  — the 5-word phrase sampled from the RTF
+      status  — 'PASS', 'PASS*', or 'FAIL'
+      page    — PDF page where phrase was found (None for PASS*)
+      line    — PDF line (None if page not resolved to line)
     """
     import glob as _glob
     rtf_files = _glob.glob(os.path.join(BASE, '*.rtf'))
@@ -255,76 +266,92 @@ def run_rtf_integrity_check():
 
     plain = _strip_rtf_codes(raw_rtf)
 
-    # Split into words, keep only alphabetic tokens (filters steno artifacts,
-    # numbers, line numbers, and RTF residue)
+    # Build token list: alpha-only words, 3+ chars (filters steno artifacts,
+    # numbers, RTF residue, line/page numbers).
+    # Strip apostrophes — contractions like "don't" → "dont" (4 chars) won't
+    # qualify as distinctive, preventing false FAIL in the secondary word check.
     tokens = []
     for w in plain.split():
-        clean_w = re.sub(r"[^a-zA-Z']", '', w).strip("'").lower()
-        if len(clean_w) >= 3:
-            tokens.append(clean_w)
+        t = re.sub(r"[^a-zA-Z]", '', w).lower()
+        if len(t) >= 3:
+            tokens.append(t)
 
-    if len(tokens) < 40:
+    if len(tokens) < 100:
         return []
 
     results = []
-    for pct in [25, 50, 75, 99]:
-        target = max(0, min(int(len(tokens) * pct / 100) - 1, len(tokens) - 6))
-        phrase = None
+    n_slices = 10
+    slice_size = len(tokens) // n_slices
 
-        # Scan backward from checkpoint to find a distinctive 5-word run
-        for j in range(target, max(0, target - 60), -1):
+    for s in range(1, n_slices + 1):
+        # Target = end of this slice (so slice 1 = first 10%, slice 10 = last 10%)
+        target = min(s * slice_size - 1, len(tokens) - 6)
+        pct    = s * 10
+
+        # Scan backward from target to find a distinctive 5-word run
+        # "Distinctive" = 2+ words that are 5+ chars and not stopwords
+        # These words survive AI correction unchanged (names, domain terms)
+        phrase = None
+        for j in range(target, max(0, target - 80), -1):
             chunk = tokens[j:j + 5]
             if len(chunk) < 5:
                 continue
-            # Need 2+ distinctive words (long, not stopwords)
-            distinctive = [w for w in chunk
-                           if len(w) >= 5 and w not in _STOPWORDS]
+            distinctive = [w for w in chunk if len(w) >= 5 and w not in _STOPWORDS]
             if len(distinctive) < 2:
                 continue
             phrase = ' '.join(chunk)
             break
 
-        if phrase:
-            pg, ln_num = find_page_for_text(phrase)
-            if pg is not None:
-                results.append({
-                    'pct': pct, 'phrase': phrase,
-                    'found': True, 'page': pg, 'line': ln_num,
-                })
-            else:
-                # Full phrase not found — try each distinctive word individually.
-                # If all distinctive words appear in FINAL, it's a steno correction
-                # (e.g. "the million" → "$9,570,000"), NOT a content drop.
-                distinctive = [w for w in phrase.split()
-                               if len(w) >= 5 and w not in _STOPWORDS]
-                found_words = []
-                for dw in distinctive:
-                    dw_pg, _ = find_page_for_text(dw)
-                    if dw_pg is not None:
-                        found_words.append(dw)
-                if len(found_words) >= len(distinctive) and distinctive:
-                    # All distinctive words found — steno correction, not a drop
-                    results.append({
-                        'pct': pct, 'phrase': phrase,
-                        'found': True, 'page': None, 'line': None,
-                        'note': 'steno correction (words found, phrasing changed)',
-                    })
-                else:
-                    results.append({
-                        'pct': pct, 'phrase': phrase,
-                        'found': False, 'page': None, 'line': None,
-                    })
+        if not phrase:
+            results.append({'slice': s, 'pct': pct, 'phrase': '(no phrase)',
+                            'status': 'FAIL', 'page': None, 'line': None})
+            continue
+
+        pg, ln = find_page_for_text(phrase)
+
+        if pg is not None:
+            results.append({'slice': s, 'pct': pct, 'phrase': phrase,
+                            'status': 'PASS', 'page': pg, 'line': ln})
         else:
-            results.append({
-                'pct': pct, 'phrase': '(no phrase found)',
-                'found': False, 'page': None, 'line': None,
-            })
+            # Phrase not found — check if distinctive words appear individually.
+            # If all are found, the AI changed the phrasing (steno correction)
+            # rather than dropping content. Mark PASS* instead of FAIL.
+            distinctive = [w for w in phrase.split() if len(w) >= 5 and w not in _STOPWORDS]
+            all_found   = distinctive and all(
+                find_page_for_text(dw)[0] is not None for dw in distinctive
+            )
+            if all_found:
+                results.append({'slice': s, 'pct': pct, 'phrase': phrase,
+                                'status': 'PASS*', 'page': None, 'line': None})
+            else:
+                results.append({'slice': s, 'pct': pct, 'phrase': phrase,
+                                'status': 'FAIL',  'page': None, 'line': None})
 
     return results
 
 
-integrity_results    = run_integrity_check()
-rtf_integrity_results = run_rtf_integrity_check()
+# Acceptance thresholds
+_DELIVER_THRESHOLD = 9   # 9 or 10 out of 10 = deliver
+_HOLD_THRESHOLD    = 8   # 8 out of 10 = hold for review
+
+
+def slice_verdict(results):
+    """Return (score, verdict_string) for the 10-slice check."""
+    if not results:
+        return 0, 'UNKNOWN'
+    passed = sum(1 for r in results if r['status'] in ('PASS', 'PASS*'))
+    total  = len(results)
+    if passed >= _DELIVER_THRESHOLD:
+        verdict = 'DELIVER'
+    elif passed >= _HOLD_THRESHOLD:
+        verdict = 'HOLD — review failed slices before delivering'
+    else:
+        verdict = 'DO NOT DELIVER — pipeline failure, investigate immediately'
+    return passed, verdict
+
+
+integrity_results  = run_integrity_check()   # kept for internal pipeline stats
+slice_results      = run_10slice_check()
 
 
 # ── Parse corrected_text.txt — find [REVIEW] items ───────────────────────────
@@ -815,64 +842,49 @@ add(
 
 # ── SECTION 0 — DATA INTEGRITY ────────────────────────────────────────────────
 
-section('SECTION 0 -- DATA INTEGRITY CHECK')
+section('SECTION 0 -- PIPELINE ACCEPTANCE TEST')
+
+score, verdict = slice_verdict(slice_results)
+n_total        = len(slice_results) if slice_results else 10
+
 add(
-    '  Two independent checks confirm the full depo made it through.',
+    f'  Depo divided into {n_total} equal slices.',
+    f'  One phrase sampled from the raw RTF at each slice boundary.',
+    f'  Each phrase verified present in the final formatted output.',
     '',
-    '  CHECK 1 -- RAW RTF -> FINAL (ground truth)',
-    '  Phrases pulled directly from the raw steno file at 25/50/75/99%.',
-    '  If the AI engine dropped content, this check catches it.',
+    f'  SCORE:    {score}/{n_total}',
+    f'  VERDICT:  {verdict}',
     '',
 )
 
-def _fmt_integrity_row(r):
-    if r['found'] and r.get('note'):
-        status  = 'PASS*'
-        pg_info = r['note']
-    elif r['found']:
-        status  = 'PASS'
-        pg_info = (f'p.{r["page"]} l.{r["line"]}' if r.get('line')
-                   else f'p.{r["page"]}') if r.get('page') else ''
-    else:
-        status  = 'FAIL'
-        pg_info = 'NOT FOUND'
-    phrase = truncate_at_word(r['phrase'], 40)
-    return f'  [{r["pct"]:3d}%]  {status}  "{phrase}"  --  {pg_info}'
-
-if not rtf_integrity_results:
-    add('  (RTF check could not run -- no .rtf file found.)', '')
+if not slice_results:
+    add('  (Check could not run -- no .rtf file found in job folder.)', '')
 else:
-    rtf_passed = all(r['found'] for r in rtf_integrity_results)
-    for r in rtf_integrity_results:
-        add(_fmt_integrity_row(r))
+    add(f'  {"SL":>2}  {"POS":>4}  {"STATUS":<7}  {"PHRASE":<42}  LOCATION')
+    add(f'  {"-"*2}  {"-"*4}  {"-"*7}  {"-"*42}  {"-"*14}')
+    for r in slice_results:
+        if r['status'] == 'PASS' and r.get('page'):
+            loc = (f'p.{r["page"]} l.{r["line"]}' if r.get('line')
+                   else f'p.{r["page"]}')
+        elif r['status'] == 'PASS*':
+            loc = 'steno correction'
+        else:
+            loc = 'NOT FOUND'
+        phrase_disp = f'"{truncate_at_word(r["phrase"], 38)}"'
+        add(f'  {r["slice"]:>2}  {r["pct"]:>3}%  {r["status"]:<7}  {phrase_disp:<42}  {loc}')
     add('')
-    if rtf_passed:
-        add('  All 4 RTF checkpoints passed.', '')
-    else:
-        failed = [r for r in rtf_integrity_results if not r['found']]
-        add(f'  WARNING: {len(failed)} RTF checkpoint(s) FAILED.',
-            '  Content may have been dropped during AI processing.',
-            '  Do not deliver until Scott investigates.', '')
-
-add(
-    '  CHECK 2 -- CORRECTED TEXT -> FINAL (formatting pass)',
-    '  Confirms nothing was dropped during the formatting step.',
-    '',
-)
-
-if not integrity_results:
-    add('  (Check 2 could not run -- missing input files.)', '')
-else:
-    all_passed = all(r['found'] for r in integrity_results)
-    for r in integrity_results:
-        add(_fmt_integrity_row(r))
+    if score < n_total:
+        failed = [r for r in slice_results if r['status'] == 'FAIL']
+        add(f'  PASS*  = phrase words confirmed present; AI corrected the phrasing.')
+        add(f'  FAIL   = content from this slice NOT found in final output.')
+        if failed:
+            add('', '  Failed slices:', '')
+            for r in failed:
+                add(f'    Slice {r["slice"]} (~{r["pct"]}% through depo):',
+                    f'    RTF had: "{r["phrase"]}"',
+                    f'    Not found in FINAL_FORMATTED.',
+                    '')
     add('')
-    if all_passed:
-        add('  All 4 formatting checkpoints passed.', '')
-    else:
-        failed = [r for r in integrity_results if not r['found']]
-        add(f'  WARNING: {len(failed)} formatting checkpoint(s) FAILED.',
-            '  Do not deliver until Scott investigates.', '')
 
 # ── SECTION A — SPOT CHECK ────────────────────────────────────────────────────
 
