@@ -199,7 +199,132 @@ def run_integrity_check():
             })
     return results
 
-integrity_results = run_integrity_check()
+def _strip_rtf_codes(rtf_content):
+    """Strip RTF control codes and return plain text. Reuses extract_rtf.py logic."""
+    c = rtf_content
+    c = re.sub(r'\{\\\*\\cx[^}]{0,200}\}', '', c)
+    c = re.sub(r'\\cxsgdelsteno[01]', '', c)
+    c = re.sub(r'\\cxfl\s*', '', c)
+    c = re.sub(r'\\cxsingle\s*', '', c)
+    c = re.sub(r'\\cxdouble\s*', '', c)
+    c = re.sub(r'\\cxsgnocap\s*', '', c)
+    c = re.sub(r'\\cxsgindex[0-9]+\s*', '', c)
+    c = re.sub(r'\\cxsgmargin[0-9]+\s*', '', c)
+    c = re.sub(r'\\cxsg[a-z]+[0-9]*\s*', '', c)
+    c = re.sub(r'\\cx[a-z]+[0-9]*\s*', '', c)
+    c = c.replace('\\line ', '\n').replace('\\line\n', '\n').replace('\\line', '\n')
+    c = re.sub(r'\\pard[^\\{}\n]*', '\n', c)
+    c = re.sub(r'\\par[\s\\]', '\n', c)
+    c = c.replace('\\par', '\n').replace('\\tab', ' ')
+    c = re.sub(r'\\[a-zA-Z]+-?[0-9]*\*?\s?', '', c)
+    c = re.sub(r'\{[^{}]*\}', '', c)
+    c = re.sub(r'[{}\\]', '', c)
+    c = re.sub(r'[ \t]+', ' ', c)
+    return c.strip()
+
+
+_STOPWORDS = {
+    'that', 'this', 'with', 'from', 'they', 'have', 'will', 'been', 'were',
+    'your', 'what', 'when', 'then', 'also', 'said', 'just', 'into', 'than',
+    'their', 'there', 'about', 'which', 'would', 'could', 'should', 'after',
+    'before', 'those', 'these', 'some', 'more', 'very', 'well', 'right',
+}
+
+
+def run_rtf_integrity_check():
+    """
+    Ground-truth integrity check: sample the raw RTF at 25/50/75/99%
+    and verify each phrase appears in FINAL_FORMATTED.
+
+    This catches content dropped BEFORE corrected_text was written
+    (i.e., in the AI engine pass) — something the corrected_text→FINAL
+    check cannot detect because it only sees our own output.
+
+    Phrase selection: scan from each checkpoint backward until we find
+    a run of real words that includes at least 2 'distinctive' words
+    (alpha-only, 5+ chars, not common stopwords). These are the words
+    most likely to survive the AI correction pass unchanged.
+    """
+    import glob as _glob
+    rtf_files = _glob.glob(os.path.join(BASE, '*.rtf'))
+    if not rtf_files or not _flines:
+        return []
+
+    with open(rtf_files[0], encoding='utf-8', errors='replace') as f:
+        raw_rtf = f.read()
+
+    plain = _strip_rtf_codes(raw_rtf)
+
+    # Split into words, keep only alphabetic tokens (filters steno artifacts,
+    # numbers, line numbers, and RTF residue)
+    tokens = []
+    for w in plain.split():
+        clean_w = re.sub(r"[^a-zA-Z']", '', w).strip("'").lower()
+        if len(clean_w) >= 3:
+            tokens.append(clean_w)
+
+    if len(tokens) < 40:
+        return []
+
+    results = []
+    for pct in [25, 50, 75, 99]:
+        target = max(0, min(int(len(tokens) * pct / 100) - 1, len(tokens) - 6))
+        phrase = None
+
+        # Scan backward from checkpoint to find a distinctive 5-word run
+        for j in range(target, max(0, target - 60), -1):
+            chunk = tokens[j:j + 5]
+            if len(chunk) < 5:
+                continue
+            # Need 2+ distinctive words (long, not stopwords)
+            distinctive = [w for w in chunk
+                           if len(w) >= 5 and w not in _STOPWORDS]
+            if len(distinctive) < 2:
+                continue
+            phrase = ' '.join(chunk)
+            break
+
+        if phrase:
+            pg, ln_num = find_page_for_text(phrase)
+            if pg is not None:
+                results.append({
+                    'pct': pct, 'phrase': phrase,
+                    'found': True, 'page': pg, 'line': ln_num,
+                })
+            else:
+                # Full phrase not found — try each distinctive word individually.
+                # If all distinctive words appear in FINAL, it's a steno correction
+                # (e.g. "the million" → "$9,570,000"), NOT a content drop.
+                distinctive = [w for w in phrase.split()
+                               if len(w) >= 5 and w not in _STOPWORDS]
+                found_words = []
+                for dw in distinctive:
+                    dw_pg, _ = find_page_for_text(dw)
+                    if dw_pg is not None:
+                        found_words.append(dw)
+                if len(found_words) >= len(distinctive) and distinctive:
+                    # All distinctive words found — steno correction, not a drop
+                    results.append({
+                        'pct': pct, 'phrase': phrase,
+                        'found': True, 'page': None, 'line': None,
+                        'note': 'steno correction (words found, phrasing changed)',
+                    })
+                else:
+                    results.append({
+                        'pct': pct, 'phrase': phrase,
+                        'found': False, 'page': None, 'line': None,
+                    })
+        else:
+            results.append({
+                'pct': pct, 'phrase': '(no phrase found)',
+                'found': False, 'page': None, 'line': None,
+            })
+
+    return results
+
+
+integrity_results    = run_integrity_check()
+rtf_integrity_results = run_rtf_integrity_check()
 
 
 # ── Parse corrected_text.txt — find [REVIEW] items ───────────────────────────
@@ -692,28 +817,61 @@ add(
 
 section('SECTION 0 -- DATA INTEGRITY CHECK')
 add(
-    '  Verifies that no section of the depo was dropped during formatting.',
-    '  Four phrases pulled from the raw steno at 25%, 50%, 75%, and 100%',
-    '  of the transcript -- each one confirmed present in the final PDF.',
+    '  Two independent checks confirm the full depo made it through.',
+    '',
+    '  CHECK 1 -- RAW RTF -> FINAL (ground truth)',
+    '  Phrases pulled directly from the raw steno file at 25/50/75/99%.',
+    '  If the AI engine dropped content, this check catches it.',
+    '',
+)
+
+def _fmt_integrity_row(r):
+    if r['found'] and r.get('note'):
+        status  = 'PASS*'
+        pg_info = r['note']
+    elif r['found']:
+        status  = 'PASS'
+        pg_info = (f'p.{r["page"]} l.{r["line"]}' if r.get('line')
+                   else f'p.{r["page"]}') if r.get('page') else ''
+    else:
+        status  = 'FAIL'
+        pg_info = 'NOT FOUND'
+    phrase = truncate_at_word(r['phrase'], 40)
+    return f'  [{r["pct"]:3d}%]  {status}  "{phrase}"  --  {pg_info}'
+
+if not rtf_integrity_results:
+    add('  (RTF check could not run -- no .rtf file found.)', '')
+else:
+    rtf_passed = all(r['found'] for r in rtf_integrity_results)
+    for r in rtf_integrity_results:
+        add(_fmt_integrity_row(r))
+    add('')
+    if rtf_passed:
+        add('  All 4 RTF checkpoints passed.', '')
+    else:
+        failed = [r for r in rtf_integrity_results if not r['found']]
+        add(f'  WARNING: {len(failed)} RTF checkpoint(s) FAILED.',
+            '  Content may have been dropped during AI processing.',
+            '  Do not deliver until Scott investigates.', '')
+
+add(
+    '  CHECK 2 -- CORRECTED TEXT -> FINAL (formatting pass)',
+    '  Confirms nothing was dropped during the formatting step.',
     '',
 )
 
 if not integrity_results:
-    add('  (Integrity check could not run -- missing input files.)', '')
+    add('  (Check 2 could not run -- missing input files.)', '')
 else:
     all_passed = all(r['found'] for r in integrity_results)
     for r in integrity_results:
-        status = 'PASS' if r['found'] else 'FAIL'
-        pg_info = (f'p.{r["page"]} l.{r["line"]}' if r['line']
-                   else f'p.{r["page"]}') if r['page'] else 'NOT FOUND'
-        phrase_display = truncate_at_word(r['phrase'], 45)
-        add(f'  [{r["pct"]:3d}%]  {status}  "{phrase_display}"  --  {pg_info}')
+        add(_fmt_integrity_row(r))
     add('')
     if all_passed:
-        add('  All 4 checkpoints passed. Full depo confirmed in final output.', '')
+        add('  All 4 formatting checkpoints passed.', '')
     else:
         failed = [r for r in integrity_results if not r['found']]
-        add(f'  WARNING: {len(failed)} checkpoint(s) FAILED -- possible data loss.',
+        add(f'  WARNING: {len(failed)} formatting checkpoint(s) FAILED.',
             '  Do not deliver until Scott investigates.', '')
 
 # ── SECTION A — SPOT CHECK ────────────────────────────────────────────────────
