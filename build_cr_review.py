@@ -9,20 +9,23 @@ Design goal:
   She should be done in 15 minutes.
 
 What we show the CR:
-  A — 5 spot-check pages  (structure confirmation)
+  0 — Data integrity check  (4 phrases from raw → verified in final)
+  A — 5 spot-check pages    (structure confirmation)
   B — Items she can fix RIGHT NOW without audio
-       (Bates issues, names, missing data, exhibit gaps)
-  C — Filler words  (her preference, one decision applies to all)
+       (name spellings, Bates issues, exhibit numbers, missing words)
+  C — Filler words           (her preference, one decision applies to all)
   D — Audio-dependent items  (count only — she handles in her normal pass)
   E — Sign-off box
 
 What we DO NOT show:
-  - HIGH confidence engine fixes (CR doesn't need to review those)
-  - Verify-agent internal notes she can't action without audio
-  - Technical engine details
+  - Garbage: engine internal notes that resolve themselves (index page numbers, etc.)
+  - Dollar amounts / figures that require audio to fill in
+  - Items the engine already corrected with high confidence
+  - Any item without a clear actionable question
 
 Author:  Scott + Claude
-Version: 4.0  (2026-04-05) — renamed from build_mb_review_v3.py, dynamic page count
+Version: 5.0  (2026-04-06) — real page numbers, smart Section B filter,
+                              integrity check, specific questions for every item
 """
 
 import json
@@ -33,7 +36,7 @@ from datetime import date
 BASE = os.getcwd()  # job's work folder (set by run_pipeline.py --job-dir)
 
 
-# ── Load config ───────────────────────────────────────────────────────────────
+# ── Helpers ───────────────────────────────────────────────────────────────────
 
 def load_json(path, default=None):
     if os.path.exists(path):
@@ -41,24 +44,32 @@ def load_json(path, default=None):
             return json.load(f)
     return default or {}
 
-cfg         = load_json(os.path.join(BASE, 'depo_config.json'))
-caption     = load_json(os.path.join(BASE, 'CASE_CAPTION.json'))
-# CASE_CAPTION.json is authoritative — override depo_config for identity fields
+
+def truncate_at_word(s, max_len=65):
+    """Truncate at word boundary — no mid-word cuts."""
+    s = s.strip()
+    if len(s) <= max_len:
+        return s
+    cut = s[:max_len].rsplit(' ', 1)[0]
+    return cut + '...'
+
+
+# ── Load config ───────────────────────────────────────────────────────────────
+
+cfg       = load_json(os.path.join(BASE, 'depo_config.json'))
+caption   = load_json(os.path.join(BASE, 'CASE_CAPTION.json'))
 cfg.update(caption)
-corr_data   = load_json(os.path.join(BASE, 'correction_log.json'))
+corr_data = load_json(os.path.join(BASE, 'correction_log.json'))
 if isinstance(corr_data, list):
     corr_data = {'corrections': corr_data}
-corr_list   = corr_data.get('corrections', [])
+corr_list = corr_data.get('corrections', [])
 
-CASE_SHORT   = cfg.get('case_short', 'Case')
-WITNESS      = caption.get('witness_name',       cfg.get('witness_name', 'WITNESS'))
-DEPO_DATE    = caption.get('depo_date',          cfg.get('depo_date_short', ''))
-REPORTER     = caption.get('reporter_name_display', 'Marybeth E. Muir')
-DOCKET       = caption.get('docket',             cfg.get('docket', ''))
-EXAMINING    = caption.get('examining_atty',     cfg.get('examining_atty', ''))
-
-high_count   = sum(1 for c in corr_list if c.get('confidence') == 'HIGH')
-total_corr   = len(corr_list)
+CASE_SHORT = cfg.get('case_short', 'Case')
+WITNESS    = caption.get('witness_name',          cfg.get('witness_name', 'WITNESS'))
+DEPO_DATE  = caption.get('depo_date',             cfg.get('depo_date_short', ''))
+REPORTER   = caption.get('reporter_name_display', 'Marybeth E. Muir')
+DOCKET     = caption.get('docket',                cfg.get('docket', ''))
+EXAMINING  = caption.get('examining_atty',        cfg.get('examining_atty', ''))
 
 
 # ── Load FINAL_FORMATTED.txt — page/line reference map ───────────────────────
@@ -70,23 +81,45 @@ if os.path.exists(FORMATTED_PATH):
         _flines = f.read().split('\n')
 
 # Build page map: formatted_line_index → page number
+# Rule: page marker lines are BARE digits with NO leading whitespace ("2", "3").
+# Content blank lines like " 4  " strip to "4" — they must NOT be treated as pages.
 _page_at = {}
 _cur_pg  = None
 for _i, _raw in enumerate(_flines):
     _s = _raw.strip()
-    if _s.isdigit() and 1 <= int(_s) <= 9999:
+    if (_s.isdigit() and 1 <= int(_s) <= 9999
+            and _raw.lstrip() == _raw):   # no leading whitespace = real page marker
         _cur_pg = int(_s)
     _page_at[_i] = _cur_pg
 total_pages = max((v for v in _page_at.values() if v), default=0)
 
 
-def find_page_for_text(snippet, max_search=20):
-    """Search FINAL_FORMATTED for snippet and return (page, line) or (None, None).
-    Tries progressively shorter word chunks to handle line-wrap mismatches."""
-    words = snippet.lower().strip().split()
-    if len(words) < 2:
+def find_page_for_text(snippet):
+    """Search FINAL_FORMATTED for snippet. Return (page, line) or (None, None).
+
+    - Strips [WORD] reconstruction markers from BOTH the snippet and each
+      formatted line before comparing, so [see] in one matches see in the other.
+    - Single-token path handles Bates numbers (YR-364101-354102, no spaces).
+    - Multi-word path tries 3-5 word chunks at offsets 0-3 for line-wrap splits.
+    - Line-number regex uses \\s+ (not \\s{1,3}) to handle 4-space indents.
+    """
+    clean = re.sub(r'\[([^\]]+)\]', r'\1', snippet)
+    words = clean.lower().strip().split()
+    if not words:
         return None, None
-    # Try 4-word chunks starting at word 0, 1, 2, 3 — handles line-wrap splits
+
+    # Single-token: Bates numbers, hyphenated refs (e.g. YR-364101-354102)
+    if len(words) == 1 and len(words[0]) >= 6:
+        target = words[0]
+        for i, raw in enumerate(_flines):
+            raw_norm = re.sub(r'\[([^\]]+)\]', r'\1', raw.lower())
+            if target in raw_norm:
+                pg = _page_at.get(i)
+                m  = re.match(r'^\s{0,2}(\d{1,2})\s+', raw)
+                return pg, (int(m.group(1)) if m else None)
+        return None, None
+
+    # Multi-word: try 3-5 word chunks at offsets 0-3
     for start in range(min(4, len(words))):
         for chunk_size in (5, 4, 3):
             chunk_words = words[start:start + chunk_size]
@@ -96,13 +129,77 @@ def find_page_for_text(snippet, max_search=20):
             if len(candidate) < 6:
                 continue
             for i, raw in enumerate(_flines):
-                raw_norm = re.sub(r'\s+', ' ', raw.lower())
+                # Strip [WORD] markers from formatted line before comparing
+                raw_norm = re.sub(r'\s+', ' ',
+                                  re.sub(r'\[([^\]]+)\]', r'\1', raw.lower()))
                 if candidate in raw_norm:
                     pg = _page_at.get(i)
-                    m  = re.match(r'^\s{0,2}(\d{1,2})\s{1,3}', raw)
-                    ln = int(m.group(1)) if m else None
-                    return pg, ln
+                    m  = re.match(r'^\s{0,2}(\d{1,2})\s+', raw)
+                    return pg, (int(m.group(1)) if m else None)
     return None, None
+
+
+# ── SECTION 0 — DATA INTEGRITY CHECK ─────────────────────────────────────────
+
+def run_integrity_check():
+    """
+    Pull one unique phrase at 25%, 50%, 75%, 100% of corrected_text.
+    Verify each phrase appears in FINAL_FORMATTED.
+    Returns list of 4 result dicts.
+    """
+    corr_path = os.path.join(BASE, 'corrected_text.txt')
+    if not os.path.exists(corr_path) or not _flines:
+        return []
+    with open(corr_path, encoding='utf-8') as f:
+        raw = f.read()
+    # Strip all engine tags so we're searching clean testimony text
+    clean = re.sub(r'\[REVIEW[^\]]*\]', '', raw)
+    clean = re.sub(r'\[CORRECTED:[^\]]*\]', '', clean)
+    clean = re.sub(r'\[([^\]]+)\]', r'\1', clean)
+    # Collect content lines: skip headers, blanks, short lines, engine markers
+    lines = []
+    for ln in clean.split('\n'):
+        ln = ln.strip()
+        if len(ln) < 30:
+            continue
+        if ln.isupper():
+            continue
+        if ln.startswith('FLAG:') or ln.startswith('[FLAG'):
+            continue
+        if len(ln.split()) >= 6:
+            lines.append(ln)
+    if not lines:
+        return []
+    results = []
+    for pct in [25, 50, 75, 100]:
+        idx = max(0, min(int(len(lines) * pct / 100) - 1, len(lines) - 1))
+        phrase = None
+        # Scan back from checkpoint for a phrase with 6+ words and one long word
+        for j in range(idx, max(0, idx - 20), -1):
+            w = lines[j].split()
+            if len(w) < 6:
+                continue
+            if not any(len(word.rstrip('.,;:')) > 5 for word in w):
+                continue
+            phrase = ' '.join(w[:8])
+            break
+        if phrase:
+            pg, ln_num = find_page_for_text(phrase)
+            results.append({
+                'pct':    pct,
+                'phrase': phrase,
+                'found':  pg is not None,
+                'page':   pg,
+                'line':   ln_num,
+            })
+        else:
+            results.append({
+                'pct': pct, 'phrase': '(no phrase found)',
+                'found': False, 'page': None, 'line': None,
+            })
+    return results
+
+integrity_results = run_integrity_check()
 
 
 # ── Parse corrected_text.txt — find [REVIEW] items ───────────────────────────
@@ -113,76 +210,374 @@ if os.path.exists(CORRECTED_PATH):
     with open(CORRECTED_PATH, encoding='utf-8') as f:
         _clines = f.read().split('\n')
 
-# Keyword sets for categorizing [REVIEW] items
-_ACTIONABLE = [
-    'bates', 'exhibit', 'name', 'spelling', 'number', 'figure', 'percent',
-    'date', 'address', 'zip', 'phone', 'email', 'title', 'firm', 'attorney',
-    'missing', 'gap', 'jump', 'sequence', 'wipple', 'guastell', 'cibulsky',
+# ── Categorization rules ──────────────────────────────────────────────────────
+
+# GARBAGE — engine internal notes that should never reach MB
+_GARBAGE = [
+    'page number missing from index',   # formatter fills these automatically
+    'year range broken across lines',   # internal formatting note
+    'tense inconsistency',              # instruction was "transcribe verbatim" — nothing to ask
+    'vestedinvested',                   # obvious steno duplication, already fixed
+    'corrected to "debt" throughout',   # obvious steno artifact, engine already fixed
+    'see above',                        # internal cross-reference, not actionable
+    'see below — exhibit number',       # cross-ref to adjacent self-correction item
 ]
+
+# AUDIO ONLY — needs the recording, never shows in Section B
 _AUDIO_ONLY = [
     'audio', 'reconstruction', 'beyond steno', 'fragmented', 'reporter confirm',
     'steno gap', 'fragmentation', 'attributed', 'speaker attribution',
     'requires audio', 'verify audio', 'listen',
+    'dollar amount', 'unit unclear', 'amount unclear', 'figure unclear',
+    'figure missing', 'amount missing', 'number missing',
+    'answer absent',           # missing testimony — needs audio to restore
+    'speaker unclear',         # Q/A attribution — audio only
+    'question fragmented',     # incomplete question — audio only
+    'absent or truncated',     # answer cut off — audio only
+    'response not captured',   # answer not in steno — audio only
+    'structure unclear',       # sentence fragmentation — audio only
+    'continues below',         # answer runs on — needs full audio context
+    'answer continues',        # same
+    'cannot resolve',          # engine explicitly cannot determine — audio required
+]
+
+# ACTIONABLE — MB can answer by reading the PDF
+_ACTIONABLE = [
+    'bates', 'exhibit', 'name', 'spelling',
+    'date', 'address', 'zip', 'phone', 'email', 'title', 'firm', 'attorney',
+    'missing word', 'word missing', 'word appears missing',
+    'gap', 'jump', 'sequence',
+    'alternate spelling', 'canonical spelling', 'steno artifact', 'verify spelling',
+    'verify', 'confirm', 'self-correct', 'self correct',
 ]
 
 
 def categorize_review(note):
-    note_l = note.lower()
-    if any(k in note_l for k in _AUDIO_ONLY):
+    n = note.lower()
+    if any(k in n for k in _GARBAGE):
+        return 'garbage'
+    if any(k in n for k in _AUDIO_ONLY):
         return 'audio'
-    if any(k in note_l for k in _ACTIONABLE):
+    if any(k in n for k in _ACTIONABLE):
         return 'actionable'
-    return 'audio'   # default: defer to audio pass
+    return 'audio'   # default: audio pass
 
 
-review_actionable = []
+def extract_key_term(note):
+    """Pull the most useful searchable term from the review note.
+    Looks for quoted names, exhibit numbers, Bates strings."""
+    # Quoted terms: 'Bertelot', 'Brandl', etc.
+    quoted = re.findall(r"'([^']{2,30})'", note)
+    if quoted:
+        return quoted[0]
+    # Exhibit: "Exhibit No. 244"
+    m = re.search(r'Exhibit No\.?\s*(\d+)', note, re.I)
+    if m:
+        return f'Exhibit No. {m.group(1)}'
+    # Bates string in note: "Bates 285451" or "Bates YR-364101"
+    # Skip the word "range" — match only tokens containing digits
+    m = re.search(r'Bates\s+(?:range\s+)?([\w-]*\d[\w-]*)', note, re.I)
+    if m:
+        return m.group(1)
+    return None
+
+
+def plain_english_label(note):
+    """Convert the engine note into a specific, plain-English question for MB."""
+    n = note.lower()
+    # Extract quoted terms — try single quotes first, fall back to double quotes
+    quoted = re.findall(r"'([^']{2,30})'", note)
+    if not quoted:
+        quoted = re.findall(r'"([^"]{2,30})"', note)
+
+    # Name spelling — two versions exist
+    if 'alternate spelling' in n or 'canonical spelling' in n:
+        term = quoted[0] if quoted else 'this name'
+        # Find alternate form (may not be quoted)
+        alt_m = re.search(
+            r"spelling of (\w+)|appears as '([^']+)'|also spelled '([^']+)'",
+            note, re.I)
+        if alt_m:
+            alt = alt_m.group(1) or alt_m.group(2) or alt_m.group(3)
+            return (f"Name appears two ways: '{term}' here and '{alt}' elsewhere. "
+                    f"Which spelling is correct?")
+        return f"Name '{term}' — verify spelling is correct"
+
+    # Year reference that looks like a steno artifact
+    if 'year' in n and ('steno artifact' in n or 'steno artifacts' in n):
+        return 'Year reference may be a steno artifact — verify the year is written correctly.'
+
+    # Engine noted a likely correction (even without "steno artifact" label)
+    # e.g. "apparent duplication; likely 'Caverns 6 and 7'"
+    if quoted:
+        likely_early = re.search(r"likely\s+['\"]([^'\"]{2,50})['\"]", note, re.I)
+        if likely_early:
+            orig = quoted[0]
+            corr = likely_early.group(1)
+            if orig.lower().strip() != corr.lower().strip():
+                return f"Engine thinks '{orig}' should read '{corr}' — please confirm."
+
+    # Steno artifact — name reconstructed from garbled steno
+    if 'steno artifact' in n and quoted:
+        term = quoted[0]
+        trans_m = re.search(r"transcribed as '([^']+)'", note, re.I)
+        if trans_m:
+            return (f"Steno wrote '{term}' — transcribed as '{trans_m.group(1)}'. "
+                    f"Verify spelling is correct.")
+        # Steno may have captured a partial word or unit — no canonical form available
+        # Accept both single and double quotes around the suggested form
+        likely_m = re.search(
+            r"possibly ['\"]([^'\"]+)['\"]|likely ['\"]([^'\"]+)['\"]|similar ['\"]([^'\"]+)['\"]",
+            note, re.I)
+        if likely_m:
+            likely = likely_m.group(1) or likely_m.group(2) or likely_m.group(3)
+            if likely.strip().lower() != term.strip().lower():
+                return f"Steno wrote '{term}' here — possibly '{likely}'. What should it say?"
+        return f"Steno wrote '{term}' here — verify this is the correct word or name."
+
+    # Inverted Bates range
+    if 'inverted' in n or ('lower than' in n and 'bates' in n):
+        return ('Bates range end number is lower than the start number. '
+                'Verify the correct range.')
+
+    # Bates number incomplete or uncertain
+    if 'bates' in n and ('dropped' in n or 'leading' in n or 'incomplete' in n):
+        return 'Bates number may be missing digits — provide the complete number.'
+
+    if 'bates' in n and ('confirm' in n or 'verify' in n):
+        return 'Bates number — verify this is the correct reference.'
+
+    # Exhibit number garbled
+    if 'exhibit' in n and ('unclear' in n or 'garbled' in n or 'bates string' in n):
+        return 'Exhibit number was garbled in the steno. What is the correct exhibit number?'
+
+    # Attorney self-corrected exhibit on the record
+    if 'exhibit' in n and ('self-correct' in n or 'initially referenced' in n
+                            or 'operative' in n or 'struck' in n):
+        return ('Attorney corrected the exhibit number on the record. '
+                'Confirm the operative exhibit number is correct.')
+
+    # Exhibit number sequence gap
+    if 'exhibit' in n and ('gap' in n or 'sequence' in n or 'jump' in n):
+        return 'Exhibit numbers skip — were all these exhibits marked in this depo?'
+
+    # Missing word
+    if 'missing word' in n or 'word missing' in n or 'word appears missing' in n:
+        sug_m = re.search(
+            r"possibly '([^']+)'|likely '([^']+)'|probably '([^']+)'",
+            note, re.I)
+        if sug_m:
+            word = sug_m.group(1) or sug_m.group(2) or sug_m.group(3)
+            return f"A word appears missing here — possibly '{word}'. What should it say?"
+        return 'A word appears to be missing here. What should it say?'
+
+    # Correction already applied — confirm
+    if 'corrected to' in n:
+        term = quoted[0] if quoted else ''
+        return (f"Engine corrected this to '{term}'. Confirm this is right."
+                if term else 'Engine made a correction here — confirm it is right.')
+
+    # Year / date unclear
+    if ('year' in n or 'date' in n) and ('unclear' in n or 'verify' in n or 'confirm' in n):
+        return 'Year or date is unclear — verify against the original recording or exhibits.'
+
+    # Speaker unclear
+    if 'speaker' in n and ('unclear' in n or 'unknown' in n or 'attribution' in n):
+        return 'Could not identify the speaker on this line. Is this a Q or an A?'
+
+    # Witness self-corrected
+    if 'self-correct' in n or 'self correct' in n:
+        return 'Witness self-corrected here. Which word or name is the correct final answer?'
+
+    # Exhibit index / description running together
+    if 'exhibit' in n and 'appears to be' in n:
+        if quoted:
+            desc = quoted[-1]  # last quoted term is usually the description
+            return (f"Exhibit number and description may be running together. "
+                    f"Confirm this reads correctly.")
+        return "Exhibit number and description may be running together — please verify."
+
+    # Name verification — surname fragment or full name needed
+    if 'full name' in n or 'surname fragment' in n:
+        if quoted:
+            return f"Name '{quoted[0]}' may be incomplete — provide the full name."
+        return "Name appears incomplete or uncertain — provide the full name."
+
+    # Name or term — direct address vs. reference to person
+    if 'direct address' in n or ('name' in n and 'third party' in n):
+        if quoted:
+            return (f"'{quoted[0]}' appears here — is this addressing the witness directly "
+                    f"or referring to a third party? Verify.")
+        return "Possible direct address to witness or third party — verify which."
+
+    # Name or term — verify spelling
+    if 'verify' in n and 'spelling' in n:
+        if quoted:
+            return f"'{quoted[0]}' — verify spelling against exhibits or witness list."
+        return "Verify spelling against exhibits or witness list."
+
+    # Generic verify
+    if 'verify' in n or 'confirm' in n:
+        return 'Please verify this is correct.'
+
+    return 'Engine flagged this line — please review and correct if needed.'
+
+
+def is_usable_snippet(s):
+    """True if s is long enough and meaningful to use as a search phrase."""
+    s = s.strip()
+    return (len(s) >= 15
+            and not s.startswith('[REVIEW')
+            and s not in ('Q.', 'A.', 'Q', 'A')
+            and not re.match(r'^[QA]\.\s{0,2}$', s))
+
+
+def extract_review_notes(line):
+    """Extract all [REVIEW: ...] note texts from a line.
+
+    Uses a depth counter instead of a regex so nested brackets like
+    [REVIEW: "Bracketing '[REVIEW]' is fine"] don't truncate the note early.
+    """
+    notes = []
+    i = 0
+    while i < len(line):
+        idx = line.find('[REVIEW:', i)
+        if idx == -1:
+            break
+        j = idx + 8           # skip past '[REVIEW:'
+        depth = 1             # we are inside one '[...'
+        while j < len(line) and depth > 0:
+            if line[j] == '[':
+                depth += 1
+            elif line[j] == ']':
+                depth -= 1
+            if depth > 0:
+                j += 1
+        notes.append(line[idx + 8:j].strip())
+        i = j + 1
+    return notes
+
+
+# ── Main parse loop ───────────────────────────────────────────────────────────
+
+review_actionable  = []
 review_audio_count = 0
 
 for i, raw_line in enumerate(_clines):
     if '[REVIEW' not in raw_line:
         continue
-    # Extract all [REVIEW:...] tags from this line
-    tags = re.findall(r'\[REVIEW:\s*(.*?)(?:\]|$)', raw_line)
+    tags = extract_review_notes(raw_line)
     for tag_note in tags:
         tag_note = tag_note.strip()
         cat = categorize_review(tag_note)
+
+        if cat == 'garbage':
+            continue   # silently discard — not MB's problem
+
         if cat == 'audio':
             review_audio_count += 1
+            continue
+
+        # ── ACTIONABLE ──────────────────────────────────────────────────────
+
+        # Full line with ALL tags stripped — what MB will see as context
+        full_line_clean = re.sub(r'\[REVIEW[^\]]*\]', '', raw_line)
+        full_line_clean = re.sub(r'\[CORRECTED:[^\]]*\]', '', full_line_clean)
+        full_line_clean = re.sub(r'\[AUDIO:[^\]]*\]', '', full_line_clean)
+        full_line_clean = re.sub(r'\[([^\]]+)\]', r'\1', full_line_clean).strip()
+
+        # If the flagged line is very short (e.g. just "A."), scan backward
+        # for the preceding line to give MB context for what to look at.
+        if len(full_line_clean) <= 5:
+            for back_i in range(i - 1, max(0, i - 5), -1):
+                prev_clean = re.sub(r'\[REVIEW[^\]]*\]', '', _clines[back_i])
+                prev_clean = re.sub(r'\[CORRECTED:[^\]]*\]', '', prev_clean)
+                prev_clean = re.sub(r'\[([^\]]+)\]', r'\1', prev_clean).strip()
+                if len(prev_clean) >= 15:
+                    full_line_clean = prev_clean
+                    break
+
+        # Determine best search snippet — priority order:
+        #   1. Text before the [REVIEW] tag (actual transcript text, most reliable)
+        #   2. Text after all REVIEW tags stripped (line body)
+        #   3. Surrounding lines: prefer the line BEFORE (the Q that preceded the A)
+        #   4. Key term extracted from the note (last resort — may not be in PDF)
+        key_term = extract_key_term(tag_note)
+        before   = raw_line.split('[REVIEW')[0].strip()
+        before   = re.sub(r'\[([^\]]+)\]', r'\1', before).strip()
+
+        if is_usable_snippet(before):
+            snippet = before[-68:]
+            # Don't start mid-word
+            if len(snippet) < len(before) and snippet and not snippet[0].isspace():
+                first_space = snippet.find(' ')
+                if 0 < first_space < 20:
+                    snippet = snippet[first_space + 1:].strip()
         else:
-            # Get text before the [REVIEW] tag for page lookup
-            before = raw_line.split('[REVIEW')[0].strip()
+            # Before-tag text too short — try text after the [REVIEW] tag
+            after_tag = re.sub(r'\[REVIEW[^\]]*\]', '', raw_line, count=1)
+            after_tag = re.sub(r'\[([^\]]+)\]', r'\1', after_tag).strip()
+            # Remove any remaining [REVIEW] tags (line may have multiple)
+            after_tag = re.sub(r'\[REVIEW[^\]]*\]', '', after_tag).strip()
 
-            # If text before tag is too short or IS a [REVIEW] tag itself,
-            # look at surrounding lines for a usable search phrase
-            def is_usable(s):
-                return (len(s.strip()) >= 15
-                        and not s.strip().startswith('[REVIEW')
-                        and s.strip() not in ('Q.', 'A.', 'Q', 'A'))
-
-            if not is_usable(before):
-                # Scan surrounding lines for context
-                context = ''
-                for offset in [-2, -1, 1, 2]:
+            if is_usable_snippet(after_tag):
+                snippet = after_tag[:68]
+            else:
+                # Scan surrounding lines — prefer BEFORE (the preceding Q),
+                # then after, then fall back to key term
+                context_snip = ''
+                for offset in [-1, -2, 1, 2]:
                     idx2 = i + offset
                     if 0 <= idx2 < len(_clines):
-                        candidate = re.sub(r'\[REVIEW[^\]]*\]', '', _clines[idx2]).strip()
-                        if is_usable(candidate):
-                            context = candidate
+                        cand = re.sub(r'\[REVIEW[^\]]*\]', '', _clines[idx2])
+                        cand = re.sub(r'\[([^\]]+)\]', r'\1', cand).strip()
+                        if is_usable_snippet(cand):
+                            context_snip = cand
                             break
-                snippet = context[:68] if context else before[:68]
-            else:
-                snippet = before[-68:]
+                if context_snip:
+                    snippet = context_snip[:68]
+                elif key_term and len(key_term) >= 4:
+                    snippet = key_term
+                else:
+                    snippet = before[:68]
 
-            pg, ln = find_page_for_text(snippet)
-            review_actionable.append({
-                'note':    tag_note[:100],
-                'snippet': snippet[:68],
-                'page':    pg,
-                'line':    ln,
-            })
+        pg, ln = find_page_for_text(snippet)
+
+        review_actionable.append({
+            'note':      tag_note[:200],           # store enough for dedup/debug
+            'label':     plain_english_label(tag_note),   # computed on full note
+            'snippet':   snippet[:68],
+            'context':   truncate_at_word(full_line_clean, 65),
+            'page':      pg,
+            'line':      ln,
+        })
 
 
-# ── Load QA_FLAGS — extract filler word count ─────────────────────────────────
+# ── Post-process: filter and deduplicate ──────────────────────────────────────
+
+# Dollar-amount items that slipped through: need audio, not PDF
+_AUDIO_AMOUNTS = [
+    'dollar amount unclear', 'amount unclear', 'figure unclear',
+    'unit unclear', 'figure missing', 'amount missing', 'number missing',
+]
+review_needs_audio = [it for it in review_actionable
+                      if any(k in it['note'].lower() for k in _AUDIO_AMOUNTS)]
+review_can_answer  = [it for it in review_actionable
+                      if it not in review_needs_audio]
+audio_total        = review_audio_count + len(review_needs_audio)
+
+# Deduplicate by snippet
+_seen = set()
+_deduped = []
+for _it in review_can_answer:
+    _key = _it['snippet'].strip()[:50]
+    if _key not in _seen:
+        _seen.add(_key)
+        _deduped.append(_it)
+review_can_answer = _deduped
+
+
+# ── Load QA_FLAGS — filler word count ────────────────────────────────────────
 
 QA_PATH = os.path.join(BASE, 'FINAL_DELIVERY', 'QA_FLAGS.txt')
 filler_count = 0
@@ -192,7 +587,7 @@ if os.path.exists(QA_PATH):
     filler_count = qa_text.count('FILLER WORD')
 
 
-# ── Spot-check pages ─────────────────────────────────────────────────────────
+# ── Spot-check pages ──────────────────────────────────────────────────────────
 
 SPOT_CHECKS = [
     {
@@ -226,11 +621,13 @@ SPOT_CHECKS = [
 ]
 
 
-# ── Build the report ──────────────────────────────────────────────────────────
+# ═════════════════════════════════════════════════════════════════════════════
+# BUILD THE DOCUMENT
+# ═════════════════════════════════════════════════════════════════════════════
 
 W   = 68
-SEP = '─' * W
-DBL = '═' * W
+SEP = '-' * W
+DBL = '=' * W
 L   = []
 
 def add(*lines):
@@ -241,85 +638,11 @@ def section(title):
     add('', DBL, title, DBL, '')
 
 
-# ── Separate actionable items from audio-only (dollar amounts, etc.) ──────────
-AUDIO_KEYWORDS = ['dollar amount missing', 'amount missing', 'figure missing',
-                  'number missing', 'percent missing']
+# ── HEADER ────────────────────────────────────────────────────────────────────
 
-review_needs_audio   = [it for it in review_actionable
-                        if any(k in it['note'].lower() for k in AUDIO_KEYWORDS)]
-review_can_answer    = [it for it in review_actionable
-                        if it not in review_needs_audio]
-audio_total          = review_audio_count + len(review_needs_audio)
-
-# Deduplicate actionable items — same snippet can appear twice if multiple
-# REVIEW tags point to the same line in corrected_text.txt
-_seen_snippets = set()
-_deduped = []
-for _it in review_can_answer:
-    _key = _it['snippet'].strip()[:50]
-    if _key not in _seen_snippets:
-        _seen_snippets.add(_key)
-        _deduped.append(_it)
-review_can_answer = _deduped
-
-
-# ── Item-type plain English labels ────────────────────────────────────────────
-
-def truncate_at_word(s, max_len=65):
-    """Truncate at word boundary with ellipsis — no mid-word cuts."""
-    s = s.strip()
-    if len(s) <= max_len:
-        return s
-    cut = s[:max_len].rsplit(' ', 1)[0]
-    return cut + '...'
-
-
-def plain_english_label(note):
-    """Convert engine-speak to plain English MB will understand."""
-    n = note.lower()
-    if 'bates' in n:
-        return 'Document reference number looks wrong — please verify'
-    if 'exhibit' in n and ('gap' in n or 'sequence' in n or 'jump' in n):
-        return 'Exhibit numbers skip a range — were these marked in this depo?'
-    if 'exhibit' in n and ('duplicate' in n or 'double' in n):
-        return 'Same exhibit number appears twice — please confirm'
-    if 'exhibit' in n and 'number' in n:
-        return 'Exhibit number may have a steno error — please verify'
-    if 'wipple' in n or ('proper name' in n or 'name' in n and 'spelling' in n):
-        return 'Name spelling uncertain — not in case dictionary, please verify'
-    if 'self-correct' in n or ('bart' in n and 'barrett' in n) or 'corrected to' in n:
-        return 'Witness appears to have self-corrected — which name/word is right?'
-    if 'steno line-number artifact' in n or 'line number artifact' in n:
-        return 'A CAT line number got embedded in testimony text — confirm removal'
-    if 'speaker' in n and ('unclear' in n or 'unknown' in n or 'attribution' in n):
-        return 'Could not tell if this line is a Q or an A — please identify speaker'
-    if 'applied' in n and 'implied' in n:
-        return 'Two similar words appear — which did the witness/attorney say?'
-    if 'missing word' in n or 'word missing' in n or 'word appears missing' in n:
-        return 'A word appears to be missing — what should it say?'
-    if 'videographer' in n:
-        return 'Videographer introduction may be incomplete — please verify'
-    if 'truncated' in n or 'full' in n and 'bates' in n:
-        return 'Reference number appears cut off — please provide complete number'
-    if 'math' in n or 'total' in n:
-        return 'Numbers don\'t add up — please verify the figures'
-    if 'date' in n:
-        return 'Date appears incomplete or fragmented — please verify'
-    if 'duplicate' in n or 'appears twice' in n:
-        return 'Something appears twice — confirm which is correct'
-    if 'e-mail address' in n or 'email' in n:
-        return 'An email address appears in testimony text — is this correct?'
-    return 'Engine was uncertain here — please review and correct'
-
-
-# ═════════════════════════════════════════════════════════════════════════════
-# BUILD THE DOCUMENT
-# ═════════════════════════════════════════════════════════════════════════════
-
-# HEADER
 add(
     DBL,
-    f'  TRANSCRIPT REVIEW  —  {WITNESS}',
+    f'  TRANSCRIPT REVIEW  --  {WITNESS}',
     f'  {DEPO_DATE}   |   Docket {DOCKET}',
     f'  Prepared for: {REPORTER}',
     DBL,
@@ -330,41 +653,72 @@ add(
     '',
     f'  Total transcript pages:  {total_pages}',
     f'  Items needing your eyes: {len(review_can_answer)} (Section B)',
-    f'  Audio pass items:        {audio_total} (Section D — your normal pass)',
+    f'  Audio pass items:        {audio_total} (Section D -- your normal pass)',
     '',
     '  HOW TO USE THIS:',
-    '  Step 1 — Section A: Go to 5 specific pages in the PDF.',
-    '           Confirm each one looks right. Note anything wrong.',
-    '  Step 2 — Section B: For each item, find the page in the PDF.',
-    '           Write your answer in the ANSWER line.',
-    '  Step 3 — Section C: One filler-word question. Circle your choice.',
-    '  Step 4 — Section E: Sign off and reply to Scott.',
+    '  Step 1 -- Section 0: Confirm 4 data integrity checkpoints passed.',
+    '  Step 2 -- Section A: Go to 5 specific pages in the PDF.',
+    '            Confirm each one looks right. Note anything wrong.',
+    '  Step 3 -- Section B: For each item, go to the page listed.',
+    '            Write your answer in the ANSWER line.',
+    '  Step 4 -- Section C: One filler-word question. Circle your choice.',
+    '  Step 5 -- Section E: Sign off and reply to Scott.',
     '',
     '  Questions? Call or text Scott.',
     '',
 )
 
-# FORMAT QUESTION — (Zoom) vs (Via Zoom)
+# ── FORMAT QUESTION ───────────────────────────────────────────────────────────
+
 add(
     SEP,
     '  QUICK FORMAT QUESTION (circle one):',
     '',
-    f'  Attorneys who appeared remotely are listed as:',
-    f'',
-    f'      THOMAS J. MADIGAN, ESQ.  (Via Zoom)',
-    f'',
-    f'  Should this be:',
-    f'      (A)  (Via Zoom)   ← current',
-    f'      (B)  (Zoom)       ← alternate',
-    f'',
-    f'  Your choice: _______',
-    f'  (Whichever you pick, we apply it to every depo going forward.)',
+    '  Attorneys who appeared remotely are listed as:',
+    '',
+    '      THOMAS J. MADIGAN, ESQ.  (Via Zoom)',
+    '',
+    '  Should this be:',
+    '      (A)  (Via Zoom)   <- current',
+    '      (B)  (Zoom)       <- alternate',
+    '',
+    '  Your choice: _______',
+    '  (Whichever you pick, we apply it to every depo going forward.)',
     SEP,
     '',
 )
 
-# SECTION A — SPOT CHECK
-section('SECTION A — 5 PAGES TO CHECK  (about 5 minutes)')
+# ── SECTION 0 — DATA INTEGRITY ────────────────────────────────────────────────
+
+section('SECTION 0 -- DATA INTEGRITY CHECK')
+add(
+    '  Verifies that no section of the depo was dropped during formatting.',
+    '  Four phrases pulled from the raw steno at 25%, 50%, 75%, and 100%',
+    '  of the transcript -- each one confirmed present in the final PDF.',
+    '',
+)
+
+if not integrity_results:
+    add('  (Integrity check could not run -- missing input files.)', '')
+else:
+    all_passed = all(r['found'] for r in integrity_results)
+    for r in integrity_results:
+        status = 'PASS' if r['found'] else 'FAIL'
+        pg_info = (f'p.{r["page"]} l.{r["line"]}' if r['line']
+                   else f'p.{r["page"]}') if r['page'] else 'NOT FOUND'
+        phrase_display = truncate_at_word(r['phrase'], 45)
+        add(f'  [{r["pct"]:3d}%]  {status}  "{phrase_display}"  --  {pg_info}')
+    add('')
+    if all_passed:
+        add('  All 4 checkpoints passed. Full depo confirmed in final output.', '')
+    else:
+        failed = [r for r in integrity_results if not r['found']]
+        add(f'  WARNING: {len(failed)} checkpoint(s) FAILED -- possible data loss.',
+            '  Do not deliver until Scott investigates.', '')
+
+# ── SECTION A — SPOT CHECK ────────────────────────────────────────────────────
+
+section('SECTION A -- 5 PAGES TO CHECK  (about 5 minutes)')
 add(
     '  Open the PDF. Jump to each page number listed.',
     '  Read that page. If something looks wrong, write it in NOTES.',
@@ -374,47 +728,52 @@ add(
 
 for sc in SPOT_CHECKS:
     add(
-        f'  ┌─ GO TO PAGE {sc["page"]}  —  {sc["label"]}',
-        f'  │',
-        f'  │  What to check:  {sc["check"]}',
-        f'  │',
-        f'  │  NOTES: _________________________________________________',
-        f'  └',
+        f'  +-- GO TO PAGE {sc["page"]}  --  {sc["label"]}',
+        f'  |',
+        f'  |  What to check:  {sc["check"]}',
+        f'  |',
+        f'  |  NOTES: _________________________________________________',
+        f'  +',
         '',
     )
 
-# SECTION B — ITEMS NEEDING HER ANSWER
-section(f'SECTION B — {len(review_can_answer)} ITEMS THAT NEED YOUR ANSWER  (about 10 minutes)')
+# ── SECTION B — ITEMS NEEDING HER ANSWER ─────────────────────────────────────
+
+section(f'SECTION B -- {len(review_can_answer)} ITEMS THAT NEED YOUR ANSWER  (about 10 minutes)')
 
 if not review_can_answer:
     add('  Nothing flagged. Engine was confident throughout.', '')
 else:
     add(
-        '  For each item below:',
-        '    1. Find the page in the PDF (page number is listed).',
-        '    2. Read what it says.',
-        '    3. Write the correct answer in the ANSWER line.',
-        '       If it looks fine as-is, write: OK',
-        '       If you need audio to answer, write: AUDIO',
+        '  For each item:',
+        '    1. Go to the page number listed. Find the line number.',
+        '    2. Read that line in the PDF.',
+        '    3. Write your answer in the ANSWER line.',
+        '       Write OK if it looks correct.',
+        '       Write the correction if something is wrong.',
         '',
-        '  (Items that can only be answered with audio are in Section D.)',
+        '  (Items that require audio are in Section D.)',
         '',
     )
     for n, item in enumerate(review_can_answer, 1):
-        search_phrase = item["snippet"].strip()
-        # Never show a [REVIEW tag as the search phrase — it's not in the PDF
-        if search_phrase.startswith('[REVIEW') or len(search_phrase) < 8:
-            search_phrase = '(see note below — search surrounding context)'
-        pg_ref = (f'Go to PDF page {item["page"]}, line {item["line"]}'
-                  if item['page'] else
-                  f'Search PDF for: "{search_phrase[:50]}"')
-        label  = plain_english_label(item['note'])
+        # Page reference line
+        if item['page'] and item['line']:
+            pg_ref = f'Go to PDF page {item["page"]}, line {item["line"]}'
+        elif item['page']:
+            pg_ref = f'Go to PDF page {item["page"]}'
+        else:
+            # Fallback: show clean search phrase (never show mid-word garbage)
+            search_phrase = item['snippet'].strip()
+            pg_ref = f'Search PDF for: "{truncate_at_word(search_phrase, 50)}"'
+
+        label = item['label']
+
         add(
-            f'  ── ITEM B-{n:02d} {"─" * (W - 12)}',
+            f'  -- ITEM B-{n:02d} ' + '-' * (W - 12),
             f'  {pg_ref}',
             f'',
             f'  What the transcript says:',
-            f'    {truncate_at_word(item["snippet"])}',
+            f'    {item["context"]}',
             f'',
             f'  What to check:',
             f'    {label}',
@@ -423,34 +782,35 @@ else:
             '',
         )
 
-# SECTION C — FILLER WORDS
-section(f'SECTION C — FILLER WORDS  (one question)')
+# ── SECTION C — FILLER WORDS ──────────────────────────────────────────────────
+
+section('SECTION C -- FILLER WORDS  (one question)')
 add(
-    f'  The engine found {filler_count} places in the testimony where the witness said',
-    f'  "uhmm" or similar filler words.',
+    f'  The engine found {filler_count} places where the witness said "uhmm" or',
+    f'  similar filler sounds.',
     '',
-    '  A filler word is a sound a witness makes while thinking — not actual',
-    '  testimony. Examples:  "Uhmm, I believe so."  /  "Well, uh, I think..."',
+    '  A filler word is a sound made while thinking -- not actual testimony.',
+    '  Examples:  "Uhmm, I believe so."  /  "Well, uh, I think..."',
     '',
-    '  NOTE: "Uh-huh" meaning YES and "Huh-uh" meaning NO are kept always.',
+    '  NOTE: "Uh-huh" (yes) and "Huh-uh" (no) are always kept.',
     '  Those are real answers. Only true fillers are in scope here.',
     '',
     '  What would you like us to do with filler words?  (circle one)',
     '',
-    '    ( ) Remove all filler words     — cleaner, most common choice',
-    '    ( ) Keep all filler words        — verbatim record',
-    '    ( ) Remove "uhmm" only           — keep other fillers',
-    '    ( ) I will mark them myself      — send me the full list',
+    '    ( ) Remove all filler words     -- cleaner, most common choice',
+    '    ( ) Keep all filler words        -- verbatim record',
+    '    ( ) Remove "uhmm" only           -- keep other fillers',
+    '    ( ) I will mark them myself      -- send me the full list',
     '',
     '  Your choice applies to this depo and all future depos.',
     '',
 )
 
-# SECTION D — AUDIO VERIFICATION AGENT
-# Load audio_apply_log.json — two action types: AUTO (we changed it) and SUGGEST (your call)
+# ── SECTION D — AUDIO PASS ────────────────────────────────────────────────────
+
 AUDIO_LOG_PATH = os.path.join(BASE, 'audio_apply_log.json')
-audio_auto    = []   # changes we made — AD confirms
-audio_suggest = []   # suggestions — AD decides
+audio_auto    = []
+audio_suggest = []
 
 if os.path.exists(AUDIO_LOG_PATH):
     with open(AUDIO_LOG_PATH, encoding='utf-8') as _af:
@@ -459,24 +819,24 @@ if os.path.exists(AUDIO_LOG_PATH):
     audio_suggest = _log.get('surfaced', [])
 
 d_total = len(audio_auto) + len(audio_suggest)
-section(f'SECTION D — AUDIO VERIFICATION AGENT  ({d_total} items)')
+section(f'SECTION D -- AUDIO VERIFICATION AGENT  ({d_total} items)')
 add(
     '  Your audio verification agent listened to the full recording.',
-    '  This section has two parts — read the header for each part carefully.',
+    '  This section has two parts.',
     '',
 )
 
-# ── Part D1: Changes we made — AD confirms ────────────────────────────────────
+# Part D1: changes we made
 add(
-    f'  ┌─────────────────────────────────────────────────────────────────┐',
-    f'  │  PART 1 OF 2 — WE MADE A CHANGE  ({len(audio_auto)} items)              │',
-    f'  │                                                                 │',
-    f'  │  The agent was confident enough to clean up these lines.        │',
-    f'  │  The [REVIEW] tag has been removed and the line reads clean.    │',
-    f'  │                                                                 │',
-    f'  │  YOUR JOB:  Go to each page. Read the line. Listen if needed.  │',
-    f'  │             Write OK — or write the correction.                 │',
-    f'  └─────────────────────────────────────────────────────────────────┘',
+    f'  +---------------------------------------------------------------------+',
+    f'  |  PART 1 OF 2 -- WE MADE A CHANGE  ({len(audio_auto)} items)                |',
+    f'  |                                                                     |',
+    f'  |  The agent was confident enough to clean up these lines.            |',
+    f'  |  The transcript reads clean -- no [REVIEW] tag remaining.           |',
+    f'  |                                                                     |',
+    f'  |  YOUR JOB:  Go to each page. Read the line. Listen if needed.      |',
+    f'  |             Write OK -- or write the correction.                    |',
+    f'  +---------------------------------------------------------------------+',
     '',
 )
 
@@ -484,66 +844,77 @@ for n, item in enumerate(audio_auto, 1):
     after_clean = re.sub(r'\[REVIEW[^\]]*\]', '', item.get('after', '')).strip()
     whisper     = item.get('whisper_text', '').strip()
     pg, ln      = find_page_for_text(after_clean)
-    pg_ref      = (f'Go to PDF page {pg}, line {ln}' if ln else f'Go to PDF page {pg}') if pg else f'Search PDF for: "{truncate_at_word(after_clean, 40)}"'
+    if pg and ln:
+        pg_ref = f'Go to PDF page {pg}, line {ln}'
+    elif pg:
+        pg_ref = f'Go to PDF page {pg}'
+    else:
+        pg_ref = f'Search PDF for: "{truncate_at_word(after_clean, 40)}"'
     add(
-        f'  ── CONFIRM D1-{n:02d} {"─" * (W - 16)}',
+        f'  -- CONFIRM D1-{n:02d} ' + '-' * (W - 16),
         f'  {pg_ref}',
         f'',
         f'  Line now reads:',
         f'    {truncate_at_word(after_clean, 70)}',
         f'',
-        f'  Agent heard:  "{truncate_at_word(whisper, 60)}"' if whisper else '',
+        (f'  Agent heard:  "{truncate_at_word(whisper, 60)}"' if whisper else ''),
         f'',
-        f'  CONFIRM: ___  (write OK — or your correction)',
+        f'  CONFIRM: ___  (write OK -- or your correction)',
         f'',
     )
 
-# ── Part D2: Suggestions — AD decides ─────────────────────────────────────────
+# Part D2: suggestions
 add(
-    f'  ┌─────────────────────────────────────────────────────────────────┐',
-    f'  │  PART 2 OF 2 — YOUR CALL  ({len(audio_suggest)} items)                      │',
-    f'  │                                                                 │',
-    f'  │  The agent heard something but was not certain enough to        │',
-    f'  │  change the line. It left a note in the transcript for you.     │',
-    f'  │                                                                 │',
-    f'  │  YOUR JOB:  Go to each page. Listen to the recording.          │',
-    f'  │             Write exactly what was said.                        │',
-    f'  └─────────────────────────────────────────────────────────────────┘',
+    f'  +---------------------------------------------------------------------+',
+    f'  |  PART 2 OF 2 -- YOUR CALL  ({len(audio_suggest)} items)                        |',
+    f'  |                                                                     |',
+    f'  |  The agent heard something but was not certain enough to change     |',
+    f'  |  the line. It left a note in the transcript for you.                |',
+    f'  |                                                                     |',
+    f'  |  YOUR JOB:  Go to each page. Listen to the recording.              |',
+    f'  |             Write exactly what was said.                            |',
+    f'  +---------------------------------------------------------------------+',
     '',
 )
 
 for n, item in enumerate(audio_suggest, 1):
     before_clean = re.sub(r'\[REVIEW[^\]]*\]', '', item.get('before', '')).strip()
     whisper      = item.get('whisper_text', '').strip()
-    note         = item.get('note', '')
     pg, ln       = find_page_for_text(before_clean)
-    pg_ref       = (f'Go to PDF page {pg}, line {ln}' if ln else f'Go to PDF page {pg}') if pg else f'Search PDF for: "{truncate_at_word(before_clean, 40)}"'
+    if pg and ln:
+        pg_ref = f'Go to PDF page {pg}, line {ln}'
+    elif pg:
+        pg_ref = f'Go to PDF page {pg}'
+    else:
+        pg_ref = f'Search PDF for: "{truncate_at_word(before_clean, 40)}"'
     add(
-        f'  ── YOUR CALL D2-{n:02d} {"─" * (W - 18)}',
+        f'  -- YOUR CALL D2-{n:02d} ' + '-' * (W - 18),
         f'  {pg_ref}',
         f'',
         f'  What the transcript says (with gap):',
         f'    {truncate_at_word(before_clean, 70)}',
         f'',
-        f'  Agent heard:  "{truncate_at_word(whisper, 60)}"' if whisper else '  Agent heard:  (no clear match in recording)',
+        (f'  Agent heard:  "{truncate_at_word(whisper, 60)}"'
+         if whisper else '  Agent heard:  (no clear match in recording)'),
         f'',
-        f'  YOUR ANSWER: {"_" * 46}',
+        f'  YOUR ANSWER: ' + '_' * 46,
         f'',
     )
 
-# SECTION E — SIGN-OFF
-section('SECTION E — SIGN-OFF')
+# ── SECTION E — SIGN-OFF ──────────────────────────────────────────────────────
+
+section('SECTION E -- SIGN-OFF')
 add(
-    f'  When you are done, fill in below and reply to Scott.',
+    '  When you are done, fill in below and reply to Scott.',
     '',
     f'  Reviewed by:  {REPORTER}',
     f'  Date:         _________________________________',
     '',
     '  How does the transcript look overall?  (circle one)',
     '',
-    '    ( ) GOOD — deliver with my corrections noted above',
+    '    ( ) GOOD -- deliver with my corrections noted above',
     '',
-    '    ( ) NEEDS WORK — call me before delivering',
+    '    ( ) NEEDS WORK -- call me before delivering',
     '',
     '  Anything else I should know:',
     '  __________________________________________________________________',
@@ -556,7 +927,7 @@ add(
 )
 
 
-# ── Write output ─────────────────────────────────────────────────────────────
+# ── Write output ──────────────────────────────────────────────────────────────
 
 out_path = os.path.join(BASE, 'FINAL_DELIVERY', f'{CASE_SHORT}_CR_REVIEW.txt')
 os.makedirs(os.path.dirname(out_path), exist_ok=True)
@@ -564,8 +935,10 @@ with open(out_path, 'w', encoding='utf-8') as f:
     f.write('\n'.join(L))
 
 print(f'Written: {out_path}')
-print(f'  Spot-check pages:      {len(SPOT_CHECKS)}')
-print(f'  Actionable items:      {len(review_actionable)}')
-print(f'  Audio-deferred items:  {review_audio_count}')
+print(f'  Total pages:           {total_pages}')
+print(f'  Integrity checkpoints: {len(integrity_results)} '
+      f'({sum(1 for r in integrity_results if r["found"])} passed)')
+print(f'  Section B items:       {len(review_can_answer)}')
+print(f'  Audio-deferred:        {audio_total}')
 print(f'  Filler words:          {filler_count}')
 print(f'  Total lines in doc:    {len(L)}')
