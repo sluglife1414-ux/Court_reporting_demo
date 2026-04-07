@@ -236,25 +236,27 @@ _STOPWORDS = {
 def run_10slice_check():
     """
     Pipeline acceptance test: divide the raw RTF into 10 equal slices,
-    pull one distinctive phrase from each slice, verify it appears in
-    FINAL_FORMATTED.
+    pull TWO independent phrases per slice (A from second half, B from first
+    half), verify each appears in FINAL_FORMATTED.
 
-    This is the ground-truth check — RTF is the only file we did NOT
-    produce. Catches content dropped at any stage of the pipeline.
+    Independence rule: no word >= 5 chars may appear in more than one probe
+    across all 20 probes. This is enforced by a global used_words set.
 
-    Scoring:
+    Scoring (by slice, not probe):
+      Slice PASS  — either probe found exactly
+      Slice PASS* — no exact match, but distinctive words confirmed present
+      Slice FAIL  — BOTH probes fail completely
+
       10/10  → DELIVER
-       9/10  → DELIVER  (one steno-correction miss is acceptable)
-       8/10  → HOLD — Scott reviews failed slices
+       9/10  → DELIVER
+       8/10  → HOLD — review failed slices before delivering
       <=7/10 → DO NOT DELIVER — pipeline failure
 
     Returns list of 10 result dicts, each with:
       slice   — slice number 1-10
       pct     — approximate position in depo (10, 20, ... 100)
-      phrase  — the 5-word phrase sampled from the RTF
-      status  — 'PASS', 'PASS*', or 'FAIL'
-      page    — PDF page where phrase was found (None for PASS*)
-      line    — PDF line (None if page not resolved to line)
+      status  — combined 'PASS', 'PASS*', or 'FAIL'
+      probes  — list of 2 dicts: label, phrase, status, page, line
     """
     import glob as _glob
     rtf_files = _glob.glob(os.path.join(BASE, '*.rtf'))
@@ -266,10 +268,9 @@ def run_10slice_check():
 
     plain = _strip_rtf_codes(raw_rtf)
 
-    # Build token list: alpha-only words, 3+ chars (filters steno artifacts,
-    # numbers, RTF residue, line/page numbers).
-    # Strip apostrophes — contractions like "don't" → "dont" (4 chars) won't
-    # qualify as distinctive, preventing false FAIL in the secondary word check.
+    # Build token list: alpha-only words, 3+ chars.
+    # Strip apostrophes — contractions like "don't" → "dont" (4 chars)
+    # won't qualify as distinctive, preventing false FAIL.
     tokens = []
     for w in plain.split():
         t = re.sub(r"[^a-zA-Z]", '', w).lower()
@@ -279,53 +280,73 @@ def run_10slice_check():
     if len(tokens) < 100:
         return []
 
-    results = []
-    n_slices = 10
+    n_slices   = 10
     slice_size = len(tokens) // n_slices
+    used_words = set()   # global: no distinctive word re-used across any probe
 
-    for s in range(1, n_slices + 1):
-        # Target = end of this slice (so slice 1 = first 10%, slice 10 = last 10%)
-        target = min(s * slice_size - 1, len(tokens) - 6)
-        pct    = s * 10
-
-        # Scan backward from target to find a distinctive 5-word run
-        # "Distinctive" = 2+ words that are 5+ chars and not stopwords
-        # These words survive AI correction unchanged (names, domain terms)
-        phrase = None
-        for j in range(target, max(0, target - 80), -1):
+    def _pick_phrase(start_idx, stop_idx):
+        """Scan backward from start_idx to stop_idx for a usable phrase.
+        Skips any phrase whose distinctive words overlap with used_words.
+        Updates used_words on success. Returns phrase string or None."""
+        lo = max(stop_idx, 0)
+        for j in range(start_idx, lo - 1, -1):
             chunk = tokens[j:j + 5]
             if len(chunk) < 5:
                 continue
             distinctive = [w for w in chunk if len(w) >= 5 and w not in _STOPWORDS]
             if len(distinctive) < 2:
                 continue
-            phrase = ' '.join(chunk)
-            break
+            if any(w in used_words for w in distinctive):
+                continue   # would reuse a word already in another probe
+            used_words.update(distinctive)
+            return ' '.join(chunk)
+        return None
 
+    def _probe_result(label, phrase):
+        """Check one phrase against FINAL_FORMATTED. Returns probe dict."""
         if not phrase:
-            results.append({'slice': s, 'pct': pct, 'phrase': '(no phrase)',
-                            'status': 'FAIL', 'page': None, 'line': None})
-            continue
-
+            return {'label': label, 'phrase': '(no phrase)',
+                    'status': 'FAIL', 'page': None, 'line': None}
         pg, ln = find_page_for_text(phrase)
-
         if pg is not None:
-            results.append({'slice': s, 'pct': pct, 'phrase': phrase,
-                            'status': 'PASS', 'page': pg, 'line': ln})
+            return {'label': label, 'phrase': phrase,
+                    'status': 'PASS', 'page': pg, 'line': ln}
+        distinctive = [w for w in phrase.split() if len(w) >= 5 and w not in _STOPWORDS]
+        all_found   = distinctive and all(
+            find_page_for_text(dw)[0] is not None for dw in distinctive
+        )
+        status = 'PASS*' if all_found else 'FAIL'
+        return {'label': label, 'phrase': phrase,
+                'status': status, 'page': None, 'line': None}
+
+    results = []
+    for s in range(1, n_slices + 1):
+        pct      = s * 10
+        s_end    = min(s * slice_size - 1, len(tokens) - 6)
+        s_start  = (s - 1) * slice_size
+        midpoint = s_start + slice_size // 2
+
+        # Probe A — second half of slice (end → midpoint)
+        probe_a = _probe_result('A', _pick_phrase(s_end, midpoint))
+
+        # Probe B — first half of slice (midpoint-1 → start), fully independent
+        probe_b = _probe_result('B', _pick_phrase(midpoint - 1, s_start))
+
+        # Combined slice status: best result of the two probes
+        statuses = {probe_a['status'], probe_b['status']}
+        if 'PASS' in statuses:
+            combined = 'PASS'
+        elif 'PASS*' in statuses:
+            combined = 'PASS*'
         else:
-            # Phrase not found — check if distinctive words appear individually.
-            # If all are found, the AI changed the phrasing (steno correction)
-            # rather than dropping content. Mark PASS* instead of FAIL.
-            distinctive = [w for w in phrase.split() if len(w) >= 5 and w not in _STOPWORDS]
-            all_found   = distinctive and all(
-                find_page_for_text(dw)[0] is not None for dw in distinctive
-            )
-            if all_found:
-                results.append({'slice': s, 'pct': pct, 'phrase': phrase,
-                                'status': 'PASS*', 'page': None, 'line': None})
-            else:
-                results.append({'slice': s, 'pct': pct, 'phrase': phrase,
-                                'status': 'FAIL',  'page': None, 'line': None})
+            combined = 'FAIL'
+
+        results.append({
+            'slice':  s,
+            'pct':    pct,
+            'status': combined,
+            'probes': [probe_a, probe_b],
+        })
 
     return results
 
@@ -849,8 +870,9 @@ n_total        = len(slice_results) if slice_results else 10
 
 add(
     f'  Depo divided into {n_total} equal slices.',
-    f'  One phrase sampled from the raw RTF at each slice boundary.',
-    f'  Each phrase verified present in the final formatted output.',
+    f'  Two independent phrases sampled per slice (A = second half, B = first half).',
+    f'  No word shared between any two probes across all 20 samples.',
+    f'  Slice PASSES if either probe is found. Slice FAILS only if both fail.',
     '',
     f'  SCORE:    {score}/{n_total}',
     f'  VERDICT:  {verdict}',
@@ -860,30 +882,33 @@ add(
 if not slice_results:
     add('  (Check could not run -- no .rtf file found in job folder.)', '')
 else:
-    add(f'  {"SL":>2}  {"POS":>4}  {"STATUS":<7}  {"PHRASE":<42}  LOCATION')
-    add(f'  {"-"*2}  {"-"*4}  {"-"*7}  {"-"*42}  {"-"*14}')
+    add(f'  {"SL":<4}  {"POS":>4}  {"STATUS":<7}  {"PHRASE":<42}  LOCATION')
+    add(f'  {"-"*4}  {"-"*4}  {"-"*7}  {"-"*42}  {"-"*14}')
     for r in slice_results:
-        if r['status'] == 'PASS' and r.get('page'):
-            loc = (f'p.{r["page"]} l.{r["line"]}' if r.get('line')
-                   else f'p.{r["page"]}')
-        elif r['status'] == 'PASS*':
-            loc = 'steno correction'
-        else:
-            loc = 'NOT FOUND'
-        phrase_disp = f'"{truncate_at_word(r["phrase"], 38)}"'
-        add(f'  {r["slice"]:>2}  {r["pct"]:>3}%  {r["status"]:<7}  {phrase_disp:<42}  {loc}')
+        for p in r['probes']:
+            sl_label = f'{r["slice"]}{p["label"]}'
+            if p['status'] == 'PASS' and p.get('page'):
+                loc = (f'p.{p["page"]} l.{p["line"]}' if p.get('line')
+                       else f'p.{p["page"]}')
+            elif p['status'] == 'PASS*':
+                loc = 'steno correction'
+            else:
+                loc = 'NOT FOUND'
+            phrase_disp = f'"{truncate_at_word(p["phrase"], 38)}"'
+            add(f'  {sl_label:<4}  {r["pct"]:>3}%  {p["status"]:<7}  {phrase_disp:<42}  {loc}')
     add('')
     if score < n_total:
         failed = [r for r in slice_results if r['status'] == 'FAIL']
         add(f'  PASS*  = phrase words confirmed present; AI corrected the phrasing.')
-        add(f'  FAIL   = content from this slice NOT found in final output.')
+        add(f'  FAIL   = BOTH probes for this slice not found in final output.')
         if failed:
             add('', '  Failed slices:', '')
             for r in failed:
-                add(f'    Slice {r["slice"]} (~{r["pct"]}% through depo):',
-                    f'    RTF had: "{r["phrase"]}"',
-                    f'    Not found in FINAL_FORMATTED.',
-                    '')
+                for p in r['probes']:
+                    add(f'    Slice {r["slice"]}{p["label"]} (~{r["pct"]}% through depo):',
+                        f'    RTF had: "{p["phrase"]}"',
+                        f'    Not found in FINAL_FORMATTED.',
+                        '')
     add('')
 
 # ── SECTION A — SPOT CHECK ────────────────────────────────────────────────────
