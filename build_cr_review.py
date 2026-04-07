@@ -296,8 +296,10 @@ def run_10slice_check():
             distinctive = [w for w in chunk if len(w) >= 5 and w not in _STOPWORDS]
             if len(distinctive) < 2:
                 continue
+            if len(set(distinctive)) < len(distinctive):
+                continue   # word repeats within this phrase
             if any(w in used_words for w in distinctive):
-                continue   # would reuse a word already in another probe
+                continue   # word already used in another probe
             used_words.update(distinctive)
             return ' '.join(chunk)
         return None
