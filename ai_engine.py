@@ -409,14 +409,37 @@ def line_start_for_chunk(text, chunk_index, chunks):
 # API CALL
 # ─────────────────────────────────────────────────────────────────────────────
 
-def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, total_chunks):
+def get_last_qa_label(text):
+    """Return the last Q/A speaker label seen in text ('Q' or 'A'), or None."""
+    matches = re.findall(r'^([QA])\.\s+', text, re.MULTILINE)
+    return matches[-1] if matches else None
+
+
+def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, total_chunks, qa_anchor=None):
     """Send one chunk to Claude. Returns (corrected_text_str, corrections_list).
 
     Uses Anthropic prompt caching on the system prompt — the 47K-token engine
     is cached after the first call. Subsequent calls hit the cache at ~10% cost
     and much faster processing time.
+
+    qa_anchor: if set, a string like 'Q' or 'A' — the last speaker label from
+    the previous chunk. Prepended as a re-anchor header so the AI knows where
+    it is in the Q/A sequence and does not drop labels at chunk boundaries.
     """
+    if qa_anchor:
+        next_label = 'A' if qa_anchor == 'Q' else 'Q'
+        anchor_header = (
+            f"RE-ANCHOR: You are mid-examination. "
+            f"Last labeled line in previous chunk was {qa_anchor}. "
+            f"Next expected label is {next_label}. "
+            f"CRITICAL: Every line of testimony must begin with Q. or A. "
+            f"Do not return any unlabeled testimony lines.\n\n"
+        )
+    else:
+        anchor_header = ''
+
     user_msg = (
+        f"{anchor_header}"
         f"Correct the following deposition transcript chunk.\n"
         f"Starting line (approximate in full document): {line_start}\n"
         f"Chunk {chunk_num + 1} of {total_chunks}\n\n"
@@ -604,6 +627,7 @@ def main():
 
     start_time = time.time()
     last_progress_time = start_time
+    last_qa_label = None   # tracks last Q/A speaker across chunk boundaries
 
     for i in range(start_chunk, len(chunks)):
         chunk = chunks[i]
@@ -612,10 +636,17 @@ def main():
         print(f'  [{i+1:3d}/{len(chunks)}]  ~line {line_start:<6}  {pct:5.1f}%', end='', flush=True)
 
         corrected, corrections, cc_tok, cr_tok, in_tok, out_tok = correct_chunk(
-            client, system_prompt, chunk, line_start, i, len(chunks)
+            client, system_prompt, chunk, line_start, i, len(chunks),
+            qa_anchor=last_qa_label
         )
         corrected_chunks.append(corrected)
         all_corrections.extend(corrections)
+
+        # Update Q/A anchor — track last speaker label for next chunk
+        chunk_last = get_last_qa_label(corrected)
+        if chunk_last:
+            last_qa_label = chunk_last
+
         cache_creation_tokens += cc_tok
         cache_read_tokens     += cr_tok
         total_input_tokens    += in_tok
