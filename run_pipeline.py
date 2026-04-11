@@ -76,6 +76,11 @@ os.environ.setdefault('PYTHONIOENCODING', 'utf-8')
 # Stays valid after os.chdir() to a job folder — script paths are built from this.
 ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# ── Tollgate import — after ENGINE_DIR is set so path is on sys.path ─────────
+sys.path.insert(0, ENGINE_DIR)
+from tollgate import run_tollgate
+# ─────────────────────────────────────────────────────────────────────────────
+
 ALL_STEPS = [
     ('extract_rtf.py',       'extract',      'Extract input -> raw text  [format auto-detected at runtime]'),
     ('steno_cleanup.py',     'steno',        'Steno cleanup -> cleaned text'),
@@ -369,6 +374,14 @@ def main():
             print("        Pipeline stopped. Fix the error above and re-run.")
             print(f"        To resume from this step: python run_pipeline.py --from {key}")
             sys.exit(1)
+
+        # ── Tollgate: phase transition quality check ──────────────────────
+        tg_status = run_tollgate(key)
+        if tg_status == 'fail':
+            print(f"[TOLLGATE] Fix the failures above before continuing.")
+            print(f"           Resume from this step: python run_pipeline.py --from {key}")
+            sys.exit(1)
+        # ─────────────────────────────────────────────────────────────────
         print()
 
     print("=" * 60)
