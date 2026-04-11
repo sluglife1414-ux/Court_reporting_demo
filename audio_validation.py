@@ -19,9 +19,14 @@ Requires:
   - ffmpeg on PATH
 
 Author:  Scott + Claude
-Version: 2.0  (2026-04-05) — job-folder-aware, auto-transcribe, no hardcoded paths
+Version: 3.0  (2026-04-11) — sequential cursor, proportional window, word boundary matching
 """
 # ──────────────────────────────────────────────────────────────
+# v3.0  2026-04-11  sequential cursor — never search backwards
+#                   proportional window ±10% of depo length (generic for any depo)
+#                   word boundary matching — seg_word_set, no substring false matches
+#                   3-segment rolling window — phrases split across segments combine
+#                   dedup in load_review_items — one entry per line, first tag wins
 # v2.0  2026-04-05  rip out hardcoded Halprin paths
 #                   BASE = os.getcwd() — always the job work folder
 #                   auto-discover audio from ../intake/
@@ -195,15 +200,19 @@ def load_review_items():
     ]
 
     items = []
+    seen_lines = set()  # one entry per line — first audio tag wins
     with open(CORRECTED, encoding='utf-8') as f:
         lines = f.read().split('\n')
 
     for i, raw in enumerate(lines):
         if '[REVIEW' not in raw:
             continue
+        if i in seen_lines:
+            continue
         tags = re.findall(r'\[REVIEW:\s*(.*?)(?:\]|$)', raw)
         for tag in tags:
             if any(k in tag.lower() for k in _AUDIO_KEYS):
+                seen_lines.add(i)
                 # Clean text before the tag for matching
                 clean = re.sub(r'\[REVIEW[^\]]*\]', '', raw).strip()
                 clean = re.sub(r'\s+', ' ', clean)
@@ -212,6 +221,7 @@ def load_review_items():
                     'note':     tag.strip()[:120],
                     'text':     clean[:120],
                 })
+                break  # first audio tag per line only
     return items
 
 
@@ -222,36 +232,56 @@ def normalize(s):
     return re.sub(r'[^a-z0-9\s]', '', s.lower())
 
 
-def find_match(item_text, segments, context_sec=2):
-    """Find the best Whisper segment matching the review item text."""
+def find_match(item_text, segments, search_start, search_end, context_sec=2):
+    """Find the best Whisper segment matching the review item text.
+
+    search_start: index into segments to start from (cursor — never go backwards)
+    search_end:   index into segments to stop at (bounded window)
+
+    Returns (result_dict, match_idx) or (None, search_start).
+    """
     if not item_text or len(item_text) < 8:
-        return None
+        return None, search_start
 
-    # Use last 6+ words of the clean text as search key
-    words = item_text.split()
-    search = normalize(' '.join(words[-6:]))
+    # Use last 6 words, filter single-char words (avoids substring false matches)
+    words = [w for w in item_text.split() if len(w) > 1]
+    if not words:
+        return None, search_start
+    search_words = set(normalize(' '.join(words[-6:])).split())
+    if not search_words:
+        return None, search_start
 
-    best_seg  = None
-    best_score = 0
+    window_segs = segments[search_start:search_end]
+    best_seg    = None
+    best_score  = 0
+    best_idx    = search_start
 
-    for seg in segments:
-        seg_norm = normalize(seg['text'])
-        # Count matching words
-        match_words = sum(1 for w in search.split() if w in seg_norm)
-        score = match_words / max(len(search.split()), 1)
+    for i, seg in enumerate(window_segs):
+        # 3-segment rolling window — phrases split across Whisper segments combine for scoring
+        combined = seg['text']
+        if i + 1 < len(window_segs):
+            combined += ' ' + window_segs[i + 1]['text']
+        if i + 2 < len(window_segs):
+            combined += ' ' + window_segs[i + 2]['text']
+
+        seg_word_set = set(normalize(combined).split())
+        match_words  = sum(1 for w in search_words if w in seg_word_set)
+        score = match_words / max(len(search_words), 1)
+
         if score > best_score:
             best_score = score
             best_seg   = seg
+            best_idx   = search_start + i
 
     if best_score < 0.5 or best_seg is None:
-        return None
+        return None, search_start
 
     return {
-        'start':       max(0, best_seg['start'] - context_sec),
-        'end':         best_seg['end'] + context_sec,
-        'match_score': round(best_score, 2),
+        'start':        max(0, best_seg['start'] - context_sec),
+        'end':          best_seg['end'] + context_sec,
+        'match_score':  round(best_score, 2),
         'whisper_text': best_seg['text'],
-    }
+    }, best_idx
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -302,15 +332,29 @@ def main():
     review_items = load_review_items()
     print(f'  Found {len(review_items)} audio-flagged items')
 
-    print('Matching to Whisper segments...')
-    matches = []
+    total_segs  = len(all_segments)
+    total_lines = sum(1 for _ in open(CORRECTED, encoding='utf-8'))
+    # Proportional window: ±10% of depo length — scales for any depo size
+    WINDOW = max(50, int(total_segs * 0.10))
+
+    print(f'Matching to Whisper segments  (window=±{WINDOW} segs, {WINDOW/max(total_segs,1)*100:.0f}% of depo)...')
+    matches  = []
     unmatched = 0
+    cursor   = 0  # sequential — never search backwards
+
     for item in review_items:
-        result = find_match(item['text'], all_segments, CONTEXT_SEC)
+        # Estimate position in audio by line proportion
+        pos_estimate = int(item['line_num'] / max(total_lines, 1) * total_segs)
+        search_start = max(cursor, pos_estimate - WINDOW)
+        search_end   = min(total_segs, pos_estimate + WINDOW)
+
+        result, match_idx = find_match(item['text'], all_segments,
+                                       search_start, search_end, CONTEXT_SEC)
         entry = {**item}
         if result:
             entry.update(result)
             entry['status'] = 'MATCHED'
+            cursor = match_idx  # advance cursor to match — never go backwards
         else:
             entry['status'] = 'UNMATCHED'
             unmatched += 1
