@@ -182,14 +182,16 @@ def run_job_regression(label, work_dir, cr_type):
         print("  Pre-run checks failed — skipping pipeline run.")
         return passed, total, failures
 
-    # ── Run pipeline --skip-ai ────────────────────────────────────────────────
+    # ── Run pipeline --from config ────────────────────────────────────────────
+    # Use --from config (not --skip-ai) so we skip all AI/verify passes that
+    # need an API key. Regression tests the formatting pipeline only.
     print()
-    print(f"  Running pipeline --skip-ai ...")
+    print(f"  Running pipeline --from config ...")
     cmd = [sys.executable, os.path.join(ENGINE_DIR, 'run_pipeline.py'),
-           '--job-dir', work_dir, '--skip-ai']
+           '--job-dir', work_dir, '--from', 'config']
     result = subprocess.run(cmd, capture_output=True, text=True, encoding='utf-8', errors='replace')
     pipeline_ok = result.returncode == 0
-    chk('Pipeline --skip-ai completed without error', pipeline_ok,
+    chk('Pipeline --from config completed without error', pipeline_ok,
         '' if pipeline_ok else f"exit code {result.returncode}")
     if not pipeline_ok:
         print()

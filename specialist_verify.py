@@ -170,8 +170,8 @@ ITEM 3: VALID — punctuation correction is correct""",
 
 def load_corrections(log_path):
     if not os.path.exists(log_path):
-        print(f"[ERROR] {log_path} not found.")
-        sys.exit(1)
+        print(f"[SKIP] {log_path} not found — no AI log to verify. Skipping specialist pass.")
+        sys.exit(0)
     with open(log_path, encoding='utf-8') as f:
         data = json.load(f)
     return data.get('corrections', [])

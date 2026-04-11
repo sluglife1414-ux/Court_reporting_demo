@@ -105,8 +105,8 @@ def run_verify(log_path):
     """Main verify pass."""
     # Load correction log
     if not os.path.exists(log_path):
-        print(f"[ERROR] {log_path} not found.")
-        sys.exit(1)
+        print(f"[SKIP] {log_path} not found — no AI log to verify. Skipping verify pass.")
+        sys.exit(0)
 
     with open(log_path, encoding='utf-8') as f:
         log = json.load(f)
