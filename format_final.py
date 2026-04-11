@@ -60,7 +60,7 @@ else:
 ZOOM_ATTORNEYS  = [n.upper() for n in _cfg.get('zoom_attorneys', [])]
 
 WITNESS_LAST    = _cfg.get('witness_last', 'UNKNOWN')
-WITNESS_NAME    = _cfg.get('witness_name', 'UNKNOWN WITNESS')
+WITNESS_NAME    = _cfg.get('witness_full_name') or _cfg.get('witness_name', 'UNKNOWN WITNESS')
 CASE_SHORT      = _cfg.get('case_short', 'Unknown_Case')
 DEPO_DATE       = _cfg.get('depo_date', '')
 DEPO_DATE_SHORT = _cfg.get('depo_date_short', '')
