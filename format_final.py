@@ -1117,7 +1117,9 @@ def format_testimony(raw_lines):
             continue
 
         if block.startswith('EXAMINATION'):
-            labeled.append(('header', 'EXAMINATION'))
+            if not examination_header_emitted:
+                labeled.append(('header', 'EXAMINATION'))
+                examination_header_emitted = True
             continue
 
         # Exhibit markings — standalone, short form: (Whereupon, Exhibit No. X, was marked...)
