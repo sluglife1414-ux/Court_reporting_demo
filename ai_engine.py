@@ -45,6 +45,20 @@ import re
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8', errors='replace')
 
+# ── Load .env from engine dir — runs before anything else ────────────────────
+# Keys live in .env (gitignored). Loaded once here so ai_engine.py works when
+# run directly (not via run_pipeline.py which has its own .env loader).
+_env_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '.env')
+if os.path.exists(_env_path):
+    with open(_env_path, encoding='utf-8') as _ef:
+        for _line in _ef:
+            _line = _line.strip()
+            if _line and not _line.startswith('#') and '=' in _line:
+                _k, _v = _line.split('=', 1)
+                _key, _val = _k.strip(), _v.strip()
+                if _val:
+                    os.environ[_key] = _val
+
 try:
     import anthropic
 except ImportError:
