@@ -334,6 +334,45 @@ def build_system_prompt():
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# PRE-PROCESSING — D-11 guard
+# ─────────────────────────────────────────────────────────────────────────────
+
+_REVIEW_TAG_RE = re.compile(r'\[(?:REVIEW|AUDIO):(?:[^\[\]]|\[[^\]]*\])*\]')
+
+def sanitize_structural_headers(text):
+    """Strip [REVIEW] and [AUDIO] tags from structural header lines before AI pass.
+
+    Prevents AI chunk-overlap from misattributing tags to section headers like
+    'E X H I B I T S' or '* * *' separators. (D-11)
+
+    Structural headers matched:
+      - Spaced-out all-caps: E X H I B I T S, I N D E X
+      - Asterisk/dash separator lines: * * *  ---  *** etc.
+    """
+    lines = text.split('\n')
+    cleaned = []
+    stripped_count = 0
+
+    for line in lines:
+        s = line.strip()
+        is_spaced_caps = bool(re.match(r'^[A-Z](\s[A-Z]){2,}\s*$', s))
+        is_separator   = len(s) >= 3 and bool(re.match(r'^[\*\-\s]+$', s))
+
+        if is_spaced_caps or is_separator:
+            new_line = _REVIEW_TAG_RE.sub('', line).rstrip()
+            if new_line != line.rstrip():
+                stripped_count += 1
+            cleaned.append(new_line)
+        else:
+            cleaned.append(line)
+
+    if stripped_count:
+        print(f'  [ENGINE] D-11 guard: stripped [REVIEW]/[AUDIO] tags from '
+              f'{stripped_count} structural header line(s)', flush=True)
+    return '\n'.join(cleaned)
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # CHUNKING
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -525,6 +564,9 @@ def main():
 
     with open(INPUT_FILE, 'r', encoding='utf-8') as f:
         text = f.read()
+
+    # D-11: strip [REVIEW]/[AUDIO] tags from structural headers before AI sees them
+    text = sanitize_structural_headers(text)
 
     chunks = chunk_text(text)
 
