@@ -636,8 +636,10 @@ def main():
         all_corrections       = []
         cache_creation_tokens = 0
         cache_read_tokens     = 0
-        total_input_tokens    = 0
-        total_output_tokens   = 0
+
+    # Always initialize — not saved in checkpoint (resume adds to 0 for cost calc)
+    total_input_tokens  = 0
+    total_output_tokens = 0
 
     start_time = time.time()
     last_progress_time = start_time
