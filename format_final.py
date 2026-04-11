@@ -197,6 +197,61 @@ def extract_exhibits(text):
     return exhibits
 
 
+def extract_exhibits_from_index(index_lines):
+    """Extract exhibit descriptions and page numbers from the steno index section.
+
+    Handles depos where exhibits are listed in the pre-printed index (not in
+    '(Whereupon, ... was marked)' parentheticals in the testimony).
+
+    Format in steno: multi-line entries, each starting 'Exhibit No. X description...'
+    with continuation lines (possibly blank-separated), ending with a page number.
+    The steno may also include 'E X H I B I T S' page headers mid-list — those are skipped.
+
+    Returns tuple: (
+        descriptions: dict {exhibit_number (int): description (str)},
+        pages:        dict {exhibit_number (int): page_number (int)}
+    )
+    """
+    descriptions = {}
+    pages = {}
+    start_pat  = re.compile(r'Exhibit\s+No\.\s+(\d+)\s*(.*)', re.IGNORECASE)
+
+    current_num = None
+    current_parts = []
+
+    def _flush(num, parts):
+        if num is None or not parts:
+            return
+        joined = ' '.join(parts)
+        # Strip trailing page number (last whitespace-separated token that is all digits)
+        tokens = joined.rsplit(None, 1)
+        if len(tokens) == 2 and tokens[1].isdigit():
+            if num not in pages:
+                pages[num] = int(tokens[1])
+            joined = tokens[0].strip()
+        if num not in descriptions:
+            descriptions[num] = joined
+
+    for line in index_lines:
+        # Strip engine annotation tags before processing
+        clean = re.sub(r'\[(?:REVIEW|AUDIO|CORRECTED|SUGGEST)[^\]]*\]', '', line).strip()
+        if not clean:
+            continue
+        # Skip steno page headers like 'E X H I B I T S' (letters separated by spaces)
+        if re.match(r'^(?:[A-Z]\s+){2,}[A-Z]\s*$', clean, re.IGNORECASE):
+            continue
+        m = start_pat.match(clean)
+        if m:
+            _flush(current_num, current_parts)
+            current_num = int(m.group(1))
+            current_parts = [m.group(2).strip()] if m.group(2).strip() else []
+        elif current_num is not None:
+            current_parts.append(clean)
+
+    _flush(current_num, current_parts)
+    return descriptions, pages
+
+
 def find_exhibit_pages(all_pages):
     """Find formatted page number where each exhibit was first introduced.
 

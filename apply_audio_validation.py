@@ -1,30 +1,32 @@
 """
 apply_audio_validation.py — Apply Whisper audio matches to corrected_text.txt
 ==============================================================================
-Reads audio_matches.json, applies high-confidence Whisper confirmations to
-corrected_text.txt, and generates an audit trail for MB's review.
+Reads audio_matches.json, applies Whisper results to corrected_text.txt.
+
+Rule: if Whisper heard it, the CR sees it. Confidence score changes the label,
+never whether the result appears. Zero silent discards.
 
 Three actions:
-  AUTO    (score >= 0.9, confirmation item)
-          → Remove [REVIEW] tag. Change is logged.
-          → MB sees before/after in AUDIO CORRECTIONS section of her review.
-          → Builds trust through transparency. After a few depos she'll trust it.
+  AUTO    (score >= 0.9, not a gap-fill item)
+          → Apply directly. Replace [REVIEW] with [REVIEW: confirmed "X" via audio].
+          → CR sees the resolved value with confirmation label.
 
-  SUGGEST (score 0.7-0.9, OR any gap-fill item)
-          → Replace [REVIEW] with [AUDIO: whisper heard "..."] tag.
-          → MB decides. Engine never overwrites testimony it isn't sure about.
+  SUGGEST (score >= 0.7, OR gap-fill at any score)
+          → Replace [REVIEW] with [REVIEW: heard "X" via audio — please review].
+          → CR decides. Engine surfaces what it heard.
 
-  DISCARD (score < 0.7)
-          → Leave [REVIEW] tag untouched. Not worth surfacing.
+  LOW     (score < 0.7)
+          → Replace [REVIEW] with [REVIEW: heard "X" — low confidence, verify audio].
+          → CR still sees what Whisper heard. Nothing discarded silently.
 
 Non-negotiables:
   - Backup corrected_text.txt before touching anything
   - Never delete testimony — only remove/replace [REVIEW] tags
   - Full decision log saved to audio_apply_log.json
-  - CR-facing report appended to existing {CASE_SHORT}_CR_REVIEW.txt
+  - CR-facing report appended to existing CR_REVIEW.txt
 
 Author:  Scott + Claude
-Version: 2.0  (2026-04-05) — job-folder-aware, BASE = os.getcwd(), CR_REVIEW.txt
+Version: 2.0  (2026-04-09) — no silent discards; all Whisper results surfaced
 """
 
 import os
@@ -34,32 +36,51 @@ import re
 import shutil
 from datetime import date
 
-# CWD = job's work/ folder (set by run_pipeline.py via os.chdir)
-BASE = os.getcwd()
+ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE = os.getcwd()  # job dir — all data files are relative to CWD
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
-MATCHES_PATH   = os.path.join(BASE, 'audio_matches.json')
+# Use whichever match file has more MATCHED items.
+# Targeted re-transcription sometimes gets fewer matches than full-run Whisper,
+# so we pick by coverage, not by file name preference.
+def _count_matched(path):
+    if not os.path.exists(path):
+        return -1
+    try:
+        items = json.load(open(path, encoding='utf-8'))
+        return sum(1 for x in items if x.get('status') == 'MATCHED')
+    except Exception:
+        return -1
+
+_targeted = os.path.join(BASE, 'audio_matches_targeted.json')
+_fullrun  = os.path.join(BASE, 'audio_matches.json')
+
+_targeted_count = _count_matched(_targeted)
+_fullrun_count  = _count_matched(_fullrun)
+
+if _targeted_count >= _fullrun_count and _targeted_count >= 0:
+    MATCHES_PATH = _targeted
+    print(f'[AUDIO] Using targeted matches ({_targeted_count} matched)')
+elif _fullrun_count >= 0:
+    MATCHES_PATH = _fullrun
+    print(f'[AUDIO] Using full-run matches ({_fullrun_count} matched)  [targeted had {_targeted_count}]')
+else:
+    MATCHES_PATH = _fullrun  # fallback
 CORRECTED_PATH = os.path.join(BASE, 'corrected_text.txt')
 LOG_PATH       = os.path.join(BASE, 'audio_apply_log.json')
 
-cfg     = {}
-caption = {}
-cfg_path = os.path.join(BASE, 'depo_config.json')
-cap_path = os.path.join(BASE, 'CASE_CAPTION.json')
-if os.path.exists(cfg_path):
-    cfg = json.load(open(cfg_path, encoding='utf-8'))
-if os.path.exists(cap_path):
-    caption = json.load(open(cap_path, encoding='utf-8'))
-
-CASE_SHORT  = cfg.get('case_short', 'Case')
-REVIEW_PATH = os.path.join(BASE, 'FINAL_DELIVERY', f'{CASE_SHORT}_CR_REVIEW.txt')
+from config import cfg as _config
+REVIEW_PATH = _config.review_path
 
 # ── Thresholds ────────────────────────────────────────────────────────────────
-AUTO_THRESHOLD    = 0.9   # score >= this → auto-apply (with MB audit trail)
-SUGGEST_THRESHOLD = 0.7   # score >= this → surface as suggestion
+AUTO_THRESHOLD    = 0.9   # score >= this AND not gap-fill → confirmed via audio
+SUGGEST_THRESHOLD = 0.7   # score >= this (or gap-fill) → please review
 
-# ── Gap-fill keywords — never auto-apply these even at high score ─────────────
-# Whisper's full segment can't reliably fill a steno gap word-for-word
+# score < SUGGEST_THRESHOLD → LOW confidence label, but still surfaced (never discarded)
+
+# ── Gap-fill keywords — prevent AUTO, never prevent surfacing ─────────────────
+# These notes describe steno gaps where Whisper's segment can't replace word-for-word.
+# They go to SUGGEST (not AUTO) even at high score — but CR always sees what was heard.
 _GAP_KEYWORDS = [
     'steno gap', 'not captured', 'fragmented', 'missing', 'amount missing',
     'figure missing', 'percent', 'dollar', 'number missing', 'unclear',
@@ -83,7 +104,7 @@ matched = [m for m in matches if m['status'] == 'MATCHED']
 # ── Categorize ────────────────────────────────────────────────────────────────
 auto_apply = []
 suggest    = []
-discard    = []
+low        = []   # < 0.7 — still surfaced, never discarded
 
 for m in matched:
     score = m.get('match_score', 0)
@@ -92,10 +113,10 @@ for m in matched:
 
     if score >= AUTO_THRESHOLD and not gap:
         auto_apply.append(m)
-    elif score >= SUGGEST_THRESHOLD:
+    elif score >= SUGGEST_THRESHOLD or gap:
         suggest.append(m)
     else:
-        discard.append(m)
+        low.append(m)
 
 # Gap-fill items at high score go to suggest, not auto
 for m in matched:
@@ -108,12 +129,13 @@ for m in matched:
             auto_apply.remove(m)
 
 print('=' * 60)
-print('APPLY AUDIO VALIDATION')
+print('APPLY AUDIO VALIDATION  v2.0')
 print('=' * 60)
 print(f'  Total matched items:  {len(matched)}')
-print(f'  AUTO  (>= 0.9):       {len(auto_apply)}  — apply + show MB before/after')
-print(f'  SUGGEST (0.7-0.9):    {len(suggest)}  — surface to MB for decision')
-print(f'  DISCARD (< 0.7):      {len(discard)}  — too low confidence, skip')
+print(f'  AUTO    (>= 0.9):     {len(auto_apply)}  — confirmed via audio')
+print(f'  SUGGEST (>= 0.7):     {len(suggest)}  — please review')
+print(f'  LOW     (< 0.7):      {len(low)}  — low confidence, verify audio')
+print(f'  DISCARDED:            0  — nothing silently dropped')
 
 
 # ── Backup corrected_text.txt — Mama Bear Rule ────────────────────────────────
@@ -145,53 +167,89 @@ for m in suggest:
     ln = m['line_num'] - 1
     suggest_by_line.setdefault(ln, []).append(m)
 
+low_by_line = {}
+for m in low:
+    ln = m['line_num'] - 1
+    low_by_line.setdefault(ln, []).append(m)
+
 applied  = []
 surfaced = []
+
+# Nested-bracket regex — same pattern as make_rtf.py to match [REVIEW:...[|]...] tags
+_RE_REVIEW_FULL = re.compile(r'\[REVIEW:((?:[^\[\]]|\[[^\]]*\])*)\]', re.DOTALL)
+
+def _replace_tag(line, note_prefix, replacement):
+    """Replace the [REVIEW:...] tag whose reason starts with note_prefix.
+    Falls back to replacing the first [REVIEW:...] on the line if specific match fails."""
+    tag_pattern = re.compile(
+        r'\[REVIEW:\s*' + re.escape(note_prefix) + r'(?:[^\[\]]|\[[^\]]*\])*\]',
+        re.DOTALL
+    )
+    new_line = tag_pattern.sub(replacement, line, count=1)
+    if new_line == line:
+        # Fallback: replace first [REVIEW:...] on this line
+        new_line = _RE_REVIEW_FULL.sub(replacement, line, count=1)
+    return new_line
 
 for idx, line in enumerate(lines):
     if '[REVIEW' not in line:
         continue
 
-    # AUTO — remove [REVIEW] tag, keep surrounding text, log before/after
+    # AUTO — replace [REVIEW] with confirmed tag, log before/after
     if idx in auto_by_line:
         for m in auto_by_line[idx]:
             before = line.strip()
-            # Remove the specific [REVIEW:...] tag that matched this item
-            tag_pattern = re.compile(r'\[REVIEW:\s*' + re.escape(m['note'][:30]) + r'[^\]]*\]')
-            new_line = tag_pattern.sub('', line).strip()
-            # Fallback: remove all [REVIEW] tags on this line if specific not found
-            if new_line == line.strip():
-                new_line = re.sub(r'\[REVIEW:[^\]]*\]', '', line).strip()
+            whisper = m.get('whisper_text', '').strip()[:80]
+            replacement = f'[REVIEW: confirmed "{whisper}" via audio]'
+            new_line = _replace_tag(line, m['note'][:30], replacement)
             lines[idx] = new_line
+            line = new_line  # handle multiple tags on same line
             applied.append({
                 'line_num':     m['line_num'],
                 'note':         m['note'],
                 'match_score':  m['match_score'],
                 'before':       before,
-                'after':        new_line,
+                'after':        new_line.strip(),
                 'whisper_text': m.get('whisper_text', ''),
                 'action':       'AUTO',
             })
 
-    # SUGGEST — replace [REVIEW] tag with [AUDIO: whisper heard "..."]
-    elif idx in suggest_by_line:
+    # SUGGEST — replace [REVIEW] with heard tag, CR decides
+    if idx in suggest_by_line:
         for m in suggest_by_line[idx]:
             before = line.strip()
-            whisper = m.get('whisper_text', '')[:80]
-            tag_pattern = re.compile(r'\[REVIEW:\s*' + re.escape(m['note'][:30]) + r'[^\]]*\]')
-            replacement = f'[AUDIO: audio check heard "{whisper}" — verify]'
-            new_line = tag_pattern.sub(replacement, line).strip()
-            if new_line == line.strip():
-                new_line = re.sub(r'\[REVIEW:[^\]]*\]', replacement, line, count=1).strip()
+            whisper = m.get('whisper_text', '').strip()[:80]
+            replacement = f'[REVIEW: heard "{whisper}" via audio — please review]'
+            new_line = _replace_tag(line, m['note'][:30], replacement)
             lines[idx] = new_line
+            line = new_line
             surfaced.append({
                 'line_num':     m['line_num'],
                 'note':         m['note'],
                 'match_score':  m['match_score'],
                 'before':       before,
-                'after':        new_line,
+                'after':        new_line.strip(),
                 'whisper_text': m.get('whisper_text', ''),
                 'action':       'SUGGEST',
+            })
+
+    # LOW — replace [REVIEW] with low-confidence heard tag, never discard
+    if idx in low_by_line:
+        for m in low_by_line[idx]:
+            before = line.strip()
+            whisper = m.get('whisper_text', '').strip()[:80]
+            replacement = f'[REVIEW: heard "{whisper}" — low confidence, verify audio]'
+            new_line = _replace_tag(line, m['note'][:30], replacement)
+            lines[idx] = new_line
+            line = new_line
+            surfaced.append({
+                'line_num':     m['line_num'],
+                'note':         m['note'],
+                'match_score':  m['match_score'],
+                'before':       before,
+                'after':        new_line.strip(),
+                'whisper_text': m.get('whisper_text', ''),
+                'action':       'LOW',
             })
 
 # ── Write updated corrected_text.txt ─────────────────────────────────────────
@@ -207,7 +265,8 @@ log = {
     'date':      str(date.today()),
     'applied':   applied,
     'surfaced':  surfaced,
-    'discarded': len(discard),
+    'low_count': len(low),
+    'discarded': 0,   # v2.0 — nothing discarded silently
 }
 with open(LOG_PATH, 'w', encoding='utf-8') as f:
     json.dump(log, f, indent=2)
@@ -271,20 +330,23 @@ else:
 
 # Suggest section
 if surfaced:
+    suggest_items = [x for x in surfaced if x['action'] == 'SUGGEST']
+    low_items     = [x for x in surfaced if x['action'] == 'LOW']
     section += [
         SEP,
         f'  AUDIO SUGGESTIONS  ({len(surfaced)} items — your decision)',
         SEP,
         '',
-        '  The audio check heard something here but was not certain enough',
-        '  to auto-apply. Each item shows what the audio check heard.',
+        '  The audio check heard something at each of these locations.',
+        '  HIGH = confident enough to suggest. LOW = weak match, use audio as hint.',
         '  Write OK or your correction in the ANSWER line.',
         '',
     ]
     for n, item in enumerate(surfaced, 1):
-        whisper = item.get('whisper_text', '')[:65]
+        whisper    = item.get('whisper_text', '')[:65]
+        confidence = 'HIGH' if item['action'] == 'SUGGEST' else 'LOW'
         section += [
-            f'  ── SUGGEST-{n:02d} {"─" * (W - 15)}',
+            f'  ── SUGGEST-{n:02d} [{confidence}] {"─" * (W - 20)}',
             f'  Line {item["line_num"]}  |  Score: {item["match_score"]}',
             f'  Audio check heard: {whisper}',
             f'  ANSWER: ________________________________________________',
@@ -305,6 +367,7 @@ if os.path.exists(REVIEW_PATH):
     print(f'Audio section appended to: {REVIEW_PATH}')
 else:
     out_path = os.path.join(BASE, 'FINAL_DELIVERY', 'AUDIO_CORRECTIONS.txt')
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
         f.write('\n'.join(section))
     print(f'MB_REVIEW not found — written separately: {out_path}')
@@ -314,9 +377,9 @@ else:
 print('\n' + '=' * 60)
 print('SUMMARY')
 print('=' * 60)
-print(f'  AUTO-applied:   {len(applied)}  corrections  (MB sees before/after)')
-print(f'  Surfaced:       {len(surfaced)}  suggestions  (MB decides)')
-print(f'  Discarded:      {len(discard)}  low-confidence (not surfaced)')
+print(f'  AUTO-applied:   {len(applied)}  confirmed via audio')
+print(f'  Surfaced:       {len(surfaced)}  heard/low-confidence (CR decides)')
+print(f'  Discarded:      0  — nothing silently dropped  (v2.0)')
 print(f'  Backup:         corrected_text_pre_audio_backup.txt')
 print()
 print('  Next step: python run_pipeline.py --from format_final')
