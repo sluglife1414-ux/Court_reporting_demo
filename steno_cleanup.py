@@ -156,6 +156,7 @@ changes.append(f'  Encoding artifacts stripped:    {before_count} characters')
 # STEP 7 — Whitespace normalization
 # ============================================================================
 content = re.sub(r'[ \t]+', ' ', content)          # multiple spaces → single
+content = re.sub(r' ([?!])', r'\1', content)        # D-17: steno trailing space before ?/! — AI reads as gap
 content = re.sub(r' \n', '\n', content)             # trailing space before newline
 content = re.sub(r'\n ', '\n', content)             # leading space after newline
 content = re.sub(r'\n{3,}', '\n\n', content)        # 3+ blank lines → 2

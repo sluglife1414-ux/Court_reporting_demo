@@ -354,7 +354,7 @@ def main():
         if result:
             entry.update(result)
             entry['status'] = 'MATCHED'
-            cursor = match_idx  # advance cursor to match — never go backwards
+            cursor = match_idx + 1  # D-14: advance PAST match so same segment can't be reused
         else:
             entry['status'] = 'UNMATCHED'
             unmatched += 1
