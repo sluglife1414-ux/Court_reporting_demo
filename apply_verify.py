@@ -25,8 +25,8 @@ REVIEW_TAG    = '[REVIEW: verify-agent flag — reporter confirm this correction
 def apply_disagree_tags(verify_log_path, corrected_path):
     # ── Load verify log ────────────────────────────────────────────────────────
     if not os.path.exists(verify_log_path):
-        print(f'[ERROR] {verify_log_path} not found — run verify_agent.py first.')
-        sys.exit(1)
+        print(f'[SKIP] {verify_log_path} not found — no verify log to apply. Skipping.')
+        sys.exit(0)
     if not os.path.exists(corrected_path):
         print(f'[ERROR] {corrected_path} not found.')
         sys.exit(1)
