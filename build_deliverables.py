@@ -167,23 +167,78 @@ PROCESSED:     {RUN_DATE}
 # =========================================================
 
 def parse_exhibits():
-    """Extract exhibit entries from the index section of the transcript."""
+    """Extract exhibit entries from transcript — handles both common steno formats:
+
+    Format A (pre-printed index): exhibit list appears in the index section at the
+      start of the steno, one entry per 'Exhibit No. X description...' with
+      continuation lines and a trailing page number.
+
+    Format B (testimony parentheticals): exhibits introduced inline as
+      '(Whereupon, Exhibit No. X, description, was marked for Identification.)'
+
+    Both formats are scanned; descriptions from Format A win if both present
+    (index descriptions tend to be more complete).
+    """
+    # --- Format A: steno index section ---
+    index_exhibits = {}   # {str_num: description}
     in_index = False
-    exhibits = []
+    current_num = None
+    current_parts = []
+    header_pat = re.compile(r'^(?:[A-Z]\s+){2,}[A-Z]\s*$')
+
+    def _flush_index(num, parts):
+        if num is None or not parts:
+            return
+        joined = ' '.join(parts)
+        # Strip trailing page number (last token that is all digits)
+        tokens = joined.rsplit(None, 1)
+        if len(tokens) == 2 and tokens[1].isdigit():
+            joined = tokens[0].strip()
+        if num not in index_exhibits:
+            index_exhibits[num] = joined
+
     for line in lines:
-        s = line.strip()
-        if 'E X H I B I T S' in s or 'EXHIBITS' in s:
+        s = re.sub(r'\[(?:REVIEW|AUDIO|CORRECTED|SUGGEST)[^\]]*\]', '', line).strip()
+        if not s:
+            continue
+        if 'E X H I B I T S' in s or s == 'EXHIBITS':
             in_index = True
             continue
         if in_index:
-            if re.match(r'^(A P P E A R A N C E S|APPEARANCES)', s):
+            if re.match(r'^(?:A\s+P\s+P\s+E\s+A\s+R|APPEARANCES)', s):
                 break
-            m = re.match(r'Exhibit\s+No\.?\s+(\d+)\s+(.*)', s, re.IGNORECASE)
+            if header_pat.match(s):          # skip spaced-out headers like E X H I B I T S
+                continue
+            m = re.match(r'Exhibit\s+No\.?\s+(\d+)\s*(.*)', s, re.IGNORECASE)
             if m:
-                exhibits.append((m.group(1), m.group(2).strip()))
-            elif exhibits and s and not re.match(r'^\d+\s', s):
-                # continuation line
-                exhibits[-1] = (exhibits[-1][0], exhibits[-1][1] + ' ' + s)
+                _flush_index(current_num, current_parts)
+                current_num = m.group(1)
+                current_parts = [m.group(2).strip()] if m.group(2).strip() else []
+            elif current_num is not None:
+                if not re.match(r'^---', s):   # skip --- PAGE BREAK --- markers
+                    current_parts.append(s)
+
+    _flush_index(current_num, current_parts)
+
+    # --- Format B: (Whereupon, ..., was marked) parentheticals in testimony ---
+    whereupon_pat = re.compile(
+        r'\(Whereupon,\s+Exhibit\s+No\.\s+(\d+)'
+        r'(?:,\s*([^,]+?))?\s*(?:,\s*)?was\s+marked',
+        re.IGNORECASE
+    )
+    whereupon_exhibits = {}
+    for m in whereupon_pat.finditer(text):
+        num = m.group(1)
+        desc = m.group(2).strip() if m.group(2) else ''
+        if num not in whereupon_exhibits:
+            whereupon_exhibits[num] = desc
+
+    # Merge: index wins if it has a description; Whereupon fills any gaps
+    all_nums = sorted(set(index_exhibits) | set(whereupon_exhibits), key=lambda x: int(x))
+    exhibits = []
+    for num in all_nums:
+        desc = index_exhibits.get(num) or whereupon_exhibits.get(num, '')
+        exhibits.append((num, desc))
     return exhibits
 
 def build_exhibit_index():

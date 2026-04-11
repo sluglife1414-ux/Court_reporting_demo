@@ -164,14 +164,14 @@ def format_review_tag(reason):
 # Regex handles [|] inside tags — matches non-bracket chars OR complete [x] groups
 _RE_FLAG   = re.compile(r'\[FLAG:(?:[^\[\]]|\[[^\]]*\])*\]',    re.DOTALL)
 _RE_REVIEW = re.compile(r'\[REVIEW:((?:[^\[\]]|\[[^\]]*\])*)\]', re.DOTALL)
-_RE_AUDIO  = re.compile(r'\[AUDIO:(?:[^\[\]]|\[[^\]]*\])*\]',   re.DOTALL)
+_RE_AUDIO  = re.compile(r'\[AUDIO:((?:[^\[\]]|\[[^\]]*\])*)\]',   re.DOTALL)
 
 with open(IN_FILE, 'r', encoding='utf-8', errors='replace') as f:
     raw = f.read()
 
 content = _RE_FLAG.sub('', raw)
 content = _RE_REVIEW.sub(lambda m: format_review_tag(m.group(1)), content)
-content = _RE_AUDIO.sub('[[AUDIO: verify]]', content)
+content = _RE_AUDIO.sub(lambda m: f'[[AUDIO: {m.group(1).strip()}]]', content)
 
 # ── Fix mid-word [[REVIEW:...]] insertions ────────────────────────────────────
 # When the AI engine flags a truncated steno word it writes word[REVIEW:...]ment
@@ -182,23 +182,86 @@ _RE_MIDWORD = re.compile(r"([A-Za-z'\-]+)(\[\[REVIEW:[^\]]*\]\])([A-Za-z'\-]+)")
 content = _RE_MIDWORD.sub(r'\1\3 \2', content)
 
 # ── RTF builder ────────────────────────────────────────────────────────────────
+
 def escape_rtf(text):
+    """Escape RTF special characters. Newlines handled at paragraph level."""
     out = []
     for ch in text:
         o = ord(ch)
         if o == 92:    out.append('\\\\')
         elif o == 123: out.append('\\{')
         elif o == 125: out.append('\\}')
-        elif o == 13:  continue
-        elif o == 10:  out.append('\\par\n')
+        elif o in (10, 13): continue   # paragraph structure handled separately
         elif o > 127:  out.append("\\'" + ('%02x' % o))
         else:          out.append(ch)
     return ''.join(out)
 
+
+# ── D-16: Q/A/Byline line classification ──────────────────────────────────────
+_RE_Q_LINE  = re.compile(r'^Q\.\s+(.+)', re.DOTALL)
+_RE_A_LINE  = re.compile(r'^A\.\s+(.+)', re.DOTALL)
+_RE_BY_LINE = re.compile(r'^BY\s+(?:MR|MS|MRS|DR|JUDGE|THE)\b')
+
+def _classify_line(line):
+    """Return (kind, body) for a line.
+    kind: 'Q' | 'A' | 'BY' | 'EMPTY' | 'TEXT'
+    body: text after stripping the Q./A. prefix (for Q/A), full stripped line otherwise.
+    """
+    stripped = line.strip()
+    if not stripped:
+        return 'EMPTY', ''
+    m = _RE_Q_LINE.match(stripped)
+    if m:
+        return 'Q', m.group(1)
+    m = _RE_A_LINE.match(stripped)
+    if m:
+        return 'A', m.group(1)
+    if _RE_BY_LINE.match(stripped):
+        return 'BY', stripped
+    return 'TEXT', stripped
+
+
+def build_rtf_body(content):
+    """Build RTF paragraph sequence from content string.
+
+    Q lines  → style s1 (Question), bold Q. marker, hanging indent
+    A lines  → style s2 (Answer),   bold A. marker, hanging indent
+    BY lines → style s3 (Byline),   normal weight, reduced indent
+    Empty    → blank paragraph
+    Other    → plain paragraph
+    """
+    # li=left indent (twips), fi=first-line indent (negative = hanging)
+    # 720 twips = 0.5 inch, 360 = 0.25 inch
+    Q_PAR   = '\\pard\\s1\\li720\\fi-360 '
+    A_PAR   = '\\pard\\s2\\li720\\fi-360 '
+    BY_PAR  = '\\pard\\s3\\li360 '
+    TXT_PAR = '\\pard\\li360 '
+
+    parts = []
+    for line in content.split('\n'):
+        kind, body = _classify_line(line)
+        if kind == 'EMPTY':
+            parts.append('\\pard\\par\n')
+        elif kind == 'Q':
+            parts.append(Q_PAR + '{\\b Q.} ' + escape_rtf(body) + '\\par\n')
+        elif kind == 'A':
+            parts.append(A_PAR + '{\\b A.} ' + escape_rtf(body) + '\\par\n')
+        elif kind == 'BY':
+            parts.append(BY_PAR + escape_rtf(body) + '\\par\n')
+        else:
+            parts.append(TXT_PAR + escape_rtf(body) + '\\par\n')
+    return ''.join(parts)
+
+
 rtf  = '{\\rtf1\\ansi\\ansicpg1252\\deff0\n'
 rtf += '{\\fonttbl{\\f0\\fmodern\\fprq1\\fcharset0 Courier New;}}\n'
+rtf += '{\\stylesheet\n'
+rtf += '{\\s1\\snext1 Question;}\n'
+rtf += '{\\s2\\snext2 Answer;}\n'
+rtf += '{\\s3\\snext3 Byline;}\n'
+rtf += '}\n'
 rtf += '\\f0\\fs20\n'
-rtf += escape_rtf(content)
+rtf += build_rtf_body(content)
 rtf += '}'
 
 with open(OUT_FILE, 'w', encoding='windows-1252') as f:

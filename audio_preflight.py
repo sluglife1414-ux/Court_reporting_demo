@@ -149,7 +149,7 @@ test_mp3 = os.path.join(tmp_dir, 'preflight_test.mp3')
 real_size_ok = False
 
 try:
-    print(f'  Test window: {TEST_OFFSET_SEC//60:.0f}m {TEST_OFFSET_SEC%60:02d}s → '
+    print(f'  Test window: {TEST_OFFSET_SEC//60:.0f}m {TEST_OFFSET_SEC%60:02d}s -> '
           f'{(TEST_OFFSET_SEC+TEST_SECS)//60:.0f}m {(TEST_OFFSET_SEC+TEST_SECS)%60:02d}s  '
           f'(known hard [REVIEW] item — fragmented testimony)')
     subprocess.run([
