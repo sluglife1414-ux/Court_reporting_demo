@@ -147,11 +147,21 @@ def wrap_colloquy(speaker, body):
 
 
 def strip_review_flags(text):
-    """Remove [REVIEW:...] and [FLAG:...] tags before formatting."""
+    """Remove [REVIEW:...], [FLAG:...], steno artifacts, and v2 control tokens."""
     text = re.sub(r'\[REVIEW:[^\[]*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
     text = re.sub(r'\[REVIEW:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
+    # v2: remove steno untranslated/artifact tokens and delete-line markers
+    text = re.sub(r'\[\[DELETE_LINE\]\]\n?', '', text)
+    text = re.sub(r'\[\[UNTRANSLATED\]\]', '[REVIEW: untranslated steno]', text)
+    text = re.sub(r'\[\[ARTIFACT\]\]', '', text)
+    # v2: Agent B comment tags (e.g. [[REMOVED — DATE ARTIFACT]])
+    text = re.sub(r'\[\[REMOVED[^\]]*\]\]', '', text)
+    # steno split-word marker
+    text = re.sub(r'\s*\[\|\]\s*', ' ', text)
+    # fix 3: unescape literal \n written by Agent B patches
+    text = text.replace('\\n', '\n')
     text = re.sub(r'  +', ' ', text)
     return text
 
@@ -374,6 +384,18 @@ def format_testimony(text):
     """
     text = strip_review_flags(text)
     raw_lines = text.split('\n')
+
+    # Pre-step: ensure each Q./A. labeled line starts its own block.
+    # Agent B sometimes emits consecutive Q./A. lines without a blank separator.
+    # Without this, the block-joiner merges them into one block whose body
+    # contains the embedded Q./A. prefix of the second fragment.
+    normalized = []
+    for line in raw_lines:
+        s = line.strip()
+        if s and re.match(r'^[QA]\.\s', s) and normalized and normalized[-1].strip():
+            normalized.append('')   # force blank separator before this labeled line
+        normalized.append(line)
+    raw_lines = normalized
 
     # Step 1: join fragment lines into logical blocks (split on blank lines)
     blocks = []
