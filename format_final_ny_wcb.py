@@ -66,6 +66,7 @@ REPORTER_PHONE  = _cfg.get('reporter_phone', '')
 REPORTER_TITLE  = _cfg.get('reporter_title', 'Notary Public of the State of New York')
 EXAMINING_ATTY  = _cfg.get('examining_atty', '')
 APPEARANCES     = _cfg.get('appearances', [])
+WHISPER_ALIASES = _cfg.get('whisper_aliases', {})
 
 RUNNING_HEADER = f'WCB {WCB_CASE_NO}'
 OUTPUT_FILE    = f"FINAL_DELIVERY/{_cfg.get('case_short', 'Fourman_WCB')}_FINAL_FORMATTED.txt"
@@ -163,6 +164,16 @@ def strip_review_flags(text):
     # fix 3: unescape literal \n written by Agent B patches
     text = text.replace('\\n', '\n')
     text = re.sub(r'  +', ' ', text)
+    return text
+
+
+def normalize_names(text):
+    """Apply whisper_aliases from CASE_CAPTION.json — longest match first to
+    prevent partial replacements (e.g. 'bar freed' before 'freed')."""
+    if not WHISPER_ALIASES:
+        return text
+    for noisy, correct in sorted(WHISPER_ALIASES.items(), key=lambda x: -len(x[0])):
+        text = re.sub(re.escape(noisy), correct, text, flags=re.IGNORECASE)
     return text
 
 
@@ -383,6 +394,7 @@ def format_testimony(text):
       exam_starts: list of (attorney_label, content_line_index) for index page
     """
     text = strip_review_flags(text)
+    text = normalize_names(text)
     raw_lines = text.split('\n')
 
     # Pre-step: ensure each Q./A. labeled line starts its own block.
@@ -473,9 +485,10 @@ def format_testimony(text):
             labeled.append(('paren', block))
             continue
 
-        # Unlabeled in Q/A mode
+        # Unlabeled in Q/A mode — flag for CR rather than silently guess
         if in_qa:
-            labeled.append((qa_toggle, block))
+            flagged = f'[Q/A?] {block}'
+            labeled.append((qa_toggle, flagged))
             qa_toggle = 'A' if qa_toggle == 'Q' else 'Q'
             continue
 
