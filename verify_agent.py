@@ -32,7 +32,8 @@ if hasattr(sys.stdout, 'reconfigure'):
 # ── Config ───────────────────────────────────────────────────────────────────
 
 MODEL          = 'claude-haiku-4-5-20251001'   # Haiku — cheap for verify pass
-MAX_TOKENS     = 4096
+MAX_TOKENS     = 8192                          # per batch; ~500 items * ~15 tok/line
+BATCH_SIZE     = 400                           # items per API call — stays well under 200K token limit
 LOG_FILE       = 'correction_log.json'
 OUTPUT_FILE    = 'verify_log.json'
 
@@ -124,32 +125,40 @@ def run_verify(log_path):
         print("[INFO] No HIGH items found. Nothing to verify.")
         return
 
-    # Build and send prompt
-    user_prompt = build_user_prompt(high_items)
-    print(f"\nSending {len(high_items)} items to {MODEL}...")
-
     api_key = os.environ.get('ANTHROPIC_API_KEY')
     if not api_key:
         print('[ERROR] ANTHROPIC_API_KEY not set. Run from CMD where key is set.')
         sys.exit(1)
     client = anthropic.Anthropic(api_key=api_key)
+
+    # Split into batches to stay under 200K token limit
+    batches = [high_items[i:i + BATCH_SIZE] for i in range(0, len(high_items), BATCH_SIZE)]
+    print(f"\nSending {len(high_items)} items to {MODEL} in {len(batches)} batches (batch size {BATCH_SIZE})...")
+
+    results = []
+    total_input_tokens  = 0
+    total_output_tokens = 0
     t0 = time.time()
 
-    response = client.messages.create(
-        model=MODEL,
-        max_tokens=MAX_TOKENS,
-        system=SYSTEM_PROMPT,
-        messages=[{'role': 'user', 'content': user_prompt}]
-    )
+    for batch_num, batch in enumerate(batches, 1):
+        print(f"  Batch {batch_num}/{len(batches)} ({len(batch)} items)...", end=' ', flush=True)
+        user_prompt = build_user_prompt(batch)
+        response = client.messages.create(
+            model=MODEL,
+            max_tokens=MAX_TOKENS,
+            system=SYSTEM_PROMPT,
+            messages=[{'role': 'user', 'content': user_prompt}]
+        )
+        batch_results = parse_verify_response(response.content[0].text, batch)
+        results.extend(batch_results)
+        total_input_tokens  += response.usage.input_tokens
+        total_output_tokens += response.usage.output_tokens
+        agreed_batch = sum(1 for r in batch_results if r['verdict'] == 'AGREE')
+        print(f"AGREE={agreed_batch}/{len(batch)}")
 
     elapsed = round(time.time() - t0, 1)
-    response_text = response.content[0].text
-
-    input_tokens  = response.usage.input_tokens
-    output_tokens = response.usage.output_tokens
-
-    # Parse results
-    results = parse_verify_response(response_text, high_items)
+    input_tokens  = total_input_tokens
+    output_tokens = total_output_tokens
 
     # Stats
     agreed    = [r for r in results if r['verdict'] == 'AGREE']
