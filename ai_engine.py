@@ -281,10 +281,98 @@ def load_cr_config(engine_dir):
 # Full modules remain available for Claude co-work sessions (non-API mode).
 
 
+def build_depo_identity_block():
+    """
+    Read CASE_CAPTION.json from the current working directory (job folder)
+    and return a locked identity block injected into every API call.
+
+    This is the cross-depo contamination firewall. The AI is explicitly told
+    who THIS deposition belongs to so it cannot fill boilerplate blocks with
+    names or case identifiers from any previous deposition it has processed.
+
+    Graceful: if CASE_CAPTION.json is missing, returns an empty string and
+    logs a warning. The pipeline continues — but contamination risk is present.
+    """
+    caption_path = os.path.join(os.getcwd(), 'CASE_CAPTION.json')
+    if not os.path.exists(caption_path):
+        print('  [ENGINE] WARNING: CASE_CAPTION.json not found — '
+              'cross-depo contamination firewall NOT active.', flush=True)
+        return ''
+
+    with open(caption_path, 'r', encoding='utf-8') as f:
+        cap = json.load(f)
+
+    witness      = cap.get('witness_full_name') or cap.get('witness_name', '[UNKNOWN WITNESS]')
+    case_short   = cap.get('case_short', '')
+    plaintiff    = cap.get('plaintiff', '')
+    defendant    = cap.get('defendant', '').replace('\n', ' ')
+    docket       = cap.get('docket', '')
+    court        = cap.get('court', '')
+    parish       = cap.get('parish', '')
+    depo_date    = cap.get('depo_date', '')
+    reporter     = cap.get('reporter_name_display') or cap.get('reporter_name', '')
+    exam_atty    = cap.get('examining_atty', '')
+    exam_firm    = cap.get('examining_firm', '')
+    # deposing_atty_full added to schema after Brandl — fall back to exam_atty
+    dep_atty     = cap.get('deposing_atty_full') or exam_atty
+
+    divider = '=' * 70
+    block = f"""
+
+{divider}
+DEPOSITION IDENTITY — THIS JOB ONLY (READ EVERY CHUNK — HIGHEST PRIORITY)
+{divider}
+
+YOU ARE PROCESSING THIS SPECIFIC DEPOSITION:
+
+  Witness:          {witness}
+  Case:             {plaintiff} v. {defendant}
+  Docket:           {docket}
+  Court:            {court}, {parish}
+  Date:             {depo_date}
+  Deposing attorney:{dep_atty} ({exam_firm})
+  Reporter:         {reporter}
+  Job ID:           {case_short}
+
+══════════════════════════════════════════════════════════════════════════════
+CROSS-DEPO CONTAMINATION RULES — ABSOLUTE, NO EXCEPTIONS
+══════════════════════════════════════════════════════════════════════════════
+
+1. NEVER use a witness name, attorney name, firm name, docket number, or
+   any case identifier from any deposition other than the one listed above.
+   You have no memory of previous jobs. This job is the only job.
+
+2. STIPULATION BLOCK RULE — the S T I P U L A T I O N section contains:
+     "testimony of the witness, [NAME]"
+     "delivered to and retained by [ATTORNEY]"
+   These MUST be filled ONLY from the identity above. If the steno in the
+   stipulation block is sparse, garbled, or ambiguous:
+     - Use the witness name and deposing attorney from this identity block
+     - Tag the correction: [CHANGED: steno unclear → filled from CASE_CAPTION]
+     - NEVER invent a name. NEVER copy a name from a prior deposition.
+
+3. BOILERPLATE BLOCK RULE — certificate blocks, appearances headers, and
+   the stipulation are TEMPLATES. The only proper nouns allowed in these
+   blocks are those from the identity above or those explicitly present in
+   the steno input for THIS chunk.
+
+4. IF YOU SEE A NAME IN A BOILERPLATE BLOCK THAT DOES NOT MATCH THE
+   IDENTITY ABOVE — flag it immediately:
+     [REVIEW: name in steno "{{}}" does not match case caption — verify]
+   Do not silently accept or reconstruct it.
+
+{divider}
+"""
+    print(f'  [ENGINE] Depo identity block injected — witness: {witness} | '
+          f'docket: {docket}', flush=True)
+    return block
+
+
 def build_system_prompt():
     """
     Load engine rule files from same directory as this script.
     Reads cr_config.json to determine which reporter/state modules to load.
+    Reads CASE_CAPTION.json from cwd to build the cross-depo contamination firewall.
     Falls back to MB/Louisiana defaults if cr_config.json not found.
     Returns the full system prompt string.
     """
@@ -338,6 +426,11 @@ def build_system_prompt():
                 print(f'  [ENGINE] Case dictionary: {len(dict_words)} proper nouns injected into prompt', flush=True)
         except Exception as e:
             print(f'  [ENGINE] Case dictionary: skipped ({e})', flush=True)
+
+    # Cross-depo contamination firewall — inject depo identity before API override
+    identity_block = build_depo_identity_block()
+    if identity_block:
+        sections.append(identity_block)
 
     # API mode override is always last — highest priority
     sections.append(API_MODE_OVERRIDE)
