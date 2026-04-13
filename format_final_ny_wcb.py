@@ -159,8 +159,8 @@ def strip_review_flags(text):
     text = re.sub(r'\[\[ARTIFACT\]\]', '', text)
     # v2: Agent B comment tags (e.g. [[REMOVED — DATE ARTIFACT]])
     text = re.sub(r'\[\[REMOVED[^\]]*\]\]', '', text)
-    # steno split-word marker
-    text = re.sub(r'\s*\[\|\]\s*', ' ', text)
+    # steno split-word marker (with or without space before pipe)
+    text = re.sub(r'\s*\[\s*\|\s*\]\s*', ' ', text)
     # fix 3: unescape literal \n written by Agent B patches
     text = text.replace('\\n', '\n')
     text = re.sub(r'  +', ' ', text)
@@ -485,10 +485,10 @@ def format_testimony(text):
             labeled.append(('paren', block))
             continue
 
-        # Unlabeled in Q/A mode — flag for CR rather than silently guess
+        # Unlabeled in Q/A mode — assign label, strip internal [Q/A?] marker
         if in_qa:
-            flagged = f'[Q/A?] {block}'
-            labeled.append((qa_toggle, flagged))
+            clean_block = re.sub(r'\s*\[Q/A\?\]\s*', '', block).strip()
+            labeled.append((qa_toggle, clean_block))
             qa_toggle = 'A' if qa_toggle == 'Q' else 'Q'
             continue
 
@@ -543,14 +543,41 @@ def format_testimony(text):
 
     labeled = new_labeled
 
-    # Step 3: merge consecutive same-type Q/A
+    # Step 3: merge consecutive same-type Q/A (all items stored as lists for mutability)
     merged = []
     for kind, val in labeled:
         if (merged and kind in ('Q', 'A') and
                 merged[-1][0] == kind and isinstance(merged[-1][1], str)):
-            merged[-1] = (kind, merged[-1][1] + ' ' + val)
+            merged[-1][1] = merged[-1][1] + ' ' + val
         else:
             merged.append([kind, val])
+
+    # Step 3b: self-correct Q/A toggle inversion
+    # Rule: a block ending with "?" must be Q; the block immediately after must be A.
+    # If either is wrong, flip it and cascade the correction forward until the
+    # next anchor (colloquy, paren, exam_header) resets the toggle naturally.
+    i = 0
+    while i < len(merged):
+        kind, val = merged[i]
+        if kind in ('Q', 'A') and isinstance(val, str) and val.rstrip().endswith('?'):
+            # This block is a question — enforce Q
+            if kind != 'Q':
+                merged[i][0] = 'Q'
+                # Cascade: flip all following Q/A until next non-Q/A anchor
+                flip = True
+                for j in range(i + 1, len(merged)):
+                    if merged[j][0] not in ('Q', 'A'):
+                        break
+                    if flip:
+                        merged[j][0] = 'A' if merged[j][0] == 'Q' else 'Q'
+            # Enforce: block immediately after a "?" block must be A
+            elif i + 1 < len(merged) and merged[i + 1][0] == 'Q':
+                # Next block is Q but should be A — flip it and cascade
+                for j in range(i + 1, len(merged)):
+                    if merged[j][0] not in ('Q', 'A'):
+                        break
+                    merged[j][0] = 'A' if merged[j][0] == 'Q' else 'Q'
+        i += 1
 
     # Step 4: render to content lines, tracking EXAMINATION BY positions for index
     content_lines = []
