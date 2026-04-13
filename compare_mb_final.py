@@ -54,17 +54,62 @@ def find_files():
         sys.exit(1)
     our_path = our_candidates[0]
 
-    # MB's final — look for mb_final_reference.txt in work/
-    mb_path = work / 'mb_final_reference.txt'
-    if not mb_path.exists():
-        print(f'ERROR: mb_final_reference.txt not found in {work}')
-        print()
-        print('  Run this first to extract MB\'s final:')
-        print(f'  python C:\\depo_transformation\\engine\\mb_demo_engine_v4\\extract_sgngl.py '
-              f'C:\\Cat4\\usr\\scott\\032626YELLOWROCK-FINAL.sgngl')
-        print(f'  Then rename the output:')
-        print(f'  rename extracted_text.txt mb_final_reference.txt')
-        sys.exit(1)
+    # MB's final — resolution order (best to worst):
+    #   1. finals/ folder clean .txt (CAT ASCII export — no echo artifacts)
+    #   2. mb_final_reference.txt in work/ (sgngl extraction — has echo artifacts)
+    #
+    # ⚠️  sgngl extraction produces stacked echo artifacts like "sam danSamedan",
+    #     "recompletionrecompletion" that are NOT in MB's delivered transcript.
+    #     These inflate the deletion count by ~45%.  Always prefer the clean .txt.
+
+    # Try to find the CR profile finals/ folder from the job path
+    # Expected layout: data/cr_profiles/{reporter_id}/{job_folder}/work/
+    cr_profile_dir = work.parent.parent   # two levels up from work/
+    finals_dir = cr_profile_dir / 'finals'
+
+    mb_path = None
+
+    if finals_dir.exists():
+        # Look for a clean .txt matching the job's RTF/sgngl stem
+        rtf_stems = [p.stem for p in work.glob('*.rtf')] + [p.stem for p in work.glob('*.sgngl')]
+        # Also check intake/
+        intake = work.parent / 'intake'
+        if intake.exists():
+            rtf_stems += [p.stem for p in intake.glob('*.rtf')] + \
+                         [p.stem for p in intake.glob('*FINAL*.sgngl')]
+
+        for stem in rtf_stems:
+            # Try clean .txt first
+            candidate = finals_dir / f'{stem}.txt'
+            if candidate.exists():
+                print(f'[compare] Using clean finals .txt: {candidate}')
+                mb_path = candidate
+                break
+            # Then PDF
+            candidate = finals_dir / f'{stem}.pdf'
+            if candidate.exists():
+                print(f'[compare] Extracting from finals PDF: {candidate}')
+                # Will be handled by text extraction below
+                mb_path = candidate
+                break
+
+    # Fall back to mb_final_reference.txt
+    if mb_path is None:
+        mb_path = work / 'mb_final_reference.txt'
+        if mb_path.exists():
+            print(f'[compare] WARNING: Using sgngl-extracted mb_final_reference.txt.')
+            print(f'[compare]   This file has echo artifact noise (~45% false positives).')
+            print(f'[compare]   Request a clean .txt export from MB and place in:')
+            print(f'[compare]   {finals_dir}/')
+        else:
+            print(f'ERROR: No MB final found. Checked:')
+            print(f'  {finals_dir}/*.txt  (preferred — clean CAT export)')
+            print(f'  {work}/mb_final_reference.txt  (fallback — sgngl extraction)')
+            print()
+            print('  To create mb_final_reference.txt from sgngl:')
+            print(f'  python extract_sgngl.py <path/to/FINAL.sgngl>')
+            print(f'  rename extracted_text.txt mb_final_reference.txt')
+            sys.exit(1)
 
     return our_path, mb_path
 
