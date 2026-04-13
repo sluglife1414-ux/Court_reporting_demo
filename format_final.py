@@ -1346,8 +1346,11 @@ def main():
 
     # Pre-calculate index page count so section start numbers are correct.
     # build_index() is called twice: once here to measure, once at end to fill with real numbers.
-    # [TECH DEBT: two-pass index build — pre-build just to count pages, then rebuild with real numbers]
-    index_placeholder = build_index(99, 99, 99, 99, 99)
+    # Use actual exhibit count (already known from steno index) so the placeholder
+    # reserves the right number of pages — avoids overwriting appearances when
+    # the exhibit list is long enough to overflow beyond 1 index page.
+    dummy_exhibits = [{'number': n, 'description': '', 'page': 0} for n in exhibit_nums]
+    index_placeholder = build_index(99, 99, 99, 99, 99, dummy_exhibits)
     num_index_pages = len(index_placeholder)
 
     # Reserve index slots
