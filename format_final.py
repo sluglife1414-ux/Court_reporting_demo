@@ -570,6 +570,42 @@ def build_errata():
 # TEXT PARSERS
 # =========================================================
 
+def _strip_review_tags_safe(text):
+    """
+    Depth-aware [REVIEW:...] tag stripper — handles nested brackets without eating content.
+
+    Why this exists:
+      Regex [^\]]*] is greedy across newlines: when a REVIEW tag contains a nested
+      bracket (e.g. [REVIEW: note "[REVIEW: nested]"...]) and all clean tags between
+      it and the next ] have been removed by pass 1, pass 2 eats everything up to a
+      ] hundreds of lines away.  BUG: ate 6,082 chars (130 lines) on Brandl 2026-04-13.
+
+    Strategy: scan char by char.  Track bracket depth.  Strip any [REVIEW:...] block
+    regardless of nesting.  Everything outside a REVIEW block is preserved verbatim.
+    """
+    out = []
+    i = 0
+    n = len(text)
+    while i < n:
+        if text[i:i+8] == '[REVIEW:':
+            # Skip the entire tag — depth-aware
+            depth = 0
+            while i < n:
+                if text[i] == '[':
+                    depth += 1
+                elif text[i] == ']':
+                    depth -= 1
+                    if depth == 0:
+                        i += 1  # consume the closing ]
+                        break
+                i += 1
+            # Tag consumed — do not append anything
+        else:
+            out.append(text[i])
+            i += 1
+    return ''.join(out)
+
+
 def inject_anchors(text):
     """
     Option B: Replace each [REVIEW:...] tag with a short anchor {R:N} where N is
@@ -624,16 +660,17 @@ def inject_anchors(text):
                         break
 
     # Strip any [REVIEW] tags that didn't match a LOW/N/A item, and all [FLAG] tags
-    # Two-pass: verify-agent tags first (may contain dashes/nested text), then standard
+    # Single-pass safe stripper — depth-aware, handles nested brackets correctly.
     # [REVIEW:] and [FLAG:] tags are ENGINE-GENERATED — defined in MASTER_DEPOSITION_ENGINE_v4.1.md
     # These are NOT from MB, the CR, or CaseCATalyst. They are our internal AI uncertainty flags.
     # Format: [REVIEW: explanation — reporter confirm] (verify-agent style)
     #      or [REVIEW: explanation] (standard inline style)
-    # If the tag format ever changes in the master prompt, update these regexes to match.
     # BUG HISTORY: .*? with re.DOTALL was eating 65,760 chars (34% of Easley) — fixed 2026-03-30
-    #              [^\[]*? prevents regex from crossing into adjacent [REVIEW: tags
-    text = re.sub(r'\[REVIEW:[^\[]*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
-    text = re.sub(r'\[REVIEW:[^\]]*\]', '', text)
+    # BUG HISTORY: [^\[]*? pass1 matched ACROSS nested tags — eating 3,294 lines — fixed 2026-04-13
+    #   Root: [^\[]*? excludes [ but not ], so "[REVIEW: inner]" tail + outer-tag tail = one match
+    #   Creates dangling [REVIEW: opener; safe stripper then ate from line 839 to 4133.
+    #   Fix: eliminate regex passes entirely, use _strip_review_tags_safe() for all cases.
+    text = _strip_review_tags_safe(text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     # Strip [CORRECTED:] audit-trail tags — engine-generated, not for final output.
     # These are applied by apply_audio_validation.py to mark auto-corrections in corrected_text.txt.
@@ -655,17 +692,16 @@ def strip_review_tags(text):
     """
     Fallback: remove [REVIEW: ...] and [FLAG: ...] tags when no correction_log
     is available.  Normal path uses inject_anchors() instead.
-    Two-pass: verify-agent tags first (may contain dashes), then standard.
+    Uses depth-aware safe stripper — handles nested brackets without eating content.
     """
     # [REVIEW:] and [FLAG:] tags are ENGINE-GENERATED — defined in MASTER_DEPOSITION_ENGINE_v4.1.md
     # These are NOT from MB, the CR, or CaseCATalyst. They are our internal AI uncertainty flags.
     # Format: [REVIEW: explanation — reporter confirm] (verify-agent style)
     #      or [REVIEW: explanation] (standard inline style)
-    # If the tag format ever changes in the master prompt, update these regexes to match.
     # BUG HISTORY: .*? with re.DOTALL was eating 65,760 chars (34% of Easley) — fixed 2026-03-30
-    #              [^\[]*? prevents regex from crossing into adjacent [REVIEW: tags
-    text = re.sub(r'\[REVIEW:[^\[]*?—\s*reporter confirm\]', '', text, flags=re.DOTALL)
-    text = re.sub(r'\s*\[REVIEW:[^\]]*\]', '', text)
+    # BUG HISTORY: regex pass1 matched ACROSS nested tags eating 3,294 lines — fixed 2026-04-13
+    #   Use _strip_review_tags_safe() exclusively — eliminates all regex cross-tag issues.
+    text = _strip_review_tags_safe(text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
     text = re.sub(r'  +', ' ', text)
