@@ -1326,14 +1326,16 @@ def main():
     text, anchor_map = inject_anchors(raw_text)
     sections = parse_file(text)
 
-    # Parse exhibit numbers from steno index section (catches any not in whereupon parentheticals)
+    # Parse exhibit numbers, descriptions, and page refs from steno index section.
+    # extract_exhibits_from_index handles multi-line entries and trailing page numbers.
+    # Descriptions from (Whereupon, ...) parentheticals take priority; index fills gaps.
     exhibit_nums = []
-    for line in sections['index']:
-        m = re.match(r'\s*Exhibit\s+No\.\s+(\d+)', line)
-        if m:
-            num = int(m.group(1))
-            if num not in exhibit_nums:
-                exhibit_nums.append(num)
+    index_descriptions, index_pages = extract_exhibits_from_index(sections['index'])
+    for num, desc in index_descriptions.items():
+        if num not in exhibit_nums:
+            exhibit_nums.append(num)
+        if num not in exhibit_descriptions:
+            exhibit_descriptions[num] = desc
     exhibit_nums.sort()
 
     all_pages = []
@@ -1384,7 +1386,9 @@ def main():
         {
             'number':      num,
             'description': exhibit_descriptions.get(num, ''),
-            'page':        exhibit_pages.get(num, 0),
+            # exhibit_pages has formatted page nums from (Whereupon, ...) markers;
+            # index_pages has steno-index page refs as fallback when markers absent.
+            'page':        exhibit_pages.get(num) or index_pages.get(num, 0),
         }
         for num in all_exhibit_nums
     ]
