@@ -358,7 +358,22 @@ def build_index(app_start, stip_start, exam_start, cert_start, wcert_start, exhi
     """
     # Use exhibit_list from config if available (authoritative)
     exhibit_list = _cfg.get('exhibit_list', [])
-    if not exhibit_list and exhibits:
+    if exhibit_list and exhibits:
+        # Merge: config is authoritative for numbers/descriptions; exhibits param has dynamic
+        # page numbers detected from formatted output. Take page from exhibits when available.
+        page_by_num = {ex['number']: ex.get('page', 0) for ex in exhibits if isinstance(ex, dict)}
+        exhibit_list = [
+            {
+                'number':      (ex.get('number') if isinstance(ex, dict) else ex),
+                'description': (ex.get('description', '') if isinstance(ex, dict) else ''),
+                'page':        page_by_num.get(
+                                   ex.get('number') if isinstance(ex, dict) else ex,
+                                   ex.get('page', 0) if isinstance(ex, dict) else 0
+                               ),
+            }
+            for ex in exhibit_list
+        ]
+    elif not exhibit_list and exhibits:
         # Fall back to steno-extracted exhibits
         exhibit_list = exhibits
 
@@ -575,7 +590,7 @@ def _strip_review_tags_safe(text):
     Depth-aware [REVIEW:...] tag stripper — handles nested brackets without eating content.
 
     Why this exists:
-      Regex [^\]]*] is greedy across newlines: when a REVIEW tag contains a nested
+      Regex [^\\]]*] is greedy across newlines: when a REVIEW tag contains a nested
       bracket (e.g. [REVIEW: note "[REVIEW: nested]"...]) and all clean tags between
       it and the next ] have been removed by pass 1, pass 2 eats everything up to a
       ] hundreds of lines away.  BUG: ate 6,082 chars (130 lines) on Brandl 2026-04-13.
@@ -1385,7 +1400,12 @@ def main():
     # Use actual exhibit count (already known from steno index) so the placeholder
     # reserves the right number of pages — avoids overwriting appearances when
     # the exhibit list is long enough to overflow beyond 1 index page.
-    dummy_exhibits = [{'number': n, 'description': '', 'page': 0} for n in exhibit_nums]
+    # If config has exhibit_list, use it for page count so reserved slots are correct
+    _config_exhibits = _cfg.get('exhibit_list', [])
+    if _config_exhibits:
+        dummy_exhibits = [{'number': ex.get('number', 0) if isinstance(ex, dict) else ex, 'description': '', 'page': 0} for ex in _config_exhibits]
+    else:
+        dummy_exhibits = [{'number': n, 'description': '', 'page': 0} for n in exhibit_nums]
     index_placeholder = build_index(99, 99, 99, 99, 99, dummy_exhibits)
     num_index_pages = len(index_placeholder)
 

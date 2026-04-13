@@ -242,7 +242,17 @@ def parse_exhibits():
     return exhibits
 
 def build_exhibit_index():
-    exhibits = parse_exhibits()
+    # Config exhibit_list is authoritative — use it when present
+    config_list = _cfg.get('exhibit_list', [])
+    if config_list:
+        exhibits = [(str(ex.get('number', ex)) if isinstance(ex, dict) else str(ex),
+                     ex.get('description', '') if isinstance(ex, dict) else '')
+                    for ex in config_list]
+        source_note = "Exhibit descriptions sourced from CASE_CAPTION.json (human-verified, authoritative)."
+    else:
+        exhibits = parse_exhibits()
+        source_note = "Descriptions extracted from rough transcript index page."
+
     rows = ""
     for num, desc in exhibits:
         rows += f"  Exhibit No. {num:<6} {desc}\n"
@@ -255,7 +265,7 @@ Docket No.: {DOCKET} | Witness: {WITNESS} | Date: {DEPO_DATE}
 
 {rows}
 {'-' * 80}
-NOTE: Descriptions extracted from rough transcript index page.
+NOTE: {source_note}
 Verify all Bates numbers and descriptions against physical exhibits.
 Review for duplicate or missing entries before finalizing.
 {HEADER_BAR}
