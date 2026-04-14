@@ -26,8 +26,9 @@ def extract_names_from_caption(caption: dict) -> set:
     # Fields that are known to contain proper nouns
     name_fields = [
         "witness_full_name", "witness_name", "witness_last",
-        "examining_atty", "reporter_name", "reporter_name_display",
+        "examining_atty", "deposing_atty_full", "reporter_name", "reporter_name_display",
         "plaintiff", "defendant",
+        "venue_name", "case_short",
         "firm_name", "opposing_firm",
     ]
 
@@ -37,20 +38,36 @@ def extract_names_from_caption(caption: dict) -> set:
             for token in _tokenize_name(val):
                 names.add(token)
 
-    # Attorney lists
+    # Attorney lists (legacy flat list)
     for atty in caption.get("attorneys", []):
         for token in _tokenize_name(atty):
             names.add(token)
 
-    # Zoom attendees
+    # Zoom attendees (legacy flat list)
     for atty in caption.get("zoom_attorneys", []):
         for token in _tokenize_name(atty):
             names.add(token)
 
-    # Case short name — may contain party names
-    case_short = caption.get("case_short", "")
-    for token in _tokenize_name(case_short):
-        names.add(token)
+    # Structured appearances block (firms + attorney names)
+    for block in caption.get("appearances", []):
+        for token in _tokenize_name(block.get("firm", "")):
+            names.add(token)
+        for token in _tokenize_name(block.get("role", "")):
+            names.add(token)
+        attorneys = block.get("attorneys", [])
+        if isinstance(attorneys, list):
+            for atty in attorneys:
+                if isinstance(atty, dict):
+                    for token in _tokenize_name(atty.get("name", "")):
+                        names.add(token)
+                else:
+                    for token in _tokenize_name(str(atty)):
+                        names.add(token)
+
+    # also_present list
+    for person in caption.get("also_present", []):
+        for token in _tokenize_name(person):
+            names.add(token)
 
     return names
 
@@ -158,6 +175,8 @@ def build_names_lock(work_dir: Path) -> set:
     always_allow = {
         "Exhibit", "Whereupon", "Identification", "Objection",
         "Videographer", "Reporter", "Counsel", "Court",
+        "Zoom",                                   # video attendance qualifier
+        "Hotel", "Street", "Suite", "Avenue",     # address components
         "Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
         "Saturday", "Sunday", "January", "February", "March", "April",
         "May", "June", "July", "August", "September", "October",
