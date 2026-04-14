@@ -54,16 +54,20 @@ def find_files():
         sys.exit(1)
     our_path = our_candidates[0]
 
-    # MB's final — look for mb_final_reference.txt in work/
-    mb_path = work / 'mb_final_reference.txt'
+    # MB's final — look in job root first, then work/ for backwards compat
+    job_root = work.parent
+    mb_path = job_root / 'mb_final_reference.txt'
     if not mb_path.exists():
-        print(f'ERROR: mb_final_reference.txt not found in {work}')
+        mb_path = work / 'mb_final_reference.txt'
+    if not mb_path.exists():
+        print(f'ERROR: mb_final_reference.txt not found.')
+        print(f'  Looked in: {job_root}')
+        print(f'         and: {work}')
         print()
         print('  Run this first to extract MB\'s final:')
         print(f'  python C:\\depo_transformation\\engine\\mb_demo_engine_v4\\extract_sgngl.py '
               f'C:\\Cat4\\usr\\scott\\032626YELLOWROCK-FINAL.sgngl')
-        print(f'  Then rename the output:')
-        print(f'  rename extracted_text.txt mb_final_reference.txt')
+        print(f'  Then rename and place at: {job_root / "mb_final_reference.txt"}')
         sys.exit(1)
 
     return our_path, mb_path
