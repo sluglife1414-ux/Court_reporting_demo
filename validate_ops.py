@@ -64,13 +64,24 @@ class ValidationResult:
 # ── Check 1: Coverage ─────────────────────────────────────────────────────────
 
 def check_coverage(ops: list, raw_token_count: int) -> ValidationResult:
-    """Every raw token must appear in exactly one op span. No gaps, no overlaps."""
+    """REWORD/FLAG ops must not overlap each other. Gaps are fine (implicit KEEP).
+
+    With implicit KEEP, Claude only returns REWORD and FLAG ops. Uncovered
+    tokens are emitted verbatim by apply_ops — no coverage requirement.
+    This check only verifies that no two ops claim the same token.
+    """
+    # Empty op list is valid — chunk needed no corrections
     if not ops:
-        return ValidationResult(False, "empty ops list — no operations returned")
+        return ValidationResult(True)
+
+    # Only check REWORD and FLAG ops — ignore any stray KEEPs
+    active_ops = [op for op in ops if op.get("op") in ("REWORD", "FLAG")]
+    if not active_ops:
+        return ValidationResult(True)
 
     covered = [0] * raw_token_count
 
-    for op in ops:
+    for op in active_ops:
         if "span" not in op:
             return ValidationResult(False, f"op missing span field: {op}")
 
@@ -92,16 +103,7 @@ def check_coverage(ops: list, raw_token_count: int) -> ValidationResult:
         for i in range(start, end + 1):
             covered[i] += 1
 
-    gaps = [i for i, c in enumerate(covered) if c == 0]
     overlaps = [i for i, c in enumerate(covered) if c > 1]
-
-    if gaps:
-        gap_sample = gaps[:5]
-        return ValidationResult(
-            False,
-            f"coverage gap — {len(gaps)} token(s) not covered by any op. "
-            f"First gaps at token indexes: {gap_sample}"
-        )
     if overlaps:
         return ValidationResult(
             False,
@@ -295,26 +297,31 @@ def check_word_budget(
     if raw_word_count == 0:
         return ValidationResult(True)
 
+    # Build set of token indexes claimed by REWORD/FLAG ops
+    claimed = set()
+    for op in ops:
+        if op.get("op") in ("REWORD", "FLAG"):
+            s, e = op["span"]
+            claimed.update(range(s, e + 1))
+
     output_word_count = 0
     for op in ops:
         span = op["span"]
         op_type = op["op"]
 
-        if op_type == "KEEP":
-            # Count raw words in this span
+        if op_type == "REWORD":
+            to_text = op.get("to", "")
+            output_word_count += len(to_text.split()) if to_text.strip() else 0
+        elif op_type == "FLAG":
+            # FLAG keeps the underlying text — count raw words in span
             for idx, word, is_blank in tokens:
                 if span[0] <= idx <= span[1] and not is_blank:
                     output_word_count += 1
 
-        elif op_type in ("REWORD", "FLAG"):
-            to_text = op.get("to", "")
-            if op_type == "FLAG":
-                # FLAG keeps the underlying text — count raw words
-                for idx, word, is_blank in tokens:
-                    if span[0] <= idx <= span[1] and not is_blank:
-                        output_word_count += 1
-            else:
-                output_word_count += len(to_text.split()) if to_text.strip() else 0
+    # Implicit KEEP: unclaimed tokens are emitted verbatim — count them too
+    for idx, word, is_blank in tokens:
+        if not is_blank and idx not in claimed:
+            output_word_count += 1
 
     ratio = output_word_count / raw_word_count
     warnings = []

@@ -85,6 +85,7 @@ PROGRESS_INTERVAL  = 300     # 5 minutes between progress banner prints
 # before any text is written to disk. Prevents block collapse + name hallucinations.
 # Default False — flip to True only after single-chunk test succeeds. Non-breaking.
 USE_OPS_FORMAT = True
+VERBOSE_OPS    = False  # True = print OPS-WARN from-field mismatches. Noisy but useful for debugging.
 
 # Ensure engine dir is on sys.path so ops modules import correctly when ai_engine
 # is called from a different working directory (e.g., the job work/ folder).
@@ -541,64 +542,59 @@ def get_last_qa_label(text):
 
 
 def normalize_ops(ops: list, n_tokens: int) -> list:
-    """Resolve any overlapping ops from Claude and fill any gaps.
+    """Resolve overlapping REWORD/FLAG ops from Claude.
 
-    Algorithm (token-bitmap):
-      1. Assign each token to the highest-priority op that covers it.
-         Priority: REWORD > FLAG > KEEP  (first-encountered wins on ties).
-      2. Any token not claimed by any op gets a synthetic KEEP.
-      3. Rebuild the op list by scanning the assignment array and grouping
-         consecutive tokens that belong to the same op.
+    With implicit KEEP, Claude only returns REWORD and FLAG ops.
+    Gaps (uncovered tokens) are kept verbatim by apply_ops automatically.
 
-    This handles all overlap cases:
-      - Background KEEP [0, N-1] + REWORD patches (the common Claude mistake)
-      - Overlapping REWORD ops (first one by span-start wins)
-      - Any other combination
+    This function:
+      1. Strips any stray KEEP ops Claude may have included.
+      2. Resolves overlapping REWORD/FLAG ops — first-encountered wins
+         (sorted by span start; REWORD beats FLAG on tie).
+      3. Returns a clean list of non-overlapping REWORD/FLAG ops only.
     """
-    PRIORITY = {"REWORD": 3, "FLAG": 2, "KEEP": 1}
+    PRIORITY = {"REWORD": 2, "FLAG": 1}
 
-    # Resolve per-token ownership: assignment[i] = (priority, op_index)
-    assignment = [(-1, -1)] * n_tokens  # (priority, op index)
+    # Drop any KEEP ops — they are implicit now
+    active = [op for op in ops if op.get("op") in ("REWORD", "FLAG")]
+    if not active:
+        return []
 
-    # Sort ops by start so first-encountered order is deterministic
-    indexed = sorted(enumerate(ops), key=lambda t: (t[1].get("span", [0])[0], -PRIORITY.get(t[1].get("op", "KEEP"), 0)))
+    # Build token-ownership bitmap for REWORD/FLAG only
+    assignment = [(-1, -1)] * n_tokens  # (priority, op_index)
+    indexed = sorted(enumerate(active),
+                     key=lambda t: (t[1].get("span", [0])[0],
+                                    -PRIORITY.get(t[1].get("op", "FLAG"), 0)))
 
     for op_idx, op in indexed:
-        op_type = op.get("op", "KEEP")
         span = op.get("span", [])
         if not span or len(span) != 2:
             continue
         s, e = span
         if s < 0 or e >= n_tokens or s > e:
             continue
-        prio = PRIORITY.get(op_type, 0)
+        prio = PRIORITY.get(op.get("op", "FLAG"), 0)
         for i in range(s, e + 1):
-            cur_prio, cur_idx = assignment[i]
+            cur_prio, _ = assignment[i]
             if prio > cur_prio:
                 assignment[i] = (prio, op_idx)
 
-    # Build output: scan assignment array and group consecutive tokens with same op_idx
-    orig_ops = ops  # reference for looking up op dicts
+    # Rebuild ops from assignment — group consecutive tokens owned by same op
     result = []
     i = 0
     while i < n_tokens:
-        prio, op_idx = assignment[i]
+        _, op_idx = assignment[i]
         if op_idx == -1:
-            # Gap — make a synthetic KEEP
-            j = i
-            while j < n_tokens and assignment[j][1] == -1:
-                j += 1
-            result.append({"op": "KEEP", "span": [i, j - 1]})
-            i = j
-        else:
-            # Find extent of this op's consecutive ownership
-            j = i + 1
-            while j < n_tokens and assignment[j][1] == op_idx:
-                j += 1
-            op_data = dict(orig_ops[op_idx])  # copy original op
-            op_data["span"] = [i, j - 1]
-            result.append(op_data)
-            i = j
+            i += 1  # unowned token — implicit KEEP, skip
+            continue
+        # Find the end of this op's consecutive run
+        j = i + 1
+        while j < n_tokens and assignment[j][1] == op_idx:
+            j += 1
+        op_data = dict(active[op_idx])
+        op_data["span"] = [i, j - 1]
+        result.append(op_data)
+        i = j
 
     return result
 
@@ -636,20 +632,17 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
             f"OPS FORMAT OVERRIDE — Ignore the corrected_text JSON format from the system prompt.\n"
             f"Return ONLY this JSON:\n\n"
             f'{{"ops": [...]}}\n\n'
-            f"HOW TO BUILD THE OPS LIST — READ CAREFULLY:\n"
-            f"1. Walk the chunk from token [0] to [{n_tokens - 1}] in order.\n"
-            f"2. Group CONSECUTIVE tokens into ops. Each op covers a segment.\n"
-            f"3. The segments must be CONTIGUOUS and NON-OVERLAPPING — like puzzle pieces.\n"
-            f"   - Every token index 0..{n_tokens - 1} appears in EXACTLY ONE op span.\n"
-            f"   - After span [a, b] the next span must start at b+1.\n"
-            f"   - DO NOT create one big KEEP [0, {n_tokens-1}] and add REWORDs inside it.\n\n"
+            f"RULE: Return ONLY REWORD and FLAG ops — do NOT include KEEP ops.\n"
+            f"Everything not covered by a REWORD or FLAG is kept verbatim automatically.\n"
+            f"An empty ops list is valid if the chunk needs no corrections.\n\n"
             f"OP TYPES:\n"
-            f'  {{"op": "KEEP",   "span": [a, b]}}  — emit raw tokens verbatim\n'
             f'  {{"op": "REWORD", "span": [a, b], "from": "raw text", "to": "fixed text",\n'
-            f'    "source": "SOURCE", "reason": "why"}}  — replace with corrected text\n'
+            f'    "source": "SOURCE", "reason": "why"}}  — replace span with corrected text\n'
             f'  {{"op": "FLAG",   "span": [a, b], "reason": "..."}}  — uncertain, tag for reporter\n\n'
             f"SOURCE (required on REWORD, exactly one of):\n"
             f"  raw_steno | case_dict | kb | names_lock | phonetic_match | house_style\n\n"
+            f"SPAN RULE: spans must not overlap. If two corrections touch adjacent tokens,\n"
+            f"  use separate non-overlapping spans. Token range: 0..{n_tokens - 1}.\n\n"
             f"PROPER NOUN RULE — STRICT, NO EXCEPTIONS:\n"
             f"  A proper noun is any person name, firm name, or place name.\n"
             f"  You may REWORD a proper noun ONLY IF the correct spelling is confirmed in:\n"
@@ -657,12 +650,11 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
             f"  If you are not 100% certain — use FLAG, not REWORD.\n"
             f"  NEVER guess a proper noun. A FLAG is always correct. A wrong name is never acceptable.\n"
             f"  Wrong name example: steno 'mad dan' — you do not know if this is Madden, Madigan,\n"
-            f"    Madison, etc. FLAG it. Do not guess.\n\n"
+            f"    Madison, etc. Use KB-018: it is Mr. Madigan.\n\n"
             f"EXAMPLE for a 6-token chunk [0]Q. [1]the [2]witnes [3]was [4]swor [5]in:\n"
-            f'  [{{"op":"KEEP","span":[0,1]}},{{"op":"REWORD","span":[2,2],"from":"witnes","to":"witness","source":"raw_steno","reason":"dropped s"}},{{"op":"KEEP","span":[3,3]}},{{"op":"REWORD","span":[4,4],"from":"swor","to":"sworn","source":"raw_steno","reason":"dropped n"}},{{"op":"KEEP","span":[5,5]}}]\n\n'
-            f"NOTE: ¶ tokens are paragraph breaks — cover them with KEEP unless the entire\n"
-            f"  paragraph break is being removed (rare). Total tokens this chunk: {n_tokens}.\n"
-            f"When uncertain about any correction: use FLAG, not REWORD.\n"
+            f'  [{{"op":"REWORD","span":[2,2],"from":"witnes","to":"witness","source":"raw_steno","reason":"dropped s"}},{{"op":"REWORD","span":[4,4],"from":"swor","to":"sworn","source":"raw_steno","reason":"dropped n"}}]\n'
+            f"  Tokens [0,1,3,5] are kept verbatim — no KEEP op needed.\n\n"
+            f"Total tokens this chunk: {n_tokens}. When uncertain: FLAG, not REWORD.\n"
         )
 
         user_msg = (
@@ -738,7 +730,7 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
                 if result.ok:
                     corrected = apply_ops(ops_norm, tokens)
                     corrections = ops_to_corrections_log(ops_norm, tokens, chunk_num, line_start)
-                    if result.warnings:
+                    if result.warnings and VERBOSE_OPS:
                         for w in result.warnings:
                             print(f'  [OPS-WARN] {w[:100]}', flush=True)
                     return corrected, corrections, cache_create, cache_read, input_tok, output_tok
@@ -839,7 +831,13 @@ def main():
     parser = argparse.ArgumentParser(description='AI correction engine')
     parser.add_argument('--chunk', type=int, default=None,
                         help='Run only this chunk index (0-based) and exit. For testing.')
+    parser.add_argument('--verbose', action='store_true',
+                        help='Print OPS-WARN from-field mismatch details (noisy, for debugging).')
     args = parser.parse_args()
+
+    if args.verbose:
+        global VERBOSE_OPS
+        VERBOSE_OPS = True
 
     if not os.path.exists(INPUT_FILE):
         print(f'ERROR: Input file not found: {INPUT_FILE}')
