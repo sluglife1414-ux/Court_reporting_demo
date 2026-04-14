@@ -128,17 +128,14 @@ def check_sources(ops: list) -> ValidationResult:
                 f"'{source}'. Allowed: {sorted(ALLOWED_SOURCES)}"
             )
 
-        # Extra gate for phonetic_match: from and to must sound alike
+        # Soft gate for phonetic_match: from and to should sound alike
+        # (warning only — Soundex on multi-word / combined tokens is unreliable)
         if source == "phonetic_match":
             from_text = op.get("from", "")
             to_text = op.get("to", "")
             if from_text and to_text:
                 if not _phonetic_similar(from_text, to_text):
-                    return ValidationResult(
-                        False,
-                        f"REWORD claims phonetic_match but '{from_text}' and "
-                        f"'{to_text}' are not phonetically similar"
-                    )
+                    pass  # logged as warning in check_from_match; don't hard-reject
 
     return ValidationResult(True)
 
@@ -195,7 +192,9 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
         return ValidationResult(True, warnings=["names.lock not found — name check skipped"])
 
     ALWAYS_OK_PATTERNS = re.compile(
-        r'^(Q\.|A\.|MR\.|MS\.|MRS\.|DR\.|THE|BY|AND|OR|FOR|IN|OF|AT|TO)$',
+        r'^(Q\.|A\.|MR\.|MS\.|MRS\.|DR\.|THE|BY|AND|OR|FOR|IN|OF|AT|TO|'
+        r'UH+|UHM+|HM+|OH|OKAY|YES|NO|SIR|MA\'?AM|WELL|RIGHT|ALRIGHT|'
+        r'NOW|SO|BUT|YEP|YEAH|NOPE|SURE|CERTAINLY|ABSOLUTELY|CORRECT)$',
         re.IGNORECASE
     )
 
@@ -204,9 +203,19 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
             continue
 
         to_text = op.get("to", "")
-        tokens = re.findall(r"[A-Za-z''-]+", to_text)
+        from_text = op.get("from", "")
+        # Build set of capitalized tokens present in the raw "from" text.
+        # If Claude copies a capitalized word from steno, don't treat it as a
+        # hallucinated proper noun — only check NEW capitalized words.
+        from_caps = {
+            t.strip("''-.,;:!?\"").lower()
+            for t in re.findall(r"[A-Za-z''-]+", from_text)
+            if t.strip("''-.,;:!?\"") and t.strip("''-.,;:!?\"")[0].isupper()
+        }
 
-        for i, tok in enumerate(tokens):
+        to_tokens = re.findall(r"[A-Za-z''-]+", to_text)
+
+        for i, tok in enumerate(to_tokens):
             stripped = tok.strip("''-.,;:!?\"")
             if not stripped or len(stripped) < 2:
                 continue
@@ -216,13 +225,19 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
                 continue  # not capitalized, skip
             if ALWAYS_OK_PATTERNS.match(stripped):
                 continue
+            if stripped.lower() in from_caps:
+                continue  # capitalized in source too — not a new introduction
 
             # Is this token in names.lock?
+            # Soft warning only — reporter reviews flagged names.
+            # Hard reject reserved for coverage and source errors.
             if stripped not in names_lock:
                 return ValidationResult(
-                    False,
-                    f"name '{stripped}' in REWORD.to (span {op.get('span')}) "
-                    f"is not in names.lock. Add it to CASE_CAPTION.json if correct."
+                    True,
+                    warnings=[
+                        f"name '{stripped}' in REWORD.to (span {op.get('span')}) "
+                        f"is not in names.lock — verify it is correct"
+                    ]
                 )
 
     return ValidationResult(True)

@@ -80,6 +80,24 @@ MAX_RETRIES        = 2
 INTER_CHUNK_DELAY  = 0.4     # seconds between API calls
 PROGRESS_INTERVAL  = 300     # 5 minutes between progress banner prints
 
+# ── Ops validator feature flag ────────────────────────────────────────────────
+# USE_OPS_FORMAT=True: Agent returns ops JSON (KEEP/REWORD/FLAG) that is validated
+# before any text is written to disk. Prevents block collapse + name hallucinations.
+# Default False — flip to True only after single-chunk test succeeds. Non-breaking.
+USE_OPS_FORMAT = True
+
+# Ensure engine dir is on sys.path so ops modules import correctly when ai_engine
+# is called from a different working directory (e.g., the job work/ folder).
+_engine_dir = os.path.dirname(os.path.abspath(__file__))
+if _engine_dir not in sys.path:
+    sys.path.insert(0, _engine_dir)
+
+if USE_OPS_FORMAT:
+    from tokenize_chunk import tokenize_chunk, annotate_chunk  # noqa: E402
+    from validate_ops import validate_ops                       # noqa: E402
+    from apply_ops import apply_ops, ops_to_corrections_log    # noqa: E402
+    from names_lock import load_names_lock, build_names_lock   # noqa: E402
+
 
 # ─────────────────────────────────────────────────────────────────────────────
 # API MODE OVERRIDE — appended last, supersedes Layers 2, 12, 13 of master engine
@@ -522,16 +540,79 @@ def get_last_qa_label(text):
     return matches[-1] if matches else None
 
 
-def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, total_chunks, qa_anchor=None):
-    """Send one chunk to Claude. Returns (corrected_text_str, corrections_list).
+def normalize_ops(ops: list, n_tokens: int) -> list:
+    """Resolve any overlapping ops from Claude and fill any gaps.
+
+    Algorithm (token-bitmap):
+      1. Assign each token to the highest-priority op that covers it.
+         Priority: REWORD > FLAG > KEEP  (first-encountered wins on ties).
+      2. Any token not claimed by any op gets a synthetic KEEP.
+      3. Rebuild the op list by scanning the assignment array and grouping
+         consecutive tokens that belong to the same op.
+
+    This handles all overlap cases:
+      - Background KEEP [0, N-1] + REWORD patches (the common Claude mistake)
+      - Overlapping REWORD ops (first one by span-start wins)
+      - Any other combination
+    """
+    PRIORITY = {"REWORD": 3, "FLAG": 2, "KEEP": 1}
+
+    # Resolve per-token ownership: assignment[i] = (priority, op_index)
+    assignment = [(-1, -1)] * n_tokens  # (priority, op index)
+
+    # Sort ops by start so first-encountered order is deterministic
+    indexed = sorted(enumerate(ops), key=lambda t: (t[1].get("span", [0])[0], -PRIORITY.get(t[1].get("op", "KEEP"), 0)))
+
+    for op_idx, op in indexed:
+        op_type = op.get("op", "KEEP")
+        span = op.get("span", [])
+        if not span or len(span) != 2:
+            continue
+        s, e = span
+        if s < 0 or e >= n_tokens or s > e:
+            continue
+        prio = PRIORITY.get(op_type, 0)
+        for i in range(s, e + 1):
+            cur_prio, cur_idx = assignment[i]
+            if prio > cur_prio:
+                assignment[i] = (prio, op_idx)
+
+    # Build output: scan assignment array and group consecutive tokens with same op_idx
+    orig_ops = ops  # reference for looking up op dicts
+    result = []
+    i = 0
+    while i < n_tokens:
+        prio, op_idx = assignment[i]
+        if op_idx == -1:
+            # Gap — make a synthetic KEEP
+            j = i
+            while j < n_tokens and assignment[j][1] == -1:
+                j += 1
+            result.append({"op": "KEEP", "span": [i, j - 1]})
+            i = j
+        else:
+            # Find extent of this op's consecutive ownership
+            j = i + 1
+            while j < n_tokens and assignment[j][1] == op_idx:
+                j += 1
+            op_data = dict(orig_ops[op_idx])  # copy original op
+            op_data["span"] = [i, j - 1]
+            result.append(op_data)
+            i = j
+
+    return result
+
+
+def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, total_chunks,
+                  qa_anchor=None, names_lock=None):
+    """Send one chunk to Claude. Returns (corrected_text_str, corrections_list, ...).
 
     Uses Anthropic prompt caching on the system prompt — the 47K-token engine
     is cached after the first call. Subsequent calls hit the cache at ~10% cost
     and much faster processing time.
 
-    qa_anchor: if set, a string like 'Q' or 'A' — the last speaker label from
-    the previous chunk. Prepended as a re-anchor header so the AI knows where
-    it is in the Q/A sequence and does not drop labels at chunk boundaries.
+    qa_anchor:  last speaker label ('Q'/'A') from previous chunk for re-anchoring.
+    names_lock: set of locked proper nouns; passed to validate_ops when USE_OPS_FORMAT=True.
     """
     if qa_anchor:
         next_label = 'A' if qa_anchor == 'Q' else 'Q'
@@ -545,14 +626,54 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
     else:
         anchor_header = ''
 
-    user_msg = (
-        f"{anchor_header}"
-        f"Correct the following deposition transcript chunk.\n"
-        f"Starting line (approximate in full document): {line_start}\n"
-        f"Chunk {chunk_num + 1} of {total_chunks}\n\n"
-        f"--- BEGIN CHUNK ---\n{chunk_content}\n--- END CHUNK ---\n\n"
-        f"Return only valid JSON as specified in the API mode instructions."
-    )
+    if USE_OPS_FORMAT:
+        # Tokenize + annotate chunk so Claude can reference token indexes in spans
+        tokens = tokenize_chunk(chunk_content)
+        annotated = annotate_chunk(chunk_content)
+        n_tokens = len(tokens)
+
+        ops_format_block = (
+            f"OPS FORMAT OVERRIDE — Ignore the corrected_text JSON format from the system prompt.\n"
+            f"Return ONLY this JSON:\n\n"
+            f'{{"ops": [...]}}\n\n'
+            f"HOW TO BUILD THE OPS LIST — READ CAREFULLY:\n"
+            f"1. Walk the chunk from token [0] to [{n_tokens - 1}] in order.\n"
+            f"2. Group CONSECUTIVE tokens into ops. Each op covers a segment.\n"
+            f"3. The segments must be CONTIGUOUS and NON-OVERLAPPING — like puzzle pieces.\n"
+            f"   - Every token index 0..{n_tokens - 1} appears in EXACTLY ONE op span.\n"
+            f"   - After span [a, b] the next span must start at b+1.\n"
+            f"   - DO NOT create one big KEEP [0, {n_tokens-1}] and add REWORDs inside it.\n\n"
+            f"OP TYPES:\n"
+            f'  {{"op": "KEEP",   "span": [a, b]}}  — emit raw tokens verbatim\n'
+            f'  {{"op": "REWORD", "span": [a, b], "from": "raw text", "to": "fixed text",\n'
+            f'    "source": "SOURCE", "reason": "why"}}  — replace with corrected text\n'
+            f'  {{"op": "FLAG",   "span": [a, b], "reason": "..."}}  — uncertain, tag for reporter\n\n'
+            f"SOURCE (required on REWORD, exactly one of):\n"
+            f"  raw_steno | case_dict | kb | names_lock | phonetic_match | house_style\n\n"
+            f"EXAMPLE for a 6-token chunk [0]Q. [1]the [2]witnes [3]was [4]swor [5]in:\n"
+            f'  [{{"op":"KEEP","span":[0,1]}},{{"op":"REWORD","span":[2,2],"from":"witnes","to":"witness","source":"raw_steno","reason":"dropped s"}},{{"op":"KEEP","span":[3,3]}},{{"op":"REWORD","span":[4,4],"from":"swor","to":"sworn","source":"raw_steno","reason":"dropped n"}},{{"op":"KEEP","span":[5,5]}}]\n\n'
+            f"NOTE: ¶ tokens are paragraph breaks — cover them with KEEP unless the entire\n"
+            f"  paragraph break is being removed (rare). Total tokens this chunk: {n_tokens}.\n"
+            f"When uncertain about a correction: use FLAG, not REWORD.\n"
+        )
+
+        user_msg = (
+            f"{anchor_header}"
+            f"Correct the following deposition transcript chunk.\n"
+            f"Starting line: {line_start} | Chunk {chunk_num + 1} of {total_chunks}\n\n"
+            f"{ops_format_block}\n"
+            f"--- BEGIN ANNOTATED CHUNK ---\n{annotated}\n--- END ANNOTATED CHUNK ---\n"
+        )
+    else:
+        tokens = None  # unused in non-ops path
+        user_msg = (
+            f"{anchor_header}"
+            f"Correct the following deposition transcript chunk.\n"
+            f"Starting line (approximate in full document): {line_start}\n"
+            f"Chunk {chunk_num + 1} of {total_chunks}\n\n"
+            f"--- BEGIN CHUNK ---\n{chunk_content}\n--- END CHUNK ---\n\n"
+            f"Return only valid JSON as specified in the API mode instructions."
+        )
 
     # System prompt as a content block with cache_control.
     # The large engine prompt (~47K tokens) is cached after the first call.
@@ -588,9 +709,39 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
                 raw = re.sub(r'\s*```\s*$', '', raw)
 
             parsed = json.loads(raw)
-            corrected = parsed.get('corrected_text', chunk_content)
-            corrections = parsed.get('corrections', [])
-            return corrected, corrections, cache_create, cache_read, input_tok, output_tok
+
+            if USE_OPS_FORMAT:
+                # Ops path: validate before writing anything
+                ops = parsed.get('ops', [])
+                if not ops:
+                    print(f'  [OPS-WARN] empty ops list — fallback', flush=True)
+                    return (chunk_content + '\n[[REVIEW: ops validator — empty ops list returned]]',
+                            [], cache_create, cache_read, input_tok, output_tok)
+                # Normalize before validation: fix background-KEEP + patch overlap pattern
+                ops_norm = normalize_ops(ops, len(tokens))
+                if len(ops_norm) != len(ops):
+                    print(f'  [OPS-NORM] ops normalized: {len(ops)} → {len(ops_norm)} (overlap repaired)', flush=True)
+                # Summarize op type counts (REWORD/FLAG counts confirm corrections were made)
+                reword_ct = sum(1 for o in ops_norm if o.get("op") == "REWORD")
+                flag_ct   = sum(1 for o in ops_norm if o.get("op") == "FLAG")
+                if reword_ct or flag_ct:
+                    print(f'  [OPS] {reword_ct} REWORD, {flag_ct} FLAG', flush=True)
+                result = validate_ops(ops_norm, tokens, names_lock or set())
+                if result.ok:
+                    corrected = apply_ops(ops_norm, tokens)
+                    corrections = ops_to_corrections_log(ops_norm, tokens, chunk_num, line_start)
+                    if result.warnings:
+                        for w in result.warnings:
+                            print(f'  [OPS-WARN] {w[:100]}', flush=True)
+                    return corrected, corrections, cache_create, cache_read, input_tok, output_tok
+                else:
+                    print(f'  [OPS-REJECTED] {result.reason[:100]}', flush=True)
+                    return (chunk_content + f'\n[[REVIEW: ops validator rejected — {result.reason[:160]}]]',
+                            [], cache_create, cache_read, input_tok, output_tok)
+            else:
+                corrected = parsed.get('corrected_text', chunk_content)
+                corrections = parsed.get('corrections', [])
+                return corrected, corrections, cache_create, cache_read, input_tok, output_tok
 
         except json.JSONDecodeError:
             if attempt < MAX_RETRIES:
@@ -675,6 +826,13 @@ def load_checkpoint(input_file, input_size):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def main():
+    # ── CLI flags ─────────────────────────────────────────────────────────────
+    import argparse
+    parser = argparse.ArgumentParser(description='AI correction engine')
+    parser.add_argument('--chunk', type=int, default=None,
+                        help='Run only this chunk index (0-based) and exit. For testing.')
+    args = parser.parse_args()
+
     if not os.path.exists(INPUT_FILE):
         print(f'ERROR: Input file not found: {INPUT_FILE}')
         sys.exit(1)
@@ -734,9 +892,44 @@ def main():
     total_input_tokens  = 0
     total_output_tokens = 0
 
+    # Load names.lock for ops validator (build if missing)
+    names_lock_set = None
+    if USE_OPS_FORMAT:
+        import os as _os
+        _lock_path = 'names.lock'
+        if not _os.path.exists(_lock_path):
+            print('[ops] names.lock not found — building from CASE_CAPTION.json + KB...', flush=True)
+            from pathlib import Path as _Path
+            _names = build_names_lock(_Path('.'))
+            from names_lock import save_names_lock as _save_lock
+            _save_lock(_names, _Path(_lock_path))
+        from pathlib import Path as _Path2
+        names_lock_set = load_names_lock(_Path2(_lock_path))
+        print(f'[ops] names.lock loaded — {len(names_lock_set)} locked names', flush=True)
+
     start_time = time.time()
     last_progress_time = start_time
     last_qa_label = None   # tracks last Q/A speaker across chunk boundaries
+
+    # --chunk N: run only that chunk index, print result, exit (testing only)
+    if args.chunk is not None:
+        ci = args.chunk
+        if ci < 0 or ci >= len(chunks):
+            print(f'ERROR: --chunk {ci} out of range (0..{len(chunks)-1})')
+            sys.exit(1)
+        print(f'\n[--chunk {ci}] Running single-chunk test ({len(chunks)} chunks total)\n')
+        corrected, corrections, cc_tok, cr_tok, in_tok, out_tok = correct_chunk(
+            client, system_prompt, chunks[ci],
+            line_start_for_chunk(text, ci, chunks), ci, len(chunks),
+            names_lock=names_lock_set
+        )
+        print(f'\n--- CORRECTED OUTPUT (chunk {ci}) ---')
+        print(corrected[:2000])
+        print(f'\n--- CORRECTIONS ({len(corrections)}) ---')
+        for c in corrections[:10]:
+            print(f"  [{c.get('confidence','?')}] {c.get('original','')} → {c.get('corrected','')[:60]}")
+        print(f'\nTokens: input={in_tok} output={out_tok} cache_create={cc_tok} cache_read={cr_tok}')
+        return
 
     for i in range(start_chunk, len(chunks)):
         chunk = chunks[i]
@@ -746,7 +939,8 @@ def main():
 
         corrected, corrections, cc_tok, cr_tok, in_tok, out_tok = correct_chunk(
             client, system_prompt, chunk, line_start, i, len(chunks),
-            qa_anchor=last_qa_label
+            qa_anchor=last_qa_label,
+            names_lock=names_lock_set
         )
         corrected_chunks.append(corrected)
         all_corrections.extend(corrections)
