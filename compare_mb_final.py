@@ -54,20 +54,38 @@ def find_files():
         sys.exit(1)
     our_path = our_candidates[0]
 
-    # MB's final — look in job root first, then work/ for backwards compat
+    # MB's final — search order:
+    #   1. job root (mb_final_reference.pdf or .txt)
+    #   2. cr_profile master_files/ (shared golden references by sgngl stem)
+    #   3. work/ (backwards compat)
     job_root = work.parent
-    mb_path = job_root / 'mb_final_reference.txt'
-    if not mb_path.exists():
-        mb_path = work / 'mb_final_reference.txt'
-    if not mb_path.exists():
-        print(f'ERROR: mb_final_reference.txt not found.')
-        print(f'  Looked in: {job_root}')
-        print(f'         and: {work}')
+    cr_profile = job_root.parent
+    master_files = cr_profile / 'master_files'
+
+    mb_path = None
+    # Look for any intake sgngl to derive the stem name
+    sgngl_candidates = list((job_root / 'intake').glob('*.sgngl')) if (job_root / 'intake').exists() else []
+    sgngl_stem = sgngl_candidates[0].stem if sgngl_candidates else None
+
+    search_locations = []
+    for ext in ('.pdf', '.txt'):
+        search_locations.append(job_root / f'mb_final_reference{ext}')
+        if sgngl_stem:
+            search_locations.append(master_files / f'{sgngl_stem}{ext}')
+        search_locations.append(work / f'mb_final_reference{ext}')
+
+    for candidate in search_locations:
+        if candidate.exists():
+            mb_path = candidate
+            break
+
+    if mb_path is None:
+        print(f'ERROR: MB final reference not found.')
+        print(f'  Searched:')
+        for loc in search_locations:
+            print(f'    {loc}')
         print()
-        print('  Run this first to extract MB\'s final:')
-        print(f'  python C:\\depo_transformation\\engine\\mb_demo_engine_v4\\extract_sgngl.py '
-              f'C:\\Cat4\\usr\\scott\\032626YELLOWROCK-FINAL.sgngl')
-        print(f'  Then rename and place at: {job_root / "mb_final_reference.txt"}')
+        print(f'  Drop MB\'s final PDF or txt into: {master_files}')
         sys.exit(1)
 
     return our_path, mb_path
