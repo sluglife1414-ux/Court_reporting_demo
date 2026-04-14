@@ -782,6 +782,7 @@ def build_review_locations(all_pages, anchor_map):
         locations[str(idx)] = loc or 'location unknown'
 
     out_path = os.path.join('FINAL_DELIVERY', 'review_locations.json')
+    os.makedirs('FINAL_DELIVERY', exist_ok=True)
     with open(out_path, 'w', encoding='utf-8') as f:
         json.dump(locations, f, indent=2)
 
