@@ -650,11 +650,19 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
             f'  {{"op": "FLAG",   "span": [a, b], "reason": "..."}}  — uncertain, tag for reporter\n\n'
             f"SOURCE (required on REWORD, exactly one of):\n"
             f"  raw_steno | case_dict | kb | names_lock | phonetic_match | house_style\n\n"
+            f"PROPER NOUN RULE — STRICT, NO EXCEPTIONS:\n"
+            f"  A proper noun is any person name, firm name, or place name.\n"
+            f"  You may REWORD a proper noun ONLY IF the correct spelling is confirmed in:\n"
+            f"    (1) names.lock  (2) the KB provided  (3) the case caption\n"
+            f"  If you are not 100% certain — use FLAG, not REWORD.\n"
+            f"  NEVER guess a proper noun. A FLAG is always correct. A wrong name is never acceptable.\n"
+            f"  Wrong name example: steno 'mad dan' — you do not know if this is Madden, Madigan,\n"
+            f"    Madison, etc. FLAG it. Do not guess.\n\n"
             f"EXAMPLE for a 6-token chunk [0]Q. [1]the [2]witnes [3]was [4]swor [5]in:\n"
             f'  [{{"op":"KEEP","span":[0,1]}},{{"op":"REWORD","span":[2,2],"from":"witnes","to":"witness","source":"raw_steno","reason":"dropped s"}},{{"op":"KEEP","span":[3,3]}},{{"op":"REWORD","span":[4,4],"from":"swor","to":"sworn","source":"raw_steno","reason":"dropped n"}},{{"op":"KEEP","span":[5,5]}}]\n\n'
             f"NOTE: ¶ tokens are paragraph breaks — cover them with KEEP unless the entire\n"
             f"  paragraph break is being removed (rare). Total tokens this chunk: {n_tokens}.\n"
-            f"When uncertain about a correction: use FLAG, not REWORD.\n"
+            f"When uncertain about any correction: use FLAG, not REWORD.\n"
         )
 
         user_msg = (

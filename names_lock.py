@@ -69,6 +69,21 @@ def extract_names_from_caption(caption: dict) -> set:
         for token in _tokenize_name(person):
             names.add(token)
 
+    # known_places — geographic/company names confirmed by reporter or human reviewer.
+    # Feeds places mentioned in testimony that the agent is authorized to REWORD.
+    # Pattern: [{"name": "Greenspoint", "note": "Houston neighborhood"}]
+    # or flat list: ["Greenspoint", "Brazoria"]
+    for entry in caption.get("known_places", []):
+        val = entry.get("name", "") if isinstance(entry, dict) else str(entry)
+        for token in _tokenize_name(val):
+            names.add(token)
+
+    # known_companies — company/organization names confirmed for this case
+    for entry in caption.get("known_companies", []):
+        val = entry.get("name", "") if isinstance(entry, dict) else str(entry)
+        for token in _tokenize_name(val):
+            names.add(token)
+
     return names
 
 
@@ -197,11 +212,17 @@ def save_names_lock(names: set, out_path: Path):
 
 
 def load_names_lock(lock_path: Path) -> set:
-    """Load names.lock into a set. Called by validate_ops.py."""
+    """Load names.lock into a set. Called by validate_ops.py.
+
+    Normalizes every entry to Title Case so the check in validate_ops
+    is case-insensitive. CASE_CAPTION stores names in ALL-CAPS (attorney
+    blocks), Title Case (places), etc. — normalize once on load so
+    validate_ops.py doesn't need to handle every variant.
+    """
     if not lock_path.exists():
         return set()
     with open(lock_path, encoding="utf-8") as f:
-        return {line.strip() for line in f if line.strip()}
+        return {line.strip().title() for line in f if line.strip()}
 
 
 # ── CLI ───────────────────────────────────────────────────────────────────────

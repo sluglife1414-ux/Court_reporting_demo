@@ -187,9 +187,15 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
     - Single letters (I, A, etc.)
     - Known depo artifacts (Q., A., MR., MS., etc.)
     """
-    if not names_lock:
-        # No lock file — skip check (warn instead)
-        return ValidationResult(True, warnings=["names.lock not found — name check skipped"])
+    if not names_lock or len(names_lock) < 5:
+        # Empty or suspiciously small lock — hard reject.
+        # A missing names.lock means we can't validate proper nouns at all.
+        # Better to reject the whole op list than silently pass wrong names.
+        return ValidationResult(
+            False,
+            "names.lock missing or has fewer than 5 entries — "
+            "cannot validate proper nouns. Run names_lock.py first."
+        )
 
     ALWAYS_OK_PATTERNS = re.compile(
         r'^(Q\.|A\.|MR\.|MS\.|MRS\.|DR\.|THE|BY|AND|OR|FOR|IN|OF|AT|TO|'
@@ -204,9 +210,11 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
 
         to_text = op.get("to", "")
         from_text = op.get("from", "")
+
         # Build set of capitalized tokens present in the raw "from" text.
-        # If Claude copies a capitalized word from steno, don't treat it as a
-        # hallucinated proper noun — only check NEW capitalized words.
+        # Words capitalized in the steno source are NOT new introductions —
+        # the agent is allowed to carry them through. Only NEW capitalized
+        # words (introduced by the agent, absent from steno) are checked.
         from_caps = {
             t.strip("''-.,;:!?\"").lower()
             for t in re.findall(r"[A-Za-z''-]+", from_text)
@@ -215,6 +223,26 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
 
         to_tokens = re.findall(r"[A-Za-z''-]+", to_text)
 
+        # Detect person-name contexts in to_text:
+        # A token is a PERSON NAME CANDIDATE if it is preceded by a title
+        # (Mr./Mrs./Ms./Dr.) or by another Title Case word that is not
+        # sentence-initial. This targets "Mr. Madden", "John Smith" etc.
+        # without catching sentence-initial common words like "Is", "Safety".
+        title_preceded = set()  # indexes of tokens preceded by a title word
+        consec_cap_second = set()  # indexes of 2nd+ word in consecutive Title Case run
+        TITLE_WORDS = re.compile(r'^(Mr|Mrs|Ms|Dr|Prof|Hon|Esq)\.?$', re.IGNORECASE)
+        prev_was_cap = False
+        prev_was_title = False
+        for i, tok in enumerate(to_tokens):
+            s = tok.strip("''-.,;:!?\"")
+            is_cap = bool(s) and s[0].isupper() and not s.isupper()
+            if prev_was_title:
+                title_preceded.add(i)
+            if prev_was_cap and is_cap:
+                consec_cap_second.add(i)
+            prev_was_title = bool(TITLE_WORDS.match(tok))
+            prev_was_cap = is_cap
+
         for i, tok in enumerate(to_tokens):
             stripped = tok.strip("''-.,;:!?\"")
             if not stripped or len(stripped) < 2:
@@ -222,22 +250,30 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
             if stripped.isupper():
                 continue  # ALL-CAPS abbreviations OK
             if not stripped[0].isupper():
-                continue  # not capitalized, skip
+                continue  # not capitalized
             if ALWAYS_OK_PATTERNS.match(stripped):
-                continue
+                continue  # known-safe words
             if stripped.lower() in from_caps:
-                continue  # capitalized in source too — not a new introduction
+                continue  # word was already capitalized in steno source
 
-            # Is this token in names.lock?
-            # Soft warning only — reporter reviews flagged names.
-            # Hard reject reserved for coverage and source errors.
-            if stripped not in names_lock:
+            # Only apply the hard check to PERSON NAME CANDIDATES:
+            # tokens after a title word (Mr. Madden) or 2nd word in a
+            # consecutive Title Case sequence (John Smith).
+            # Single sentence-initial words (Is, Safety, Well) are skipped.
+            is_person_name_candidate = (i in title_preceded or i in consec_cap_second)
+            if not is_person_name_candidate:
+                continue
+
+            # HARD REJECT: person name candidate not in names.lock.
+            # Agent must FLAG unknown proper nouns — never guess.
+            if stripped.title() not in names_lock:
                 return ValidationResult(
-                    True,
-                    warnings=[
-                        f"name '{stripped}' in REWORD.to (span {op.get('span')}) "
-                        f"is not in names.lock — verify it is correct"
-                    ]
+                    False,
+                    f"PROPER NOUN REJECTED: '{stripped}' in REWORD.to "
+                    f"(span {op.get('span')}) looks like a person name but "
+                    f"is not in names.lock. Agent must FLAG — never guess. "
+                    f"If correct, add to CASE_CAPTION.json (appearances, "
+                    f"known_places, or known_companies)."
                 )
 
     return ValidationResult(True)
