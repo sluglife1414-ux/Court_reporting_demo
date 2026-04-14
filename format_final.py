@@ -271,7 +271,11 @@ def find_exhibit_pages(all_pages):
     Returns dict: {exhibit_number (int): page_number (int, 1-indexed)}
     """
     exhibit_pages = {}
-    pattern = re.compile(r'Whereupon,\s+Exhibit\s+No\.\s+(\d+)', re.IGNORECASE)
+    # Match any exhibit reference in testimony — first occurrence = introduction page.
+    # Previously required "Whereupon," prefix but most exhibits in LA civil are introduced
+    # informally ("I'm handing you Exhibit No. X") — only 1 of 15 had Whereupon. (DEF-003 fix)
+    # Index pages are None slots at this point so they can't match here.
+    pattern = re.compile(r'Exhibit\s+No\.\s+(\d+)', re.IGNORECASE)
     for page_idx, page_lines in enumerate(all_pages):
         if page_lines is None:
             continue
@@ -377,7 +381,9 @@ def build_index(app_start, stip_start, exam_start, cert_start, wcert_start, exhi
         # Fall back to steno-extracted exhibits
         exhibit_list = exhibits
 
-    # Build TOC section (always fits on page 1 header)
+    # Build TOC section — page 1 only, no "EXHIBITS" label (DEF-001 fix 2026-04-14)
+    # Previously had "  EXHIBITS" at bottom which created a second non-centered header on p.2.
+    # MB standard: ONE centered E X H I B I T S header per exhibit page only.
     toc = []
     toc.append(center("I N D E X"))
     toc.append("\t\tPage")
@@ -396,45 +402,74 @@ def build_index(app_start, stip_start, exam_start, cert_start, wcert_start, exhi
     toc.append(f"  Witness's Certificate\t{wcert_start}")
     toc.append("")
     toc.append(center("* * * * * * * *"))
-    toc.append("")
-    toc.append("  EXHIBITS")
-    toc.append("")   # 20 lines used — 5 lines left on page 1 for exhibits
 
-    # Build exhibit lines
+    # Page 1 = TOC only, padded to 25 lines
+    pages = []
+    page1 = toc[:]
+    while len(page1) < 25:
+        page1.append("")
+    pages.append(page1[:25])
+
+    # Build exhibit lines — two-line format per MB standard (DEF-002 fix 2026-04-14)
+    # Line 1: "  Exhibit No. XXX  Description (without YR number)"
+    # Line 2: "                   YR-XXXXXX                  pagenum"  (right-aligned)
+    # Blank line between each exhibit entry.
     exhibit_lines = []
     if exhibit_list:
         for ex in exhibit_list:
             num  = ex.get('number', ex) if isinstance(ex, dict) else ex
             desc = ex.get('description', '') if isinstance(ex, dict) else ''
-            pg   = str(ex.get('page', '')) if isinstance(ex, dict) else ''
+            pg   = str(ex.get('page', 0) or '') if isinstance(ex, dict) else ''
             if not desc:
                 desc = '[REVIEW: description not in steno]'
-            label = f"  Exhibit No. {num}  {desc}"
-            # Right-align page number
-            if pg:
-                gap = max(1, LINE_WIDTH - len(label) - len(pg))
-                exhibit_lines.append(f"{label}{' ' * gap}{pg}")
+
+            # Split YR-XXXXXX from description for continuation line
+            yr_match = re.search(r'\s*(YR-\S+)\s*$', desc)
+            if yr_match:
+                desc_clean = desc[:yr_match.start()].rstrip()
+                yr_num = yr_match.group(1)
             else:
-                exhibit_lines.append(label)
+                desc_clean = desc
+                yr_num = None
+
+            num_str = str(num)
+            # Description starts at: 2 (indent) + "Exhibit No. " (12) + num digits + 2 (gap)
+            desc_col = 2 + 12 + len(num_str) + 2
+
+            line1 = f"  Exhibit No. {num_str}  {desc_clean}"
+            if yr_num:
+                # Continuation line: YR at desc_col, page right-aligned to LINE_WIDTH
+                cont_prefix = ' ' * desc_col + yr_num
+                if pg and pg != '0':
+                    gap = max(1, LINE_WIDTH - len(cont_prefix) - len(pg))
+                    cont_line = cont_prefix + ' ' * gap + pg
+                else:
+                    cont_line = cont_prefix
+                exhibit_lines.append(line1)
+                exhibit_lines.append(cont_line)
+            else:
+                # No YR number — page right-aligned on same line as description
+                if pg and pg != '0':
+                    gap = max(1, LINE_WIDTH - len(line1) - len(pg))
+                    line1 = line1 + ' ' * gap + pg
+                exhibit_lines.append(line1)
+
+            exhibit_lines.append("")  # blank line between exhibit entries
+
     else:
         exhibit_lines.append("  [REVIEW: no exhibit list — add to CASE_CAPTION.json exhibit_list]")
 
-    # Paginate: fill page 1 after TOC, then overflow pages with E X H I B I T S header
-    pages = []
-    page1 = toc + exhibit_lines[:5]
-    while len(page1) < 25:
-        page1.append("")
-    pages.append(page1[:25])
-
-    remaining = exhibit_lines[5:]
+    # Exhibit pages — each starts with centered E X H I B I T S header (DEF-001)
+    # 25 lines/page - 2 header lines = 23 content lines per exhibit page
+    remaining = exhibit_lines[:]
     while remaining:
-        pg = [center("E X H I B I T S"), ""]
-        chunk = remaining[:23]   # 25 - 2 header lines
+        expg = [center("E X H I B I T S"), ""]
+        chunk = remaining[:23]
         remaining = remaining[23:]
-        pg.extend(chunk)
-        while len(pg) < 25:
-            pg.append("")
-        pages.append(pg[:25])
+        expg.extend(chunk)
+        while len(expg) < 25:
+            expg.append("")
+        pages.append(expg[:25])
 
     return pages
 
@@ -602,8 +637,22 @@ def _strip_review_tags_safe(text):
     i = 0
     n = len(text)
     while i < n:
-        if text[i:i+8] == '[REVIEW:':
-            # Skip the entire tag — depth-aware
+        if text[i:i+9] == '[[REVIEW:':
+            # Double-bracket variant [[REVIEW:...]] — consume entirely (DEF-008 fix 2026-04-14)
+            # Without this, the outer [ gets emitted as plain text, leaving a [] artifact.
+            depth = 0
+            while i < n:
+                if text[i] == '[':
+                    depth += 1
+                elif text[i] == ']':
+                    depth -= 1
+                    if depth == 0:
+                        i += 1  # consume the closing ]
+                        break
+                i += 1
+            # Both [[ and ]] consumed — do not append anything
+        elif text[i:i+8] == '[REVIEW:':
+            # Single-bracket variant [REVIEW:...] — skip the entire tag depth-aware
             depth = 0
             while i < n:
                 if text[i] == '[':
@@ -691,6 +740,8 @@ def inject_anchors(text):
     # These are applied by apply_audio_validation.py to mark auto-corrections in corrected_text.txt.
     # The corrected text is already in place; the tag is an annotation only.
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
+    # Strip empty [] brackets — steno artifacts and residual from double-bracket stripping (DEF-004)
+    text = re.sub(r'\s*\[\s*\]', '', text)
     text = re.sub(r'  +', ' ', text)
     return text, anchor_map
 
@@ -719,6 +770,8 @@ def strip_review_tags(text):
     text = _strip_review_tags_safe(text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
+    # Strip empty [] brackets — steno artifacts and residual from double-bracket stripping (DEF-004)
+    text = re.sub(r'\s*\[\s*\]', '', text)
     text = re.sub(r'  +', ' ', text)
     return text
 
@@ -1402,11 +1455,19 @@ def main():
     # reserves the right number of pages — avoids overwriting appearances when
     # the exhibit list is long enough to overflow beyond 1 index page.
     # If config has exhibit_list, use it for page count so reserved slots are correct
+    # Use real descriptions in the placeholder so two-line exhibit format (with YR numbers)
+    # produces the same page count as the final build_index() call. Empty descriptions
+    # would miss YR-line splits and undercount, causing the final index to overwrite
+    # adjacent pages when exhibit lines expand. (DEF-002 fix 2026-04-14)
     _config_exhibits = _cfg.get('exhibit_list', [])
     if _config_exhibits:
-        dummy_exhibits = [{'number': ex.get('number', 0) if isinstance(ex, dict) else ex, 'description': '', 'page': 0} for ex in _config_exhibits]
+        dummy_exhibits = [{'number': ex.get('number', 0) if isinstance(ex, dict) else ex,
+                           'description': ex.get('description', '') if isinstance(ex, dict) else '',
+                           'page': 0} for ex in _config_exhibits]
     else:
-        dummy_exhibits = [{'number': n, 'description': '', 'page': 0} for n in exhibit_nums]
+        dummy_exhibits = [{'number': n,
+                           'description': index_descriptions.get(n, ''),
+                           'page': 0} for n in exhibit_nums]
     index_placeholder = build_index(99, 99, 99, 99, 99, dummy_exhibits)
     num_index_pages = len(index_placeholder)
 
