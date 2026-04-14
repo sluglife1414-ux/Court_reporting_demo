@@ -406,6 +406,96 @@ EXCEPTIONS (always digits regardless of value):
   - Times: 9:07 a.m.
   [REVISIT:KB] Confirm exceptions list with MB
 
+════════════════════════════════════════════════════════════════════════════════
+LEARNED FROM: Brandl run | Date: 2026-04-10 | Also seen: Easley depo
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+KB-017 | REMOTE APPEARANCE NOTATION — (Via Zoom)
+Priority: HIGH | Category: appearances, formatting
+Source: Confirmed in Easley + Brandl runs — verify agent kept flagging as DISAGREE
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Engine or verify agent flags "(Via Zoom)" on BY: appearance lines as
+uncertain. This is valid, standard modern notation. Do not alter or remove.
+
+RULE: Attorneys appearing remotely are noted with "(Via Zoom)" on the same line
+as their BY: entry in the appearances section.
+  CORRECT:   BY: THOMAS J. MADIGAN, ESQ. (Via Zoom)
+  INCORRECT: BY: THOMAS J. MADIGAN, ESQ.   ← stripping the notation
+
+This notation is valid and should pass verify without flagging.
+Applies to any remote appearance method: (Via Zoom), (Via Teams), (Telephonically).
+
+════════════════════════════════════════════════════════════════════════════════
+LEARNED FROM: Brandl v3 run | Date: 2026-04-14
+════════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────────
+KB-018 | STENO PHONETIC: "mad dan" → Mr. Madigan
+Priority: HIGH | Category: proper_names, steno_artifacts
+Source: Brandl v3 diff vs MB final — engine produced "Mr. Madden" (wrong)
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Steno artifact "mad dan" is the phonetic rendering of THOMAS J. MADIGAN,
+ESQ. — plaintiff's counsel, Sher Garner firm. Engine resolved it to "Mr. Madden"
+(a plausible surname not in this case).
+
+RULE: "mad dan" or "madigan" steno fragments → resolve to Mr. Madigan.
+  CORRECT:   "in the event Mr. Madigan wants to launch an objection"
+  INCORRECT: "in the event Mr. Madden wants to launch an objection"
+
+This name appears in case appearances: THOMAS J. MADIGAN, ESQ. (Via Zoom),
+Sher Garner Cahill Richter Klein & Hilbert, L.L.C., Plaintiffs' counsel.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-018b | STIPULATION: Attorney retaining original = deposing attorney (Peacock)
+Priority: HIGH | Category: boilerplate, proper_names
+Source: Brandl v3 diff — steno had "WALKER HOBBY" (associate), MB corrected to Peacock
+────────────────────────────────────────────────────────────────────────────────
+RULE: In the stipulation block, the attorney "to whom the original is to be
+delivered to and retained by" is the LEAD DEPOSING ATTORNEY — the one who
+noticed and took the deposition. Use deposing_atty_full from CASE_CAPTION.
+
+For Brandl depo: J. HOKE (TREY) PEACOCK, III, ESQ. (Susman Godfrey LLP)
+NOT: Walker Hobby, ESQ. (associate at same firm who appeared in steno)
+
+If steno names a different attorney here, FLAG it for reporter verification —
+do not auto-substitute without flagging.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-019 | STENO PHONETIC: "sam dan" / "sam dansamedan" → Samedan
+Priority: HIGH | Category: proper_names, steno_artifacts
+Source: Brandl v3 diff — engine resolved correctly; documenting for future depos
+────────────────────────────────────────────────────────────────────────────────
+RULE: "sam dan", "sam dansamedan", "sam dan samedan" → resolve to Samedan.
+Samedan Oil Corporation (later acquired by Noble Energy). Common in oil & gas
+depos in Louisiana/Texas. "Noble energy" / "nobile energy" artifacts also resolve
+to Noble Energy.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-020 | HOUSE STYLE: Interjection spelling — "Uhmm" not "Umm"
+Priority: MEDIUM | Category: house_style, verbatim
+Source: Brandl v3 diff vs MB final
+────────────────────────────────────────────────────────────────────────────────
+RULE: MB's house style for the witness hesitation interjection is "Uhmm" (capital U,
+double m). Do not normalize to "Umm", "Uhm", or "Um".
+  CORRECT:   Uhmm.
+  INCORRECT: Umm. / Uhm. / Um.
+
+────────────────────────────────────────────────────────────────────────────────
+KB-021 | VERBATIM PROTECTION: "add two stipulations" — do not alter
+Priority: HIGH | Category: verbatim, boilerplate
+Source: Brandl v3 diff — engine changed "add two" to "note" (wrong)
+────────────────────────────────────────────────────────────────────────────────
+PROBLEM: Attorney said "I'd also like to add two stipulations." Engine changed
+"add two" to "note" — altering actual spoken words (a verbatim violation).
+
+RULE: Phrases like "add two stipulations", "add a stipulation", "note
+stipulations" are verbatim testimony and must not be altered. Engine must
+not rephrase attorney speech in the stipulation lead-in block.
+
+  CORRECT:   "I'd also like to add two stipulations if it's agreeable"
+  INCORRECT: "I'd also like to note stipulations if it's agreeable"
+
 ================================================================================
 END OF KNOWLEDGE BASE
 ================================================================================
