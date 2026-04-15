@@ -1263,12 +1263,16 @@ def format_testimony(raw_lines):
                 labeled.append(('whereupon', block))  # fallback: keep as-is
             continue
 
-        # Explicit Q. or A.
-        if block.startswith('Q. ') or block.startswith('Q.  '):
+        # Explicit Q. or A. — match Q./A. followed by whitespace OR end of block.
+        # DEF-009 root causes:
+        #   (a) steno uses Q.\t (tab) — old startswith('Q. ') missed it
+        #   (b) Q. with no trailing content (tag-stripped to bare 'Q.') — \s alone misses it
+        # Pattern: Q. followed by whitespace OR end-of-string.
+        if re.match(r'^Q\.(\s|$)', block):
             labeled.append(('Q', block))
             qa_toggle = 'A'
             continue
-        if block.startswith('A. ') or block.startswith('A.  '):
+        if re.match(r'^A\.(\s|$)', block):
             labeled.append(('A', block))
             qa_toggle = 'Q'
             continue
@@ -1388,7 +1392,8 @@ def format_testimony(raw_lines):
             for wline in wrap_line('        ' + text, width=QA_LINE_WIDTH, hang=8):
                 formatted.append(wline)
         elif kind == 'Q':
-            body = re.sub(r'^Q\.\s+', '', text) if text.startswith('Q.') else text
+            # Strip all leading Q./A. markers (handles bare 'Q.' and double-marker artifacts)
+            body = re.sub(r'^(?:[QA]\.\s*)+', '', text).strip()
             # Two-width wrap: first line body=42 chars, continuation=44 chars
             # CALIBRATION 2026-04-02: MB's CAT = 52 chars/line but our format wraps differently.
             # Our text-file format has 10-char indent on cont lines; MB's PDF has no such indent.
@@ -1398,7 +1403,7 @@ def format_testimony(raw_lines):
             wrapped = wrap_qa_line('     Q.   ', body, first_width=42, cont_width=45, hang=10)
             formatted.extend(wrapped)
         elif kind == 'A':
-            body = re.sub(r'^A\.\s+', '', text) if text.startswith('A.') else text
+            body = re.sub(r'^(?:[QA]\.\s*)+', '', text).strip()
             # Same as Q — cont_width=44, see calibration note above.
             wrapped = wrap_qa_line('     A.   ', body, first_width=42, cont_width=45, hang=10)
             formatted.extend(wrapped)
