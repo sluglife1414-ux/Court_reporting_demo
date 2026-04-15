@@ -225,25 +225,23 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
 
         to_tokens = re.findall(r"[A-Za-z''-]+", to_text)
 
-        # Detect person-name contexts in to_text:
-        # A token is a PERSON NAME CANDIDATE if it is preceded by a title
-        # (Mr./Mrs./Ms./Dr.) or by another Title Case word that is not
-        # sentence-initial. This targets "Mr. Madden", "John Smith" etc.
-        # without catching sentence-initial common words like "Is", "Safety".
-        title_preceded = set()  # indexes of tokens preceded by a title word
-        consec_cap_second = set()  # indexes of 2nd+ word in consecutive Title Case run
+        # Detect person-name contexts in to_text.
+        # A token is a PERSON NAME CANDIDATE only if preceded by a title word
+        # (Mr./Mrs./Ms./Dr./Prof.) — "Mr. Madden", "Dr. Smith".
+        #
+        # NOTE: consec_cap_second (flagging 2nd word in Title Case runs) was
+        # removed — it caused 55/70 chunk rejections on Brandl by flagging
+        # sentence-initial words like 'We're', 'Go', 'Have', 'Drill' that
+        # followed any capitalized word. Title-preceded check alone is sufficient
+        # to catch the dangerous case (wrong name after a title), and does not
+        # false-positive on common English. (Fixed 2026-04-15)
+        title_preceded = set()
         TITLE_WORDS = re.compile(r'^(Mr|Mrs|Ms|Dr|Prof|Hon|Esq)\.?$', re.IGNORECASE)
-        prev_was_cap = False
         prev_was_title = False
         for i, tok in enumerate(to_tokens):
-            s = tok.strip("''-.,;:!?\"")
-            is_cap = bool(s) and s[0].isupper() and not s.isupper()
             if prev_was_title:
                 title_preceded.add(i)
-            if prev_was_cap and is_cap:
-                consec_cap_second.add(i)
             prev_was_title = bool(TITLE_WORDS.match(tok))
-            prev_was_cap = is_cap
 
         for i, tok in enumerate(to_tokens):
             stripped = tok.strip("''-.,;:!?\"")
@@ -258,11 +256,8 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
             if stripped.lower() in from_caps:
                 continue  # word was already capitalized in steno source
 
-            # Only apply the hard check to PERSON NAME CANDIDATES:
-            # tokens after a title word (Mr. Madden) or 2nd word in a
-            # consecutive Title Case sequence (John Smith).
-            # Single sentence-initial words (Is, Safety, Well) are skipped.
-            is_person_name_candidate = (i in title_preceded or i in consec_cap_second)
+            # Only hard-check tokens directly following a title word.
+            is_person_name_candidate = (i in title_preceded)
             if not is_person_name_candidate:
                 continue
 
