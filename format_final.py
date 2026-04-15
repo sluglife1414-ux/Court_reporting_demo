@@ -585,9 +585,14 @@ def build_errata():
 # TEXT PARSERS
 # =========================================================
 
+_REVIEW_TAG_NAMES = (
+    '[REVIEW:', '[AUDIO:', '[AGENT:', '[CONFIRMED:', '[NOTE:',
+    '[CHANGED:', '[SUGGEST:', '[FLAG:', '[CORRECTED:',
+)
+
 def _strip_review_tags_safe(text):
     """
-    Depth-aware [REVIEW:...] tag stripper — handles nested brackets without eating content.
+    Depth-aware tag stripper — handles single and double-bracket forms.
 
     Why this exists:
       Regex [^\\]]*] is greedy across newlines: when a REVIEW tag contains a nested
@@ -595,29 +600,61 @@ def _strip_review_tags_safe(text):
       it and the next ] have been removed by pass 1, pass 2 eats everything up to a
       ] hundreds of lines away.  BUG: ate 6,082 chars (130 lines) on Brandl 2026-04-13.
 
-    Strategy: scan char by char.  Track bracket depth.  Strip any [REVIEW:...] block
-    regardless of nesting.  Everything outside a REVIEW block is preserved verbatim.
+    Handles both forms:
+      [REVIEW: content ]    — single bracket (standard)
+      [[REVIEW: content ]]  — double bracket (AI agent extended notes)
+
+    DEF-012 root cause: the old code checked text[i:i+8] == '[REVIEW:' only.
+      For [[REVIEW: content ]], the outer [ was appended as a literal, then
+      [REVIEW:...] was consumed, leaving outer [ + trailing ] = [].
+      Fix: also detect [[ followed by a tag name and consume from the outer bracket.
     """
     out = []
     i = 0
     n = len(text)
     while i < n:
-        if text[i:i+8] == '[REVIEW:':
-            # Skip the entire tag — depth-aware
-            depth = 0
-            while i < n:
-                if text[i] == '[':
-                    depth += 1
-                elif text[i] == ']':
-                    depth -= 1
-                    if depth == 0:
-                        i += 1  # consume the closing ]
-                        break
-                i += 1
-            # Tag consumed — do not append anything
-        else:
-            out.append(text[i])
-            i += 1
+        # Check for double-bracket form: [[TAGNAME:
+        matched_double = False
+        if text[i] == '[' and i + 1 < n and text[i+1] == '[':
+            for tag in _REVIEW_TAG_NAMES:
+                if text[i+1:i+1+len(tag)] == tag:
+                    # Consume from the outer [ depth-aware
+                    depth = 0
+                    while i < n:
+                        if text[i] == '[':
+                            depth += 1
+                        elif text[i] == ']':
+                            depth -= 1
+                            if depth == 0:
+                                i += 1
+                                break
+                        i += 1
+                    matched_double = True
+                    break
+        if matched_double:
+            continue
+
+        # Check for single-bracket form: [TAGNAME:
+        matched_single = False
+        for tag in _REVIEW_TAG_NAMES:
+            if text[i:i+len(tag)] == tag:
+                depth = 0
+                while i < n:
+                    if text[i] == '[':
+                        depth += 1
+                    elif text[i] == ']':
+                        depth -= 1
+                        if depth == 0:
+                            i += 1
+                            break
+                    i += 1
+                matched_single = True
+                break
+        if matched_single:
+            continue
+
+        out.append(text[i])
+        i += 1
     return ''.join(out)
 
 
@@ -690,9 +727,14 @@ def inject_anchors(text):
     # DEF-011: strip *REPORTER CHECK HERE* placeholder — stripped in diff but was missing from output pass
     text = re.sub(r'\s*\*REPORTER CHECK HERE\*', '', text, flags=re.IGNORECASE)
     # Strip [CORRECTED:] audit-trail tags — engine-generated, not for final output.
-    # These are applied by apply_audio_validation.py to mark auto-corrections in corrected_text.txt.
     # The corrected text is already in place; the tag is an annotation only.
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
+    # DEF-004: strip steno bracket artifact family — untranslated strokes that
+    # never appear in legitimate testimony. Order matters: multi-char variants first.
+    text = re.sub(r'\s*\[\|+\]\s*', ' ', text)    # [|]  [||]  [||||]
+    text = re.sub(r"\s*\['\]\s*", ' ', text)       # [']
+    text = re.sub(r'\s*\[\s*\|\s*\]\s*', ' ', text)  # [ | ] spaced variant
+    text = re.sub(r'\s*\[\s*\]\s*', ' ', text)    # [] empty
     text = re.sub(r'  +', ' ', text)
     return text, anchor_map
 
@@ -701,7 +743,14 @@ def strip_anchors(pages):
     """Remove {R:N} anchors from all page lines after location capture."""
     cleaned = []
     for page_lines in pages:
-        cleaned.append([re.sub(r'\{R:\d+\}', '', line).rstrip() for line in page_lines])
+        page = []
+        for line in page_lines:
+            # DEF-004/DEF-012: double-bracket [[REVIEW:]] forms leave []{R:N}] after anchor injection.
+            # Strip []{R:N}] wrapper — the outer [] came from the double-bracket form, not testimony.
+            line = re.sub(r'\[\s*\{R:\d+\}\s*\]', '', line)
+            line = re.sub(r'\{R:\d+\}', '', line)
+            page.append(line.rstrip())
+        cleaned.append(page)
     return cleaned
 
 
@@ -723,6 +772,11 @@ def strip_review_tags(text):
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
     # DEF-011: strip *REPORTER CHECK HERE* placeholder
     text = re.sub(r'\s*\*REPORTER CHECK HERE\*', '', text, flags=re.IGNORECASE)
+    # DEF-004: strip steno bracket artifact family
+    text = re.sub(r'\s*\[\|+\]\s*', ' ', text)
+    text = re.sub(r"\s*\['\]\s*", ' ', text)
+    text = re.sub(r'\s*\[\s*\|\s*\]\s*', ' ', text)
+    text = re.sub(r'\s*\[\s*\]\s*', ' ', text)
     text = re.sub(r'  +', ' ', text)
     return text
 
