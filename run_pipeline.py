@@ -79,6 +79,7 @@ ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
 ALL_STEPS = [
     ('extract_rtf.py',       'extract',      'Extract input -> raw text  [format auto-detected at runtime]'),
     ('steno_cleanup.py',     'steno',        'Steno cleanup -> cleaned text'),
+    ('label_qa.py',          'label_qa',     'Q/A structure labeler -> add Q./A. labels + blank separators to cleaned text'),
     ('ai_engine.py',         'ai',           'AI correction pass -> corrected text + correction log  [~56 min]'),
     ('verify_agent.py',      'verify',       'Pass 2: Haiku reviews HIGH corrections -> verify_log.json  [~1 min]'),
     ('apply_verify.py',      'apply_verify', 'Apply verify: re-tag DISAGREE items as [REVIEW] in corrected_text.txt'),
