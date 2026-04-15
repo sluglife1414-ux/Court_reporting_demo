@@ -687,6 +687,8 @@ def inject_anchors(text):
     #   Fix: eliminate regex passes entirely, use _strip_review_tags_safe() for all cases.
     text = _strip_review_tags_safe(text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
+    # DEF-011: strip *REPORTER CHECK HERE* placeholder — stripped in diff but was missing from output pass
+    text = re.sub(r'\s*\*REPORTER CHECK HERE\*', '', text, flags=re.IGNORECASE)
     # Strip [CORRECTED:] audit-trail tags — engine-generated, not for final output.
     # These are applied by apply_audio_validation.py to mark auto-corrections in corrected_text.txt.
     # The corrected text is already in place; the tag is an annotation only.
@@ -719,6 +721,8 @@ def strip_review_tags(text):
     text = _strip_review_tags_safe(text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
+    # DEF-011: strip *REPORTER CHECK HERE* placeholder
+    text = re.sub(r'\s*\*REPORTER CHECK HERE\*', '', text, flags=re.IGNORECASE)
     text = re.sub(r'  +', ' ', text)
     return text
 
