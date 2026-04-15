@@ -281,6 +281,71 @@ def check_names(ops: list, names_lock: Set[str]) -> ValidationResult:
     return ValidationResult(True)
 
 
+# ── Check 4: Clean 'to' field (DEF-005/013) ──────────────────────────────────
+
+# Patterns that indicate reasoning leaked into a REWORD.to field.
+# If any match, the op is rejected — reasoning belongs in 'reason', not 'to'.
+_REASONING_PATTERNS = re.compile(
+    r'\b(?:'
+    r'steno\s+artifact'
+    r'|token\s+\d+'
+    r'|tokens?\s+\d+-\d+'
+    r'|verify\s+audio'
+    r'|likely\s+(?:a\s+)?(?:steno|missing|dropped)'
+    r'|missing\s+clause'
+    r'|dropped\s+(?:steno|token|word|content|stroke)'
+    r'|mid.sentence\s+fragment'
+    r'|incoherent'
+    r'|unclear\s+parenthetical'
+    r'|possible\s+(?:dropped|missing)'
+    r'|high\s+confidence'
+    r'|low\s+confidence'
+    r'|paragraph\s+break\s+(?:likely|missing)'
+    r'|verify\s+(?:audio|attribution)'
+    r')',
+    re.IGNORECASE
+)
+
+
+def check_to_field_clean(ops: list) -> ValidationResult:
+    """
+    REWORD.to must contain only corrected transcript words — no reasoning.
+
+    Two hard checks:
+    1. Reasoning patterns: to field contains diagnostic phrases → reject
+    2. Length ratio: to is >4x longer than from AND >8 words → reject
+       (legitimate corrections are short; long to fields signal reasoning bleed)
+    """
+    for op in ops:
+        if op.get("op") != "REWORD":
+            continue
+
+        to_text = op.get("to", "")
+        from_text = op.get("from", "")
+
+        if _REASONING_PATTERNS.search(to_text):
+            return ValidationResult(
+                False,
+                f"REWORD.to at span {op.get('span')} contains reasoning text "
+                f"(DEF-005/013). The 'to' field must be corrected transcript words "
+                f"only. Move reasoning to 'reason' field or use FLAG instead. "
+                f"Offending text: '{to_text[:120]}'"
+            )
+
+        from_words = len(from_text.split()) if from_text.strip() else 1
+        to_words = len(to_text.split()) if to_text.strip() else 0
+        if to_words > max(from_words * 4, 12) and to_words > 8:
+            return ValidationResult(
+                False,
+                f"REWORD.to at span {op.get('span')} is suspiciously long: "
+                f"{to_words} words output vs {from_words} words input. "
+                f"Likely contains reasoning. Use FLAG for uncertain corrections. "
+                f"Offending text: '{to_text[:120]}'"
+            )
+
+    return ValidationResult(True)
+
+
 # ── Soft check: Word budget ───────────────────────────────────────────────────
 
 def check_word_budget(
@@ -389,10 +454,11 @@ def validate_ops(
 
     # Hard checks (any failure = reject the whole op list)
     for check_fn, args in [
-        (check_coverage, (ops, raw_token_count)),
-        (check_sources,  (ops,)),
-        (check_names,    (ops, names_lock)),
-        (check_word_budget, (ops, tokens)),
+        (check_coverage,      (ops, raw_token_count)),
+        (check_sources,       (ops,)),
+        (check_names,         (ops, names_lock)),
+        (check_to_field_clean,(ops,)),
+        (check_word_budget,   (ops, tokens)),
     ]:
         result = check_fn(*args)
         if not result.ok:

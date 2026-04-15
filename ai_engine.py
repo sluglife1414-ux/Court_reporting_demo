@@ -639,6 +639,16 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
             f'  {{"op": "REWORD", "span": [a, b], "from": "raw text", "to": "fixed text",\n'
             f'    "source": "SOURCE", "reason": "why"}}  — replace span with corrected text\n'
             f'  {{"op": "FLAG",   "span": [a, b], "reason": "..."}}  — uncertain, tag for reporter\n\n'
+            f"CRITICAL — 'to' FIELD RULE:\n"
+            f"  The 'to' field must contain ONLY the corrected transcript words.\n"
+            f"  NEVER put reasoning, notes, analysis, or explanations in 'to'.\n"
+            f"  NEVER reference token numbers in 'to' (e.g. 'token 52 likely...').\n"
+            f"  NEVER include 'steno artifact', 'verify audio', 'missing clause', or\n"
+            f"  similar diagnostic phrases in 'to'.\n"
+            f"  If you are uncertain → use FLAG, not REWORD with a long 'to'.\n"
+            f"  Put your reasoning in the 'reason' field — never in 'to'.\n"
+            f"  WRONG: {{\"to\": \"isopach — steno artifact, token 52 likely 'isopach'\"}}\n"
+            f"  RIGHT: {{\"to\": \"isopach\", \"reason\": \"token 52 likely isopach (geological term)\"}}\n\n"
             f"SOURCE (required on REWORD, exactly one of):\n"
             f"  raw_steno | case_dict | kb | names_lock | phonetic_match | house_style\n\n"
             f"SPAN RULE: spans must not overlap. If two corrections touch adjacent tokens,\n"
@@ -715,7 +725,7 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
                 ops = parsed.get('ops', [])
                 if not ops:
                     print(f'  [OPS-WARN] empty ops list — fallback', flush=True)
-                    return (chunk_content + '\n[[REVIEW: ops validator — empty ops list returned]]',
+                    return (chunk_content + '\n~~REVIEW: ops validator — empty ops list returned~~',
                             [], cache_create, cache_read, input_tok, output_tok)
                 # Normalize before validation: fix background-KEEP + patch overlap pattern
                 ops_norm = normalize_ops(ops, len(tokens))
@@ -736,7 +746,7 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
                     return corrected, corrections, cache_create, cache_read, input_tok, output_tok
                 else:
                     print(f'  [OPS-REJECTED] {result.reason[:100]}', flush=True)
-                    return (chunk_content + f'\n[[REVIEW: ops validator rejected — {result.reason[:160]}]]',
+                    return (chunk_content + f'\n~~REVIEW: ops validator rejected — {result.reason[:160]}~~',
                             [], cache_create, cache_read, input_tok, output_tok)
             else:
                 corrected = parsed.get('corrected_text', chunk_content)

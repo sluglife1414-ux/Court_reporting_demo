@@ -722,7 +722,13 @@ def inject_anchors(text):
     #   Root: [^\[]*? excludes [ but not ], so "[REVIEW: inner]" tail + outer-tag tail = one match
     #   Creates dangling [REVIEW: opener; safe stripper then ate from line 839 to 4133.
     #   Fix: eliminate regex passes entirely, use _strip_review_tags_safe() for all cases.
+    # Normalize legacy [[REVIEW:...]] double-bracket form → stripped below.
+    # ai_engine.py now emits ~~REVIEW:...~~ for system error tags; this handles
+    # any corrected_text.txt files produced before that change.
+    text = re.sub(r'\[\[', '[', text)
     text = _strip_review_tags_safe(text)
+    # Strip ~~REVIEW:...~~ system error tags (new format from ai_engine.py)
+    text = re.sub(r'\s*~~[^~]*~~\s*', ' ', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     # DEF-011: strip *REPORTER CHECK HERE* placeholder — stripped in diff but was missing from output pass
     text = re.sub(r'\s*\*REPORTER CHECK HERE\*', '', text, flags=re.IGNORECASE)
@@ -767,7 +773,9 @@ def strip_review_tags(text):
     # BUG HISTORY: .*? with re.DOTALL was eating 65,760 chars (34% of Easley) — fixed 2026-03-30
     # BUG HISTORY: regex pass1 matched ACROSS nested tags eating 3,294 lines — fixed 2026-04-13
     #   Use _strip_review_tags_safe() exclusively — eliminates all regex cross-tag issues.
+    text = re.sub(r'\[\[', '[', text)   # normalize legacy [[REVIEW: → [REVIEW:
     text = _strip_review_tags_safe(text)
+    text = re.sub(r'\s*~~[^~]*~~\s*', ' ', text)  # strip ~~REVIEW:...~~ system tags
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
     # DEF-011: strip *REPORTER CHECK HERE* placeholder
