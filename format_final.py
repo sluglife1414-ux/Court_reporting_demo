@@ -614,21 +614,20 @@ def _strip_review_tags_safe(text):
     n = len(text)
     while i < n:
         # Check for double-bracket form: [[TAGNAME:
+        # Use ]] delimiter scan rather than bracket depth-counting.
+        # Reason: tag content often contains steno artifact brackets ('[ [|] drill') that
+        # add unmatched depth — depth counter never reaches 0, eating the rest of the file.
+        # The ]] delimiter is specific to double-bracket forms and is safe to scan for.
         matched_double = False
         if text[i] == '[' and i + 1 < n and text[i+1] == '[':
             for tag in _REVIEW_TAG_NAMES:
                 if text[i+1:i+1+len(tag)] == tag:
-                    # Consume from the outer [ depth-aware
-                    depth = 0
-                    while i < n:
-                        if text[i] == '[':
-                            depth += 1
-                        elif text[i] == ']':
-                            depth -= 1
-                            if depth == 0:
-                                i += 1
-                                break
-                        i += 1
+                    # Scan forward for the ]] closing delimiter
+                    close_pos = text.find(']]', i + 2)
+                    if close_pos != -1:
+                        i = close_pos + 2   # skip past ]]
+                    else:
+                        i += 2              # no ]] found — skip just [[
                     matched_double = True
                     break
         if matched_double:
@@ -693,10 +692,27 @@ def inject_anchors(text):
         anchor = f'{{R:{idx}}}'
 
         if review_tag in text:
-            text = text.replace(review_tag, anchor, 1)
-            anchor_map[idx] = anchor
+            pos = text.find(review_tag)
+            # Guard: skip if the match is inside a [[REVIEW:...]] double-bracket form.
+            # text[pos-1]=='[' means the single-bracket [REVIEW:...] is the inner tag of
+            # [[REVIEW: ... [REVIEW: ...] ... ]] — replacing it here leaves outer_[{R:N}
+            # which strip_anchors can only remove if the anchor is immediately followed
+            # by ']'. When the outer [[REVIEW:...]] has more content after this inner tag,
+            # the pattern []{R:N}] doesn't match and the outer [ + ]] become orphans.
+            # Fix: skip injection and let _strip_review_tags_safe handle the whole outer form.
+            if pos > 0 and text[pos - 1] == '[':
+                pass  # skip — _strip_review_tags_safe will strip the [[REVIEW:...]] form
+            else:
+                text = text.replace(review_tag, anchor, 1)
+                anchor_map[idx] = anchor
         else:
-            # Partial match: try progressively shorter prefixes
+            # Partial match: try progressively shorter prefixes.
+            # GUARD: skip if prefix match lands inside [[REVIEW:...]] double-bracket form.
+            # If text[pos-1] == '[', we're matching the inner [REVIEW: of a [[REVIEW:...]] form.
+            # A non-depth-aware find(']') then only finds the first ] in content, leaving:
+            #   outer_[{R:N} + remaining content + ]] → orphaned ]] not caught by strip_anchors.
+            # Solution: skip prefix match when preceded by '['; let _strip_review_tags_safe handle
+            # the full [[REVIEW:...]] form as a unit.
             matched = False
             for prefix_len in (80, 60, 40, 20):
                 if prefix_len >= len(review_tag):
@@ -704,6 +720,9 @@ def inject_anchors(text):
                 prefix = review_tag[:prefix_len]
                 pos = text.find(prefix)
                 if pos != -1:
+                    # Skip if this match is inside a [[REVIEW:...]] double-bracket form
+                    if pos > 0 and text[pos - 1] == '[':
+                        break  # don't try shorter prefixes — they'll hit the same spot
                     end = text.find(']', pos)
                     if end != -1:
                         text = text[:pos] + anchor + text[end + 1:]
@@ -722,16 +741,17 @@ def inject_anchors(text):
     #   Root: [^\[]*? excludes [ but not ], so "[REVIEW: inner]" tail + outer-tag tail = one match
     #   Creates dangling [REVIEW: opener; safe stripper then ate from line 839 to 4133.
     #   Fix: eliminate regex passes entirely, use _strip_review_tags_safe() for all cases.
-    # Normalize legacy [[REVIEW:...]] double-bracket form → stripped below.
-    # ai_engine.py now emits ~~REVIEW:...~~ for system error tags; this handles
-    # any corrected_text.txt files produced before that change.
-    text = re.sub(r'\[\[', '[', text)
+    # _strip_review_tags_safe handles both [REVIEW:...] and [[REVIEW:...]] natively.
+    # DO NOT normalize [[ → [ here — that converts [[REVIEW:...]] into [REVIEW:...]]
+    # (single bracket open, double bracket close), and the single-bracket stripper
+    # stops at the first ], leaving a trailing ] in the output (root cause of DEF-012a).
     text = _strip_review_tags_safe(text)
     # Strip ~~REVIEW:...~~ system error tags (new format from ai_engine.py)
-    text = re.sub(r'\s*~~[^~]*~~\s*', ' ', text)
+    # DEF-012/013: ~~REVIEW:...~~ system error tags — use [\s\S]*? so multiline tags are caught
+    text = re.sub(r'\s*~~[\s\S]*?~~\s*', ' ', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
-    # DEF-011: strip *REPORTER CHECK HERE* placeholder — stripped in diff but was missing from output pass
-    text = re.sub(r'\s*\*REPORTER CHECK HERE\*', '', text, flags=re.IGNORECASE)
+    # DEF-011: strip *REPORTER CHECK HERE* — use \s+ so steno line-wrap (*REPORTER CHECK\nHERE*) is caught
+    text = re.sub(r'\s*\*REPORTER\s+CHECK\s+HERE\*', '', text, flags=re.IGNORECASE)
     # Strip [CORRECTED:] audit-trail tags — engine-generated, not for final output.
     # The corrected text is already in place; the tag is an annotation only.
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
@@ -773,13 +793,15 @@ def strip_review_tags(text):
     # BUG HISTORY: .*? with re.DOTALL was eating 65,760 chars (34% of Easley) — fixed 2026-03-30
     # BUG HISTORY: regex pass1 matched ACROSS nested tags eating 3,294 lines — fixed 2026-04-13
     #   Use _strip_review_tags_safe() exclusively — eliminates all regex cross-tag issues.
-    text = re.sub(r'\[\[', '[', text)   # normalize legacy [[REVIEW: → [REVIEW:
+    # _strip_review_tags_safe handles both [REVIEW:...] and [[REVIEW:...]] natively.
+    # DO NOT normalize [[ → [ — would leave trailing ] from ]] closing forms (DEF-012a root cause).
     text = _strip_review_tags_safe(text)
-    text = re.sub(r'\s*~~[^~]*~~\s*', ' ', text)  # strip ~~REVIEW:...~~ system tags
+    # DEF-012/013: ~~REVIEW:...~~ system error tags — use [\s\S]*? so multiline tags are caught
+    text = re.sub(r'\s*~~[\s\S]*?~~\s*', ' ', text)
     text = re.sub(r'\s*\[FLAG:[^\]]*\]', '', text)
     text = re.sub(r'\s*\[CORRECTED:[^\]]*\]', '', text)
-    # DEF-011: strip *REPORTER CHECK HERE* placeholder
-    text = re.sub(r'\s*\*REPORTER CHECK HERE\*', '', text, flags=re.IGNORECASE)
+    # DEF-011: strip *REPORTER CHECK HERE* — use \s+ so steno line-wrap (*REPORTER CHECK\nHERE*) is caught
+    text = re.sub(r'\s*\*REPORTER\s+CHECK\s+HERE\*', '', text, flags=re.IGNORECASE)
     # DEF-004: strip steno bracket artifact family
     text = re.sub(r'\s*\[\|+\]\s*', ' ', text)
     text = re.sub(r"\s*\['\]\s*", ' ', text)
