@@ -252,7 +252,7 @@ def main():
     # Only needed when we're actually running the extract step.
     # --skip-ai and --from <post-ai-step> both bypass extraction entirely.
     # Also skip if starting from steno and extracted_text.txt already exists.
-    has_extracted = os.path.exists(os.path.join(job_dir, 'extracted_text.txt'))
+    has_extracted = os.path.exists('extracted_text.txt')
     needs_extract = (
         not args.skip_ai and
         (not args.start_from or args.start_from in ('extract', 'steno')) and
