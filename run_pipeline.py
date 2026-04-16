@@ -251,9 +251,12 @@ def main():
     # ── Step 1: detect input format and swap extractor if needed ─────────────
     # Only needed when we're actually running the extract step.
     # --skip-ai and --from <post-ai-step> both bypass extraction entirely.
+    # Also skip if starting from steno and extracted_text.txt already exists.
+    has_extracted = os.path.exists(os.path.join(job_dir, 'extracted_text.txt'))
     needs_extract = (
         not args.skip_ai and
-        (not args.start_from or args.start_from in ('extract', 'steno'))
+        (not args.start_from or args.start_from in ('extract', 'steno')) and
+        not (args.start_from == 'steno' and has_extracted)
     )
     steps_list = ALL_STEPS[:]
     if needs_extract:
@@ -262,6 +265,7 @@ def main():
             print("[ERROR] No input file found.")
             print("        Need a .sgngl (job dir or ../mb_*/) or a .rtf (job dir).")
             print("        Copy the input file here, or run with --skip-ai if AI is already done.")
+            print("        OR place extracted_text.txt in the job dir and use --from steno.")
             sys.exit(1)
         # Swap step 1 with the detected extractor
         steps_list[0] = (script, 'extract', desc)
