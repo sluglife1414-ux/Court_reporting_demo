@@ -732,7 +732,7 @@ def inject_anchors(text):
 
     # Strip any [REVIEW] tags that didn't match a LOW/N/A item, and all [FLAG] tags
     # Single-pass safe stripper — depth-aware, handles nested brackets correctly.
-    # [REVIEW:] and [FLAG:] tags are ENGINE-GENERATED — defined in MASTER_DEPOSITION_ENGINE_v4.1.md
+    # [REVIEW:] and [FLAG:] tags are ENGINE-GENERATED — defined in MASTER_DEPOSITION_ENGINE_v4.2.md
     # These are NOT from MB, the CR, or CaseCATalyst. They are our internal AI uncertainty flags.
     # Format: [REVIEW: explanation — reporter confirm] (verify-agent style)
     #      or [REVIEW: explanation] (standard inline style)
@@ -786,7 +786,7 @@ def strip_review_tags(text):
     is available.  Normal path uses inject_anchors() instead.
     Uses depth-aware safe stripper — handles nested brackets without eating content.
     """
-    # [REVIEW:] and [FLAG:] tags are ENGINE-GENERATED — defined in MASTER_DEPOSITION_ENGINE_v4.1.md
+    # [REVIEW:] and [FLAG:] tags are ENGINE-GENERATED — defined in MASTER_DEPOSITION_ENGINE_v4.2.md
     # These are NOT from MB, the CR, or CaseCATalyst. They are our internal AI uncertainty flags.
     # Format: [REVIEW: explanation — reporter confirm] (verify-agent style)
     #      or [REVIEW: explanation] (standard inline style)

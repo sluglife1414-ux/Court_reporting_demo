@@ -1,9 +1,9 @@
 # ═══════════════════════════════════════════════════════════════════
-# MASTER DEPOSITION TRANSFORMATION ENGINE — v4.1
+# MASTER DEPOSITION TRANSFORMATION ENGINE — v4.2
 # UNIVERSAL CORE — STATE AGNOSTIC
 # ═══════════════════════════════════════════════════════════════════
 # Author:        Scott + Claude
-# Version:       4.1
+# Version:       4.2
 # Built for:     Claude Co-Work + Claude Code (file-based, no paste)
 # ─────────────────────────────────────────────────────────────────
 # CHANGELOG:
@@ -13,12 +13,24 @@
 #           Deposition Summary, Delivery Package, Proof of Work
 #   v4.0 — STATE AGNOSTIC REBUILD: state rules extracted into
 #           separate STATE_MODULE files. Core engine never changes.
-#   v4.2 — ANTI-HALLUCINATION HARDENING:
-#           - Word Budget Rule: output word count must >= input word count
-#           - Gate 3 (Source Check) added before confidence gate
-#           - Banned patterns list: "reporter check here", "health care" phantom,
-#             name guessing, block collapse
-#           - All gates renumbered (old Gate 3/4 = new Gate 4/5)
+#   v4.2 — ANTI-HALLUCINATION HARDENING + Q/A CONTRADICTION FIX (SPEC-2026-04-17-chunk01-3file):
+#
+#           ANTI-HALLUCINATION HARDENING (previously documented, now formally released):
+#             - Word Budget Rule: output word count must >= input word count
+#             - Gate 3 (Source Check) added before confidence gate
+#             - Banned patterns list: "reporter check here", "health care" phantom,
+#               name guessing, block collapse
+#             - All gates renumbered (old Gate 3/4 = new Gate 4/5)
+#
+#           Q/A CONTRADICTION FIX:
+#             - Layer 1A line 391: narrowed prohibition to apply only when no pipeline labels present
+#             - New rules added after line 404: pipeline pre-labeled input preservation,
+#               dense inline block breakup, MR. LASTNAME verbatim preservation
+#             - ROUGH_DRAFT MODE line 592: preserve pipeline labels when present;
+#               assign based on speaker context when absent
+#             - Layer 11 lines 829-830: carve-out for pipeline-labeled input;
+#               flag-don't-fix on strict alternation
+#             - Establishes AI as sole Q/A labeling authority
 #   v4.1 — ELITE CR STANDARD UPGRADE:
 #           - Layer 1 rewritten with Elite CR Blueprint as identity DNA
 #           - Layer 1A added: IDENTIFY first, FIX second operating mode
@@ -33,7 +45,7 @@
 # ─────────────────────────────────────────────────────────────────
 # HOW TO USE:
 #   Drop these files into your workspace together:
-#     1. MASTER_DEPOSITION_ENGINE_v4.1.md  ← this file (always)
+#     1. MASTER_DEPOSITION_ENGINE_v4.2.md  ← this file (always)
 #     2. STATE_MODULE_[state].md            ← pick the right state
 #     3. Your raw deposition file
 #     4. case_info.txt                      ← recommended
@@ -388,7 +400,7 @@ INTERPOLATION PROHIBITION
 Interpolation = adding content that was not in the original steno.
 
 PROHIBITED interpolations:
-  ✗ Adding Q./A. labels where none existed in steno
+  ✗ Adding Q./A. labels where none existed in steno AND no pipeline pre-labeling is present
   ✗ Adding "BY MR. X:" examination headers not in steno
   ✗ Adding sworn-in boilerplate if not in steno
   ✗ Adding "(Whereupon, the proceedings were adjourned...)" if not spoken
@@ -402,6 +414,27 @@ PROHIBITED interpolations:
   A "BY MR. HOBBY:" that exists in steno MUST appear in output.
   A "(Whereupon, Exhibit No. 142, was marked for Identification.)" that
   exists in steno MUST appear in output. Dropping it = deletion = violation.
+
+  ⚠️ PIPELINE PRE-LABELED INPUT:
+  When your input already contains Q./A. labels (added by the pre-processing
+  pipeline before this AI pass), treat those labels exactly as steno-sourced labels.
+  PRESERVE THEM. The prohibition above applies to AI-invented labels with no source.
+  Pipeline-assigned labels already exist in your input — R8 (verbatim preservation)
+  governs them. Do NOT remove, re-order, or re-assign labels you find in your input
+  unless you have a phonetic/semantic source that overrides them.
+
+  ⚠️ DENSE INLINE BLOCKS:
+  When you encounter dense inline content (e.g., "Q. text A. text Q. text" on
+  a single line or in a single block), break it into proper speaker turns — one
+  utterance per turn. Re-label Q. and A. based on speaker context. Log every
+  structural change (turn break, re-label) to Proof of Work.
+
+  ⚠️ SPEAKER LABEL PRESERVATION (addresses DEF-B):
+  PRESERVE MR. [LASTNAME]: speaker labels EXACTLY as they appear in source,
+  regardless of position (pre-examination, mid-examination, post-examination).
+  Do not strip, collapse, or normalize these labels. If a label appears
+  malformed (e.g., MR LASTNAME without period, lowercase), flag in Proof of
+  Work but preserve verbatim in output.
 
 PERMITTED:
   ✓ Correcting a steno artifact to the clearly intended word (HIGH confidence)
@@ -589,7 +622,7 @@ They are NON-NEGOTIABLE. Apply every single time without exception.
 
   ROUGH_DRAFT MODE — rules in effect:
     LOAD (structural/mechanical — always reliable even with fragmented input):
-      - Q./A. format and speaker labels (universal)
+      - Q./A. format and speaker labels — preserve pipeline labels when present; assign based on speaker context when absent
       - Em dash for interruption; ellipsis for trailing off
       - Exhibit label capitalization
       - Capitalization rules (10.1–10.10)
@@ -826,7 +859,12 @@ Before producing any output, run this checklist:
   [ ] House style module loaded and applied (if present)?
   [ ] Speaker labels consistent throughout?
   [ ] No Q. without following A. before next Q.?
+      EXCEPTION: When input arrived with pipeline-assigned labels,
+      preserve them. Long questions split across sentences may produce
+      legitimate consecutive Q. lines. Flag for human review, do NOT auto-correct.
   [ ] No two Q. lines in a row without A. between?
+      EXCEPTION: Same as above. Preservation of pipeline labels overrides
+      strict alternation. Flag-don't-fix.
   [ ] All exhibits tracked and labeled?
   [ ] No sentences truncated across chunk boundaries?
   [ ] All flags include line reference?
@@ -1025,7 +1063,7 @@ When complete, print to screen:
 ===========================================================
 MAINTAINER NOTES
 ===========================================================
-VERSION:      4.1
+VERSION:      4.2
 CORE TYPE:    Universal — state agnostic
 STATE RULES:  Loaded from STATE_MODULE_*.md at runtime
 LEARNING:     Edge Case Digest feeds corrections_log each session
@@ -1050,7 +1088,7 @@ ACCURACY BASELINES (v4.0 engine — ground truth vs approved finals):
   Easley  (LA,   MB):  engine 76.2%                         223 pages
   Target with v4.1:    testimony ≥ 93%, 6-agent flag rate < 10%
 
-NEXT UPGRADE IDEAS (v4.2 / v5):
+NEXT UPGRADE IDEAS (v5):
   - Auto-glossary builder from first-run corrections
   - Billing/invoice output file
   - Audio timestamp cross-reference
@@ -1303,5 +1341,5 @@ common error with significant legal consequence.
   "Comprised of" is ALWAYS incorrect. Use "composed of."
 
 ═══════════════════════════════════════════════════════════════════
-END OF MASTER DEPOSITION TRANSFORMATION ENGINE v4.1
+END OF MASTER DEPOSITION TRANSFORMATION ENGINE v4.2
 ═══════════════════════════════════════════════════════════════════

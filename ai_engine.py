@@ -400,7 +400,7 @@ def build_system_prompt():
     state_module, house_style, kb, reporter_name, state_label, dictionary_setting = load_cr_config(engine_dir)
 
     engine_files = [
-        ('MASTER_DEPOSITION_ENGINE_v4.1.md', 'MASTER DEPOSITION TRANSFORMATION ENGINE v4.1'),
+        ('MASTER_DEPOSITION_ENGINE_v4.2.md', 'MASTER DEPOSITION TRANSFORMATION ENGINE v4.2'),
         state_module,
         house_style,
         kb,
