@@ -13,6 +13,36 @@
 #   4. When done with a task, say so clearly so Scott can log it.
 # ═══════════════════════════════════════════════════════════════════
 
+## SESSION 2026-04-17 — Sync & Evidence Recovery COMPLETE
+
+Commits this session:
+  4e9a825 — Evidence file skeleton preserved
+  485b98b — Evidence file completed (page 16, 11, 19 excerpts)
+  3bb834e — Sprint docs rebuilt (stale since 2026-03-30)
+  50a810a — Worktree rebased onto master (3 Apr 16 commits pulled)
+  2b03ad5 — D-21 filed across DEFECT_LOG + sprint + board
+
+Protocol gaps caught and fixed:
+  - April 16 evidence had no button-up note — evidence lost
+    until today's ramp-up recovered it from chat history
+  - Acceptance test gap (D-21) would have green-lit Brandl v5
+    with cascade defects
+  - Naming collision (DEF-014 vs existing D-14) caught before
+    commit
+  - Truncation between chat windows required smaller message
+    blocks for full evidence transfer
+
+Next session: Opus writes coordinated 3-file design spec in
+fresh context. Scott will bootstrap new Opus session with
+prepared message. Sonnet builds from spec once Scott approves.
+
+Housekeeping for Scott (non-urgent):
+  - 3 April 16 commits (daee554, 2fbf71f, c7529f8) exist on
+    local master only — never pushed to origin. Push when
+    convenient.
+
+---
+
 ## SPRINT GOAL
 
 One track: **Brandl Q/A defect fix — design spec first, then coordinated 3-file fix.**
