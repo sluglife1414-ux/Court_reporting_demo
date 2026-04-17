@@ -41,8 +41,33 @@ print()
 
 # ── Check definitions ─────────────────────────────────────────────────────────
 # Each check: (defect_id, description, regex_pattern, target_count)
-# target_count = 0 means "must be zero to pass"
-# target_count = None means "informational only — show count, no pass/fail"
+# target_count = 0              means "must be zero to pass"
+# target_count = ('min', N)     means "must have at least N matches to pass"
+# target_count = None           means "informational only — show count, no pass/fail"
+#
+# Min-check failure messages (MB-readable) for ('min', N) checks that fire at count=0:
+MIN_FAIL_MESSAGES = {
+    'DEF-014': (
+        'No Q./A. labels found in output. Every deposition transcript must have '
+        'Q. and A. labeled testimony lines. This means Q/A labeling completely '
+        'failed during AI processing. Escalate to engineering.'
+    ),
+    'DEF-016': (
+        'No MR. LASTNAME: attorney speaker labels found in output. Every deposition '
+        'has multiple attorneys speaking. This likely means labels were stripped '
+        'during processing. Escalate to engineering.'
+    ),
+    'DEF-017': (
+        'No EXAMINATION section headers found in output. A deposition always has '
+        'at least one examination section. This indicates structural damage to the '
+        'transcript. Escalate to engineering.'
+    ),
+    'DEF-018': (
+        'No BY MR. NAME attorney attribution found in output. Attorneys must be '
+        'attributed for every examination section. This indicates attorney '
+        'attribution was stripped. Escalate to engineering.'
+    ),
+}
 
 CHECKS = [
     # DEF-011 — *REPORTER CHECK HERE* in output
@@ -140,6 +165,55 @@ CHECKS = [
         0,
     ),
 
+    # DEF-014 — Q./A. labeled testimony lines present (v4.2 AI labeling authority)
+    # Min check: AI is now sole Q/A labeling authority (SPEC-2026-04-17-chunk01-3file).
+    # Count must be >= 1. Zero means the AI completely failed to assign Q./A. labels.
+    (
+        'DEF-014',
+        'Q./A. labeled testimony lines present (AI labeling check)',
+        r'^\s*\d+\s+[QA]\.\s',
+        ('min', 1),
+    ),
+
+    # DEF-015 — Dense inline Q/A blocks (multiple turns crammed on one line)
+    # Target = 0: a Q./A. label followed by content then another Q./A. label on the
+    # same line = speaker turns not properly separated into distinct blocks.
+    (
+        'DEF-015',
+        'Dense inline Q/A blocks (multiple turns on one line)',
+        r'[QA]\.\s{1,6}[A-Z].{20,}[QA]\.\s{1,6}[A-Z]',
+        0,
+    ),
+
+    # DEF-016 — MR. LASTNAME: attorney speaker labels preserved (output-only)
+    # Option 3 structural check: total-strip is the production failure (DEF-B).
+    # Zero count IS the failure signature. Partial strip = regression-harness scope.
+    (
+        'DEF-016',
+        'MR. LASTNAME: attorney speaker labels in output',
+        r'MR\.\s+[A-Z]+:',
+        ('min', 1),
+    ),
+
+    # DEF-017 — EXAMINATION section headers preserved (output-only)
+    # Option 3 structural check: zero EXAMINATION headers = structural damage.
+    (
+        'DEF-017',
+        'EXAMINATION section headers in output',
+        r'^\s*\d*\s*(?:CROSS-)?(?:RE-?)?(?:DIRECT\s+)?EXAMINATION',
+        ('min', 1),
+    ),
+
+    # DEF-018 — BY MR. LASTNAME: attorney attribution lines preserved (output-only)
+    # Option 3 structural check: zero BY MR. lines = attorney attribution stripped.
+    # Colon required in pattern to exclude narrative "by Mr. Surname" mid-sentence.
+    (
+        'DEF-018',
+        'BY MR. LASTNAME: attorney attribution in output',
+        r'BY MR\.\s+[\w-]+:',
+        ('min', 1),
+    ),
+
     # Page count — informational
     (
         'INFO-pages',
@@ -165,6 +239,10 @@ for defect_id, description, pattern, target in CHECKS:
 
     if target is None:
         status = INFO
+    elif isinstance(target, tuple) and target[0] == 'min':
+        status = PASS if count >= target[1] else FAIL
+        if status == FAIL:
+            any_fail = True
     elif count <= target:
         status = PASS
     else:
@@ -184,14 +262,27 @@ print(f'  {"ID":<12} {"STATUS":<6} {"COUNT":>6}  {"TARGET":>6}  DESCRIPTION')
 print(f'  {"-"*12} {"-"*6} {"-"*6}  {"-"*6}  {"-"*35}')
 
 for defect_id, description, count, target, status, matches in results:
-    target_str = str(target) if target is not None else '—'
+    if target is None:
+        target_str = '—'
+    elif isinstance(target, tuple) and target[0] == 'min':
+        target_str = f'>={target[1]}'
+    else:
+        target_str = str(target)
     print(f'  {defect_id:<12} {status:<6} {count:>6}  {target_str:>6}  {description}')
 
 print()
 
-# Print sample hits for any FAILing check (first 3 matches)
+# Print details for any FAILing check
 for defect_id, description, count, target, status, matches in results:
-    if status == FAIL and matches:
+    if status != FAIL:
+        continue
+    if not matches and defect_id in MIN_FAIL_MESSAGES:
+        # Min-check failure with zero hits — show MB-readable message
+        print(f'  {defect_id} — STRUCTURAL FAILURE:')
+        print(f'    {MIN_FAIL_MESSAGES[defect_id]}')
+        print()
+    elif matches:
+        # Max-check failure — show first offending lines
         print(f'  {defect_id} — first hits:')
         for m in matches[:3]:
             snippet = m.strip()[:80]
