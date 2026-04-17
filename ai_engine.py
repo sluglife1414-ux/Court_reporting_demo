@@ -616,8 +616,8 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
             f"RE-ANCHOR: You are mid-examination. "
             f"Last labeled line in previous chunk was {qa_anchor}. "
             f"Next expected label is {next_label}. "
-            f"CRITICAL: Every line of testimony must begin with Q. or A. "
-            f"Do not return any unlabeled testimony lines.\n\n"
+            f"PRESERVE existing Q./A. labels verbatim — do not reassign or remove them. "
+            f"If a testimony line arrives unlabeled, assign based on context.\n\n"
         )
     else:
         anchor_header = ''
