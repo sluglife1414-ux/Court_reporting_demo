@@ -4,7 +4,7 @@
 # ═══════════════════════════════════════════════════════════════════
 # Written by: Project Lead Claude
 # For:        Code Claudes working in Claude Code
-# Updated:    2026-03-30
+# Updated:    2026-04-17
 # ═══════════════════════════════════════════════════════════════════
 # BEFORE YOU TOUCH ANYTHING:
 #   1. Read CLAUDE.md fully — technical ground truth.
@@ -15,10 +15,13 @@
 
 ## SPRINT GOAL
 
-Three parallel tracks:
-1. **Leon folder setup** — copy engine to alicia_demo/, configure for CA WCAB
-2. **verify_agent.py first run** — run on Fourman WCB, report results
-3. **build_review_sheet.py** — CR listening queue, replaces QA_FLAGS.txt
+One track: **Brandl Q/A defect fix — design spec first, then coordinated 3-file fix.**
+
+The April 13-15 defect sprint closed DEF-001 through DEF-013 and passed the
+acceptance test. But the acceptance test is blind to Q/A structural defects.
+April 16 evidence session found three live defects (DEF-A, DEF-A2, DEF-B)
+rooted in a prompt contradiction across three files. Fix requires a design spec
+before any code is touched. All three files change together or none change.
 
 ---
 
@@ -26,14 +29,16 @@ Three parallel tracks:
 
 **Active engine:** `C:\Users\scott\OneDrive\Documents\mb_demo_engine_v4\`
 **GitHub:** https://github.com/sluglife1414-ux/Court_reporting_demo (PRIVATE, branch: court_reporting)
-**Last cold run:** Fourman WCB (M.D.) — 27 pages vs AD's 28. All format bugs fixed. ✅
+**Last full run:** Brandl v5 — 354 pages, acceptance test PASS (2026-04-15)
+**Acceptance test caveat:** Passes on artifact/reasoning bleed only. BLIND to Q/A structural defects.
 
 **The pipeline (run in order via run_pipeline.py):**
 ```
 extract_rtf.py      → raw_text.txt
 steno_cleanup.py    → cleaned_text.txt
+label_qa.py         → labeled_text.txt  (pre-AI Q/A structure labeler — added 2026-04-15)
 ai_engine.py        → corrected_text.txt  (Claude API, ~56 min, checkpoints every chunk)
-extract_config.py   → depo_config.json    (auto-extracts 19 case metadata fields)
+extract_config.py   → depo_config.json
 format_final.py     → FINAL_FORMATTED.txt
 build_pdf.py        → FINAL.pdf
 build_transcript.py → FINAL_TRANSCRIPT.txt
@@ -52,89 +57,88 @@ python run_pipeline.py --dry-run   # preview without running
 **⚠️ CRITICAL:** NEVER run without --skip-ai if corrected_text.txt already exists and is >50KB.
 That overwrites 56 minutes of API work.
 
-**3-pass architecture (current design):**
-```
-Pass 1 — ai_engine.py         → corrected_text.txt + correction_log.json
-Pass 2 — verify_agent.py      → second-opinion on HIGH confidence items [BUILT, NOT RUN]
-Pass 3 — audio_agent.py       → Whisper API on REVIEW gaps [DESIGNED, NOT BUILT]
-```
-
 **Style module rule:** Each CR has their own HOUSE_STYLE_MODULE. NEVER cross-load.
 muir.md = MB (LA civil). dalotto.md = AD (NY WC). They are different CRs in different states.
 
 ---
 
-## ⚠️ OPEN ITEMS THAT AFFECT YOUR WORK
+## ⚠️ OPEN DEFECTS THAT AFFECT YOUR WORK
 
 Do not resolve these without Scott's input — flag and wait:
 
-- **AD_QUESTIONS.md** has 6 open items for Alicia D'Alotto. Do not finalize NY WC format
-  until those are answered.
-- **No STATE_MODULE_california_wcab.md exists.** Leon (alicia_demo/) is CA WCAB.
-  You will need to create a stub — flag to Scott before going live on that run.
-- **verify_agent.py has never been run.** Fourman is the baseline. Run it, report results,
-  do NOT make judgment calls about what the agent gets wrong — report only.
+- **DEF-A (Q/A Cascade)** — CRITICAL. label_qa.py toggle flips per sentence, not per
+  speaker turn. Three speaker turns collapse into one Q block. Inverts Q/A for remainder
+  of examination. Evidence: `/docs/evidence/2026-04-16_chunk_01_defects.md`
+
+- **DEF-A2 (Empty Q label)** — AI enforces alternation with no content to label.
+  Empty Q. label on page 16 line 9. Same evidence file.
+
+- **DEF-B (MR. name strip — context-dependent)** — Pre-examination speaker labels
+  stripped to bare "MR." Mid-examination preserved. Mechanism unknown.
+  Same evidence file.
+
+- **Prompt contradiction (root cause of DEF-A/A2 unpredictability):**
+  Three conflicting instructions in MASTER_DEPOSITION_ENGINE_v4.1.md:
+  Layer 1A line 391 ("Do NOT add Q/A labels") vs Layer 11 lines 829-830
+  ("Enforce Q/A alternation") vs API_MODE_OVERRIDE anchor ("Every line must
+  begin with Q. or A."). These conflict. Fixing any one file without the others
+  makes it worse.
+
+- **DEF-014 (Acceptance test blind to Q/A structure)** — To be filed. Current
+  test only checks for reasoning bleed. No structural integrity checks exist.
 
 ---
 
 ## ACTIVE TASKS
 
-### TASK 1 — Leon folder setup
+### TASK 1 — Sync worktree to main (SYNC STEP 3)
 **Status:** READY
-**Folder:** `C:\Users\scott\OneDrive\Documents\alicia_demo\`
-**RTF:** `0313Leon2026_T.rtf` (CaseCATalyst, March 13, California WCAB)
-**Audio:** `-7849480339599919352.mp3` (iPhone Voice Memo, 13m 53s) — audio agent test PENDING
+Main repo has 3 commits not in this worktree:
+  - daee554: fix(ai_engine): SSL/KeyboardInterrupt retry
+  - 2fbf71f: fix(run_pipeline): os.path.exists
+  - c7529f8: fix(run_pipeline): skip input check when --from steno
 
 Steps:
-1. Confirm the alicia_demo/ folder exists and RTF is there
-2. Copy the pipeline scripts from mb_demo_engine_v4/ into alicia_demo/
-   (or confirm run_pipeline.py can point at the folder — check first)
-3. Create a stub `depo_config.json` for Leon — flag all fields you can't auto-detect
-4. Create a stub `STATE_MODULE_california_wcab.md` — mark it DRAFT, flag to Scott
-5. Do NOT run the AI pass yet — report ready state and wait
+1. Pull those 3 commits into this worktree
+2. Report merge result — no conflicts expected (pipeline fixes only)
 
 ---
 
-### TASK 2 — Run verify_agent.py on Fourman
-**Status:** READY
-**Folder:** `C:\Users\scott\OneDrive\Documents\ad_foreman_0324\`
-**Script:** `verify_agent.py` (also in mb_demo_engine_v4/ as specialist_verify.py)
-**Input:** correction_log.json from the Fourman run (122 corrections: 62 HIGH / 42 MED / 18 LOW)
-
-Steps:
-1. Confirm verify_agent.py exists in ad_foreman_0324/ (or copy from mb_demo_engine_v4/)
-2. Run it against the Fourman correction_log.json
-3. Report:
-   - How many HIGH items did it agree with / flag / overturn?
-   - Any new catches the AI pass missed?
-   - Any false positives (things the agent called wrong that are actually right)?
-4. Do NOT auto-apply changes — report only. Scott decides what to accept.
+### TASK 2 — Review April 16 commits for design conflicts (SYNC STEP 4)
+**Status:** READY (after TASK 1)
+Read the diff for each of the 3 commits above — especially any changes to
+ai_engine.py. Need to understand what changed before designing the qa_anchor
+rewrite. Report findings. Do NOT make judgment calls — report only.
 
 ---
 
-### TASK 3 — Build build_review_sheet.py
-**Status:** READY TO DESIGN
-**Purpose:** Replace QA_FLAGS.txt with a structured CR listening queue
-**Output format (per gap):**
-```
-Page [X], Line [Y]
-Context: "[5 words before] >>> [REVIEW WORD] <<< [5 words after]"
-Audio timestamp: [MM:SS] (if audio file present in folder)
-Action needed: [LISTEN / CONFIRM NAME / SUPPLY]
-```
+### TASK 3 — File DEF-014 in DEFECT_LOG.md (SYNC STEP 5)
+**Status:** READY
+Add new row to DEFECT_LOG.md:
+  ID: DEF-014
+  Date: 2026-04-17
+  Status: OPEN
+  Symptom: Acceptance test passes on output with inverted Q/A cascade
+  Root Cause: acceptance_test.py only checks for AI reasoning bleed.
+    No structural Q/A integrity checks exist.
+  Fix: Design structural Q/A checks for acceptance_test.py — minimum:
+    (1) empty Q. label check, (2) Q/A ratio sanity check, (3) cascade
+    detection (A immediately follows Q with no content between)
+  Commit: (pending)
 
-Steps:
-1. Read QA_FLAGS.txt from the Fourman FINAL_DELIVERY/ to understand current format
-2. Read format_final.py — find where [REVIEW] tags are generated and stripped
-3. Design build_review_sheet.py to:
-   - Read corrected_text.txt and find all [REVIEW] tags
-   - Map each tag to page/line using line_map.json (if it exists) or derive from format
-   - Extract 5-word context window around each tag
-   - If an audio file exists in the folder, calculate approximate timestamp
-     (timestamp = audio_length * (review_line / total_lines))
-   - Output REVIEW_SHEET.txt in FINAL_DELIVERY/
-4. Add build_review_sheet.py as a step in run_pipeline.py (after build_deliverables.py)
-5. FORK: if timestamp calculation is complex, flag it — Scott may want to defer
+---
+
+### TASK 4 — Opus design spec (NEXT SESSION — do not start without Scott)
+**Status:** WAITING ON SCOTT
+**Prerequisite:** SYNC STEPs 3 and 4 must be complete. Opus needs Apr 16 commit diffs (especially ai_engine.py changes) before finalizing spec.
+Opus will design the coordinated 3-file fix:
+  - label_qa.py: remove Q/A assignment, keep structure detection only
+  - MASTER_DEPOSITION_ENGINE_v4.1.md: resolve the three-way contradiction,
+    make AI the sole Q/A authority
+  - ai_engine.py qa_anchor: rewrite or remove
+
+Do not touch these files until the design spec is written and Scott approves.
+All three change together or none change.
 
 ---
 
@@ -142,8 +146,13 @@ Steps:
 
 | Task | Completed | Notes |
 |------|-----------|-------|
-| PROJECT_BOARD.md updated | 2026-03-30 | Full state captured — PM bot now current |
-| CURRENT_SPRINT.md updated | 2026-03-30 | Replaced stale 78%→90% sprint with current tasks |
+| DEF-001 through DEF-013 closed | 2026-04-13–15 | See DEFECT_LOG.md |
+| label_qa.py added to pipeline | 2026-04-15 | Pre-AI Q/A structure labeler |
+| acceptance_test.py built | 2026-04-15 | Passes Brandl v5 — caveat: blind to Q/A structure |
+| Brandl v5 acceptance test PASS | 2026-04-15 | 354 pages, zero bleed |
+| April 16 evidence preserved | 2026-04-17 | docs/evidence/2026-04-16_chunk_01_defects.md |
+| CURRENT_SPRINT.md updated | 2026-04-17 | This file — replacing stale 2026-03-30 version |
+| PROJECT_BOARD.md updated | 2026-04-17 | Replacing stale 2026-03-30 version |
 
 ---
 
@@ -167,5 +176,5 @@ Over-communicate. Scott wants to know everything.
 
 ---
 *Written by: Project Lead Claude*
-*Last updated: 2026-03-30*
-*Next update: when Scott pings with new progress or decisions*
+*Last updated: 2026-04-17*
+*Next update: after SYNC STEPs 3-5 complete and design spec session scheduled*

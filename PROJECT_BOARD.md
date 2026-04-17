@@ -16,7 +16,7 @@
 **Project:**      Deposition Transformation Engine
 **Active repo:**  `C:\Users\scott\OneDrive\Documents\mb_demo_engine_v4\`
 **GitHub:**       https://github.com/sluglife1414-ux/Court_reporting_demo (PRIVATE, branch: court_reporting)
-**Job folder:**   `C:\Users\scott\OneDrive\Documents\ad_foreman_0324\` (last run)
+**Job folder:**   `C:\Users\scott\OneDrive\Documents\mb_demo_engine_v4\` (Brandl active)
 **Version:**      v4.1 (state-agnostic core, config-driven builds, 2-pass verify)
 **Goal:**         90%+ automated depo cleanup, lawyer-ready output
 **Run cost:**     ~$0.007/page actual — 13x headroom under $0.10 design ceiling
@@ -37,8 +37,8 @@ Their brand. Their certification. Our engine = their power tool.
 **Current CRs in pipeline:**
 | Reporter | Location | Specialty | Status |
 |----------|----------|-----------|--------|
-| MB (Marybeth E. Muir, CCR, RPR) | Louisiana | Civil, engineering/petroleum | Active — meeting today 3/30 |
-| AD (Alicia D'Alotto) | New York | Workers Comp Board (WCB) | Fourman cold test ✅ complete |
+| MB (Marybeth E. Muir, CCR, RPR) | Louisiana | Civil, engineering/petroleum | Active — Brandl defect fix in progress |
+| AD (Alicia D'Alotto) | New York | Workers Comp Board (WCB) | Fourman cold test ✅ complete — on hold |
 
 ---
 
@@ -51,7 +51,7 @@ Every run drops these in `FINAL_DELIVERY/`:
 4. `EXHIBIT_INDEX.txt`
 5. `DEPOSITION_SUMMARY.txt` (Haiku AI, ~$0.06/depo)
 6. `MEDICAL_TERMS_LOG.txt` (WC/medical cases)
-7. `QA_FLAGS.txt` → being replaced by `build_review_sheet.py` (next build)
+7. `QA_FLAGS.txt` → being replaced by `build_review_sheet.py` (backlog)
 8. `PROOF_OF_WORK.txt`
 9. `DELIVERY_CHECKLIST.txt`
 10. `WORD_CONCORDANCE.txt` (3-column layout, speaker index)
@@ -78,6 +78,14 @@ Pass 3 — Audio Agent (audio_agent.py) [DESIGNED, NOT BUILT]
 CR approves → certified final
 ```
 
+**Pre-AI step added 2026-04-15:**
+```
+label_qa.py — runs after steno_cleanup, before ai_engine
+  → Detects testimony sections, assigns structural Q/A blocks
+  → ⚠️ UNDER REVISION — Q/A assignment logic has cascade bug (DEF-A)
+     Design spec required before next AI run
+```
+
 **CR state module system:**
 - Each CR has their own `HOUSE_STYLE_MODULE_<name>.md`
 - Each state has its own `STATE_SPECS/` config
@@ -89,9 +97,9 @@ CR approves → certified final
 
 | Depo | Reporter | Pages (ours) | Pages (CR) | Gap | Status |
 |------|----------|-------------|------------|-----|--------|
-| Easley (Yellow Rock v. Westlake) | MB | 211 | 223 | 12 (known, acceptable) | ✅ Ready to send to MB |
-| YellowRock/Brandl | MB | 318 | — | — | ✅ Complete |
-| Fourman WCB (M.D.) | AD | 27 | 28 | 1 (steno content only) | ✅ Cold test baseline |
+| Easley (Yellow Rock v. Westlake) | MB | 211 | 223 | 12 (known, acceptable) | ⏸ Holding — send after Brandl fix |
+| YellowRock/Brandl | MB | 354 | 357 | 3 (cert/errata, not material) | ⚠️ Defects found — fix in progress |
+| Fourman WCB (M.D.) | AD | 27 | 28 | 1 (steno content only) | ✅ Cold test baseline — on hold |
 
 **Page gap note:** Gap is not a bug. MB's CaseCATalyst preserves short steno-stroke
 line breaks; our engine reflows at 52 chars. 1-page Fourman gap = content AD must
@@ -103,8 +111,8 @@ supply from steno, not an engine error.
 
 | # | Blocker | Owner | Notes |
 |---|---------|-------|-------|
-| B-1 | Easley + Brandl not yet formally reviewed by MB | Scott | Never sent. MB has not seen our output. Start feedback loop. |
-| B-2 | verify_agent.py never run | Code Claude | Built in Sessions 13-14. Fourman = baseline. Run it. |
+| B-1 | Easley + Brandl not yet formally reviewed by MB | Scott | Holding until Brandl Q/A defects fixed. MB has not seen our output. |
+| B-2 | Brandl Q/A cascade defects (DEF-A, DEF-A2, DEF-B) | Code Claude + Opus | Design spec required. 3-file coordinated fix. Do not run AI pass until resolved. |
 | B-3 | Phone audio download blocked | Scott | Leon M4A stuck on phone. Can't test audio agent until resolved. |
 
 ---
@@ -113,20 +121,19 @@ supply from steno, not an engine error.
 
 | # | Item | Owner | Notes |
 |---|------|-------|-------|
-| OI-1 | Identify mystery RTF Scott found | Scott | Another RTF discovered 3/28. Which depo? Which reporter? |
-| OI-2 | Leon CA WCAB state module | Code Claude | No STATE_MODULE_california_wcab.md exists yet. Needed for Leon run. |
-| OI-3 | NY WC state module | Code Claude | ad_foreman_0324 uses inline config. Extract to STATE_MODULE_ny_wcb.md? |
+| OI-1 | DEF-B mechanism (MR. name strip) | Code Claude | Context-dependent: pre-exam stripped, mid-exam preserved. Root cause unknown — investigation task for design phase. |
+| OI-2 | DEF-014 acceptance test gap | Code Claude | File in DEFECT_LOG.md — structural Q/A checks needed. Scoped for design spec phase. |
+| OI-3 | Leon CA WCAB state module | Scott | No STATE_MODULE_california_wcab.md exists. Needed for Leon run. On hold pending Brandl fix. |
 | OI-4 | Revenue model | Scott + PM | Per-depo fee, monthly subscription, or revenue share? MB = first signal. |
 | OI-5 | KB-008 casing size notation | Scott | Style A vs Style B still unresolved. Interim = Style B. |
 | OI-6 | AD_QUESTIONS.md open items | Scott + AD | 6 open questions for AD before NY WC is production-ready. |
-| OI-7 | PM bot GitHub access | Scott | GitHub connector not set up in Claude.ai — only Calendar/Gmail connected. Fix: Settings → Integrations → GitHub. If unavailable, build PM_BRIEFING.md (single paste file). Pinned — do after Fourman run. |
 
 ---
 
 ## 🟢 CURRENT SPRINT
 → See **CURRENT_SPRINT.md** for full code Claude instructions.
 
-**Sprint goal:** Leon setup + verify_agent.py first run + build_review_sheet.py
+**Sprint goal:** Brandl Q/A defect fix — sync worktree, file DEF-014, then Opus design spec
 **Active tasks:** See CURRENT_SPRINT.md
 
 ---
@@ -149,6 +156,12 @@ supply from steno, not an engine error.
 | 2026-03-28 | HOUSE_STYLE_MODULE_dalotto.md | AD (NY WC) style seed |
 | 2026-03-28 | AD_QUESTIONS.md | 6 open items for AD before Fourman ships |
 | 2026-03-29 | PM coordination system | CLAUDE.md, PROJECT_BOARD.md, CURRENT_SPRINT.md |
+| 2026-04-13–15 | DEF-001 through DEF-013 closed | Full defect sprint — see DEFECT_LOG.md |
+| 2026-04-15 | label_qa.py | Pre-AI Q/A structure labeler — wired into run_pipeline.py |
+| 2026-04-15 | acceptance_test.py | Pattern-based output checks. Brandl v5: PASS. Caveat: blind to Q/A structure. |
+| 2026-04-15 | Brandl v5 acceptance test | 354 pages, zero bleed, all DEF-001..DEF-013 checks pass — BUT test is blind to Q/A structure (DEF-014). Output contains cascade defects. NOT shippable to MB as-is. |
+| 2026-04-16 | Pipeline stability fixes (main) | SSL retry, run_pipeline os.path.exists, --from steno input check |
+| 2026-04-17 | docs/evidence/2026-04-16_chunk_01_defects.md | April 16 session evidence preserved to disk |
 
 ---
 
@@ -156,11 +169,12 @@ supply from steno, not an engine error.
 
 | Priority | Item | Notes |
 |----------|------|-------|
-| HIGH | build_review_sheet.py | CR listening queue: page/line + audio timestamp per gap. Replaces QA_FLAGS.txt |
+| HIGH | Opus design spec: 3-file Q/A fix | label_qa.py + MASTER_DEPOSITION_ENGINE + ai_engine.py. Do not code without spec. |
+| HIGH | Structural Q/A checks in acceptance_test.py | DEF-014. Empty Q label, Q/A ratio, cascade detection. |
+| HIGH | Send Easley + Brandl to MB | Start feedback loop. Holding until Brandl Q/A fix confirmed clean. |
 | HIGH | Audio agent (audio_agent.py) | Whisper API, detect MP3/M4A in folder, batch REVIEW gaps |
-| HIGH | Send Easley + Brandl to MB | Start feedback loop. MB has never reviewed our output. |
+| MEDIUM | build_review_sheet.py | CR listening queue: page/line + audio timestamp per gap. Replaces QA_FLAGS.txt |
 | MEDIUM | STATE_MODULE_california_wcab.md | Needed for Leon run |
-| MEDIUM | STATE_MODULE_ny_wcb.md | Extract from ad_foreman_0324 inline config |
 | MEDIUM | AD_QUESTIONS.md resolution | Get answers from AD before NY WC goes to production |
 | LOW | Multi-witness deposition handling | Currently single-witness only |
 | LOW | Auto-glossary builder | Build glossary.txt from first-run corrections automatically |
@@ -180,10 +194,34 @@ supply from steno, not an engine error.
 | 2026-03-28 | "Agent" not "AI" in user-facing text | CR audience — "agent" is clearer and less alarming |
 | 2026-03-28 | Review sheet = CR listening queue | Page/line + context + audio timestamp. CR listens only to flagged moments |
 | 2026-03-28 | Fourman = 1-pass baseline | verify_agent.py not run intentionally — cold baseline first |
+| 2026-04-17 | Hold Brandl/Easley delivery until Q/A fix confirmed | DEF-A cascade inverts speaker attribution — output not CR-ready |
+| 2026-04-17 | Design spec before code on Q/A fix | Three-file conflict — touching one without the others makes it worse |
 
 ---
 
 ## 📝 SESSION LOG
+
+**2026-04-17 (SYNC session — ramp-up + doc recovery)**
+- Ramp-up revealed CURRENT_SPRINT.md and PROJECT_BOARD.md stale since 2026-03-30
+- April 16 evidence session had no button-up note — protocol failure
+- Evidence preserved: docs/evidence/2026-04-16_chunk_01_defects.md (commits 4e9a825, 485b98b)
+- CURRENT_SPRINT.md and PROJECT_BOARD.md updated to reflect current state
+- SYNC STEPs 3-5 still in progress
+
+**2026-04-16 (Evidence-gathering session — no commits at session end)**
+- Read-before-think protocol on Brandl chunk_01 baseline output
+- Found DEF-A (Q/A cascade), DEF-A2 (empty Q label), DEF-B (MR. name strip)
+- Identified DEF-E (colloquy intrusion) — parked
+- Identified three-way prompt contradiction as root cause of cascade unpredictability
+- Opus to design coordinated 3-file fix spec — deferred to next session when Scott is fresh. Spec depends on seeing April 16 commit diffs (SYNC STEP 4).
+- 3 pipeline stability commits landed on main (SSL retry, run_pipeline fixes)
+- ⚠️ Session ended without button-up note — evidence lost until 2026-04-17
+
+**2026-04-13–15 (Defect sprint — Brandl)**
+- DEF-001 through DEF-013 closed (see DEFECT_LOG.md)
+- label_qa.py built and wired into pipeline
+- acceptance_test.py built — Brandl v5: PASS, 354 pages, zero bleed
+- ⚠️ Acceptance test later found to be blind to Q/A structural defects (DEF-014)
 
 **2026-03-29 (PM system created)**
 - CLAUDE.md, PROJECT_BOARD.md, CURRENT_SPRINT.md created for PM coordination
@@ -240,5 +278,5 @@ Recommendation: [suggestion]
 
 ---
 *Maintained by: Project Lead Claude + Scott*
-*Last updated: 2026-03-30*
+*Last updated: 2026-04-17*
 *Code Claudes: stay in CLAUDE.md and CURRENT_SPRINT.md*
