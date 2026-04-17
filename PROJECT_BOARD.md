@@ -122,7 +122,7 @@ supply from steno, not an engine error.
 | # | Item | Owner | Notes |
 |---|------|-------|-------|
 | OI-1 | DEF-B mechanism (MR. name strip) | Code Claude | Context-dependent: pre-exam stripped, mid-exam preserved. Root cause unknown — investigation task for design phase. |
-| OI-2 | DEF-014 acceptance test gap | Code Claude | File in DEFECT_LOG.md — structural Q/A checks needed. Scoped for design spec phase. |
+| OI-2 | D-21 acceptance test gap | Code Claude | File in DEFECT_LOG.md — structural Q/A checks needed. Scoped for design spec phase. |
 | OI-3 | Leon CA WCAB state module | Scott | No STATE_MODULE_california_wcab.md exists. Needed for Leon run. On hold pending Brandl fix. |
 | OI-4 | Revenue model | Scott + PM | Per-depo fee, monthly subscription, or revenue share? MB = first signal. |
 | OI-5 | KB-008 casing size notation | Scott | Style A vs Style B still unresolved. Interim = Style B. |
@@ -133,7 +133,7 @@ supply from steno, not an engine error.
 ## 🟢 CURRENT SPRINT
 → See **CURRENT_SPRINT.md** for full code Claude instructions.
 
-**Sprint goal:** Brandl Q/A defect fix — sync worktree, file DEF-014, then Opus design spec
+**Sprint goal:** Brandl Q/A defect fix — sync worktree, file D-21, then Opus design spec
 **Active tasks:** See CURRENT_SPRINT.md
 
 ---
@@ -159,7 +159,7 @@ supply from steno, not an engine error.
 | 2026-04-13–15 | DEF-001 through DEF-013 closed | Full defect sprint — see DEFECT_LOG.md |
 | 2026-04-15 | label_qa.py | Pre-AI Q/A structure labeler — wired into run_pipeline.py |
 | 2026-04-15 | acceptance_test.py | Pattern-based output checks. Brandl v5: PASS. Caveat: blind to Q/A structure. |
-| 2026-04-15 | Brandl v5 acceptance test | 354 pages, zero bleed, all DEF-001..DEF-013 checks pass — BUT test is blind to Q/A structure (DEF-014). Output contains cascade defects. NOT shippable to MB as-is. |
+| 2026-04-15 | Brandl v5 acceptance test | 354 pages, zero bleed, all DEF-001..DEF-013 checks pass — BUT test is blind to Q/A structure (D-21). Output contains cascade defects. NOT shippable to MB as-is. |
 | 2026-04-16 | Pipeline stability fixes (main) | SSL retry, run_pipeline os.path.exists, --from steno input check |
 | 2026-04-17 | docs/evidence/2026-04-16_chunk_01_defects.md | April 16 session evidence preserved to disk |
 
@@ -170,7 +170,7 @@ supply from steno, not an engine error.
 | Priority | Item | Notes |
 |----------|------|-------|
 | HIGH | Opus design spec: 3-file Q/A fix | label_qa.py + MASTER_DEPOSITION_ENGINE + ai_engine.py. Do not code without spec. |
-| HIGH | Structural Q/A checks in acceptance_test.py | DEF-014. Empty Q label, Q/A ratio, cascade detection. |
+| HIGH | Structural Q/A checks in acceptance_test.py | D-21. Empty Q label, Q/A ratio, cascade detection. |
 | HIGH | Send Easley + Brandl to MB | Start feedback loop. Holding until Brandl Q/A fix confirmed clean. |
 | HIGH | Audio agent (audio_agent.py) | Whisper API, detect MP3/M4A in folder, batch REVIEW gaps |
 | MEDIUM | build_review_sheet.py | CR listening queue: page/line + audio timestamp per gap. Replaces QA_FLAGS.txt |
@@ -221,7 +221,7 @@ supply from steno, not an engine error.
 - DEF-001 through DEF-013 closed (see DEFECT_LOG.md)
 - label_qa.py built and wired into pipeline
 - acceptance_test.py built — Brandl v5: PASS, 354 pages, zero bleed
-- ⚠️ Acceptance test later found to be blind to Q/A structural defects (DEF-014)
+- ⚠️ Acceptance test later found to be blind to Q/A structural defects (D-21)
 
 **2026-03-29 (PM system created)**
 - CLAUDE.md, PROJECT_BOARD.md, CURRENT_SPRINT.md created for PM coordination

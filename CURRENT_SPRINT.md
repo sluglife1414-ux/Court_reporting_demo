@@ -84,7 +84,7 @@ Do not resolve these without Scott's input — flag and wait:
   begin with Q. or A."). These conflict. Fixing any one file without the others
   makes it worse.
 
-- **DEF-014 (Acceptance test blind to Q/A structure)** — To be filed. Current
+- **D-21 (Acceptance test blind to Q/A structure)** — Filed. Current
   test only checks for reasoning bleed. No structural integrity checks exist.
 
 ---
@@ -112,10 +112,10 @@ rewrite. Report findings. Do NOT make judgment calls — report only.
 
 ---
 
-### TASK 3 — File DEF-014 in DEFECT_LOG.md (SYNC STEP 5)
+### TASK 3 — File D-21 in DEFECT_LOG.md (SYNC STEP 5)
 **Status:** READY
 Add new row to DEFECT_LOG.md:
-  ID: DEF-014
+  ID: D-21
   Date: 2026-04-17
   Status: OPEN
   Symptom: Acceptance test passes on output with inverted Q/A cascade
