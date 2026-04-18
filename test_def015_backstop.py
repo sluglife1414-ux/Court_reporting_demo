@@ -637,6 +637,79 @@ def test_pow_exempt_structure():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
+# GROUP 9: Caption-block guard — paragraphs that don't open with Q./A. must be
+# returned untouched. No splits, no tags, no hits.
+# ═════════════════════════════════════════════════════════════════════════════
+
+def test_caption_block_real_para12():
+    """
+    Real Brandl para 12: law firm caption header.
+    Contains Q. and A. tokens embedded in attorney names / addresses,
+    but the paragraph does NOT open with a Q. or A. label.
+    Must be returned completely untouched — no hit, no tag, no split.
+    """
+    para = (
+        "ATTORNEY FOR PLAINTIFF: SHER GARNER CAHILL RICHTER KLEIN & HILBERT, L.L.C. "
+        "909 Poydras Street Suite 2800 New Orleans, Louisiana 70112 Q. TREY PEACOCK, ESQ. "
+        "A. ATTORNEY FOR DEFENDANT: FRILOT L.L.C. 1100 Poydras Street Suite 3700 "
+        "New Orleans, Louisiana 70163 Q. KEVIN R. TULLY, ESQ."
+    )
+    hits = detect_bleed(para, paragraph_index=12)
+    record('caption_block_real: detect_bleed returns no hits', len(hits) == 0,
+           f'got {len(hits)} hits — caption block incorrectly processed')
+
+    result = apply_fix(para, hits, tag_counter_start=1)
+    assert_not_in('caption_block_real: no [REVIEW] tag in output', '[REVIEW-', result['text'])
+    record('caption_block_real: paragraph text unchanged',
+           result['text'].strip() == para.strip(),
+           f'paragraph was modified — should be untouched')
+
+
+def test_caption_block_colloquy_only():
+    """
+    Fabricated colloquy-only paragraph: MR. SMITH: We have no Q. about this.
+    The Q. appears inside a sentence, not as an opening speaker label.
+    Paragraph opens with MR. SMITH:, not Q. or A.
+    Must be returned completely untouched.
+    """
+    para = "MR. SMITH: We have no Q. about this matter. A. It is stipulated."
+    hits = detect_bleed(para, paragraph_index=0)
+    record('caption_colloquy: detect_bleed returns no hits on MR. X: paragraph',
+           len(hits) == 0,
+           f'got {len(hits)} hits — colloquy-only paragraph incorrectly processed')
+
+    result = apply_fix(para, hits, tag_counter_start=1)
+    assert_not_in('caption_colloquy: no [REVIEW] tag', '[REVIEW-', result['text'])
+    record('caption_colloquy: paragraph unchanged',
+           result['text'].strip() == para.strip())
+
+
+def test_caption_block_whereupon():
+    """
+    (Whereupon, ...) parenthetical — structural, not Q./A.
+    No Q./A. opener. Must pass through untouched even if Q. or A. appear inside.
+    """
+    para = "(Whereupon, Exhibit Q. was marked for identification.)"
+    hits = detect_bleed(para, paragraph_index=0)
+    record('caption_whereupon: no hits on Whereupon block', len(hits) == 0,
+           f'got {len(hits)} hits')
+    result = apply_fix(para, hits, tag_counter_start=1)
+    record('caption_whereupon: paragraph unchanged',
+           result['text'].strip() == para.strip())
+
+
+def test_caption_block_qa_opener_still_processed():
+    """
+    Sanity check: a paragraph that DOES open with Q. must still be processed normally.
+    This test ensures the guard doesn't accidentally silence legitimate Q. blocks.
+    """
+    para = "Q.   Are you the attorney of record? A. Yes, I represent the plaintiff."
+    hits = detect_bleed(para, paragraph_index=0)
+    record('caption_qa_opener: Q. opener is still detected', len(hits) >= 1,
+           f'Q.-opening paragraph got 0 hits — guard too aggressive')
+
+
+# ═════════════════════════════════════════════════════════════════════════════
 # Runner
 # ═════════════════════════════════════════════════════════════════════════════
 
@@ -694,6 +767,12 @@ def run_all():
     test_pow_fix_structure()
     test_pow_tag_structure()
     test_pow_exempt_structure()
+
+    print('\nGroup 9: Caption-block guard (no Q./A. opener = untouched)')
+    test_caption_block_real_para12()
+    test_caption_block_colloquy_only()
+    test_caption_block_whereupon()
+    test_caption_block_qa_opener_still_processed()
 
     passed = sum(1 for _, ok in results if ok)
     total = len(results)

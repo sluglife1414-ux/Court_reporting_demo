@@ -203,10 +203,17 @@ def detect_bleed(paragraph, paragraph_index=0):
     if not flat:
         return []
 
-    # Identify the opening label
+    # Caption-block guard: only process paragraphs that open with Q. or A.
+    # Anything else — caption headers, attorney appearances, exhibit lists,
+    # court reporter certifications, colloquy lines starting with MR./MS.,
+    # (Whereupon,...) blocks — is structural content the AI owns entirely.
+    # Touching it would tag or split text the backstop has no business touching.
     opener = OPENER_RE.match(flat)
-    opener_end = opener.end() if opener else 0
-    is_a_block = opener and flat[0] == 'A'
+    if not opener:
+        return []
+
+    opener_end = opener.end()
+    is_a_block = flat[0] == 'A'
 
     hits = []
     for m in STRAY_LABEL_RE.finditer(flat):
@@ -527,9 +534,12 @@ def main():
     dry_run = '--dry-run' in sys.argv
     wide_scan = '--wide-scan' in sys.argv
 
-    input_path = 'corrected_text.txt'
+    # Accept optional positional path: python def015_backstop.py [path] [--flags]
+    positional = [a for a in sys.argv[1:] if not a.startswith('--')]
+    input_path = positional[0] if positional else 'corrected_text.txt'
+
     if not os.path.exists(input_path):
-        print(f'[def015_backstop] ERROR: {input_path} not found in {os.getcwd()}')
+        print(f'[def015_backstop] ERROR: {input_path} not found')
         sys.exit(1)
 
     process_file(input_path, dry_run=dry_run, wide_scan=wide_scan)
