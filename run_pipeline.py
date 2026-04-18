@@ -79,7 +79,7 @@ ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
 ALL_STEPS = [
     ('extract_rtf.py',       'extract',      'Extract input -> raw text  [format auto-detected at runtime]'),
     ('steno_cleanup.py',     'steno',        'Steno cleanup -> cleaned text'),
-    ('label_qa.py',          'label_qa',     'Q/A structure labeler -> add Q./A. labels + blank separators to cleaned text'),
+    ('qa_structure_detector.py', 'qa_structure', 'Q/A structure detector -> structural normalization; AI handles Q/A labels'),
     ('ai_engine.py',         'ai',           'AI correction pass -> corrected text + correction log  [~56 min]'),
     ('verify_agent.py',      'verify',       'Pass 2: Haiku reviews HIGH corrections -> verify_log.json  [~1 min]'),
     ('apply_verify.py',      'apply_verify', 'Apply verify: re-tag DISAGREE items as [REVIEW] in corrected_text.txt'),
@@ -251,9 +251,12 @@ def main():
     # ── Step 1: detect input format and swap extractor if needed ─────────────
     # Only needed when we're actually running the extract step.
     # --skip-ai and --from <post-ai-step> both bypass extraction entirely.
+    # Also skip if starting from steno and extracted_text.txt already exists.
+    has_extracted = os.path.exists('extracted_text.txt')
     needs_extract = (
         not args.skip_ai and
-        (not args.start_from or args.start_from in ('extract', 'steno'))
+        (not args.start_from or args.start_from in ('extract', 'steno')) and
+        not (args.start_from == 'steno' and has_extracted)
     )
     steps_list = ALL_STEPS[:]
     if needs_extract:
@@ -262,6 +265,7 @@ def main():
             print("[ERROR] No input file found.")
             print("        Need a .sgngl (job dir or ../mb_*/) or a .rtf (job dir).")
             print("        Copy the input file here, or run with --skip-ai if AI is already done.")
+            print("        OR place extracted_text.txt in the job dir and use --from steno.")
             sys.exit(1)
         # Swap step 1 with the detected extractor
         steps_list[0] = (script, 'extract', desc)

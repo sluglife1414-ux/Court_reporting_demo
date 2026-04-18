@@ -400,7 +400,7 @@ def build_system_prompt():
     state_module, house_style, kb, reporter_name, state_label, dictionary_setting = load_cr_config(engine_dir)
 
     engine_files = [
-        ('MASTER_DEPOSITION_ENGINE_v4.1.md', 'MASTER DEPOSITION TRANSFORMATION ENGINE v4.1'),
+        ('MASTER_DEPOSITION_ENGINE_v4.2.md', 'MASTER DEPOSITION TRANSFORMATION ENGINE v4.2'),
         state_module,
         house_style,
         kb,
@@ -616,8 +616,8 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
             f"RE-ANCHOR: You are mid-examination. "
             f"Last labeled line in previous chunk was {qa_anchor}. "
             f"Next expected label is {next_label}. "
-            f"CRITICAL: Every line of testimony must begin with Q. or A. "
-            f"Do not return any unlabeled testimony lines.\n\n"
+            f"PRESERVE existing Q./A. labels verbatim — do not reassign or remove them. "
+            f"If a testimony line arrives unlabeled, assign based on context.\n\n"
         )
     else:
         anchor_header = ''
@@ -759,6 +759,17 @@ def correct_chunk(client, system_prompt, chunk_content, line_start, chunk_num, t
                 time.sleep(1)
             else:
                 print(f'  [ERROR] JSON parse failed after retries — chunk kept as-is', flush=True)
+                return chunk_content, [], 0, 0, 0, 0
+
+        except KeyboardInterrupt:
+            # On Windows/Python 3.14, a dropped SSL connection mid-read can
+            # surface as KeyboardInterrupt (not a real Ctrl+C — network issue).
+            # Retry up to MAX_RETRIES. If this keeps happening it's a real interrupt.
+            if attempt < MAX_RETRIES:
+                print(f'  [WARN] SSL/network interrupt — retry {attempt + 1} of {MAX_RETRIES}...', flush=True)
+                time.sleep(5)
+            else:
+                print(f'  [ERROR] SSL/network interrupt persists after retries — chunk kept as-is', flush=True)
                 return chunk_content, [], 0, 0, 0, 0
 
         except Exception as e:
