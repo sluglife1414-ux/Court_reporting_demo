@@ -81,7 +81,18 @@ FP_REFERENCE_RE = re.compile(
 )
 
 # Existing verify-agent tag → skip paragraph entirely (R3 guard).
-VERIFY_TAG_RE = re.compile(r'\[FLAG:|REVIEW\]|\[\[REVIEW\]\]|\[REVIEW-\d+:')
+# Matches all known verify-agent and backstop tag formats:
+#   [FLAG: ...]         — verify-agent flag
+#   REVIEW]             — close-bracket legacy format
+#   [[REVIEW]]          — double-bracket legacy format
+#   [REVIEW-001: ...]   — backstop's own numbered tags
+#   [REVIEW: ...]       — verify agent's open-bracket-colon format (THE BUG FIX)
+#                         The verify agent writes [REVIEW: reason text] with no
+#                         close bracket before the reason. This alternation was
+#                         missing — R3 was a dead guard for every Brandl paragraph
+#                         the verify agent had touched. Chain guard was accidentally
+#                         saving us. Now R3 does its own work.
+VERIFY_TAG_RE = re.compile(r'\[FLAG:|\[REVIEW:|\bREVIEW\]|\[\[REVIEW\]\]|\[REVIEW-\d+:')
 
 # Opening label at start of a paragraph (Q. or A. with 1+ spaces).
 OPENER_RE = re.compile(r'^([QA])\.\s+')

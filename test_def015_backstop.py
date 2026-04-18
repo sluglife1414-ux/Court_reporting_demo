@@ -706,7 +706,80 @@ def test_caption_block_qa_opener_still_processed():
     para = "Q.   Are you the attorney of record? A. Yes, I represent the plaintiff."
     hits = detect_bleed(para, paragraph_index=0)
     record('caption_qa_opener: Q. opener is still detected', len(hits) >= 1,
-           f'Q.-opening paragraph got 0 hits — guard too aggressive')
+           f'Q.-opening paragraph got 0 hits -- guard too aggressive')
+
+
+# =============================================================================
+# GROUP 10: R3 verify-tag guard — open-bracket-colon format [REVIEW: ...]
+# Bug: VERIFY_TAG_RE matched close-bracket forms only (REVIEW], [[REVIEW]]).
+# The verify agent writes [REVIEW: reason text] (open-bracket-colon, no close
+# bracket before the reason). R3 was a dead guard until this fix.
+# =============================================================================
+
+def test_r3_open_bracket_colon_real_brandl():
+    """
+    Real Brandl para 79 pattern: Q.-opening paragraph with verify-agent tag in
+    the format [REVIEW: verify-agent flag ? reason text ? reporter confirm].
+    Paragraph also contains stray speaker labels (genuine chain bleed).
+    R3 guard must catch it and return [] — paragraph untouched.
+    """
+    # Exact format from Brandl corrected_text.txt para 79
+    para = (
+        "Q.   All right, Mr. Brandl, we were talking about your work. "
+        "You're [REVIEW: verify-agent flag ? extensive reconstruction with insertions; "
+        "multiple steno gaps without audio confirmation ? reporter confirm] "
+        "currently doing consulting work. A. Yes, that is correct. "
+        "Q. Let me go back to your background."
+    )
+    hits = detect_bleed(para, paragraph_index=79)
+    record('r3_open_bracket_real: detect_bleed returns [] for [REVIEW: ...] paragraph',
+           len(hits) == 0,
+           f'got {len(hits)} hits -- R3 guard not catching open-bracket-colon format')
+    result = apply_fix(para, hits, tag_counter_start=1)
+    assert_not_in('r3_open_bracket_real: no [REVIEW-NNN] backstop tag inserted', '[REVIEW-', result['text'])
+    record('r3_open_bracket_real: paragraph text unchanged',
+           result['text'].strip() == para.strip())
+
+
+def test_r3_open_bracket_colon_fabricated():
+    """
+    Fabricated paragraph with short [REVIEW: reason] tag plus stray label.
+    Tests the minimal case: any [REVIEW: followed by content must trigger R3.
+    """
+    para = (
+        "A.   The well was drilled in 2004. [REVIEW: possible date error -- "
+        "reporter verify] Q. And was it completed in the same year?"
+    )
+    hits = detect_bleed(para, paragraph_index=0)
+    record('r3_fabricated: detect_bleed returns [] for fabricated [REVIEW: ...] paragraph',
+           len(hits) == 0,
+           f'got {len(hits)} hits -- R3 not catching short open-bracket-colon tag')
+    result = apply_fix(para, hits, tag_counter_start=1)
+    record('r3_fabricated: paragraph unchanged',
+           result['text'].strip() == para.strip())
+
+
+def test_r3_old_formats_still_caught():
+    """
+    Regression: the old close-bracket and double-bracket formats that VERIFY_TAG_RE
+    originally caught must still be caught after adding the new alternation.
+    Tests: [FLAG:], REVIEW], [[REVIEW]], [REVIEW-001:
+    """
+    flag_para = "A.   [FLAG: steno artifact -- verify] This testimony was reconstructed. Q. Okay."
+    review_close = "A.   Some testimony here. REVIEW] Q. And then what happened?"
+    review_double = "A.   [[REVIEW]] This block needs reporter review. Q. Moving on."
+    review_numbered = "A.   [REVIEW-001: possible turn break] Q. Did you confirm that?"
+
+    for label, para in [
+        ('FLAG format', flag_para),
+        ('REVIEW] close-bracket', review_close),
+        ('[[REVIEW]] double-bracket', review_double),
+        ('[REVIEW-001: numbered tag', review_numbered),
+    ]:
+        hits = detect_bleed(para, paragraph_index=0)
+        record(f'r3_regression {label}: returns [] (R3 catches it)',
+               len(hits) == 0,
+               f'got {len(hits)} hits -- regression: {label} no longer caught by R3')
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -773,6 +846,11 @@ def run_all():
     test_caption_block_colloquy_only()
     test_caption_block_whereupon()
     test_caption_block_qa_opener_still_processed()
+
+    print('\nGroup 10: R3 verify-tag guard -- open-bracket-colon [REVIEW: ...] format')
+    test_r3_open_bracket_colon_real_brandl()
+    test_r3_open_bracket_colon_fabricated()
+    test_r3_old_formats_still_caught()
 
     passed = sum(1 for _, ok in results if ok)
     total = len(results)
