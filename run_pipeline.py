@@ -79,8 +79,9 @@ ENGINE_DIR = os.path.dirname(os.path.abspath(__file__))
 ALL_STEPS = [
     ('extract_rtf.py',       'extract',      'Extract input -> raw text  [format auto-detected at runtime]'),
     ('steno_cleanup.py',     'steno',        'Steno cleanup -> cleaned text'),
-    ('qa_structure_detector.py', 'qa_structure', 'Q/A structure detector -> structural normalization; AI handles Q/A labels'),
+    ('label_qa.py',          'label_qa',     'Q/A structure labeler -> add Q./A. labels + blank separators to cleaned text'),
     ('ai_engine.py',         'ai',           'AI correction pass -> corrected text + correction log  [~56 min]'),
+    ('qa_line_splitter.py',  'qa_splitter',  'Deterministic Q/A line splitter -> breaks collapsed multi-turn lines onto separate lines'),
     ('verify_agent.py',      'verify',       'Pass 2: Haiku reviews HIGH corrections -> verify_log.json  [~1 min]'),
     ('apply_verify.py',      'apply_verify', 'Apply verify: re-tag DISAGREE items as [REVIEW] in corrected_text.txt'),
     ('specialist_verify.py',      'specialist',    'Pass 3: 6-agent specialist review -> specialist_verify_log.json  [~2 min]'),
@@ -97,7 +98,7 @@ ALL_STEPS = [
 ]
 
 # Steps that run after the AI pass — safe to run independently
-POST_AI_STEPS = {'verify', 'apply_verify', 'specialist', 'audio_check', 'apply_audio', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables', 'cr_review'}
+POST_AI_STEPS = {'qa_splitter', 'verify', 'apply_verify', 'specialist', 'audio_check', 'apply_audio', 'config', 'format', 'pdf', 'transcript', 'condensed', 'summary', 'deliverables', 'cr_review'}
 
 
 def load_cr_config():
